@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Databinding and application architecture</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Databinding and application architecture</div>
+
+
+<div class="comments-body">
+<p>It's the old Object/Relational mapping problem.</p>
+
+<p>Aside from the databinding issue, which is huge, writing "glue" code to save objects to relational databases is incredibly tedious and error prone. So much so that we've reverted to sending raw datasets. It's just LESS WORK, and it's easier to understand and maintain. If your database is set up logically, it becomes the de facto "object model".</p>
+
+<p>The purity of code will always lose out to convenience. And deservedly so. If it's so pure, it should be convenient, dammit!</p>
+
+<p>This is basically the same thing you said here:</p>
+
+<p>http://www.iunknown.com/000387.html</p>
+
+<p>Except instead of "stored proc" insert the word "object", and instead of "raw sql" insert the word "dataset".</p>
+
+<p>I will not be holding my breath for object databases to save us, either.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.codinghorror.com/">Jeff Atwood</a> at July  8, 2004 07:31 PM</span>
+</div>
+<div class="comments-body">
+<p>Some toughts:</p>
+
+<p>http://weblogs.asp.net/aaguiar/archive/2004/06/03/147208.aspx </p>
+
+<p>Regards,</p>
+
+<p>Andres.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://weblogs.asp.net/aaguiar">Andres Aguiar</a> at July  8, 2004 07:35 PM</span>
+</div>
+<div class="comments-body">
+<p>There is a real lack of articles and examples that don't use the dataset construct.  It is a little easier on the design side to use the DataAdapter/DataSet combo to pull from a database.  I would _love_ to see articles that give a different perspective.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;bcbroom&#64;hotmail&#46;com">Brian Broom</a> at July  8, 2004 07:52 PM</span>
+</div>
+<div class="comments-body">
+<p>I really don't see why it is against the spirit of web services. Afterall, web services are just a way to nicely wrap up some XML and send it over the wire (with security and routing etc with WSE 2.0). If the XML is a serialised object or a DataSet does it matter?</p>
+
+<p>The argument over whether a DataSet is a good thing anyway is another story. My preference is to keep "Data" related things in the data tier, so any UI binding should be against my marhsalling objects.</p>
+
+<p>I guess I haven't really cleared up much. ;-)</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.enigmativity.com/blog">James Roe-Smith</a> at July  8, 2004 08:38 PM</span>
+</div>
+<div class="comments-body">
+<p>James, the type system of Web Services is XSD - which only allows you to define schema. One of the four tenets of Service Orientation is to share schema not class. What does the XML of a DataSet mean to a client written in Perl? </p>
+
+<p>The fact that you could hack up Perl code to "understand" the XML serialized by a DataSet is not the point here. A Perl SOAP stack would not be able to generate something that could understand the semantics of a DataSet - that's the real problem.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at July  9, 2004 12:35 AM</span>
+</div>
+<div class="comments-body">
+<p>>What does the XML of a DataSet mean to a client written in Perl? </p>
+
+<p>I don't understand what this question means. Aren't there Perl libraries for consuming XML?</p>
+
+<p>>A Perl SOAP stack would not be able to generate something that could understand the semantics of a DataSet - that's the real problem.</p>
+
+<p>Neither would a Perl SOAP stack be able to generate something that would understand the semantics of my internal business processes if I sent it some XML generated from some of my custom objects. So what? </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.25hoursaday.com/weblog">Dare Obasanjo</a> at July 12, 2004 01:32 PM</span>
+</div>
+<div class="comments-body">
+<p>Dare, The point is to take advantage of the friction-reducing nature of the SOAP stack in the first place. The SOAP stack is there to make it easier for folks to emit/consume data that is sent across the wire. </p>
+
+<p>To me, DataSets add semantics that are orthogonal to business functionality - and that functionality ties you necessarily to a particular implementation.</p>
+
+<p>Are you really advocating that we abandon SOAP altogether and just write RESTful implementations?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at July 12, 2004 01:41 PM</span>
+</div>
+<div class="comments-body">
+<p>John, it seems you are treating SOAP as a Simple Object Access Protocol where you are invoking remote methods on objects which are passed primitive datatypes or simple objects as input and return the same as output. The problem with this approach is that when you get XML that doesn't map to simple objects then your toolkit's world view falls apart. </p>
+
+<p>However in an SOA world you will have to deal with XML vocabularies that don't map to simple classes and objects. You are sharing XML schemas not C#/Java/Perl/etc classes. The XML generated by serializing a DataSet is just one of many such XML vocabularies. </p>
+
+<p>As I mentioned to Ted Neward in the past, if this position is difficult for you to accept perhaps you are better of using distributed object technologies such as DCOM, CORBA or Java RMI instead of using XML Web Services. </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.25hoursaday.com/weblog">Dare Obasanjo</a> at July 12, 2004 08:56 PM</span>
+</div>
+<div class="comments-body">
+<p>Dare, It's not that this position is difficult for me to accept - rather it's a case of me trying to figure out when I should be marshaling non toolkit compatible types. Most toolkits should be able to deal with the case of marshaling arrays of structs that map onto XSD simple types. To me, this should be able to solve the 80% case of information that I would like to marshal across the wire.</p>
+
+<p>I'm more interested in the 20% boundary cases - where arbitrary XML is marshaled across the wire. The cases that don't map to types that can be [de]serialized to/from objects in SOAP toolkits. These cases impose a non-trivial amount of friction on the part of the consumers of this data. When should this happen and why?</p>
+
+<p>The case of a DataSet is one such boundary case. Someone who wishes to consume that XML will have to write a custom deserializer. When should I make folks do that, and why? This is where I'm missing the "zen" of web services.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at July 12, 2004 11:33 PM</span>
+</div>
+<div class="comments-body">
+<p>The zen of services is definitely not in the same heart as those marshalling datasets.  But thats ok in some instances.  For instance, building smart apps, where the app, mobile .net of course, is speaking with a .net web service.  they pass datasets, not a big deal.  we've solved the disconnected problem, enabled remote updates, and in general got a pretty slick solution.  Now, as long as on the two systems doesn't change from the MS platform, which one should know going in, there won't be a problem.  <br />
+The other side is really just can x be as generic as an apple so that y can eat it.  </p>
+<span class="comments-post">Posted by <a href="mailto&#58;srylander&#64;mailblocks&#46;com">Stephen Rylander</a> at July 13, 2004 03:42 PM</span>
+</div>
+<div class="comments-body">
+<p>The zen of services is definitely not in the same heart as those marshalling datasets.  But thats ok in some instances.  For instance, building smart apps, where the app, mobile .net of course, is speaking with a .net web service.  they pass datasets, not a big deal.  we've solved the disconnected problem, enabled remote updates, and in general got a pretty slick solution.  Now, as long as on the two systems doesn't change from the MS platform, which one should know going in, there won't be a problem.  <br />
+The other side is really just can x be as generic as an apple so that y can eat it.  </p>
+<span class="comments-post">Posted by <a href="mailto&#58;srylander&#64;mailblocks&#46;com">Stephen Rylander</a> at July 13, 2004 03:57 PM</span>
+</div>
+<div class="comments-body">
+<p>> These cases impose a non-trivial amount of friction on the part of the consumers of this data. When should this happen and why?</p>
+
+<p>This is really up to your application and your expected consumers. If you have a business process that involves sharing WordProcessingML that you want to move to a web service then it is highly likely that you will be passing around XML documents that toolkits have no idea how to convert into object models. This is equally true for a number of schemas in the vertical industries such as XBRL, FpML, HR-XML, etc. </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.25hoursaday.com/weblog">Dare Obasanjo</a> at July 14, 2004 12:21 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi, I like to learn about the asp.Net technology, I am wondering where are you teaching? and how much the class would cost? I am currently a student, and my, and most other college don't offer MS stuff.  </p>
+<span class="comments-post">Posted by <a href="mailto&#58;maxfatter&#64;yahoo&#46;com">Max</a> at September 17, 2004 02:42 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="entry_id" value="471" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="button" onclick="window.close()" value="&nbsp;Cancel&nbsp;" />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+
+</body>
+</html>

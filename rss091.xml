@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- generator="Movable Type/2.63" -->
+<rss version="0.91">
+  <channel>
+    <title>iunknown.com</title>
+    <link>http://www.iunknown.com/</link>
+    <description>Home of the Practical Eye for the .NET Guy</description>
+    <language>en-us</language>
+    <webMaster>jlam@iunknown.com</webMaster>
+    <pubDate>Tue, 30 Nov 2004 09:26:16 -0500</pubDate>
+    <item>
+      <title>Python 2.4 Ships</title>
+      <link>http://www.iunknown.com/000529.html</link>
+      <description><![CDATA[<p>The <a href="http://www.python.org/2.4/">final build of Python 2.4</a> shipped today. If you're a Windows user, you'll want to download Mark Hammond's most excellent <a href="http://starship.python.net/crew/mhammond/win32/">win32all package</a> as well.</p>
+
+<p>I'm celebrating by writing a Movable Type to <span class="caps">SQL</span> code generator to dump all of my Movable Type blog entries into a <span class="caps">SQL</span> database.</p>
+
+<p>The feature that I'm looking forward to experimenting with is the function/decorator syntax as described in <a href="http://www.python.org/peps/pep-0318.html"><span class="caps">PEP318</span></a>. It lets you do <span class="caps">AOP</span>-like programming especially when used with Python metaclasses. Yum.</p>]]></description>
+    </item>
+    <item>
+      <title>Baby telemetry</title>
+      <link>http://www.iunknown.com/000528.html</link>
+      <description><![CDATA[<p><a href="http://tripping.seeto.com">Luke</a> just sent me a link <a href="http://www.trixieupdate.com/">to a blog</a> that contains detailed log of when Trixie, who is currently 16 months old wakes and is asleep. We had a similar log when Matthew was younger, but I never entered the data into a computer. </p>
+
+<p>His plot of <a href="http://www.trixieupdate.com/archives/2004/11/2004_11_22_0715.php">number of hours awake per day</a> is a must see for any parent. It shows that while there is a general trend, a baby's daily sleep patterns are highly variable, and that the signal is very difficult to see through the noise. </p>
+
+<p>One thing that you can see very clearly, however, is the disappearance of one of Trixie's naps. Matthew's doing the same thing now, which makes him harder to predict during the days.</p>]]></description>
+    </item>
+    <item>
+      <title>Differencing Drives in Virtual PC/Server</title>
+      <link>http://www.iunknown.com/000527.html</link>
+      <description><![CDATA[<p>I just spent some time creating a differencing drive using Virtual Server. Here's some observations:</p>
+
+<p>1) The performance is roughly the same as using undoable hard disks (I'd be <strong>really</strong> surprised if they weren't using undoable hard disks to implement this feature).<br />
+2) The size of the differencing drives are very large - larger than the amount of space that you would save by using them. </p>
+
+<p>For the kind of work that I do - starting with a baseline OS config (e.g. Win <span class="caps">XP SP2</span>) and then tacking on various <strong>big</strong> things like <span class="caps">VS.NET 2003, VS.NET 2005, </span>Java 1.5 etc in separate images, it just isn't worth it. </p>
+
+<p>The differencing drive has got to be nearly the same size as simply copying the original image and starting from that. And the performance from those drives is really awful (even on my <span class="caps">RAID 5</span> array with four 7200 rpm drives).</p>
+
+<p>So I can't really recommend using differencing drives for active development. The I/O performance is just too poor.</p>]]></description>
+    </item>
+    <item>
+      <title>Pragmatic Project Automation</title>
+      <link>http://www.iunknown.com/000526.html</link>
+      <description><![CDATA[<p>Yesterday I finally got a few hours to catch up on some reading. At the top of my list was <a href="http://www.pragmaticprogrammer.com/starter_kit/auto/">Pragmatic Project Automation</a> by <a href="http://www.clarkware.com/cgi/blosxom">Mike Clark</a>. It's the third installment in the Pragmatic Starter Kit series by the good folks at Pragmatic Programmer (Andy Hunt and Dave Thomas's <a href="http://www.pragmaticprogrammer.com/ppbook/index.shtml">original book</a> is one of my all-time favorite books).</p>
+
+<p>I received a review copy to read because <a href="http://www.neward.net/ted/weblog/index.jsp">Ted Neward</a> sat in on my talk on unit testing of <span class="caps">ASP.NET</span> applications at WinDev this year. At some point during the talk, I started ranting about the angle bracket tax that you have to pay when you write [N]Ant scripts. Ted came up to me after the talk and said that I just had to read Mike's book because he said exactly the same thing. So Ted kindly brokered a review copy for me via Dave Thomas.</p>
+
+<p>There's lots to love about this book. It's short - 150 pages, and I read it in a single sitting. On p.38, I read what I had initially came for - a guest discussion by <a href="http://x180.net/">James Duncan Davidson</a> (the original creator of Ant) on his regrets for choosing <span class="caps">XML</span> as the input to Ant. Mike then goes on to talk about using <a href="http://groovy.codehaus.org/">Groovy</a>, a dynamically typed Java-esque language for the <span class="caps">JVM</span> and how to use it to script Ant builds. </p>
+
+<p>The syntax is <em>much</em> cleaner than the equivalent Ant script, but somewhat short of a domain-specific language. That said, the trade-off of less <span class="caps">DSL</span> is more than worth it since you have the entire power of the Java libraries at your disposal in your build scripts.</p>
+
+<p>The rest of the book is excellent. Mike has a real knack for writing - the ideas are crisp, and there's no superfluous words (trust me- there's a <span class="caps">LOT</span> of good ideas in this 150 page book). There are some very good pieces of advice regarding how to:</p>
+
+
+<ul>
+<li>cut releases from your source tree, </li>
+<li>how to automate builds using <a href="http://cruisecontrol.sourceforge.net/">CruiseControl</a>. </li>
+<li>how to generate distributions using <a href="http://nsis.sourceforge.net/"><span class="caps">NSIS</span></a> and their "SuperPIMP" technology (one of my favorite tools and technology names), </li>
+<li>how to automate software feedback (similar to <a href="http://iseran.com/Steve/">Steve Loughran's</a> "happy" pages in his excellent Java Development with Ant book).</li>
+<li>how to use <a href="http://objectsharp.com/Blogs/bruce/archive/2004/10/14.aspx">Lava lamps</a> to light up your dev team's experience</li>
+</ul>
+
+<p>This book is written for a Java audience. However, good ideas are universal and transcend the technologies used to implement them. Most, if not all of the tools mentioned in Mike's book have equivalents in .NET.</p>
+
+<p>I highly recommend this book for any dev team. By automating your build process, you can spend more of your time working on important stuff, like seeing your families :)</p>]]></description>
+    </item>
+    <item>
+      <title>6502: A trip down memory lane</title>
+      <link>http://www.iunknown.com/000525.html</link>
+      <description><![CDATA[<p>Matthew's enthralled by <a href="http://www.wimzie.com/">Wimzie's House</a> on Treehouse this morning and I'm catching up on some blog reading. While reading an article that <a href="http://seanmcgrath.blogspot.com/">Sean McGrath</a> wrote, I stumbled across the <a href="http://6502.org">6502.org</a> web site.</p>
+
+<p>Marvel at Peter Jennings' original <a href="http://www.6502.org/source/games/uchess/uchess.pdf">Microchess program</a> written for the 6502. The bulk of the program fits into &lt;1K. He also uses a very non-standard 6502 assembler to create the program (back in the day we didn't use special opcodes to indicate zero page references or constant loads). At first I thought it wasn't written for the 6502 but fortunately (or not) I can still hand-disassemble most 6502 opcodes so the hex dump confirms the fact that it is the assembler that is non-standard.</p>
+
+<p>It's interesting that the original author, Peter Jennings, lived in Thorncliffe Park in Toronto. Also back in the day it was a very nice place to live in Toronto (much like Crescent Town which was where I grew up). Unfortunately they are both much different places today - and not for the better.</p>
+
+<p>Update: Peter Jennings has <a href="http://www.benlo.com/">a web site</a>. A bit of looking around shows that he was the co-founder of Personal Software/Visicorp with Dan Fylstra! You have to read <a href="http://www.benlo.com/visicalc2.html">his account of the history of Visicalc</a> as well.</p>
+
+<p>Wow. What a great way to begin my day!</p>]]></description>
+    </item>
+    <item>
+      <title>NUnit V2.2 bug with nullable types</title>
+      <link>http://www.iunknown.com/000524.html</link>
+      <description><![CDATA[<p>I'm spending some time this evening with nullable types, and I discovered that NUnit <span class="caps">V2.2</span> doesn't handle nullable types correctly. Here's a test case that fails:</p>
+
+<pre><code>
+[Test, ExpectedException(typeof(AssertionException))] 
+public void NUnitAssertEqualBugWithNullableTypes() {
+  int? x = null;
+  Assert.AreEqual(null, x);
+}
+</code></pre>]]></description>
+    </item>
+    <item>
+      <title>Nominations for Jolt Awards Open</title>
+      <link>http://www.iunknown.com/000523.html</link>
+      <description><![CDATA[<p>This is my second year as a judge for the <a href="https://www.sdmediagroup.com/view/jolt/categories.html">Jolt Awards</a>. Last year I saw a remarkable new source control management system: <a href="http://www.accurev.com">Accurev</a>. I'm hoping to see more interesting products this year.</p>
+
+<p>If you're a product vendor or a book author, make sure that you take a look at the nomination categories. and <a href="https://www.sdmediagroup.com/view/jolt/jolt01.jsp">nominate your product</a>. Nominations close December 15.</p>]]></description>
+    </item>
+    <item>
+      <title>SQL Service Broker Book Chapter</title>
+      <link>http://www.iunknown.com/000522.html</link>
+      <description><![CDATA[<p>In case you haven't already bought a copy of Bob/Dan/Neils most excellent <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0321180593/qid=1098975080/sr=8-1/ref=sr_8_xs_ap_i1_xgl14/104-4259393-0713530?v=glance&amp;s=books&amp;n=507846">A First Look at <span class="caps">SQL </span>Server 2005 for Developers</a> here's a link to the <a href="http://download.microsoft.com/download/3/3/f/33fb3703-6e6e-4715-9318-c52853bd55bf/FirstLookatMicrosoftSQLServer_Ch15.pdf"><span class="caps">SQL </span>Service Broker Chapter</a> from their book!</p>]]></description>
+    </item>
+    <item>
+      <title>A (speculative) look inside Google</title>
+      <link>http://www.iunknown.com/000521.html</link>
+      <description><![CDATA[<p>Thanks to <a href="http://www.johntopley.com/">John Topley</a> posting a comment on my blog, I discovered this old but <a href="http://blog.topix.net/archives/000016.html">fascinating speculative look inside Google</a> based on published accounts. There are some interesting conclusions in the paper - the key one being that Google is building a general purpose supercomputer that will serve as a platform for running web scale applications. Hmmm ... sounds a lot like Amazon/Yahoo (not so sure about eBay). </p>
+
+<p>The comments are also interesting to read as well - with a few anonymous folks 'showing off' (or flat out lying about) their knowledge of Google internals.</p>
+
+<p>For some meaty information, check out this paper on <a href="http://www.cs.rochester.edu/sosp2003/papers/p125-ghemawat.pdf">the Google Filesystem</a>, which talks about the design of Google's petabyte fault-tolerant filesystem that lives on 100,000+ nodes, which was presented at <a href="http://www.cs.rochester.edu/sosp2003/"><span class="caps">SOSP 2003</span></a>.</p>]]></description>
+    </item>
+    <item>
+      <title>Bayesian filtering for auto-categorization of blog content?</title>
+      <link>http://www.iunknown.com/000520.html</link>
+      <description><![CDATA[<p>I'm writing this mostly as a reminder to myself - it would be interesting to use a <a href="http://www.paulgraham.com/spam.html">Bayesian filtering</a> approach to analyze the content of a blog entry to aid in auto-categorization of the content. </p>
+
+<p>I'd be interested if others have thought about this approach to reduce the amount of friction involved in categorizing blog entries (or other types of free-form content for that matter).</p>]]></description>
+    </item>
+    <item>
+      <title>Windows Forms Data Binding</title>
+      <link>http://www.iunknown.com/000519.html</link>
+      <description><![CDATA[<p>I've been doing quite a bit of Windows Forms coding recently as I write my rich client blog editor. Here's <a href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;Q313482">a really useful data binding KB article</a> that provides a good overview and a roadmap to lots of other data binding KB articles.</p>]]></description>
+    </item>
+    <item>
+      <title>Entertain while teaching</title>
+      <link>http://www.iunknown.com/000518.html</link>
+      <description><![CDATA[<p>It's <em>really</em> important to entertain while you're teaching. Especially if you're explaining something that everyone thinks they know already.</p>
+
+<p>While reading an entry over on <a href="http://diveintomark.org/archives/2004/10/15/white-lights">Mark Pilgram's</a> blog, I came across this comment by <a href="http://www.edavies.nildram.co.uk/">Ed Davies</a> where he recounts a flight attendant safety talk on one of his flights:</p>
+
+<blockquote><p>&#8220;Hello and welcome to Alaska Flight 438 to San Francisco. If you&#8217;re going to San Francisco, you&#8217;re in the right place. If you&#8217;re not going to San Francisco, you&#8217;re about to have a really long evening. <br />
+<br><br />
+We&#8217;d like to tell you now about some important safety features of this aircraft. The most important safety feature we have aboard this plane is &#8230; The Flight Attendants. Please look at one now. <br />
+<br><br />
+There are 5 exits aboard this plane: 2 at the front, 2 over the wings, and one out the plane&#8217;s rear end. If you&#8217;re seated in one of the exit rows, please do not store your bags by your feet. That would be a really bad idea. Please take a moment and look around and find the nearest exit. Count the rows of seats between you and the exit. In the event that the need arises to find one, trust me, you&#8217;ll be glad you did. We have pretty blinking lights on the floor that will blink in the direction of the exits. White ones along the normal rows, and pretty red ones at the exit rows. <br />
+<br><br />
+In the event of a loss of cabin pressure these baggy things will drop down over your head. You stick it over your nose and mouth like the flight attendant is doing now. The bag won&#8217;t inflate, but there&#8217;s oxygen there, I promise. If you are sitting next to a small child, or someone who is acting like a small child, please do us all a favor and put on your mask first. If you are traveling with two or more children, please take a moment now to decide which one is your favorite. Help that one &#8220;first", and then work your way down. <br />
+<br><br />
+In the seat pocket in front of you is a pamphlet about the safety features of this plane. I usually use it as a fan when I&#8217;m having my own personal summer. It makes a very good fan. It also has pretty pictures. Please take it out and play with it now. <br />
+<br><br />
+Please take a moment now to make sure your seat belts are fastened low and tight about your waist. To fasten the belt, insert the metal tab into the buckle. To release, it&#8217;s a pulley thing &#8212;- not a pushy thing like your car because you&#8217;re in an airplane. <span class="caps">HELLO </span>!! <br />
+<br><br />
+There is no smoking in the cabin on this flight. There is also no smoking in the lavatories. If we see smoke coming from the lavatories, we will assume you are on fire and put you out. This is a free service we provide. There are two smoking sections on this flight, one outside each wing exit. We do have a movie in the smoking sections tonight &#8230;.. Hold on, let me check what it is &#8230; Oh here it is; the movie tonight is&#8230; &#8220;Gone with the Wind.&#8221; <br />
+<br><br />
+In a moment we will be turning off the cabin lights, and it&#8217;s going to get really dark, really fast. If you&#8217;re afraid of the dark, now would be a good time to reach up and press the yellow button. The yellow button turns on your reading light. Please don&#8217;t press the orange button unless you absolutely have to. The orange button is your seat ejection button. <br />
+<br><br />
+We&#8217;re glad to have you with us on board this flight. Thank you for choosing Alaska Air, and giving us your business and your money. If there&#8217;s anything we can do to make you more comfortable, please don&#8217;t hesitate to ask. <br />
+<br><br />
+If you all weren&#8217;t strapped down you would have given me a standing ovation, wouldn&#8217;t you?&#8221; <br />
+<br><br />
+After landing&#8230; &#8220;Welcome to the San Francisco International Airport. Sorry about the bumpy landing. It&#8217;s not the captain&#8217;s fault. It&#8217;s not the co-pilot&#8217;s fault. It&#8217;s the Asphalt. <br />
+<br><br />
+Please remain seated until the plane is parked at the gate. At no time in history has a passenger beaten a plane to the gate. So please don&#8217;t even try. <br />
+Please be careful opening the overhead bins because &#8220;shift happens"!! </p></blockquote>]]></description>
+    </item>
+    <item>
+      <title>1.5MB - that&apos;s it</title>
+      <link>http://www.iunknown.com/000517.html</link>
+      <description><![CDATA[<p>I just exported all of the content from this blog in preparation for a migration to a new blogging engine. I'm amazed that all of the content - comments, entries - everything fits into just 1.5MB of plain text.</p>]]></description>
+    </item>
+    <item>
+      <title>WSE 2.0, UsernameToken and wsse:PasswordDigest</title>
+      <link>http://www.iunknown.com/000516.html</link>
+      <description><![CDATA[<p>If you're using <span class="caps">WSE 2.0</span> and <code>UsernameToken</code> to handle your web service authentication requirements, you'll immediately run into a few problems. First, if you use it "out of the box" (aka allowing the default <code>UsernameTokenManager</code> implementation to authenticate your users), you <strong>must</strong> pass your passwords to the server as plain text via the <code>wsse:PasswordText</code> option. <code>UsernameTokenManager.AuthenticateToken()</code> simply passes the plain text password to the Win32 <code>LogonUser()</code> <span class="caps">API</span> to authenticate the user.</p>
+
+<p>This solution is sub-optimal for several reasons. First, you <strong>must</strong> send your credentials over a secure transport like <span class="caps">SSL</span>/TLS to avoid exposing your users' credentials to eavesdroppers. Second, you pay the performance hit of using a secure transport even in cases where the payload of your <span class="caps">SOAP</span> message does not have to be encrypted. Finally, your users must either have local machine accounts or Active Directory domain accounts - which for many web applications is not what you really want.</p>
+
+<p>If you want to use the <code>wsse:PasswordDigest</code> option to transport a hashed password to the server, you'll have to implement a custom TokenManager class. You can do this by deriving a new type from <code>UsernameTokenManager</code> and overriding the <code>AuthenticateToken</code> virtual method. In this method, you must lookup and return the user's <em>plain text</em> password in your authentication database. </p>
+
+<p>The <span class="caps">WSE 2.0</span> infrastructure does a number of things when it transports a hashed password to the server. On the client side, it transmits a base-64 encoded hash of a nonce (one-time value) + password + created time to the server. On the server, it calculates the base-64 encoded hash of the nonce + password supplied by your <code>AuthenticateToken</code> method + created time and performs a comparison. If the values match, you're allowed in - if they don't the client receives a security fault.</p>
+
+<p>The main problem with this approach is that your authentication database must store the plain text user password. Since users typically use the same password across many servers, if your server is compromised you have effectively compromised your users' security on multiple servers. One approach that Keith Brown has suggested is to use what he calls a <a href="http://pluralsight.com/blogs/keith/archive/2004/07/03/1532.aspx">scope <span class="caps">URI</span></a>. The scope <span class="caps">URI</span> is either known ahead of time, or is discovered at runtime by inspecting a <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnglobspec/html/ws-policy.asp">WS-Policy</a> document. It can be something as simple as the <span class="caps">DNS</span> name fof your web service endpoint (e.g. <code>services.yourcompany.com</code>). </p>
+
+<p>Here's a simple class that generates a hex encoded <span class="caps">SHA1</span> hash of a password + a scope <span class="caps">URI. </span></p>
+
+<p><strong>Update:</strong> <a href="http://www.leastprivilege.com/">Dominick Baier</a> who I met last week through the <a href="http://www.develop.com">DevelopMentor</a> alumni network (he just joined my alma mater), posted a nice tip in my comments that trimmed a lot of excess fat (and added a whole lot of functionality) to my <code>ScopeUriValidator</code> class. It now handles Unicode correctly.</p>
+
+<pre><code>
+public sealed class ScopeUriValidator {
+  private string _scopeUri;
+  private SHA1 _hashFunction = new SHA1CryptoServiceProvider();
+
+  public ScopeUriValidator(string uri) {
+    _scopeUri = uri;
+  }
+
+  public string CalculateValidator(string password) {
+    string validator = password + _scopeUri;
+    byte[] bytes = System.Text.Encoding.Unicode.GetBytes(password);
+    byte[] hash = _hashFunction.ComputeHash(bytes);
+    return System.Text.Encoding.Unicode.GetString(hash);
+  }
+}
+</code></pre>]]></description>
+    </item>
+    <item>
+      <title>Misconceptions on Pollution and causes of Cancer</title>
+      <link>http://www.iunknown.com/000515.html</link>
+      <description><![CDATA[<p>During graduate school in the early 90's, I spent a lot of time reading scientific literature. One paper that has strongly influenced me since those days was <a href="http://www.bruceames.org/about.php">Bruce Ames'</a> paper on <a href="http://www3.interscience.wiley.com/cgi-bin/abstract/106586708/ABSTRACT">Misconceptions on pollution and the causes of Cancer</a>. If you are curious at all about the impact of pesticides and pollution on the food that we eat, you should definitely read this paper (and be prepared to re-examine your assumptions). </p>
+
+<p>Unfortunately, you will most likely have to visit your local university library to gain access to the article.</p>
+
+<p><strong>Update:</strong> Thanks to <a href="http://weblogs.asp.net/dstone">David Stone</a> for finding an updated version of the paper here: <a href="http://www.ncpa.org/studies/s214.html">http://www.ncpa.org/studies/s214.html</a>.</p>]]></description>
+    </item>
+
+  </channel>
+</rss>

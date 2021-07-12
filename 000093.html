@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Complications arising from weaving system methods</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000092.html" title="Hello from AOSD 2002" />
+
+<link rel="next" href="http://www.iunknown.com/000094.html" title="Hello from WinDev 2002" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000092.html">&laquo; Hello from AOSD 2002</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000094.html">Hello from WinDev 2002 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">April 27, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Complications arising from weaving system methods</h3>
+
+<p><P>I'm flying home from AOSD 2002, happy and rested, as I write this entry. </P><br />
+<P>I <A href="Weblog/HellofromAOSD2002.html">presented&nbsp;CLAW</A>, one of two dynamic aspect weaving systems demonstrated&nbsp;at AOSD 2002. The other system, called <A href="http://www.inf.ethz.ch/department/IS/iks/project_home_pages/prose/">PROSE</A> (PROgrammable extenSions of sErvices), was presented by Andrei Popovici, Thomas Grass, and Gustavo Alonso in their short paper titled "Dynamic Weaving for Aspect-Oriented Programming". Their paper was very interesting; they presented a mechanism for dynamic runtime weaving of aspects in the JVM using the Java Virtual Machine Debugging Interfaces (<A href="http://java.sun.com/products/jdk/1.2/docs/guide/jvmdi/jvmdi.html">JVMDI</A>).[1] Their system, like CLAW, lets you weave aspects into arbitrary code at runtime. This includes system code.</P><br />
+<P>Just a few minutes ago, I did some more extensive testing of CLAW; I'm using it to understand the internals of code access security. I just ran across an interesting problem while doing some pretty liberal weaves.[2]&nbsp;Specifically, my aspect code blew up the runtime when the System.AppDomain.SetupDomain() method was executed. Apparently, at this very early stage in the initialization of the runtime, methods such as System.Console.WriteLine() cannot be called. </P><br />
+<P>This raises an interesting complication: if your aspect uses code that depends on the runtime being in a particular state, you <EM>will</EM> run into problems if it weaves methods that are executed before the runtime reaches the required state. Unfortunately, these types of problems are very difficult to diagnose (aside from dialog boxes that display helpful messages such as "_CorExeMain failed").</P><br />
+<P>I believe that all byte-code / CIL weavers will suffer from this problem. That includes dynamic runtime weavers such as PROSE and CLAW, as well as link-time weavers such as <A href="http://www.research.ibm.com/hyperspace/HyperJ/HyperJ.htm">Hyper/J</A>. I will likely introduce some restrictions into CLAW that will prevent it from weaving methods that are called early during an AppDomain's initialization sequence. Just what methods must be excluded will be the subject of some future investigations. This will help avoid the weaving problem during initialization of the runtime. </P><br />
+<P>The more general problem of weaving code that depends on the application being in some particular state, however, is an open topic of investigation.</P><br />
+<P>[1] They do much the same type of runtime aspect weaving as CLAW does, although they can only do it while running the JVM in debug mode. This means that all JIT optimizations are disabled, which restricts its utility in production systems.</P><br />
+<P>[2] I was weaving a trace aspect into a Hello World program&nbsp;using a System.* pointcut. Please don't try this at home. This was done by a professional programmer in an airplane 39,000 feet over the Atlantic Ocean.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at April 27, 2002 08:05 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="93" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000093.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

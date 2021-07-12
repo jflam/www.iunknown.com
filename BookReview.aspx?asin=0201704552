@@ -1,0 +1,174 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: High Availability Networking with Cisco
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0201704552" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjAxNzA0NTUyLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEhpZ2ggQXZhaWxhYmlsaXR5IE5ldHdvcmtpbmcgd2l0aCBDaXNjbzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8VmluY2VudCBDLiBKb25lczs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDU0Ljk1Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxOL0E7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQuOTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Nzs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wMjAxNzA0NTUyL3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47PnnyGupFn/dOMWEb6Zn5fGRGQ6Rm" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0201704552.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">High Availability Networking with Cisco</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Vincent C. Jones</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$54.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">N/A</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.9</span>
+          based on
+          <span id="TotalReviews">7</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0201704552/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">A detailed and very useful overview.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-03-27</span>
+                    </div>
+                    <span>This book gives a well-written introduction to how to optimize the availability of networks, restricted of course to Cisco equipment. The author both argues from a theoretical standpoint, but also gives example implementations in order to connect with the real world. Those readers interested purely in the modeling of high availability networks will probably never have to actually engage in the administration of network devices, but the author encourages the perusal of the example implementations in order to gain insight into the workings of high-availability networks. I did not read chapters 4, 5, 10, 11 and 12 so I will omit their review. <P>	The first chapter defines the concept of network availability and introduces some of the elementary mathematical tools needed to characterize it. The author stresses the need for performing a 'availability management analysis' to measure the current availability of a network and study the causes of past failures. He also points out the "catch-22s" in the naive application of availability analysis, such as the need for insuring no common failure modes when employing parallel redundancy. <P>	Chapter two discusses bridging and routing, with careful attention given to the designations of "switch" and "hub", and to the choice of network topology. The routing protocols RIPv2, OSPF, EIGRP, integrated IS-IS, and BGP are discussed in terms of their stability, performance and availability. Explicit calculations for the metric in EIGRP are given, to illustrate the difference between it and OSPF when redundancy is present.<P>	In chapter 3, the author considers various approaches that allow the network engineer to extend the multiply-connected design of the HA network to the network end systems. This will have the effect of eliminating all single points of failure associated with network access. He first considers the incorporation of a second network interface with independent addresses and the problems that could arise in this approach, these having to do with the network protocol architecture used, the routing protocols in place on the two interfaces, and the application recovery requirements. <P>	The use of redundant routers to ensure network availability is discussed in Chapter 6. Although it is simple to implement this redundancy, the author cautions the reader that it is the other components in the network that cause problems when using redundant routers. Crucial in these considerations is the providing of router independence for the end systems, and the author reviews several protocols for doing this, including passive RIP, proxy ARP, IRDP, DHCP, VRRP, and of course Cisco HSRP. The latter has proved its mettle in allowing transparency to the end systems, load balancing, and the prevention of routing black holes, but the author also stresses that care must be taken to ensure that efficiency is preserved and awareness must be made of the hardware limitations of the routers using HSRP. A very detailed discussion is given on how to protect against LAN segmentation. A real-world example is given that illustrates all of the concepts that the author discusses in this chapter. <P>	Networks built on the hub-and-spoke topology are discussed in chapter 7. Such topologies are usually the result of legacy designs in enterprise businesses and evolve into more hierarchical tree topologies as the business grows. The author's goal in this chapter is to study to what extent the connectivity and fault tolerance of these kinds of network architectures can be improved. The proper routing protocols to use for these kind of topologies are discussed first, and, because of the HA requirement, must be chosen to be dynamic, despite the belief to the contrary that static routes would be sufficient for such simple network topologies. EIGRP is considered to be the routing protocol of choice in these kinds of topologies, and the author discusses in detail why this is the case. <P>	The author directs his attention to the issues involved in HA when using Internet Service Providers with the discussion limited to the TCP/IP protocol. BGP is the protocol of choice here, due to the proliferation of routing domains in the Internet, and security issues are much more sensitive in such environments, as the author shows in great detail. In particular, an example is given of using network address translation to route return traffic. The author also discusses the case where there is a connection to two independent ISPs, providing redundancy to the system on the other side of the Internet. Although total Internet failures are relatively rare, their duration is usually long enough to entail a serious loss of revenue to businesses that depend on the Internet predominantly for this revenue. The author discusses several issues that arise in connecting through multiple ISPs, such as address space, since there are three different classes of public Internet addresses. The interdomain routing with Border Gateway Protocol entails the participation in routing over the Internet as an independent Autonomous System. This guarantees reachability from any other end system that has a path to any of the ISPs used. <P>	In chapter 9, the author addresses availability issues when connecting through firewalls. The security reasons for the deployment of firewalls do not totally dominate the chapter. The author also discusses how the properties of firewalls affect the network design. He emphasizes that the goal in using firewalls is to ensure that the path through them is state sensitive and it must be known as to when they will appear to a router as an end-system or simply as another router. He explains using examples how these distinctions impact network design, and cautions that considerations of router mode versus end-system mode should not be confused with proxy-mode versus pass-through mode considerations. Also discussed are firewalls in a fully redundant network, and the high availability requirements dictate that even greater attention be paid to security issues, since breaches of security may prevent the availability goals. Examples of redundant firewalls with hot standby failover and with load sharing failover are also discussed in detail. The conflict between the needs of routing and the security requirements of firewalls is readily apparent throughout this chapter.</span>
+                  
+                    <div class="CustomerReviewSummary">Must have WAN design reference</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>1</span>
+                      /
+                      <span>1</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-11-20</span>
+                    </div>
+                    <span>(An update -- I just noticed that this book is now out of print. However, it's still, as of June 2003, by far the best source of sample configurations and detailed explanations for WAN design with Cisco routers. You could spend days digging around for sample configs and cisco.com and still wouldn't have the breadth of examples found in this book.)<P>This book is a must-have reference for wide area networking engineers. The book provides both background and practical configuration advice for a wide range of WAN scenarios. What makes this book uniquely helpful is the way that the author steps through each of the available Cisco techniques for providing redundancy. The author first explains how the technology works, and then proceeds to show full example configurations, and then explains real world caveats of the configuration. Reading this book gave me a clear understanding of the different types of fail-over and redundancy available in Cisco products, and in which circumstances each would be most applicable.<P>I would recommend that anyone designing a WAN read this book cover to cover and then keep it as a reference for future design work. I've read it multiple times already and with each new project I find another section that applies directly to my work.</span>
+                  
+                    <div class="CustomerReviewSummary">Essential for 24x7 infrastructure strategies</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>19</span>
+                      /
+                      <span>19</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-02-24</span>
+                    </div>
+                    <span>This book is an important addition to the body of knowledge of high availability in general and network availability in particular. Do not let the title mislead you, this book is not about high availability for Cisco - it uses that product family for examples. The information provided in this excellent book can be effectively applied to any vendor-specific or multi-vendor network architecture. <P>I am not going to rehash the table of contents or the lengthly editorial review - I am going to jump into why I like this book and what I think makes it so valuable.<P>First, no 24x7 system is a true highly available information resource unless you can access it. Try as I may, I cannot think of a single company that does not employ a network as the base infrastructure for their information systems. This book provides information necessary to create a foundation for high-availability and 24x7 operations.<P>Second, the book is a catalog of high availability designs that will fit within any network architecture, regardless of complexity, products used or geographical scope. No matter what your network currently looks like you will find out what it takes to transform it into a reliable, resilient 24x7 network. The author has provided a design strategy for every conceivable situation and network configuration, and thoroughly discusses the underlying technical issues. This is where the "Cisco" part of the title comes in - he uses that particular product family as examples for achieving high availability designs for each scenario.<P>Third, the disaster recovery section in the book is well thought out and shows that the author has a lot of knowledge and experience in business continuity planning and disaster recovery. This section alone is worth the price of the book. <P>This book is, in my opinion, essential reading for network architects, consultants and integrators, and operations managers who are seeking a total solution to high-availability solutions. <P>What I would love to see is a follow-on book that provides the design information reformatted as design patterns. This would be an invaluable resource for experienced network architects and consultants.</span>
+                  
+                    <div class="CustomerReviewSummary">Tackles the Tough Topics</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>9</span>
+                      /
+                      <span>9</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-02-06</span>
+                    </div>
+                    <span>This book is a fantastic, practical, detailed, readable reference for a huge range of very important networking topics relating to increasing the up-time of networks. It gives sample configurations for Cisco routers (with some reference to Bay/Nortel routers as well) in many environments (ISP connection, firewall, hub-and-spoke architecture, load-sharing, and so on), and provides supurb discussions of the decisions and trade-offs in the many ways of designing high-availablility networks. Difficult network problems, such as enabling backup data links for routers where the primary WAN interface fails "silently" (without a change in the interface status) are clearly addressed, with several detailed solutions presented, discussing the advantages, disadvantages and restrictions of each. There are none of those frustrating issues left for us to work out on our own, this is a tutorial book with all the answers, not a college textbook with questions. Redundant network components, including dual LAN adapters, LAN adapters with built-in dual ports, dual switches, routers with dual WAN interfaces, dual routers, dual DNS servers, dual firewalls, dual ISPs, and dual locations are all examined, showing what has to be done to actually get increased availability. Even though I likely won't be implementing these myself, I now know what I can ask of those who are configuring my routers, and I know how to look at network designs with a better knowledge about reliability and failure modes.</span>
+                  
+                    <div class="CustomerReviewSummary">Network Design/Engineering - Must have !</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>5</span>
+                      /
+                      <span>5</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-02-05</span>
+                    </div>
+                    <span>Any network engineer who is responsible for designing, building and maintaining networks will find this book useful. The author shares valuable design scenarios applicable for any environment. There seems to be a shortage of quality network engineering books covering proper network design. THIS BOOK CLOSES THE GAP!</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596003676'>
+                      Cisco Cookbook
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.8 based on 8 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1587050242'>
+                      Cisco Field Manual: Router Configuration
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.2 based on 6 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1587130173'>
+                      High Availability Network Fundamentals (With CD-ROM)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 4 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0471430269'>
+                      Blueprints for High Availability
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.7 based on 17 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596001665'>
+                      Hardening Cisco Routers (O'Reilly Networking)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.6 based on 10 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

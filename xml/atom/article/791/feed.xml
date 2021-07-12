@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Is Amazon EC2 + S3 a disruptive technology?</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/791/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology" rel="alternate" type="text/html"/>
+  <updated>2006-08-24T11:12:37-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:879030c5-f781-4ef4-b8ca-c8b414037773</id>
+    <published>2006-08-24T08:52:00-07:00</published>
+    <updated>2006-08-24T11:12:37-07:00</updated>
+    <title type="html">Is Amazon EC2 + S3 a disruptive technology?</title>
+    <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology" rel="alternate" type="text/html"/>
+    <category term="Props" scheme="http://www.iunknown.com/articles/tag/props"/>
+    <category term="Platforms" scheme="http://www.iunknown.com/articles/tag/platforms"/>
+    <summary type="html">&lt;div style="float:left;margin-right:20px"&gt;&lt;a href="http://www.allthingsdistributed.com"&gt;&lt;img src="http://www.allthingsdistributed.com/images/wvq.jpg"&gt;&lt;/a&gt;&lt;/div&gt;
+
+	&lt;p&gt;I vividly remember talking to &lt;a href="http://www.allthingsdistributed.com/"&gt;Werner Vogels&lt;/a&gt; a year and a half ago when we went out for lunch when I was in Seattle for a visit. Werner&amp;#8217;s job was to go to Amazon to enable global-scale computing. Sure, they were already doing global-scale computing for their e-commerce properties and partners but I had no idea that what he really wanted to do was &lt;em&gt;enable global-scale computing for everybody!&lt;/em&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Today, Amazon announced their &lt;a href="http://www.amazon.com/gp/browse.html?node=201590011" title="or EC2"&gt;Elastic Compute Cluster&lt;/a&gt;:&lt;/p&gt;
+
+
+	&lt;blockquote&gt;
+		&lt;p&gt;Just as Amazon Simple Storage Service (Amazon S3) enables storage in the cloud, Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt; enables &amp;#8220;compute&amp;#8221; in the cloud. Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt;&amp;#8217;s simple web service interface allows you to obtain and configure capacity with minimal friction. It provides you with complete control of your computing resources and lets you run on Amazon&amp;#8217;s proven computing environment. Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt; reduces the time required to obtain and boot new server instances to minutes, allowing you to quickly scale capacity, both up and down, as your computing requirements change. Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt; changes the economics of computing by allowing you to pay only for capacity that you actually use.&lt;/p&gt;
+	&lt;/blockquote&gt;
+
+
+	&lt;p&gt;Capacity planning and operations management are things that are often ignored at startup companies. When all of a sudden traffic spikes and you&amp;#8217;re unable to scale until the new servers arrive &lt;em&gt;next week&lt;/em&gt; you&amp;#8217;re screwed. But the ability to add additional capacity in &lt;em&gt;minutes&lt;/em&gt; is an enormous leveling force. Also, the ability to scale up &lt;strong&gt;and down&lt;/strong&gt; is just as important. You can greatly reduce your operational costs by not paying for the compute power until you need it.&lt;/p&gt;
+
+
+	&lt;p&gt;Makes me want to do a startup company now :)&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; It looks like &lt;a href="http://overstimulate.com/articles/2006/08/24/amazon-does-it-again.html"&gt;someone has already setup a public app&lt;/a&gt;. You can look at this really simple &lt;a href="http://domu-12-31-33-00-04-9c.usma1.compute.amazonaws.com/"&gt;Rails application&lt;/a&gt; running live on &lt;span class="caps"&gt;EC2&lt;/span&gt;. Really, really cool.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update2:&lt;/strong&gt; &lt;a href="http://weblog.infoworld.com/udell/2006/08/24.html#a1513"&gt;Jon Udell&lt;/a&gt; has now made a screencast showing a Python application running identically on both a local machine and a machine in &lt;span class="caps"&gt;EC2&lt;/span&gt;.&lt;/p&gt;</summary>
+    <content type="html">&lt;div style="float:left;margin-right:20px"&gt;&lt;a href="http://www.allthingsdistributed.com"&gt;&lt;img src="http://www.allthingsdistributed.com/images/wvq.jpg"&gt;&lt;/a&gt;&lt;/div&gt;
+
+	&lt;p&gt;I vividly remember talking to &lt;a href="http://www.allthingsdistributed.com/"&gt;Werner Vogels&lt;/a&gt; a year and a half ago when we went out for lunch when I was in Seattle for a visit. Werner&amp;#8217;s job was to go to Amazon to enable global-scale computing. Sure, they were already doing global-scale computing for their e-commerce properties and partners but I had no idea that what he really wanted to do was &lt;em&gt;enable global-scale computing for everybody!&lt;/em&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Today, Amazon announced their &lt;a href="http://www.amazon.com/gp/browse.html?node=201590011" title="or EC2"&gt;Elastic Compute Cluster&lt;/a&gt;:&lt;/p&gt;
+
+
+	&lt;blockquote&gt;
+		&lt;p&gt;Just as Amazon Simple Storage Service (Amazon S3) enables storage in the cloud, Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt; enables &amp;#8220;compute&amp;#8221; in the cloud. Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt;&amp;#8217;s simple web service interface allows you to obtain and configure capacity with minimal friction. It provides you with complete control of your computing resources and lets you run on Amazon&amp;#8217;s proven computing environment. Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt; reduces the time required to obtain and boot new server instances to minutes, allowing you to quickly scale capacity, both up and down, as your computing requirements change. Amazon &lt;span class="caps"&gt;EC2&lt;/span&gt; changes the economics of computing by allowing you to pay only for capacity that you actually use.&lt;/p&gt;
+	&lt;/blockquote&gt;
+
+
+	&lt;p&gt;Capacity planning and operations management are things that are often ignored at startup companies. When all of a sudden traffic spikes and you&amp;#8217;re unable to scale until the new servers arrive &lt;em&gt;next week&lt;/em&gt; you&amp;#8217;re screwed. But the ability to add additional capacity in &lt;em&gt;minutes&lt;/em&gt; is an enormous leveling force. Also, the ability to scale up &lt;strong&gt;and down&lt;/strong&gt; is just as important. You can greatly reduce your operational costs by not paying for the compute power until you need it.&lt;/p&gt;
+
+
+	&lt;p&gt;Makes me want to do a startup company now :)&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; It looks like &lt;a href="http://overstimulate.com/articles/2006/08/24/amazon-does-it-again.html"&gt;someone has already setup a public app&lt;/a&gt;. You can look at this really simple &lt;a href="http://domu-12-31-33-00-04-9c.usma1.compute.amazonaws.com/"&gt;Rails application&lt;/a&gt; running live on &lt;span class="caps"&gt;EC2&lt;/span&gt;. Really, really cool.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update2:&lt;/strong&gt; &lt;a href="http://weblog.infoworld.com/udell/2006/08/24.html#a1513"&gt;Jon Udell&lt;/a&gt; has now made a screencast showing a Python application running identically on both a local machine and a machine in &lt;span class="caps"&gt;EC2&lt;/span&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:536ce618-b5a0-49a2-ac39-65219d0872b3</id>
+    <published>2006-08-24T18:47:47-07:00</published>
+    <updated>2006-08-25T14:28:08-07:00</updated>
+    <title type="html">Comment on Is Amazon EC2 + S3 a disruptive technology? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology#comment-803" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Rich - I think that startup companies will be all over EC2. It gets you out of the infrastructure game and lets you focus all of your attention on building your app. It will be interesting to see how easy Amazon can make scale-out of your cluster (or what 3rd parties will step in to fill in that void). &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:8c8c1627-8ed4-4969-84e7-8232c7a7d4ad</id>
+    <published>2006-08-24T15:18:14-07:00</published>
+    <updated>2006-08-24T15:21:34-07:00</updated>
+    <title type="html">Comment on Is Amazon EC2 + S3 a disruptive technology? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology#comment-801" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;The interesting thing about the cost model is that they're charging $0.10 per hour of time - not per hour of compute time. I think it works out nicely for CPU-bound computing since you can acquire as many cycles as you need, but you don't have to pay for idle cycles.&lt;/p&gt;
+
+&lt;p&gt;It's less cost effective if you're running a web site that's largely I/O bound.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>JimG</name>
+    </author>
+    <id>urn:uuid:7c49a196-0de1-4b03-ac9b-23d7559bf68a</id>
+    <published>2006-08-24T14:06:11-07:00</published>
+    <updated>2006-08-24T15:21:33-07:00</updated>
+    <title type="html">Comment on Is Amazon EC2 + S3 a disruptive technology? by JimG</title>
+    <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology#comment-799" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I'm sure that the science community (at least particle physics, where I come from) can use this. We used to build our own beowulf linux clusters for Monte Carlo simulation. Way easier to upload an image and run it for a finite amount of time.&lt;/p&gt;
+
+&lt;p&gt;Not sure how the economics work out, though ..&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>RichB</name>
+    </author>
+    <id>urn:uuid:c7fd34ac-96aa-4904-b9ce-5959b5bd64b7</id>
+    <published>2006-08-24T12:30:45-07:00</published>
+    <updated>2006-08-24T15:21:32-07:00</updated>
+    <title type="html">Comment on Is Amazon EC2 + S3 a disruptive technology? by RichB</title>
+    <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology#comment-798" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Ning and EC2 are similar in that they both want you to host your apps on their servers. They're different in how they approach that. Whereas Ning provide a storage/query engine and an environment within which to code, EC2 is more like a QoS-based virtualization provider.&lt;/p&gt;
+
+&lt;p&gt;So EC2 is much lower level than Ning. Hence EC2 can be used for more than just web apps. But the Ning solution intrinsically gives you a source-code management system with branching aimed at web apps. Do people have a requirement for hosted non-web apps like EC2? I doubt it.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:f28d6303-979b-4d32-b846-98bfefd1d06c</id>
+    <published>2006-08-24T10:52:55-07:00</published>
+    <updated>2006-08-24T10:56:38-07:00</updated>
+    <title type="html">Comment on Is Amazon EC2 + S3 a disruptive technology? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology#comment-795" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I had no idea that Ning is in the infrastructure business. I thought they were just another hosting provider with a friendlier front-end. I did a quick Google to see if they had a scaling story, but I can't find it. Do you have a link, Rich?&lt;/p&gt;
+
+&lt;p&gt;I can totally see MSFT getting into this game as well.&lt;/p&gt;
+
+&lt;p&gt;As for Danny, yes he's working on enabling cross-browser, cross-web-services-platform mash-ups (ostensibly via widgets for the time being).&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>RichB</name>
+    </author>
+    <id>urn:uuid:1bdf2a4e-2563-45cb-9e3e-4504cfe4f8d3</id>
+    <published>2006-08-24T10:45:14-07:00</published>
+    <updated>2006-08-24T10:56:37-07:00</updated>
+    <title type="html">Comment on Is Amazon EC2 + S3 a disruptive technology? by RichB</title>
+    <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology#comment-794" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thinking out loud, is this why Danny Thorpe is now at Microsoft?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>RichB</name>
+    </author>
+    <id>urn:uuid:ad6e6f5a-ec1f-4b57-9148-7fdaadd7fb8c</id>
+    <published>2006-08-24T10:37:08-07:00</published>
+    <updated>2006-08-24T10:56:34-07:00</updated>
+    <title type="html">Comment on Is Amazon EC2 + S3 a disruptive technology? by RichB</title>
+    <link href="http://www.iunknown.com/articles/2006/08/24/is-amazon-ec2-s3-a-disruptive-technology#comment-792" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Ning was the first "web 2.0" approach to application hosting, with their own Google GFS/BigTable/GData-like approach to data storage.&lt;/p&gt;
+
+&lt;p&gt;It's no great surprise that Amazon are doing this. It will be even less of a surprise when Microsoft do it - after all, they're a platform company. And because Microsoft do it, Google will have to do it too to stay in the game (MS won't let you mashup with Google services, so Google need an outlet for all their services)&lt;/p&gt;
+
+&lt;p&gt;The interesting thing will be what languages each company use. Ning are PHP, Javascript and Ruby people. Google are Python and Java. Will Microsoft allow any .Net language?&lt;/p&gt;</content>
+  </entry>
+</feed>

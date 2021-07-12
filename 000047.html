@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Web Logs and Software Development</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000046.html" title="Scripting News Awards ... NOT" />
+
+<link rel="next" href="http://www.iunknown.com/000048.html" title="An example of Cyber Bricks in action" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000046.html">&laquo; Scripting News Awards ... NOT</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000048.html">An example of Cyber Bricks in action &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 25, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Web Logs and Software Development</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I've been keeping this web log up to date on stuff that I want to share with the public. Hopefully you find it useful; I know I do, I use it to find links to stuff that I had found earlier. </P><br />
+<P>However, what about the stuff that I <EM>don't</EM> want to share with the public? Until yesterday, I carried around a hard-bound notebook to keep my notes on software development. It had a bunch of advantages including letting me sketch rather ugly diagrams very quickly. But yesterday I decided to take that leap of faith and use software to manage my notes on ... software. I created a new private site (don't bother looking for it, it doesn't get published on the web) using <A href="http://www.joelonsoftware.com">Joel Spolsky's</A> excellent <A href="http://www.fogcreek.com/CityDesk/">CityDesk</A> software (the same software that I use to create / manage this web log). </P><br />
+<P>I found that forcing myself to put all of my design documents (I'm currently in the middle of doing heavy up-front design for the next milestone build of my product) in writing in this web log really helped me to organize the flow of several parallel (but related) ideas. This is flexibility that I didn't have in my venerable old notebook where I had lots of (see p. zzz) references and arrows pointing all over the page.</P><br />
+<P>About a year ago, I had an idea for building a software product that would let software developers (or more generally, knowledge workers) exchange their ideas in a free-form fashion within the confines of their organization's firewall. For various business reasons, I punted on that idea. Today, I found that <A href="http://www.userland.com/">Dave Winer's company</A> is now actively promoting the concept of a <A href="http://jrobb.userland.com/2002/01/25.html#a1083">K-Log (Knowledge Log)</A> which relies heavily on their content syndication product, <A href="http://radio.userland.com">Radio</A>. This is a fascinating concept, one that I really hope succeeds in the marketplace. Best of luck, Dave.</P><br />
+<P>If you compare this post with <A href="Weblog/fog0000000079.html">my previous post</A>, you'll see that I have a love-hate opinion of Dave (which I think is fairly representative of most people's opinion of Dave). I love the ideas that he comes up with. He pretty well single-handedly created this medium of expression known as a web log, as well as providing a bunch of software to the world to help promote the concept. However, Dave also speaks from ignorance. He lets emotions cloud his judgement. He lets his ego get in the way. </P><br />
+<P>However, I do learn a lot from Dave's web log and I'll continue to read it, even if it does piss me off every now and then.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January 25, 2002 04:19 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="47" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000047.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

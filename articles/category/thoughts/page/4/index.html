@@ -1,0 +1,546 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2006/01/12/events-and-rubyclr">Events and RubyCLR</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 12 Jan 2006 15:20:00 GMT">Thu, 12 Jan 2006 15:20:00 GMT</span></p>
+<p>I got events up and running last night. It was a bit harder than I anticipated, and there&#8217;s still a bit of work that needs to be done around marshaling, but this unit test now passes:</p>
+
+
+<pre><code>
+public ref class CallbackTests {
+public:
+  event EventHandler^ Event;
+
+  void CallMeBack() {
+    Event(nullptr, EventArgs::Empty);
+  }
+};
+
+class EventTests &lt; Test::Unit::TestCase
+  def test_simple_event
+    c = System::CallbackTests.new
+    c.Event do |sender, args|
+      assert_equal 1, 1
+    end
+    c.CallMeBack
+  end
+end
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/12/events-and-rubyclr#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/11/rubyclr-update">RubyCLR update</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 11 Jan 2006 18:30:00 GMT">Wed, 11 Jan 2006 18:30:00 GMT</span></p>
+<p>I&#8217;ve been spending a surprising amount of time working on my Ruby <span class="caps">CLR</span> bridge. Ben sleeps on/around me for about 3 hours in the evening to give Carolyn 3 hours of uninterrupted sleep, and I&#8217;ve been using that time very productively to add features.</p>
+
+
+	<p>The older version of the bridge that I had working was a grotesque hack &#8211; it was essentially a bunch of experiments cobbled together in a Frankenstein-esque contraption. Anyone who has a copy of that code is respectfully asked to destroy it once I ship any of these newer bits.</p>
+
+
+	<p>One of the big things that I&#8217;ve been working on is getting a seamless array experience. I marshal data types between the <span class="caps">CLR</span> and Ruby by value where possible, and by reference in all other cases. So value types like floating point numbers and integers are marshaled by value (aka copied and converted) across the runtime boundaries. So code like this just works:</p>
+
+
+<pre><code>
+static array&lt;int&gt;^ StaticGetOneDimensionalArray() {
+  return gcnew array&lt;int&gt; { 0, 1, 2, 3 };
+}
+
+a = MarshalerTests.StaticGetOneDimensionalArray
+assert_equal 0, a[0]
+assert_equal 4, a.Length
+</code></pre>
+
+	<p>As you can see, I marshal by reference the array from the C++ function. But all of the elements of the array are marshaled by value, which lets me treat them as if they were native Ruby numbers.</p>
+
+
+	<p>I&#8217;ve also done a ton of performance work in this release. If you&#8217;re calling a method that has overloads, I take a slower path where I have to lookup at runtime the correct method based on the parameters that you&#8217;re passing. However, if the method doesn&#8217;t have any overloads, I generate a different shim that doesn&#8217;t do any runtime lookups &#8211; it just pushes parameters onto the call stack and invokes the method. The array code that you see above calls <code>Array.Get</code> which is <strong>not</strong> overloaded (unlike <code>Array.GetValue</code> which is) which results in extremely fast <span class="caps">CLR</span> array element access from Ruby.</p>
+
+
+	<p>I&#8217;m punting on some hard problems like generics for the time being. I have to add support for events before I ship this release; if Ben cooperates that should be by the end of this week.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/11/rubyclr-update#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/11/a-nice-ruby-moment-today">A nice Ruby moment today</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 11 Jan 2006 18:19:00 GMT">Wed, 11 Jan 2006 18:19:00 GMT</span></p>
+<p>I used to have a chunk of code that looked like:</p>
+
+
+<pre><code>
+def new_clrobj(ctor_info, sig = null)
+  sig = ctor_info.signature if sig == null
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+</code></pre>
+
+	<p>It now looks like:</p>
+
+
+<pre><code>
+def new_clrobj(ctor_info, sig = ctor_info.signature)
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+</code></pre>
+
+	<p>It was one of those &#8220;it just works&#8221; moments that makes me love this language.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/11/a-nice-ruby-moment-today#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/04/ruby-in-the-real-world">Ruby in the real world</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 04 Jan 2006 20:01:00 GMT">Wed, 04 Jan 2006 20:01:00 GMT</span></p>
+<p><a href="http://samgentile.com/blog/archive/2005/12/30/32204.aspx">Sam Gentile</a> was wondering about where Ruby is used in the &#8216;real world&#8217;, and where I&#8217;ve personally used Ruby.</p>
+
+
+	<p>Sam, you can easily Google around to see where Ruby is being used in the real world. Check out the <a href="http://www.rubyonrails.com/">Rails web site</a> for some pointers to some large web sites that are running on Rails.</p>
+
+
+	<p>As for where I&#8217;ve personally used Ruby and Rails, we wrote a lot of Ruby code for my last customer. The product hasn&#8217;t been announced yet, so I still can&#8217;t talk about it, but suffice to say that it&#8217;s a high performance e-commerce web service with two very large customers running on top of it (and many more to come).</p>
+
+
+	<p>We used Ruby to automate deploying the web service to our cluster. Ruby&#8217;s integration with <span class="caps">COM</span> made writing the <span class="caps">ADSI </span>+ WMI goo much more pleasant. I even toyed with rewriting the core web service (which is a .NET web service) in Ruby and was able to exploit an optimization that simply was not possible using .NET and <span class="caps">SQL </span>Server. There was an intermediate result set that could easily be cached in-memory using Ruby that wuold net us at least a 10X performance increase over the existing .NET application.</p>
+
+
+	<p>To be fair, I could have done the same optimization using C#, but there would be no way that I could squeeze it down into 200 lines of very concise Ruby code. The other qualitative difference is that the caching optimization was just <strong>really obvious</strong> in the Ruby code; there was just so few lines of code to look at.</p>
+
+
+	<p>We also built out a Rails web site to support the <span class="caps">API</span>. Developers using the web service could run live queries against our catalog using the site. The web site would also generate the application code for them in their programming language of choice: C#, VB.NET, Java or raw <span class="caps">SOAP</span> calls. It&#8217;s very similar in spirit to the <a href="http://www.awszone.com/">AWS Zone</a> site (even though I&#8217;m convinced that we have a much simpler query <span class="caps">API</span> than Amazon does).</p>
+
+
+	<p>I&#8217;m convinced that Ruby and meta-programming is a great way to approach modeling business applications. That&#8217;s why I&#8217;m investing so much time building my <a href="http://www.iunknown.com/articles/2005/12/14/hello-rubyclr">Ruby to <span class="caps">CLR</span> bridge</a>.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/04/ruby-in-the-real-world#comments">7 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/17/clr-object-lifetime">CLR object lifetime</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Sat, 17 Dec 2005 21:55:00 GMT">Sat, 17 Dec 2005 21:55:00 GMT</span></p>
+<p>My Ruby <span class="caps">CLR</span> bridge works by creating, on the fly, small <span class="caps">CIL</span> shims that invoke the appropriate method(s) on a <span class="caps">CLR</span> object. Today I want to talk about how I manage the lifetimes of those <span class="caps">CIL</span> shims.</p>
+
+
+	<p>When you execute some code like <code>a = ArrayList.new</code> for the first time, I construct a new <code>ArrayList</code> Ruby class object on the fly. When you execute a method on a class instance such as <code>a.Sort</code>, I construct a <span class="caps">CIL</span> shim that knows how to invoke the <code>Sort</code> method on the <code>ArrayList</code> object. That <span class="caps">CIL</span> shim is bound to the Ruby class object via a call to <code>rb_define_method</code>.</p>
+
+
+	<p>The <span class="caps">CIL</span> shim is created using the <code>DynamicMethod</code> API in <span class="caps">CLR 2</span>.0. After I finish defining the body of the dynamic method using my <code>RbDynamicMethod</code> API, I construct a delegate object that represents that method. These delegate objects are eligible for garbage collection, which means that I need to keep a reference to them. Now, when I said that the <span class="caps">CIL</span> shim is bound to the Ruby class object, Ruby only knows about the function pointer to the delegate object that represents the <span class="caps">CIL</span> shim. That function pointer is only a <em>weak reference</em> to the delegate, which means that it cannot keep the delegate object from being collected by the <span class="caps">CLR GC</span>.</p>
+
+
+	<p>To work around this problem, I&#8217;ve added a <code>List&lt;Delegate&gt;</code> object to the Ruby class object. Its job is to hold onto references to all of the dynamically created <span class="caps">CIL</span> shim delegate objects <em>for that class</em>. When the Ruby class object is garbage collected by <em>Ruby&#8217;s GC</em>, my automagical object reference cleanup code will <code>Free</code> the <code>GCHandle</code> object that I use to keep a reference to the <code>List&lt;Delegate&gt;</code> object.</p>
+
+
+	<p>I actually had a far more complicated and convoluted mechanism for dealing with this problem in my initial implementation of the bridge. I&#8217;m much happier with the simplicity of this approach in V2.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/17/clr-object-lifetime#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/16/how-meta-can-you-go">How meta can you go?</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 16 Dec 2005 19:34:00 GMT">Fri, 16 Dec 2005 19:34:00 GMT</span></p>
+<p>I just figured out what Ruby was doing, because I forgot just how &#8220;meta&#8221; my programming was. Consider this code frag:</p>
+
+
+<pre><code>
+def const_missing(symbol)
+  alias_const_missing(symbol) unless symbol == :ArrayList
+
+  obj = create_clr_class_object
+  # remember that the code below is in a string
+  obj.class_eval %{
+    def initialize(*params)
+      create_safe_ruby_instance_method(
+        self.class, 'initialize') do
+        include     'System.Collections'
+        declare     "#{symbol}", :obj
+        ...
+</code></pre>
+
+	<p>Look at the last line of code and the <code>declare</code> statement. Notice how I&#8217;m referencing the <code>symbol</code> variable that is the input parameter to the <code>const_missing</code> method declaration on the first line? I have to escape that reference as a string to access that variable. Why? Because that code is embedded in a string (that&#8217;s what the funny <code>%{</code> means: it&#8217;s a begin string quotation symbol).</p>
+
+
+	<p>Now this has interesting implications for other string manipulation functions that are inside of the <em>string</em> that is passed to <code>obj.class_eval</code>. For example consider this snippet of code.</p>
+
+
+<pre><code>
+sigs          = get_constructor_signatures("#{symbol}")
+switch_labels = (1..sigs.length).collect { |i| ("l" + i.to_s).to_sym }
+</code></pre>
+
+	<p>I <em>really</em> wanted to write the string expression as:</p>
+
+
+	<p><code>"l#{i}".to_sym</code></p>
+
+
+	<p>But this cannot work since it would try and find an <code>i</code> variable defined in the enclosing method. So I wound up writing it in the somewhat more verbose way that I did to make it work. I wound up scratching my head about this behavior for quite a while before I realized that, doh! the code was executing <em>inside of a string</em>.</p>
+
+
+	<p>That&#8217;s how powerful Ruby&#8217;s metaprogramming facilities are: oftentimes you forget that you&#8217;re really programming at a meta level of abstraction instead of at the &#8220;concrete&#8221; level.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/16/how-meta-can-you-go#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/15/refactoring-cil">Refactoring CIL</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 15 Dec 2005 22:33:00 GMT">Thu, 15 Dec 2005 22:33:00 GMT</span></p>
+<p>I had a great day today. I had one of those a-ha experiences where you get to benefit from an earlier decision in ways that you did not expect. I started down the path of generating constructor shims using <code>RbDynamicMethod</code>. I completed my first spike yesterday, when I successfully constructed <code>ArrayList</code> objects using <code>RbDynamicMethod</code>.</p>
+
+
+	<p>Today, I wanted to make a slightly more generic constructor shim that would let me call both a default and a single argument constructor: <code>ArrayList()</code> and <code>ArrayList(Int32)</code>. While I was writing this code, I began to feel some <span class="caps">CIL</span> pain (it is, after all <strong>assembly language</strong>). So I did what came naturally: I began to refactor the code.</p>
+
+
+	<p>This reminds me of the talk that I saw this year at <span class="caps">OOPSLA</span> where Ward Cunningham was refactoring assembly language using IntelliJ. In my case, I refactored <span class="caps">CIL</span> using emacs :) Here&#8217;s the end result:</p>
+
+
+<pre><code>
+def initialize(*params)
+  create_ruby_instance_method(self.class, 'initialize') do
+    include     'System.Collections'
+    declare     "#{symbol}", :obj
+    ldarg_0
+    switch      [:zero_param, :one_param]
+    br_s        :end_switch
+    label       :zero_param
+    newobj      '#{symbol}()'
+    stloc_s     :obj
+    br_s        :end_switch
+    label       :one_param
+    ld_rb_param 0, 'Int32'
+    newobj      '#{symbol}(Int32)'
+    stloc_s     :obj
+    label       :end_switch
+    ret_objref  :obj
+  end
+  initialize(*params)
+end
+</code></pre>
+
+	<p>While this is mostly <span class="caps">CIL</span>, it also contains a number of macros and fun Ruby string stuff. The macros that I used are: <code>ld_rb_param</code>, <code>ret_objref</code>. As it turns out, these will be very common code fragments that will be used throughout the bridge. Writing those macros was even easier. Here&#8217;s a sample:</p>
+
+
+<pre><code>
+module RbDynamicMethodHelpers
+  def ld_self
+    ldarg_2
+  end
+
+  def ld_rb_param(index, type)
+    ldarg_1
+    case index
+    when 1:
+      ldc_i4_4
+      add
+    when 2:
+      ldc_i4_8
+      add
+    else
+      ldc_i4    index &lt;&lt; 2
+      add
+    end
+    ldind_i4
+    call      "static Marshal::To#{type}(VALUE)" 
+  end
+
+  def ret_objref(local_variable_name)
+    ld_self
+    ldloc_s  local_variable_name
+    call     'static Marshal::AssignToClassInstance(VALUE, Object)'
+    ret
+  end
+end
+</pre></code>
+
+	<p>It turned out it was a good thing that I left the method declarations as strings, since I could do some simple string manipulation to inject implement syntactic sugar methods such as <code>ld_rb_param</code> (which is actually a very efficient <span class="caps">CIL</span> implementation that is optimized for the common cases).</p>
+
+
+	<p>Oh yeah, how much extra code did I have to add to <code>RbDynamicMethod</code> to enable macros? I changed:</p>
+
+
+	<p><code>object.extend RbDynamicMethod</code></p>
+
+
+	<p>to:</p>
+
+
+	<p><code>object.extend RbDynamicMethod, RbDynamicMethodHelpers</code></p>
+
+
+	<p>Did I mention how much I love Ruby? :)</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/15/refactoring-cil#comments">2 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/14/hello-rubyclr">Hello RubyClr</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 15 Dec 2005 02:57:00 GMT">Thu, 15 Dec 2005 02:57:00 GMT</span></p>
+<p>I spent most of yesterday and today hacking out the first spike of the Ruby rewrite of my original Ruby to <span class="caps">CLR</span> bridge. I wound up adding some additional code to <code>RbDynamicMethod</code> to support some scenarios that I didn&#8217;t envision (nothing like having a &#8216;customer&#8217; to reveal deficiencies in an <span class="caps">API</span>!). I also spent a <strong>lot</strong> of time learning about how objects are constructed in Ruby. Here&#8217;s a very simplified explanation of Ruby&#8217;s object model; for a complete description, see Chapter 24 of Dave Thomas&#8217; excellent <a href="http://www.amazon.com/exec/obidos/ASIN/0974514055/ref=nosim/iunknowncom-20">Programming Ruby</a>.</p>
+
+
+	<p><br>
+<a href="http://www.amazon.com/exec/obidos/ASIN/0974514055/ref=nosim/iunknowncom-20"><img src="http://images.amazon.com/images/P/0974514055.01._AA240_SCLZZZZZZZ_.jpg" alt="" /></a>
+<br></p>
+
+
+	<p>In Ruby, objects are instances of classes. However, classes are also objects in Ruby, which means that a class is an instance of a class called <code>Class</code>. Let&#8217;s consider the following code fragment:</p>
+
+
+<pre><code>
+a = ArrayList.new
+puts a.Count
+</code></pre>
+
+	<p>In the first line, we&#8217;ve created an instance of class <code>ArrayList</code> and assigned it to the variable <code>a</code>. Next, we invoke the <code>Count</code> instance method of the <code>ArrayList</code> object. So far so good, right?</p>
+
+
+	<p>Next let&#8217;s see how Ruby invokes instance methods. Every Ruby object contains a reference to its class object. This is stored in an internal field called <code>klass</code>. When we invoke the <code>Count</code> method on the <code>ArrayList</code> object, Ruby follows the <code>klass</code> reference to find the <code>ArrayList</code> class object. It searches its method table, finds the <code>Count</code> method and invokes it.</p>
+
+
+	<p>In my bridge, I delay binding to a method on a <span class="caps">CLR</span> object until it is called. When it is called, I build a small piece of <span class="caps">CIL</span> code using <code>RbDynamicMethod</code> to call the method and marshal data back to the caller. I can delay binding to the method using the <code>method_missing</code> instance method of the object. In the case of the call to the <code>Count</code> method, you could imagine a piece of code that looks like:</p>
+
+
+<pre><code>
+alias alias_method_missing method_missing
+
+def method_missing(name, *params)
+  alias_method_missing(name, *params) unless name == :Count
+
+  create_ruby_instance_method(self.class, 'Count') do
+    include  'System.Collections'
+    ldarg_2
+    call     'static Marshal::ToClrObject(VALUE)'
+    call     'ArrayList::get_Count()'
+    call     'static Marshal::ToRubyNumber(Int32)'
+    ret
+  end
+  self.Count
+end
+</code></pre>
+
+	<p>This is a hard-coded example that generates a shim for the <code>Count</code> method. The shim invokes the <code>get_Count</code> method to retrieve the value of the <code>Count</code> property of the <code>ArrayList</code> object. It marshals the return value (an <code>Int32</code>) back to the caller using the <code>Marshal::ToRubyNumber()</code> helper method in the <code>RbDynamicMethod</code> library.</p>
+
+
+	<p>Where things get interesting is the first two lines of <span class="caps">CIL</span> code in the shim. Here, I reach into the Ruby object and pull out the actual <code>ArrayList</code> object reference that is stored in a <em>secret</em> field of the Ruby object. This secret field is completely inaccessible to Ruby code. Once I have the object reference, I can freely invoke the <code>get_Count</code> instance method using the <span class="caps">CIL </span><code>call</code> instruction.</p>
+
+
+	<p>Notice that I&#8217;m defining an instance method called <code>Count</code> on the <code>ArrayList</code> class object. At the end of the <code>method_missing</code> method, I invoke the <code>Count</code> method that I just defined. However, all <em>subsequent</em> calls to the <code>Count</code> instance method will go directly to the <span class="caps">CIL</span> code that I just wrote (which of course will have been compiled into x86 code as well). This means that we will have excellent performance since we completely avoid having to use the <code>Reflection</code> APIs in the <span class="caps">CLR</span>.</p>
+
+
+	<p>You&#8217;re probably wondering how the <code>ArrayList</code> object reference got stored in the secret field? I&#8217;ll talk about that in tomorrow&#8217;s installment of the story when we look at how objects get created in Ruby (and it&#8217;s nowhere near as simple as it looks!).</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/14/hello-rubyclr#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/13/third-drop-of-rbdynamicmethod">Third drop of RbDynamicMethod</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 13 Dec 2005 05:23:00 GMT">Tue, 13 Dec 2005 05:23:00 GMT</span></p>
+<p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">another drop</a> of <code>RbDynamicMethod</code>. New to this release is a custom implementation of <code>Type.GetMethod</code> that correctly finds overloaded generic methods. The .NET implementation of this method does not support resolving generic methods, so I wound up rolling my own. If you&#8217;re interested in its implementation you should check out <code>FindGenericMethodTemplate</code> in the sources.</p>
+
+
+	<p>This is what using <code>RbDynamicMethod</code> to call a generic method looks like:</p>
+
+
+<pre><code>
+create_ruby_module_function(RbDynamicMethod, 'call_generic_min_method') do
+  include   'RbDynamicMethodTests'
+  ldc_i4_3
+  ldc_i4_2
+  call      'static GenericMethodTests::Min&lt;Int32&gt;(Int32, Int32)'
+  call      'static Marshal::ToRubyNumber(Int32)'
+  ret
+end
+assert_equal 2, call_generic_min_method
+</code></pre>
+
+	<p>This should be the last drop of this library for the next little while since I think it&#8217;s good enough to begin building my new Ruby to <span class="caps">CLR</span> bridge on top of it.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/13/third-drop-of-rbdynamicmethod#comments">2 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod">Second drop of RbDynamicMethod</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Sat, 10 Dec 2005 06:56:00 GMT">Sat, 10 Dec 2005 06:56:00 GMT</span></p>
+<p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">another drop</a> of my <code>RbDynamicMethod</code> library. Lots of things have changed since the <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">first drop</a>:</p>
+
+
+	<ul>
+	<li>It now handles generic type references correctly (although it does <strong>not</strong> handle generic method references yet). </li>
+		<li>There are a lot more tests in this drop, and major improvements in error reporting. </li>
+		<li>The syntax is a bit cleaner than before, with liberal uses of Ruby symbols where appropriate.</li>
+	</ul>
+
+
+	<p>Once again, comments and feedback are encouraged.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod#comments">no comments</a></p> 
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/category/thoughts/page/1">1</a> <a href="/articles/category/thoughts/page/2">2</a> <a href="/articles/category/thoughts/page/3">3</a> 4 <a href="/articles/category/thoughts/page/5">5</a> <a href="/articles/category/thoughts/page/6">6</a> <a href="/articles/category/thoughts/page/7">7</a></p>
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102310404/"><img alt="Ruby RSS Reader" src="http://static.flickr.com/36/102310404_c16b55d745_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/110674297/"><img alt="RubyCLR irb session" src="http://static.flickr.com/44/110674297_303908d4cd_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/94578381/"><img alt="amazon" src="http://static.flickr.com/22/94578381_8b6056d9e7_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/84578490/"><img alt="Groovin'" src="http://static.flickr.com/39/84578490_119d64f19d_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03/page/4">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02/page/4">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01/page/4">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12/page/4">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11/page/4">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10/page/4">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

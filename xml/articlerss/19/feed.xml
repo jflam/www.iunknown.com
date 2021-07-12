@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Indigo and flickr: not happy together</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Indigo and flickr: not happy together" by jlam</title>
+      <description>&lt;p&gt;Inspired by Mike Taulty&amp;#8217;s &lt;a href="http://mtaulty.com/blog/(z0uien45genrh0jdmtze0z45)/archive/2005/03/30/1721.aspx"&gt;A slightly different &amp;#8216;hello, world&amp;#8217; for Indigo&lt;/a&gt; blog entry, I decided to create a low-level Indigo client that talks to &lt;a href="http://www.flickr.com/services/api"&gt;flickr&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;I wanted to understand how the Indigo plumbing worked, so I decided to forego the high-level APIs and write my code using nothing more than &lt;code&gt;ChannelFactory&lt;/code&gt;, &lt;code&gt;Message&lt;/code&gt;, &lt;code&gt;IRequestChannel&lt;/code&gt; and friends. This code compiles and runs on the &lt;a href="http://blogs.msdn.com/brada/archive/2005/11/18/494283.aspx"&gt;November &lt;span class="caps"&gt;CTP&lt;/span&gt;&lt;/a&gt; bits, so my code looks a bit different than Mike&amp;#8217;s code on his blog. If you want to follow along, you&amp;#8217;ll need the November &lt;span class="caps"&gt;CTP&lt;/span&gt; bits and the &lt;span class="caps"&gt;SDK&lt;/span&gt;, but be warned: the documentation has not stayed in sync with changes to the &lt;span class="caps"&gt;API&lt;/span&gt;. &lt;a href="http://www.aisto.com/roeder/dotnet/"&gt;Reflector&lt;/a&gt; is your friend :)&lt;/p&gt;
+
+
+	&lt;p&gt;It all started innocently enough. Here&amp;#8217;s the original version of my code:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+    ChannelFactory&amp;lt;IRequestChannel&amp;gt; factory;
+    using (factory = new ChannelFactory&amp;lt;IRequestChannel&amp;gt;(
+           CreateBinding(),
+           new EndpointAddress("http://www.flickr.com/services/soap/"))) {
+      using (IRequestChannel channel = factory.CreateChannel()) {
+        StringReader body =
+          new StringReader(@"&amp;lt;x:FlickrRequest xmlns:x='urn:flickr'&amp;gt;
+                             &amp;lt;api_key&amp;gt;83293ff34e3ab3d9935018480190319f&amp;lt;/api_key&amp;gt;
+                             &amp;lt;format&amp;gt;soap2&amp;lt;/format&amp;gt;
+                             &amp;lt;method&amp;gt;flickr.test.echo&amp;lt;/method&amp;gt;
+                             &amp;lt;name&amp;gt;value&amp;lt;/name&amp;gt;
+                           &amp;lt;/x:FlickrRequest&amp;gt;");
+        XmlTextReader reader = new XmlTextReader(body);
+        Message message      = Message.CreateMessage(MessageVersion.Soap12Addressing1, 
+                               "*", reader);
+        Message response     = channel.Request(message);
+        XmlDictionaryReader responseReader = response.GetReaderAtBodyContents();
+        Console.Write(responseReader.ReadOuterXml());
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;This code uses a &lt;code&gt;ChannelFactory&lt;/code&gt; to create a request/response style channel to flickr. Next, I construct a &lt;code&gt;Message&lt;/code&gt; object and inject some &lt;span class="caps"&gt;XML&lt;/span&gt; into the message body. The flickr &lt;span class="caps"&gt;API&lt;/span&gt; is really just a single method that takes an &lt;span class="caps"&gt;XML&lt;/span&gt; document and returns an &lt;span class="caps"&gt;XML&lt;/span&gt; document. See the &lt;a href="http://www.flickr.com/services/api"&gt;documentation&lt;/a&gt; for more examples. Finally, I send my request &lt;code&gt;Message&lt;/code&gt; via the channel, and it hands me back a response &lt;code&gt;Message&lt;/code&gt; object that I serialize to the console. Simple enough, right?&lt;/p&gt;
+
+
+	&lt;p&gt;That&amp;#8217;s when the fun began. There&amp;#8217;s a bug in flickr, and apparently, I&amp;#8217;m &lt;a href="http://www.flickr.com/forums/bugs/14099/"&gt;not the first one to report this&lt;/a&gt;. The flickr &lt;span class="caps"&gt;SOAP API&lt;/span&gt; returns a content-type of &lt;code&gt;text/xml&lt;/code&gt; for a &lt;span class="caps"&gt;SOAP 1&lt;/span&gt;.2 message body, whereas the &lt;a href="http://www.w3.org/TR/2003/REC-soap12-part0-20030624/"&gt;spec&lt;/a&gt; clearly states that the content-type should be &lt;code&gt;application/soap+xml&lt;/code&gt;. Indigo is not happy at all with this, and throws a &lt;code&gt;ProtocolException&lt;/code&gt; and aborts further processing of the &lt;span class="caps"&gt;HTTP&lt;/span&gt; response.&lt;/p&gt;
+
+
+	&lt;p&gt;The crux of the problem lies in the type of channel that I created using the &lt;code&gt;ChannelFactory&lt;/code&gt; class. To understand how the channel is constructed, I have to show you the missing implementation of the &lt;code&gt;CreateBinding&lt;/code&gt; method:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+CustomBinding binding = new CustomBinding();
+binding.Elements.Add(new TextMessageEncodingBindingElement(
+  MessageVersion.Soap12Addressing1, Encoding.UTF8));
+binding.Elements.Add(new HttpTransportBindingElement());
+return binding;
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Here, I tell the &lt;code&gt;ChannelFactory&lt;/code&gt; to construct a channel that uses an &lt;span class="caps"&gt;HTTP&lt;/span&gt; transport, and a text-based &lt;span class="caps"&gt;XML&lt;/span&gt; serializer that will generate a &lt;span class="caps"&gt;SOAP 1&lt;/span&gt;.2 message that is text encoded as &lt;span class="caps"&gt;UTF&lt;/span&gt;-8. Indigo will also check to make sure that the response from the server is a &lt;span class="caps"&gt;SOAP 1&lt;/span&gt;.2 message &lt;strong&gt;and&lt;/strong&gt; the content-type is &lt;code&gt;application/soap+xml&lt;/code&gt;. To see this checking in action, try sending a &lt;span class="caps"&gt;SOAP 1&lt;/span&gt;.1 &lt;code&gt;Message&lt;/code&gt; using this channel.&lt;/p&gt;
+
+
+	&lt;p&gt;I spent some time spelunking around using Reflector, &lt;code&gt;TextMessageEncoder.IsContentTypeSupported&lt;/code&gt; is where the &lt;code&gt;ProtocolException&lt;/code&gt; gets thrown. Unfortunately, I couldn&amp;#8217;t find a way to change the &lt;code&gt;ContentType&lt;/code&gt; property of this object. This left only one other option that I could see: write a custom &lt;code&gt;MessageEncoder&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;More on how to do this tomorrow.&lt;/p&gt;
+
+</description>
+      <pubDate>Thu, 24 Nov 2005 20:29:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/24/indigo-and-flickr-not-happy-together"&gt;Indigo and flickr: not happy together&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/24/indigo-and-flickr-not-happy-together"&gt;Indigo and flickr: not happy together&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

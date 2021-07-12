@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: 6502: A trip down memory lane</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000524.html" title="NUnit V2.2 bug with nullable types" />
+
+<link rel="next" href="http://www.iunknown.com/000526.html" title="Pragmatic Project Automation" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000525.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/269"
+    dc:title="6502: A trip down memory lane"
+    dc:identifier="http://www.iunknown.com/000525.html"
+    dc:subject="Blog"
+    dc:description="Matthew&apos;s enthralled by Wimzie&apos;s House on Treehouse this morning and I&apos;m catching up on some blog reading. While reading an article that Sean McGrath wrote, I stumbled across the 6502.org web site. Marvel at Peter Jennings&apos; original Microchess program written..."
+    dc:creator="John"
+    dc:date="2004-11-18T06:34:44-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000524.html">&laquo; NUnit V2.2 bug with nullable types</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000526.html">Pragmatic Project Automation &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">November 18, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">6502: A trip down memory lane</h3>
+
+<p>Matthew's enthralled by <a href="http://www.wimzie.com/">Wimzie's House</a> on Treehouse this morning and I'm catching up on some blog reading. While reading an article that <a href="http://seanmcgrath.blogspot.com/">Sean McGrath</a> wrote, I stumbled across the <a href="http://6502.org">6502.org</a> web site.</p>
+
+<p>Marvel at Peter Jennings' original <a href="http://www.6502.org/source/games/uchess/uchess.pdf">Microchess program</a> written for the 6502. The bulk of the program fits into &lt;1K. He also uses a very non-standard 6502 assembler to create the program (back in the day we didn't use special opcodes to indicate zero page references or constant loads). At first I thought it wasn't written for the 6502 but fortunately (or not) I can still hand-disassemble most 6502 opcodes so the hex dump confirms the fact that it is the assembler that is non-standard.</p>
+
+<p>It's interesting that the original author, Peter Jennings, lived in Thorncliffe Park in Toronto. Also back in the day it was a very nice place to live in Toronto (much like Crescent Town which was where I grew up). Unfortunately they are both much different places today - and not for the better.</p>
+
+<p>Update: Peter Jennings has <a href="http://www.benlo.com/">a web site</a>. A bit of looking around shows that he was the co-founder of Personal Software/Visicorp with Dan Fylstra! You have to read <a href="http://www.benlo.com/visicalc2.html">his account of the history of Visicalc</a> as well.</p>
+
+<p>Wow. What a great way to begin my day!</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at November 18, 2004 06:34 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=525" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="525" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000525.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="525" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

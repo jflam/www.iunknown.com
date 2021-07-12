@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Looking back at some older Ruby .NET bridges</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/100/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/03/28/looking-back-at-some-older-ruby-net-bridges" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:41-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:7fcad8c1d4720ab36a32305c6fcf13e9</id>
+    <published>2006-03-28T23:34:00-08:00</published>
+    <updated>2006-08-21T15:55:41-07:00</updated>
+    <title type="html">Looking back at some older Ruby .NET bridges</title>
+    <link href="http://www.iunknown.com/articles/2006/03/28/looking-back-at-some-older-ruby-net-bridges" rel="alternate" type="text/html"/>
+    <category term="links" scheme="http://www.iunknown.com/articles/category/links" label="Props"/>
+    <summary type="html">&lt;p&gt;I just spent some time looking around at past attempts to write Ruby to .NET bridges. Here&amp;#8217;s a &lt;a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/76145"&gt;fascinating thread&lt;/a&gt; from July, 2003 that was started by Thomas Sondergaard who wrote an excellent Ruby to .NET bridge. His bridge provided much inspiration for the first version of RubyCLR which was never publicly released.&lt;/p&gt;
+
+
+	&lt;p&gt;I learned a lot writing that first bridge, and the pain that I felt implementing everything in C+&lt;ins&gt;++/CLI was enough to inspire the current RubyCLR bridge which uses as little C&lt;/ins&gt;+++ as possible.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I just spent some time looking around at past attempts to write Ruby to .NET bridges. Here&amp;#8217;s a &lt;a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/76145"&gt;fascinating thread&lt;/a&gt; from July, 2003 that was started by Thomas Sondergaard who wrote an excellent Ruby to .NET bridge. His bridge provided much inspiration for the first version of RubyCLR which was never publicly released.&lt;/p&gt;
+
+
+	&lt;p&gt;I learned a lot writing that first bridge, and the pain that I felt implementing everything in C+&lt;ins&gt;++/CLI was enough to inspire the current RubyCLR bridge which uses as little C&lt;/ins&gt;+++ as possible.&lt;/p&gt;</content>
+  </entry>
+</feed>

@@ -1,0 +1,2320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+
+<title>
+  IronRuby on Rubyforge!&nbsp;|&nbsp;John Lam on Software</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="http://iunknown.com/wp-content/themes/headlines/style.css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/LessIsBetter" />
+<link rel="pingback" href="http://iunknown.com/xmlrpc.php" />
+   
+<!--[if IE 6]>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/pngfix.js"></script>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/menu.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie6.css" />
+<![endif]-->	
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie7.css" />
+<![endif]-->
+   
+<link rel="alternate" type="application/rss+xml" title="John Lam on Software &raquo; IronRuby on Rubyforge! Comments Feed" href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/feed" />
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/jquery/jquery.js?ver=1.4.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/superfish.js?ver=3.0.1'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/woo_tabs.js?ver=3.0.1'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/cufon-yui.js?ver=3.0.1'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/Liberation.font.js?ver=3.0.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://iunknown.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://iunknown.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='John Lam on Software' href='http://iunknown.com' />
+<link rel='start' title='Motorola DROID Review' href='http://iunknown.com/2009/12/motorola-droid-review.html' />
+<link rel='prev' title='Day 5 of Daddy Daycare' href='http://iunknown.com/2007/08/day-5-of-daddy-daycare.html' />
+<link rel='next' title='What is this Merlin thing in IronRuby?' href='http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html' />
+<meta name="generator" content="WordPress 3.0.1" />
+<link rel='canonical' href='http://iunknown.com/2007/08/ironruby-on-rubyforge.html' />
+<link rel='shortlink' href='http://iunknown.com/?p=58' />
+<meta name="generator" content="Headlines 2.4.1" />
+<meta name="generator" content="Woo Framework Version 2.5.3" />
+<script type="text/javascript">Cufon.replace("h2, h3, h4, h5, h6, .title, .cufon");</script>
+<style type="text/css">.widget h3 { line-height:22px; }</style>
+<link href="http://iunknown.com/wp-content/themes/headlines/styles/color.css" rel="stylesheet" type="text/css" />
+<link href="http://iunknown.com/wp-content/themes/headlines/custom.css" rel="stylesheet" type="text/css" />
+<!-- Woo Styling -->
+<style type="text/css">
+#logo img { display:none; }
+#logo .site-title, #logo .site-description { display:block; } 
+</style>
+
+<!--[if lte IE 7]>
+<script type="text/javascript">
+jQuery(function() {
+	var zIndexNumber = 1000;
+	jQuery('div').each(function() {
+		jQuery(this).css('zIndex', zIndexNumber);
+		zIndexNumber -= 1;
+	});
+});
+</script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="container">
+       
+	<div id="top">
+    
+		
+        <div id="header" class="col-full">
+       
+            <div id="logo">
+               
+                                
+                                    <span class="site-title"><a href="http://iunknown.com">John Lam on Software</a></span>
+                                
+                    <span class="site-description">Working for The Man in Redmond</span>
+                
+            </div><!-- /#logo -->
+               
+			            <div id="twitter-top">
+            	<div class="logo">
+                    <a href="http://www.twitter.com/john_lam" title="Follow on Twitter"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-twitter.png" alt="Twitter" /></a>                
+                </div>
+                <div class="tweet">
+	                <ul id="twitter_update_list"><li></li></ul>
+                </div>
+            </div><!-- /#topad -->
+			                       
+        </div><!-- /#header -->
+        
+        <div id="navigation">
+        
+			<div id="page-nav">
+    <div class="col-full">
+        <ul id="nav" class="fl">
+        
+            <li><a href="http://iunknown.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-home.png" class="ico-home" alt="Home" /></a></li>
+			        
+            <li class="page_item page-item-2"><a href="http://iunknown.com/about" title="About">About</a></li>
+            
+			            
+            
+        </ul><!-- /#nav1 -->
+        
+        <ul class="rss fr">
+                        <li><a href="http://feeds.feedburner.com/LessIsBetter">Posts</a></li>
+        </ul><!-- /.rss -->
+    </div><!-- /.col-full -->
+</div><!-- /#page-nav -->
+                        
+            <div id="cat-nav">
+                <div class="col-full">
+                    <ul id="secnav" class="fl">
+                    
+					                    
+						      
+                        <li>
+                            <a href="http://iunknown.com/category/ironruby">IronRuby</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/microsoft">Microsoft</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/misc_geek">Misc Geek</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/personal">Personal</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/rubyclr">RubyCLR</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/uncategorized">Uncategorized</a>
+                            
+                                                    </li>        
+                                                
+					                        
+                    </ul><!-- /#nav2 -->
+                    
+                                        <div id="search" class="fr">
+                        <form method="get" id="searchform" action="http://iunknown.com">
+                            <input type="text" class="field" name="s" id="s"  value="Enter keywords..." onfocus="if (this.value == 'Enter keywords...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter keywords...';}" />
+                            <input class="submit btn" type="image" src="http://iunknown.com/wp-content/themes/headlines/images/ico-search.png" value="Go" />
+                        </form>
+                    </div><!-- /#search -->
+                                    </div><!-- /.col-full -->
+            </div><!-- /#cat-nav -->
+            
+        </div><!-- /#navigation -->
+    
+    </div><!--/#top-->       
+    <div id="content" class="col-full">
+		<div id="main" class="col-left">
+		           
+                                    
+                <div class="box">
+                    <div class="post">
+    
+						                           
+                        <h1 class="title">IronRuby on Rubyforge!</h1>
+                        
+                        <p class="post-meta">
+							<img src="http://iunknown.com/wp-content/themes/headlines/images/ico-time.png" alt="" />31. Aug, 2007                            <span class="comments"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-comment.png" alt="" /><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html#comments" title="Comment on IronRuby on Rubyforge!">43 Comments</a></span>
+                        </p>
+
+																	
+                        <div class="entry">
+							<p><a title="Photo Sharing" href="http://www.flickr.com/photos/john_lam/1290825350/"><img height="331" alt="Ruby's Diner" src="http://farm2.static.flickr.com/1429/1290825350_b6e123ff75.jpg" width="500" /></a> </p>
+<p>I&#8217;m happy to announce that we&#8217;re <a href="http://rubyforge.org/projects/ironruby">live on Rubyforge</a> today! </p>
+<p>It&#8217;s been nearly 6 weeks since our initial source code release at OSCON. So what&#8217;s changed?</p>
+<ul>
+<li>Exception handling</li>
+<li>Parallel assignment</li>
+<li>Instance variables</li>
+</ul>
+<p>Added some more library support:</p>
+<ul>
+<li>Comparable</li>
+<li>Enumerable</li>
+<li>Array</li>
+<li>Hash</li>
+<li>String (not quite complete yet)</li>
+<li>Dir</li>
+</ul>
+<p>Go get the sources and have a happy hacking weekend!</p>
+<p><b>Update:</b> John Messerly has just checked in an updated Rakefile that fixes some of the problems that folks have had with doing builds externally.</p>
+                        </div>
+                        <div class="fix"></div>
+
+                                                <div id="share">
+							<div class="banner">Share</div>
+                            <a href="http://twitter.com/home/?status=IronRuby on Rubyforge! : http://tinyurl.com/yb6my7j"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-twitter.png" alt="Twitter" /></a>
+<a href="http://digg.com/submit?phase=2&amp;url=http://iunknown.com/2007/08/ironruby-on-rubyforge.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-digg.png" alt="Digg" /></a>                            
+<a href="http://del.icio.us/post?url=http://iunknown.com/2007/08/ironruby-on-rubyforge.html&amp;title=IronRuby on Rubyforge!"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-delicious.png" alt="Delicious" /></a>                            
+<a href="http://www.stumbleupon.com/submit?url=http://iunknown.com/2007/08/ironruby-on-rubyforge.html&amp;title=IronRuby+on+Rubyforge%21"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-stumbleupon.png" alt="Stumbleupon" /></a>                            
+<a href="http://technorati.com/cosmos/search.html?url=http://iunknown.com/2007/08/ironruby-on-rubyforge.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-technorati.png" alt="Technorati" /></a>                            
+<a href="http://www.facebook.com/sharer.php?u=http://iunknown.com/2007/08/ironruby-on-rubyforge.html&amp;t=IronRuby on Rubyforge!"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-facebook.png" alt="Facebook" /></a>
+<a href="mailto:EMAIL ADDRESS?body=http://iunknown.com/2007/08/ironruby-on-rubyforge.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-mail.png" alt="Email" /></a>                           
+                        </div>
+                                                                        
+                    </div><!-- /.post -->
+                    
+                    <div class="post-bottom">
+                        <div class="fl"><span class="cat"><a href="http://iunknown.com/category/uncategorized" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></span></div>
+                        <div class="fr"></div> 
+                        <div class="fix"></div>                       
+                    </div>
+                    
+                </div><!-- /.box -->
+
+                <div class="more_entries">
+					<div class="fl"><a href="http://iunknown.com/2007/08/day-5-of-daddy-daycare.html" rel="prev">Day 5 of Daddy Daycare</a></div>
+					<div class="fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html" rel="next">What is this Merlin thing in IronRuby?</a></div>
+                    <div class="fix"></div>                       
+				</div>               
+                
+				
+    
+
+<!-- You can start editing here. -->
+
+<div id="comments">
+
+
+	
+        <h3>43 Responses to &#8220;IronRuby on Rubyforge!&#8221;</h3>
+    
+        <ol class="commentlist">
+    
+                             
+	<li class="comment even thread-even depth-1" id="li-comment-448">
+    
+    	<a name="comment-448"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/8aec21323e118581af6ca1d4e2a3c338?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rubydoes.net' rel='external nofollow' class='url url'>Aaron Junod</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-448" title="Direct link to this comment">31. Aug, 2007 at 9:09 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-448">
+                
+                    <p>This is fantastic right before a long weekend. Thanks a ton and congrats on the release! Can&#8217;t wait to dive in!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-449">
+    
+    	<a name="comment-449"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/02381bc41289754b79380eeeaa8e2588?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.yashlabs.com/wp' rel='external nofollow' class='url url'>Josh Nursing</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-449" title="Direct link to this comment">31. Aug, 2007 at 9:17 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-449">
+                
+                    <p>Fantastic news. Congrats on meeting your deadline of end of August.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-450">
+    
+    	<a name="comment-450"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/b7b34fda26b7ea99b8b4d42497193220?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Seo Sanghyeon</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-450" title="Direct link to this comment">31. Aug, 2007 at 9:43 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-450">
+                
+                    <p>Thanks! As a test, I filed the first bug <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /><br />
+<a href="http://rubyforge.org/tracker/index.php?func=detail&#038;aid=13565&#038;group_id=4359&#038;atid=16798" rel="nofollow">http://rubyforge.org/tracker/index.php?func=detail&#038;aid=13565&#038;group_id=4359&#038;atid=16798</a></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-489">
+    
+    	<a name="comment-489"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.users.gr.jp/blogs/others/archive/2007/09/01/ironruby-on-rubyforge.aspx' rel='external nofollow' class='url url'>関連ブログ</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-489" title="Direct link to this comment">31. Aug, 2007 at 10:12 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-489">
+                
+                    <p><strong>IronRuby on Rubyforge!</strong></p>
+<p>Johnが前に書いていたようにIronRubyがRubyforgeでプロジェクト管理されることになったようです。 John Lam on Software: IronRuby on Rubyforge</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-451">
+    
+    	<a name="comment-451"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/02381bc41289754b79380eeeaa8e2588?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.yashlabs.com/wp' rel='external nofollow' class='url url'>Josh Nursing</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-451" title="Direct link to this comment">31. Aug, 2007 at 11:02 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-451">
+                
+                    <p>haha!, Love the comment, Seo.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-452">
+    
+    	<a name="comment-452"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/1bb8cc6d9ef0717c23a5c95986caea82?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.softmind.biz' rel='external nofollow' class='url url'>SoftMind</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-452" title="Direct link to this comment">31. Aug, 2007 at 11:20 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-452">
+                
+                    <p>Hi,<br />
+Where is the exact link to download the codes. I already registered on RubyForge, but i could not find anything to download.<br />
+I have spent enough time hunting for the codes. Can any one provide the exact link to download the codes.<br />
+Thanks<br />
+SoftMind</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-488">
+    
+    	<a name="comment-488"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.oreillynet.com/windows/blog/2007/08/john_lamironruby_and_so_a_new.html' rel='external nofollow' class='url url'>O'Reilly Windows DevCenter Blog</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-488" title="Direct link to this comment">31. Aug, 2007 at 11:23 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-488">
+                
+                    <p><strong>[John Lam:IronRuby] And So a New Era at Microsoft Begins: class CommunityContribution < IronRuby::RubyForge</strong></p>
+<p>John Lam on Software: IronRuby on Rubyforge! I&#8217;m happy to announce that we&#8217;re live on Rubyforge today! It&#8217;s been nearly 6 weeks since our initial source code release at OSCON. So what&#8217;s changed? * Exception handling * Parallel assignment *&#8230;</strong></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-453">
+    
+    	<a name="comment-453"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/5159227f15ff6247f88542812f866c4f?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://xmlhacker.com/' rel='external nofollow' class='url url'>M. David Peterson</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-453" title="Direct link to this comment">01. Sep, 2007 at 12:44 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-453">
+                
+                    <p>@SoftMind,<br />
+It&#8217;s under the SCM tab,<br />
+<a href="http://rubyforge.org/scm/?group_id=4359" rel="nofollow">http://rubyforge.org/scm/?group_id=4359</a><br />
+Yeah, I know, SCM doesn&#8217;t exactly bring about a sense of &#8220;Oh, this is where I would click to access the code.&#8221;  I would think just &#8220;Code&#8221; would do the trick, but apparently others feel differently.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-454">
+    
+    	<a name="comment-454"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/5159227f15ff6247f88542812f866c4f?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://xmlhacker.com/' rel='external nofollow' class='url url'>M. David Peterson</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-454" title="Direct link to this comment">01. Sep, 2007 at 12:46 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-454">
+                
+                    <p>FYI&#8230; via <a href="http://www.oreillynet.com/windows/blog/2007/09/ironruby_and_rubynet_labor_day.html" rel="nofollow">http://www.oreillynet.com/windows/blog/2007/09/ironruby_and_rubynet_labor_day.html</a><br />
+IronRuby and Ruby.NET Labor Day Weekend *HACKFEST* Extravaganza<br />
+So with the release of IronRuby to RubyForge and opening things up for community contribution (you will need to sign a contributors agreement before they will be able to accept your contributions, but that’s completely normal and an understood necessity by anyone who has contributed to a large open source project before) what better way to celebrate than by throwing a *HACKFEST* Extravaganza?<br />
+Of course, while we’re at it, why not spend some time helping out with the *other* .NET Ruby runtime and compiler project, Ruby.NET?<br />
+So without further adieu,<br />
+This Saturday… day, day < Sunday... day, day, and < Monday... day, day *ONLY*, the IronRuby and Ruby.NET Labor Day Weekend *HACKFEST* Extravaganza is coming to an IRC channel near you,<br />
+<a href="irc://irc.freenode.net/#ironruby" rel="nofollow">irc://irc.freenode.net/#ironruby<br />
+- and -<br />
+<a href="irc://irc.freenode.net/#ruby.net" rel="nofollow">irc://irc.freenode.net/#ruby.net</a><br />
+[Said in the deepest, most stern Monster Truck Weekend announcer voice I can conjure up] BE THEEEERRE…</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-455">
+    
+    	<a name="comment-455"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/8f6474b9141a720f1da34ee647519a02?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blog.lozanotek.com' rel='external nofollow' class='url url'>Javier Lozano</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-455" title="Direct link to this comment">01. Sep, 2007 at 9:36 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-455">
+                
+                    <p>Thanks for the post!  Now I know how I can fill my &#8220;empty time&#8221; during the weekend. <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-487">
+    
+    	<a name="comment-487"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blog.lozanotek.com/archive/2007/09/01/IronRuby_on_RubyForge.aspx' rel='external nofollow' class='url url'>Javier G. Lozano</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-487" title="Direct link to this comment">01. Sep, 2007 at 9:44 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-487">
+                
+                    <p><strong>IronRuby on RubyForge</strong></p>
+<p>IronRuby on RubyForge</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-456">
+    
+    	<a name="comment-456"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/2142b1a501386ed0af9232862af48df9?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://judahgabriel.blogspot.com' rel='external nofollow' class='url url'>Judah</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-456" title="Direct link to this comment">01. Sep, 2007 at 1:42 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-456">
+                
+                    <p>Hey Jon<br />
+Just wanted to give you the experience of a dev who&#8217;s never worked with Ruby before, but wanted to play with it:<br />
+Installed Tortoise SVN, checked out the source. All went fine.<br />
+Opened Ruby.csproj in VS8. Building resulted in many compiler errors&#8230;I see there are missing references.<br />
+I searched for .csproj files in the trunk folder, and see several, so I add those to the solution.<br />
+Building still results in some errors. A root cause appears to be a missing mssharedlib.snk or similarly named key signing file.<br />
+I did a search for this file and don&#8217;t see it. So I look for an alternate SNK.<br />
+I find debugKey.snk in the Microsoft.Scripting folder added set that as the sign key file in the Scripting project. Build results in the same error; looking for the missing mssharedlib.snk even though that&#8217;s removed from the settings.<br />
+I&#8217;m thinking the project&#8217;s new SNK just isn&#8217;t sticking for some reason, so I save the project, unload it from VS, then reload. Same error.<br />
+I&#8217;m thinking the problem may be a bug in VS that doesn&#8217;t save the new SNK. So I fire up VS9 and try it. Same error.<br />
+I take matters into my own hands and open the Scripting.csproj in a text editor and replace all references to mssharedlib.snk with debugkey.snk.<br />
+I fire it up again in VS9 and now it works, I can compile all the .csproj files in a single solution. Cool!<br />
+Anyways, just wanted to share my experience. I don&#8217;t work on open source projects typically so a lot of this is new to me. Thought you might like to hear the experience of a Ruby and open source newb.<br />
+Now, where to go from here? <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' />  That is the question&#8230;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-486">
+    
+    	<a name="comment-486"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/expression_experience_asia/archive/2007/09/02/three-links-silverlight-x2-ironruby-x1.aspx' rel='external nofollow' class='url url'>Expression &amp; UX in Asia</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-486" title="Direct link to this comment">01. Sep, 2007 at 6:05 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-486">
+                
+                    <p><strong>Three links: Silverlight x2, IronRuby x1</strong></p>
+<p>Liquid Boy blog has a great set of posts on building a Silverlight v1.1 application that looks like the</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1555">
+    
+    	<a name="comment-1555"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/expression_experience_asia/archive/2007/09/02/three-links-silverlight-x2-ironruby-x1.aspx' rel='external nofollow' class='url url'>Expression &amp; UX in Asia</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-1555" title="Direct link to this comment">01. Sep, 2007 at 6:05 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1555">
+                
+                    <p><strong>Three links: Silverlight x2, IronRuby x1</strong></p>
+<p>Liquid Boy blog has a great set of posts on building a Silverlight v1.1 application that looks like the</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-485">
+    
+    	<a name="comment-485"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://geeks.ms/blogs/roller/archive/2007/09/02/three-links-silverlight-x2-ironruby-x1.aspx' rel='external nofollow' class='url url'>Noticias externas</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-485" title="Direct link to this comment">01. Sep, 2007 at 6:28 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-485">
+                
+                    <p><strong>Three links: Silverlight x2, IronRuby x1</strong></p>
+<p>Liquid Boy blog has a great set of posts on building a Silverlight v1.1 application that looks like the</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-457">
+    
+    	<a name="comment-457"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://profile.typekey.com/rbazinet/' rel='external nofollow' class='url url'>Rob Bazinet</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-457" title="Direct link to this comment">01. Sep, 2007 at 8:39 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-457">
+                
+                    <p>John,<br />
+Are you guys working on a proper build script for us to build this?  The RakeFile is not of much value to us.<br />
+-Rob</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-458">
+    
+    	<a name="comment-458"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/695b146376b21b8f7b1d51bdf636038b?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-458" title="Direct link to this comment">01. Sep, 2007 at 9:07 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-458">
+                
+                    <p>@Rob: What&#8217;s wrong with the Rakefile? If you type rake compile it should create a release mode build for you.<br />
+@Judah: Thanks for sharing the pain. I need to spin up a VM that lets me live the life as an external contributor, and without all of our internal environment stuff. Does the Rakefile work for you?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-459">
+    
+    	<a name="comment-459"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/8aec21323e118581af6ca1d4e2a3c338?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rubydoes.net' rel='external nofollow' class='url url'>Aaron Junod</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-459" title="Direct link to this comment">02. Sep, 2007 at 6:22 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-459">
+                
+                    <p>Rakefile did not work for me. Here is the output.<br />
+C:\projects\IronRuby>rake compile<br />
+(in C:/projects/IronRuby)<br />
+rake aborted!<br />
+undefined method `+&#8217; for nil:NilClass<br />
+C:/projects/IronRuby/rakefile:5<br />
+(See full trace by running task with &#8211;trace)<br />
+C:\projects\IronRuby>rake compile &#8211;trace<br />
+(in C:/projects/IronRuby)<br />
+rake aborted!<br />
+undefined method `+&#8217; for nil:NilClass<br />
+C:/projects/IronRuby/rakefile:5<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.2/lib/rake.rb:1855:in `load&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.2/lib/rake.rb:1855:in `load_rakefile&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.2/lib/rake.rb:1929:in `run&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.2/bin/rake:7<br />
+c:/ruby/bin/rake.bat:20:in `load&#8217;<br />
+c:/ruby/bin/rake.bat:20</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-460">
+    
+    	<a name="comment-460"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-460" title="Direct link to this comment">02. Sep, 2007 at 7:29 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-460">
+                
+                    <p>@Aaron: This looks like a case where csc.exe isn&#8217;t on your path? Can you add csc.exe to your path and retry?<br />
+Thanks!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-461">
+    
+    	<a name="comment-461"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/6856d20b5d6cbdb827cdccca7f557979?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://bugthis.blogspot.com' rel='external nofollow' class='url url'>goodwill</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-461" title="Direct link to this comment">02. Sep, 2007 at 9:32 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-461">
+                
+                    <p>Tried here with rake, same result with Aaron. I have double verified and csc.exe is on path- I am using VS command console.<br />
+And whats the environment prerequisite to build IronRuby? I only have .net 2.0 installed, so I don&#8217;t think its enough.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-462">
+    
+    	<a name="comment-462"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/75d620852fc7691a0a3a86c336055e7d?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://profile.typekey.com/rbazinet/' rel='external nofollow' class='url url'>Rob Bazinet</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-462" title="Direct link to this comment">02. Sep, 2007 at 9:35 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-462">
+                
+                    <p>John,<br />
+I get the same thing everyone else does.  CSC.EXE is in my path but the errors reported by Aaron are the ones I get.<br />
+So&#8230;what is wrong with the RakeFile?<br />
+-Rob</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-463">
+    
+    	<a name="comment-463"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/8aec21323e118581af6ca1d4e2a3c338?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rubydoes.net' rel='external nofollow' class='url url'>Aaron Junod</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-463" title="Direct link to this comment">02. Sep, 2007 at 12:53 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-463">
+                
+                    <p>csc.exe is in the path in my instance as well.<br />
+Knowing it should work though, I&#8217;ll see if I can&#8217;t find more info tonight after daddy duty.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-464">
+    
+    	<a name="comment-464"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/cb0be95adcbdec557c02b681f089aba6?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">krishna</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-464" title="Direct link to this comment">02. Sep, 2007 at 1:23 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-464">
+                
+                    <p>Same problem here, csc is in my path.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-465">
+    
+    	<a name="comment-465"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/cb0be95adcbdec557c02b681f089aba6?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">krishna</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-465" title="Direct link to this comment">02. Sep, 2007 at 2:39 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-465">
+                
+                    <p>running:<br />
+rake compile MERLIN_ROOT=c:\path\to\ironruby\trunk<br />
+fixed it. make sure you give the right path.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-466">
+    
+    	<a name="comment-466"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/8aec21323e118581af6ca1d4e2a3c338?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rubydoes.net' rel='external nofollow' class='url url'>Aaron Junod</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-466" title="Direct link to this comment">02. Sep, 2007 at 5:20 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-466">
+                
+                    <p>That worked perfectly. Thanks a ton krishna!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-467">
+    
+    	<a name="comment-467"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://profile.typekey.com/jmesserly/' rel='external nofollow' class='url url'>John B. Messerly</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-467" title="Direct link to this comment">02. Sep, 2007 at 8:13 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-467">
+                
+                    <p>I just checked in a fix for the rakefile. It doesn&#8217;t require MERLIN_ROOT environment variable to be set anymore. Instead it gets the path of the rakefile itself, and uses that.<br />
+You still need to have FrameworkDir and FrameworkVersion set so it can find CSC. This is set automatically in a Visual Studio 2005 command prompt, but you can also set it manually via something like:<br />
+set FrameworkDir=C:\Windows\Microsoft.NET\Framework<br />
+set FrameworkVersion=v2.0.50727</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-468">
+    
+    	<a name="comment-468"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/8aec21323e118581af6ca1d4e2a3c338?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rubydoes.net' rel='external nofollow' class='url url'>Aaron Junod</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-468" title="Direct link to this comment">03. Sep, 2007 at 4:44 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-468">
+                
+                    <p>The update worked great on my machine from the 2k5 command prompt. Thanks!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-484">
+    
+    	<a name="comment-484"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rails.to/articles/2007/09/03/ironruby-on-rubyforge' rel='external nofollow' class='url url'>いたさんのブログ</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-484" title="Direct link to this comment">03. Sep, 2007 at 8:19 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-484">
+                
+                    <p><strong>RubyForgeにIronRuby公開</strong></p>
+<p>Microsoftが開発中のIronRubyが、当初の予定通り、8月末にRubyForgeで公開されました。 John Lam氏のブログアナウンス IronRuby on Rubyforge! RubyForgeのIronRubyのページ 上記のページを見ても何もファイルリ</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-469">
+    
+    	<a name="comment-469"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://profile.typekey.com/rbazinet/' rel='external nofollow' class='url url'>Rob Bazinet</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-469" title="Direct link to this comment">03. Sep, 2007 at 9:18 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-469">
+                
+                    <p>Thanks John.  This worked perfectly for me too.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-470">
+    
+    	<a name="comment-470"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/2142b1a501386ed0af9232862af48df9?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://judahgabriel.blogspot.com' rel='external nofollow' class='url url'>Judah</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-470" title="Direct link to this comment">03. Sep, 2007 at 12:04 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-470">
+                
+                    <p>Hey John<br />
+You asked if I tried the Rakefile. To be honest, I&#8217;ve never heard of a rakefile before &#8212; as I mentioned, I&#8217;m a newbie when it comes to open source projects.<br />
+I just looked it up and see it is similar to ant or make, but with functionality allowing one to &#8220;shell out to Ruby&#8221;, I assume that means use Ruby from within the build script.<br />
+However, I&#8217;m not sure if I need to learn Rakefile now that I&#8217;ve gotten it building by tweaking the .csproj files.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-471">
+    
+    	<a name="comment-471"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/695b146376b21b8f7b1d51bdf636038b?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-471" title="Direct link to this comment">03. Sep, 2007 at 8:24 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-471">
+                
+                    <p>@Judah:<br />
+Rake is one of my favorite examples of an internal DSL. If you take a look at the Rakefile in the root directory, you&#8217;ll see some simplistic examples of how this can help to make it easier to understand the structure of the build process for IronRuby.<br />
+However, you can definitely stick to just using VS and .csproj files to build. However, you might want to run &#8216;rake test&#8217; to run the unit tests.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-472">
+    
+    	<a name="comment-472"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/f6ca9dc6e04de8acd0805e0cb22e8d86?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Stefan</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-472" title="Direct link to this comment">04. Sep, 2007 at 1:29 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-472">
+                
+                    <p>I tried it with rake but failed with the following error trace<br />
+C:\ironruby\trunk>rake compile &#8211;trace<br />
+(in C:/ironruby/trunk)<br />
+** Invoke compile (first_time)<br />
+** Invoke clean_build (first_time)<br />
+** Execute clean_build<br />
+** Invoke compile_dlr (first_time)<br />
+** Execute compile_dlr<br />
+resgen C:\ironruby\trunk\src\microsoft.scripting\Math\MathResources.resx C:\ironruby\trunk\release\Microsoft.S<br />
+cripting.Math.MathResources.resources<br />
+rake aborted!<br />
+undefined method `exitstatus&#8217; for nil:NilClass<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:719:in `sh&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:726:in `call&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:726:in `sh&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:805:in `sh&#8217;<br />
+C:/ironruby/trunk/rakefile:152:in `resgen&#8217;<br />
+C:/ironruby/trunk/rakefile:152:in `each_pair&#8217;<br />
+C:/ironruby/trunk/rakefile:152:in `resgen&#8217;<br />
+C:/ironruby/trunk/rakefile:164:in `compile&#8217;<br />
+C:/ironruby/trunk/rakefile:172:in `compile_all&#8217;<br />
+C:/ironruby/trunk/rakefile:227<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:392:in `call&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:392:in `execute&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:392:in `each&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:392:in `execute&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:362:in `invoke&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:355:in `synchronize&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:355:in `invoke&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:369:in `invoke_prerequisites&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1003:in `each&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1003:in `send&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1003:in `each&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:368:in `invoke_prerequisites&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:361:in `invoke&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:355:in `synchronize&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:355:in `invoke&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1739:in `top_level&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1739:in `each&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1739:in `top_level&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1761:in `standard_exception_handling&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1733:in `top_level&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1711:in `run&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1761:in `standard_exception_handling&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/lib/rake.rb:1708:in `run&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.3/bin/rake:7<br />
+c:/ruby/bin/rake.bat:20:in `load&#8217;<br />
+c:/ruby/bin/rake.bat:20<br />
+Do you have any ideas on what might be wrong?<br />
+Appreciate your help very much<br />
+regards<br />
+Stefan</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-473">
+    
+    	<a name="comment-473"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/5159227f15ff6247f88542812f866c4f?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://xmlhacker.com/' rel='external nofollow' class='url url'>M. David Peterson</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-473" title="Direct link to this comment">04. Sep, 2007 at 1:56 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-473">
+                
+                    <p>@John,<br />
+>> Thanks for sharing the pain. I need to spin up a VM that lets me live the life as an external contributor, and without all of our internal environment stuff. &#8220;, create a password for that account with &#8220;passwd &#8220;, change the root passwd via &#8220;passwd&#8221;, add your newly created user to the sudoers file via &#8220;visudo&#8221; (find the line that starts with &#8220;root&#8221; and copy it verbatim, changing the username appropriately), logout and then log back in with your newly created user account, prefacing system commands with sudo and using your account password when prompted.<br />
+If anyone else has interest there are Virtual Server and QEMU versions of this same build available @ <a href="http://www.rpath.org/rbuilder/project/nuxleus/releases" rel="nofollow">http://www.rpath.org/rbuilder/project/nuxleus/releases</a><br />
+You&#8217;ll have full access to the latest Mono bits including all of the compilers (including Moonlight) as well as the Mono debugger.<br />
+Support lists can be found @ <a href="http://www.rpath.org/rbuilder/project/nuxleus/mailingLists" rel="nofollow">http://www.rpath.org/rbuilder/project/nuxleus/mailingLists</a><br />
+Happy Hacking!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-474">
+    
+    	<a name="comment-474"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/5159227f15ff6247f88542812f866c4f?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://xmlhacker.com/' rel='external nofollow' class='url url'>M. David Peterson</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-474" title="Direct link to this comment">04. Sep, 2007 at 2:00 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-474">
+                
+                    <p>@John,<br />
+Forgot that I can&#8217;t use  at the end of a line on the comment system.  Here&#8217;s the post again, this time in a format that will make better sense. <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /><br />
+&#8220;Thanks for sharing the pain. I need to spin up a VM that lets me live the life as an external contributor, and without all of our internal environment stuff.&#8221;<br />
+I&#8217;ve added rake to the default set of tools available in nuXleus (which is a Linux-based Mono-centric virtual appliance geared to web applications and XML messaging.)  You can get the VMware version I just created @ <a href="http://www.rpath.org/rbuilder/project/nuxleus/release?id=5789" rel="nofollow">http://www.rpath.org/rbuilder/project/nuxleus/release?id=5789</a><br />
+Default login is &#8220;root&#8221; with no password.<br />
+IronRuby is pre-installed as well.  Simply type rbx at the command prompt.<br />
+Also, you&#8217;ll want to create a user account with &#8220;useradd -m &#8220;, create a password for that account with &#8220;passwd &#8220;, change the root passwd via &#8220;passwd&#8221;, add your newly created user to the sudoers file via &#8220;visudo&#8221; (find the line that starts with &#8220;root&#8221; and copy it verbatim, changing the username appropriately), logout and then log back in with your newly created user account, prefacing system commands with sudo and using your account password when prompted.<br />
+If anyone else has interest there are Virtual Server and QEMU versions of this same build available @ <a href="http://www.rpath.org/rbuilder/project/nuxleus/releases" rel="nofollow">http://www.rpath.org/rbuilder/project/nuxleus/releases</a><br />
+You&#8217;ll have full access to the latest Mono bits including all of the compilers (including Moonlight) as well as the Mono debugger.<br />
+Support lists can be found @ <a href="http://www.rpath.org/rbuilder/project/nuxleus/mailingLists" rel="nofollow">http://www.rpath.org/rbuilder/project/nuxleus/mailingLists</a><br />
+Happy Hacking!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-475">
+    
+    	<a name="comment-475"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/f6ca9dc6e04de8acd0805e0cb22e8d86?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Stefan</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-475" title="Direct link to this comment">04. Sep, 2007 at 5:31 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-475">
+                
+                    <p>Hi folks,<br />
+I found my error. o/c you should have &#8216;resgen&#8217; in your path <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /><br />
+What if some test cases give back bad results? For me the following are failing when executing the compiled IronRubyTestHost.exe:<br />
+- Scenario_RubyMath1 (Ruby.Builtins.Errno+DomainError: Domain error &#8211; Domain error &#8211; acos)<br />
+- Scenario_RubyNumericLiterals1 (Unexpected output: First difference (8): actual = &#8217;1&#8242; expected = &#8216;.&#8217;)<br />
+- Scenario_RubyBoolExpressions4 (Unexpected output: First difference (5): actual = &#8217;0&#8242; expected = &#8216;.&#8217;)<br />
+Was the compile process successful or is it something with other dependent components on my machine?<br />
+Thanks for your answers.<br />
+Regards<br />
+stefan</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-476">
+    
+    	<a name="comment-476"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-476" title="Direct link to this comment">04. Sep, 2007 at 8:40 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-476">
+                
+                    <p>@Stefan:<br />
+I think it&#8217;s your localization settings. I&#8217;m assuming that you&#8217;re not using US English settings? If so, do you mind filing a bug for this? Thanks!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-477">
+    
+    	<a name="comment-477"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-477" title="Direct link to this comment">04. Sep, 2007 at 8:48 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-477">
+                
+                    <p>@David:<br />
+Thanks for spinning up these VMs! I&#8217;m spending the morning setting up some VMs here for myself.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-478">
+    
+    	<a name="comment-478"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/f6ca9dc6e04de8acd0805e0cb22e8d86?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Stefan</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-478" title="Direct link to this comment">05. Sep, 2007 at 4:49 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-478">
+                
+                    <p>@John<br />
+Just to let you know, changing the language settings did the trick for the errors I mentioned above. Now I have just one testcase failing:<br />
+Scenario_RubyScopeParsing<br />
+(16707566:0): FatalError: RB-1: syntax error, unexpected tLSHFT<br />
+Thanks for you help<br />
+&#8211; Stefan</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-479">
+    
+    	<a name="comment-479"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/f6ca9dc6e04de8acd0805e0cb22e8d86?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Stefan</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-479" title="Direct link to this comment">05. Sep, 2007 at 5:33 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-479">
+                
+                    <p>Just want to make you aware of this thread:<br />
+<a href="http://rubyforge.org/forum/forum.php?thread_id=17319&#038;forum_id=17159" rel="nofollow">http://rubyforge.org/forum/forum.php?thread_id=17319&#038;forum_id=17159</a><br />
+&#8211; Stefan</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-483">
+    
+    	<a name="comment-483"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://art.axiciced.cn/sm.html#1360136604' rel='external nofollow' class='url url'>fresno city college blackboard cvc</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-483" title="Direct link to this comment">06. Sep, 2007 at 12:42 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-483">
+                
+                    <p><strong>fresno city college blackboard cvc</strong></p>
+<p>fresno city college blackboard cvc</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-480">
+    
+    	<a name="comment-480"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/1bb8cc6d9ef0717c23a5c95986caea82?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.softmind.biz' rel='external nofollow' class='url url'>SoftMind</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-480" title="Direct link to this comment">08. Sep, 2007 at 1:07 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-480">
+                
+                    <p>@ IronRuby Community<br />
+Hi,<br />
+Just Posting a link of a nice blog on IronRuby.<br />
+<a href="http://ironruby.blogspot.com/2007/09/many-reasons-to-fall-in-love-with.html" rel="nofollow">http://ironruby.blogspot.com/2007/09/many-reasons-to-fall-in-love-with.html</a><br />
+The Author with the help of another Ruby blog covers 10 Ruby + 10 IronRuby advantages and makes it 100 advantages.<br />
+An Informative blog on IronRuby advantages that gives you an immediate thought of learning Ruby from IronRuby point of View.<br />
+He Clearly explains that 10 + 10 = 100 tomorrow, rather than 20 today. I welcome such types of blogs.<br />
+Cheers</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-481">
+    
+    	<a name="comment-481"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/f606547985922ca2e6ad4f4c1edd8d06?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">adia</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-481" title="Direct link to this comment">13. Mar, 2008 at 4:32 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-481">
+                
+                    <p>rake compile fails with an error message: Could not find RubyGem pathname2 (>= 0.0.0)</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-482">
+    
+    	<a name="comment-482"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html/comment-page-1#comment-482" title="Direct link to this comment">13. Mar, 2008 at 6:19 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-482">
+                
+                    <p>@adia: You need to do &#8220;gem install pathname2&#8243; first.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+        
+        </ol>    
+    
+        <div class="navigation">
+            <div class="fl"></div>
+            <div class="fr"></div>
+            <div class="fix"></div>
+        </div><!-- /.navigation -->
+
+			
+		
+
+</div> <!-- /#comments_wrap -->
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+	
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2007/08/ironruby-on-rubyforge.html#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div><!-- /.cancel-comment-reply -->
+
+		    
+		<form action="http://iunknown.com/wp-comments-post.php" method="post" id="commentform" onsubmit="if (url.value == 'Website (optional)') {url.value = '';}">
+
+	    <div class="left">
+
+		
+			<p>
+                <input type="text" name="author" class="txt" id="commentauthor" tabindex="1" value="Name (required)" onfocus="if (this.value == 'Name (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="email" class="txt" id="email" tabindex="2" value="Email (required)" onfocus="if (this.value == 'Email (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="url" class="txt" id="url" tabindex="3" value="Website (optional)" onfocus="if (this.value == 'Website (optional)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Website (optional)';}" />
+			</p>
+
+		        
+        </div>
+
+		<div class="right">
+        
+		<!--<p><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </p>-->
+
+		<p><textarea name="comment" id="comment" rows="10" cols="50" tabindex="4"></textarea></p>
+
+		<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+		<input type="hidden" name="comment_post_ID" value="58" />
+		
+		<input type='hidden' name='comment_post_ID' value='58' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+				
+        </div>
+        
+		</form><!-- /#commentform -->
+
+	
+	<div class="fix"></div>
+
+</div><!-- /#respond -->
+
+                                                    
+			  
+        
+		</div><!-- /#main -->
+
+        <div id="sidebar" class="col-right">
+
+	<!-- Widgetized Sidebar -->	
+	<div id="text-3" class="widget widget_text"><h3>Subscribe!</h3>			<div class="textwidget"><p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+		</div>		
+    
+	<!-- TABS STARTS --> 
+		<div id="tabs">
+		
+		<ul class="wooTabs tabs">
+			<li><a href="#pop">Popular</a></li>
+			<li><a href="#feat">Latest</a></li>
+            <li><a href="#comm">Comments</a></li>
+			<li><a href="#tagcloud">Tags</a></li>
+		</ul>	
+		
+		<div class="fix"></div>
+		
+		<div class="inside">
+		 <div id="pop">
+			<ul>
+					<li>
+			                
+            <a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html" title="A first look at IronRuby">A first look at IronRuby</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/08/funtwo-unmasked.html" title="funtwo unmasked">funtwo unmasked</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html" title="Dynamic Languages, Microsoft, and me">Dynamic Languages, Microsoft, and me</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2008/03/dynamic-silverlight-part-1-hello-world.html" title="Dynamic Silverlight Part 1: Hello, World!">Dynamic Silverlight Part 1: Hello, World!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html" title="IronRuby on Rubyforge!">IronRuby on Rubyforge!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+                    
+			</ul>
+           </div>
+           
+         <div id="feat"> 
+	        <ul>
+			<li>
+		<a title="Permalink to  Motorola DROID Review" href="http://iunknown.com/2009/12/motorola-droid-review.html" rel="bookmark">Motorola DROID Review</a>
+	<span class="meta">10. Dec, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Passing the torch" href="http://iunknown.com/2009/11/passing-the-torch.html" rel="bookmark">Passing the torch</a>
+	<span class="meta">17. Nov, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Dynamic Languages at TechEd 2009" href="http://iunknown.com/2009/05/dynamic-languages-at-teched-2009.html" rel="bookmark">Dynamic Languages at TechEd 2009</a>
+	<span class="meta">18. May, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Disable that annoying beep on Thinkpads when resuming from Sleep" href="http://iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html" rel="bookmark">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+	<span class="meta">02. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Hello, 2009" href="http://iunknown.com/2009/01/hello-2009.html" rel="bookmark">Hello, 2009</a>
+	<span class="meta">01. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+		
+                    
+			</ul>
+          </div>
+          <div id="comm">  
+			<ul>
+			<li>
+    <img alt='' src='http://0.gravatar.com/avatar/4ad7dd07b56137ee7f0c5df0eb6969c0?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2277" title="on  Passing the torch">
+		GM: Looks like the torch was handed off because it was...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://0.gravatar.com/avatar/80e59186a64b60730e07c6db7bf61637?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2276" title="on  Passing the torch">
+		Louis Salin: What about... now!?
+
+With the news of IronRuby b...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://1.gravatar.com/avatar/f02db29ff83998a5c98eab1d7747a4ad?s=48&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2275" title="on  Passing the torch">
+		James Manning: "will happen later this month" 6+ months ago :)
+...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://0.gravatar.com/avatar/6833fa22704a4277b814a6c4960f346d?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/12/motorola-droid-review.html#comment-2264" title="on  Motorola DROID Review">
+		bob: The Google Voice Integration feature is also the f...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://1.gravatar.com/avatar/117f5367e23fba4305caf41e103d7280?s=48&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html#comment-2263" title="on  A first look at IronRuby">
+		Quiz: Used for my final project , thanks...
+    </a>
+    <div style="clear:both"></div>
+</li>
+                    
+			</ul>
+	      </div>
+			<div id="tagcloud">
+			    			</div>
+		
+	</div><!-- INSIDE END -->
+	
+	</div><!-- TABS END -->
+	
+	<div class="fix" style="height:25px !important;"></div>
+	
+	  
+	<!-- TABS END -->    
+    
+	<!-- Widgetized Sidebar -->	
+	<div id="archives-3" class="widget widget_archive"><h3>Archives</h3>		<select name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> <option value="">Select Month</option> 	<option value='http://iunknown.com/2009/12'> December 2009 </option>
+	<option value='http://iunknown.com/2009/11'> November 2009 </option>
+	<option value='http://iunknown.com/2009/05'> May 2009 </option>
+	<option value='http://iunknown.com/2009/01'> January 2009 </option>
+	<option value='http://iunknown.com/2008/10'> October 2008 </option>
+	<option value='http://iunknown.com/2008/09'> September 2008 </option>
+	<option value='http://iunknown.com/2008/08'> August 2008 </option>
+	<option value='http://iunknown.com/2008/07'> July 2008 </option>
+	<option value='http://iunknown.com/2008/06'> June 2008 </option>
+	<option value='http://iunknown.com/2008/05'> May 2008 </option>
+	<option value='http://iunknown.com/2008/04'> April 2008 </option>
+	<option value='http://iunknown.com/2008/03'> March 2008 </option>
+	<option value='http://iunknown.com/2008/02'> February 2008 </option>
+	<option value='http://iunknown.com/2008/01'> January 2008 </option>
+	<option value='http://iunknown.com/2007/12'> December 2007 </option>
+	<option value='http://iunknown.com/2007/11'> November 2007 </option>
+	<option value='http://iunknown.com/2007/10'> October 2007 </option>
+	<option value='http://iunknown.com/2007/09'> September 2007 </option>
+	<option value='http://iunknown.com/2007/08'> August 2007 </option>
+	<option value='http://iunknown.com/2007/07'> July 2007 </option>
+	<option value='http://iunknown.com/2007/06'> June 2007 </option>
+	<option value='http://iunknown.com/2007/05'> May 2007 </option>
+	<option value='http://iunknown.com/2007/04'> April 2007 </option>
+	<option value='http://iunknown.com/2007/03'> March 2007 </option>
+	<option value='http://iunknown.com/2007/02'> February 2007 </option>
+	<option value='http://iunknown.com/2007/01'> January 2007 </option>
+	<option value='http://iunknown.com/2006/12'> December 2006 </option>
+	<option value='http://iunknown.com/2006/11'> November 2006 </option>
+	<option value='http://iunknown.com/2006/10'> October 2006 </option>
+	<option value='http://iunknown.com/2006/09'> September 2006 </option>
+	<option value='http://iunknown.com/2006/08'> August 2006 </option>
+	<option value='http://iunknown.com/2006/07'> July 2006 </option>
+	<option value='http://iunknown.com/2006/06'> June 2006 </option>
+	<option value='http://iunknown.com/2006/05'> May 2006 </option>
+	<option value='http://iunknown.com/2006/04'> April 2006 </option>
+	<option value='http://iunknown.com/2006/03'> March 2006 </option>
+	<option value='http://iunknown.com/2006/02'> February 2006 </option>
+	<option value='http://iunknown.com/2006/01'> January 2006 </option>
+	<option value='http://iunknown.com/2005/12'> December 2005 </option>
+	<option value='http://iunknown.com/2005/11'> November 2005 </option>
+	<option value='http://iunknown.com/2005/10'> October 2005 </option>
+ </select>
+</div><div id="twitter-1" class="widget widget_twitter"><h3><a href="http://twitter.com/john_lam" class="twitter_title_link">Tweets</a></h3><ul class="twitter"><li class="twitter-item"> Why you don't mess with Nolan Ryan: <a href="http://nyti.ms/diukqc" class="twitter-link">http://nyti.ms/diukqc</a> </li><li class="twitter-item"> <a href="http://twitter.com/Werner" class="twitter-user">@Werner</a> looks like you were on the plane ... everything ok?! </li><li class="twitter-item"> Another favorite photo ... this one with no people in it (hard to do): <a href="http://flic.kr/p/8NmeQq" class="twitter-link">http://flic.kr/p/8NmeQq</a> </li><li class="twitter-item"> One of my favorite photos from my trip: <a href="http://flic.kr/p/8Nhkt4" class="twitter-link">http://flic.kr/p/8Nhkt4</a> </li><li class="twitter-item"> In other news, good to hear <a href="http://twitter.com/migueldeicaza" class="twitter-user">@migueldeicaza</a> and <a href="http://twitter.com/jschementi" class="twitter-user">@jschementi</a> take over stewardship of IronRuby! </li><li class="twitter-item"> Catching up on news ... good to see that my friend Jim Hugunin has gone public about his departure: <a href="http://bit.ly/bN3Z6u" class="twitter-link">http://bit.ly/bN3Z6u</a> We'll miss you, Jim </li><li class="twitter-item"> Giant (unorganized) photo dump from China trip available here: <a href="http://bit.ly/cC4yLK" class="twitter-link">http://bit.ly/cC4yLK</a> </li><li class="twitter-item"> <a href="http://twitter.com/emalamisura" class="twitter-user">@emalamisura</a> the closest to landscape was when we were in Hengdian <a href="http://bit.ly/b6BTp0" class="twitter-link">http://bit.ly/b6BTp0</a>. Emperor Qin's 1:1 scale palace was spectacular </li><li class="twitter-item"> Back from beyond the Great Firewall of China. Fantastic experience. 1000 frames shot. Links to come. </li><li class="twitter-item"> Seattle train station has seen better days. Reminds me of the Kingdome. </li></ul></div>
+<div id="flickr" class="widget">
+	<h3 class="widget_title">Photos on <span>Flick<span>r</span></span></h3>
+	<div class="wrap">
+		<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=18&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=23649168@N00"></script>        
+		<div class="fix"></div>
+	</div>
+</div>
+
+		
+             
+	
+</div><!-- /#sidebar -->
+    </div><!-- /#content -->
+		
+    <!-- Footer Widget Area Starts -->
+	<div id="footer-widgets">
+		<div class="container col-full">
+            <div class="block">
+                		           
+            </div>
+            <div class="block">
+                		           
+            </div>
+            <div class="block last">
+                		           
+            </div>
+   			<div class="fix"></div>
+		</div>    
+    </div>
+    <!-- Footer Widget Area Ends -->
+
+	<div id="footer">
+		<div class="col-full">
+            <div id="copyright" class="col-left">
+                <p>&copy; 2010 John Lam on Software. All Rights Reserved.</p>
+            </div>
+            
+            <div id="credit" class="col-right">
+                <p>Powered by <a href="http://www.wordpress.org">Wordpress</a>. Designed by <a href="http://www.woothemes.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/woothemes.png" width="87" height="21" alt="Woo Themes" /></a></p>
+            </div>
+		</div>
+	</div>
+	<!-- footer Ends -->
+	
+</div><!-- /#container -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&amp;count=1"></script>
+</body>
+</html>

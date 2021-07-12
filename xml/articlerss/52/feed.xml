@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on A nice Ruby moment today</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"A nice Ruby moment today" by jlam</title>
+      <description>&lt;p&gt;I used to have a chunk of code that looked like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def new_clrobj(ctor_info, sig = null)
+  sig = ctor_info.signature if sig == null
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It now looks like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def new_clrobj(ctor_info, sig = ctor_info.signature)
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It was one of those &amp;#8220;it just works&amp;#8221; moments that makes me love this language.&lt;/p&gt;
+
+</description>
+      <pubDate>Wed, 11 Jan 2006 13:19:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/01/11/a-nice-ruby-moment-today"&gt;A nice Ruby moment today&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/01/11/a-nice-ruby-moment-today"&gt;A nice Ruby moment today&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

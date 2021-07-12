@@ -1,0 +1,830 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	
+	<meta name="description" content="At Tech Ed last week, I showed a prototype of integration between IronRuby and ASP.NET MVC. I was really happy about how straightforward this turned out to be; it’s a strong testament to the robustness of our hosting API that..." />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared-typepad/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: IronRuby and ASP.NET MVC</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html?no_prefetch=1" title="IronRuby at Tech Ed 2008" />
+	<link rel="next" href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html?no_prefetch=1" title="IronRuby at OSCON" />
+	
+	
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">&laquo; IronRuby at Tech Ed 2008</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">June 11, 2008</h2>
+
+
+<div class="entry" id="entry-51191520">
+			<h3 class="entry-header">IronRuby and ASP.NET MVC</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p>At Tech Ed last week, I showed a prototype of integration between IronRuby and <a href="http://www.asp.net/mvc/">ASP.NET MVC</a>. I was really happy about how straightforward this turned out to be; it’s a strong testament to the robustness of our <a href="http://compilerlab.members.winisp.net/dlr-spec-hosting.pdf">hosting API</a> that Levi on the ASP.NET MVC team was able to add IronRuby integration with only a simple example and the existing docs. </p>
+<p>Let’s walk through a simple example. Keep in mind that this is a <em>prototype</em>, and that many things will likely change before we’re done with it (particularly some of things we do today with globals and instance variables).</p>
+<p>First, let’s look at how you can define some default routes via routes.rb:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b32588833-pi"><img alt="image" border="0" height="53" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e553664c7b8834-pi" width="509" /></a> </p>
+<p>Next, let’s look at the Controller code for the HomeController:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e553664c7c8834-pi"><img alt="image" border="0" height="149" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e553664c808834-pi" width="366" /></a> </p>
+<p>The index action renders a view using a trivial Model which lives in models\HomeModel.rb:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b32678833-pi"><img alt="image" border="0" height="108" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b32698833-pi" width="406" /></a> </p>
+<p>This model is used by the index action View, which lives in views\home\index.rhtml:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e553664c8a8834-pi"><img alt="image" border="0" height="69" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e553664c8d8834-pi" width="448" /></a> </p>
+<p>Next, let&#39;s look at a slightly more sophisticated example using a Products Controller that renders a list of categories that looks like:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b326e8833-pi"><img alt="clip_image002" border="0" height="491" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b32718833-pi" width="500" /></a></p>
+<p>It also renders a list products for a category when you click on it:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b32748833-pi"><img alt="clip_image002[5]" border="0" height="510" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b32758833-pi" width="500" /></a></p>
+<p>This is what the controller looks like:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b32798833-pi"><img alt="image" border="0" height="461" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b327b8833-pi" width="519" /></a> </p>
+<p>There are two actions in this controller: index and list. The index action returns a list of the categories, and the list action returns a list of products for that category.</p>
+<p>Note that we&#39;re using instance variables on the controller to communicate with the view - this is likely going to change in the future, but it was something we hacked in to see what it would look like.</p>
+<p>If we look at ProductsModel, you&#39;ll see that it contains a simple adapter around a Visual Studio generated wrapper for the Northwind database:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b327d8833-pi"><img alt="image" border="0" height="90" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e553664ca48834-pi" width="381" /></a> </p>
+<p>We had to write our own adapter to work around a few bugs that we have in our .NET interop story as of right now, as well as adding a few model-esque methods. Here&#39;s what the NorthwindDatabase adapter looks like:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b32838833-pi"><img alt="image" border="0" height="346" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e553664cad8834-pi" width="544" /></a> </p>
+<p>Notice how we can use LINQ to SQL to write our queries to the database, and the funky C# 3.0 anonymous delegate syntax that we use for GetCategory().</p>
+<p>The interesting code in the view looks like:</p>
+<p><a href="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b328d8833-pi"><img alt="image" border="0" height="150" src="http://iunknown.typepad.com/.a/6a00d834fc885d53ef00e5534b328f8833-pi" width="520" /></a> </p>
+<p>Today we&#39;re using the MVC template engine, but there isn&#39;t any reason why we couldn&#39;t enable erb / haml etc. in the future.</p>
+<h3>How can I get it?</h3>
+<p>You can <a href="http://www.iunknown.com/files/IronRubyMvcWeb.zip">download</a>&#0160;a ZIP of the entire project from here if you want to take a closer look. Note that you can&#39;t run these bits yet, since I demo&#39;d it using a private build of ASP.NET MVC from mid-way through their current milestone. That said, when Preview 4 of ASP.NET MVC ships you&#39;ll be able to run IronRuby on top of it (their current release is Preview 3).</p>
+<p>Look for a blog post here, and from the folks like <a href="http://haacked.com/Default.aspx">Phil</a> over in MVC-land when we&#39;re ready to ship you some bits to build MVC apps using IronRuby.</p>
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2008%2F06%2Fironruby-and-aspnet-mvc.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 07:41 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e553664cc18834</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list -->	<a id="c118434656"></a>
+	<div class="comment comment-odd" id="comment-118434656">
+		<div class="comment-content" id="comment-118434656-content">
+			
+			<span id="comment-118434656-content"><p>Don&#39;t forget to encode that output!</p>
+
+<p>You don&#39;t want the category &quot;Shoes &amp; Trainers&quot; producing invalid HTML... or leading to injection/XSS from the inside.</p>
+
+<p>[)amien</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://damieng.com" href="http://damieng.com">Damien Guard</a> |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=118434656#comment-118434656">June 11, 2008 at 08:25 AM</a>
+		</p>
+	</div>	<a id="c118440544"></a>
+	<div class="comment comment-even" id="comment-118440544">
+		<div class="comment-content" id="comment-118440544-content">
+			
+			<span id="comment-118440544-content"><p>What about the possibility of using ActiveRecord with an MVC project?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Josh |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=118440544#comment-118440544">June 11, 2008 at 09:08 AM</a>
+		</p>
+	</div>	<a id="c118511432"></a>
+	<div class="comment comment-odd" id="comment-118511432">
+		<div class="comment-content" id="comment-118511432-content">
+			
+			<span id="comment-118511432-content"><p>Hi John,</p>
+
+<p>Congrats. Good job getting done, under your expert guidance.</p>
+
+<p>What about the possibility of using ActiveRecord / DataMapper with an MVC project?</p>
+
+<p>Since Data mapper will be out very soon, i am also considering it.</p>
+
+<p>SoftMind</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			SoftMind |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=118511432#comment-118511432">June 11, 2008 at 07:56 PM</a>
+		</p>
+	</div>	<a id="c118559258"></a>
+	<div class="comment comment-even" id="comment-118559258">
+		<div class="comment-content" id="comment-118559258-content">
+			
+			<span id="comment-118559258-content"><p>I think I just peed in my pants a little bit.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Scott |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=118559258#comment-118559258">June 12, 2008 at 07:25 AM</a>
+		</p>
+	</div>	<a id="c118758132"></a>
+	<div class="comment comment-odd" id="comment-118758132">
+		<div class="comment-content" id="comment-118758132-content">
+			
+			<span id="comment-118758132-content"><p>Very, very cool :o)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://dotnet.org.za/ernst" href="http://dotnet.org.za/ernst">Ernst Kuschke</a> |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=118758132#comment-118758132">June 13, 2008 at 12:03 PM</a>
+		</p>
+	</div>	<a id="c119237198"></a>
+	<div class="comment comment-even" id="comment-119237198">
+		<div class="comment-content" id="comment-119237198-content">
+			
+			<span id="comment-119237198-content"><p>I&#39;m really, really, really, really looking forward to doing ASP.NET development with IronRuby (and any DLR-basd language).  Really.  Keep up the great work! :)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Joe Chung |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=119237198#comment-119237198">June 17, 2008 at 07:30 PM</a>
+		</p>
+	</div>	<a id="c119415818"></a>
+	<div class="comment comment-odd" id="comment-119415818">
+		<div class="comment-content" id="comment-119415818-content">
+			
+			<span id="comment-119415818-content"><p>What&#39;s with the require &quot;HomeModel&quot; stuff? Give us the snake_case back!</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.aslakhellesoy.com" href="http://blog.aslakhellesoy.com">Aslak Hellesøy</a> |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=119415818#comment-119415818">June 19, 2008 at 04:55 AM</a>
+		</p>
+	</div>	<a id="c119544248"></a>
+	<div class="comment comment-even" id="comment-119544248">
+		<div class="comment-content" id="comment-119544248-content">
+			
+			<span id="comment-119544248-content"><p>Nice sample... not far away to use scaffold and ActiveRecord. can&#39;t wait to see it.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Jirapong |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=119544248#comment-119544248">June 20, 2008 at 12:47 AM</a>
+		</p>
+	</div>	<a id="c120206088"></a>
+	<div class="comment comment-odd" id="comment-120206088">
+		<div class="comment-content" id="comment-120206088-content">
+			
+			<span id="comment-120206088-content"><p>Hey John,</p>
+
+<p>Do you have any idea when ASP.NET MVC Preview 4 is likely to be released ?</p>
+
+<p>Also, do you have any take on whether there might be other reasons for people to use IronRuby for developing ASP.NET MVC applications rather than coming from Ruby background? Any specific Ruby benefit for this exact scenario ?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://weblogs.asp.net/meligy" href="http://weblogs.asp.net/meligy">Mohamed Meligy</a> |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=120206088#comment-120206088">June 26, 2008 at 07:13 AM</a>
+		</p>
+	</div>	<a id="c120391666"></a>
+	<div class="comment comment-even" id="comment-120391666">
+		<div class="comment-content" id="comment-120391666-content">
+			
+			<span id="comment-120391666-content"><p>@Mohamed: I would expect about 6 weeks after their last release - which is mid-July by my calculations?</p>
+
+<p>It&#39;s the idea about being able to define your business problems in an internal DSL. Ruby excels at doing this, and offers some pretty compelling advantages over other languages.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=120391666#comment-120391666">June 27, 2008 at 02:16 PM</a>
+		</p>
+	</div>	<a id="c126371660"></a>
+	<div class="comment comment-odd" id="comment-126371660">
+		<div class="comment-content" id="comment-126371660-content">
+			
+			<span id="comment-126371660-content"><p>I want to know if ASP.NET MVC Preview 4 is released or not? if not then when is the date for the release?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.silicus.com" href="http://www.silicus.com">Ravindra</a> |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=126371660#comment-126371660">August 14, 2008 at 04:34 AM</a>
+		</p>
+	</div>	<a id="c126386036"></a>
+	<div class="comment comment-even" id="comment-126386036">
+		<div class="comment-content" id="comment-126386036-content">
+			
+			<span id="comment-126386036-content"><p>@Ravindra: Yes it is - Google is your friend here :)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=126386036#comment-126386036">August 14, 2008 at 07:22 AM</a>
+		</p>
+	</div>	<a id="c136843893"></a>
+	<div class="comment comment-odd" id="comment-136843893">
+		<div class="comment-content" id="comment-136843893-content">
+			
+			<span id="comment-136843893-content"><p>John is there a very simple way of doing this with just http word paragraphs. I wish that microsoft would provide some more examples on how to do this.... </p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			william simons |
+			<a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=136843893#comment-136843893">October 29, 2008 at 05:38 AM</a>
+		</p>
+	</div>
+
+		</div>
+        
+	</div>
+    
+    	<!-- comment form -->
+<!-- comment-form-atp.tt -->
+
+	
+<div id="atp-comments">
+    
+        <div id="comment-preview" class="hiddenBox">
+	<h3 id="header-verify-comment" class="comments-header hiddenBox">Verify your Comment</h3>
+    <h3 id="header-preview-comment" class="comments-header hiddenBox">Previewing your Comment</h3>
+	<div class="comments-content">
+		<div class="comment">
+			<div id="comment-preview-content" class="comment-content">
+			</div>
+			<p class="comment-footer">
+				Posted by: 
+				<span id="comment-preview-author"></span>&nbsp;|&nbsp;<span id="comment-preview-datetime"></span>
+			</p>
+		</div>
+	</div>
+</div>
+<div id="comment-preview-confirmation" class="hiddenBox yellowBox">
+    <p>This is only a preview. Your comment has not yet been posted.</p>
+   	<form id="comment-preview-form"
+   		method="post"
+   		onsubmit="atpComments.interceptPost(commentFormNum); return false;">
+		<input type="submit" name="post" id="comment-confirm-post" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;"/>		    
+		<input type="submit" name="edit" id="comment-edit" value="&nbsp;&nbsp;Edit&nbsp;&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 2); return false;"/>
+        <span id="previewFormSpinner" class="hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+	</form>
+</div>
+<div id="comment-error" class="hiddenBox redBox">	    
+   Your comment could not be posted. Error type: <span id="comment-error-msg"></span> 
+</div>	
+<div id="comment-complete" class="hiddenBox yellowGreenBox">
+    Your comment has been posted. <a href="javascript:void 0;" onclick="window.location.hash='#comment-form';window.location.reload(false)">Post another comment</a>
+</div>	
+<div id="comment-captcha" class="hiddenBox yellowBox">	
+    <div id="captchaText">
+	    <p id="captchaFailMsg" class="captchaErrorText hiddenBox">The letters and numbers you entered did not match the image. Please try again.</p>	    	        
+	    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.</p>
+	    <p><span id="comment-captcha-viewalt">Having trouble reading this image? <a href="#comment-captcha" onClick="atpComments.generateCaptcha(commentFormNum);">View an alternate.</a></span></p>
+    </div>
+    <p class=""><img id="captchaImg" /></p>		
+    <form id="comment-captcha-form" 
+		  method="post"
+		  onsubmit="atpComments.submitWithCaptcha(commentFormNum); return false;">
+		<input type="hidden" name="captcha_chal" id="comment-captcha-chal" value="" />
+        <p>
+	        <input id="comment-captcha-text" name="captcha_text" size="10" />
+        </p>
+        <p>
+            <input type="submit" name="continue" id="captcha-continue" value="&nbsp;Continue&nbsp;" />
+            <span id="captchaFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+        </p>
+    </form>
+</div>
+
+    
+	<div id="primary-comment-form" class="comment-form">
+    	<form id="comment-form" action="http://www.typepad.com/services/comments"
+    		method="post">
+    		<input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e553664cc18834" />
+                <input type="hidden" name="token" value="1239759377-1c84c2ce4482839b6a56b39fa39b48968dbf6ad9:LKmnzRFPCbG8Mkuu" />
+    		<div class="comments-open">
+    			<h2 class="comments-open-header" id="comment-title">Post a comment</h2>
+    			<div id="comments-open-content" class="comments-open-content">
+    				
+				
+    									
+    					<p id="comments-open-login" style="display: none;">
+    													If you have a TypeKey or TypePad account, please
+    							<a href="https://www.typekey.com/t/typekey/login?v=1.0&t=4f50acc861bf9034d3305dedacf37de9d25b3a79&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2008%2F06%2Fironruby-and-aspnet-mvc.html">Sign In</a>
+    						
+    					</p>
+					
+    					<p id="comments-open-logout" style="display: none;">
+    						You are currently signed in as
+    						<span id="commenter-name">(nobody)</span>.
+    						<a href="http://www.iunknown.com/.services/sitelogout?to=https%3A%2F%2Fwww.typekey.com%2Ft%2Ftypekey%2F%3F__mode%3Dlogout%26_return%3Dhttp%253A%252F%252Fwww.iunknown.com%252F2008%252F06%252Fironruby-and-aspnet-mvc.html">Sign Out</a>
+    					</p>
+    				
+                    	<div id="comments-open-text" style="display:none;">
+        					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="atpComments.maxTextArea(this, 64000);"></textarea>
+            				
+            				<p class="comments-open-subtext">
+            				    (URLs automatically linked.)
+            				</p>			
+            				                    					
+        				</div>
+    				    <div id="comments-open-data" style="display:none;">
+                            <p>Your Information</p>
+                            <p>
+                                (Name and email address are required. Email address will not be displayed with the comment.)
+                            
+                            </p>
+    						<p>
+    							<input id="comment-author" at:default="Name" name="author" size="30" value="Name" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-author" id="comment-author-error" class="comment-error hiddenBox">Name is required to post a comment</label>
+    						</p>
+    						<p>
+    							<input id="comment-email" at:default="Email Address" name="email" size="30" value="Email Address" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-email" id="comment-email-error" class="comment-error hiddenBox">Please enter a valid email address</label>
+    						</p>
+    						<p>
+    							<input id="comment-url" at:default="Web Site URL" name="url" size="30" value="Web Site URL" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-url" id="comment-url-error" class="comment-error hiddenBox">Invalid URL</label>
+    						</p>
+    					</div>
+    			</div>
+                <div id="comments-open-footer" class="comments-open-footer" style="display:none;">
+    				<input type="submit" name="post" id="comment-post-button" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;" disabled="true" />
+    				<input type="submit" name="preview" id="comment-preview-button" value="&nbsp;Preview&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 1); return false;" disabled="true" />
+    				<span id="commentEntryFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+    			</div>
+    		</div>
+    	</form>
+        <noscript>
+            
+			<div id="comments-open-noscript" class="comments-open-noscript">
+		        <form action="http://www.typepad.com/services/comments" method="post">
+		            <input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e553664cc18834" />
+                            <input type="hidden" name="token" value="1239759377-1699e3c907cb517cc60247435670e723b7c36447:J1r1IMIUPQRmzgzc" />
+		            Name:<br /><input type="text" name="author" size="30" /><br />
+		            Email address:<br /><input type="text" name="email" size="30" /><br />
+		            URL:<br /><input type="text" name="url" size="30" /><br /><br />
+		            Comment:<br /><textarea name="text" cols="40" rows="4"></textarea><br />
+		            
+		            <input type="submit" name="submit" value="Submit" />
+		        </form>
+			</div>
+			
+		</noscript>
+	</div>
+</div>
+
+
+
+    
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2005/10/new-blog-engine.html?cid=6a00d834fc885d53ef01156e611791970c#comment-6a00d834fc885d53ef01156e611791970c">Pinoy big brother</a> on <a href="http://www.iunknown.com/2005/10/new-blog-engine.html">New blog engine</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html?cid=6a00d834fc885d53ef01156e4f2eb6970c#comment-6a00d834fc885d53ef01156e4f2eb6970c">Custom Software Development</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef01127943175728a4#comment-6a00d834fc885d53ef01127943175728a4">Aaron S.</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef011168cd9674970c#comment-6a00d834fc885d53ef011168cd9674970c">Ram</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2006/06/rubyclr-and-met.html?cid=6a00d834fc885d53ef0112791d6dc528a4#comment-6a00d834fc885d53ef0112791d6dc528a4">Stefan Wenig</a> on <a href="http://www.iunknown.com/2006/06/rubyclr-and-met.html">RubyCLR and method name conflicts</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2005/11/synergy.html?cid=6a00d834fc885d53ef011168a6fd25970c#comment-6a00d834fc885d53ef011168a6fd25970c">insane.tsunami</a> on <a href="http://www.iunknown.com/2005/11/synergy.html">Synergy!</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef0111689567ed970c#comment-6a00d834fc885d53ef0111689567ed970c">DJ</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef0111685d4ac6970c#comment-6a00d834fc885d53ef0111685d4ac6970c">PHenry</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=6a00d834fc885d53ef0105370dee9e970b#comment-6a00d834fc885d53ef0105370dee9e970b">Jimmy Schementi</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silverl.html">Dynamic Silverlight Part 1: Hello, World!</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silve-1.html?cid=6a00d834fc885d53ef011168480d24970c#comment-6a00d834fc885d53ef011168480d24970c">Jimmy Schementi</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silve-1.html">Dynamic Silverlight Part 2: Managed JScript and flickr</a></li>
+			
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">MVP Summit Ruby Meetup</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/index.html">January 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/index.html">April 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">January 2009</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/01/hello-2009.html">1</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">2</a></td>
+				
+							
+					<td>3</td>
+				</tr>
+							<tr>
+					<td>4</td>
+				
+							
+					<td>5</td>
+				
+							
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				</tr>
+							<tr>
+					<td>11</td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				</tr>
+							<tr>
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				</tr>
+							<tr>
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+		</div>
+	</div>
+	
+<!-- c 6a00d834fc885d53ef00d83531ed5d69e2 disabled -->
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+
+<script type="text/javascript">
+var captchaImgAttempts = 0;
+var allowAnonComments = '0';
+var registrationRequired = 0;
+var registrationOptional = 1;
+var emailRequired = 1;
+var jsonURL = "/.services/json-rpc";
+
+var captchaSrc = "/.services/captcha?code_encrypted=";
+var alertCommentCannotBeBlank = "You can not leave an empty comment. Please enter some text in the Comment field.";
+var alertEditingExpired = "Sorry, you're no longer allowed to edit this comment. You may have taken too much time before submitting your edit or someone may have already replied to it.";
+
+var alertAuthorCannotBeBlank = "Name must not be blank.";
+var alertEmailCannotBeBlank = "Email Address must not be blank.";
+var alertAuthorAndEmailCannotBeBlank = "Name and email address are both required!";
+var alertEmailIsInvalid = "The Email Address you entered is invalid. Please enter a valid email address.";
+var alertUnauthorizedAction = "The comments on this post are closed.";
+var msgPostReplyTo = "Reply to ";  
+var msgInReplyTo = "In reply to ";
+var msgPostAComment = "Post a comment ";
+var atpCommentsPath = "/.shared/js/atpcomments_yui.js?v=2";
+var hasChanged = 0;
+var hostName = ".iunknown.com";
+var tp_comment_token = "1239759377-57f0b804e5aebf2c5a56685c6319aab2661bfdb8:8kt7PEP3rfrYHqHZ";
+
+var isPage = 0;
+var blog_xid = "6a00d834fc885d53ef00d83531ed5d69e2";
+var xid = "";
+var injectCode = '<div id=\"comment-preview\" class=\"hiddenBox\">\n\t<h3 id=\"header-verify-comment\" class=\"comments-header hiddenBox\">Verify your Comment<\/h3>\n    <h3 id=\"header-preview-comment\" class=\"comments-header hiddenBox\">Previewing your Comment<\/h3>\n\t<div class=\"comments-content\">\n\t\t<div class=\"comment\">\n\t\t\t<div id=\"comment-preview-content\" class=\"comment-content\">\n\t\t\t<\/div>\n\t\t\t<p class=\"comment-footer\">\n\t\t\t\tPosted by: \n\t\t\t\t<span id=\"comment-preview-author\"><\/span>&nbsp;|&nbsp;<span id=\"comment-preview-datetime\"><\/span>\n\t\t\t<\/p>\n\t\t<\/div>\n\t<\/div>\n<\/div>\n<div id=\"comment-preview-confirmation\" class=\"hiddenBox yellowBox\">\n    <p>This is only a preview. Your comment has not yet been posted.<\/p>\n   \t<form id=\"comment-preview-form\"\n   \t\tmethod=\"post\"\n   \t\tonsubmit=\"atpComments.interceptPost(commentFormNum); return false;\">\n\t\t<input type=\"submit\" name=\"post\" id=\"comment-confirm-post\" value=\"&nbsp;Post&nbsp;\" onclick=\"atpComments.interceptPost(commentFormNum); return false;\"/>\t\t    \n\t\t<input type=\"submit\" name=\"edit\" id=\"comment-edit\" value=\"&nbsp;&nbsp;Edit&nbsp;&nbsp;\" onclick=\"atpComments.previewOnly(commentFormNum, 2); return false;\"/>\n        <span id=\"previewFormSpinner\" class=\"hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n\t<\/form>\n<\/div>\n<div id=\"comment-error\" class=\"hiddenBox redBox\">\t    \n   Your comment could not be posted. Error type: <span id=\"comment-error-msg\"><\/span> \n<\/div>\t\n<div id=\"comment-complete\" class=\"hiddenBox yellowGreenBox\">\n    Your comment has been posted. <a href=\"javascript:void 0;\" onclick=\"window.location.hash=\'#comment-form\';window.location.reload(false)\">Post another comment<\/a>\n<\/div>\t\n<div id=\"comment-captcha\" class=\"hiddenBox yellowBox\">\t\n    <div id=\"captchaText\">\n\t    <p id=\"captchaFailMsg\" class=\"captchaErrorText hiddenBox\">The letters and numbers you entered did not match the image. Please try again.<\/p>\t    \t        \n\t    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.<\/p>\n\t    <p><span id=\"comment-captcha-viewalt\">Having trouble reading this image? <a href=\"#comment-captcha\" onClick=\"atpComments.generateCaptcha(commentFormNum);\">View an alternate.<\/a><\/span><\/p>\n    <\/div>\n    <p class=\"\"><img id=\"captchaImg\" /><\/p>\t\t\n    <form id=\"comment-captcha-form\" \n\t\t  method=\"post\"\n\t\t  onsubmit=\"atpComments.submitWithCaptcha(commentFormNum); return false;\">\n\t\t<input type=\"hidden\" name=\"captcha_chal\" id=\"comment-captcha-chal\" value=\"\" />\n        <p>\n\t        <input id=\"comment-captcha-text\" name=\"captcha_text\" size=\"10\" />\n        <\/p>\n        <p>\n            <input type=\"submit\" name=\"continue\" id=\"captcha-continue\" value=\"&nbsp;Continue&nbsp;\" />\n            <span id=\"captchaFormSpinner\" class=\"commentSpinner hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n        <\/p>\n    <\/form>\n<\/div>\n'; 
+var commentFormNum;
+var entryPermalink = "http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html";
+var inlineReply = document.createElement("div");
+var commentFooterLinks;
+var commentHeader;
+var commentReplyXID;
+var commentReplyAuthor;
+var commentReplyComplete;
+var inlineReplyLoaded = 0;
+
+function xidToCommentPermalink (entryUrl, xid) {
+    return entryUrl + "?cid=" + xid + "#comment-" + xid;
+}
+
+</script>
+<script type="text/javascript" src="/.shared/js/yui/yuiloader-beta-min.js"></script>
+<script type="text/javascript" src="/.shared/js/atpcomments.js?v=2"></script>
+
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

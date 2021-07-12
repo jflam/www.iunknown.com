@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Force .aspx pages to be compiled during daily build</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000305.html" title="UI Programming and Unit Tests " />
+
+<link rel="next" href="http://www.iunknown.com/000307.html" title="No more ND grad filters for me!" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000306.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/50"
+    dc:title="Force .aspx pages to be compiled during daily build"
+    dc:identifier="http://www.iunknown.com/000306.html"
+    dc:subject=""
+    dc:description="I spent the better part of today trying to figure out how to compile .aspx pages without running them. I have a somewhat grotesque hack that uses PageParser.GetCompiledPageInstance(). It works, but only for .aspx pages. I&apos;d love to be able..."
+    dc:creator="John"
+    dc:date="2003-08-01T22:24:27-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000305.html">&laquo; UI Programming and Unit Tests </a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000307.html">No more ND grad filters for me! &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">August 01, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Force .aspx pages to be compiled during daily build</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>I spent the better part of today trying to figure out how to compile .aspx pages <em>without running them</em>. I have a somewhat grotesque hack that uses <code>PageParser.GetCompiledPageInstance()</code>. It works, but only for .aspx pages. I'd love to be able to compile .ascx, .asmx, .ashx, and .asax pages as well. </p>
+
+<p>I host the <span class="caps">ASP.NET</span> runtime in its own AppDomain via <code>System.Web.Hosting.ApplicationHost.CreateApplicationHost()</code>. One of the problems that I ran into was figuring out how to initialize <code>HttpRuntime</code> so that I can call <code>PageParser.GetCompiledPageInstance()</code>. Unfortunately, I can't figure out how to initialize <code>HttpRuntime</code> without first running a page via <code>HttpRuntime.ProcessRequest()</code>. I'm not very happy with that as an option.</p>
+
+<p>Any suggestions on how to get this done would be really helpful. My goal is to write a NAnt task that will let folks include .aspx files in their daily build process.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at August  1, 2003 10:24 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=306" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="306" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000306.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Create a new target that performs a "get" task on each page you want to precompile.</p>
+<span class="comments-post">Posted by: Gerry Shaw at August  2, 2003 12:32 AM</span>
+</div>
+<div class="comments-body">
+<p>I think I can help with one of them: for ascx, just create a test aspx page that instantiates each of your ascx controls. Trickle-down compiling should take over from there.</p>
+
+<p>But running them shouldn't be that big a deal anyway... why not use WebClient and just request the pages? I might be missing the point.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.tallent.us/weblogx/">Richard Tallent</a> at August  2, 2003 01:31 AM</span>
+</div>
+<div class="comments-body">
+<p>The problem with performing a "get" task is the risk of introducing side-effects in arbitrary .aspx pages. For example, you could begin a session when all you really wanted to do was check to see whether the page compiles.</p>
+
+<p>So ... what I'd like to do is just get the page to compile first, then run the appropriate tests if that succeeds.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at August  2, 2003 07:03 AM</span>
+</div>
+<div class="comments-body">
+<p>Hmm. Is there a particular ason you're not using codebehind? Using codebehind, you could use one assembly per class/page,one assembly containing the classes for all of the pages, or multiple assemblies with multiple classes. This would allow you to compile the page prior to testing, and if you took the route of one assembly per page you approximate the inline-code approach (it also creates a more modular Web app).</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at August  2, 2003 09:14 AM</span>
+</div>
+<div class="comments-body">
+<p>*sigh* ason = reason</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at August  2, 2003 09:15 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi Andy,</p>
+
+<p>I prefer code-behind. But I want to build a general-purpose tool for folks who might have reasons to put code into .aspx files. For example, if you're an ISV that's building a vertical app that is customized in the field by your systems engineers, would you really want to let those guys take a build environment out into the field with them? It's far better to let them customize the .aspx files in the field, and let the software engineers generate controlled builds of the core framework components.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at August  2, 2003 09:22 AM</span>
+</div>
+<div class="comments-body">
+<p>Well, that's a reasonable request. Let me make sure I understand what it is you're trying to accomplish. It seems to me that your primary goal to be able to ensure the pages will compile (as opposed to precompiling for performance reasons), correct? If so, then I'd still recommend codebehind, but using the @Page directive's relatively undocumented Src attribute. This approach will allow you to ship the code with the page so that it is field-editable, and also gives you something you can feed to a compiler. This approach also does not require VS.NET or the SDK to be installed. One note of caution, however: do not leave the assemblies that your task generates around anywhere where the ASP.NET runtime can see it (like the app's bin folder) - the runtime WILL compile the code in the file specified by the Src attribute, and this would make the ASP.NET runtime very unhappy because it will find two classes with the same name (one in your precompiled assembly, another in the temporary assembly ASP.NET generates). The simplest approach would be to compile the code into a temporary assembly and delete the file when the task completes.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at August  2, 2003 05:07 PM</span>
+</div>
+<div class="comments-body">
+<p>Our app requires forms authentication so coding up some class that authenticates using forms seemed too much hassle, so all we do is have a page which dynamically generates a bunch of IMG tags from the aspx files on the server, therefore this page then does a GET (via the IMGs) on all the aspx files in the app - therefore they all get compiled.</p>
+
+<p>Note that even if you're using code-behind everything in the ASPX file itself (even the static HTML) gets compiled to a DLL (in Temporary ASP.NET Files) so what you're doing is worthwhile even for code-behind as there's still a considerable lag on the very first request to an ASPX page.</p>
+<span class="comments-post">Posted by: Duncan Smart at August  4, 2003 05:59 AM</span>
+</div>
+<div class="comments-body">
+<p>Andy, You're right - I just want to make sure that the page compiles, I'm not pre-compiling for performance reasons. I feel that it is very useful to know that ALL of the code in your application compiles when you run your daily builds (that it all works as well is an exercise left to the reader). Unfortunately, I can't tell folks "don't use " tags because they're bad for you :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at August  4, 2003 03:53 PM</span>
+</div>
+<div class="comments-body">
+<p>Maybe Cassini src can help: http://www.asp.net/Projects/Cassini/Download/</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://weblogs.asp.net/Yreynhout">Yves Reynhout</a> at August  6, 2003 07:40 PM</span>
+</div>
+<div class="comments-body">
+<p>Take a look at the following</p>
+
+<p>http://hyperthink.net/blog/permalink.aspx?guid=271632d2-07e3-41af-9e58-9a7e25348b8c</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://weblogs.asp.net/astopford">Andrew Stopford</a> at August  8, 2003 08:18 AM</span>
+</div>
+<div class="comments-body">
+<p>This would be useful to do. When I was / am a Java developer, I find it useful to script jspc to compile the JSP pages.</p>
+
+<p>I'd be interested to know what happens when you send a HEAD request, rather than a GET. I wonder if the same session / security code is run (and if the page would have the same side-effects, such as page_load being run).</p>
+
+<p>I'd suspect that it is, as the content probably needs to be regenerated in order to send the size back in the response -- I just can't test it out at the moment.</p>
+
+<p>I wonder if it'd be possible to send through a different verb instead of GET, POST or HEAD, and then ignore the request somehow if that verb is used. This would probably require some webserver config, like the DEBUG one requires.</p>
+
+<p>Kirk</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.mcs.vuw.ac.nz/~kirk">Kirk Jackson</a> at August  8, 2003 11:35 PM</span>
+</div>
+<div class="comments-body">
+<p>You could just create an HttpHandler for all the pages or one for each page. Then compile dll(s) and then run Ngen on that dll to speed up the application. ASP.NET does a lot of code generation given .asp# files that could be done a quicker way with less effort on your side.  It still is a aspx file name that would be requested it just would never have to exist at all, the handler would take over and do what ever you wanted it to do for you.  </p>
+
+<p><br />
+Just an idea.</p>
+
+<p><br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;acblood&#64;comcast&#46;net">Alexander Blood</a> at August 20, 2003 07:25 PM</span>
+</div>
+<div class="comments-body">
+<p>How is it?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;ken&#64;mail&#46;com">Kent</a> at February  9, 2004 09:41 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

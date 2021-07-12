@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+	<meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: A first look at IronRuby</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/07/ironruby-plans-.html?no_prefetch=1" title="IronRuby plans revealed on .NET Rocks" />
+	<link rel="next" href="http://www.iunknown.com/2007/07/oscon-wrap-up.html?no_prefetch=1" title="OSCON Wrap-up" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/07/a-first-look-at.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/20261072"
+    dc:title="A first look at IronRuby"
+    dc:identifier="http://www.iunknown.com/2007/07/a-first-look-at.html"
+    dc:description="We&#39;ve been working very hard over the past couple of months to get our first source code release ready. I&#39;m happy to announce today the first drop of the IronRuby source code. IronRuby is licensed under very liberal terms as..."
+    dc:creator="John Lam"
+    dc:date="2007-07-23T02:03:58-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/07/ironruby-plans-.html">&laquo; IronRuby plans revealed on .NET Rocks</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html">OSCON Wrap-up &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">July 23, 2007</h2>
+
+
+<div class="entry" id="entry-36792226">
+			<h3 class="entry-header">A first look at IronRuby</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a href="http://www.flickr.com/photos/john_lam/860423574/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1432/860423574_c36ee770b1_o.png" width="500" height="206" alt="IronRuby code gen" /></a></p>
+
+<p>We've been working very hard over the past couple of months to get our first source code release ready. I'm happy to announce today the first drop of the <a href="http://iunknown.typepad.com/IronRuby-Pre-Alpha1.zip">IronRuby source code</a>. IronRuby is licensed under very liberal terms as set out by the <a href="http://www.microsoft.com/resources/sharedsource/licensingbasics/permissivelicense.mspx">Microsoft Permissive License</a>.</p>
+
+<p>We're also happy to announce that we will be <strong>accepting source code contributions</strong> into the IronRuby libraries. Right now we have a lot of logistical work that we still need to do, but we fully intend on getting IronRuby onto <a href="http://rubyforge.org/">Rubyforge</a> by the end of August. </p>
+
+<p>Some of you may be wondering why we are only accepting contributions into the libraries and not the entire compiler. It's because IronRuby is built on top of the Dynamic Language Runtime (DLR), and the public interfaces to the DLR are not complete at this time. Since the DLR will ship as part of the CLR in the future, we cannot accept contributions into the IronRuby compiler, at least initially. However, once the DLR matures and reaches 1.0 status with fully supported public interfaces, we will <strong>fully open up all parts of the IronRuby project for external contributions</strong>.</p>
+
+<p>To start playing with this release, you'll need to build IronRuby. This release of IronRuby requires the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5&amp;displaylang=en">.NET Framework 2.0 Redistributable</a>. Just unzip the source code file, and run the build.cmd batch file to create a release-mode build of IronRuby. </p>
+
+<p>You can kick the tires by typing some code interactively using our simple REPL console application. You'll find it at \bin\release\rbx.exe. You should add \bin\release to your path to make your life easier.</p>
+
+<p>Next you should look at the unit tests under \tests\ruby\builtins. This will give you an idea of what works and what doesn't work in IronRuby. We've put most of our effort into Array and String; any other support that's in the libraries was put in there to support building Array and String features.</p>
+
+<p>We have .NET interop working out of the box; you can import .NET libraries into your Ruby programs via require:</p>
+
+<pre><code>
+require 'mscorlib'
+require 'System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+</code></pre>
+
+<p>Notice how you need to use the fully-qualified assembly name in require.</p>
+
+<p>We don't have <code>include</code> working yet at top-level scope, so you'll need to either use fully-qualified type names or assign them to constants:</p>
+
+<pre><code>
+Window = System::Windows::Forms::Window
+</code></pre>
+
+<p>We also have pretty good performance in this release. We use a DLR feature called Dynamic Sites, which is our implementation of adaptive call-site method caching. Other than using Dynamic Sites, we have not done any other specific performance tuning for this release. </p>
+
+<p>In micro-benchmarks which measure method call performance, we are significantly faster than Ruby 1.8.6. In micro-benchmarks which measure library performance, we are on par with Ruby 1.8.6; we expect to see performance improvements in these benchmarks in the future. In micro-benchmarks that involve raising exceptions, we are slower than Ruby 1.8.6; but if control flow on your program's critical path involves raising exceptions you may want to rethink your design :)</p>
+
+<p>We're really interested in hearing what you have to say about this release. I'm at <a href="http://conferences.oreillynet.com/os2007/">OSCON</a> all week, so feel free to come up and say hello if you're attending. My IronRuby talk is this Thursday at 5:20pm, and I'll be busy cooking up a fun demo for that talk between now and then. If you're not at OSCON, feel free to send mail to jflam at the big software company in Redmond.</p>
+
+<p>Last but most important, I'd like to thank the members of the IronRuby team: <a href="http://tmd.havit.cz/">Tomas Matousek</a>, and <a href="http://blogs.msdn.com/haibo_luo/">Haibo Luo</a> for their hard work in getting this release out the door. Great job, guys!</p>
+
+<p><strong>Update</strong></p>
+
+<p>Some additional posts worth reading:</p>
+
+<p>Scott Guthrie, who has a <a href="http://weblogs.asp.net/scottgu/archive/2007/07/23/first-look-at-ironruby.aspx">nice sample on using IronRuby with WPF</a></p>
+
+<p>Jason Zander, on <a href="http://blogs.msdn.com/jasonz/archive/2007/07/23/ironruby-source-available-for-download.aspx">working with the open source community</a></p>
+
+<p>Miguel de Icaza, for an outside perspective of our <a href=" http://tirania.org/blog/archive/2007/Jul-23-1.html">changes as a company</a></p>
+
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F07%2Fa-first-look-at.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 02:03 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/07/a-first-look-at.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/07/a-first-look-at.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/ruby" rel="tag">ruby</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/20261072</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/07/a-first-look-at.html">A first look at IronRuby</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content">
+			<!-- comment list -->
+	<a id="c76894644"></a>
+	<div class="comment" id="comment-76894644">
+		<div class="comment-content">
+			<p>Hello John,</p>
+
+<p>Congratulations!</p>
+
+<p>I have been waiting for this since ages. I am happy to my gift 3 days earlier than expected.</p>
+
+<p>Where can i see all those white papers related to IronRuby, Have you managed to release it or still under preparation...?</p>
+
+<p>Great to see IronRuby on the First day of Oscon 2007.</p>
+
+<p>I am sure IronRuby will be the  most hot topic discussion at Oscon.</p>
+
+<p>Cheers Again.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.softmind.biz" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=76894644">SoftMind</a> |
+			<a href="http://www.iunknown.com/2007/07/a-first-look-at.html#comment-76894644">July 23, 2007 at 03:20 AM</a>
+		</p>
+	</div>
+	<a id="c76897870"></a>
+	<div class="comment" id="comment-76897870">
+		<div class="comment-content">
+			<p>Awesome. Nice work!</p>
+
+<p>And nice meeting you yesterday, too.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://adammonsen.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=76897870">Adam</a> |
+			<a href="http://www.iunknown.com/2007/07/a-first-look-at.html#comment-76897870">July 23, 2007 at 04:19 AM</a>
+		</p>
+	</div>
+	<a id="c76901954"></a>
+	<div class="comment" id="comment-76901954">
+		<div class="comment-content">
+			<p>This is awesome news, congrats!</p>
+
+<p>Btw, what about Visual Studio integration? I have some experience and I'd sure contribute into IronRuby VS integration project.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.tkachenko.com/blog" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=76901954">Oleg Tkachenko</a> |
+			<a href="http://www.iunknown.com/2007/07/a-first-look-at.html#comment-76901954">July 23, 2007 at 05:23 AM</a>
+		</p>
+	</div>
+	<a id="c76905528"></a>
+	<div class="comment" id="comment-76905528">
+		<div class="comment-content">
+			<p>Hi John,</p>
+
+<p>Nice work but what's the deal with all the environment variables in the batch files - like %ROWAN_BIN% and %MERLIN_ROOT% ?</p>
+
+<p>My system doesn't have them setup...are these internal variables? I notice iron python uses the same ones.</p>
+
+<p>The docs is somewhat different :)</p>
+
+<p>Will play more this evening.</p>
+
+<p>Ben</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.benhall.me.uk" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=76905528">Ben Hall</a> |
+			<a href="http://www.iunknown.com/2007/07/a-first-look-at.html#comment-76905528">July 23, 2007 at 06:10 AM</a>
+		</p>
+	</div>
+	<a id="c76905638"></a>
+	<div class="comment" id="comment-76905638">
+		<div class="comment-content">
+			<p>Just to comment on Oleg Tkachenko's post, having a similar F# interactive console in VS for IronRuby would be great!  Does IronPython have anything like this?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.benhall.me.uk" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=76905638">Ben Hall</a> |
+			<a href="http://www.iunknown.com/2007/07/a-first-look-at.html#comment-76905638">July 23, 2007 at 06:11 AM</a>
+		</p>
+	</div>
+	<a id="c76906450"></a>
+	<div class="comment" id="comment-76906450">
+		<div class="comment-content">
+			<p>Great stuff John, glad to see things are moving along smoothly.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.developernotes.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=76906450">Nick Parker</a> |
+			<a href="http://ww

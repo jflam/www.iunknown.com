@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Avalon November CTP</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Avalon November CTP" by jlam</title>
+      <description>&lt;p&gt;I spent some time this afternoon dealing with the breaking changes in my toy Avalon application between the September WinFX &lt;span class="caps"&gt;CTP&lt;/span&gt; and the November WinFX &lt;span class="caps"&gt;CTP&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;a href="http://blogs.msdn.com/karstenj/archive/2005/11/18/494551.aspx"&gt;Karsten Januszewski&lt;/a&gt; has kindly released &lt;a href="http://winfx.members.winisp.net/files/introductionnovctp.mht"&gt;a draft of his upcoming article on the November &lt;span class="caps"&gt;CTP&lt;/span&gt;&lt;/a&gt; that is scheduled to appear on &lt;span class="caps"&gt;MSDN&lt;/span&gt; in December. Between that and the Avalon &lt;span class="caps"&gt;XSD&lt;/span&gt; schema, I was able to figure out how to port my application to the November &lt;span class="caps"&gt;CTP&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;The biggest problem that I had was remembering that the syntax of a &lt;code&gt;PropertyPath&lt;/code&gt; is based on a dot-delimited list of (&lt;em&gt;type name&lt;/em&gt;.&lt;em&gt;property name&lt;/em&gt;) tuples. You can also specify indexers for the list tuples.&lt;/p&gt;
+
+
+	&lt;p&gt;In my app, I had a fairly complex property path that scrapes a property out of a 3D model:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;(Viewport3D.Children)[0].(ModelVisual3D.Content).(Model3DGroup.Children)[2].(Model3D.Transform).(RotateTransform3D.Rotation)&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;There is a new &lt;code&gt;Children&lt;/code&gt; element that hangs off of &lt;code&gt;Viewport3D&lt;/code&gt; that tripped me up. The runtime exceptions that get thrown by the framework aren&amp;#8217;t, um, helpful towards diagnosis of the problem. Spelunking via Intellisense was what helped me discover the new &lt;code&gt;Children&lt;/code&gt; property (Karsten mentions it in his article as well).&lt;/p&gt;
+
+</description>
+      <pubDate>Wed, 23 Nov 2005 15:37:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/23/avalon-november-ctp"&gt;Avalon November CTP&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/23/avalon-november-ctp"&gt;Avalon November CTP&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

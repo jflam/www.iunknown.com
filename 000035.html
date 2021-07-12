@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Alignment issues</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000034.html" title="Athlon interface method dispatch cost" />
+
+<link rel="next" href="http://www.iunknown.com/000036.html" title="Discovery or mistake?" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000034.html">&laquo; Athlon interface method dispatch cost</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000036.html">Discovery or mistake? &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 11, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Alignment issues</h3>
+
+<p><P>Intel works in mysterious ways. </P><br />
+<P>While I was measuring relative performance of VMD vs. IMD, there was something that I neglected to inform you in my previous entries: <EM>I wasn't getting consistent results</EM>. I was running into LOTS of Heisenberg effects that I didn't tell you about. For example, the only way for me&nbsp;to break into JIT-compiled code at runtime was to insert an explicit call to DebugBreak(). This would, of course, generate a 5 byte x86 call instruction, and would upset the alignment of other instructions in the vicinity.</P><br />
+<P>To get around the Heisenberg effects, I decided to create a model system using inline assembler in VC++. This way, I would control the x86 code that was generated, and I could insert x86 nop instructions at my leisure to screw around with the instruction alignment of the generated code.</P><br />
+<P>Raw results:</P><br />
+<P>without the NOP instruction in place:</P><br />
+<P>IMD = 0.85s, VMD = 0.75s</P><br />
+<P>with NOP instruction in place:</P><br />
+<P>IMD = .72s, VMD = 0.63s.</P><br />
+<P>&nbsp;</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January 11, 2002 05:48 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="35" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000035.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

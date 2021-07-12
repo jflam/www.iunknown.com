@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2005/11/25/indigo-and-ruby-great-together-well-sort-of">Indigo and Ruby: great together (well sort of)</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 25 Nov 2005 21:15:00 GMT">Fri, 25 Nov 2005 21:15:00 GMT</span></p>
+<p>If you look at the code that I wrote to <a href="/images/flickr.cs">call flickr using Indigo</a>, you&#8217;ll notice that the flickr <span class="caps">API</span> call accepts a string and returns a string. This makes it trivial for me to interop with Ruby:</p>
+
+
+<pre><code>
+require 'RubyShim'
+require 'builder'
+require 'builder/xmlmarkup'
+require 'rexml/document'
+
+reference_file 'flickrlib.dll'
+
+include FlickrLib
+include Builder
+include REXML
+
+f = Flickr.new('83293ff34e3ab3d9935018480190319f')
+puts f.Call('&lt;method&gt;flickr.people.findByEmail&lt;/method&gt;
+             &lt;find_email&gt;jlam@iunknown.com&lt;/find_email&gt;')
+
+# or if you prefer
+xml = Builder::XmlMarkup.new
+xml.method     "flickr.people.findByEmail" 
+xml.find_email "jlam@iunknown.com" 
+
+d = Document.new(f.Call(xml.target!))
+puts d.elements['//username'].text
+</code></pre>
+
+	<p>I&#8217;m not all that happy with sending mal-formed <span class="caps">XML</span> as an in-parameter, but it was a quick and easy hack to get it up and running.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/25/indigo-and-ruby-great-together-well-sort-of#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/25/indigo-and-flickr-happy-at-last">Indigo and flickr: happy at last</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 25 Nov 2005 20:22:00 GMT">Fri, 25 Nov 2005 20:22:00 GMT</span></p>
+<p>In yesterday&#8217;s post about the <a href="http://www.iunknown.com/articles/2005/11/24/indigo-and-flickr-not-happy-together">Flickr bug</a> I explained what was causing Indigo to be so unhappy. I spent some quality time with Google, and found <a href="http://www.douglasp.com/blog/PermaLink.aspx?guid=e3c387b8-f397-4f4f-817c-75fceab651e7">the code samples</a> from Doug Purdy&#8217;s <span class="caps">PDC</span> presentation on how to make Indigo initiate <span class="caps">POX </span>(Plain Old <span class="caps">XML</span>) style calls. Now, flickr should really fix their <span class="caps">API</span>, but this led to an interesting educational trip into the world of <code>MessageEncoders</code> in Indigo.</p>
+
+
+	<p>A <code>MessageEncoder</code> is responsible for marshaling a <code>Message</code> object to and from an Indigo transport. By writing my own <code>MessageEncoder</code>, I can set its <code>MediaType</code> property to <code>text/xml</code>, thereby ensuring that the Indigo plumbing accepts the mal-formed flickr response.</p>
+
+
+	<p>Once you write your own <code>MessageEncoder</code>, you have to inject it into the Indigo stack. To do this, you&#8217;ll need to implement a custom <code>MessageEncoderFactory</code> and a custom <code>BindingElement</code>. This is fill-in-the-form style programming &#8211; you just have to override a few mandatory methods and you&#8217;re good to go.</p>
+
+
+	<p>The really nice part of this exercise was how none of the rest of the code that I wrote yesterday had to change to make this happen. The only part that changed was replacing the reference to <code>TextMessageEncodingBindingElement</code> with my new <code>FlickrEncodingBindingElement</code>.</p>
+
+
+	<p>Here&#8217;s the <a href="/images/flickr.cs">source code</a> for my implementation (cleaned up a bit from the code that I posted yesterday).</p>
+
+
+	<p>Thanks go out to <a href="http://www.pluralsight.com/blogs/dbox/default.aspx">Don Box</a>, <a href="http://blogs.msdn.com/yassers/">Yasser Shohoud</a> and <a href="http://www.kennyw.com/">Kenny Wolf</a> for pointing out the right way of making this happen.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/25/indigo-and-flickr-happy-at-last#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/24/indigo-and-flickr-not-happy-together">Indigo and flickr: not happy together</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 25 Nov 2005 01:29:00 GMT">Fri, 25 Nov 2005 01:29:00 GMT</span></p>
+<p>Inspired by Mike Taulty&#8217;s <a href="http://mtaulty.com/blog/(z0uien45genrh0jdmtze0z45)/archive/2005/03/30/1721.aspx">A slightly different &#8216;hello, world&#8217; for Indigo</a> blog entry, I decided to create a low-level Indigo client that talks to <a href="http://www.flickr.com/services/api">flickr</a>.</p>
+
+
+	<p>I wanted to understand how the Indigo plumbing worked, so I decided to forego the high-level APIs and write my code using nothing more than <code>ChannelFactory</code>, <code>Message</code>, <code>IRequestChannel</code> and friends. This code compiles and runs on the <a href="http://blogs.msdn.com/brada/archive/2005/11/18/494283.aspx">November <span class="caps">CTP</span></a> bits, so my code looks a bit different than Mike&#8217;s code on his blog. If you want to follow along, you&#8217;ll need the November <span class="caps">CTP</span> bits and the <span class="caps">SDK</span>, but be warned: the documentation has not stayed in sync with changes to the <span class="caps">API</span>. <a href="http://www.aisto.com/roeder/dotnet/">Reflector</a> is your friend :)</p>
+
+
+	<p>It all started innocently enough. Here&#8217;s the original version of my code:</p>
+
+
+<pre><code>
+    ChannelFactory&lt;IRequestChannel&gt; factory;
+    using (factory = new ChannelFactory&lt;IRequestChannel&gt;(
+           CreateBinding(),
+           new EndpointAddress("http://www.flickr.com/services/soap/"))) {
+      using (IRequestChannel channel = factory.CreateChannel()) {
+        StringReader body =
+          new StringReader(@"&lt;x:FlickrRequest xmlns:x='urn:flickr'&gt;
+                             &lt;api_key&gt;83293ff34e3ab3d9935018480190319f&lt;/api_key&gt;
+                             &lt;format&gt;soap2&lt;/format&gt;
+                             &lt;method&gt;flickr.test.echo&lt;/method&gt;
+                             &lt;name&gt;value&lt;/name&gt;
+                           &lt;/x:FlickrRequest&gt;");
+        XmlTextReader reader = new XmlTextReader(body);
+        Message message      = Message.CreateMessage(MessageVersion.Soap12Addressing1, 
+                               "*", reader);
+        Message response     = channel.Request(message);
+        XmlDictionaryReader responseReader = response.GetReaderAtBodyContents();
+        Console.Write(responseReader.ReadOuterXml());
+      }
+    }
+</code></pre>
+
+	<p>This code uses a <code>ChannelFactory</code> to create a request/response style channel to flickr. Next, I construct a <code>Message</code> object and inject some <span class="caps">XML</span> into the message body. The flickr <span class="caps">API</span> is really just a single method that takes an <span class="caps">XML</span> document and returns an <span class="caps">XML</span> document. See the <a href="http://www.flickr.com/services/api">documentation</a> for more examples. Finally, I send my request <code>Message</code> via the channel, and it hands me back a response <code>Message</code> object that I serialize to the console. Simple enough, right?</p>
+
+
+	<p>That&#8217;s when the fun began. There&#8217;s a bug in flickr, and apparently, I&#8217;m <a href="http://www.flickr.com/forums/bugs/14099/">not the first one to report this</a>. The flickr <span class="caps">SOAP API</span> returns a content-type of <code>text/xml</code> for a <span class="caps">SOAP 1</span>.2 message body, whereas the <a href="http://www.w3.org/TR/2003/REC-soap12-part0-20030624/">spec</a> clearly states that the content-type should be <code>application/soap+xml</code>. Indigo is not happy at all with this, and throws a <code>ProtocolException</code> and aborts further processing of the <span class="caps">HTTP</span> response.</p>
+
+
+	<p>The crux of the problem lies in the type of channel that I created using the <code>ChannelFactory</code> class. To understand how the channel is constructed, I have to show you the missing implementation of the <code>CreateBinding</code> method:</p>
+
+
+<pre><code>
+CustomBinding binding = new CustomBinding();
+binding.Elements.Add(new TextMessageEncodingBindingElement(
+  MessageVersion.Soap12Addressing1, Encoding.UTF8));
+binding.Elements.Add(new HttpTransportBindingElement());
+return binding;
+</code></pre>
+
+	<p>Here, I tell the <code>ChannelFactory</code> to construct a channel that uses an <span class="caps">HTTP</span> transport, and a text-based <span class="caps">XML</span> serializer that will generate a <span class="caps">SOAP 1</span>.2 message that is text encoded as <span class="caps">UTF</span>-8. Indigo will also check to make sure that the response from the server is a <span class="caps">SOAP 1</span>.2 message <strong>and</strong> the content-type is <code>application/soap+xml</code>. To see this checking in action, try sending a <span class="caps">SOAP 1</span>.1 <code>Message</code> using this channel.</p>
+
+
+	<p>I spent some time spelunking around using Reflector, <code>TextMessageEncoder.IsContentTypeSupported</code> is where the <code>ProtocolException</code> gets thrown. Unfortunately, I couldn&#8217;t find a way to change the <code>ContentType</code> property of this object. This left only one other option that I could see: write a custom <code>MessageEncoder</code>.</p>
+
+
+	<p>More on how to do this tomorrow.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/24/indigo-and-flickr-not-happy-together#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/23/synergy">Synergy!</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 24 Nov 2005 03:52:00 GMT">Thu, 24 Nov 2005 03:52:00 GMT</span></p>
+<p>While looking for other people who have actually used <span class="caps">SOAP</span> to access the <a href="http://www.flickr.com/services/api/">Flickr <span class="caps">API</span></a>, I discovered <a href="http://synergy2.sourceforge.net/index.html">Synergy</a>.</p>
+
+
+	<p>My life&#8217;s dream is complete: I have actually discovered a useful utility before <a href="http://www.hanselman.com/blog/">Scott Hanselman</a>!  Marvel at how I can use the same keyboard and mouse on the <strong>same virtual desktop</strong> across three computers, one of which is my Powerbook!</p>
+
+
+	<p>All I have to do is roll the mouse to the desired screen, and the keyboard &#8220;focus&#8221; follows my mouse. Absolutely fantastic utility.</p>
+
+
+	<p><img src="http://static.flickr.com/25/66370105_847f42aa6d.jpg" alt="" /></p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/23/synergy#comments">4 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/23/avalon-november-ctp">Avalon November CTP</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 23 Nov 2005 20:37:00 GMT">Wed, 23 Nov 2005 20:37:00 GMT</span></p>
+<p>I spent some time this afternoon dealing with the breaking changes in my toy Avalon application between the September WinFX <span class="caps">CTP</span> and the November WinFX <span class="caps">CTP</span>.</p>
+
+
+	<p><a href="http://blogs.msdn.com/karstenj/archive/2005/11/18/494551.aspx">Karsten Januszewski</a> has kindly released <a href="http://winfx.members.winisp.net/files/introductionnovctp.mht">a draft of his upcoming article on the November <span class="caps">CTP</span></a> that is scheduled to appear on <span class="caps">MSDN</span> in December. Between that and the Avalon <span class="caps">XSD</span> schema, I was able to figure out how to port my application to the November <span class="caps">CTP</span>.</p>
+
+
+	<p>The biggest problem that I had was remembering that the syntax of a <code>PropertyPath</code> is based on a dot-delimited list of (<em>type name</em>.<em>property name</em>) tuples. You can also specify indexers for the list tuples.</p>
+
+
+	<p>In my app, I had a fairly complex property path that scrapes a property out of a 3D model:</p>
+
+
+	<p><code>(Viewport3D.Children)[0].(ModelVisual3D.Content).(Model3DGroup.Children)[2].(Model3D.Transform).(RotateTransform3D.Rotation)</code></p>
+
+
+	<p>There is a new <code>Children</code> element that hangs off of <code>Viewport3D</code> that tripped me up. The runtime exceptions that get thrown by the framework aren&#8217;t, um, helpful towards diagnosis of the problem. Spelunking via Intellisense was what helped me discover the new <code>Children</code> property (Karsten mentions it in his article as well).</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/23/avalon-november-ctp#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/11/ruby-in-the-enterprise">Ruby in the Enterprise</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 11 Nov 2005 19:40:00 GMT">Fri, 11 Nov 2005 19:40:00 GMT</span></p>
+<p>Most of the work we do at <a href="http://www.objectsharp.com">ObjectSharp</a> is your standard line of business application. If you ever tried to introduce Ruby into such an environment, you&#8217;re bound to run into some resistence.</p>
+
+
+	<p>At next week&#8217;s <a href="http://www.objectsharp.com/oNewsUpdate/ReadingFullStory.aspx?StoryNum=-94">Architect&#8217;s Roundtable presentation</a>, I&#8217;m going to present the case for Ruby in the Enterprise. It&#8217;s an interesting story about how we can learn from the past, the importance of platforms, and how to sell productivity to customers.</p>
+
+
+	<p>If you&#8217;re in the Toronto area, make sure you drop by to say hello!</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/personal" rel="category tag">Life</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/11/ruby-in-the-enterprise#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/11/ruby-com-and-the-clr">Ruby, COM and the CLR</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 11 Nov 2005 12:00:00 GMT">Fri, 11 Nov 2005 12:00:00 GMT</span></p>
+<p>If you want to write code that interacts with windows (note the lowercase w) and <span class="caps">COM</span>, then your thread must live in its own single threaded apartment (STA). This poses a problem if you want to write some Windows Forms code in Ruby. Here&#8217;s the problem in a nutshell:</p>
+
+
+	<p>If you&#8217;re using my bridge, the <span class="caps">CLR</span> is delay-loaded; it loads when my bridge is loaded by the Ruby interpreter. Now Ruby doesn&#8217;t know anything about <span class="caps">COM</span>, so Ruby doesn&#8217;t turn on <span class="caps">COM</span> via a <code>CoInitializeEx</code> call at startup. So I should have a chance to turn on <span class="caps">COM</span> on behalf of Ruby (more on why this is bad later) when my bridge loads. One of the really nice things about using MC++ is that the compiler/libraries does a bunch of auto-magical startup code to hoist the <span class="caps">CLR</span> into memory when my bridge loads. This is where our problems begin.</p>
+
+
+	<p>In V1.0 and V1.1 of the <span class="caps">CLR</span>, the runtime <em>theoretically</em> didn&#8217;t turn on <span class="caps">COM</span> either (it actually did in a number of corner cases). This lets you write code like:</p>
+
+
+	<p><code>Thread::CurrentThread::ApartmentState = ApartmentState::STA;</code></p>
+
+
+	<p>However, under V2.0 of the <span class="caps">CLR</span> all threads automatically start in the <span class="caps">MTA </span>- which means that you can no longer write code like the line above. You can instruct the <span class="caps">CLR</span> at <strong>intialization time</strong> to have threads default to their own <span class="caps">STA </span>(via an <code>app.config</code> file or via an <code>STAThread</code> attribute on your application&#8217;s <code>Main</code> method), or you can intialize <span class="caps">COM</span> yourself before you initialize the <span class="caps">CLR</span>.</p>
+
+
+	<p>For a variety of reasons, if the <span class="caps">CLR</span> is delay-loaded, there really is no way to <em>declaratively</em> tell the <span class="caps">CLR</span> about your intentions with respect to <span class="caps">COM</span>. This leaves you with one other option: turn on <span class="caps">COM</span> yourself <em>before</em> the <span class="caps">CLR</span> loads.</p>
+
+
+	<p>Now how can you do this without hacking Ruby itself? Anson Tsao, and old friend of mine at Microsoft provided me with the answer as I was feverishly coding up my bridge in anticipation of its first internal review meeting.</p>
+
+
+	<p>I had an Avalon demo application that I was coding up for Matthew&#8217;s second year birthday and it was refusing to run because the calling thread was not an <span class="caps">STA</span> thread! Now, as anyone with a 2 year old knows, they can get rather upset when things don&#8217;t go their way :) But thankfully at the very last minute, Anson provided me with this hack:</p>
+
+
+<pre><code>
+void InitializedManagedRubyBridge() {
+  ...
+}
+
+#pragma unmanaged
+// Main entry point
+__declspec(dllexport) void Init_RubyShim() {
+  CoInitializeEx(0, COINIT_APARTMENTTHREADED);
+  InitializeManagedRubyBridge();
+}
+</code></pre>
+
+	<p>Notice how I can mix unmanaged and managed code inside the same <span class="caps">DLL</span>! If I define my <span class="caps">DLL</span> entry point in unmanaged code, I can turn on <span class="caps">COM</span> and then jump into my managed code. The call to <code>InitializeManagedRubyBridge()</code> gets intercepted by MC++ libraries which in turn hoist the <span class="caps">CLR</span> into memory before calling my method.</p>
+
+
+	<p>This is a nice way to solve this problem. In a future post, I&#8217;ll point out how this doesn&#8217;t <em>really</em> solve this problem in all cases but likely solves this problem in most cases that users of my bridge will run across.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/11/ruby-com-and-the-clr#comments">2 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/10/const_missing-in-c">const_missing in C++</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 10 Nov 2005 12:00:00 GMT">Thu, 10 Nov 2005 12:00:00 GMT</span></p>
+<p>I created <a href="http://www.iunknown.com/articles/2005/11/09/fun-with-const_missing-and-method_missing">yesterday&#8217;s post</a> about the wonders of <code>const_missing</code> and <code>method_missing</code> using pure Ruby code. Today I&#8217;m going to show you how to do exactly the same thing in C++:</p>
+
+
+<pre><code>
+extern "C" {
+  VALUE ModuleConstMissing(int argc, VALUE *args, VALUE self) {
+    VALUE const_name    = args[0];
+    VALUE params[]      = { rb_const_get(rb_cObject, rb_intern("DynamicProxy")) };
+    VALUE dynamic_proxy = rb_class_new_instance(1, params, rb_const_get(rb_cObject, rb_intern("Class")));
+    rb_funcall(self, rb_intern("const_set"), 2, const_name, dynamic_proxy);
+    return dynamic_proxy;
+  }
+
+  __declspec(dllexport) void Init_RubyBridge() {
+    rb_require("c:\\dev\\rubybridge\\rubybridge\\rb_library.rb");
+    rb_define_method(rb_cModule, "const_missing", RUBY_METHOD_FUNC(ModuleConstMissing), -1);
+  }
+}
+</code></pre>
+
+	<p>The <code>rb_require</code> call lets me reference the <code>rb_library.rb</code> file that contains the definition of the <code>DynamicProxy</code> class that I showed you in yesterday&#8217;s post.</p>
+
+
+	<p>The <code>rb_define_method</code> method lets me override the default implementation of <code>Module.const_missing</code>. The <code>rb_cModule</code> constant is a reference to the built-in class <code>Module</code> that&#8217;s declared in <code>ruby.h</code>. I use the <code>RUBY_METHOD_FUNC</code> macro to pass the address of the <code>ModuleConstMissing</code> function to the Ruby interpreter. The last parameter, -1, is used to tell Ruby to call <code>ModuleConstMissing</code> using a variable-length parameter list.</p>
+
+
+	<p>In the <code>ModuleConstMissing</code> method, I first need a reference to the <code>DynamicProxy</code> class object. This is done by calling <code>rb_const_get</code>, and passing the <code>DynamicProxy</code> symbol. A Ruby symbol is simply an <a href="http://en.wikipedia.org/wiki/Mutable_object">interned</a> string. I use the <code>rb_intern</code> method to intern / retrieve the <code>ID</code> of the interned string.</p>
+
+
+	<p>Next, I need to create a new anonymous class object via <code>Class.new</code>. I can create a new object using the <code>rb_class_new_instance</code> method. Notice how I pass a reference to the <code>DynamicProxy</code> class object to <code>Class.new</code>, which tells Ruby to create a new class that derives from <code>DynamicProxy</code>.</p>
+
+
+	<p>Finally, I assign the newly created class object to the missing constant name that was passed to me from Ruby. The <code>rb_funcall</code> method lets you call an arbitrary method, and uses the C <code>varargs</code> calling convention to let you pass an arbitrary number of parameters (2 in this case) to the method.</p>
+
+
+	<p>These are pretty common usage scenarios for the core Ruby extension APIs that you&#8217;re likely to use. There&#8217;s also <code>rb_eval_string</code> if you want to execute Ruby code defined inside of a string as well.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/10/const_missing-in-c#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/09/fun-with-const_missing-and-method_missing">Fun with const_missing and method_missing</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 09 Nov 2005 12:00:00 GMT">Wed, 09 Nov 2005 12:00:00 GMT</span></p>
+<p>The <code>const_missing</code> and <code>method_missing</code> methods are really important if you want to dynamically extend the Ruby language. They let you dynamically create classes and dynamically add methods to those classes.</p>
+
+
+	<p>Consider this set of unit tests:</p>
+
+
+<pre><code>
+class MethodMissingTests &lt; Test::Unit::TestCase
+  def setup
+    @obj = System.new
+  end
+
+  def test_method_proxy_caching
+    assert_equal "joe", @obj.joe
+    assert_equal "bob", @obj.bob
+    assert_equal "joe", @obj.joe
+    assert_equal "kim", @obj.kim
+  end
+end
+</code></pre>
+
+	<p>There&#8217;s a lot of magic going on in this code since there isn&#8217;t a type called <code>System</code>. When the line of code <code>@obj = System.new</code> runs, it calls <code>Module.const_missing</code>. You can easily override its default implementation:</p>
+
+
+<pre><code>
+class Module
+  def const_missing(name)
+    const_set(name, Class.new(DynamicProxy))
+  end
+end
+</code></pre>
+
+	<p>To understand why this triggers a <code>const_missing</code> call, you need to realize that a constant such as <code>System</code> is really just an alias for a class <em>object</em>. In my <code>const_missing</code> method, I instantiate a new <em>anonymous</em> class object that derives from another class called <code>DynamicProxy</code> (more on him later), and bind the missing constant symbol to this new, anonymous class object (now it&#8217;s not anonymous anymore!).</p>
+
+
+	<p>Let&#8217;s look at <code>DynamicProxy</code>:</p>
+
+
+<pre><code>
+class DynamicProxy
+  def method_missing(name)
+    self.class.class_eval do
+      define_method(name) { name.to_s }
+    end
+    self.method(name).call
+  end
+end
+</code></pre>
+
+	<p>The class object that I created in <code>const_missing</code> will inherit the <code>DynamicProxy</code> <code>method_missing</code> implementation, as will all instances of that class object (in other words all objects created via a <code>System.new</code> call).</p>
+
+
+	<p>If someone attempts to reference a method that doesn&#8217;t exist (e.g. System.new.bob), our <code>method_missing</code> method will get called. The interesting piece of magic code is in the <code>self.class.class_eval</code> block. Here, I define the method that was missing with a default implementation that simply returns the name of the missing method as a string. Obviously, I could define whatever I want in the body of the define_method call!</p>
+
+
+	<p>This is the central piece of magic in my Ruby <-> <span class="caps">CLR</span> bridge. There are some important details left out of this example for clarity, but this captures the essence of the idea. Most everything else is just plumbing.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/09/fun-with-const_missing-and-method_missing#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/07/lies-damn-lies-and-benchmarks">Lies, damn lies and benchmarks</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 07 Nov 2005 12:00:00 GMT">Mon, 07 Nov 2005 12:00:00 GMT</span></p>
+<p>I decided to run some <strong>very</strong> crude benchmarks using my Ruby / .NET bridge just to get a feel for where my code was in relation to the performance of other bridges. I know that my approach is correct and should yield excellent performance. There are, however, a number of optimizations that have yet to be implemented.</p>
+
+
+	<p>The benchmark that I&#8217;m using here is really attempting to isolate the interop performance of reading an integer from .NET and marshaling the result back to Ruby. I have a few more tricks up my sleeve for optimizing the performance of marshaling a value type back to Ruby from .NET that I haven&#8217;t implemented yet, so this number is likely to improve.</p>
+
+
+	<p>The C# code looks like:</p>
+
+
+<pre><code>
+ArrayList k = new ArrayList(); int r = 0;
+for(int i = 0; i &lt; 1000000000; ++i)
+  r += k.Count;
+</code></pre>
+
+	<p>The Ruby code looks like:</p>
+
+
+<pre><code>
+a, b = ArrayList.new, 0
+benchmark.times { b += a.Count }
+</code></pre>
+
+	<p>I attempt to correct for Ruby loop overhead by subtracting the time taken to run this calculation:</p>
+
+
+<pre><code>
+m = 0
+benchmark.times { m += 0 }
+</code></pre>
+
+	<p>The C# code ran at a rate of 205M iterations / second. The Ruby code ran at a corrected rate of 3.2M iterations / second.</p>
+
+
+	<p>My bridge marshals an integer value type from .NET to Ruby at a rate that is 65X slower than a single register load. That&#8217;s not bad for a start.</p>
+
+
+	<p>By comparison, if you look at the SaltyPickle bridge that heavily relies on reflection, you&#8217;ll find that their cost is on the order of 18,000X slower. They also have the side-effect that there is a lot of increased pressure on the GC to collect all of the boxed integers that are used by Reflection. It&#8217;s unclear whether GC time is factored into their observed times.</p>
+
+
+	<p>I need to run a real performance study later on once my bridge matures a bit more. But I think things are already going pretty well when my bridge runs <strong>275X faster</strong> than an existing bridge :)</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/07/lies-damn-lies-and-benchmarks#comments">2 comments</a></p> 
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/6">6</a> <a href="/articles/page/7">7</a> 8 <a href="/articles/page/9">9</a> <a href="/articles/page/10">10</a> </p>
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/100461042/"><img alt="Windows Forms 2.0 on RubyCLR" src="http://static.flickr.com/32/100461042_bc3667dced_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/113024723/"><img alt="RubyCLR generates equations in Avalon" src="http://static.flickr.com/56/113024723_7bb322ce42_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102353551/"><img alt="RSS Reader in Ruby" src="http://static.flickr.com/43/102353551_a14d82507d_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/105005076/"><img alt="Ben's Funny Look" src="http://static.flickr.com/38/105005076_f528bbd27f_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03/page/8">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02/page/8">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01/page/8">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12/page/8">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11/page/8">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10/page/8">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

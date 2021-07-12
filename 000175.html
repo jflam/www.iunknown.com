@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Living with code generation</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000174.html" title="How Macs are faster than PCs and other lies" />
+
+<link rel="next" href="http://www.iunknown.com/000176.html" title="Merry Christmas to me ..." />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000174.html">&laquo; How Macs are faster than PCs and other lies</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000176.html">Merry Christmas to me ... &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 16, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Living with code generation</h3>
+
+<p><P>Just in time for the holidays, I just got a milestone build of my product done! For this milestone release, the core data manipulation engine had to meet certain quality requirements. I thought that I had it done on Friday, but my last set of tests which used data canonicalization turned up a whole raft of bugs that would have otherwise eluded detection. This article describes my experiences using code generation and related techniques while implementing and testing my data manipulation engine.</P><br />
+<P>But first a bit of (intentionally vague) background about my data manipulation engine. It can parse and generate complex binary files. Within these files are hundreds of types, which typically result in thousands of instances at runtime. For this milestone release, my test suite had to ferret out bugs that specifically related to the serialization / deserialization engine. To complicate matters, the data could be [de]serialized into several different formats. This is one of those nasty test matrices where the sheer number of combinations defy any sort of brute-force testing.</P><br />
+<P>Most of my data engine was <A href="Weblog/Whenlessismore.html">code-generated</A>&nbsp;using a free&nbsp;code generation tool called <A href="http://www.imatix.com/html/gslgen/">gslgen</A>. Using line count as a very simple metric, roughly 10000 lines of codes were generated, and about 1000 lines of code handled the special cases that were beyond the scope of the code-generator.</P><br />
+<P>Most of my test suite was also code-generated. I used a separate code-generator and I defined a special language that let me specify test cases extremely compactly using XML. Currently there are about 150 tests in the suite that I generate from roughly 300 lines of custom test case language. This list is by no means exhaustive given the number of possible combinations, but I'm very happy that complex integration tests using real-world data have resulted in a 100% pass rate. I will back-fill the additional unit tests as the code base evolves.</P><br />
+<P>To run my test suite, I'm using <A href="http://nunit.org/">NUnit V2.0</A>. I'm very happy with how effortless it was to integrate NUnit unit tests into my existing build environment. Most of the time during development, I keep the NUnit GUI up and running during development builds to run periodically as I fix bugs. I found that the safety net provided by my unit tests allowed me to aggressively test new bug fixes in my code.</P><br />
+<P>One of the key features of my data engine / test suite is data canonicalization. My data engine generates a single (canonical) representation of the data that is owned by an object, which lets me quickly detect data corruption bugs. My code generator generates a special-case [de]serializer that would parse/serialize an object's fields to/from a stream as XML. Once it was in XML format, it was very easy to run a diff tool[1] against the generated files to see where the problems were. Since the [de]serializer would serialize to/from a <EM>canonical</EM> data representation, it was very easy to spot bugs in the [de]serializer. </P><br />
+<P>I used this technique extensively in integration testing. A typical series of events in an integration test would be to:</P><br />
+<OL><br />
+<LI><br />
+<DIV>Parse an existing file A of binary data to generate an object graph</DIV><br />
+<LI><br />
+<DIV>Serialize the object graph as XML 1</DIV><br />
+<LI><br />
+<DIV>Parse the XML 1 to generate an object graph</DIV><br />
+<LI><br />
+<DIV>Serialize the object graph to file B as binary data</DIV><br />
+<LI><br />
+<DIV>Parse file B to generate an object graph</DIV><br />
+<LI><br />
+<DIV>Serialize the object graph as XML 2</DIV><br />
+<LI><br />
+<DIV>Compare XML 1 and XML 2 for equivalence</DIV></LI></OL><br />
+<P>I spent a fair amount of effort in my code generator to ensure that the generated source code was highly readable. This made it very easy for me to step through the generated code using a debugger, and to modify that generated code. Contrast this with classic C++ template driven programming, where it was impossible to modify the <EM>generated</EM> code; instead you must modify the template, which makes it hard to quickly test fixes to a particular instance of a template. </P><br />
+<P>One of the really amazing things about code generation was how quickly I could fix bugs once I found them.&nbsp;This is because algorithms were expressed in exactly one place using code generation.[2] Most of my bug fixes would either be in the code generator or in the supporting class libraries. And I found that once I fixed a bug once, it almost never re-occurred. </P><br />
+<P>Overall I found that the cost of switching to code generation is heavily front-loaded. But once you get the code generator up and running (and also using it creatively in places like generating your test cases) you will find that it pays you back with much higher quality code in the end.</P><br />
+<P>[1] I use WinDiff from the Platform SDK.</P><br />
+<P>[2] This reminds me of Tip 11: Don't Repeat Yourself (DRY) from the most excellent book <A href="http://www.amazon.com/exec/obidos/ASIN/1040141435/iunknowncom-20/">The Pragmatic Programmer</A>.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December 16, 2002 03:30 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="175" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000175.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Is this work related to the rumors about Microsoft's new X# programming language?<br />
+http://www.microsoft-watch.com/article2/1,4248,766199,00.asp</p>
+<span class="comments-post">Posted by: Cold at December 17, 2002 03:15 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm not to familiar w/ the concept of code generation especially when used in the context of testing. Could someone hook me up w/ a few GOOD references that I could check out to get more confortable with these concepts?</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.siteobjects.com">James</a> at December 17, 2002 03:31 PM</span>
+</div>
+<div class="comments-body">
+<p>Sorry ... it's not at all related to X# </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 17, 2002 04:35 PM</span>
+</div>
+<div class="comments-body">
+<p>The only reference that I've come across that is tangentially related to this is here.<br />
+Look at the end of the article where they describe an internal MS testing system called Socrates. They code-gen their test cases from test specs written in Word.<br />
+I would suggest that you download gslgen and try it out for yourself. The language is a simple scripting language, and it has some nice built-in support for iterating over XML node collections (although it is nowhere near as powerful as XPath). <br />
+You write your code generator using the gsl scripting language, and you define your "little language" using XML. While defining a language in XML isn't the best solution, it avoids forcing you to have to write a parser for an arbitrary grammar. </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 17, 2002 04:35 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm guessing you must have looked at XSLT as a way of converting XML-&gt;Whatever, so what are the advantages of GSLGen?</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.virtualmethods.com">Mark smith</a> at December 19, 2002 08:47 AM</span>
+</div>
+<div class="comments-body">
+<p>That's a really good question, Mark. I know other folks who use XSLT for exactly the same thing. The problem really boils down to the XSLT syntax for me. It's just really nasty and really hard to read, especially when you're doing code-generation. Heck, gslgen is hard enough to read, and that's using syntax coloring in my editor. Believe me, there are times when I miss having XPath in gslgen, but I find that those are few and far between. I felt that the tradeoff between needing XPath and maintenance of my code generators just wasn't worth it. <br />
+Don't think that gslgen is not without its warts, however. The biggest issue for me is that functions in gslgen cannot have return values. This one annoyance makes it MUCH harder to "refactor" your code generation code. Again, this was mostly a matter of pragmatics: I have to write more lines of code-gen code to get around this problem, but it sure was easier than writing my own code gen tool (an impulse that I'm getting better at resisting as I get older </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 19, 2002 10:57 AM</span>
+</div>
+<div class="comments-body">
+<p>John - thanks for the info. I can  recommend "Just XSLT" by john E Simpson if you decide to investigate that option.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.virtualmethods.com">Mark smith</a> at December 20, 2002 03:09 PM</span>
+</div>
+<div class="comments-body">
+<p>The article describes GSL/2.0, which has many limitations.  It's really aimed at code generation only (and even that took us about a decade to get right).  Get GSL/3.0 from the iMatix website (part of RealiBase) and you'll find functions that return values, a toolkit for extending the language (written using GSL, of course) and so on.  We're working on GSL/4, which turns these extensions into objects.  We will, at some point, try to make better support for the product: usable documentation, etc. but for now, treat it as a surfboard.  Looks simple, is not.  Once you learn to use it, you will never look at code again.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.imatix.com">Pieter Hintjens</a> at April 10, 2003 01:16 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

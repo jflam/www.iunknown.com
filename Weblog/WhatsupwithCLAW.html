@@ -1,0 +1,143 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/305 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>What's up with CLAW?</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">What's up with CLAW?</div>
+        <div class="entryDate">2003-02-11</div>
+        <p><P>I see that&nbsp;<A href="http://dotnetweblogs.com/sgentile/">Sam Gentile</A> and <A href="http://dotnetweblogs.com/dmarsh/">Drew Marsh</A> have been writing about <A href="HellofromAOSD2002.html">CLAW</A>. So I felt that it's my duty to tell folks what the current status of that project is.</P>
+<P>Currently, CLAW&nbsp;is in limbo; I haven't really touched that codebase since about October or so. The versions that I have been showing at different conferences are an early prototype that I wrote back in about March of last year. I have a different codebase that included a formal definition of an aspect weaving language that I wrote using <A href="http://www.antlr.org">ANTLR</A>. Unfortunately, the new codebase is only partially operational and doesn't have the functionality of the original prototype.</P>
+<P>Why haven't I continued working on CLAW? Since working on the project, I've had rather mixed feelings about AOP as a technology; I believe that AOP, as it stands today, is too complicated to use as a general-purpose development methodology. </P>
+<P>The main issue that I have with AOP is that it is not possible to discern the functionality of code simply by looking at the source code. AOP allows the <EM>deliberate </EM>introduction of side-effects into a codebase. The canonical (and trivial) examples of AOP are always side-effect free: logging and tracing aspects being the ones most often seen. </P>
+<P>Unfortunately, you run into problems the minute you have aspects that contain side-effects. Perhaps the simplest aspect with side-effects&nbsp;is a security aspect. It grants / denies access to a piece of code based on some security policy. While this in and of itself is not necessarily bad (depending on your point of view), things become far more complicated when you have multiple aspects at a single join point. Think about cases where you have both security policy code and business rules enforcement code woven into a single join point. You now have a case where the order in which the aspects are applied become important (among other things). </P>
+<P>Now consider happens when someone needs to fix a bug. Where is that bug? Is it in the method? Is it in the security policy aspect? Is it in the business rules aspect(s)? What if the bug is a result of the <EM>interaction</EM> of those aspects? How do you even know the aspects are there?</P>
+<P>Some of these problems can be solved by a good IDE. The now-defunct&nbsp;<A href="http://www.aisto.com/roeder/Ip/">Intentional Programming project</A> at Microsoft Research produced a phenomenal IDE that can already provide aspect visualization in source code (check out the video at Lutz's site). The <A href="http://www.eclipse.org/aspectj/">AspectJ</A> folks did a great job of integrating aspect visualization into existing tools like Eclipse and Emacs. </P>
+<P>However, I don't have the resources to build an IDE. Anyone who is going to try and push AOP into mainstream development had better have a lot of resources to back up that project. It's really a job for a Microsoft or an IBM (or a really rich Charles Simonyi who can afford to fund his <A href="http://www.intentionalsoftware.com">own AOP company</A>). It doesn't seem like Microsoft is particularly interested in AOP, especially&nbsp;since they canned the IP project. </P>
+<P>Another related problem is adding new functionality. How do you add it? In an aspect? In your codebase? Some combination thereof?&nbsp;I feel that providing devs with more options in these cases are going to lead to some really nasty bugs in large codebases.</P>
+<P>I hope you don't get the impression that I believe that this technology is not without merit. It's extremely powerful and useful, but <EM>not as a general-purpose technique</EM>. I believe that there are two really interesting applications of AOP:</P>
+<OL>
+<LI>
+<DIV>Security policy enforcement / monitoring</DIV>
+<LI>
+<DIV>Diagnostic probes</DIV></LI></OL>
+<P>You could argue that 1) is a special case of 2), but I digress. There are already companies that I know of working in 1), and 2) cannot be far behind. </P>
+<P>Diagnostic probes are particularly interesting. I believe that there are a large class of bugs caused by inappropriate use of API's. Designers of API's could build diagnostic probes (which are cousins of unit tests) that could be used to validate that applications are calling API's correctly. Here's a few trivial examples that I showed using CLAW:</P>
+<OL>
+<LI>
+<DIV>Tracking whether ADO.NET connections were released, and identifying the point in your source where you opened the connection if it wasn't released</DIV>
+<LI>
+<DIV>Enforcing quotas on resources. One particularly interesting one was a scalability policy based on measuring how long it took for transactions to commit. </DIV></LI></OL>
+<P>I think that 2) is fertile ground for further development, but I have moved on to other areas. If anyone is interested in collaborating in these areas, I would consider doing some consulting work to help get you up to speed. I really like this technology, but I just don't have the time and resources to develop it ...</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/WhatsupwithCLAW.html');"><script type="text/javascript">postCount('Weblog/WhatsupwithCLAW.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Method interception</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Method interception": comment by John Lam</title>
+      <description>&lt;p&gt;I don't actually have tests right now for C# indexers. I'll take a look at it tomorrow to see if I have code that covers that case already. Thanks for the suggestion!&lt;/p&gt;</description>
+      <pubDate>Thu, 16 Feb 2006 22:26:16 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/16/method-interception#comment-128</guid>
+      <link>http://www.iunknown.com/articles/2006/02/16/method-interception#comment-128</link>
+    </item>
+    <item>
+      <title>"Method interception": comment by Justin</title>
+      <description>&lt;p&gt;Two ideas:&lt;/p&gt;
+
+&lt;p&gt;1) Intercepting when blocks/methods are attached to events (to report attach/unattach events). Not really useful except for obscure memory leaks, but would be an intersting challenge.&lt;/p&gt;
+
+&lt;p&gt;2) C# index properties might stretch your syntax (i.e. those properties declare 'int this[] { get { ... } set { ... }')&lt;/p&gt;</description>
+      <pubDate>Thu, 16 Feb 2006 16:18:47 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/16/method-interception#comment-127</guid>
+      <link>http://www.iunknown.com/articles/2006/02/16/method-interception#comment-127</link>
+    </item>
+    <item>
+      <title>"Method interception" by jlam</title>
+      <description>&lt;p&gt;I&amp;#8217;m trying to think of some simple scenarios where Ruby&amp;#8217;s dynamic nature could be put to good use in writing .NET applications. Here&amp;#8217;s one off the top of my head:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class TextBox
+  import Text=
+  alias  old_set_Text Text=
+
+  def Text=(value)
+    puts "Changed value from #{self.Text} to #{value}" 
+    old_set_Text(value)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The &lt;code&gt;TextBox&lt;/code&gt; class that you see is a Windows Forms &lt;code&gt;TextBox&lt;/code&gt;. Here&amp;#8217;s a case where I can intercept all calls to change the &lt;code&gt;Text&lt;/code&gt; property of &lt;em&gt;any&lt;/em&gt; &lt;code&gt;TextBox&lt;/code&gt; control in the application (I can also do this per-control as well).&lt;/p&gt;
+
+
+	&lt;p&gt;Of course, it only works if you call from Ruby &amp;#8211; this can&amp;#8217;t be used, for example, to monitor how C# code changes the &lt;code&gt;Text&lt;/code&gt; property of &lt;code&gt;TextBox&lt;/code&gt; controls.&lt;/p&gt;
+
+
+	&lt;p&gt;The &lt;code&gt;import&lt;/code&gt; directive / method that you see is some hypothetical syntax to force my bridge to generate the method shim for &lt;code&gt;Text=&lt;/code&gt; (this is done automatically the first time you try to use the property in normal usage scenarios).&lt;/p&gt;
+
+
+	&lt;p&gt;Another idea is to monitor &lt;code&gt;SqlConnection&lt;/code&gt; opens and closes to make sure that they are balanced. I did this example many years ago when I wrote my &lt;span class="caps"&gt;AOP&lt;/span&gt; weaver for the &lt;span class="caps"&gt;CLR&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;If folks could leave some comments about how they could see using method interception via Ruby, I&amp;#8217;d be very interested in seeing if I can code it up using my bridge.&lt;/p&gt;
+
+</description>
+      <pubDate>Thu, 16 Feb 2006 11:52:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/16/method-interception"&gt;Method interception&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/16/method-interception"&gt;Method interception&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

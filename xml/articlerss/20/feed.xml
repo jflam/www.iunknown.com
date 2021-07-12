@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Indigo and flickr: happy at last</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Indigo and flickr: happy at last" by jlam</title>
+      <description>&lt;p&gt;In yesterday&amp;#8217;s post about the &lt;a href="http://www.iunknown.com/articles/2005/11/24/indigo-and-flickr-not-happy-together"&gt;Flickr bug&lt;/a&gt; I explained what was causing Indigo to be so unhappy. I spent some quality time with Google, and found &lt;a href="http://www.douglasp.com/blog/PermaLink.aspx?guid=e3c387b8-f397-4f4f-817c-75fceab651e7"&gt;the code samples&lt;/a&gt; from Doug Purdy&amp;#8217;s &lt;span class="caps"&gt;PDC&lt;/span&gt; presentation on how to make Indigo initiate &lt;span class="caps"&gt;POX &lt;/span&gt;(Plain Old &lt;span class="caps"&gt;XML&lt;/span&gt;) style calls. Now, flickr should really fix their &lt;span class="caps"&gt;API&lt;/span&gt;, but this led to an interesting educational trip into the world of &lt;code&gt;MessageEncoders&lt;/code&gt; in Indigo.&lt;/p&gt;
+
+
+	&lt;p&gt;A &lt;code&gt;MessageEncoder&lt;/code&gt; is responsible for marshaling a &lt;code&gt;Message&lt;/code&gt; object to and from an Indigo transport. By writing my own &lt;code&gt;MessageEncoder&lt;/code&gt;, I can set its &lt;code&gt;MediaType&lt;/code&gt; property to &lt;code&gt;text/xml&lt;/code&gt;, thereby ensuring that the Indigo plumbing accepts the mal-formed flickr response.&lt;/p&gt;
+
+
+	&lt;p&gt;Once you write your own &lt;code&gt;MessageEncoder&lt;/code&gt;, you have to inject it into the Indigo stack. To do this, you&amp;#8217;ll need to implement a custom &lt;code&gt;MessageEncoderFactory&lt;/code&gt; and a custom &lt;code&gt;BindingElement&lt;/code&gt;. This is fill-in-the-form style programming &amp;#8211; you just have to override a few mandatory methods and you&amp;#8217;re good to go.&lt;/p&gt;
+
+
+	&lt;p&gt;The really nice part of this exercise was how none of the rest of the code that I wrote yesterday had to change to make this happen. The only part that changed was replacing the reference to &lt;code&gt;TextMessageEncodingBindingElement&lt;/code&gt; with my new &lt;code&gt;FlickrEncodingBindingElement&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the &lt;a href="/images/flickr.cs"&gt;source code&lt;/a&gt; for my implementation (cleaned up a bit from the code that I posted yesterday).&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks go out to &lt;a href="http://www.pluralsight.com/blogs/dbox/default.aspx"&gt;Don Box&lt;/a&gt;, &lt;a href="http://blogs.msdn.com/yassers/"&gt;Yasser Shohoud&lt;/a&gt; and &lt;a href="http://www.kennyw.com/"&gt;Kenny Wolf&lt;/a&gt; for pointing out the right way of making this happen.&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 25 Nov 2005 15:22:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/25/indigo-and-flickr-happy-at-last"&gt;Indigo and flickr: happy at last&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/25/indigo-and-flickr-happy-at-last"&gt;Indigo and flickr: happy at last&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

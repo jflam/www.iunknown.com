@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Sometimes you just have to look at a problem from a different perspective</title>
+    <link>http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Sometimes you just have to look at a problem from a different perspective</title>
+      <description>&lt;p&gt;Or have someone else look at your problem from that perspective :)&lt;/p&gt;
+
+
+	&lt;p&gt;Earlier today I blogged about the &lt;a href="http://www.iunknown.com/articles/2006/05/23/automatic-boxing-in-rubyclr"&gt;automatic boxing problem for value types in RubyCLR&lt;/a&gt;. I was looking at the problem from the perspective of boxing the value type. Seems logical, right? But it turned out to be totally the wrong way to approach it given the current implementation of the &lt;span class="caps"&gt;CLR&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;A big thank-you goes out to &lt;a href="http://blogs.msdn.com/shrib/"&gt;Shri Borde&lt;/a&gt; of the &lt;span class="caps"&gt;CLR&lt;/span&gt; team at Microsoft for suggesting another way of looking at the problem: create a boxed value type and &lt;strong&gt;copy&lt;/strong&gt; the value type to be marshaled into it. You can create a boxed value type via &lt;code&gt;Activator.CreateInstance(Type)&lt;/code&gt; and then you can copy the value type blob using the &lt;code&gt;cpblk&lt;/code&gt; instruction. RubyCLR already caches the size of value types using my &lt;a href="http://www.iunknown.com/articles/2006/04/30/rubyclr-can-marshal-auto-layout-value-types"&gt;sizeof hack&lt;/a&gt; so this is a very easy thing to do.&lt;/p&gt;</description>
+      <pubDate>Wed, 24 May 2006 20:19:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:992b0137904baeb6ddec1d053f151c10</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"Sometimes you just have to look at a problem from a different perspective" by John Lam</title>
+      <description>&lt;p&gt;Sam, This fix will absolutely be in the 4th drop, which I'm now projecting out to be next week (I just became very busy in my day job). &lt;/p&gt;</description>
+      <pubDate>Thu, 25 May 2006 09:11:43 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective#comment-507</link>
+    </item>
+    <item>
+      <title>"Sometimes you just have to look at a problem from a different perspective" by Jeroen Frijters</title>
+      <description>&lt;p&gt;Doh! :-)&lt;/p&gt;</description>
+      <pubDate>Thu, 25 May 2006 02:08:40 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective#comment-506</link>
+    </item>
+    <item>
+      <title>"Sometimes you just have to look at a problem from a different perspective" by Sam</title>
+      <description>&lt;p&gt;Does this mean we might see a fix for my ArrayList &amp;lt;&amp;lt; Guid bugrep in the 4th drop sometime next week? (Hopefully? :-) )&lt;/p&gt;</description>
+      <pubDate>Thu, 25 May 2006 00:06:21 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective#comment-505</link>
+    </item>
+  </channel>
+</rss>

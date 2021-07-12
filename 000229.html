@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Sleepless nights and future plans</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000228.html" title="Introducing Kobe" />
+
+<link rel="next" href="http://www.iunknown.com/000230.html" title="Code generation links" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000228.html">&laquo; Introducing Kobe</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000230.html">Code generation links &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">March 13, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Sleepless nights and future plans</h3>
+
+<p><P>Thanks to everyone who said hi to Kobe! We can see he's getting quite the fan club on the web as well!</P><br />
+<P>I'm writing this entry after I took Kobe out three times to go potty. He signaled that he needed to go at 11:30pm, but it took three separate trips down to his spot (and about 1 hour of total time) before all of his business was done. </P><br />
+<P>I suspect that some of the trouble was related to switching his crate from a wire cage to a Vari enclosed crate; this is his first night in his new crate, and there was the expected bit of resistance. However, he's adjusting a lot better to the new crate than he did initially to his old crate, and we're hoping that the smaller size and a more den-like feel will help him (and us!) in the long run. Now I have to look forward to the 4:00am potty run ... I can't wait until he sleeps through the night.</P><br />
+<P>The peace and quiet that I get at this hour lets me reflect on future plans. There are two key pieces of technology that figure heavily into my plans: code generation and Longhorn.</P><br />
+<P>I've been spending some time recently doing some consulting work on code generation in a large distributed .NET application. The feedback that I'm getting based on our initial week of consultation is extremely positive. I'm going to be spending a lot of time over the next few months working with this company to integrate code generation into their development process. I haven't been this excited about consulting in a long time; I look forward to seeing my client succeed.</P><br />
+<P>I'm very excited by the promise of code generation as a "force multiplier" in the development process. The abstraction level that you can reach is really unsurpassed by any other technique that I've worked with. You can simply generate better code faster using code generation. I'm seriously thinking about putting my ideas down on paper, and building a set of open source code generation tools. The tool I'm using now, <A href="http://www.imatix.com/html/gslgen/">gslgen</A>, is a classic 80% tool. It does a good enough job, but there's a lot of interesting ways that it could be extended. More on this later.</P><br />
+<P>The second key technology in my future plans is Longhorn. However, since, I'm all NDA'd up on Longhorn, there won't be anything showing up on this web site. The only thing I can say is <A href="http://msdn.microsoft.com/events/pdc/">make sure that you go to the PDC this year</A>. This promises to be the most important PDC since the .NET PDC in 2000.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at March 13, 2003 12:50 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="229" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000229.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Yeah, code generation is great, but I think that, when it's really useful, it's equivalent to creating a "custom language".<br />
+That's what Lisp already allow with it's macro system for example.<br />
+Other languages have this great feature : Dylan is one on them (it's the one I prefer since Lisp syntax is "Write Once, Read Never" to me).</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;ybabel&#64;free&#46;fr">YBabel</a> at March 13, 2003 07:38 AM</span>
+</div>
+<div class="comments-body">
+<p>I agree wholeheartedly that the really useful aspects of code generation result from creating a custom problem-domain language.<br />
+That said, however, it is generally better to grab the low-hanging fruit when introducing code generation to an organization. Acceptance of the technique is key, and most folks that I show this technique to really need to see a good concrete example before continuing. <br />
+This is why we're focusing on the easy stuff first - generation of database schemas and the data access layer of the application. However, once they saw the utility of that approach, they readily came up with other suggestions - in the V2 timeframe, we'll be tackling building business rule abstractions using code generation.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at March 13, 2003 09:25 AM</span>
+</div>
+<div class="comments-body">
+<p>I can't wait for you to start working on your code generation tools.<br />
+I'm actually using an ASP.net simpleworker process run from a command line to be able to write my templates in pure C# code inside a webform. Anyway... When will you start ?<br />
+John.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;knipjo&#64;hotmail&#46;com">Jonx</a> at March 16, 2003 10:09 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/243 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Securing the aspnet_wp.exe worker process</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">Securing the aspnet_wp.exe worker process</div>
+        <div class="entryDate">2002-11-21</div>
+        <p><P>I emailed some folks I know at MS regarding my problems with setting up aspnet_wp.exe to run using my domain credentials. Erik Olson, who is a Security PM on the CLR team emailed back a wonderfully detailed explanation of the problem and possible solutions. </P>
+<P>To recap the original problems:</P>
+<OL>
+<LI>I didn't want to grant my domain account the SeDebugPrivilege since that lets a rogue application use the debug API to extract data from other applications running on my computer. 
+<LI>I didn't like the fact that my domain credentials were stored unencrypted in the machine.config file. The machine.config file must be readable by any account that wishes to run CLR applications.</LI></OL>
+<P>In version 1.1 of the frameworks, aspnet_isapi.dll can read process model credentials from a secured registry key. To quote Erik's email:</P>
+<P>"The V1.1 release supports configuring DPAPI encrypted credentials in a registry key, which isn't the most manageable thing in the world but has reasonable security characteristics. In particular, the processModel section is read by the ISAPI running as System, so the ACL on that key can just allow Admin/System. The other sections with creds (identity, sessionState) need to also allow read access for the process identity itself. "</P>
+<P>Another interesting thing that Erik pointed out to me was the fact that there has been a hotfix back-ported to support ASP.NET V1.0.&nbsp;It will be part of the next Service Pack and is documented at: <A href="http://support.microsoft.com/default.aspx?scid=kb;en-us;329250">http://support.microsoft.com/default.aspx?scid=kb;en-us;329250</A></P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/Securingtheaspnet_wp.exew.html');"><script type="text/javascript">postCount('Weblog/Securingtheaspnet_wp.exew.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: March 2004 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2004_02.html" title="February 2004" />
+
+<link rel="next" href="http://www.iunknown.com/2004_04.html" title="April 2004" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2004_02.html">&laquo; February 2004</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2004_04.html">April 2004 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000434"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/178"
+    dc:title="Whither the GAC?"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000434"
+    dc:subject="Blog"
+    dc:description="I see that Ted Neward has been writing about the GAC. In particular, Ted writes &quot;One uses the GAC to put assemblies into place that should be shared across applications&quot;. I disagree. The only reason to put your assembly into..."
+    dc:creator="John"
+    dc:date="2004-03-31T00:14:40-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">March 31, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000434"></a>
+<h3 class="title">Whither the GAC?</h3>
+
+<p>I see that <a href="http://www.neward.net/ted/weblog/index.jsp?date=20040330#1080641913997">Ted Neward has been writing about the <span class="caps">GAC</span></a>. In particular, Ted writes "One uses the <span class="caps">GAC</span> to put assemblies into place that should be shared across applications".</p>
+
+<p>I disagree. The only reason to put your assembly into the <span class="caps">GAC</span> is if you take the following oath: "I promise to <span class="caps">NEVER EVER</span> make any breaking changes in future versions of this assembly." This is the oath that MS took when it created <code>mscorlib.dll</code> and friends. And MS devotes a tremendous amount of time, energy and ultimately money to make those kinds of guarantees. And even <span class="caps">MS </span><a href="http://www.gotdotnet.com/team/changeinfo/Backwards1.0to1.1/default.aspx">has to make breaking changes occasionally</a>. </p>
+
+<p>Most folks don't take that oath. Therefore I would argue that assemblies like Genghis <em>do not</em> belong in the <span class="caps">GAC. </span>They should be shipped as private assemblies instead.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000434.html">12:14 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=434" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=434" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000433"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/177"
+    dc:title="Chase the Swan"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000433"
+    dc:subject="Blog"
+    dc:description="While teaching my ASP.NET class in Little Rock, AR I had an opportunity to make the acquaintance of a swan named Chase. He was one mean swan! He was named Chase by the locals because that was his favorite activity:..."
+    dc:creator="John"
+    dc:date="2004-03-28T09:47:44-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">March 28, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000433"></a>
+<h3 class="title">Chase the Swan</h3>
+
+<p>While teaching my <span class="caps">ASP.NET</span> class in Little Rock, <span class="caps">AR I</span> had an opportunity to make the acquaintance of a swan named Chase. He was one mean swan! He was named Chase by the locals because that was his favorite activity: chasing people away from "his" pond. </p>
+
+<p>The first two shots shown below were shot from a bridge at the far end of the pond. I decided to go to the bridge because I figured that it would be hard for him the "get me" if I was standing on the bridge looking down at him. Sure enough, as I walked around the pond he followed me. You could see him pick up the pace as he saw me approach his pond. </p>
+
+<p>Once I got to the bridge, he took up position under the bridge to make sure that I couldn't get away. This gave me all the time in the world to shoot some photos of him. To get the exposure I wanted, I metered off the swan using my spot meter. I applied +1EV to the meter reading and shot. When I checked my exposure using the histogram, it looked like I nailed it, so I shot the rest of my pictures of him using that setting. Here are my favorite shots of him:</p>
+
+<p><img src="Images/Chase-Close-Up-1.jpg" alt="" /></p>
+
+<p><img src="Images/Chase-Close-Up-2.jpg" alt="" /></p>
+
+<p><img src="Images/Chase-Close-Up-3.jpg" alt="" /></p>
+
+<p>These were all shot as <span class="caps">NEF</span> shots, and I applied a further +0.3EV correction when I imported the images into Photoshop <span class="caps">CS. </span>The only adjustments that I had to make in Photoshop was a bit of unsharp mask since the images were already tack-sharp out of the camera.</p>
+
+<p>This final shot happened when I walked back around to the other side of the pond. I crouched on the grass and Chase (and Lily - his girlfriend) decided to come out of the water to kick my ass. This picture was the last one in a sequence that I shot using the <span class="caps">JPG</span> burst mode in my camera. He was about 3 feet away when I decided to turn and run :) </p>
+
+<p><img src="Images/Do-Not-Feed-The-Swans.jpg" alt="" /></p>
+
+<p>I didn't get a chance to spot meter in this case, so I shot using the matrix metering mode of the camera. I had to do a lot more post processing to get this shot the way I wanted: some shadows and highlights in <span class="caps">PS,</span> some levels adjustment, and some unsharp mask. I'm not sure whether it is better to shoot using the AF-S (single shot autofocus) vs. the AF-C (continuous autofocus) mode during a burst sequence. I have to admit that I didn't know how to turn on AF-C when I shot that photo :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000433.html">09:47 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=433" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=433" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000432"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/176"
+    dc:title="D70 First Impressions"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000432"
+    dc:subject="Blog"
+    dc:description="After almost two years with the Nikon 5700, I decided it was time to upgrade the camera. The 5700 is a wonderful camera for outdoor landscape shots under optimal lighting. However, it was hampered by a few significant shortcomings: Fairly..."
+    dc:creator="John"
+    dc:date="2004-03-28T09:35:06-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000432"></a>
+<h3 class="title">D70 First Impressions</h3>
+
+<p>After almost two years with the Nikon 5700, I decided it was time to upgrade the camera. The 5700 is a wonderful camera for outdoor landscape shots under optimal lighting. However, it was hampered by a few significant shortcomings: </p>
+
+
+<ul>
+<li>Fairly high digital noise at anything above <span class="caps">ISO 100</span></li>
+<li>Slow to autofocus</li>
+<li>Slow to boot</li>
+<li>Autofocus really wouldn't work in low light, and no autofocus assist lamp</li>
+</ul>
+
+<p>Things got really difficult when I wanted to shoot some photos of my son Matthew, since most of those shots were going to happen indoors. All of these factors convinced me that it was time to upgrade to a <span class="caps">DSLR. </span></p>
+
+<p>The camera that caught my eye was the Nikon <span class="caps">D70. </span>For $999, it looked to me to be the best deal going. The one feature that I couldn't live without was my spot meter, and Canon doesn't have one in their 300D/10D line of <span class="caps">DSL</span>Rs. When I went to the store, they were out of <span class="caps">D70 </span>+ kit lens (an 18-70 F/3.5-4.5 lens) packages. So I picked up a 50mm F/1.8D and a Tamron 19-35mm F/3.5-4.5 wide-angle zoom.</p>
+
+<p>So far I've pretty well exclusively used the 50mm prime lens. It forces me to think a lot more about composition since I can't just stand somewhere and zoom in and out. I have to move around until I get a shot that fills the frame. It's also an incredibly sharp lens - I get detail out of this lens / camera combination that I could never get with the 5700, even though it purportedly has better glass (ED vs. D glass).</p>
+
+<p>The reflexes of this camera are unbelievably fast. It turns on instantly. Even with the cheap lenses that I have, it focuses incredibly fast - much faster than any digicam that I've ever held. It nails the focus in low light conditions. It writes <span class="caps">NEF</span> files (uncompressed 12-bit per channel images straight from the sensor) without any delay. There's a 4-shot <span class="caps">NEF</span> buffer which you should not be able to fill under normal conditions except if you were shooting in burst mode. On my 5700, shooting a <span class="caps">NEF</span> would lock up the camera for about 10s.</p>
+
+<p>One thing that I had to get used to was the depth-of-field that I get out of this camera. The depth of field is <strong>much</strong> smaller at a given aperture than it was on my 5700. Especially with a lens like the 50mm f/1.8. But I can get some very interesting shots using shallow depth of field that I could never get with the 5700 since its depth of field was so large (this is due to the fact that its image sensor is much smaller than the one in the <span class="caps">D70</span>).</p>
+
+<p>So far I'm very happy. See <a href="http://www.iunknown.com/000433.html">my next post</a> for some photos of Chase the Swan.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000432.html">09:35 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=432" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=432" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000431"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/175"
+    dc:title="Migrating machine.config settings to IIS 6.0"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000431"
+    dc:subject="Blog"
+    dc:description="<![CDATA[I've been commissioned by Microsoft to create and deliver some content on migrating to IIS 6.0 at Tech Ed 2004. Today, I was writing the content that describes how to migrate your &lt;processModel/&gt; settings from machine.config to the IIS 6.0...]]>"
+    dc:creator="John"
+    dc:date="2004-03-17T16:56:13-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">March 17, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000431"></a>
+<h3 class="title">Migrating machine.config settings to IIS 6.0</h3>
+
+<p>I've been commissioned by Microsoft to create and deliver some content on migrating to <span class="caps">IIS 6.0</span> at Tech Ed 2004. Today, I was writing the content that describes how to migrate your <code>&lt;processModel/&gt;</code> settings from <code>machine.config</code> to the <span class="caps">IIS 6.0</span> metabase. The short story is that <span class="caps">ASP.NET 1.1</span> on <span class="caps">IIS 6.0</span> ignores most (all?) of the <code>&lt;processModel/&gt;</code> settings.</p>
+
+<p>However, there is missing documentation on at least two settings: <code>comAuthenticationLevel</code> and <code>comImpersonationLevel</code>. After scratching my head and firing off a few emails in the general direction of folks at <span class="caps">MS, I</span> decided to do some Googling. I discovered that my old colleague, <a href="http://www.develop.com/kbrown/">Keith Brown</a> had already finished exploring this area in his book-in-progress: <a href="http://www.develop.com/kbrown/book/"><span class="caps">A .NET </span>Developer's Guide to Windows Security</a> In particular, <a href="http://www.develop.com/kbrown/book/html/howto_configaspnetcomsecurity.html">Item 55</a> describes how to configure these settings in <span class="caps">IIS 6</span> via some, um, undocumented registry key entries. Thanks, Keith!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000431.html">04:56 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=431" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=431" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000430"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/174"
+    dc:title="Another day in Puerto Rico"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000430"
+    dc:subject="Blog"
+    dc:description="Well, another day has come and gone. Here&apos;s the beach in front of my hotel: After class, I decided to drive south on Highway 2 from Aguadilla. When I was just outside of Mayaguez, I turned onto 102 and drove..."
+    dc:creator="John"
+    dc:date="2004-03-10T09:14:12-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">March 10, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000430"></a>
+<h3 class="title">Another day in Puerto Rico</h3>
+
+<p>Well, another day has come and gone. Here's the beach in front of my hotel:</p>
+
+<p><img src="Images/Beach-at-Parador-Villa-Anto.jpg" alt="" /></p>
+
+<p>After class, I decided to drive south on Highway 2 from Aguadilla. When I was just outside of Mayaguez, I turned onto 102 and drove along the coast. These next two images are a great example of how photography is the art of subtraction. You'd be tempted to think that all of Puerto Rico looks like this:</p>
+
+<p><img src="Images/Sunset-Building.jpg" alt="" /></p>
+
+<p><img src="Images/Sunset-Dock.jpg" alt="" /></p>
+
+<p>The reality is that this section of Road 102 runs alongside a solid row of buildings that lie between the road and the ocean. These buildings are all surrounded by high fences (and in some cases topped by razor wire!). There are quite a few stray dogs roaming the road which is more-or-less deserted. Most of the restaurants are closed, and nobody is walking along the road. It really is kind of depressing to see how things really look right next to incredibly beautiful scenary. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000430.html">09:14 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=430" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=430" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000429"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/173"
+    dc:title="Sunset in Aguadilla"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000429"
+    dc:subject="Blog"
+    dc:description="Here are a few images that I shot at sunset from a rest stop on the side of Highway 2 just south of Aguadilla, PR...."
+    dc:creator="John"
+    dc:date="2004-03-09T09:25:07-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">March 09, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000429"></a>
+<h3 class="title">Sunset in Aguadilla</h3>
+
+<p>Here are a few images that I shot at sunset from a rest stop on the side of Highway 2 just south of Aguadilla, <span class="caps">PR.</span></p>
+
+<p><img src="Images/Aguadilla-Lookout.jpg" alt="" /></p>
+
+<p><img src="Images/Sunset-Shadows.jpg" alt="" /></p>
+
+<p><img src="Images/Aguadilla-Sunset.jpg" alt="" /></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000429.html">09:25 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=429" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=429" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000428"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/172"
+    dc:title="Will be dark until Saturday"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000428"
+    dc:subject="Blog"
+    dc:description="After lots of flying and driving, I&apos;ve arrived in beautiful Puerto Rico. I&apos;m going to be here teaching a class this week, which also means that I&apos;m most likely going to be off email for the rest of the week...."
+    dc:creator="John"
+    dc:date="2004-03-08T14:16:20-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">March 08, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000428"></a>
+<h3 class="title">Will be dark until Saturday</h3>
+
+<p>After lots of flying and driving, I've arrived in beautiful Puerto Rico. I'm going to be here teaching a class this week, which also means that I'm most likely going to be off email for the rest of the week. I can post to my blog, but I can't <span class="caps">VPN</span> out of HP's corporate network here, which means no email.</p>
+
+<p>I do have my camera with me, so time permitting I'll post a few shots.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000428.html">02:16 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=428" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=428" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000427"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/171"
+    dc:title="I&apos;m souring on XML"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000427"
+    dc:subject="Blog"
+    dc:description="To be specific: I&apos;m souring on XML as an artifact that humans generate. In the past, I&apos;ve advocated using XML as the human-generated input to code generation tools. The more time I spend thinking about this, the more I realize..."
+    dc:creator="John"
+    dc:date="2004-03-02T09:16:54-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">March 02, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000427"></a>
+<h3 class="title">I'm souring on XML</h3>
+
+<p>To be specific: I'm souring on <span class="caps">XML</span> as an artifact that <em>humans</em> generate. In the past, I've advocated using <a href="http://www.iunknown.com/000153.html"><span class="caps">XML</span> as the human-generated input to code generation tools</a>. The more time I spend thinking about this, the more I realize that this is a bug and not a feature.</p>
+
+<p>Maintaining <span class="caps">XML</span> is hard because the syntax gets in the way of reading the code. Reading code without superflous syntax is <a href="http://www.joelonsoftware.com/articles/fog0000000069.html">hard enough</a>. The <span class="caps">XML</span> markup doesn't help improve matters. This is one of the key weaknesses of <span class="caps">XSLT </span>- the fact that it is hard to write and harder to maintain. </p>
+
+<p>Recently, I've been spending some time with Perl. I've written an <span class="caps">HTML</span> generation tool that creates <span class="caps">HTML</span> from <a href="http://bradchoate.com/mt-plugins/textile">a short-hand notation similar to this</a>. This short-hand is powerful because it is idiomatic. It is not intuitive, but that's not the point- I want to create content for my blog as quickly as possible and I don't want the markup to get in the way of proof-reading my content.</p>
+
+<p>I suspect that folks writing <span class="caps">XAML</span> will face similar problems. In the absence of <span class="caps">IDE</span> support, it will be rather tedious to write and maintain non-trivial <span class="caps">XAML</span> scripts. I suspect that this won't be a problem once <span class="caps">XAML</span> tools start shipping, but I would prefer to generate <span class="caps">XAML</span> from a simpler, more idiomatic syntax. </p>
+
+<p>This is why I'm spending time learning Perl today. For more insights in Perl as a code generation language, see this excellent interview with <a href="http://www.codegeneration.net/tiki-read_article.php?articleId=44">Sriram Srinivasan, author of Advanced Perl</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000427.html">09:16 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=427" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=427" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_03.html#000426"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/170"
+    dc:title="Forensic log analysis with LogParser"
+    dc:identifier="http://www.iunknown.com/2004_03.html#000426"
+    dc:subject="Blog"
+    dc:description="As part of some ongoing work that I&apos;ve been doing, I&apos;ve been doing a lot of research on deploying securing IIS 6.0 ASP.NET applications. One tool that definitely should be in your arsenal is LogParser. It uses a SQL-like syntax..."
+    dc:creator="John"
+    dc:date="2004-03-01T11:05:36-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">March 01, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000426"></a>
+<h3 class="title">Forensic log analysis with LogParser</h3>
+
+<p>As part of some ongoing work that I've been doing, I've been doing a lot of research on deploying securing <span class="caps">IIS 6.0 ASP.NET</span> applications. One tool that definitely should be in your arsenal is <a href="http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;familyid=8cde4028-e247-45be-bab9-ac851fc166a4">LogParser</a>. It uses a <span class="caps">SQL</span>-like syntax to perform queries against your web server log files. For an excellent article on performing forensic analysis on your log files using LogParser, see this <a href="http://www.securityfocus.com/infocus/1712">excellent article by Mark Burnett</a>. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000426.html">11:05 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=426" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=426" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

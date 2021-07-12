@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Interface method dispatch cost</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000031.html" title="Pentium Instruction Timings" />
+
+<link rel="next" href="http://www.iunknown.com/000033.html" title="Beware of Heisenberg effects" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000031.html">&laquo; Pentium Instruction Timings</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000033.html">Beware of Heisenberg effects &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 09, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Interface method dispatch cost</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>Two unrelated events caused me to spend some time this afternoon inside the debugger. This entry summarizes some of my observations regarding the cost of invoking a virtual method via an <EM>object</EM> reference vs. invoking the same virtual method via an <EM>interface</EM> reference.</P><br />
+<P>The first event was Jim Miller's excellent <EM>How does Hello, World really work?</EM> talk at the PDC. In this talk, one particular statement caught my attention: "Intel CPU's are very good at optimizing away indirection. In fact, some of our best people back at Redmond cannot figure out what they are doing".&nbsp;Unfortunately, Jim did not present any benchmark code or results to back up his claims, so I knew that I needed to check things out for myself ... sometime.</P><br />
+<P>The second event occurred this weekend when I spent some time reviewing the Methods chapter from Don's forthcoming Essential .NET Volume 1. Don provides an excellent discussion about the mechanics of dispatching virtual methods and interface methods using only a single method table (as opposed to the multiple vtable mechanism used by C++). After reading his chapter, I finally had an excuse to take a look at how well Intel CPU's can optimize away indirection: I can examine the <EM>cost</EM> of interface method dispatch (IMD) vs. virtual method dispatch (VMD). </P><br />
+<P>The first thing to be aware is that there <EM>is</EM> a significant difference in the code that is generated by the JIT compiler. Let's first consider the following simple program:</P><br />
+<P><CODE>interface I1<BR>{<BR>&nbsp; void M1();<BR>}<BR><BR>class C : I1 <BR>{ <BR>&nbsp; public virtual void M1() {} <BR>} <BR><BR>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; C c = new C(); <BR>&nbsp; c.M1();&nbsp;<BR>&nbsp;&nbsp;<BR>&nbsp; I1 i1 = (I1)c; <BR>&nbsp; i1.M1(); <BR></CODE><CODE>}</CODE></P><br />
+<P>First, let's look at the generated CIL for the Main() method:</P><br />
+<P><CODE>.method private hidebysig static void&nbsp; Main(string[] args) cil managed<BR>{<BR>&nbsp; .entrypoint<BR>&nbsp; // Code size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 281 (0x119)<BR>&nbsp; .maxstack&nbsp; 2<BR>&nbsp; .locals init ([0] class C c,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [1] class I1 i1)<BR>&nbsp; IL_0000:&nbsp; newobj&nbsp;&nbsp;&nbsp;&nbsp; instance void C::.ctor()<BR>&nbsp; IL_0005:&nbsp; stloc.0<BR>&nbsp; IL_0006:&nbsp; ldloc.0<BR>&nbsp; IL_0007:&nbsp; callvirt&nbsp;&nbsp; instance void C::M1()<BR>&nbsp; IL_000c:&nbsp; ldloc.0<BR>&nbsp; IL_000d:&nbsp; stloc.1<BR>&nbsp; IL_000e:&nbsp; ldloc.1<BR>&nbsp; IL_000f:&nbsp; callvirt&nbsp;&nbsp; instance void I1::M1()<BR>&nbsp; IL_0014:&nbsp; ret</CODE><CODE><BR>} // end of method Class1::Main</CODE></P><br />
+<P>As you can see, there is no difference in the generated CIL code for calling the M1() and M2() methods, they both use the same instruction sequence. Below is the sequence for calling via the class reference:</P><br />
+<P><CODE>&nbsp; IL_0006:&nbsp; ldloc.0<BR>&nbsp; IL_0007:&nbsp; callvirt&nbsp;&nbsp; instance void C::M1()<BR></CODE></P><br />
+<P>Here is the instruction sequence for calling via the interface reference:</P><br />
+<P><CODE>&nbsp; IL_000e:&nbsp; ldloc.1<BR>&nbsp; IL_000f:&nbsp; callvirt&nbsp;&nbsp; instance void I1::M1()</CODE></P><br />
+<P>However, things become <EM>dramatically</EM> different when we look at the generated x86 code. Here's the instruction sequence for a call via an object reference:</P><br />
+<P><CODE>// c.M1(); <BR>0440 mov ecx,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;esi contains objref<BR>0442 mov eax,[ecx]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;get method table<BR>0444 call dword ptr [eax+0x38] ;invoke via slot in MT<BR></CODE></P><br />
+<P>Here's the instruction sequence for a call via an interface reference:</P><br />
+<P><CODE>// i1.M1(); <BR>04af mov ecx,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;edi contains objref<BR>04b1 mov eax,[ecx]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;get method table<BR>04b3 mov eax,[eax+0xc]&nbsp;&nbsp;&nbsp; ;get global IT<BR>04b6 mov eax,[eax+0x2c]&nbsp;&nbsp; ;get local IT<BR>04b9 call dword ptr [eax] ;invoke via slot in IT<BR></CODE></P><br />
+<P>Note that there are <EM>two additional levels of indirection </EM>here.</P><br />
+<P>Let's put this code into a loop. Here's some x86 code that calls the virtual method M1() 100,000,000 times via an <EM>object </EM>reference.</P><br />
+<P><CODE>00be xor edi,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;i = 0<BR>00c0 mov ecx,esi <BR>00c2 mov eax,[ecx] <BR>00c4 call dword ptr [eax+0x38] <BR>00c7 inc edi <BR>00c8 cmp edi,0x5f5e100 ;i &lt; 100,000,000<BR>00ce jl 00c0 </CODE></P><br />
+<P><CODE></CODE>Here's some x86 code that calls the virtual method M1() 100,000,000 times via an <EM>interface</EM> reference:</P><br />
+<P><CODE>00ec xor edi,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;i&nbsp;= 0<BR>00ee mov ecx,esi <BR>00f0 mov eax,[ecx] <BR>00f2 mov eax,[eax+0xc] <BR>00f5 mov eax,[eax+0x2c] <BR>00f8 call dword ptr [eax] <BR>00fa inc edi <BR>00fb cmp edi,0x5f5e100 ;100,000,000<BR>0101 jl 00ee</CODE></P><br />
+<P>Both of the call instructions in the code fragments above target the same method:</P><br />
+<P><CODE>01e0 ret</CODE></P><br />
+<P>I believe that you would expect that the IMD code should take significantly longer to execute due to its two additional memory dereferences. So did I. But results are results.</P><br />
+<P>Here's the code for the test rig:</P><br />
+<P><CODE>const int MAX_COUNT = 100000000; <BR><BR>static long TimeVirtualMethodDispatch( C c ) <BR>{ <BR>&nbsp; long vmdStart, vmdEnd; <BR>&nbsp; QueryPerformanceCounter( out vmdStart ); <BR>&nbsp; for( int i = 0; i &lt; MAX_COUNT; i++ ) <BR>&nbsp; { <BR>&nbsp;&nbsp;&nbsp; c.M1(); <BR>&nbsp; } <BR>&nbsp; QueryPerformanceCounter( out vmdEnd ); <BR>&nbsp; return vmdEnd - vmdStart; <BR>} <BR><BR>static long TimeInterfaceMethodDispatch( I1 i1 )<BR>{ <BR>&nbsp; long imdStart, imdEnd; <BR>&nbsp; QueryPerformanceCounter( out imdStart ); <BR>&nbsp; for( int i = 0; i &lt; MAX_COUNT; i++ ) <BR>&nbsp; { <BR>&nbsp;&nbsp;&nbsp; i1.M1(); <BR>&nbsp; } <BR>&nbsp; QueryPerformanceCounter( out imdEnd ); <BR>&nbsp; return imdEnd - imdStart; <BR>} <BR><BR>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; C c = new C();&nbsp;<BR>&nbsp; I1 i1 = (I1)c;&nbsp;<BR><BR>&nbsp; // Make sure that the methods are pre-compiled first <BR>&nbsp; TimeVirtualMethodDispatch( c );&nbsp;&nbsp; <BR>&nbsp; TimeInterfaceMethodDispatch( i1 );&nbsp;<BR><BR>&nbsp;&nbsp;// Call above methods and output results to console<BR>}</CODE></P><br />
+<P><A href="Files/VirtualMethods.zip">Click here to download the VS.NET project that contains the test rig code</A>.</P><br />
+<P>Here are the&nbsp;results:</P><br />
+<P>Virtual method dispatch: 3.63 +/- 0.06 E+06 ticks<BR>Interface method dispatch: 4.12 +/- 0.07 E+06 ticks</P><br />
+<P>Relative difference (IMD-VMD)/VMD * 100% =&nbsp;<STRONG>13 +/- 1 %</STRONG></P><br />
+<P>If you're interested in the raw results, <A href="Files/DispatchResults.xls">click here for the Excel spreadsheet</A>.</P><br />
+<P>I wanted to compare the measured performance to the predicted performance based on instruction timings. However, when I looked through the Intel Instruction Set Reference Manual this afternoon, I couldn't find any instruction timing information. I'm assuming that instruction timings in clocks are largely irrelevant due to internal caching, parallelization and out-of-order execution in modern CPU's. If someone knows how to get the theoretical instruction timings for modern Intel CPU's, please <A href="mailto:jlam@iunknown.com">email me</A>.</P><br />
+<P>However, if we do a simple back-of-the envelope calculation and assume that each instruction in both sequences executes in a single clock, the VMD loop should complete in&nbsp;7 clocks, and the IMD loop should complete in&nbsp;9 clocks (the additional instruction is the ret instruction at the terminus of the call). In this case, we should see a 22% difference in performance, as opposed to the 12% that was observed. Clearly the CPU is doing some very interesting things, and the cost is not as high as we might expect. </P><br />
+<P>NOTE: These results were obtained on my Thinkpad T-23 at 4:30pm on a cloudy afternoon in Toronto while sitting in the Starbucks at the Athletic Centre at the University of Toronto. Your mileage <EM>will</EM> vary. However, since this benchmark provides you with relative numbers, I doubt that there should be much variation. The one exception that I can think of is running the benchmark on CPU's with different architectures. These numbers were from the Pentium III-M CPU in my laptop. I'll run the same benchmark on some of my other machines to see what numbers they come up with.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January  9, 2002 12:12 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="32" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000032.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

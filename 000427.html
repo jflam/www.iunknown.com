@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: I'm souring on XML</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000426.html" title="Forensic log analysis with LogParser" />
+
+<link rel="next" href="http://www.iunknown.com/000428.html" title="Will be dark until Saturday" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000427.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/171"
+    dc:title="I&apos;m souring on XML"
+    dc:identifier="http://www.iunknown.com/000427.html"
+    dc:subject="Blog"
+    dc:description="To be specific: I&apos;m souring on XML as an artifact that humans generate. In the past, I&apos;ve advocated using XML as the human-generated input to code generation tools. The more time I spend thinking about this, the more I realize..."
+    dc:creator="John"
+    dc:date="2004-03-02T09:16:54-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000426.html">&laquo; Forensic log analysis with LogParser</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000428.html">Will be dark until Saturday &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">March 02, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">I'm souring on XML</h3>
+
+<p>To be specific: I'm souring on <span class="caps">XML</span> as an artifact that <em>humans</em> generate. In the past, I've advocated using <a href="http://www.iunknown.com/000153.html"><span class="caps">XML</span> as the human-generated input to code generation tools</a>. The more time I spend thinking about this, the more I realize that this is a bug and not a feature.</p>
+
+<p>Maintaining <span class="caps">XML</span> is hard because the syntax gets in the way of reading the code. Reading code without superflous syntax is <a href="http://www.joelonsoftware.com/articles/fog0000000069.html">hard enough</a>. The <span class="caps">XML</span> markup doesn't help improve matters. This is one of the key weaknesses of <span class="caps">XSLT </span>- the fact that it is hard to write and harder to maintain. </p>
+
+<p>Recently, I've been spending some time with Perl. I've written an <span class="caps">HTML</span> generation tool that creates <span class="caps">HTML</span> from <a href="http://bradchoate.com/mt-plugins/textile">a short-hand notation similar to this</a>. This short-hand is powerful because it is idiomatic. It is not intuitive, but that's not the point- I want to create content for my blog as quickly as possible and I don't want the markup to get in the way of proof-reading my content.</p>
+
+<p>I suspect that folks writing <span class="caps">XAML</span> will face similar problems. In the absence of <span class="caps">IDE</span> support, it will be rather tedious to write and maintain non-trivial <span class="caps">XAML</span> scripts. I suspect that this won't be a problem once <span class="caps">XAML</span> tools start shipping, but I would prefer to generate <span class="caps">XAML</span> from a simpler, more idiomatic syntax. </p>
+
+<p>This is why I'm spending time learning Perl today. For more insights in Perl as a code generation language, see this excellent interview with <a href="http://www.codegeneration.net/tiki-read_article.php?articleId=44">Sriram Srinivasan, author of Advanced Perl</a>.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at March  2, 2004 09:16 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=427" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="427" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000427.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Have you tried YAML?</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.codegeneration.net">Jack Herrington</a> at March  2, 2004 10:26 AM</span>
+</div>
+<div class="comments-body">
+<p>Hmm, a shorthand way to quickly create HTML pages...</p>
+
+<p>Can you say, "wiki" ? I knew you could. :) </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://staff.develop.com/candera">Craig Andera</a> at March  2, 2004 10:32 AM</span>
+</div>
+<div class="comments-body">
+<p>You're not alone - see http://www-106.ibm.com/developerworks/library/x-sbxml.html</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;studoot&#64;hotmail&#46;com">Stuart Dootson</a> at March  2, 2004 12:20 PM</span>
+</div>
+<div class="comments-body">
+<p>I've long pounded the desk saying that the purpose of XML is best for machine-to-machine vendor-neutral hierarchical non-binary data representation, and the further you stray from any one of those points, you lose.</p>
+
+<p>I will not ever use DocBook, at least not as an input method.  I do not want to edit configuration files in XML.  XML is just far too verbose for me to write, and barely not-quite-enough verbose for me to tolerate reading.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://ww.stonehenge.com/merlyn/">Randal L. Schwartz</a> at March  9, 2004 10:41 AM</span>
+</div>
+<div class="comments-body">
+<p>This comment may be a bit late, but I suggest you peek at pxsl. (http://community.moertel.com/pxsl)</p>
+
+<p>It rocks.</p>
+<span class="comments-post">Posted by: nobody important at March 15, 2004 07:10 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

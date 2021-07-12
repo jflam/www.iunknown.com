@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Xen to be the new kernel of OS X?</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Xen to be the new kernel of OS X?" by jlam</title>
+      <description>&lt;p&gt;I saw &lt;a href="http://forum.onmac.net/showthread.php?t=5"&gt;this post&lt;/a&gt; from Colin, the guy who runs the &lt;a href="http://www.winxponmac.com"&gt;winxponmac.com&lt;/a&gt; contest site. Apparently, he talked to one of the guys from &lt;a href="http://xensource.com/"&gt;XenSource&lt;/a&gt;, and this was the most interesting parts of the conversation:&lt;/p&gt;
+
+
+	&lt;blockquote&gt;
+		&lt;p&gt;Currently, Apple uses the Mach Kernel to interface with the hardware. However, &amp;#8220;Mach&amp;#8221; is essentially outdated and causes a lot of the bottlenecks with programs having to create a lot more processes than necessary to get the job done. The guy from Xen told me they have been talking a great deal with the Apple guys about replacing Mach with Xen. This is a really big deal! This would be consistent with reports that Apple has filed patents related to Virtualization.&lt;/p&gt;
+	&lt;/blockquote&gt;
+
+
+	&lt;p&gt;Read the rest of the post for more details (and links). Xen is an open-source virtualization monitor a&amp;#8217;la VMWare and &lt;span class="caps"&gt;VPC&lt;/span&gt;. It apparently is &lt;a href="http://www.cl.cam.ac.uk/Research/SRG/netos/xen/performance.html"&gt;much more efficient&lt;/a&gt; than either VMWare or &lt;span class="caps"&gt;VPC&lt;/span&gt; when the guest OS has been modified to run on Xen. However, with the advent of the new Intel Vanderpool virtualization technology, the guest OS can run &lt;em&gt;unmodified&lt;/em&gt; at Ring 1 privilege. Now, it&amp;#8217;s likely that both VMWare and &lt;span class="caps"&gt;VPC&lt;/span&gt; will exploit this new hardware feature, but it would rock if we could have built-in virtualization in the host OS.&lt;/p&gt;
+
+</description>
+      <pubDate>Sat, 04 Feb 2006 10:52:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/04/xen-to-be-the-new-kernel-of-os-x"&gt;Xen to be the new kernel of OS X?&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/04/xen-to-be-the-new-kernel-of-os-x"&gt;Xen to be the new kernel of OS X?&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

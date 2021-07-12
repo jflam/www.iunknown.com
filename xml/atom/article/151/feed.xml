@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Sometimes you just have to look at a problem from a different perspective</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/151/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:42-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:992b0137904baeb6ddec1d053f151c10</id>
+    <published>2006-05-24T20:19:00-07:00</published>
+    <updated>2006-08-21T15:55:42-07:00</updated>
+    <title type="html">Sometimes you just have to look at a problem from a different perspective</title>
+    <link href="http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;Or have someone else look at your problem from that perspective :)&lt;/p&gt;
+
+
+	&lt;p&gt;Earlier today I blogged about the &lt;a href="http://www.iunknown.com/articles/2006/05/23/automatic-boxing-in-rubyclr"&gt;automatic boxing problem for value types in RubyCLR&lt;/a&gt;. I was looking at the problem from the perspective of boxing the value type. Seems logical, right? But it turned out to be totally the wrong way to approach it given the current implementation of the &lt;span class="caps"&gt;CLR&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;A big thank-you goes out to &lt;a href="http://blogs.msdn.com/shrib/"&gt;Shri Borde&lt;/a&gt; of the &lt;span class="caps"&gt;CLR&lt;/span&gt; team at Microsoft for suggesting another way of looking at the problem: create a boxed value type and &lt;strong&gt;copy&lt;/strong&gt; the value type to be marshaled into it. You can create a boxed value type via &lt;code&gt;Activator.CreateInstance(Type)&lt;/code&gt; and then you can copy the value type blob using the &lt;code&gt;cpblk&lt;/code&gt; instruction. RubyCLR already caches the size of value types using my &lt;a href="http://www.iunknown.com/articles/2006/04/30/rubyclr-can-marshal-auto-layout-value-types"&gt;sizeof hack&lt;/a&gt; so this is a very easy thing to do.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Or have someone else look at your problem from that perspective :)&lt;/p&gt;
+
+
+	&lt;p&gt;Earlier today I blogged about the &lt;a href="http://www.iunknown.com/articles/2006/05/23/automatic-boxing-in-rubyclr"&gt;automatic boxing problem for value types in RubyCLR&lt;/a&gt;. I was looking at the problem from the perspective of boxing the value type. Seems logical, right? But it turned out to be totally the wrong way to approach it given the current implementation of the &lt;span class="caps"&gt;CLR&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;A big thank-you goes out to &lt;a href="http://blogs.msdn.com/shrib/"&gt;Shri Borde&lt;/a&gt; of the &lt;span class="caps"&gt;CLR&lt;/span&gt; team at Microsoft for suggesting another way of looking at the problem: create a boxed value type and &lt;strong&gt;copy&lt;/strong&gt; the value type to be marshaled into it. You can create a boxed value type via &lt;code&gt;Activator.CreateInstance(Type)&lt;/code&gt; and then you can copy the value type blob using the &lt;code&gt;cpblk&lt;/code&gt; instruction. RubyCLR already caches the size of value types using my &lt;a href="http://www.iunknown.com/articles/2006/04/30/rubyclr-can-marshal-auto-layout-value-types"&gt;sizeof hack&lt;/a&gt; so this is a very easy thing to do.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-25T09:11:43-07:00</published>
+    <updated>2006-08-21T19:05:45-07:00</updated>
+    <title type="html">Comment on Sometimes you just have to look at a problem from a different perspective by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective#comment-507" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Sam, This fix will absolutely be in the 4th drop, which I'm now projecting out to be next week (I just became very busy in my day job). &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Jeroen Frijters</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-25T02:08:40-07:00</published>
+    <updated>2006-08-21T19:05:45-07:00</updated>
+    <title type="html">Comment on Sometimes you just have to look at a problem from a different perspective by Jeroen Frijters</title>
+    <link href="http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective#comment-506" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Doh! :-)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Sam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-25T00:06:21-07:00</published>
+    <updated>2006-08-21T19:05:44-07:00</updated>
+    <title type="html">Comment on Sometimes you just have to look at a problem from a different perspective by Sam</title>
+    <link href="http://www.iunknown.com/articles/2006/05/24/sometimes-you-just-have-to-look-at-a-problem-from-a-different-perspective#comment-505" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Does this mean we might see a fix for my ArrayList &amp;lt;&amp;lt; Guid bugrep in the 4th drop sometime next week? (Hopefully? :-) )&lt;/p&gt;</content>
+  </entry>
+</feed>

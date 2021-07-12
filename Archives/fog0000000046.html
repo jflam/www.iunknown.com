@@ -1,0 +1,1000 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/46 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Fog Creek CityDesk 1.0.1">
+<title>IUnknown.com - January 2002 Weblog Archives</title>
+<link rel="stylesheet" href="../global.css">
+<script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+<script language="javascript">
+  function HaloScan2(id) { 
+    location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+  }
+</script>
+</head>
+<BODY>
+
+<table border="0" width="800" class="heading">
+  <tr>
+    <td width="100%" class="heading"><A href="../index.html">IUnknown.com</a></td>
+  </tr>
+</table>
+<table border="0" width="800" class="subheading">
+  <tr>
+    <td width="100%" class="subheading">    &nbsp; John Lam's weblog on software development</td>
+  </tr>
+</table>
+
+<table width="800" border="0" cellpadding="7" cellspacing="0">
+<tr>
+<td class="left_panel" valign="top" align="right">
+<p><a href="/rss.xml">rss feed</a></p>
+<p>about</p>
+
+<A href="../About/Aboutme.html">About me</a><br>
+
+<A href="../About/fog0000000006.html">About this site</a><br>
+
+<A href="../About/fog0000000010.html">My plan</a><br>
+
+<A href="../About/fog0000000009.html">My other life</a><br>
+
+<A href="../About/fog0000000008.html">My products</a><br>
+
+<A href="../About/fog0000000013.html">My publications</a><br>
+
+<p>aop</p>
+
+<A href="../AOP/fog0000000115.html">My Runtime Aspect Weaver</a><br>
+
+<A href="../AOP/fog0000000114.html">What is AOP?</a><br>
+
+<p>book</p>
+
+<A href="../CLRInternals/fog0000000043.html">About Inside the CLR</a><br>
+
+<p>articles</p>
+
+<A href="../Articles/Booksuggestions.html">Book suggestions</a><br>
+
+<A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</a><br>
+
+<A href="../Articles/fog0000000065.html">x86 Resources</a><br>
+
+<A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</a><br>
+
+<A href="../Articles/fog0000000034.html">Entertainment PC's</a><br>
+
+<A href="../Articles/fog0000000025.html">Hello CppUnit</a><br>
+
+<p>archives</p>
+
+<A href="March2003.html">March 2003</a><br>
+
+<A href="February2003.html">February 2003</a><br>
+
+<A href="January2003.html">January 2003</a><br>
+
+<A href="December2002.html">December 2002</a><br>
+
+<A href="November2002.html">November 2002</a><br>
+
+<A href="October2002.html">October 2002</a><br>
+
+<A href="September2002.html">September 2002</a><br>
+
+<A href="August2002.html">August 2002</a><br>
+
+<A href="July2002.html">July 2002</a><br>
+
+<A href="June2002.html">June 2002</a><br>
+
+<A href="May2002.html">May 2002</a><br>
+
+<A href="April2002.html">April 2002</a><br>
+
+<A href="fog0000000116.html">March 2002</a><br>
+
+<A href="fog0000000091.html">February 2002</a><br>
+
+<A href="fog0000000046.html">January 2002</a><br>
+
+<A href="fog0000000030.html">December 2001</a><br>
+
+<a href="http://www.haloscan.com/"><img width="88" height="31" src="http://www.haloscan.com/halolink.gif" border="0" alt="Weblog Commenting by HaloScan.com" /></a> 
+</td>
+<td class="main_panel">
+<p><span class="article_heading">January 2002 Archives</span></p>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000088.html">New template</A>
+  </span><BR>
+  31 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>After getting a couple of complaints about how difficult it was to read white text on a black background, I've decided to redesign the color scheme of this site. Please <A href="mailto:jlam@iunknown.com">send me email</A> if you hate the way this new layout looks, or whether you find the new color scheme easier to read.</P>
+<P>Enjoy!</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000088.html');"><script type="text/javascript">postCount('Weblog/fog0000000088.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000087.html">I've gotten the MC++ Religion</A>
+  </span><BR>
+  31 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I had <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0110D&amp;L=DOTNET&amp;P=R31860">earlier vowed</A> to never write a line of MC++ code.</P>
+<P>I would now like to publicly recant that vow after I spent the better part of this evening (and early morning hours) working with the managed C++ extensions. </P>
+<P>I was writing some code that needed to be unmanaged. But I wanted to pass the results of my computations (an array of structs) back to managed code. I started off by writing an unmanaged C++ DLL, and I used P/Invoke to marshal the array of structs back to my managed code. Then, just for fun, I decided to dive into MC++ and do the same thing by writing a managed wrapper class around my unmanaged class. After fighting with the syntax of MC++ a bit, I managed to get both pieces of code working. </P>
+<P>Then I decided to run a benchmark: initial results show that the MC++ wrapper case was <EM>significantly</EM> faster than the P/Invoke case.[1] The MC++ case definitely seemed a lot more "natural", and I was amazed at the ease with which I could combine my managed and unmanaged C++ code inside of the same assembly. The P/Invoke case, on the other hand, was full of truly grotesque calls to <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/com/cmf_a2c_9bj7.asp">CoTaskMemAlloc()</A> and Marshal.DestroyStructure() and redundant memcpy's (at least 1 layer's worth). A thousand apologies to the <A href="http://msdn.microsoft.com/visualc/">VC++ team</A>. This technology totally rocks!</P>
+<P>[1] Benchmark numbers to follow, but I don't have absolute confidence in code that I wrote at 4am. Both versions of the code produced correct results, but I want to make sure that I didn't do something stupid. Besides, I want to know what I'm really measuring as well. Stay tuned.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000087.html');"><script type="text/javascript">postCount('Weblog/fog0000000087.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000086.html">Beware of String.Format</A>
+  </span><BR>
+  31 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P>This will be an entry that illustrates the perf hit of String.Format()</P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000086.html');"><script type="text/javascript">postCount('Weblog/fog0000000086.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000085.html">Why is networking so hard?</A>
+  </span><BR>
+  29 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just recovered from a recent outage in IP connectivity, and I think I'm back on the air now. I learned a lot more about the way Rogers Cablesystems' networks work than I had really wanted to. I also learned more about ISA (Microsoft's Internet Security and Acceleration Server) than I wanted to.</P>
+<P>Here's the scoop for those of you who are running ISA server as a firewall *and* you have to use DHCP: you're in for some pain. If your ISP uses DHCP to provide you with an IP address, you'll need to jump through a few hoops with ISA Server.</P>
+<OL>
+<LI>Windows won't be able to renew its DHCP lease for you. I read on some newsgroups that you can configure ISA to renew its DHCP lease automatically, but I haven't figured out how to do this yet. I solve this problem now by forcing my ISA server to reboot before its lease expires. To make things easier, I use the NT command scheduler to schedule my ISA server to reboot at 3:00am every night: here's the AT command for doing so:<BR><BR><CODE>at 03:00 /every:m,t,w,th,f,s,su shutdown -r</CODE><BR><BR>
+<LI>The ISA packet filters do a great job at blocking all attempts at letting a manual ipconfig /renew command go through. It's not that they can't go through, its the DHCP lease offers that get dropped on the floor. I saw this when I ran a netmon packet trace on my external NIC. I don't know how to fix this yet either. 
+<LI>If your IP address changes, *and* you're&nbsp;publishing services like a mail server or a web server, you'll need to reconfigure the external NIC's IP address manually in ISA server (both the mail server publishing rules and the server publishing rules). I don't know how to do this automatically.</LI></OL>
+<P>If you're fortunate enough to have a static IP, you won't have any of these issues. I hate this stuff.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000085.html');"><script type="text/javascript">postCount('Weblog/fog0000000085.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000084.html">The mysterious cmp ecx, [ecx] instruction</A>
+  </span><BR>
+  26 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>&nbsp;</P>
+<P>If you were to look at the code generated by the CLR's JIT, you will sometimes see the following instruction sequence:</P>
+<P>&nbsp;</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000084.html');"><script type="text/javascript">postCount('Weblog/fog0000000084.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000083.html">The real cost of dispatching virtual methods using an interface reference</A>
+  </span><BR>
+  26 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Spurred on by <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0201d&amp;L=dotnet&amp;F=&amp;S=&amp;P=88634">Nick Wienholt's recent comments</A> on the DOTNET list, I decided to finish off my investigation of the cost of dispatching virtual methods using an object reference vs. dispatching virtual methods using interface references, as illustrated by the following model system:</P>
+<P><CODE>interface I1 <BR>{ <BR>&nbsp; void M1(); <BR>} <BR>class C : I1 <BR>{ <BR>&nbsp; public virtual void M1() {} <BR>}</CODE></P>
+<P>There are two ways of calling the M1() virtual method in an instance of type C:</P>
+<P><CODE>C objRef = new C();<BR>I1 itfRef = (I1)objRef;<BR><BR>objRef.M1();&nbsp;<BR>itfRef.M1();</CODE></P>
+<P>As the code above shows, you can call M1() using an object reference, or you can call it using an interface reference. This causes the compiler to generate two completely different x86 instruction sequences:</P>
+<P><CODE>// Call using an object reference<BR>mov ecx, esi <BR>mov eax, [ecx] ;get method table<BR>call dword ptr [eax + zzz] ;call via method table</CODE></P>
+<P>and</P>
+<P><CODE>// Call using an interface reference<BR>mov ecx, esi <BR>mov eax, [ecx] <BR>mov eax, [eax + zzz] ;get global itf table address <BR>mov eax, [eax + zzz] ;get local itf table address <BR>call dword ptr [eax + zzz] ;call via local itf table</CODE></P>
+<P>The short answer is that on Pentium III-M CPU's, there is <STRONG>no measurable performance difference</STRONG> between these two instruction sequences[1]. The full story can be <A href="../Articles/fog0000000082.html">found here</A>.</P>
+<P>If you read the fully story, you will find that you cannot accurately measure the relative dispatch cost using naive benchmarks. Hopefully this story will serve as an exemplar to others who would like to perform such investigations. As always, <A href="mailto:jlam@iunknown.com">please send me feedback</A> about this, or anything else that you read on this site.</P>
+<P>[1] If you were to call a virtual method using one of these two techniques inside of a loop (the only case where the overhead imposed by the calling convention would ever be significant), you should see the cost of indirection completely hidden by the CPU. Note that these results would certainly be different if any of the mov instructions caused a cache miss, which would be unlikely after the first pass through the loop.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000083.html');"><script type="text/javascript">postCount('Weblog/fog0000000083.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000081.html">An example of Cyber Bricks in action</A>
+  </span><BR>
+  25 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just surfed over to <A href="http://www.frogware.com/weblog">my friend's web log</A>, and found this link to <A href="http://www.oreillynet.com/pub/a/webservices/2002/01/18/brewster.html">an O'Reilly article</A> on how the <A href="http://www.archive.org/">WayBack machine</A> works. The WayBack machine is a 100TB (yes that's tera-bytes) database that contains a catalog of web pages from 1996 onwards). The article discusses how it was implemented using a giant cluster of inexpensive hardware. Most of the hardware consists of ~400 PC computers running Linux and Free BSD. The entire hardware cost for this database was less than half a million dollars! This includes the cost of redudant systems and all of the networking goo. That's amazing.</P>
+<P>This is a great example of <A href="http://research.microsoft.com/users/gray/Two_Commodity_Scaleable_Servers.doc">CyberBricks</A> in action. The term CyberBricks was coined by <A href="http://research.microsoft.com/~Gray/">Jim Gray</A> at <A href="http://research.microsoft.com">Microsoft Research</A>. The idea is to network together large arrays of commodity hardware to create giant computing clusters. You scale the system by <EM>adding</EM> more of what you have already instead of <EM>replacing</EM> what you have with more expensive stuff. </P>
+<P>You also get the economies of scale that are present in purchasing commodity hardware. Consider the cost of EIDE hard drives today: an 80GB disk costs just $114, or $1.42 / GB. 100TB of these commodity disks would cost just $142,000! Contrast this to the base price of an 8-way&nbsp;<A href="http://www.compaq.com/products/servers/proliantdl760/index.html">Compaq DL760</A> server with 72GB&nbsp;of disk today: $71,175!</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000081.html');"><script type="text/javascript">postCount('Weblog/fog0000000081.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000080.html">Web Logs and Software Development</A>
+  </span><BR>
+  25 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I've been keeping this web log up to date on stuff that I want to share with the public. Hopefully you find it useful; I know I do, I use it to find links to stuff that I had found earlier. </P>
+<P>However, what about the stuff that I <EM>don't</EM> want to share with the public? Until yesterday, I carried around a hard-bound notebook to keep my notes on software development. It had a bunch of advantages including letting me sketch rather ugly diagrams very quickly. But yesterday I decided to take that leap of faith and use software to manage my notes on ... software. I created a new private site (don't bother looking for it, it doesn't get published on the web) using <A href="http://www.joelonsoftware.com">Joel Spolsky's</A> excellent <A href="http://www.fogcreek.com/CityDesk/">CityDesk</A> software (the same software that I use to create / manage this web log). </P>
+<P>I found that forcing myself to put all of my design documents (I'm currently in the middle of doing heavy up-front design for the next milestone build of my product) in writing in this web log really helped me to organize the flow of several parallel (but related) ideas. This is flexibility that I didn't have in my venerable old notebook where I had lots of (see p. zzz) references and arrows pointing all over the page.</P>
+<P>About a year ago, I had an idea for building a software product that would let software developers (or more generally, knowledge workers) exchange their ideas in a free-form fashion within the confines of their organization's firewall. For various business reasons, I punted on that idea. Today, I found that <A href="http://www.userland.com/">Dave Winer's company</A> is now actively promoting the concept of a <A href="http://jrobb.userland.com/2002/01/25.html#a1083">K-Log (Knowledge Log)</A> which relies heavily on their content syndication product, <A href="http://radio.userland.com">Radio</A>. This is a fascinating concept, one that I really hope succeeds in the marketplace. Best of luck, Dave.</P>
+<P>If you compare this post with <A href="../Weblog/fog0000000079.html">my previous post</A>, you'll see that I have a love-hate opinion of Dave (which I think is fairly representative of most people's opinion of Dave). I love the ideas that he comes up with. He pretty well single-handedly created this medium of expression known as a web log, as well as providing a bunch of software to the world to help promote the concept. However, Dave also speaks from ignorance. He lets emotions cloud his judgement. He lets his ego get in the way. </P>
+<P>However, I do learn a lot from Dave's web log and I'll continue to read it, even if it does piss me off every now and then.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000080.html');"><script type="text/javascript">postCount('Weblog/fog0000000080.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000079.html">Scripting News Awards ... NOT</A>
+  </span><BR>
+  25 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I thought that the Scripting News awards were a big deal. After all, doesn't <EM>everyone</EM> read Dave Winer's <A href="http://www.scripting.com">Scripting News</A>? Apparently not. Check out the <A href="http://www.scripting.com/awards/2001/tallies.html">voting results</A> for the awards. A back of the envelope calculation shows that only 751 people voted. This is a far cry from say, voting on <A href="http://espn.go.com/main.html">ESPN</A> where you regularly get 90,000+ people voting. Heck, even the <A href="http://discuss.develop.com/dotnet.html">DOTNET list</A> has ~3000 subscribers.</P>
+<P>I guess Dave isn't as big of a deal as I thought. I'm so disappointed ;)</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000079.html');"><script type="text/javascript">postCount('Weblog/fog0000000079.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000078.html">Mono status</A>
+  </span><BR>
+  25 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>While randomly surfing the web, I came across an interesting site called <A href="http://www.daypop.com">DayPop</A>. It's a search engine that scans the "living web" on a daily basis. It's purpose is to index web sites that change on a daily (or more frequent) basis. This includes web logs such as mine (I really do <EM>try</EM> to add new stuff every day) as well as more traditional "news" sites. When I did a search for CLR, the top result to come up was <A href="http://primates.helixcode.com/~miguel/">Miguel de Icaza's</A> <A href="http://www.ddj.com/documents/s=1818/ddj0201a/0201a.htm">status report</A> on the <A href="http://www.go-mono.com">Mono project</A>, an open-source implementation of the CLR.</P>
+<P>Here's a list of some of the interesting things that I learned in that article:</P>
+<UL>
+<LI>Mono's GC is based on Intel's open source <A href="http://orp.sourceforge.net">Open Runtime Platform's</A> GC.</LI>
+<LI>Mono's JIT uses bottom-up rewrite system (<A href="http://www-124.ibm.com/developerworks/oss/jikesrvm/userguide/HTML/userguide_28.html">BURS</A>) to select the native instructions used. A BURS grammar is fed as input to the parser (in addition to the CIL instructions), and reduce / reduce conflicts are used to calculate the cost of various grammar productions that result in the generation of x86 instructions. </LI>
+<LI>Mono's JIT operates in three passes: the first pass labels all nodes in the tree and finds the cheapest tree, the second pass does enregistration, and the final pass generates x86 code.</LI>
+<LI>They have an implementation of P/Invoke up and running already. It would be useful to study their implementation and contrast it with Microsoft's</LI></UL>
+<P>I also believe that since that article was published in Dr. Dobb's, that Mono's C# compiler <A href="http://www.go-mono.com/c-sharp.html">is now self-compiling</A>.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000078.html');"><script type="text/javascript">postCount('Weblog/fog0000000078.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000076.html">Getting current method</A>
+  </span><BR>
+  24 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Today, I needed to programmatically figure out what the name of the current method is. As it turns out, it's dead simple with the help of the System.Diagnostics.StackFrame and System.Diagnostics.StackTrace classes. Here's a simple program that illustrates the use of these classes:</P>
+<P><CODE>using System; <BR>using System.Diagnostics; <BR>using System.Reflection;&nbsp;<BR><BR>class App&nbsp;<BR>{&nbsp;<BR>&nbsp; static void WhoCalledMe()&nbsp;<BR>&nbsp; {&nbsp;<BR>&nbsp;&nbsp;&nbsp; StackTrace trace = new StackTrace();&nbsp;<BR>&nbsp;&nbsp;&nbsp; StackFrame frame = trace.GetFrame( 1 );&nbsp;<BR>&nbsp;&nbsp;&nbsp; MethodBase method = frame.GetMethod();&nbsp;<BR>&nbsp;&nbsp;&nbsp; Console.WriteLine( "{0} called me", method.Name );&nbsp;<BR>&nbsp; }&nbsp;<BR><BR>&nbsp; static void Main(string[] args)&nbsp;<BR>&nbsp; {&nbsp;<BR>&nbsp;&nbsp;&nbsp; StackFrame frame = new StackFrame();&nbsp;<BR>&nbsp;&nbsp;&nbsp; MethodBase method = frame.GetMethod();&nbsp;<BR>&nbsp;&nbsp;&nbsp; Console.WriteLine( method.Name );&nbsp;<BR><BR>&nbsp;&nbsp;&nbsp; WhoCalledMe();&nbsp;<BR>&nbsp; }&nbsp;<BR>} <BR></CODE></P>
+<P>Notice that you can retrieve a System.Reflection.MethodBase object from the System.Diagnostics.StackFrame object. Once you have one of these puppies, the world is wide open to you ;)</P>
+<P>Now, the performance freak in me is wondering how expensive creating a StackFrame object is ...</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000076.html');"><script type="text/javascript">postCount('Weblog/fog0000000076.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000075.html">Lutz Roeder's Reflector.NET Rocks!</A>
+  </span><BR>
+  23 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I haven't used Lutz Roeder's <A href="http://www.aisto.com/roeder/dotnet">Reflector.NET</A> for quite a while, probably since Build 2914 of the CLR (I'm feeling rather nostalgic today, so I will refer to CLR versions using their build numbers instead of less geeky terms like "Beta 2"). I first ran into Reflector sometime around Build 2204. I just got an email out of the blue from Lutz last night, which prompted me to go check out Reflector again using Build 3705. </P>
+<P>Wow. I am blown away. Earlier builds of Reflector used to shell out to Serge Lidin's ILDASM to do the dirty work. Now, while I still find ILDASM incredibly useful in my day job, I&nbsp;am now finding Reflector to be equally indispensible. The two new features in this build of Reflector that blow me away are:</P>
+<OL>
+<LI>The Call Tree feature. This feature parses the CIL instructions of a method to try and figure out all of the other methods that could be called from the code in that method. It displays this information in a tree view, which lets you quickly discover related methods. This is <EM>incredibly</EM> useful if you are spelunking around inside of the FCL assemblies. 
+<LI>The method / type references feature. This feature gives you a list of all of the methods that reference a type or a method. This requires searching through all of the CIL for all of the loaded assemblies. Therefore, it's not exactly a speed demon. However, I'm sure that Lutz could build an in-memory&nbsp;cross-reference data structure, or dump the output of a CIL scan to a SQL database to improve the performance of the queries ... but hey, what do you expect for free? ;)</LI></OL>
+<P>The other thing that I love about Reflector is how incredibly polished it is. There are beautiful icons, there are bitmapped menus, there are even tooltips for CIL instructions that give you a synopsis of what that instruction does. There are hyperlinked metadata tokens in the disassembly view that take you to the definition of the method in the main Reflector tree view. </P>
+<P>Unlike Serge who uses an old-fashioned Windows Edit control to display output, Lutz uses Internet Explorer and injects DHTML into IE to render the disassembly (among other things). This gives it such a nice polished look, and enables truly useful features such as hyperlinking to the definition of a method from a disassembly view.</P>
+<P>Great job!</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000075.html');"><script type="text/javascript">postCount('Weblog/fog0000000075.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000074.html">Alignment Cost: Processor Effects</A>
+  </span><BR>
+  23 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>After publishing my <A href="../Weblog/fog0000000073.html">previous entry</A> on the cost of loop alignment for Pentium III-M processors, I decided to look at what the results would be for different architectures. Since I did all of my experiments using a model system that consisted of a bunch of inline assembler compiled using Visual C++, I could run the benchmark application unmodified on all of the different computers that I have lying around my house. <A href="../Files/Results.xls">This spreadsheet</A> summarizes all of the results for the following processors:</P>
+<OL>
+<LI>166MHz Pentium&nbsp;MMX 
+<LI>150MHz Pentium Pro 
+<LI>400MHz Celeron 
+<LI>600MHz Celeron 
+<LI>1130MHz Pentium III-M 
+<LI>1200MHz Athlon 
+<LI>1600MHz Pentium 4</LI></OL>
+<P>All of the Intel P6 architecture processors (processors 2-5 on my list) share the following characteristics:</P>
+<OL>
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary 
+<LI>A one cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched 
+<LI>A one cycle penalty for the <EM>second </EM>additional 16-byte paragraph that needs to be fetched</LI></OL>
+<P>The Intel P5 architecture processor (processor 1 on my list) has the following characteristics:</P>
+<OL>
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary 
+<LI>A half-cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched 
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL>
+<P>The Athlon architecture processor (processor 6 on my list) has the following characteristics:</P>
+<OL>
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary 
+<LI>A one cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched 
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL>
+<P>The Intel P7 architecture processor (processor 7 on my list) has the following characteristics:</P>
+<OL>
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary 
+<LI>No penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched 
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL>
+<P>Clearly, all of the P6 architecture processors could benefit greatly from compiler optimizations that minimize the number of 16-byte paragraphs that a loop resides in. The P7 architecture processors are not sensitive to 16-byte alignment effects due to its new <A href="http://developer.intel.com/technology/itj/q12001/articles/art_2.htm">NetBurst architecture</A>. All of the instructions in our loops are executed directly from the Pentium 4's Trace Cache. The P5 and Athlon processors are somewhat less sensitive to 16-byte alignment effects since the 1 cycle penalty is paid on only the first additional 16 byte paragraph that is fetched from memory.</P>
+<P>To run the benchmark software on your computer, <A href="../Files/AlignmentCost2.zip">click here</A> to download the source code. Note that you must do a debug build, otherwise you will mess up the code alignment of the inline assembly instructions.</P>
+<P>Currently, the JIT in the CLR does not seem to optimize for the number of 16 byte paragraphs that a loop resides in. I have seen examples of non-debug JIT'ed x86 code that straddle a 16 byte paragraph boundary unnecessarily. This would be a very useful JIT optimization in future versions of the CLR since the P6 architecture processors are clearly the mainstream processors of today.</P>
+<P>I should also point out that these are <EM>extremely </EM>contrived benchmarks. I am measuring very simple model systems in an effort to understand exactly how the CPU executes specific instruction sequences. The simple counter loop that I was using in these systems executes in two cycles. The padded counter loop executes in six cycles.&nbsp;A one cycle penalty is very large (50%, 18% respectively) in these systems. Your mileage will definitely vary in real-world systems.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000074.html');"><script type="text/javascript">postCount('Weblog/fog0000000074.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000073.html">Alignment Cost</A>
+  </span><BR>
+  22 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>The Pentium III-M processor is <EM>not </EM>sensitive to branch target instruction alignment. In this experiment, I created a tight loop that executes 100,000,000 times, and aligned the start of the loop at +1 and +2 bytes beyond the beginning of the 16-byte boundary, as in the following two code fragments:</P>
+<P><CODE>00433A51 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc edi <BR>00433A52 81 FF 00 E1 F5 05 cmp edi,5F5E100h <BR>00433A58 7C F7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jl loopx (433A51h)</CODE></P>
+<P>and</P>
+<P><CODE>00433A52 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc edi <BR>00433A53 81 FF 00 E1 F5 05 cmp edi,5F5E100h <BR>00433A59 7C F7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jl loopx (433A52h)</CODE></P>
+<P>The results showed that there was <EM>no difference</EM> in performance between these two loops. On a 1.13GHz PIII-M processor, these loops took 0.180 +/- 0.001 and 0.182 +/- 0.002 seconds to complete respectively.</P>
+<P>However, Pentium III-M processors pre-fetch instructions 16 bytes at a time. If you force loops to straddle a 16-byte boundary unnecessarily, you will pay a 1 cycle penalty for your transgression. Consider the following two loops:</P>
+<P><CODE>00433370 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc edi <BR>00433371 81 FF 00 E1 F5 05 cmp edi,5F5E100h <BR>00433377 7C F7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jl loopx (433370h)</CODE></P>
+<P>and</P>
+<P><CODE>0043351F 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc edi <BR>00433520 81 FF 00 E1 F5 05 cmp edi,5F5E100h <BR>00433526 7C F7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jl loopx (43351Fh)</CODE></P>
+<P>The first loop is set up so that all of its instructions fit within a single 16-byte paragraph. The second loop is set up so that it straddles two 16-byte paragraphs. The performance penalty in this case is significant; these loops execute in 0.182 +/- 0.001 and 0.274 +/- 0.001 seconds respectively. </P>
+<P>The penalty paid&nbsp;in this case is 0.092 seconds. These experiments were conducted on a 1.13GHz Pentium III-M processor. In 0.092 seconds, the processor clock ticks 0.092 * 1.13 billion = 0.104 billion times. Our loop executed 0.1 billion times. Therefore, we we are paying a penalty of exactly 1 clock cycle for forcing an additional 16-byte prefetch operation. In a tight loop such as this, we are paying a significant performance penalty of 49.7%!</P>
+<P>To see whether this 1 cycle penalty is consistent with larger loops, I constructed a larger loop whose body was padded using 9 nop instructions. This was sufficient to make the loop 18 bytes in length. This lets me construct a case where the same loop could straddle either two or three 16-byte paragraphs. The loop that straddled two 16-byte paragraphs took 0.540 +/- 0.001 seconds to complete. The loop that straddled three 16-byte paragraphs took 0.630 +/- 0.001 seconds to complete. The difference in time is 0.90 seconds, which implies that we pay yet another 1 cycle penalty for fetching three 16-byte paragraphs vs. two 16-byte paragraphs, consistent with our previous set of observations.</P>
+<P>Therefore, for tight loops, a very useful performance optimization on Pentium III-M processors is to ensure that the loops fit entirely within the smallest number of 16-byte paragraphs possible. </P>
+<P>I haven't investigated these effects on other processor types yet, so I'll leave that for a future installment.</P>
+<P>If you are interested in the source code for this simple experiment, along with an Excel spreadsheet that contains some of the raw numbers used to generate these results, <A href="../Files/AlignmentCost2.zip">click here</A>. Note that you <EM>must</EM> compile as a debug build so that the padding that I added in inline assembler will cause the expected results. </P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000073.html');"><script type="text/javascript">postCount('Weblog/fog0000000073.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000072.html">Back to work</A>
+  </span><BR>
+  21 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>After a week of pure hell (which I would otherwise call corporate tax time), I have realized that I have severe context switch overhead from "business guy" to "geek". It's measured in days, not hours. It takes me days to psych myself up for the annual ritual, and it takes me days to "relinquish control" of my spreadsheets to my accountant (because my over analytical nature forces me to balance the numbers umpteen different ways). The actual job only takes maybe 10-15 hours ... ouch. Number one on my to-do list is to get a good book keeper. Next is probably a good house keeper, but that's an entirely different story ...</P>
+<P>Anyhow, back to the business of geeking out. When I last wrote an entry in my web log, I was <A href="../Weblog/fog0000000069.html">praising the customer service that Intel provided</A>. I got an e-mail back from an Intel employee thanking me for my post. <EM>No problem!</EM> I think that it's rather unfortunate that we don't have a better mechanism for publishing real praise for companies that treat their customers well. There's a web site called <A href="http://www.epinions.com">Epinions</A> that attempts to do this by letting "ordinary folks" publish reviews of products in exchange for a piece of the action if people buy products based on their reviews. Unfortunately, like the customer review section that Amazon provides, that power can be used for <EM>evil</EM> as well as good.</P>
+<P>One way to make this information available would be to write web log entries. If individual customers wrote their own web logs, <EM>and their content</EM> got syndicated to aggregators and made available via search engines, more of this hidden information would be made available, instead of being locked inside the company's customer feedback database. The fact that individuals write their own web logs would give the content decidedly more credibility than if it were packaged in a generic content aggregator such as an Epinions or an Amazon.</P>
+<P>One product that promises to make this vision possible is Dave Winer's Radio 8.0 product. The concept of XML-syndication that lies at the heart of Radio is very interesting. About a year ago, I was well on my way to building some technology that makes this possible. I got all the way to getting several guys together in a room to decide on what the shareholder's agreement for the company would look like before I chickened out and realized that I didn't have any idea about how to run the business side of such a venture. That surely looked like a disaster waiting to happen. Besides, the .COM bust didn't make me want to start such a company in that kind of economic environment. Best of luck to Dave. I hope he has more of an idea about how to sell this technology than I do.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000072.html');"><script type="text/javascript">postCount('Weblog/fog0000000072.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000069.html">Intel Customer Service Rocks!</A>
+  </span><BR>
+  16 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P>I spent quite a bit of time this weekend trying to download <A href="http://www.intel.com/software/products/vtune/vtune60/index.htm">Intel's VTune 6.0 Beta</A>. However, due to the fact that Intel uses HTTPS to encrypt the file transfer, I couldn't use any of the restartable HTTP helper programs out there such as <A href="http://www.real.com/download">Real Network's Real Download</A>. So I complained on the feedback form, someone got back right away to me and today, much to my surprise, a Fedex package arrived in the mail! That was awesome customer support. Thanks!</P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000069.html');"><script type="text/javascript">postCount('Weblog/fog0000000069.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000067.html">V1!</A>
+  </span><BR>
+  15 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Wow, it seems like just yesterday. </P>
+<P>To celebrate tonight's milestone, I pulled off of my bookshelf a couple of binders that were dated June 24, 25, 1997. That was the date of the original design preview of what was then called COR (the Common Object Runtime). I feel so privileged today to have been included in that original bunch of folks who were invited to see "the future of COM". </P>
+<P>What amazes me is how much today's .NET V1 implementation resembles that original vision that was presented four and a half years ago! GC, pervasive metadata, attributes, the code access security model, IL + tokens, a streamlined (relative to C++) in-memory object representation, COM / platform interop, versioning, assemblies, seamless support for multiple programming languages. All of these concepts were discussed in detail at that design preview. </P>
+<P>To have that much foresight and to execute so well on that original vision is truly stunning. </P>
+<P>Congratulations to everyone on a job well done!! </P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000067.html');"><script type="text/javascript">postCount('Weblog/fog0000000067.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000066.html">Tax time</A>
+  </span><BR>
+  15 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I'm sure it's not just me, I'm fairly sure that <EM>everyone</EM> hates tax time. It's time for me to do my corporate taxes, so this means that I shut down doing all productive work and sort little tiny pieces of paper. So, there won't be any technical updates to this weblog until then. I have a bunch of stuff on the back-burner, including more interesting observations about the performance of Athlon processors vs. P3 and P4 processors, the mysterious cmp ecx, [ecx] instruction, and others. Stay tuned.</P>
+<P>In my quest to procrastinate before beginning this onerous task, I just read one of the best business books that I can remember: <A href="http://www.amazon.com/exec/obidos/ASIN/0887307280/qid=1011119594/sr=8-1/ref=sr_8_3_1/002-4438983-2658450">The E-Myth Revisited: Why Most Small Businesses Don't Work and What to Do About It</A>. It tells the <EM>story</EM> of a small business owner as she struggles to grow her All About Pies company, what happened when she discovered the magic of delegation, and what happened when it all started to collapse around her. Perhaps the most striking facet of this book is its revelation of the myriad of different personality types that clash with each other inside of the same person. He starts off by showcasing about the <EM>thin guy and fat guy</EM> personality type to resonate with the reader, and then he goes on to discuss <EM>The Entrepeneur, The Manager,</EM> and <EM>The Technician </EM>personality types. While I don't necessarily agree with his classifications (most developers are a combination of <EM>The Entrepreneur and The Technician</EM>), I feel that this revelation alone is more than worth the price of this book. There are lots of other highly readable anecdotes in this book. Highly recommended.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000066.html');"><script type="text/javascript">postCount('Weblog/fog0000000066.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000063.html">Discovery or mistake?</A>
+  </span><BR>
+  13 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Perhaps the most important thing that I learned during my tenure in <A href="http://www.chem.utoronto.ca/people/academic/klugerr.html">Professor Ronald Kluger's</A> laboratory was this: "When you have an unusual observation, one of two things has happened: you've either made a discovery or a mistake. Mistakes are much more common than discoveries." Ron inherited this saying from his Ph.D. supervisor, <A href="http://www.chemheritage.org/HistoricalServices/Abstract/westheimer.htm">Professor Frank Westheimer</A>. </P>
+<P>Last week, I spent quite a bit of time investigating the performance penalty that one pays for invoking a virtual method via an interface reference as opposed to using an object reference. Since I did this work on my laptop, I initially looked at the performance penalty <A href="../Weblog/fog0000000055.html">on a Pentium III-M processor</A>. Later, I looked at the performance penalty <A href="../Weblog/fog0000000057.html">on an Athlon 1200 processor</A>. More recently, I looked at the performance penalty on a Pentium 4 processor.</P>
+<P>Along the way, I had a number of unusual observations. At the time, I didn't have a framework for systematically ruling out alternate explanations for those observations, so I reported the results that I had. As it turns out, I was <EM>lucky</EM> to get more-or-less correct results (they weren't exactly correct due to a calculation error, but they were in the right ballpark). The rest of this entry goes on to explain what happened. I began by investigating what I thought was a very simple model system, and at the end wound up learning quite a lot about IA32 architecture and performance.</P>
+<P>NOTES:</P>
+<P>PII and PIII processors aggressively prefetch instructions in 16-byte aligned boundaries. You will pay a significant performance penalty if the target of a branch results in two 16-byte fetches (i.e. the instruction overlaps this boundary).</P>
+<P>Question: What happens on P4 and AMD processors?</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000063.html');"><script type="text/javascript">postCount('Weblog/fog0000000063.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000062.html">Alignment issues</A>
+  </span><BR>
+  11 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Intel works in mysterious ways. </P>
+<P>While I was measuring relative performance of VMD vs. IMD, there was something that I neglected to inform you in my previous entries: <EM>I wasn't getting consistent results</EM>. I was running into LOTS of Heisenberg effects that I didn't tell you about. For example, the only way for me&nbsp;to break into JIT-compiled code at runtime was to insert an explicit call to DebugBreak(). This would, of course, generate a 5 byte x86 call instruction, and would upset the alignment of other instructions in the vicinity.</P>
+<P>To get around the Heisenberg effects, I decided to create a model system using inline assembler in VC++. This way, I would control the x86 code that was generated, and I could insert x86 nop instructions at my leisure to screw around with the instruction alignment of the generated code.</P>
+<P>Raw results:</P>
+<P>without the NOP instruction in place:</P>
+<P>IMD = 0.85s, VMD = 0.75s</P>
+<P>with NOP instruction in place:</P>
+<P>IMD = .72s, VMD = 0.63s.</P>
+<P>&nbsp;</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000062.html');"><script type="text/javascript">postCount('Weblog/fog0000000062.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000057.html">Athlon interface method dispatch cost</A>
+  </span><BR>
+  10 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P><A href="../Weblog/fog0000000055.html">Yesterday</A>, I examined the cost of virtual method dispatch (VMD) vs. interface method dispatch (IMD). I did my investigations on my Thinkpad T-23, which uses a Pentium III-M processor. Today, I am curious about the effects of CPU architecture on the <EM>relative</EM> cost of VMD vs. IMD. While I was investigating these effects, I encountered a number of <A href="../Weblog/fog0000000056.html">Heisenberg effects</A> that caused me to spend some performing control experiments&nbsp;so that I could actually determine what it was that I was looking at.</P>
+<P>I have a large number of different CPU's running in various computers around my house. I have a Pentium 166 MMX, a Pentium Pro 150, a Pentium 233 MMX, a dual Celeron 400, a Celeron 600, a Pentium III-M 1.13GHz, an Athlon 1200, and a Pentium 4 1.6GHz. Eventually, I might decide to examine the progress that Intel has made with respect to hiding indirection costs, but for the time being, I decided to look at the differences between my 1.13GHz Pentium III-M and my Athlon 1200.</P>
+<P>Since I am now comparing results between different computers, I needed to update my benchmark software so that it would report results in seconds, instead of ticks of the high-resolution CPU counter. Here is what the test rig looks like in its current form:</P>
+<P><CODE>const int MAX_COUNT = 100000000; <BR>static long _performanceFrequency; <BR><BR>static double TimeVirtualMethodDispatch( C c ) <BR>{ <BR>&nbsp; long vmdStart, vmdEnd; <BR>&nbsp; QueryPerformanceCounter( out vmdStart ); <BR>&nbsp; for( int i = 0; i &lt; MAX_COUNT; i++ )&nbsp;<BR>&nbsp;&nbsp;&nbsp; c.M1(); <BR>&nbsp; QueryPerformanceCounter( out vmdEnd ); <BR>&nbsp; return ((double)(vmdEnd - vmdStart)) / _performanceFrequency; <BR>} <BR><BR>static double TimeInterfaceMethodDispatch( I1 i1 ) <BR>{ <BR>&nbsp; long imdStart, imdEnd; <BR>&nbsp; QueryPerformanceCounter( out imdStart ); <BR>&nbsp; for( int i = 0; i &lt; MAX_COUNT; i++ )<BR>&nbsp;&nbsp;&nbsp; i1.M1();<BR>&nbsp; QueryPerformanceCounter( out imdEnd ); <BR>&nbsp; return ((double)(imdEnd - imdStart)) / _performanceFrequency; <BR>} <BR><BR>static void Main(string[] args) <BR>{ <BR>&nbsp; C c = new C(); <BR>&nbsp; I1 i1 = (I1)c; <BR><BR>&nbsp; QueryPerformanceFrequency( out _performanceFrequency ); <BR><BR>&nbsp; // Force JIT-compilation<BR>&nbsp; TimeVirtualMethodDispatch( c ); <BR>&nbsp; TimeInterfaceMethodDispatch( i1 ); <BR><BR>&nbsp; // Calls to output results omitted for clarity<BR>}</CODE></P>
+<P>To jog your memory, these are the x86 instruction sequences for:</P>
+<P>Virtual Method Dispatch:</P>
+<P><CODE>0440 mov ecx,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;esi contains objref<BR>0442 mov eax,[ecx]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;get method table<BR>0444 call dword ptr [eax+0x38] ;invoke via slot in MT</CODE></P>
+<P>Interface Method Dispatch:</P>
+<P><CODE>04af mov ecx,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;edi contains objref<BR>04b1 mov eax,[ecx]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;get method table<BR>04b3 mov eax,[eax+0xc]&nbsp;&nbsp;&nbsp; ;get global IT<BR>04b6 mov eax,[eax+0x2c]&nbsp;&nbsp; ;get local IT<BR>04b9 call dword ptr [eax] ;invoke via slot in IT</CODE></P>
+<P>Recall that we are attempting to measure the cost of the two additional levels of indirection introduced by the interface method dispatch mechanism used by the CLR. Here are the raw benchmark results:</P>
+<P>
+<TABLE style="WIDTH: 197pt; BORDER-COLLAPSE: collapse" cellSpacing=0 cellPadding=0 width=261 border=0 x:str>
+<COLGROUP>
+<COL style="WIDTH: 32pt; mso-width-source: userset; mso-width-alt: 1536" width=42>
+<COL style="WIDTH: 55pt; mso-width-source: userset; mso-width-alt: 2669" span=2 width=73>
+<COL style="WIDTH: 55pt; mso-width-source: userset; mso-width-alt: 2669" width=73>
+<TBODY>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; WIDTH: 197pt; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent; mso-ignore: colspan" width=261 colSpan=4 height=17><STRONG><FONT face=Arial size=2>Athlon 1200 Results -- Release build</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><FONT face=Arial size=2>Run</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>VMD</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>IMD</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>%Diff</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>1</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>0.610</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>0.870</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.2988505747126437" x:fmla="=(C4-B4)/C4"><FONT face=Arial size=2>29.9%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>2</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.61299999999999999"><FONT face=Arial size=2>0.613</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.86899999999999999"><FONT face=Arial size=2>0.869</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.29459148446490219" x:fmla="=(C5-B5)/C5"><FONT face=Arial size=2>29.5%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>3</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.60799999999999998"><FONT face=Arial size=2>0.608</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.877"><FONT face=Arial size=2>0.877</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.30672748004561007" x:fmla="=(C6-B6)/C6"><FONT face=Arial size=2>30.7%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>4</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.61099999999999999"><FONT face=Arial size=2>0.611</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.86799999999999999"><FONT face=Arial size=2>0.868</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.29608294930875578" x:fmla="=(C7-B7)/C7"><FONT face=Arial size=2>29.6%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>5</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.60699999999999998"><FONT face=Arial size=2>0.607</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.86899999999999999"><FONT face=Arial size=2>0.869</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.30149597238204834" x:fmla="=(C8-B8)/C8"><FONT face=Arial size=2>30.1%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><FONT face=Arial size=2></FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2>Avg</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.60980000000000012" x:fmla="=AVERAGE(B4:B8)"><STRONG><FONT face=Arial size=2>0.610</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.87059999999999993" x:fmla="=AVERAGE(C4:C8)"><STRONG><FONT face=Arial size=2>0.871</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.29954969218279198" x:fmla="=AVERAGE(D4:D8)"><STRONG><FONT face=Arial size=2>30.0%</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:str="'+/-"><STRONG><FONT face=Arial size=2>+/-</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="2.387467277227238E-3" x:fmla="=STDEV(B4:B8)"><STRONG><FONT face=Arial size=2>0.002</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="3.6469165057612537E-3" x:fmla="=STDEV(C4:C8)"><STRONG><FONT face=Arial size=2>0.004</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="4.8062339826313964E-3" x:fmla="=STDEV(D4:D8)"><STRONG><FONT face=Arial size=2>0.5%</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent; mso-ignore: colspan" colSpan=4 height=17><STRONG><FONT face=Arial size=2>Pentium III-M Results -- Release build</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><FONT face=Arial size=2>Run</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>VMD</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>IMD</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>%Diff</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>1</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.629"><FONT face=Arial size=2>0.629</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71499999999999997"><FONT face=Arial size=2>0.715</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12027972027972024" x:fmla="=(C16-B16)/C16"><FONT face=Arial size=2>12.0%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>2</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.623"><FONT face=Arial size=2>0.623</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71499999999999997"><FONT face=Arial size=2>0.715</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12867132867132863" x:fmla="=(C17-B17)/C17"><FONT face=Arial size=2>12.9%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>3</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.63100000000000001"><FONT face=Arial size=2>0.631</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.72299999999999998"><FONT face=Arial size=2>0.723</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12724757952973717" x:fmla="=(C18-B18)/C18"><FONT face=Arial size=2>12.7%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>4</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.629"><FONT face=Arial size=2>0.629</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71899999999999997"><FONT face=Arial size=2>0.719</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12517385257301805" x:fmla="=(C19-B19)/C19"><FONT face=Arial size=2>12.5%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>5</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.63100000000000001"><FONT face=Arial size=2>0.631</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71899999999999997"><FONT face=Arial size=2>0.719</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12239221140472875" x:fmla="=(C20-B20)/C20"><FONT face=Arial size=2>12.2%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><FONT face=Arial size=2></FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2>Avg</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.62859999999999994" x:fmla="=AVERAGE(B16:B20)"><STRONG><FONT face=Arial size=2>0.629</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71819999999999995" x:fmla="=AVERAGE(C16:C20)"><STRONG><FONT face=Arial size=2>0.718</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12475293849170657" x:fmla="=AVERAGE(D16:D20)"><STRONG><FONT face=Arial size=2>12.5%</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:str="'+/-"><STRONG><FONT face=Arial size=2>+/-</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="3.286335345044464E-3" x:fmla="=STDEV(B16:B20)"><STRONG><FONT face=Arial size=2>0.003</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="3.346640106134658E-3" x:fmla="=STDEV(C16:C20)"><STRONG><FONT face=Arial size=2>0.003</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="3.440090759103382E-3" x:fmla="=STDEV(D16:D20)"><STRONG><FONT face=Arial size=2>0.3%</FONT></STRONG></TD></TR></TBODY></TABLE></P>
+<P>
+<P><CODE></CODE></P>
+<P>The Pentium III-M executes the IMD instruction sequence only 12.5% slower than the VMD instruction sequence. The Athlon 1200, on the other hand, executes the IMD instruction sequence 30% slower than the VMD instruction sequence. The key observation here is that the Pentium III-M totally kicks the Athlon 1200's ass in hiding the cost of the indirection used by IMD! </P>
+<P>The take-home message here is that your mileage will vary <EM>significantly</EM> if your code is executed on different platforms. However, keep in mind the following:</P>
+<OL>
+<LI>This is a totally contrived benchmark; we are measuring the <EM>ping</EM> cost of invoking methods via VMD and IMD. 
+<LI>These are relative numbers, we are still invoking a method 100,000,000 times in well under a second. Expressed differently, the Pentium III-M is dispatching 159 <EM>million</EM> VMD calls per second and the Athlon 1200 is dispatching 164 <EM>million </EM>VMD calls per second!</LI></OL>
+<P>It would be interesting to see whether the x86 instruction sequence for IMD could be optimized specifically for Athlon processors to try and narrow the performance gap.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000057.html');"><script type="text/javascript">postCount('Weblog/fog0000000057.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000056.html">Beware of Heisenberg effects</A>
+  </span><BR>
+  10 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><DIV align=left>When you run things in a JIT system under a debugger, you aren't always looking at what you think you're looking at.</DIV>
+<P>Let's consider a simple piece of code:</P>
+<P><CODE>static int Add( int x, int y ) <BR>{ <BR>&nbsp; return x + y; <BR>} <BR><BR>static int Main(string[] args) <BR>{ <BR>&nbsp; return Add( 3,&nbsp;4 ); <BR>}</CODE></P>
+<P>If you enabled optimizations in a Debug configuration build in VS.NET compiled and ran the program in a debugger, you can examine the generated x86 code. This is what you would see at the call site:</P>
+<P><CODE>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; Add( 3, 4 ); <BR>00000000 push ebp <BR>00000001 mov ebp,esp <BR>00000003 push eax <BR>00000004 push esi <BR>00000005 mov dword ptr [ebp-4],ecx <BR>00000008 mov edx,4 <BR>0000000d mov ecx,3 <BR>00000012 call dword ptr ds:[008F510Ch] <BR>00000018 mov esi,eax <BR>0000001a mov eax,esi <BR>0000001c pop esi <BR>0000001d mov esp,ebp <BR>0000001f pop ebp <BR>00000020 ret </CODE></P>
+<P><CODE></CODE>Furthermore, if you step into the call instruction, this is what you would see at the other end:</P>
+<P><CODE>00000000 push ebp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;setup stack frame<BR>00000001 mov ebp,esp <BR>00000003 sub esp,8 <BR>00000006 push edi <BR>00000007 push esi <BR>00000008 mov edi,ecx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;x and y are in<BR>0000000a mov esi,edx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;ecx and edx<BR>0000000c lea eax,[edi+esi]&nbsp; ;add the numbers<BR>0000000f pop esi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;clean up stack frame<BR>00000010 pop edi <BR>00000011 mov esp,ebp <BR>00000013 pop ebp <BR>00000014 ret</CODE></P>
+<P>Now, this hardly looks like optimized code now, does it? But we compiled using the /optimize switch, didn't we?</P>
+<P>As it turns out, we <EM>did</EM> compile using the /optimize switch. This causes the C# compiler to generate optimized CIL instructions. However, because we were running the code under the VS.NET debugger, <EM>which is aware of the CLR</EM>, the VS.NET debugger tells the CLR to turn off JIT optimizations [1].</P>
+<P>If you ran your code outside of VS.NET, it would actually run using a different x86 instruction sequence. If you run it inside of VS.NET, you run using the instruction sequence shown above. Hence the Heisenberg effect: the act of observing the system causes the system to change.</P>
+<P>Fortunately for us, we have a way around this. What we need to do is start the code outside of the scope of the VS.NET debugger, and then "break into" the code to see the generated x86 code. We can do this by taking advantage of the Just-In-Time debugging features of Windows. To do so, we need to insert a call to the Win32 DebugBreak() API in our code.</P>
+<P>Here's the stub that defines the signature of DebugBreak() for P/Invoke:</P>
+<P><CODE>[ DllImport( "kernel32.dll" ) ] <BR>static extern void DebugBreak();</CODE></P>
+<P>This is our modified Main() method:</P>
+<P><CODE>static int Main(string[] args) <BR>{ <BR>&nbsp; DebugBreak(); <BR>&nbsp; return Add( 3, 4 ); <BR>}</CODE></P>
+<P>If you run the application from the command line, you should see the JIT debugging dialog appear. </P>
+<P>Click on Debug, and select "New Instance of Microsoft Development Environment" from the Just-In-Time Debugging dialog. </P>
+<P>In the Attach to Process dialog, make sure that the "Common Language Runtime" switch is NOT checked:</P>
+<DIV align=left>You will see that you are sitting in the _DbgBreakPoint@0: method. Step over the ret instruction in this method. You should now be at the tail end of the P/Invoke thunk that called the DebugBreak() API. The instructions should resemble:</DIV>
+<P><CODE>003FA09F mov byte ptr [ebx+4],1 <BR>003FA0A3 cmp dword ptr ds:[793A7A54h],0 <BR>003FA0AA jne 003FA0C4 <BR>003FA0AC lea esp,[esi-18h] <BR>003FA0AF mov dword ptr [ebx+8],edi <BR>003FA0B2 add esp,8 <BR>003FA0B5 pop edi <BR>003FA0B6 pop esi <BR>003FA0B7 pop ebx <BR>003FA0B8 pop ebp <BR>003FA0B9 add esp,0Ch <BR>003FA0BC ret</CODE></P>
+<P>Step over this all of the instructions in this sequence until you hit the ret instruction. When you step over that instruction, your debugger will now be positioned at the call to Add( 3, 4 ). This is what you should see:</P>
+<P><CODE>02E1005E mov eax,7 <BR>02E10063 ret</CODE></P>
+<P>You'll notice that the JIT compiler was smart enough to completely eliminate the call to the Add() method and replace it with the result of the constant calculation, 7. </P>
+<P>As an exercise left to the reader, modify your Main method so that it looks like:</P>
+<P><CODE>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; Add( 3, 4 ); <BR>}</CODE></P>
+<P>Examine the optimized x86 code using the techniques in this entry. Did you get what you expected?</P>
+<P>[1] If you're interested in writing a debugger, you can tell the CLR to turn off JIT optimizations by calling ICorDebugModule::EnableJITDebugging(), and passing false in the bAllowJitOpts parameter.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000056.html');"><script type="text/javascript">postCount('Weblog/fog0000000056.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000059.html">Pentium Instruction Timings</A>
+  </span><BR>
+  09 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P>After a bit of searching using Google, I found <A href="http://www.quantasm.com/opcode_i.html">the only table of Pentium instruction timings</A> on the web. Mike Schmit's Quantasm Corporation is the source of a number of tools for analyzing x86 instruction sequences, including estimates execution times of x86 instruction sequences.</P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000059.html');"><script type="text/javascript">postCount('Weblog/fog0000000059.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000055.html">Interface method dispatch cost</A>
+  </span><BR>
+  09 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Two unrelated events caused me to spend some time this afternoon inside the debugger. This entry summarizes some of my observations regarding the cost of invoking a virtual method via an <EM>object</EM> reference vs. invoking the same virtual method via an <EM>interface</EM> reference.</P>
+<P>The first event was Jim Miller's excellent <EM>How does Hello, World really work?</EM> talk at the PDC. In this talk, one particular statement caught my attention: "Intel CPU's are very good at optimizing away indirection. In fact, some of our best people back at Redmond cannot figure out what they are doing".&nbsp;Unfortunately, Jim did not present any benchmark code or results to back up his claims, so I knew that I needed to check things out for myself ... sometime.</P>
+<P>The second event occurred this weekend when I spent some time reviewing the Methods chapter from Don's forthcoming Essential .NET Volume 1. Don provides an excellent discussion about the mechanics of dispatching virtual methods and interface methods using only a single method table (as opposed to the multiple vtable mechanism used by C++). After reading his chapter, I finally had an excuse to take a look at how well Intel CPU's can optimize away indirection: I can examine the <EM>cost</EM> of interface method dispatch (IMD) vs. virtual method dispatch (VMD). </P>
+<P>The first thing to be aware is that there <EM>is</EM> a significant difference in the code that is generated by the JIT compiler. Let's first consider the following simple program:</P>
+<P><CODE>interface I1<BR>{<BR>&nbsp; void M1();<BR>}<BR><BR>class C : I1 <BR>{ <BR>&nbsp; public virtual void M1() {} <BR>} <BR><BR>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; C c = new C(); <BR>&nbsp; c.M1();&nbsp;<BR>&nbsp;&nbsp;<BR>&nbsp; I1 i1 = (I1)c; <BR>&nbsp; i1.M1(); <BR></CODE><CODE>}</CODE></P>
+<P>First, let's look at the generated CIL for the Main() method:</P>
+<P><CODE>.method private hidebysig static void&nbsp; Main(string[] args) cil managed<BR>{<BR>&nbsp; .entrypoint<BR>&nbsp; // Code size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 281 (0x119)<BR>&nbsp; .maxstack&nbsp; 2<BR>&nbsp; .locals init ([0] class C c,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [1] class I1 i1)<BR>&nbsp; IL_0000:&nbsp; newobj&nbsp;&nbsp;&nbsp;&nbsp; instance void C::.ctor()<BR>&nbsp; IL_0005:&nbsp; stloc.0<BR>&nbsp; IL_0006:&nbsp; ldloc.0<BR>&nbsp; IL_0007:&nbsp; callvirt&nbsp;&nbsp; instance void C::M1()<BR>&nbsp; IL_000c:&nbsp; ldloc.0<BR>&nbsp; IL_000d:&nbsp; stloc.1<BR>&nbsp; IL_000e:&nbsp; ldloc.1<BR>&nbsp; IL_000f:&nbsp; callvirt&nbsp;&nbsp; instance void I1::M1()<BR>&nbsp; IL_0014:&nbsp; ret</CODE><CODE><BR>} // end of method Class1::Main</CODE></P>
+<P>As you can see, there is no difference in the generated CIL code for calling the M1() and M2() methods, they both use the same instruction sequence. Below is the sequence for calling via the class reference:</P>
+<P><CODE>&nbsp; IL_0006:&nbsp; ldloc.0<BR>&nbsp; IL_0007:&nbsp; callvirt&nbsp;&nbsp; instance void C::M1()<BR></CODE></P>
+<P>Here is the instruction sequence for calling via the interface reference:</P>
+<P><CODE>&nbsp; IL_000e:&nbsp; ldloc.1<BR>&nbsp; IL_000f:&nbsp; callvirt&nbsp;&nbsp; instance void I1::M1()</CODE></P>
+<P>However, things become <EM>dramatically</EM> different when we look at the generated x86 code. Here's the instruction sequence for a call via an object reference:</P>
+<P><CODE>// c.M1(); <BR>0440 mov ecx,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;esi contains objref<BR>0442 mov eax,[ecx]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;get method table<BR>0444 call dword ptr [eax+0x38] ;invoke via slot in MT<BR></CODE></P>
+<P>Here's the instruction sequence for a call via an interface reference:</P>
+<P><CODE>// i1.M1(); <BR>04af mov ecx,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;edi contains objref<BR>04b1 mov eax,[ecx]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;get method table<BR>04b3 mov eax,[eax+0xc]&nbsp;&nbsp;&nbsp; ;get global IT<BR>04b6 mov eax,[eax+0x2c]&nbsp;&nbsp; ;get local IT<BR>04b9 call dword ptr [eax] ;invoke via slot in IT<BR></CODE></P>
+<P>Note that there are <EM>two additional levels of indirection </EM>here.</P>
+<P>Let's put this code into a loop. Here's some x86 code that calls the virtual method M1() 100,000,000 times via an <EM>object </EM>reference.</P>
+<P><CODE>00be xor edi,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;i = 0<BR>00c0 mov ecx,esi <BR>00c2 mov eax,[ecx] <BR>00c4 call dword ptr [eax+0x38] <BR>00c7 inc edi <BR>00c8 cmp edi,0x5f5e100 ;i &lt; 100,000,000<BR>00ce jl 00c0 </CODE></P>
+<P><CODE></CODE>Here's some x86 code that calls the virtual method M1() 100,000,000 times via an <EM>interface</EM> reference:</P>
+<P><CODE>00ec xor edi,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;i&nbsp;= 0<BR>00ee mov ecx,esi <BR>00f0 mov eax,[ecx] <BR>00f2 mov eax,[eax+0xc] <BR>00f5 mov eax,[eax+0x2c] <BR>00f8 call dword ptr [eax] <BR>00fa inc edi <BR>00fb cmp edi,0x5f5e100 ;100,000,000<BR>0101 jl 00ee</CODE></P>
+<P>Both of the call instructions in the code fragments above target the same method:</P>
+<P><CODE>01e0 ret</CODE></P>
+<P>I believe that you would expect that the IMD code should take significantly longer to execute due to its two additional memory dereferences. So did I. But results are results.</P>
+<P>Here's the code for the test rig:</P>
+<P><CODE>const int MAX_COUNT = 100000000; <BR><BR>static long TimeVirtualMethodDispatch( C c ) <BR>{ <BR>&nbsp; long vmdStart, vmdEnd; <BR>&nbsp; QueryPerformanceCounter( out vmdStart ); <BR>&nbsp; for( int i = 0; i &lt; MAX_COUNT; i++ ) <BR>&nbsp; { <BR>&nbsp;&nbsp;&nbsp; c.M1(); <BR>&nbsp; } <BR>&nbsp; QueryPerformanceCounter( out vmdEnd ); <BR>&nbsp; return vmdEnd - vmdStart; <BR>} <BR><BR>static long TimeInterfaceMethodDispatch( I1 i1 )<BR>{ <BR>&nbsp; long imdStart, imdEnd; <BR>&nbsp; QueryPerformanceCounter( out imdStart ); <BR>&nbsp; for( int i = 0; i &lt; MAX_COUNT; i++ ) <BR>&nbsp; { <BR>&nbsp;&nbsp;&nbsp; i1.M1(); <BR>&nbsp; } <BR>&nbsp; QueryPerformanceCounter( out imdEnd ); <BR>&nbsp; return imdEnd - imdStart; <BR>} <BR><BR>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; C c = new C();&nbsp;<BR>&nbsp; I1 i1 = (I1)c;&nbsp;<BR><BR>&nbsp; // Make sure that the methods are pre-compiled first <BR>&nbsp; TimeVirtualMethodDispatch( c );&nbsp;&nbsp; <BR>&nbsp; TimeInterfaceMethodDispatch( i1 );&nbsp;<BR><BR>&nbsp;&nbsp;// Call above methods and output results to console<BR>}</CODE></P>
+<P><A href="../Files/VirtualMethods.zip">Click here to download the VS.NET project that contains the test rig code</A>.</P>
+<P>Here are the&nbsp;results:</P>
+<P>Virtual method dispatch: 3.63 +/- 0.06 E+06 ticks<BR>Interface method dispatch: 4.12 +/- 0.07 E+06 ticks</P>
+<P>Relative difference (IMD-VMD)/VMD * 100% =&nbsp;<STRONG>13 +/- 1 %</STRONG></P>
+<P>If you're interested in the raw results, <A href="../Files/DispatchResults.xls">click here for the Excel spreadsheet</A>.</P>
+<P>I wanted to compare the measured performance to the predicted performance based on instruction timings. However, when I looked through the Intel Instruction Set Reference Manual this afternoon, I couldn't find any instruction timing information. I'm assuming that instruction timings in clocks are largely irrelevant due to internal caching, parallelization and out-of-order execution in modern CPU's. If someone knows how to get the theoretical instruction timings for modern Intel CPU's, please <A href="mailto:jlam@iunknown.com">email me</A>.</P>
+<P>However, if we do a simple back-of-the envelope calculation and assume that each instruction in both sequences executes in a single clock, the VMD loop should complete in&nbsp;7 clocks, and the IMD loop should complete in&nbsp;9 clocks (the additional instruction is the ret instruction at the terminus of the call). In this case, we should see a 22% difference in performance, as opposed to the 12% that was observed. Clearly the CPU is doing some very interesting things, and the cost is not as high as we might expect. </P>
+<P>NOTE: These results were obtained on my Thinkpad T-23 at 4:30pm on a cloudy afternoon in Toronto while sitting in the Starbucks at the Athletic Centre at the University of Toronto. Your mileage <EM>will</EM> vary. However, since this benchmark provides you with relative numbers, I doubt that there should be much variation. The one exception that I can think of is running the benchmark on CPU's with different architectures. These numbers were from the Pentium III-M CPU in my laptop. I'll run the same benchmark on some of my other machines to see what numbers they come up with.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000055.html');"><script type="text/javascript">postCount('Weblog/fog0000000055.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000054.html">VMWare Woes</A>
+  </span><BR>
+  08 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Sometimes it seems like I am destined to spend my entire life installing software. Today was one of those days. I wanted to do something simple: set up a bunch of <A href="http://www.vmware.com">VMWare</A> virtual machines so that I could started filling out the testing matrix for my product. I had quite a lot of success earlier this year setting up <A href="http://www.vmware.com/products/desktop/ws_features.html">VMWare Workstation 3.0</A> on Windows XP and running a Linux guest operating system on it. I thought that Linux would be the tough operating system to install. I was wrong.</P>
+<P>In October, I had installed VMWare Workstation 3.0 on my Thinkpad T-23 laptop that ran the release bits of Windows XP as the host operating system. I then proceeded to install a SUSE Linux 7.2 distribution on it without any problems. The SUSE installer worked flawlessly under VMWare. </P>
+<P>This afternoon, I attempted to install a Windows XP Professional guest operating system under VMWare on my Thinkpad T-23. After taking what seemed to be an eternity to go from the BIOS screen to Windows XP booting off of my CD drive, I managed to format the VMWare virtual disk with NTFS and get through the part where the Windows XP setup where all of the setup files are copied from the CD to the virtual disk. When the computer rebooted, it would NOT boot from the virtual disk. CPU utilization was pegged at 100% and the computer just sat there and taunted me.</P>
+<P>Being foolish, I attempted the install again. And for good luck, one more time, varying silly little things like whether I was doing a fast format for NTFS or not. Nothing worked.</P>
+<P>In frustration, I turned to using my desktop PC to install Windows XP under VMWare Workstation. This time, the installation of Windows XP Professional worked flawlessly. I then proceeded to apply all known patches to this build of XP, activated it, and archived the copy to a ZIP file so that I could use it as a baseline "clean" install of XP.</P>
+<P>Once I verified that everything worked correctly, I proceeded to install Visual Studio.NET Beta 2 Enterprise Edition (I wanted to check out the UML reverse-engineering features of Visio). The Component Update worked just fine. However, when I proceeded to begin the install of VS.NET, it barfed repeatedly part-way through the install, complaining of a corrupt or missing *.MSM file. </P>
+<P>Being foolish, I attempted the install again. Twice. No luck. I posted a plea on the DOTNET list, and got a reply from a Microsoftie. Hopefully something might come of this.</P>
+<P>Thinking that it was an OS + VMWare + VS.NET conflict of some sort, I decided to go and try my luck with Windows 2000 as the guest operating system.</P>
+<P>One of the things that I quickly learned about VMWare is that you had BETTER get correct the type of guest operating system that you will be installing. Foolishly, on my first attempt, I had specified Windows 2000 Professional (actually, I had intended to install it and then discovered that I only had bootable CD's for Server and Advanced Server handy). That blew about half an hour as the Win2K Server install formatted and copied all of the files only to have VMWare refuse to boot off the hard drive (it was complaining about a missing ntoskrnl.exe file).</P>
+<P>The next time through, I specified that I was installing Windows 2000 Server, and the base OS installed just fine. Then I decided to apply Service Pack 2. Foolishly (are you seeing a pattern here?) I decided to turn off the "do you want to backup files so that you can uninstall this service pack later?" switch. I got part way through the install of SP2 only to have the installer barf while trying to uncompress mshtml.dl_. I canceled completely out of the install, and had a half-baked install of Win2K. So I had to repave again.</P>
+<P>The third time that I installed Win2K, everything installed fine once again. However, this time when I attempted to install SP2, I made sure that I backed up the base system files. However, the install barfed again, but this time on a different file: hypertrm.dl_. Now I'm beginning to hate life. This time, I told the SP2 install to continue, but to skip copying that file. I would manually replace it later.</P>
+<P>Looking at patterns, it now seems really clear to me that it might be a problem with my CD-ROM drive. It's actually a Plextor CDRW drive that no longer burns CDR's on WinXP after I installed a Pioneer 16X DVD on the same box. Hmmm ... </P>
+<P>I'm going to finish up this entry now (it's 3:10am and I'm REALLY tired). However, I think I might have isolated the problem so I'll have somewhere to begin in the morning.</P>
+<P>Why can't I just write software and stay far, far away from hardware?!!</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000054.html');"><script type="text/javascript">postCount('Weblog/fog0000000054.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000052.html">Microsoft HomeStation</A>
+  </span><BR>
+  05 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P>I <EM>so</EM> want <A href="http://www.pcformat.co.uk/news/detail.asp?id=30803">one of these</A>! After my <A href="../Weblog/fog0000000048.html">recent negative experiences</A> with building an Entertainment PC, I would love to just pay some money to get something that just works. At least I would get a bunch of hardware and software that was tested as a unit. And I would be able to get one with a money-back guarantee from some big box retailer. Where do I sign up?</P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000052.html');"><script type="text/javascript">postCount('Weblog/fog0000000052.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000051.html">Essential .NET</A>
+  </span><BR>
+  05 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P>I just spent some time this evening reviewing a chapter from <A href="http://www.donbox.com">Don Box's</A> upcoming book, <A href="http://www.amazon.com/exec/obidos/ASIN/0201734117/qid=1010289748/sr=8-1/ref=sr_8_7_1/102-2255383-7456960">Essential .NET</A>. This is <A href="http://www.amazon.com/exec/obidos/ASIN/0201634465/qid=1010289820/sr=2-1/ref=sr_2_11_1/102-2255383-7456960">Essential COM</A> all over again; it is a book that provides an incredible amount of insight into the inner workings of the CLR as only Don can provide. Make sure that you get a copy of this book!</P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000051.html');"><script type="text/javascript">postCount('Weblog/fog0000000051.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000050.html">Parameter arrays</A>
+  </span><BR>
+  04 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I love <A href="../About/Aboutme.html">my day job</A>. It lets me explore all sorts of weird nooks and crannies inside the CLR and it gives me an opportunity to share what I found with you. That's fun.</P>
+<P>Today's topic is parameter arrays. They are described in Section 10.5.1.4 of the C# Language Specification. Today, I needed a quick and dirty way to cruft up an object that would hold an arbitrary number of values, each of which could be a different type. I turned to parameter arrays for the solution. As it turns out, parameter arrays are simply some syntactic sugar that the C# compiler uses to hide a bit of ugliness from you. </P>
+<P>Consider this code frag:</P>
+<P><CODE>class Values <BR>{ <BR>&nbsp; private object[] _parameters; <BR>&nbsp; public Values( params object[] parameters ) <BR>&nbsp; { <BR>&nbsp;&nbsp;&nbsp; _parameters = new object[ parameters.Length ]; <BR>&nbsp;&nbsp;&nbsp; parameters.CopyTo( _parameters, 0 ); <BR>&nbsp; } <BR>}</CODE></P>
+<P>Notice the constructor accepts a parameter array of object parameters. Now let's consider a method that passes a bunch of values to the Values constructor:</P>
+<P><CODE>public static int Add( int x, int y, string[] args ) <BR>{ <BR>&nbsp; Values values = new Values( x, y, args ); <BR>&nbsp; return x + y; <BR>} </CODE></P>
+<P>If we use ILDASM to examine the CIL that is generated by the C# compiler, this is what we see:</P>
+<P><CODE>.method public hidebysig static int32&nbsp;Add(int32 x,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int32 y,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string[] args) cil managed<BR>{<BR>&nbsp; // Code size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 40 (0x28)<BR>&nbsp; .maxstack&nbsp; 3<BR>&nbsp; .locals init ([0] object[] values)<BR><BR>// Values values = new Values( x, y, args );</CODE><CODE><BR><BR>&nbsp; IL_0000:&nbsp; ldc.i4.3<BR>&nbsp; IL_0001:&nbsp; newarr&nbsp;&nbsp;&nbsp;&nbsp; [mscorlib]System.Object<BR>&nbsp; IL_0006:&nbsp; stloc.0<BR>&nbsp; IL_0007:&nbsp; ldloc.0<BR>&nbsp; IL_0008:&nbsp; ldc.i4.0<BR>&nbsp; IL_0009:&nbsp; ldarg.0<BR>&nbsp; IL_000a:&nbsp; box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mscorlib]System.Int32<BR>&nbsp; IL_000f:&nbsp; stelem.ref<BR>&nbsp; IL_0010:&nbsp; ldloc.0<BR>&nbsp; IL_0011:&nbsp; ldc.i4.1<BR>&nbsp; IL_0012:&nbsp; ldarg.1<BR>&nbsp; IL_0013:&nbsp; box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mscorlib]System.Int32<BR>&nbsp; IL_0018:&nbsp; stelem.ref<BR>&nbsp; IL_0019:&nbsp; ldloc.0<BR>&nbsp; IL_001a:&nbsp; ldc.i4.2<BR>&nbsp; IL_001b:&nbsp; ldarg.2<BR>&nbsp; IL_001c:&nbsp; stelem.ref<BR>&nbsp; IL_001d:&nbsp; ldloc.0<BR>&nbsp; IL_001e:&nbsp; newobj&nbsp;&nbsp;&nbsp;&nbsp; instance void ParameterArrays.Values::.ctor(object[])<BR>&nbsp; IL_0023:&nbsp; pop<BR><BR>// return x + y;<BR><BR>&nbsp; IL_0024:&nbsp; ldarg.0<BR>&nbsp; IL_0025:&nbsp; ldarg.1<BR>&nbsp; IL_0026:&nbsp; add<BR>&nbsp; IL_0027:&nbsp; ret<BR>} // end of method Class1::ExplicitAdd<BR></P></CODE>
+<P>Note that this code was compiled using the /optimize switch so we see the <EM>real</EM> CIL, and <A href="../Weblog/fog0000000049.html">not the wierd crap</A> that is generated to make debuggers happy.</P>
+<P>As you can see, the C# compiler generated quite a bit of code for the call to the Values constructor. All this code does is create an object array with three elements, stuff the values of x, y and args into those elements, and pass a reference to that object array to the Values constructor. Note that since we are passing an <EM>object</EM> array, it is necessary to box the integer values x and y prior to stuffing them in the parameter array. </P>
+<P>In fact, the original Add() method is identical to the following ExplicitAdd() method that manually constructs an object array:</P>
+<P><CODE>public static int ExplicitAdd( int x, int y, string[] args ) <BR>{ <BR>&nbsp; object[] values = new object[ 3 ]; <BR>&nbsp; values[ 0 ] = x;&nbsp;<BR>&nbsp;&nbsp;values[ 1 ] = y; <BR>&nbsp; values[ 2 ] = args; <BR>&nbsp; Values data = new Values( values ); <BR>&nbsp; return x + y;<BR>}</CODE></P>
+<P>Run this code through your C# compiler; you will see that it generates exactly the same CIL. There are other places in C# where the compiler generates a bunch of code to hide ugliness from you. The way delegates are handled is an example of this. I'll cover that in a future entry.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000050.html');"><script type="text/javascript">postCount('Weblog/fog0000000050.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000049.html">Using the /optimize switch in CSC</A>
+  </span><BR>
+  03 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>While doing my day job, I was stepping through some JIT-compiled x86 code using the VS.NET debugger. It got me interested in the differences in generated code between code that was compiled without and with optimizations. So I decided to write this entry to record what I saw.</P>
+<P>Here's the simplest possible method that I could think of:</P>
+<P><CODE>static int Add( int x, int y ) <BR>{<BR>&nbsp; return x + y;<BR>}</CODE></P>
+<P>The first thing to examine are the differences between the CIL that is generated by the CSC compiler. When you compile the code without using the /optimize switch, this is the CIL that was generated:</P>
+<P><CODE>.method private hidebysig static int32&nbsp; SafeAdd(int32 x,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int32 y) cil managed<BR>{<BR>&nbsp; // Code size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8 (0x8)<BR>&nbsp; .maxstack&nbsp; 2<BR>&nbsp; .locals ([0] int32 CS$00000003$00000000)<BR>&nbsp; IL_0000:&nbsp; ldarg.0<BR>&nbsp; IL_0001:&nbsp; ldarg.1<BR>&nbsp; IL_0002:&nbsp; add<BR>&nbsp; IL_0003:&nbsp; stloc.0<BR>&nbsp; IL_0004:&nbsp; br.s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IL_0006<BR>&nbsp; IL_0006:&nbsp; ldloc.0<BR>&nbsp; IL_0007:&nbsp; ret<BR>} // end of method Class1::SafeAdd</CODE></P>
+<P>When you compile this code using the /optimize switch, this is the CIL that I got:</P>
+<P><CODE>.method private hidebysig static int32&nbsp; SafeAdd(int32 x,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int32 y) cil managed<BR>{<BR>&nbsp; // Code size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 (0x4)<BR>&nbsp; .maxstack&nbsp; 8<BR>&nbsp; IL_0000:&nbsp; ldarg.0<BR>&nbsp; IL_0001:&nbsp; ldarg.1<BR>&nbsp; IL_0002:&nbsp; add<BR>&nbsp; IL_0003:&nbsp; ret<BR>} // end of method Class1::SafeAdd</CODE></P>
+<P>It's interesting that the "debug" build created an extra local variable to hold the intermediate results of the calculation. This is presumably done so that a debugger can let you step over the addition and see the result of that calculation. There is also the redundant br.s instruction that does nothing more than do an unconditional branch to the next line of code. Apparently this is done so that you can set a breakpoint on either the return x + y; line or the terminating curly brace.</P>
+<P>When I examined the "debug" build using the VS.NET debugger in disassembly mode, this is the x86 instruction stream that I saw:</P>
+<P><CODE>00000000 push ebp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; setup stack frame<BR>00000001 mov ebp,esp <BR>00000003 sub esp,0Ch&nbsp; <BR>00000006 push edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; save edi<BR>00000007 push esi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; save esi<BR>00000008 push ebx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; save ebx<BR>00000009 mov ebx,ecx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; x is in ecx<BR>0000000b mov esi,edx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; y is in edx<BR>0000000d xor edi,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; zero edi<BR>0000000f lea eax,[ebx+esi]&nbsp; ; add x and y, result in eax<BR>00000012 mov edi,eax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; store result in edi<BR>00000014 jmp 00000016&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>00000016 mov eax,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; move result to eax<BR>00000018 pop ebx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; restore ebx<BR>00000019 pop esi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; restore esi<BR>0000001a pop edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; restore edi<BR>0000001b mov esp,ebp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; cleanup stack frame<BR>0000001d pop ebp <BR>0000001e ret </CODE></P>
+<P>There are a number of interesting observations that we can make about this code. First, we can clearly see the fastcall calling convention in use: the ecx and edx registers hold the x and y parameters respectively. We can see that the return value of the method is returned in the eax register. We also see that space is being reserved on the stack for two parameters + a temporary variable even though x86 registers are used for all three values!</P>
+<P>It's interesting to note that the edi register is being used as a temporary variable in this case.</P>
+<P>When I examined the optimized build using the VS.NET debugger in disassembly mode, this is the x86 instruction stream that I saw:</P>
+<P><CODE>00000000 push ebp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; setup stack frame<BR>00000001 mov ebp,esp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>00000003 sub esp,8 <BR>00000006 push edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; save edi <BR>00000007 push esi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; save esi<BR>00000008 mov edi,ecx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; x is in ecx<BR>0000000a mov esi,edx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; y is in edx<BR>0000000c lea eax,[edi+esi]&nbsp; ; add x and y, result in eax<BR>0000000f pop esi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; restore esi<BR>00000010 pop edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; restore edi<BR>00000011 mov esp,ebp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; clean up stack frame<BR>00000013 pop ebp <BR>00000014 ret </CODE></P>
+<P>In this case, we can see that no code was generated for the temporary variable, and the redundant jmp instruction has been eliminated. We also see that space is being reserved on the stack only for two parameters as the temporary variable is no longer used. There is no need to save the ebx register in this case since the edi register is no longer being used as a temporary variable.</P>
+<P>I'm actually somewhat surprised that the sub esp, x instruction is even generated when it is pretty clear that the stack frame is never used due to the enregistration of the parameters and the variables. This looks like a healthy candidate for future optimization of small functions that never use the stack frame.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000049.html');"><script type="text/javascript">postCount('Weblog/fog0000000049.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000048.html">More Entertainment PC Stuff</A>
+  </span><BR>
+  03 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>One of the really cool things about having friends in the PC industry is that they can come over to your house and fix the technology that they created. Since the <A href="../Articles/fog0000000041.html">last installment </A>in my never ending quest for the perfect Entertainment PC, I haven't really done much with the one that I decided to build and keep for myself. Tonight I invited my friend, who happens to be the product manager for <A href="http://www.ati.com/na/pages/products/pc/aiw_radeon/index.html">ATI's All-In-Wonder RADEON card</A>, over to show him my setup. </P>
+<P>I'm a defaults kind of guy. I generally don't fiddle with the settings of my software. I generally use maybe 5% of the features of my software (except for my software development tools: I have limited intelligence and I use it in a very directed manner). My Windows XP installation looks like the day that it was first installed. So, not surprisingly, all of the software for my ATI All-In-Wonder RADEON card was configured using the defaults. </P>
+<P>My friend sat down and fiddled with the settings on the RADEON card. He got the TV output looking <EM>much</EM> better than it did under the default settings. The TV tuner output that I complained so bitterly about before looked much better after his adjustments. He also showed me a ton of really cool features, such as the TV station scanning feature which lets you watch <EM>one</EM> of the channels while the rest of the channels are being scanned. He also showed me some features that let me record live television with better image quality than I was able to before. </P>
+<P>All in all,&nbsp;I would say that I'm a lot happier with my Entertainment PC than I was before. However, there's still a bunch of software glitches that plague the system. Sometimes during DVD playback, the audio track is no longer sync'd with the video on the screen. The TV recording feature skips frames on a regular basis (this is a 1.6GHz Pentium 4 system!). I still can't get sound to record on my SnapStream recorder. The machine will blue-screen every now and then. The CD audio player won't detect an audio CD insertion. My USB wireless ethernet adapter has crapped out on me. </P>
+<P>It's still a <EM>very</EM> high maintenance setup. I look forward to the day when all of the software that is running on that machine can just get along with each other. Then I can use that machine as an appliance like I originally intended. Remember my three requirements: play audio on my stereo, watch DVDs, record live TV.&nbsp;Well, I can dream, can't I???</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000048.html');"><script type="text/javascript">postCount('Weblog/fog0000000048.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000047.html">Measuring JIT Cost</A>
+  </span><BR>
+  02 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Recently on the <A href="http://discuss.develop.com/dotnet.html">DOTNET</A> list, there was much speculation as to <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0201a&amp;L=dotnet&amp;F=&amp;S=&amp;P=597">the cost of JIT compilation</A>. There was also a lot of speculation as to whether the JIT compiler actually cached the x86 code that it generated (it does not). This led to a lot of discussion about alternate implementations of JIT compilers that could do things like cache the result of their work. </P>
+<P>Because of my background <A href="../About/fog0000000009.html">from my other life</A>, I <EM>had to see </EM>what the bottom line was on the cost of JIT compilation. I carved out a chunk of time this afternoon to experiment with measuring the cost of JIT compilation. I wrote a simple utility called JitCost that uses the CLR profiling interfaces to measure the amount of time that was spent inside of the JIT compiler. </P>
+<P>Here are the raw results of five separate runs of WinCV (the WinForms Class Viewer that can be found in the FrameworkSDK\bin directory):</P>
+<P>
+<TABLE style="WIDTH: 259pt; BORDER-COLLAPSE: collapse" cellSpacing=0 cellPadding=0 width=345 border=0 x:str>
+<COLGROUP>
+<COL style="WIDTH: 49pt; mso-width-source: userset; mso-width-alt: 2377" width=65>
+<COL style="WIDTH: 42pt; mso-width-source: userset; mso-width-alt: 2048" span=5 width=56>
+<TBODY>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; WIDTH: 49pt; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" width=65 height=17><STRONG><FONT face=Arial size=2>Method</FONT></STRONG></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; WIDTH: 42pt; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right width=56 x:num><STRONG><FONT face=Arial size=2>1</FONT></STRONG></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; WIDTH: 42pt; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right width=56 x:num><STRONG><FONT face=Arial size=2>2</FONT></STRONG></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; WIDTH: 42pt; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right width=56 x:num><STRONG><FONT face=Arial size=2>3</FONT></STRONG></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; WIDTH: 42pt; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right width=56 x:num><STRONG><FONT face=Arial size=2>4</FONT></STRONG></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; WIDTH: 42pt; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right width=56 x:num><STRONG><FONT face=Arial size=2>5</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9459128</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>11946</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>29774</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>12168</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>11930</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>11965</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9461304</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>548</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>391</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>410</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>383</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>657</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9458856</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>30726</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>12674</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>12885</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>30725</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>32555</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9458872</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>25175</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>27104</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>25507</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>25035</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>24883</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9459112</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>54307</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>39953</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>38694</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>39781</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>38536</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9460936</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>1771</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>1750</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>1780</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>1782</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>1769</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9460920</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>921</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>900</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>912</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>921</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>919</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9458920</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>5967</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>5948</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>5973</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>5970</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>5952</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9464136</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>594</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>1094</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>584</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>604</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>592</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9464120</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>12756</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>12605</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>12747</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>14731</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>12576</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9459080</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>894</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>903</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>919</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>923</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>901</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9458904</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>14899</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>14983</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>16565</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>14936</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>14957</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9458888</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>9901</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>9889</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>9986</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>9868</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>11495</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9459000</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>716</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>802</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>722</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>815</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>733</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:num><FONT face=Arial size=2>9458936</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>13498</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>11289</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>11268</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>11266</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>11098</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2>JIT (ticks)</FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num x:fmla="=SUM(B2:B16)"><FONT face=Arial size=2>184619</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num x:fmla="=SUM(C2:C16)"><FONT face=Arial size=2>170059</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num x:fmla="=SUM(D2:D16)"><FONT face=Arial size=2>151120</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num x:fmla="=SUM(E2:E16)"><FONT face=Arial size=2>169670</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num x:fmla="=SUM(F2:F16)"><FONT face=Arial size=2>169588</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2>JIT (s)</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="5.1576110000000001E-2"><STRONG><FONT face=Arial size=2>5.16E-02</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="4.7508549999999997E-2"><STRONG><FONT face=Arial size=2>4.75E-02</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="4.2217659999999997E-2"><STRONG><FONT face=Arial size=2>4.22E-02</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="4.7399879999999998E-2"><STRONG><FONT face=Arial size=2>4.74E-02</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="4.7376969999999997E-2"><STRONG><FONT face=Arial size=2>4.74E-02</FONT></STRONG></TD></TR></TBODY></TABLE></P>
+<P></P>
+<P>The average time spent inside of the JIT was <STRONG>0.047 +/- 0.003</STRONG> seconds.</P>
+<P>The raw numbers represent ticks of the high resolution counter. On my computer (a ThinkPad T23 running a 1.13GHz Pentium III-M processor), the high-resolution counter ticks roughly 3.58 million times per second. As you can see, these numbers are reasonably reproducible. Of course, on a computer that runs a multi-tasking operating system, getting reproducible numbers is fairly difficult, especially under conditions where you are trying to measure very small time increments.</P>
+<P>The thing that surprised me the most was the relatively small number of functions (15)&nbsp;that must be JIT compiled before the main window of a Win Forms application appears. Clearly there are tremendous benefits on start-up time for having pre-compiled x86 binaries for the runtime libraries. It would be interesting to compare the results of having to JIT compile <EM>every</EM> method vs. only the user-defined methods for WinCV. I'll leave that as an experiment for another day.</P>
+<P>The worst case compilation time was for method 9459112, and that took approximately 0.01 seconds, or nearly 20% of the total amount of time spent JIT compiling code in WinCV. It would be interesting to see what those methods were, how many MSIL instructions were compiled, and how many x86 instructions were generated. While not incredibly useful, it would be fun to see what the throughput of the JIT compiler is in terms of&nbsp;CIL instructions / second.</P>
+<P>Using JitCost is fairly simple. You will need to download the binary bits and register measure.dll using regsvr32. You will also need a debug console viewing application such as DBGVIEW from <A href="http://www.sysinternals.com">SysInternals</A>. All applications whose JIT cost that you wish to measure must be started from a command console. Before you can measure, you must first run the enablelistener.cmd script in your console window to set the COR_PROFILER environment variable to the CLSID of the JitCost COM object. DBGVIEW will show you the results in a format that resembles:</P>
+<P><CODE>[1984] Frequency of high-performance counter: 3579545<BR>[1984] Time to compile method: 9459128 = 12292 ticks<BR>[1984] Time to compile method: 9461304 = 394 ticks<BR>[1984] Time to compile method: 9458856 = 12892 ticks<BR>[1984] Time to compile method: 9458872 = 25642 ticks<BR>[1984] Time to compile method: 9459112 = 38794 ticks<BR>[1984] Time to compile method: 9460936 = 1769 ticks<BR>[1984] Time to compile method: 9460920 = 902 ticks<BR>[1984] Time to compile method: 9458920 = 6049 ticks<BR>[1984] Time to compile method: 9464136 = 590 ticks<BR>[1984] Time to compile method: 9464120 = 12783 ticks<BR>[1984] Time to compile method: 9459080 = 904 ticks<BR>[1984] Time to compile method: 9458904 = 15082 ticks<BR>[1984] Time to compile method: 9458888 = 9948 ticks<BR>[1984] Time to compile method: 9459000 = 742 ticks<BR>[1984] Time to compile method: 9458936 = 11075 ticks<BR>[1984] Total elapsed time in JIT: 4.186510e-002 seconds</CODE></P>
+<P>Enjoy! Please send comments / flames / suggestions to the <A href="mailto:jlam@iunknown.com">usual place</A>.</P>
+<P>Download the binary redistributable bits <A href="../Files/jitcost.zip">here</A>.</P>
+<P>Download the source code <A href="../Files/JitCost_Source.zip">here</A>.</P>
+<P><EM><STRONG>Update</STRONG>:</EM> I just recompiled the bits today (February 4, 2002) using the RTM (Build 3705) Build of the CLR. The binary redistributable has been updated with the new compiled DLL. The source code file is unchanged.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000047.html');"><script type="text/javascript">postCount('Weblog/fog0000000047.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000045.html">A New Year</A>
+  </span><BR>
+  01 Jan, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Part of the spirit of the New Year is to reflect back on the previous year. 2001 was a pretty crappy year all-around, and I know that I'm not the only one looking forward to the promise of 2002.</P>
+<P>This web log has been up and running for an entire month now. Yippee! And just a few days ago, <A href="http://www.google.com">Google</A> <EM>finally </EM>recognized that I'm back. When I first started writing again, I <A href="http://www.google.com/addurl.html">submitted my site</A> to Google. I scoured my web logs on a daily basis, and after about a week, I saw that <A href="http://www.google.com/bot.html">GoogleBot</A> had visited my site. For the next week or so, I used <A href="http://www.google.com/search?q=john+lam+site%3Aiunknown.com&amp;btnG=Google+Search">a very specific query</A> to see if Google had indexed my site. No go. It took until nearly Christmas before Google finally indexed my site.</P>
+<P>Now, if you <A href="http://www.google.com/search?q=john+lam">search for John Lam</A> on Google, you'll find that I'm now the first result on the results page! I suspect that this has to do with the frequency with which I update my web log. It seems that Google has recently added a new feature to index <A href="http://www.google.com/search?q=dave+winer">sites that change daily</A> on a more frequent basis. Notice the Fresh! &lt;date&gt; trailer on the search result entry. My site hasn't been deemed worthy by Google for more frequent indexing, but hopefully things will change in the future.</P>
+<P>In the spirit of the New Year, it's time to look forward. It should be an interesting year around here. I've updated <A href="../About/fog0000000010.html">my plan</A> to emphasize those areas that I'm interested in. In my plan is my announcement of my intention to <A href="../CLRInternals/fog0000000043.html">write a CLR Internals book</A>. This book will be in the spirit of a <A href="http://www.aristeia.com/">Scott Meyers</A> <A href="http://www.amazon.com/exec/obidos/ASIN/0201924889/qid=1009924291/sr=8-1/ref=sr_8_71_1/107-1596383-3252568">Effective C++</A> book; it will be a collection of Items that each discuss something that I (and the community) finds interesting about the CLR and / or the Framework Class Libraries. This lets me write more-or-less at random, and post the latest Items for you to read. When the entire thing is finished, I'll <EM>consider</EM> turning it into a dead tree version. This way I avoid the stress of having to produce under a deadline.</P>
+<P>The reason why I want to avoid having a deadline on my writing is that I have another, more pressing, deadline: I want to ship a product by the end of 2002. It will be some innovative technology that changes the way that you look at code that you wrote, your team wrote, and other developers wrote. It may also become a tool that changes the way that you <EM>write</EM> your code, but I have a feeling that goal may be just a bit too ambitious for 2002. After all, there's always 2003 ... ;)</P>
+<P>Happy New Year!</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000045.html');"><script type="text/javascript">postCount('Weblog/fog0000000045.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+
+<div class="copyright">Site contents copyright 2001-2002 by John Lam. No animals were harmed during the production of this site. Some assembly required. Your mileage may vary. Use at your own risk.</div>
+</td>
+<td class="right_panel"></td>
+</tr>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2006/03/03/converging-on-a-correct-design">Converging on a correct design</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 03 Mar 2006 16:06:00 GMT">Fri, 03 Mar 2006 16:06:00 GMT</span></p>
+<p>Special cases in code that are workarounds for a seemingly innocuous problem are almost always a symptom of something wrong in your design.</p>
+
+
+	<p>Here&#8217;s an example from some work that I&#8217;ve been doing for the past couple of days: identifying layering violations in <a href="http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr">RubyCLR</a>. This work led me to look at how I was caching <code>Type</code> objects in the bridge.</p>
+
+
+	<p>I currently hold onto a reference to a <span class="caps">CLR </span><code>Type</code> object in each Ruby shadow class object that I create. So you could think of the Ruby type system as a cache for all <code>Type</code> objects that are currently in use by your program.</p>
+
+
+	<p>The problem is this: I cache <code>Type</code> objects elsewhere as well, particularly in the lower levels of the bridge that use my <a href="http://www.iunknown.com/articles/2005/12/13/third-drop-of-rbdynamicmethod">RbDynamicMethod</a> library. Now, it just doesn&#8217;t <em>feel</em> right to have duplicate caches, so I set about redesigning my Reflection engine to use a unified cache.</p>
+
+
+	<p>While looking at the C++ code that I had to refactor, I decided to postpone this work to work on something more important: leveraging inheritance in my Ruby shadow class objects. Right now, if you had a <code>System.Windows.Forms.TextBox</code> and a <code>System.Windows.Forms.Button</code> you will have duplicate accessor <code>Name</code> accessor methods; my shadow classes were completely ignorant of inheritance in the <span class="caps">CLR</span> class libraries. The correct solution is to attach the <code>Name</code> accessor method shim to the class where it was defined: the common <code>System.Windows.Forms.Control</code> class.</p>
+
+
+	<p>Postponing the work seemed like the right thing &#8211; after all, I was just being inefficient, right?</p>
+
+
+	<p>So I started to implement ruby shadow class inheritance. But then I ran smack into a what was now a clear layering violation: the reference to the <code>Type</code> object that I was holding in my shadow class objects. There was even (surprise!) some special case code to treat <code>Type</code> objects differently.</p>
+
+
+	<p>I need to move that reference out of the Ruby shadow class object and into the unified <code>Type</code> cache that I wanted to implement earlier, but postponed!</p>
+
+
+	<p>So the moral of the story is this: several seemingly unrelated problems were all symptoms of the same incorrect design. I&#8217;m continually amazed at how refactoring code almost always leads me to a (more) correct design.</p>
+
+
+	<p>As an aside, this is also why programming languages that let you write fewer lines of code are almost always superior: it&#8217;s just easier to <em>see</em> the incorrect design when you&#8217;re staring at fewer lines of code to begin with. And they also have the side-effect of making it much easier to do complex refactoring because there&#8217;s less language-related bookkeeping to do &#8230;. hmmm I wonder what languages I&#8217;m comparing here? :)</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/03/03/converging-on-a-correct-design#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/28/generics-stabilizing">Generics stabilizing</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 01 Mar 2006 04:34:00 GMT">Wed, 01 Mar 2006 04:34:00 GMT</span></p>
+<p>RubyCLR now supports multi-type generic types such as <code>Dictionary&lt;T, U&gt;</code>. I also changed the nasty <code>cons</code> method to the infinitely cleaner <code>of</code> method. Here&#8217;s some tests to show the progress:</p>
+
+
+<pre><code>
+def test_create_two_parameter_generic_type
+  dict = Dictionary.of(Int32, Int32).new
+  dict.add(1, 1)
+  dict.add(2, 2)
+  assert_equal 1, dict[1]
+  assert_equal 2, dict[2]
+end
+
+def test_dictionary_with_string_key
+  dict = Dictionary.of(System::String, Int32).new
+  dict['John'] = 42
+  dict['Ruby'] = 2
+  assert_equal 42, dict['John']
+  assert_equal 2, dict['Ruby']
+end
+</code></pre>
+
+	<p>The one thing that I&#8217;m not happy with right now is being forced to fully qualify the <code>System::String</code> type. I might add some code to special-case that type name in the <code>of</code> method and alias to the <span class="caps">CLR </span><code>String</code> type from the Ruby <code>String</code> type.</p>
+
+
+	<p>You might be wondering how I implement the generic types. I generate a Ruby shadow class that has a mangled name. For example, <code>Dictionary.of(Int32,Int32)</code>, maps to a Ruby class called <code>Dictionary_generic_Int32_Int32</code>, which is generated the first time <code>of</code> is called. On all subsequent calls, I just look up the Ruby shadow class name. This is also how I handle arrays (you can really think of arrays as a special case of generics).</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/28/generics-stabilizing#comments">2 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/28/generics-in-rubyclr">Generics in RubyCLR</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 28 Feb 2006 22:21:00 GMT">Tue, 28 Feb 2006 22:21:00 GMT</span></p>
+<p>I got a crude implementation of generics up and running in RubyCLR today. It does what these tests say it does, and nothing more :)</p>
+
+
+<pre><code>
+class GenericsTests &lt; TestCase
+  include System::Collections::Generic
+
+  def test_make_generic_type
+    c = List.cons(Int32)
+    assert_equal 'System::Collections::Generic::List_generic_Int32', c.name
+    assert_equal 'System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]', c.clr_type.full_name
+  end
+
+  def test_create_generic_type
+    list = List.cons(Int32).new
+    assert_equal 'List`1', list.clr_type.name
+  end
+
+  def test_call_generic_type
+    list = List.cons(Int32).new
+    list.add(42)
+    assert_equal 42, list[0]
+  end
+
+  def test_type_conversion_error
+    assert_raises TypeError do
+      list = List.cons(Int32).new
+      list.add('42')
+    end
+  end
+end
+</code></pre>
+
+	<p>As for feedback, I&#8217;m not all that happy with the name <code>cons</code> for the method that creates a generic type. Suggestions would be welcome (but they have to be easy to type, since I&#8217;m competing with <code>List&lt;Int32&gt;</code> :)</p>
+
+
+	<p>I also ran some crude performance benchmarks for adding 1M integers to each data structure:</p>
+
+
+	<ul>
+	<li><code>ArrayList</code>   = 1.15s</li>
+		<li><code>List&lt;Int32&gt;</code> = 1.00s</li>
+		<li>Ruby <code>Array</code>  = 0.66s</li>
+	</ul>
+
+
+	<p>I just wanted to get some order of magnitude estimates of performance. So far I&#8217;m quite happy with the performance of the bridge. 1M method calls / second is nothing to sneeze at.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/28/generics-in-rubyclr#comments">4 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/28/ides-and-complexity">IDEs and complexity</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 28 Feb 2006 18:22:00 GMT">Tue, 28 Feb 2006 18:22:00 GMT</span></p>
+<p><a href="http://patricklogan.blogspot.com/2006/02/this-is-enterprise-stuff-look-out.html">Worth repeating</a>:</p>
+
+
+	<blockquote>
+		<p>Intellisense and code generation is an isolated developer trick for hiding real complexity and risk.</p>
+	</blockquote>
+
+
+	<p>Patrick Logan does a great job of capturing why I don&#8217;t like the complexity of today&#8217;s IDEs.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/28/ides-and-complexity#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/27/rubyclr-and-auto_dispose">RubyCLR and auto_dispose</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 28 Feb 2006 01:39:00 GMT">Tue, 28 Feb 2006 01:39:00 GMT</span></p>
+<p>In the <a href="http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr">second drop of RubyCLR</a>, I had a broken implementation of <code>auto_dispose</code>, which automatically calls an object&#8217;s <a href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfSystemIDisposableClassDisposeTopic.asp">Dispose</a> method for you. Fortunately, Gunter Szolderits noticed this problem, and sent me a really lovely implementation that allows for parallel assignment. That means that instead of writing this:</p>
+
+
+<pre><code>
+auto_dispose(D.new) do |dc|
+  auto_dispose(AD.new) do |adc|
+    adc.good_method
+  end
+  dc.good_method
+end
+</code></pre>
+
+	<p>you can now write this:</p>
+
+
+<pre><code>
+auto_dispose(D.new, AD.new) do |dc, adc|
+  adc.good_method
+  dc.good_method
+end
+</code></pre>
+
+	<p>Using the new <a href="http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr">interfaces</a> implementation, the implementation of <code>auto_dispose</code> now looks like this:</p>
+
+
+<pre><code>
+def auto_dispose(*objs)
+  yield(*objs) if block_given?
+ensure
+  objs.each do |obj|
+    if obj != nil 
+      disposable = obj.as IDisposable
+      disposable.dispose if disposable != nil
+    end
+  end
+end
+</code></pre>
+
+	<p>Now, is that pretty or what? And I mean both the usage and the implementation!</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/27/rubyclr-and-auto_dispose#comments">4 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/27/interfaces-and-rubyclr">Interfaces and RubyCLR</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 28 Feb 2006 01:14:00 GMT">Tue, 28 Feb 2006 01:14:00 GMT</span></p>
+<p><a href="http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces">My earlier implementation of interfaces</a> for RubyCLR was incomplete. I didn&#8217;t have code to let you test whether an object implemented the interface requested. There are a couple of approaches that you can use to solve this problem: via reflection at runtime and via a shim method that &#8220;knows&#8221; about all of the interfaces that an object implements.</p>
+
+
+	<p>I chose the second option: implementing two new methods <code>is</code> and <code>as</code>. The goal is to eventually provide the same semantics as the C# <a href="http://msdn.microsoft.com/library/en-us/csref/html/vclrfispg.asp">is</a> and <a href="http://msdn.microsoft.com/library/en-us/csref/html/vclrfas.asp">as</a> operators. You can use the <code>is</code> method to test whether an object implements an interface, and you can use the <code>as </code> operator to return a reference to that interface.</p>
+
+
+	<p>I use Reflection to enumerate all of the interfaces of a class and bake in all of those interface references by recording the <a href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemruntimetypehandleclasstopic.asp">RuntimeTypeHandle</a> for each one of the interfaces. This approach gives me superior performance  since I avoid using Reflection on all but the first call to the <code>is</code> or <code>as</code> methods of a type.</p>
+
+
+	<p>The ultimate goal is that <code>is</code> and <code>as</code> will match the semantics of <code>is</code> and <code>as</code> in C#. Currently I&#8217;m missing support for the boxing and unboxing scenarios as well as the super-type scenario.</p>
+
+
+	<p>Here&#8217;s the unit test for the <code>is</code> method:</p>
+
+
+<pre><code>
+def test_is
+  m = System::Data::DataSet.new
+  assert m.is?(System::Data::DataSet)
+  assert m.is?(IComponent)
+  assert m.is?(IDisposable)
+  assert m.is?(IServiceProvider)
+  assert m.is?(IListSource)
+  assert m.is?(System::Xml::Serialization::IXmlSerializable)
+  assert m.is?(ISupportInitializeNotification)
+  assert m.is?(ISupportInitialize)
+  assert m.is?(System::Runtime::Serialization::ISerializable)
+  assert !m.is?(System::Data::IColumnMapping)
+end
+</code></pre>
+
+	<p>and a simpler test for the <code>as</code> method:</p>
+
+
+<pre><code>
+def test_as
+  a = ArrayList.new
+  a.add(1)
+  e = a.as(IEnumerable).get_enumerator.as(IEnumerator)
+  assert e.move_next
+  assert 1, e.current
+  assert !e.move_next
+  assert_equal nil, a.as(IComponent)
+end
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/27/interfaces-and-rubyclr#comments">3 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/23/native-ruby-array-data-binding">Native Ruby array data binding</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 24 Feb 2006 04:42:00 GMT">Fri, 24 Feb 2006 04:42:00 GMT</span></p>
+<p>I spent some time today hacking out an experimental implementation of native Ruby array data binding. It works by using a <span class="caps">CLR</span> helper class called <code>DataBinder</code> that implements <code>IList</code>, and calls back to Ruby using delegates to retrieve the data. This gives the following usage model:</p>
+
+
+<pre><code>
+names = ['John', 'Paul', 'George', Ringo']
+list_box.data_source = names.make_bindable
+</code></pre>
+
+	<p>To make this work, I inject a <code>make_bindable</code> method into the <code>Array</code> class:</p>
+
+
+<pre><code>
+def make_bindable
+  binder = DataBinder.new
+  binder.get_data do |sender, args|
+    args.current_object = self[args.index]
+  end
+  binder.get_count do |sender, args|
+    args.count = self.length
+  end
+  binder
+end
+</code></pre>
+
+	<p>Thoughts? Does this feel good?</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/23/native-ruby-array-data-binding#comments">3 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/23/rubyclr-is-all-about-choice">RubyCLR is all about choice</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 23 Feb 2006 16:17:00 GMT">Thu, 23 Feb 2006 16:17:00 GMT</span></p>
+<p>Look at what I got working this morning:</p>
+
+
+<pre><code>
+def test_enumerator
+  a = ArrayList.new
+  a.Add(1)
+  a.Add(2)
+  a.Add(3)
+  e = a.get_interface(IEnumerable).GetEnumerator.get_interface(IEnumerator)
+  assert e.MoveNext
+  assert 1, e.Current
+  assert e.MoveNext
+  assert 2, e.Current
+  assert e.MoveNext
+  assert 3, e.Current
+  assert !e.MoveNext
+end
+</code></pre>
+
+	<p>vs.</p>
+
+
+<pre><code>
+def test_enumerator
+  a = ArrayList.new
+  a.add(1)
+  a.add(2)
+  a.add(3)
+  e = a.get_interface(IEnumerable).get_enumerator.get_interface(IEnumerator)
+  assert e.move_next
+  assert 1, e.current
+  assert e.move_next
+  assert 2, e.current
+  assert e.move_next
+  assert 3, e.current
+  assert !e.move_next
+end
+</code></pre>
+
+	<p>By the way, both work in the same app.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/23/rubyclr-is-all-about-choice#comments">5 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/23/rubyclr-interfaces">RubyCLR Interfaces</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 23 Feb 2006 13:40:00 GMT">Thu, 23 Feb 2006 13:40:00 GMT</span></p>
+<p>A notable feature that was missing from the <a href="http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr">second drop of RubyCLR</a> was support for interfaces. Also, I was missing support for integrating .NET Reflection with Ruby Reflection.</p>
+
+
+	<p>I spent some time yesterday adding these features to RubyCLR. This is what I wound up with:</p>
+
+
+<pre><code>
+  def test_enumerator
+    a = ArrayList.new
+    a.Add(1)
+    a.Add(2)
+    a.Add(3)
+    enum = a.get_interface('System.Collections.IEnumerable')
+    e    = enum.GetEnumerator.get_interface('System.Collections.IEnumerator')
+    assert e.MoveNext
+    assert 1, e.Current
+    assert e.MoveNext
+    assert 2, e.Current
+    assert e.MoveNext
+    assert 3, e.Current
+    assert !e.MoveNext
+  end
+</code></pre>
+
+	<p>As you could imagine, I&#8217;m going to add explicit support for an <code>each</code> method on enumerable objects.</p>
+
+
+	<p>Implementing <code>get_interface</code> turned out to be easier than expected:</p>
+
+
+<pre><code>
+  def get_interface(name)
+    klass = self.class
+    create_safe_ruby_instance_method(klass, 'get_interface') do
+      ldstr        name.to_s
+      ld_this      klass
+      call         'static Marshal::ToRubyObjectAsInterface(String, Object)'
+      ret
+    end
+    get_interface(name)
+  end
+</code></pre>
+
+	<p>The C+<ins> <code>ToRubyObjectAsInterface</code> simply thunks to some existing code in the C</ins>+ part of the RubyCLR runtime.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/23/rubyclr-interfaces#comments">4 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/21/google-calc">Google Calc</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 21 Feb 2006 22:46:00 GMT">Tue, 21 Feb 2006 22:46:00 GMT</span></p>
+<p>Justin just posted an awesome sample that uses RubyCLR to the ruby-talk list:</p>
+
+
+	<p><img src="http://static.flickr.com/27/102769655_160658c51e_o.png" alt="" /></p>
+
+
+	<p>I had no idea that Google&#8217;s calculator could work with fortnights as a unit!</p>
+
+
+	<p>Here&#8217;s a link to the <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/197f2650a1ca9f25/b7ea0676a15fa46c?lnk=st&#38;q=rubyclr&#38;rnum=1&#38;hl=en#b7ea0676a15fa46c">complete source</a> to his app.</p>
+
+
+	<p>The more people I can get to use it, the sooner we&#8217;ll all have a production-quality release to work with!</p>
+
+
+	<p>Keep those samples coming!</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/21/google-calc#comments">no comments</a></p> 
+  </div>
+
+
+  <p id="pagination">Older posts: 1 <a href="/articles/2006/02/page/2">2</a> <a href="/articles/2006/02/page/3">3</a> </p>
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/94578381/"><img alt="amazon" src="http://static.flickr.com/22/94578381_8b6056d9e7_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/110674297/"><img alt="RubyCLR irb session" src="http://static.flickr.com/44/110674297_303908d4cd_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102310404/"><img alt="Ruby RSS Reader" src="http://static.flickr.com/36/102310404_c16b55d745_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/105005076/"><img alt="Ben's Funny Look" src="http://static.flickr.com/38/105005076_f528bbd27f_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02/page/7">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

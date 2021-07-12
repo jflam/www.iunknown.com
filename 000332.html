@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Recycling w3wp.exe and non-admin development on Win2K3</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000331.html" title="Why external build engines?" />
+
+<link rel="next" href="http://www.iunknown.com/000333.html" title="Clean Sweep" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000332.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/76"
+    dc:title="Recycling w3wp.exe and non-admin development on Win2K3"
+    dc:identifier="http://www.iunknown.com/000332.html"
+    dc:subject=""
+    dc:description="First observation: I still have to recycle the IIS worker process (now w3wp.exe instead of aspnet_wp.exe) in Win2K3 during development. This is due to the fact that my security code lives in strong-named assemblies. These assemblies are deployed into the..."
+    dc:creator="John"
+    dc:date="2003-09-12T12:30:29-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000331.html">&laquo; Why external build engines?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000333.html">Clean Sweep &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">September 12, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Recycling w3wp.exe and non-admin development on Win2K3</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>First observation: I still have to recycle the <span class="caps">IIS</span> worker process (now w3wp.exe instead of aspnet_wp.exe) in Win2K3 during development. This is due to the fact that my security code lives in strong-named assemblies. These assemblies are deployed into the <span class="caps">GAC</span> where, by default (I'm going to lock this down later), they have Full Trust. </p>
+
+<p>Unfortunately (or fortunately, depending on your point of view) <span class="caps">ASP.NET</span> loads all <span class="caps">GAC</span>-installed assemblies as domain-neutral assemblies. This forces me to recycle the w3wp.exe worker process <span class="caps">EVERY</span> time that I recompile my security code. Sometimes I forget ... which means I'm tracking down bugs that aren't really there because I fixed them already. It would so rock if <span class="caps">ASP.NET</span> would have a flag that doesn't load <span class="caps">GAC</span>-installed assemblies as domain-neutral assemblies. This flag would be dangerous in the general (say, <span class="caps">ISP</span>) case, but would rock for local development.</p>
+
+<p>Second observation: it's much easier to run as a non-admin under Win2K3. But to do <span class="caps">ASP.NET</span> debugging, there's a subtle trick. First, you want to either reconfigure the Default App Pool to run under your login, or create a new App Pool that runs under your login. Next, (and this was the part that I missed out on initially), you must add your account to the <span class="caps">IIS</span>_WPG (IIS Worker Process Group) group. Once you have done this, you can safely take your account out of the Local Administrator's group and you will be running with non-administrator goodness <span class="caps">AND</span> you'll be able to debug your <span class="caps">ASP.NET</span> apps. This is much better (and far more secure) than things were with WinXP/Win2K.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at September 12, 2003 12:30 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=332" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="332" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000332.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Wow. This certainly makes the idea of running Windows 2003 on the desktop more appealing. The non-admin-friendliness, that is. I'm still having doubts, however, regarding compatibility with third-party software. I hope you will continue blogging about your experiences, because it would be great if you could convince me :-)</p>
+<span class="comments-post">Posted by: Tor at September 12, 2003 04:26 PM</span>
+</div>
+<div class="comments-body">
+<p>You should consider writing a book, perhaps an in-depth intense view of asp.net<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;mike&#64;michaelrichardson&#46;org">Mike Richardson</a> at September 14, 2003 10:07 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

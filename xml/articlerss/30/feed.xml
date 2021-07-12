@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Private module context in Ruby</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Private module context in Ruby" by jlam</title>
+      <description>&lt;p&gt;Here&amp;#8217;s a &lt;em&gt;beautiful&lt;/em&gt; little code frag that Robert Klemme posted to &lt;code&gt;ruby-talk&lt;/code&gt; this morning. It solved an important problem that I had with my &lt;a href="http://www.iunknown.com/articles/2005/12/04/why-ruby-rocks-for-dsls"&gt;CIL &lt;span class="caps"&gt;DSL&lt;/span&gt;&lt;/a&gt; that I posted last night. I didn&amp;#8217;t really understand the alternative block syntax until I saw it used in this context:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+module Bob
+  def method_missing(name, *params)
+    puts "missing: #{name}" 
+  end
+  def self.create(name, &amp;#38;b)
+    obj = Object.new
+    obj.extend Bob
+    obj.instance_eval(&amp;#38;b)
+    puts name
+  end
+end
+
+Bob::create('hi') do
+  ldstr
+  ldc_i4_0
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Mon, 05 Dec 2005 11:07:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/05/private-module-context-in-ruby"&gt;Private module context in Ruby&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/05/private-module-context-in-ruby"&gt;Private module context in Ruby&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

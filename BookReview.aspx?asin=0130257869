@@ -1,0 +1,174 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Programming Language Processors in Java: Compilers and Interpreters
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0130257869" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMTMwMjU3ODY5LjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFByb2dyYW1taW5nIExhbmd1YWdlIFByb2Nlc3NvcnMgaW4gSmF2YTogQ29tcGlsZXJzIGFuZCBJbnRlcnByZXRlcnM7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPERhdmlkIFdhdHQsIERlcnljayBCcm93bjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDc1LjAwOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkNjMuODg7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQuNjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8NTs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wMTMwMjU3ODY5L3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47PuwlJSQ/EjzHrd5wAW2+oiJSE5H5" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0130257869.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Programming Language Processors in Java: Compilers and Interpreters</span>
+        <div class="ItemDetail">By
+          <span id="Authors">David Watt, Deryck Brown</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$75.00</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$63.88</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.6</span>
+          based on
+          <span id="TotalReviews">5</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0130257869/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Rushed to publication too quickly</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-07-12</span>
+                    </div>
+                    <span>It's a lot of work creating a textbook like this, and the authors did a great job along certain dimensions. The book is well-organized and much more accessible than many (in)famous compilers books. The copy editing is high-quality: there aren't many mistakes in the book. The book itself is beautifully bound and printed, making it a pleasure to read. There's lots of sample code. On the whole, it's not a bad effort.<P>There -are- some real problems with it, though. The most obvious and central problem is that it's not a book by (or for) Java programmers. It feels very much as if the book was hastily rewritten from "Language Processors in Pascal" to "Language Processors in Java" after Java exploded in popularity, a year or two before the book was published. The mini-Triangle language is clearly a Pascal derivative, and many of the "pseudo-code" examples are really Pascal. Pascal may be a teaching language, but it looks completely alien to Java developers.<P>My biggest concern, and it's what prompted me to write this review, is that the Java code is truly awful. Yes, it uses the Visitor pattern (as one reviewer pointed out) to traverse the AST during semantic analysis, which is a reasonable strategy. But the code is just plain bad, and you don't want students learning bad habits. The code is utterly non-polymorphic; it's filled with long cascaded if-statements that check whether an AST node is an instanceof this or an instanceof that. They pass and return parameters of type Object, and callers perform dangerous narrowing typecasts. They freely pass and return null values that have special semantics (i.e. "if this parameter is null, then it means we have this kind of situation; otherwise it's the other kind"). Types are represented as ints (no attempt to create typesafe enums), instance members are made public and accessed directly rather than through methods, and they use unconventional (and unexplained) 1-character variable names. I'm telling you: it's a complete disaster, and students will come away from the course writing the worst Java code you could imagine.<P>Another problem: the book is written in a stilted and awkwardly formal tone - a throwback to textbooks in the 70s and 80s. The art of writing textbooks has advanced to the point where, gosh, you're supposed to be able to READ them. They're written FOR real people, BY real people. But this book reads like an actuarial report. It never says "you" and never says "we" - it's written entirely in stilted 3rd-person legalese. Not good.<P>Oh, one more gripe: the authors decided mysteriously that they don't like the standard terminology that's been around for 3 decades, so they changed "semantic analysis" to "contextual analysis" and so on, and then acted as if the standard terminology is non-standard. They could have at least said up front that they preferred using their own terminology, but that it was nonstandard; instead they're trying to rewrite history. It's inexcusable, and will confuse students who head to other books after reading this one.<P>Compilers are hard to write and hard to learn, and this book actually is an improvement in clarity of exposition over most of its predecessors. But it's just begging to be replaced by something better. In the meantime, I'd skip it and go straight to Programming Language Pragmatics.</span>
+                  
+                    <div class="CustomerReviewSummary">Easy to read and understand</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>1</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-08-15</span>
+                    </div>
+                    <span>The author has done a good job by presenting basic<BR>compiler theory and implementing a simple<BR>compiler using the java programming lauguage.<P>Good illustration of compiler concepts.<P>One of the better basic compiler books i have read<BR>so far.<P>Next book should be "Progamming language pragmatics"<BR>followed by "Advanced compiler design and implementation"</span>
+                  
+                    <div class="CustomerReviewSummary">Best introduction ever written.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>16</span>
+                      /
+                      <span>16</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-09-23</span>
+                    </div>
+                    <span>I've purchased or borrowed 5 books on compiler design. There is no doubt that this book should be the choice for any introductory course. The authors explain everything tightly and provide a lot of actual examples in the text. All of it is in Java, of course. Don't worry if you don't use Java. It's very easy to understand if you have any experience with any OO language. I prefer Object Pascal and had no trouble whatsoever with the code.<P>This book will not provide proofs or a lot in the way of choices for designing a compiler. This is good when you are starting out. The last thing you need if you actually want to learn about compiler design from front to back is a hundred different ways of doing the same thing. The text takes you through a small version of the "Triangle" language ("Mini-Triangle") - and the code for the entire Triangle language is available for download.<P>This book makes learning about compilers effortless for anyone with an OO background and a little knowledge of the most common algorithms learned in any into course on algorithms. If you can't learn from this text, then don't bother with any other. <P>The next book I'd recommend after reading this text is the Dragon Book. Then you can try on Advanced Compiler Design for size - which I am doing at present.<P>A great book to read along (or just before of after) this text is Programming Language Pragmatics. I read it in parallel. If I had to do it again, I'd probably read it first.</span>
+                  
+                    <div class="CustomerReviewSummary">A Great Book</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>5</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-05-17</span>
+                    </div>
+                    <span>I have recently finished writing the Triangle compiler based on this great book for a compiler class I'm taking the code amounted to roughly 5000 lines of code and it's totaly based upon the instructions given in this book. I belive this is the best book written about writing compilers it's very easy to understand and the methods used such as the visitor pattern are extremely advanced and will improve ur level of java programming. there is not much concentration on understanding how compilers work but there are tons of other books for that purpose and frankly who cares we'r more interested on how to write a compiler than how it was written by other people. the triangle language designed is easy but serves the purposes quite well and has everything C or Pascal has I've been working on this for 4 months and now I feel sad becuase I have finished the project and there is nothing more to do I recommend this book for all serious people who love writing java code.</span>
+                  
+                    <div class="CustomerReviewSummary">Clear and illustrative in telling you what you need to know</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>33</span>
+                      /
+                      <span>34</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-01-10</span>
+                    </div>
+                    <span>My situation: I am writing this because I feel that I owe a lot to the authors. I am a University student and I developed an interest in compilation and interpretation. I had access to a wide range of texts at my University but I struggled to get a foothold in the field. I was having difficulty turning the theory presented in these academic texts into practice in my own attempts at compilers.<P>Ideal for me: I had given up on the field for the time being when I came across this book. I could not believe it. It was not what I was looking for because I had no idea it existed, but it quickly became apparent that it was ideal for my situation. My preferred language is Java and so this just helped to make the examples jump out of the page at me that little bit more.<P>Working through the book: I enjoyed working through the book and found it very readable and self-explanatory. The examples are excellent and reinforce every concept presented by the book. It stood out from everything I had read on the subject to this point (and since).<P>The case-study: The case study, which runs throughout the book, uses the programming language Triangle. It has obvious links to the previous incarnations of the book when the Pascal programming language was used. Triangle is a simpler version of Pascal but is still a reasonably realistic language to look at. I found it very useful to see how each aspect of the compiler would actually look in code for an example language. The language is compiled to an abstract machine called TAM. The details of this are included in the appendix and can be transferred to other machines with a bit of careful modification.<P>Structure of the book: The book starts off with the normal background and definitions in the first two chapters. I found the next five chapters to be the most interesting in the book. They are on Compilation, Syntactic Analysis, Contextual Analysis, Run-Time Organization and Code Generation. The last two chapters are on Interpretation and a Conclusion.<P>Correctness of programming techniques used in the book: This book is very correct in its programming techniques. I had been a bit worried when I read that it was by a Pascal programmer that it might be Pascal-style Java but it used proper Java techniques throughout. I was especially impressed with the appendix containing Class Diagrams for the Triangle Compiler.<P>Summary: I found that this book told me just what I wanted to know about the field when so many others were telling me everything but this.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201719622'>
+                      Building Parsers With Java
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.2 based on 12 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=052182060X'>
+                      Modern Compiler Implementation in Java
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 2.4 based on 18 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201100886'>
+                      Compilers
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.1 based on 43 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1558604421'>
+                      Programming Language Pragmatics
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 9 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0471113530'>
+                      Writing Compilers and Interpreters
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.3 based on 15 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

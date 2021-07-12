@@ -1,0 +1,974 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<Title>Current Story</Title>
+
+<HEAD>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="Visual Notepad 1.0">
+<TITLE>COM is good for you. Have you thought about COM today?</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF"
+text="#000000" topmargin="0" leftmargin="0">
+
+<STYLE>
+
+	.textRed	{ color:red; font-weight:bold }
+	.textBlack	{ color:black; font-weight:bold }
+	.dropDown	{ position:relative;top:10;left:10;cursor:'hand' }
+
+	H1		{ font:'14pt Arial' }
+	H2		{ font:'14pt Arial';border-bottom:1px outset green }
+	H3		{ font:'12pt Arial';font-weight:bold;cursor:'hand' }
+	H4		{ font:'8pt Arial';font-weight:normal;font-style:italic }
+	H5		{ font: '10pt Arial' }
+
+</STYLE>
+
+<SCRIPT>
+	function ChangeDisplay( element )
+	{
+		if( element.style.display == "" ) {
+			element.style.display = "none";
+		} else {
+			element.style.display = "";
+		}
+		window.event.cancelBubble = true;
+	}
+
+	function Dummy()
+	{
+		return True;
+	}
+
+	function IsIE( browsertype )
+	{
+		return True;
+
+		if( browsertype.Browser == "IE" ) {
+			if( browserType.Version >= 4 ) {
+				return True;
+			}
+		}
+		return False;
+	}
+</SCRIPT>
+
+<SCRIPT language=vbscript>
+	Sub NewBuildTOC()
+
+		dim anchorTags
+		dim objTOC
+		dim doc
+
+		set anchorTags = parent.frames( "MainFrame" ).document.anchors
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><HEAD></HEAD><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white>"
+		doc.write "<STYLE>H4 { font:'8pt Arial';font-weight:normal;font-style:italic }</STYLE><H4>"
+		doc.write "<BR><BR><BR><B>Contents</U></B><BR><HR>"
+
+		for i = 0 to anchorTags.length - 1
+			doc.write "<A href='#" & anchorTags( i ).name & "' target='MainFrame'>"
+			doc.write anchorTags( i ).innerText & "</A><BR>"
+		next
+
+		doc.write "<HR>"
+		doc.write "</H4></BODY></HTML>"
+		doc.close()
+
+	End Sub
+
+	Sub ClearTOC()
+
+		dim doc
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white></BODY></HTML>"
+		doc.close()
+
+	End Sub
+</SCRIPT>
+
+<P>
+	<FONT face="VERDANA, ARIAL, HELVETICA">
+	<IMG src="images/onepixel.gif" vspace="30" hspace="10" width="1" height="1"></IMG>
+	<IMG src="/images/iunknownlogo.gif"></IMG>
+	<IMG src="images/onepixel.gif" hspace="81" width="1" height="1"></IMG>
+	</FONT>
+</P>
+
+<TABLE border="0">
+<TR>
+    <TD width="10" valign=TOP>&nbsp
+	</TD>
+    <TD width="480">
+		<FONT face="VERDANA, ARIAL, HELVETICA">
+
+	<font size="3"><b>Dual Interfaces Using Delphi 2                                                                                                                                                                                                                            </b></font><br>
+	<font size="1">By </font><a href="author.asp?AuthorID=1">
+	<font size="1"> John                                               Lam                                               </font></a>
+	<font size="1"><br>Last updated on 
+		Sunday, July 20, 1997
+	 at 12:36:32 AM<br><br></font>
+	<font size="2"><A HREF="http://www8.zdnet.com/pcmag/issues/1519/contents.htm">
+<font size = 1><I>First appeared in the November 5, 1996 issue of PC Magazine</I></a></font>
+<P>Previous installments of this column looked at
+Automation--previously known as OLE Automation--and Automation
+Collections (in our issues of March 12, 1996, and April 9, 1996,
+respectively). To keep things simple in those columns, we looked at a
+rather pedestrian form of Automation, the kind that involves invoking
+functions through Automation's IDispatch interface. This time, we'll
+tackle the hot rod of Automation interfaces: the dual interface.</P>
+<P>A dual interface combines the late-binding flexibility of an
+IDispatch interface with a high-performance COM interface. Code that
+understands how to call your functions using the dual interface will
+get much higher performance: depending on the types of parameters being
+passed, up to 500 times that of calling the same function through an
+IDispatch interface! Yet a dual interface also retains the IDispatch
+interface's flexibility, so legacy code can continue to use your
+Automation object. We'll show how, with a little bit of extra effort,
+you can add dual-interface support to your Delphi 2.0 Automation
+objects.</P>
+<P>You can download all of the source code mentioned in this article
+from PC Magazine Online. (For downloading instructions, see the sidebar
+&quot;Guide to Our Utilities&quot; in this issue's Utilities
+column.)</P>
+<H3>
+<A name="A0">
+A Quick Review of Automation
+</A>
+</H3>
+<P>Automation came about because of the need to share code libraries.
+By using the Windows dynamic link library (DLL) mechanism and
+distributed .lib and .h files, developers could link DLLs to their
+code. For that mechanism to work, however, a compiler must generate
+code to resolve the addresses of library functions at runtime. That
+means developers must recompile their applications when they
+incorporate your library into them. Furthermore, every time you change
+your library, every application that uses it must be recompiled too.</P>
+<P>The compilation step could be eliminated by defining a standard way
+for code libraries to talk to one another. The standard would have to
+define a naming convention for exported functions. It must also define
+a set of data types that all functions can understand. Finally, it must
+define a binary description of the functions and data types exported by
+a code library, so that applications can resolve the addresses of a
+library's functions at runtime. These are the standards defined by
+Automation.</P>
+<P>Automation is built on top of COM (Component Object Model), which
+was implemented by Microsoft as a generic solution to the problem of
+getting objects to communicate with each other. It has been widely
+adopted by the Windows software development community, largely because
+it does not lock a developer into any single development tool or
+language. You can create COM objects using Visual Basic, Delphi, or
+C++, although Delphi and C++ developers do have an advantage over
+programmers who use other languages, as we will see.</P>
+<H3>
+<A name="A1">
+Types of Com Objects
+</A>
+</H3>
+<P>There are three classes of COM objects: in-process, local, and
+remote. In-process COM objects reside in the process space of the
+application that invokes them and are implemented as DLLs. Local COM
+objects reside in their own process space and are typically implemented
+as executable files. Remote COM objects reside on another computer and
+may be implemented as either DLLs or executable files. Support for
+remote COM objects will be provided by the Distributed COM libraries
+that will be released as part of Windows NT 4.0 and a future upgrade to
+Windows 95. We will be concerned here primarily with in-process COM
+objects.</P>
+<P>COM objects communicate with each other through <I>interfaces.</I> A
+COM interface represents a group of related functions exported by a COM
+object. How does an interface &quot;represent&quot; a group of
+functions? Through a table. A COM interface is a table of pointers
+(known as a <I>vtable</I>) to the functions implemented by the COM
+object. The way you call the interface's member functions is the same
+for all types of COM objects, whether in-process or out-of-process, so
+that you need to be concerned with only the nature of the functions
+you're calling, and not <I>how</I> the functions are invoked. COM takes
+care of the details, and that greatly simplifies the programming
+model.</P>
+<P>Every COM object must support the IUnknown interface, which has
+three member functions. QueryInterface allows a calling object or
+program to determine whether a COM object supports another interface,
+and AddRef and Release keep track of how many other objects are
+referencing the object and, ultimately, control an object's lifetime.
+Each call to AddRef increments a reference count, and each call to
+Release decrements it. When the count reaches zero, the object can
+safely be destroyed.</P>
+<H3>
+<A name="A2">
+The IDispatch Interface
+</A>
+</H3>
+<P>The designers of Automation wanted to create a way of calling
+functions without even needing to know their names at compile-time.
+This is known as <I>late binding.</I> During runtime, the function
+names are resolved through an interface called IDispatch.</P>
+<P>IDispatch is a COM interface that has seven member functions. The
+first three are the member functions of the IUnknown interface. The
+last four are the ones in which we're interested here. Two of them,
+GetTypeInfo and GetTypeInfoCount, are related to type libraries, which
+we'll discuss later. The heart of IDispatch resides in the other two
+functions, Invoke and GetIDsOfNames.</P>
+<P>In the simplest case, an Automation controller will create an
+instance of your COM object at runtime but doesn't know what functions
+the object supports. When it wants to know whether the COM object
+supports a given function, it calls the GetIDsOfNames function, passing
+it a string that contains the name of the function in which it is
+interested. If your object supports a function with that name, it
+returns a Dispatch ID, or DispID, to the Automation controller, which
+then uses that DispID to call the object's Invoke function, along with
+any parameters it needs to pass to the function.</P>
+<P>How does the Automation controller know what parameters your
+function takes? A smart controller will find out by reading your COM
+object's type library (explained later in this article). If no type
+library is available or if the controller doesn't read type libraries,
+it cannot know what parameters are correct. The programmer working with
+the controller is responsible for specifying the correct parameter list
+based on the documentation supplied by the creator of the COM object.
+The controller constructs an array of parameters based on the
+programmer's list and passes the array to the COM object. Each element
+of the array includes type information, so when the COM object receives
+the array it can determine the actual types of the passed
+parameters.</P>
+<P>The elements of this parameter array are composed of
+<I>Variants,</I> which are defined by the Automation specification.
+Variants should sound familiar, since they're a common data type in
+Visual Basic. A Variant is a 16-byte packet of data defined as a union
+of many familiar data types. Most Variant data types are passed by
+value; the data is contained entirely within the Variant itself. A
+notable exception, however, is strings. Automation strings are known as
+Basic strings, or BSTRs. A BSTR is a hybrid of a Pascal string and a
+C-style, null-terminated string. Its Pascal-style stored length
+provides fast concatenation and lookup speed, while its terminating
+null character means it can be passed to API functions that require a
+null-terminated string.</P>
+<H3>
+<A name="A3">
+Dual Interfaces
+</A>
+</H3>
+<P>As mentioned earlier, an IDispatch interface contains seven
+functions. In a dual interface, you provide entries for your Automation
+functions, beginning at entry 8 in the IDispatch vtable. A COM object's
+vtable has the same layout as a C++ vtable does, which is also the same
+as that of a Delphi virtual method table. So all you have to do is
+derive a new class from IDispatch and implement the Automation object's
+functions as virtual functions.</P>
+<P>With Delphi 2.0, you can create both Automation controllers and
+Automation servers. You can use Delphi to control an Automation object
+simply by declaring a Variant variable and calling the CreateOleObject
+function defined in oleauto.pas:</P>
+<PRE>
+    uses OleAuto;
+    ...
+    var
+    WordObject: variant;
+    begin
+    WordObject := CreateOleObject('Word.Basic');
+    ...
+    WordObject.FileNewDefault;
+</PRE>
+<P>Creating an Automation server is just as easy. Simply derive your
+new class from TAutoObject:</P>
+<PRE>
+    uses OleAuto;
+    ...
+    type
+    TMyAutoServer = class(TAutoObject)
+    ...
+    automated
+    procedure Foo;
+    ...
+    end;
+</PRE>
+<P>As you can see, it is quite straightforward to create both
+Automation controllers and Automation servers using Delphi. But since
+the focus of this article is on creating Automation servers, let's
+quickly take a tour of the features that make doing this easy in
+Delphi.</P>
+<H3>
+<A name="A4">
+A Simple Automation Object
+</A>
+</H3>
+<P>The first thing you must decide when creating an Automation server
+is how to package it. In its simplest form, an Automation server is
+simply a code library. In stark contrast to the pre-Automation days of
+Windows programming, Automation allows you to share libraries of code
+in either DLLs or executable files. The way in which you build and call
+the Automation object is identical in both cases: You only have to
+choose which kind of project to create. We'll create an example
+Automation server packaged in a DLL.</P>
+<P>You create a new DLL project by selecting the DLL Expert from the
+New page of Delphi's Object Repository. First, edit the project (.DPR)
+file. Add the unit OleAuto to the uses clause, and add the following
+line of code to export the functions implemented in oleauto.pas:</P>
+<PRE>
+    exports
+    DllGetClassObject,
+    DllCanUnloadNow,
+    DllRegisterServer,
+    DllUnregisterServer;
+</PRE>
+<P>Those four functions are all implemented for you in oleauto.pas. The
+DllRegisterServer and DllUnregisterServer functions register and
+unregister your Automation server with the Windows 95 Registry.
+DllGetClassObject, a standard entry point for all COM objects, is used
+by the COM libraries to create new instances of a COM object
+implemented by the DLL. DllCanUnloadNow is called by the COM libraries
+to determine whether it can unload the DLL.</P>
+<P>Once we have set up the DLL's project file, we can turn our
+attention to creating the actual Automation object. Bring up Delphi's
+Object Repository again, but this time select the Automation Object
+Expert (Figure 1) from the New page. In the Class Name field, type in
+the name of the class that will be your Automation object. For this
+example, type in TMyAutoObject. You'll notice that Delphi fills in the
+OLE Class Name field for you with the name of your project followed by
+the name of your Automation object's class, but without the
+&quot;T&quot; prefix. Type any description you like in the Description
+field. Don't bother with the Instancing options in this case, as
+DLL-based Automation objects are always Multiple Instance.</P>
+
+<B>FIGURE 1:</B> <I>Delphi 2.0's Object Repository lets you create new
+applications, dynamic link libraries, and Automation objects.</I>
+
+<P>After you click on OK, Delphi will create a new unit for you. Let's
+take a quick look at the generated code:</P>
+<PRE>
+    unit Unit1;
+    interface
+    uses
+</PRE>
+<P>OleAuto;</P>
+<P>There will be a reference to the OleAuto unit in every Automation
+unit. We'll take a closer look at oleauto.pas when we start building a
+dual-interface Automation object.</P>
+<PRE>
+    type
+    TMyAutoObject = class(TAutoObject)
+</PRE>
+<P>Here, we're deriving a new class from TAutoObject, the base class
+for all Automation objects you create using Delphi. Among other things,
+TAutoObject contains a nested class that implements the IDispatch
+interface required for Automation support.</P>
+<PRE>
+    private
+    { Private declarations }
+    automated
+    { Automated declarations }
+    end;
+</PRE>
+<P>In this section, note the new automated keyword. All function,
+procedure, and property declarations in this section will be exposed as
+Automation methods and properties. Delphi's compiler generates tables
+that describe the function names and their parameter types, so that
+calling applications can bind to these methods in a type-safe
+manner.</P>
+<PRE>
+    implementation
+    procedure RegisterMyAutoObject;
+    const
+    AutoClassInfo: TAutoClassInfo = (
+    AutoClass: TMyAutoObject;
+    ProgID: 'Project1.MyAutoObject';
+    ClassID: '{76D47E00-B0AA-11CF-896C-444553540000}';
+    Description: 'BDC Demo Automation Server';
+    Instancing: acMultiInstance);
+    begin
+    Automation
+    .RegisterClass(AutoClass Info);
+    end;
+</PRE>
+<P>The Automation Expert automatically generates code to fill in the
+AutoClassInfo structure. Most of the information entered in the
+Automation Expert appears in the fields of AutoClassInfo. There is,
+however, one additional field that's extremely important: the ClassID
+field. Delphi uses a COM library function called CoCreateGuid to
+generate this number for you. CoCreateGuid uses an algorithm that
+generates a unique GUID (Globally Unique IDentifier) from a combination
+of highly variable machine states and your network card's Ethernet
+address.</P>
+<PRE>
+    initialization
+    RegisterMyAutoObject;
+    end.
+</PRE>
+<P>When the unit is initialized for the first time, Delphi calls the
+RegisterMyAutoObject function. Delphi needs to initialize a number of
+internal data structures that track all of the Automation objects
+exported from the DLL (or executable file, in the case of a local
+server).</P>
+<H3>
+<A name="A5">
+What Delphi Lacks
+</A>
+</H3>
+<P>As you can see, Delphi provides a very easy mechanism for building
+and creating Automation servers. But one shortcoming makes it difficult
+for you to build dual-interface Automation servers: Delphi does not
+automatically create type libraries for you, and without a type
+library, the Automation controller doesn't know what parameters to use
+in calling your dual-interface functions directly.</P>
+<P>That doesn't make creating dual-interface Automation servers with
+Delphi impossible, but it does require you to take additional
+administrative steps in order to build a type library. Those steps are
+time-consuming and error-prone, so it would be nice to see some
+enterprising third-party developer create tools to automate the
+process.</P>
+<P>Automation objects, you'll recall, use the IDispatch interface to
+facilitate late binding, which frees applications from the
+responsibility of knowing, at compile-time, the methods and property
+names of the Automation objects with which they wish to communicate.
+However, the same flexibility also makes it difficult for the developer
+building the application to discover what the capabilities of an
+Automation object are. Ideally, if the Automation object you want to
+use was purchased from a third-party developer, it would have been
+accompanied by comprehensive documentation. Still, it would be nice to
+be able to browse the methods and properties of an Automation object
+without having to reach for that big, heavy book. And that's where type
+libraries come in.</P>
+<P>Type libraries can be used by both computers and humans. You and I
+wouldn't want to view a type library in its binary file format, but
+several useful type-library browsers are available. Figure 2 shows a
+partial excerpt of the type library for Microsoft Excel 7.0, as seen
+from Matt Curland's Object Navigator browser (available in <I>Object
+Programming with Visual Basic 4.0,</I> from Microsoft Press).</P>
+
+<B>FIGURE 2:</B> <I>Object Navigator is a type-library browser that
+makes it easy to explore the capabilities of any Automation object
+described by a type library (such as Excel's, shown here).</I>
+
+<P>Type libraries can be exploited by Automation controllers, too.
+That's especially important when the Automation object resides in a
+different process space than the calling application does. An
+intelligent Automation controller can prebind to an Automation object's
+type library in a single step. It is far more efficient to read in an
+Automation object's entire type library once than it is to call the
+object's GetIDsOfNames function repeatedly across a process boundary
+every time you wish to call a new function.</P>
+<P>Perhaps even more important to us, however, is how a type library
+relates to dual interfaces. As we mentioned earlier, a dual interface
+is a combination of an IDispatch interface and a custom COM interface.
+The first seven member functions are the IDispatch and IUnknown member
+functions, and all subsequent member functions are the dual
+interface's. So how, you might ask, does an Automation controller
+determine which entry in the vtable corresponds to which function?
+Through the type library, of course.</P>
+<P>A type library provides other benefits to the Automation controller.
+It lists the types of all parameters that are to be passed to a given
+function, allowing an Automation controller that prebinds to a type
+library to determine at compile-time whether any arguments passed are
+correct, and putting some of the advantages of strong typing into your
+applications.</P>
+<P>By using the information contained in the type library, an
+Automation controller that supports dual interfaces can push the
+correct parameter types onto the stack before calling the Automation
+function. That's very important--undesirable things will happen if the
+automation function starts pulling parameters of unexpected types off
+the stack! Note that this is quite different from calling functions
+through the IDispatch interface's Invoke function, where an array of
+Variants must be generated prior to calling the Invoke function.</P>
+<H3>
+<A name="A6">
+ODL Files
+</A>
+</H3>
+<P>Just how do you create a type library? Microsoft ships a tool called
+Mktyplib.exe with the Win32 SDK and the OLE SDK. Mktyplib reads ODL
+(Object Definition Language) files and builds a binary type-library
+file for you. If you've done RPC (remote procedure call) programming,
+you've used a similar tool, MIDL, which reads IDL (Interface Definition
+Language) files and compiles them into C source code for COM and RPC
+bindings. Interestingly, there's very little difference between ODL and
+IDL files. In the Windows NT 4.0 Beta 1 SDK, you'll find a new version
+of MIDL (Version 3.0) that will compile IDL files into type-library
+files, too. In the future, we're going to see a gradual disappearance
+of ODL files, since they do little else than provide the definition for
+a type library.</P>
+<P>Let's look at the ODL file I used to create our sample
+dual-interface Automation object:</P>
+<PRE>
+    // Project1.odl : type library source
+    // for Project1.dll
+    // This file will be processed by
+    // the Make Type Library (mktyplib)
+    // tool to produce the type library
+    // named Project1.tlb.
+    [ uuid(062C7183-7DF1-11CF-896C-444553540000), version(1.0) ]
+</PRE>
+<P>The uuid argument is the class ID of the Automation object's type
+library, used by the COM API functions LoadRegTypeLib and
+QueryPathOfRegTypeLib for manipulating type libraries registered in the
+system Registry.</P>
+<PRE>
+    library ProjX
+    {
+    importlib(&quot;stdole32.tlb&quot;);
+</PRE>
+<P>This line imports the standard type declarations for the Mktyplib
+compiler. Essentially, an ODL file uses a C++-style syntax, and needs
+to know about certain predefined types. This is the role of the
+stdole32.tlb file.</P>
+<PRE>
+    // Experimental dual interface
+    [ uuid(062C7182-7DF1-11CF-896C-444553540000),
+    helpstring(&quot;Foo dual interface.&quot;),
+    oleautomation,
+    dual
+    ]
+</PRE>
+<P>This statement block sets up the declaration for the dual interface.
+The uuid argument uniquely identifies the interface, as is required for
+all custom interfaces in COM. That allows developers using the
+Automation object to request a particular dual interface rather than
+asking for a generic IDispatch interface. The helpstring argument adds
+a description to the type library. Finally, the key arguments are the
+oleautomation and the dual parameters. The dual parameter identifies
+this interface as a dual interface.</P>
+<PRE>
+    interface IDualInterface : IDispatch
+    {
+    HRESULT Foo([in] long i,
+    [out, retval] long* iRet );
+    HRESULT Bar([in] BSTR s );
+    };
+</PRE>
+<P>This section declares the structure of the IDualInterface dual
+interface. The interface statement declares a new interface,
+IDualInterface, that is derived from an IDispatch interface. This means
+that the dual interface has the member functions of the IDispatch
+interface as its first seven member functions.</P>
+<P>The lines in the statement block identify the custom functions
+implemented by this dual interface. All member functions in a dual
+interface must return an HRESULT parameter--a standard error result
+code defined in ole2.pas. So a function that returns any other value
+must pass its return value in one of the parameters in its argument
+list. The first function, Foo, illustrates this: It places its return
+value in the iRet argument.</P>
+<P>Note that there are special directives enclosed in the square
+brackets. All interface member function parameters must be identified
+as either in or out. The retval directive identifies iRet as the return
+value of the function Foo.</P>
+<P>The Bar function illustrates how you can pass strings to and from
+Automation objects. Note that all strings must be BSTRs, the native
+string type of Automation. A BSTR contains both the length of the
+string and a terminating NULL. In Win32, however, BSTRs are composed of
+2-byte Unicode characters.</P>
+<PRE>
+    //  Class information for
+    //  TDualInterface
+    [ uuid(062C7181-7DF1-11CF-896C-444553540000) ]
+    coclass TDualInterface
+    {
+    [default] interface IDualInterface;
+    };
+</PRE>
+<P>Finally, this section identifies the COM object that is our
+Automation object. The uuid must match the uuid generated by Delphi's
+Automation Expert for our Automation object.</P>
+<P>If you use the Project1.odl file as a template for your own ODL
+files, you won't have any problems building your own type library. To
+run the Mktyplib utility, just type</P>
+<PRE>
+    MKTYPLIB Project1.odl
+</PRE>
+and Mktyplib will compile Project1.odl into Project1.tlb. If you're
+using MIDL 3.0, which ships with the Windows NT 4.0 Beta 1 SDK, you can
+modify your ODL file to support the IDL syntax or you can use MIDL 3.0
+in Mktyplib-compatibility mode:
+<PRE>
+    MIDL /mktyplib203 Project1.odl
+</PRE>
+<H3>
+<A name="A7">
+Implementing the Dual Interface
+</A>
+</H3>
+<P>Getting Delphi to support dual interfaces involves making a few
+modifications to the oleauto.pas unit in the VCL source code. We'll
+build a new unit called dualauto.pas, incorporating changes to
+oleauto.pas. The changes are fairly minor, and I will highlight the
+places where I have made them.</P>
+<P>First, let's take a look at how oleauto.pas works, concentrating on
+how oleauto.pas implements the IDispatch interface. For now, we'll
+ignore how most of the late-binding facilities (GetIDsOfNames, for
+example) work.</P>
+<P>All new Automation objects must be derived from TAutoObject, which
+implements all of the IDispatch member functions. But the vtable for
+TAutoObject does not map directly to any of the IDispatch member
+functions. In fact, none of the IDispatch member functions in
+TAutoObject are defined as virtual, as we can see from the declaration
+of TAutoObject in Figure 3.</P>
+
+<B>FIGURE 3:</B> <I>The declaration of TAutoObject.</I>
+
+<PRE>
+    TAutoObject = class(TObject)
+    private
+    FRefCount: Integer;
+    FAutoDispatch: TAutoDispatch;
+    function GetIDsOfNames(Names: POleStrList; Count: Integer;
+    DispIDs: PDispIDList): HResult;
+    function GetOleObject: Variant;
+    function Invoke(DispID: TDispID; Flags: Integer; var Params: TDispParams;
+    VarResult: PVariant; ExcepInfo: PExcepInfo; ArgErr: PInteger): HResult;
+    procedure InvokeMethod(AutoEntry, Args, Result: Pointer);
+    function QueryInterface(const iid: TIID; var obj): HResult;
+    protected
+    procedure GetExceptionInfo(ExceptObject: TObject;
+    var ExcepInfo: TExcepInfo); virtual;
+    public
+    constructor Create; virtual;
+    destructor Destroy; override;
+    function AddRef: Integer;
+    function Release: Integer;
+    property AutoDispatch: TAutoDispatch read FAutoDispatch;
+    property OleObject: Variant read GetOleObject;
+    property RefCount: Integer read FRefCount;
+    end;
+</PRE>
+<P>So how does Delphi create a vtable for the IDispatch member
+functions? TAutoObject contains a nested class, called TAutoDispatch,
+that does very little: It just delegates its functionality back to
+TAutoObject. It refers to its parent TAutoObject object through a
+private data member, initialized when TAutoDispatch is constructed,
+that stores a reference to the parent. We can see from the override
+keywords in Figure 4 that all of the member functions of TAutoDispatch
+are virtual.</P>
+
+<B>FIGURE 4:</B> <I>The declaration of TAutoDispatch.</I>
+
+<PRE>
+    TAutoDispatch = class(IDispatch)
+    private
+    FAutoObject: TAutoObject;
+    public
+    constructor Create(AutoObject: TAutoObject);
+    function QueryInterface(const iid: TIID; var obj): HResult; override;
+    function AddRef: Longint; override;
+    function Release: Longint; override;
+    function GetTypeInfoCount(var ctinfo: Integer): HResult; override;
+    function GetTypeInfo(itinfo: Integer; lcid: TLCID;
+    var tinfo: ITypeInfo): HResult; override;
+    function GetIDsOfNames(const iid: TIID; rgszNames: POleStrList;
+    cNames: Integer; lcid: TLCID; rgdispid: PDispIDList): HResult; override;
+    function Invoke(dispIDMember: TDispID; const iid: TIID; lcid: TLCID;
+    flags: Word; var dispParams: TDispParams; varResult: PVariant;
+    excepInfo: PExcepInfo; argErr: PInteger): HResult; override;
+    function GetAutoObject: TAutoObject; virtual; stdcall;
+    end;
+</PRE>
+<P>This method of implementing the IDispatch interface is quite
+advantageous for us. Because our dual interface inherits from a
+standard IDispatch interface, most of the work is accomplished by
+deriving a new class from TAutoDispatch. Still, some changes are
+necessary.</P>
+<P>The majority of the changes to oleauto.pas fall into one of two
+categories: changes that promote certain data members and methods from
+private to protected status, so that we can access them from derived
+classes, and changes that facilitate type-safe IDispatch interfaces.
+For example, I added a new field to the AutoClassInfo structure so that
+we can declare a unique interface identifier for our dual interface.</P>
+<P>Let's first modify the TAutoDispatch class. Because GetAutoObject is
+declared as a virtual function, it will always appear as the first
+member function of any dual interface object that we declare. This is
+not the desired behavior, and since there doesn't seem to be any
+pressing need for GetAutoObject to be a virtual function, I've made it
+nonvirtual.</P>
+<P>We also need to be able to access TAutoDispatch's FAutoObject data
+member from derived classes. Note that classes declared within the same
+unit have unrestricted access to <I>all</I> private data members and
+functions of any other class within that unit. But we want to use
+dualauto.pas as a generic library function, and we want to be able to
+derive a new class from TAutoDispatch, but in a different unit. The
+only way to do this is to declare the FAutoObject data member as
+protected rather than as private. You can see the new declaration for
+TAutoDispatch in Figure 5.</P>
+
+<B>FIGURE 5:</B> <I>The modified declaration of TAutoDispatch.</I>
+
+<PRE>
+    TAutoDispatch = class(IDispatch)
+    protected
+    // *** PROMOTED to PROTECTED!
+    FAutoObject: TAutoObject;
+    public
+    constructor Create(AutoObject: TAutoObject);
+    function QueryInterface(const iid: TIID; var obj): HResult; override;
+    function AddRef: Longint; override;
+    function Release: Longint; override;
+    function GetTypeInfoCount(var ctinfo: Integer): HResult; override;
+    function GetTypeInfo(itinfo: Integer; lcid: TLCID;
+    var tinfo: ITypeInfo): HResult; override;
+    function GetIDsOfNames(const iid: TIID; rgszNames: POleStrList;
+    cNames: Integer; lcid: TLCID; rgdispid: PDispIDList): HResult; override;
+    function Invoke(dispIDMember: TDispID; const iid: TIID; lcid: TLCID;
+    flags: Word; var dispParams: TDispParams; varResult: PVariant;
+    excepInfo: PExcepInfo; argErr: PInteger): HResult; override;
+    // *** Changing GetAutoObject from a virtual function
+    // to a static function
+    //    function GetAutoObject: TAutoObject; virtual; stdcall;
+    function GetAutoObject: TAutoObject; stdcall;
+    end;
+</PRE>
+<P>Similarly, we need to be able to access the member functions
+FRefCount and FAutoDispatch in TAutoObject. So I've also changed the
+declarations of these data members to protected from private.</P>
+<P>To create type-safe dual interfaces, I've added a new data member,
+FIID, to track our dual interface's interface identifier. The following
+classes, structures, and functions are also modified for the same
+purpose:</P>
+<PRE>
+    TAutoClassInfo
+    TRegistryClass
+    TClassFactory
+    DllGetClassObject
+</PRE>
+<P>Space prohibits going into the details of how each of these classes
+and structures were modified. If you're interested, take a look at the
+source code for dualauto.pas. The changes are minor--just enough to
+allow us to set the FIID parameter in a derived class of
+TAutoObject.</P>
+<P>The only <I>important</I> change to the code was in the
+QueryInterface function of TAutoObject. Here, we look for specific
+requests from the Automation controller for our dual interface. This is
+necessary because Automation controllers that understand how to call
+dual interfaces always prebind to the Automation object's type library.
+That way, the Automation controller knows the IID for our dual
+interface and can call QueryInterface for our specific interface. It
+was for the same purpose that, as part of the registration process for
+our Automation object, we had to add code to identify the dual
+interface. We only need to change one line of code in
+TAutoObject.QueryInterface, from</P>
+<PRE>
+    if IsEqualIID(iid, IID_IUnknown) or
+    IsEqualIID(iid, IID_IDispatch) or
+    IsEqualIID(iid, IID_IAutoDispatch) then
+    to
+    // MODIFIED - look for our custom IID
+    // upon QueryInterface
+    if IsEqualIID(iid, IID_IUnknown) or
+    IsEqualIID(iid, IID_IDispatch) or
+    IsEqualIID(iid, IID_IAutoDispatch) or
+    IsEqualIID(iid, FIID) then
+</PRE>
+<P>Our modifications to oleauto.pas are now complete. All we need to do
+from now on is to include dualauto.pas, instead of oleauto.pas, in all
+of our Automation objects. Keep in mind that dualauto.pas <I>is</I>
+oleauto.pas, with the addition of extended support for dual
+interfaces.</P>
+<H3>
+<A name="A8">
+Creating the Dual-interface Object
+</A>
+</H3>
+<P>Now that we have extended oleauto.pas to support dual interfaces,
+using it is extremely simple. First, create a new Automation unit using
+Delphi's Automation Expert, with a class called TDualInterface. You'll
+wind up with a declaration for AutoClassInfo as follows:</P>
+<PRE>
+    const
+    AutoClassInfo: TAutoClassInfo = (
+    AutoClass: TDualInterface;
+    ProgID: 'Project1.DualInterface';
+    ClassID: '{062C7181-7DF1-11CF-896C-444553540000}';
+    IID: '{062C7182-7DF1-11CF-896C-444553540000}'; //
+    Description: '';
+    Instancing: acMultiInstance);
+</PRE>
+<P>The structure as supplied by Delphi will not include the IID field,
+and the value of the ClassID field will be different from what's shown
+here, as this number is generated by the CoCreateGuid member function
+in the COM libraries. You must insert the IID field and its GUID value.
+To keep things simple, I use the ClassID, with the last digit in the
+first group incremented by 1, as the GUID.</P>
+<P>Let's add a couple of functions to our TDualInterface class. We'll
+call them Foo and Bar. Foo takes an integer, adds 1 to it, and returns
+the result, and Bar displays a string in a message box. Here are their
+declarations:</P>
+<PRE>
+    type
+    TDualInterface = class(TAutoObject)
+    private
+    { Private declarations }
+    public
+    // Override TAutoObject constructor
+    constructor Create; override;
+    automated
+    { Automated declarations }
+    function Foo(i: Integer): Integer;
+    procedure Bar(s: String);
+    end;
+</PRE>
+<P>You must also derive a new class, TDualDispatch, from TAutoDispatch.
+TDualDispatch will contain stub functions for your real Automation
+functions. The stub functions delegate the real functionality to your
+implementation in TDualInterface. Here's the definition for our sample
+TDualDispatch class:</P>
+<PRE>
+    // Dual interface dispatch driver!
+    TDualDispatch = class(TAutoDispatch)
+    public
+    // declare new virtual functions
+    // ** Must be stdcall!!
+    function Foo(i: Integer; var iRet:
+    Integer): HResult; virtual; stdcall;
+    function Bar(s: PWideChar): Hresult;
+    virtual; stdcall;
+    end;
+</PRE>
+<P>Note that we must declare all of the functions to be called with the
+stdcall calling convention.</P>
+<P>The Bar function simply displays a string sent from the Automation
+controller. This string is passed as a pointer to a WideChar (Unicode)
+string. All strings passed to the COM API functions must be Unicode
+strings. Let's take a look at the Foo and Bar functions:</P>
+<PRE>
+    function TDualDispatch.Foo(i:
+    Integer; var iRet: Integer): HResult;
+    begin
+    // Delegate call to the real Foo
+    iRet := TDualInterface(FAutoObject).Foo(i);
+    Result := S_OK;
+    end;
+</PRE>
+<P>Foo delegates the call to the TDualInterface function Foo. As we
+noted before, all return values for TDualInterface's functions must be
+placed in the return parameter iRet of the corresponding TDualDispatch
+function. The value returned by the Foo function is a success or
+failure code that's reported to the Automation controller.</P>
+<P>The function Bar is a bit more complex, because of the need to
+convert a Unicode string into a Delphi string. Delphi does the
+conversion automatically when the Automation controller calls the
+Automation object using the IDispatch interface's Invoke function. But
+since the Automation controller calls a dual interface function
+directly, we need to do the conversion in our stub function:</P>
+<PRE>
+    function TDualDispatch.Bar(s: PWideChar) : HResult;
+    begin
+    // Delegate the call to the real Bar
+    TDualInterface(FAutoObject)
+    .Bar(WideCharToString(s));
+    Result := S_OK;
+    end; {TDualDispatch.Bar}
+</PRE>
+<P>Keep in mind that our dual-interface object can still be called via
+the IDispatch interface. Therefore, controllers that don't know how to
+call an Automation object via a dual interface can still call functions
+in the Automation object. They simply don't get the performance
+benefits of the dual interface.</P>
+<H3>
+<A name="A9">
+Running a Dual-interface Object
+</A>
+</H3>
+<P>Now that we have finished building and compiling our dual-interface
+object, there's only one thing left to do: We must register the
+Automation object. Since our object is housed in a DLL, we must use the
+Regsvr32.exe utility to register our server. All Regsvr32 does is call
+the DllRegisterServer function exported by our DLL. The RegisterServer
+function in oleauto.pas does the rest.</P>
+<P>Currently, the only way to build an Automation controller that
+supports dual interfaces is by using Visual Basic 4.0. We will build
+two versions of our Automation controller code. One version of the code
+will exploit the early-binding feature of Visual Basic 4.0. The other
+version will call the Automation object only using late binding through
+the IDispatch interface.</P>
+<P>The early-binding version of the code is built by adding our
+Project1.tlb type library to Visual Basic's References list. You can do
+that by clicking on the Browse button in the References dialog and
+selecting your type library.</P>
+<P>The References list allows Visual Basic code to refer to an external
+object as if it were one of its own. The early-binding version of the
+code is</P>
+<PRE>
+    Dim s As ProjX.TDualInterface
+</PRE>
+<P>We are declaring a new object variable, s, to refer to our
+Automation object. Our type library is ProjX, and the Automation object
+we want to refer to is TDualInterface. Visual Basic 4.0 will load the
+type library at compile-time and use it to enforce strong-typing rules.
+In other words, all functions you refer to must be listed in the type
+library, and Visual Basic will ensure that you cannot pass illegal
+parameters to them.</P>
+<PRE>
+    Dim i As Long
+    Dim timeStart
+    Set s = New ProjX.TDualInterface
+    'Call Functions in Delphi automation dll
+    s.Bar (&quot;Hello World&quot;)
+    timeStart = Timer
+    i = 0
+    While i
+    'i = i + 1
+    i = s.Foo(i)
+    Wend
+    MsgBox(&quot;Time:&quot; &amp; Timer - timeStart)
+    Set s = Nothing
+</PRE>
+<P>The rest of the code exercises the functions in our Automation
+object. We call the Bar function, which displays a string, and we call
+the Foo member function in a tight loop to test the overhead of a
+dual-interface call.</P>
+<P>Our late-binding code is identical to the early-binding code above.
+The only difference is the way in which the object variable is
+declared. Rather than referring to a type library in Visual Basic's
+References list, we declare a generic Object variable and call Visual
+Basic's CreateObject member function:</P>
+<PRE>
+    Dim s As Object
+    Set s = CreateObject(&quot;Project1.DualInterface&quot;)
+</PRE>
+<H3>
+<A name="A10">
+Performance
+</A>
+</H3>
+<P>How fast is our dual interface? Unfortunately, since we're using
+Visual Basic, it is difficult to measure actual speed differences.
+That's because the loop overhead in Visual Basic when calling a
+dual-interface function is very large, compared with the time required
+to call the function in our Automation object. Therefore, I can only
+present a lower limit of approximately 12 times as fast. The real
+number is probably somewhere in the neighborhood of 500 times as fast.
+But since Visual Basic is the <I>only</I> dual-interface Automation
+controller right now, you can expect to see about a twelvefold
+improvement.</P>
+<P>Also keep in mind that the dramatic increase in performance occurs
+only with in-process Automation objects (those packaged inside DLLs).
+If you need to make a cross-process or remote Automation call where the
+Automation marshaller must get involved, you will get a much smaller
+performance boost--somewhere in the neighborhood of 20 percent. The
+overhead that Windows enforces for a memory-context switch, in the case
+of a cross-process call, and the overhead required for a Remote
+Procedure Call will also limit performance. But as with any technique
+with the potential to dramatically improve performance, you'd ignore
+dual-interface objects at your own peril</P></font><br>
+	<hr>
+		</FONT>
+		<CENTER>
+		<FONT size = 1>&#169; 1997 John Lam. All rights reserved.<BR><BR></FONT>
+		<A href="#TOP"><IMG src="images/top.gif" border=0 alt="Back to top"></A><BR>
+		<BR><FONT FACE="ARIAL,HELVETICA" SIZE="1">
+		<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="5">
+		<TR>
+				<TD ALIGN="right" VALIGN="middle"><a href="/ie/" target="_top"><img src="/images/ie_animated.gif" width="88" height="31" border="0" alt="Microsoft Internet Explorer"></a></TD>
+				<TD ALIGN="center" VALIGN="middle"><IMG SRC="images/bar.gif" width="3" height="43"></TD>
+				<TD ALIGN="left" VALIGN="middle"><a href="/backoffice/designed/logo.htm" target="_top"><IMG SRC="/images/msbo_iis.gif" width="100" height="31" border="0" alt="Microsoft Windows NT Server with Internet Information Server"></a></TD>
+		</TR>
+		</TABLE>
+		</FONT></CENTER><BR>
+	</TD>	
+</TR>
+</TABLE>
+
+</table>
+</body>
+</html>

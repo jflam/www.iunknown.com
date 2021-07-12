@@ -1,0 +1,205 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Object Design: Roles, Responsibilities, and Collaborations
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0201379430" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9nLWltYWdlcy5hbWF6b24uY29tL2ltYWdlcy9HLzAxL3gtc2l0ZS9pY29ucy9uby1pbWctc20uZ2lmOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxPYmplY3QgRGVzaWduOiBSb2xlcywgUmVzcG9uc2liaWxpdGllcywgYW5kIENvbGxhYm9yYXRpb25zOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxSZWJlY2NhIFdpcmZzLUJyb2NrLCBBbGFuIE1jS2Vhbjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDQ5Ljk5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkNDMuMTQ7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQuNTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8OTs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wMjAxMzc5NDMwL3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47PhyANfcz6NkFyN6WdKAr81eV3sH4" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://g-images.amazon.com/images/G/01/x-site/icons/no-img-sm.gif" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Object Design: Roles, Responsibilities, and Collaborations</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Rebecca Wirfs-Brock, Alan McKean</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$49.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$43.14</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">9</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0201379430/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Total Disappointment for Programmers</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>1</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2005-03-04</span>
+                    </div>
+                    <span>I am a developer/programmer for a technical software company and my review contains my perception of this book from that perspective.  I must also disclose that I am sceptical of any object-oriented design methodology that involves a lot of writing.  We are "programmers", not story writers (read use cases).
+<br />
+<br />When I ordered this book a week ago, I couldn't wait to get my hands on this book because it sounded so promising.  My enthusiasm turned into total disappointment so quickly I couldn't believe myself; I had to give another shot in reading this book to make sure.  But I am convinced; the authors managed the impossible task of filling its 390 pages without saying anything substantial about object-oriented design for a professional software developer.
+<br />
+<br />The book might be useful for a novice programmer or a manager in terms of defining the object design jargon and process.  But other than this, it provides no valuable advice for a professional.  These are some of the points that I find ridiculously simplistic and almost idiotic:
+<br />
+<br />- In my opinion use cases and CRC cards all boil down to writing on a piece of paper what classes one should use and what these classes should do.  This is not methodology, it is common sense.  Any sensible developer would write down his/her ideas about the classes involved in an application before starting to program.
+<br />
+<br />- Although it is valuable advice to think about class responsibilities, the book states nothing more than the obvious in terms of finding what responsibilities should be assigned to which classes.  Statements like "Responsibilities come from statements or implications of system behavior found in use cases" are tautologies.  Where else would they come from!
+<br />
+<br />- Or the chapter on Flexibility says things like "Find out what you don't know".  I can't even begin to elaborate on philosophical implications of such advice!
+<br />
+<br />Although the book looks appealing to the eye, it has no clear content. It states ideas about classes, responsibilities, etc without a clear structure; and after a while, everything said seems to be a repetition of some earlier statements.
+<br />
+<br />If you are serious about object-oriented design as a "programmer" I recommend these three books:
+<br />
+<br />1. Gamma E., et al., Design Patterns.
+<br />2. James R Rumbaugh, et al., Object-Oriented Modeling and Design.  A bit dated, but you will get all you need to know about object oriented design from this book.
+<br />3. Bjarne Stroustrup, The C++ Programming Language (Special 3rd Edition).  Never mind it is a C++ book.  Chapters on OOD (I think chapters 21-25) will tell you exactly what you need to understand to start programming using OO approach.
+<br />
+<br />Do yourself a favor and invest in these books; and ignore all the fab about such trendy books such as the one reviewed above.
+<br /></span>
+                  
+                    <div class="CustomerReviewSummary">OO-Collaborations Perspective</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-11-23</span>
+                    </div>
+                    <span>Overall very good impression, original presentation with sidebar essential quotes. However after a while seems more of the same: how to identify collaborations in an Object Oriented Design. Special note for Chapter 8, where valuable and interesting information is provided regarding exceptions and errors.</span>
+                  
+                    <div class="CustomerReviewSummary">A great first text on OO design</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-07-28</span>
+                    </div>
+                    <span>Wirfs-Brock and McKean have written an oustanding introductory book on object-oriented design. This is definitely a book for beginning OO programmers, the ones who aren't sure how to assign functions to objects and who aren't ready for design patterns yet. More experienced developers won't get much out of it, but that's OK. Every level needs its own reference books.
+<br /> 
+<br /> The book's layout and illustrations present its content well. UML diagrams, for example, use one color and typeface for the actual UML notation. The same diagrams use a different color and typeface for notes that explain the UML. Unlike other books, there's no confusion about which is the tool and which describes the tool. The text is gentle and reasonably jargon-free, but I think it over-does the friendliness in places. In discussing a program's normal and exception handling behavior, the term "happy path" described the execution in the absence of errors. The term may be evocative, but is just a bit hard to take seriously.
+<br /> 
+<br /> The sequence of topics makes good sense. It starts with the idea of a "responsibility," the basic unit of application logic. The authors develop this into strategies for defining objects, defining relationships between objects, and defining the control strategies that implement those relationships. They continue on through error handling (reliability) and extensibility - handling of future features. Throughout, the authors keep a moderate, pragmatic tone, free of name-brand methodology. That's a good thing, since the real focus is on basic skills and decision criteria.
+<br /> 
+<br /> One aspect of this book is just a little confusing. It's definitely aimed at educating a new OO designer, but it doesn't lay out its educational objectives or plan very clearly. It certainly lacks the didactic rigor of a textbook. It would make a good supplementary text, though, and it might be very helpful to a novice working with more experienced developers. Best of all, it refers to additional texts (including Strunk and White!) that will help claify the programs as well as communication with other members of the programming team.
+<br /> 
+<br /> This book is great for anyone starting OO design on their own. It's also good for classroom students who just aren't getting it from their regular instructor and text. Experienced developers won't find much new here, except very clear descriptions of how much error handling or flexibility is enough.
+<br />
+<br />//wiredweird</span>
+                  
+                    <div class="CustomerReviewSummary">Pragmatic OO Design</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-12-28</span>
+                    </div>
+                    <span>This well-written and very readable book gives an excellent overview of object-oriented design. It takes a very pragmatic and human-centred approach that is fresh and enjoyable to read. I would be happy if this were the only introductory OO design book in my library. <p>One final note is that it is a pleasure to read a technical book these days that is not filled with typos, incorrect grammar, and poorly reproduced diagrams. This is a book that obviously took some care and time to produce!</span>
+                  
+                    <div class="CustomerReviewSummary">Effective methods for design, tunable for your agility level</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>4</span>
+                      /
+                      <span>4</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-12-24</span>
+                    </div>
+                    <span>Generally excellent language and flow. The book manages to bob nicely at a readable level, ducking deep when necessary for some details, and popping back up for abstract concepts at appropriate times. Throughout, it's filled with reasonable examples about how to really design systems. The examples are nicely balanced between being trivial and too complex. They get a lot of richness out of the analysis without burying the reader in domain-specific details.<p>What they present seems to be compatible with most development processes. It's highly tunable to the level of 'agility' you're looking for, even from component to component.<p>One downside is that it only talks about the dangers of over-engineering when it gets to the flexibility chapter (late in the book). It would've been nice to see this earlier, particularly when talking about identifying candidates. Also, the discussion of flexibility also ignore versioning. I don't know anybody who owns something they can just change as they please, and it would've been nice to have a framework for the kinds of things you can expect to be able to change in subsequent architecture versions and the kinds of decisions that you're making and won't be able to change without major system incompatibilities.<p>Finally, the chapter that used UML said something like "we're not going to introduce UML" and then spewed UML at me for twenty pages, gently lulling me towards sleep. It killed the otherwise stellar pace that the book had going for it, but immediately recovered after that.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321125215'>
+                      Domain-Driven Design: Tackling Complexity in the Heart of Software
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 15 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=020163385X'>
+                      Object-Oriented Design Heuristics
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 20 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596007124'>
+                      Head First Design Patterns
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 29 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0735619670'>
+                      Code Complete, Second Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 25 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0136298257'>
+                      Designing Object-Oriented Software
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 8 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

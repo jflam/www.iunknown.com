@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Using a compiler as an attack vector</title>
+    <link>http://www.iunknown.com/articles/2006/06/06/using-a-compiler-as-an-attack-vector</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Using a compiler as an attack vector</title>
+      <description>&lt;p&gt;One scenario that I always thought would be interesting is turning developer workstations into attack vectors. Think about it &amp;#8211; most Windows developers run as local administrators on their computers, making it that much easier to compromise their computers. Instead of simply sending your virus payload via their address book, what if you infected their compiler / linker instead? Now any program that they compiled could have a back door conveniently installed for future exploitation.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m doing a long commute (&amp;gt;100 mile) this week so I&amp;#8217;ve been entertaining myself by listening to Anthony Joseph&amp;#8217;s most excellent &lt;a href="http://www-inst.eecs.berkeley.edu/~cs162/sp06/"&gt;&lt;span class="caps"&gt;CS 162&lt;/span&gt; Operating Systems&lt;/a&gt; class during the drive. I just listened to his final lecture today on Cyber Security Attacks, and was amazed to find out that this attack vector was first created by none other than &lt;a href="http://en.wikipedia.org/wiki/Ken_Thompson"&gt;Ken Thompson&lt;/a&gt;!&lt;/p&gt;
+
+
+	&lt;p&gt;You should definitely read Ken&amp;#8217;s &lt;a href="http://www.acm.org/classics/sep95/"&gt;Turing Award speech&lt;/a&gt;, where he describes using a two-phase trojan to infect Unix&amp;#8217;s C compiler. The key idea is that the compiler binary contains the code modifies the compiler. The modified compiler in turn looks to see if you&amp;#8217;re compiling the Unix login function and if you are, it inserts a backdoor to let Ken log in to your computer.&lt;/p&gt;
+
+
+	&lt;p&gt;This attack vector is insidious because no amount of source code inspection will reveal its presence. So the question is: who can you trust? Are you going to inspect the microcode of your &lt;span class="caps"&gt;CPU&lt;/span&gt; to make sure that there isn&amp;#8217;t a trojan there as well?&lt;/p&gt;</description>
+      <pubDate>Tue, 06 Jun 2006 21:51:16 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:2279de26d61a265dbe4bb1b5bd3fe44c</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/06/06/using-a-compiler-as-an-attack-vector</link>
+      <category>Props</category>
+    </item>
+    <item>
+      <title>"Using a compiler as an attack vector" by Marcie</title>
+      <description>&lt;p&gt;John, you're evil!  &lt;/p&gt;</description>
+      <pubDate>Wed, 07 Jun 2006 11:17:26 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/06/using-a-compiler-as-an-attack-vector#comment-524</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: AOP demo code</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000067.html" title="Polymorphic objects and the STL" />
+
+<link rel="next" href="http://www.iunknown.com/000069.html" title="MC++ and CIL" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000067.html">&laquo; Polymorphic objects and the STL</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000069.html">MC++ and CIL &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 19, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">AOP demo code</h3>
+
+<p><P>I promised <A href="http://www.sellsbrothers.com">Chris Sells</A> that I would publish the sample code and output of my demos at VS Live!. </P><br />
+<P>Here's the Main() method of the test application:</P><br />
+<P><CODE>static int Main(string[] args)<BR>{<BR>&nbsp; Console.WriteLine( "Hello, World!" );<BR><BR>&nbsp; XmlDocument doc = new XmlDocument();<BR>&nbsp; doc.Load( @"c:\work\codexp\weavecompiler\wc\weavemanifest.xml" );&nbsp;&nbsp;<BR><BR>&nbsp; Math math = new Math();<BR>&nbsp; Console.WriteLine( Math.GetString( "Bar" ) );<BR>&nbsp; Console.WriteLine( "The answer is: " + math.Add( 3, 4 ) );<BR>&nbsp; Console.WriteLine( "Another call: " + math.Add( 1000, 2000 ) );<BR>&nbsp; Console.WriteLine( "Yet another call: " + math.Multiply( 3, 3, 3 ) );<BR><BR>&nbsp; return 0;<BR>}</CODE></P><br />
+<P>Here's the user-defined type that was weaved in the first part of the demonstration:</P><br />
+<P><CODE>public class Math<BR>{<BR>&nbsp; public static string GetString( string before )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; return String.Format( "Before: {0}", before );<BR>&nbsp; }<BR>&nbsp; public int Add( int x, int y )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; return x + y;<BR>&nbsp; }<BR>&nbsp; public int Multiply( int x, int y, int z )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; return x * y;<BR>&nbsp; }<BR>}</CODE></P><br />
+<P>The first demonstration that I showed at VS Live! weaved all of the methods of the Math class shown above. The aspect was defined in a separate assembly, and contains a single piece of advice: the Interceptor() method shown below. This method was weaved as before advice on an execution join-point (in plain English: the Interceptor method is called before any of the method bodies of the Math class methods are executed).</P><br />
+<P><CODE>public class TraceAspect <BR>{<BR>&nbsp; private static TraceAspect m_this;<BR><BR>&nbsp; static TraceAspect()<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; m_this = new TraceAspect();<BR>&nbsp; }<BR>&nbsp; public static TraceAspect AspectOf() <BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; return m_this;<BR>&nbsp; }<BR>&nbsp; public void Interceptor( CallContext context )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; string result = String.Format( "Intercepted: {0}( ", context.MethodName );<BR>&nbsp;&nbsp;&nbsp; if( context.Parameters != null )<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for( int i = 0; i &lt; context.Parameters.Length; i++ )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( i != context.Parameters.Length - 1 )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result += String.Format( "{0}, ", context.Parameters[ i ] );<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result += String.Format( "{0} )", context.Parameters[ i ] );<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result += ")";<BR>&nbsp;&nbsp;&nbsp; Console.WriteLine( result );<BR>&nbsp; }<BR>}</CODE></P><br />
+<P>The output that was generated by the first demonstration is:</P><br />
+<P><CODE>Hello, World!<BR>Intercepted: GetString( Bar )<BR>Before: Bar<BR>Intercepted: Add( 3, 4 )<BR>The answer is: 7<BR>Intercepted: Add( 1000, 2000 )<BR>Another call: 3000<BR>Intercepted: Multiply( 3, 3, 3 )<BR>Yet another call: 9</CODE></P><br />
+<P>The second demonstration showed weaving of methods that were defined in system libraries. I weaved all of the public methods of System.Xml.XmlDocument as well as System.Xml.XmlTextReader. The weave was defined in an external XML configuration file, which was fed through a weave compiler that generated a binary file that was used by the runtime aspect weaver to determine which methods to weave. Here is the weave definition file:</P><br />
+<P><CODE>&lt;?xml version="1.0" encoding="utf-8" ?&gt; <BR>&lt;weave&gt;<BR>&nbsp; &lt;pointcut target="public.*System.Xml.XmlDocument.*\(" adviceType="before" advice="public void CallTrace.Trace\( CodeXP.CallContext \)" /&gt;<BR>&nbsp; &lt;pointcut target="public.*System.Xml.XmlTextReader.*\(" adviceType="before" advice="public void CallTrace.Trace\( CodeXP.CallContext \)" /&gt;<BR>&lt;/weave&gt;</CODE></P><br />
+<P>The output of the second demonstration is:</P><br />
+<P><CODE>Hello, World!<BR>Intercepted: Load( c:\work\codexp\weavecompiler\wc\weavemanifest.xml )<BR>Intercepted: get_NameTable( )<BR>Intercepted: get_NameTable( )<BR>Intercepted: get_BaseURI( )<BR>Intercepted: get_NameTable( )<BR>Intercepted: get_NameTable( )<BR>Intercepted: get_NameTable( )<BR>Intercepted: Load( System.Xml.XmlValidatingReader )<BR>...</CODE></P><br />
+<P>Folks who are really interested in the entire output that was generated by the program can <A href="Files/demo2.txt">look here</A>.</P><br />
+<P>This represents the current state of the AOP engine. It can weave before advice into arbitrary methods in both user and system library code. Note that the syntax of the weave definition file is very much in flux right now. I might turn it into custom attributes that are embedded into the source code of the aspects.</P><br />
+<P>Next up (after an extensive cleanup of the code) is after, around and exception advice weaving at execution join-points.&nbsp;Then comes the more difficult case:&nbsp;weaving advice into&nbsp;call join-points.</P><br />
+<P>In case you are wondering where all of this terminology comes from, I'm lifting it from <A href="http://aspectj.org/doc/dist/progguide/apb.html#d0e3870">AspectJ</A>&nbsp;;)</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 19, 2002 01:33 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="68" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000068.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Actually your regular syntax for the aspect along an XML DD for the activation of it looks much more like AspectWerkz (full java/XML AOP)http://aspectwerkz.codehaus.org<br />
+http://docs.codehaus.org/display/AW/Hello+World</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://blogs.codehaus.org/people/avasseur">Alex</a> at June 10, 2004 02:18 PM</span>
+</div>
+<div class="comments-body">
+<p> You can also check some helpful info about... </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;absinth1278&#64;hotmail&#46;com"></a> at December  1, 2004 09:47 PM</span>
+</div>
+<div class="comments-body">
+<p> You can also check the sites in the field of... </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;absinth1508&#64;rocketmail&#46;com"></a> at December  1, 2004 11:36 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="68" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

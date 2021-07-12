@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Freemind: an incredible thought organization tool</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Freemind: an incredible thought organization tool</div>
+
+
+<div class="comments-body">
+<p>I just tried the demo applets, and this app is definitely a far more polished tool than MyMind which is Mac only, and its also opensource, while MyMind is not.</p>
+
+<p>I can certainly attest to the mind-dump usefulness of these so-called mind mapping tools.<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://cherryville.org/">Dave Lee</a> at July 29, 2003 01:03 AM</span>
+</div>
+<div class="comments-body">
+<p>This looks neat and I will check it out, but have you ever used Personal Brain @ www.thebrain.com ?</p>
+
+<p>I have found various uses for it over the years, from planning trips to documenting databases.  Slick interface.</p>
+
+<p>For the record, no affiliation in any way.</p>
+<span class="comments-post">Posted by Chad Thomas at July 29, 2003 09:07 AM</span>
+</div>
+<div class="comments-body">
+<p>I remember trying the Brain some years ago when it first came out. I first checked it out because of the cool transitional effect that happened when you navigated to a different node. My problem with the Brain was that it didn't show enough information at once, and that the transitions themselves were disorienting.</p>
+
+<p>When I'm trying to "refactor" my mind dumps, I find that there are times where I need to integrate information from sub-trees that are separated by large numbers of nodes. I find that I want to run FreeMind across both of my monitors at once (although it doesn't support this very well).</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at July 29, 2003 09:40 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the pointer.  This looks like it will be a very useful tool.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.codingwith.net/weblog">Brian Graf</a> at August 12, 2003 07:52 PM</span>
+</div>
+<div class="comments-body">
+<p>Check out Verbal Theory: High Road to a Fertile Mind.  It's "Mental Software."  Can be acquired at the link listed.</p>
+
+<p>www.verbaltheory.com</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.verbaltheory.com">Sam</a> at April  1, 2004 06:37 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<Title>Current Story</Title>
+
+<HEAD>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="Visual Notepad 1.0">
+<TITLE>COM is good for you. Have you thought about COM today?</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF"
+text="#000000" topmargin="0" leftmargin="0">
+
+<STYLE>
+
+	.textRed	{ color:red; font-weight:bold }
+	.textBlack	{ color:black; font-weight:bold }
+	.dropDown	{ position:relative;top:10;left:10;cursor:'hand' }
+
+	H1		{ font:'14pt Arial' }
+	H2		{ font:'14pt Arial';border-bottom:1px outset green }
+	H3		{ font:'12pt Arial';font-weight:bold;cursor:'hand' }
+	H4		{ font:'8pt Arial';font-weight:normal;font-style:italic }
+	H5		{ font: '10pt Arial' }
+
+</STYLE>
+
+<SCRIPT>
+	function ChangeDisplay( element )
+	{
+		if( element.style.display == "" ) {
+			element.style.display = "none";
+		} else {
+			element.style.display = "";
+		}
+		window.event.cancelBubble = true;
+	}
+
+	function Dummy()
+	{
+		return True;
+	}
+
+	function IsIE( browsertype )
+	{
+		return True;
+
+		if( browsertype.Browser == "IE" ) {
+			if( browserType.Version >= 4 ) {
+				return True;
+			}
+		}
+		return False;
+	}
+</SCRIPT>
+
+<SCRIPT language=vbscript>
+	Sub NewBuildTOC()
+
+		dim anchorTags
+		dim objTOC
+		dim doc
+
+		set anchorTags = parent.frames( "MainFrame" ).document.anchors
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><HEAD></HEAD><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white>"
+		doc.write "<STYLE>H4 { font:'8pt Arial';font-weight:normal;font-style:italic }</STYLE><H4>"
+		doc.write "<BR><BR><BR><B>Contents</U></B><BR><HR>"
+
+		for i = 0 to anchorTags.length - 1
+			doc.write "<A href='#" & anchorTags( i ).name & "' target='MainFrame'>"
+			doc.write anchorTags( i ).innerText & "</A><BR>"
+		next
+
+		doc.write "<HR>"
+		doc.write "</H4></BODY></HTML>"
+		doc.close()
+
+	End Sub
+
+	Sub ClearTOC()
+
+		dim doc
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white></BODY></HTML>"
+		doc.close()
+
+	End Sub
+</SCRIPT>
+
+<P>
+	<FONT face="VERDANA, ARIAL, HELVETICA">
+	<IMG src="images/onepixel.gif" vspace="30" hspace="10" width="1" height="1"></IMG>
+	<IMG src="/images/iunknownlogo.gif"></IMG>
+	<IMG src="images/onepixel.gif" hspace="81" width="1" height="1"></IMG>
+	</FONT>
+</P>
+
+<TABLE border="0">
+<TR>
+    <TD width="10" valign=TOP>&nbsp
+	</TD>
+    <TD width="480">
+		<FONT face="VERDANA, ARIAL, HELVETICA">
+
+	<font size="3"><b>RADICAL Automation: Dual Interfaces in Delphi 3                                                                                                                                                                                                           </b></font><br>
+	<font size="1">By </font><a href="author.asp?AuthorID=1">
+	<font size="1"> John                                               Lam                                               </font></a>
+	<font size="1"><br>Last updated on 
+		Sunday, July 20, 1997
+	 at 1:09:15 PM<br><br></font>
+	<font size="2"><FONT SIZE=2><P>Since last year’s BDC, Borland has been hard at work making high-speed automation interfaces <I>much</I> easier to create in Delphi 3.0. Whereas last year I presented a straightforward way for you to create dual interface objects using Delphi 2.0, you still needed to know quite a bit about how the underlying COM mechanisms were making dual interfaces work for you. (For a quick review, see my PC Magazine article on Dual Interfaces and Delphi 2.0: </FONT><A HREF="http://www.pcmag.com/issues/1519/pcmg0023.htm"><FONT SIZE=2>http://www.pcmag.com/issues/1519/pcmg0023.htm</FONT></A></P>
+<FONT SIZE=2><P>You communicate with most traditional Automation objects through a mechanism known as <I>late binding</I>. Late binding allows a client application, otherwise known as an Automation <I>controller</I>, to call functions on an Automation object at run time without knowing anything at all about the Automation object. All of the binding is done at run time through a negotiation process that is quite similar to the process that is used to bind to dynamic link libraries via the LoadLibrary and GetProcAddress calls.</P>
+<P>Automation objects that support dual interfaces, however, communicate through an <I>early binding</I> mechanism. The client application makes use of information that is provided by the creator of the Automation object to determine perform validation of function names and parameter types at compile time. Thus, this mechanism shifts the responsibility for binding to the compiler.</P>
+<P>Early binding, as you might expect, is a far more efficient mechanism for communicating with an Automation object. However, what you must be aware of is that the only thing we are optimizing here is the speed of the actual function call. There is no optimization of the code on either side of the function call! In this paper I’ll present a sample application that graphically illustrates some of the performance implications of late binding vs. early binding.</P>
+</FONT><B><I><FONT FACE="Arial"><P><A name="A0">A Quick Review of COM</A></P>
+</B></I></FONT><FONT SIZE=2><P>Lets do a quick review of COM before we delve into the mysteries of dual interfaces. COM is the Component Object Model (not to be confused with the Common Object Model, which meant something different at one point in history, but has since been dropped). It is a specification for how objects can communicate and share information with each other at run-time. By adhering to this standard, which is a <I>binary</I> standard, you can create COM objects that can talk to any other COM object, independent of the programming language that was used to create them, and independent of the actual physical location of the object.</P>
+<P>A COM object can be packaged inside a dynamic link library or an EXE file. COM objects that reside in DLL’s get loaded into the Win32 process of the code that is using that object. COM objects that reside in EXE’s execute within their own Win32 process. One of the key benefits of COM is that the caller does not care whether the object is in their own process space or another process space. This feature is called local-remote transparency, and it allows developers to leverage a given code base by allowing it to communicate to any object at any time, without the need to recompile their application’s code! The COM run-time libraries take care of all of the magic involved in making this happen in a process known as <I>Marshalling</I>.</P>
+<P>You communicate with a COM object through one of its COM interfaces. A COM interface is a grouping of related functions, and is implemented as a table of pointers to those functions. This table is identical in structure to the v-tables used for dispatching virtual functions in both C++ and Delphi.</P>
+<P>The user of a COM object can query a COM object for its interfaces, and when it finds one that it knows how to communicate with, it can establish a conversation with that COM object through that interface. Since COM interfaces are uniquely identified, it allows you to version a COM object’s functionality by introducing new interfaces that support the enhanced functionality, without sacrificing backwards compatibility with existing legacy code. Try doing that with DLL’s!</P>
+<P>The COM interface that must be supported by <I>all</I> COM objects is called IUnknown. This ubiquitous interface is used to handle the two most important basic features of all COM objects: reference counting and interface querying. All COM objects are reference counted, to provide an automatic mechanism for managing their lifetimes. You can determine whether a COM object supports a given interface by calling its QueryInterface function. It either returns a reference to the requested interface or an error code if it doesn’t support that interface.</P>
+<P>All other COM interfaces must derive from IUnknown. This way, the user of a COM object can always have access to the reference counting and interface querying functionality of a COM object without having to maintain a separate reference to a COM object’s IUnknown interface.</P>
+</FONT><B><I><FONT FACE="Arial"><P><A name="A1">Late Binding and IDispatch</A></P>
+</B></I></FONT><FONT SIZE=2><P>Late binding is implemented via a COM interface known as IDispatch. It is a COM interface that derives from IUnknown, and adds a number of additional functions:</P>
+</FONT><B><FONT FACE="Courier New" SIZE=1><P>function</B> GetIDsOfNames(<B>const</B> IID: TGUID; Names: Pointer;</P>
+<P>      NameCount, LocaleID: Integer; DispIDs: Pointer): HResult; <B>virtual</B>; <B>stdcall</B>;</P>
+<B><P>function</B> GetTypeInfo(Index, LocaleID: Integer; <B>out</B> TypeInfo): HResult; <B>virtual</B>; <B>stdcall</B>;</P>
+<B><P>function</B> GetTypeInfoCount(<B>out</B> Count: Integer): HResult; <B>virtual</B>; <B>stdcall</B>;</P>
+<B><P>function</B> Invoke(DispID: Integer; <B>const</B> IID: TGUID; LocaleID: Integer;</P>
+<P>      Flags: Word; <B>var</B> Params; VarResult, ExcepInfo, ArgErr: Pointer): HResult; <B>virtual</B>;    <BR>
+      <B>stdcall</B>;</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>The GetIDsOfNames member function is used to resolve function names at run-time. By passing in the function name that you would like to bind to, GetIDsOfNames will return a <I>dispatch ID</I> that you can use to call the actual function in a subsequent call to Invoke.</P>
+<P>The Invoke function is the workhorse of Automation. It allows you to call a function using its dispatch ID, and pass in an array of function parameters. These function parameters are all of a single known type called a VARIANT. VARIANTs can be used to hold any number of different parameter types, as is shown in the following list of legal types taken from the ActiveX.pas unit:</P>
+</FONT><FONT FACE="Courier New" SIZE=1><P>  VT_EMPTY           = 0;   { [V]   [P]  nothing                     }</P>
+<P>  VT_NULL            = 1;   { [V]        SQL style Null              }</P>
+<P>  VT_I2              = 2;   { [V][T][P]  2 byte signed int           }</P>
+<P>  VT_I4              = 3;   { [V][T][P]  4 byte signed int           }</P>
+<P>  VT_R4              = 4;   { [V][T][P]  4 byte real                 }</P>
+<P>  VT_R8              = 5;   { [V][T][P]  8 byte real                 }</P>
+<P>  VT_CY              = 6;   { [V][T][P]  currency                    }</P>
+<P>  VT_DATE            = 7;   { [V][T][P]  date                        }</P>
+<P>  VT_BSTR            = 8;   { [V][T][P]  binary string               }</P>
+<P>  VT_DISPATCH        = 9;   { [V][T]     IDispatch FAR*              }</P>
+<P>  VT_ERROR           = 10;  { [V][T]     SCODE                       }</P>
+<P>  VT_BOOL            = 11;  { [V][T][P]  True=-1, False=0            }</P>
+<P>  VT_VARIANT         = 12;  { [V][T][P]  VARIANT FAR*                }</P>
+<P>  VT_UNKNOWN         = 13;  { [V][T]     IUnknown FAR*               }</P>
+<P>  VT_DECIMAL         = 14;  { [V][T]   [S]  16 byte fixed point      }</P>
+<P>&nbsp;</P>
+<P>  VT_I1              = 16;  {    [T]     signed char                 }</P>
+<P>  VT_UI1             = 17;  {    [T]     unsigned char               }</P>
+<P>  VT_UI2             = 18;  {    [T]     unsigned short              }</P>
+<P>  VT_UI4             = 19;  {    [T]     unsigned short              }</P>
+<P>  VT_I8              = 20;  {    [T][P]  signed 64-bit int           }</P>
+<P>  VT_UI8             = 21;  {    [T]     unsigned 64-bit int         }</P>
+<P>  VT_INT             = 22;  {    [T]     signed machine int          }</P>
+<P>  VT_UINT            = 23;  {    [T]     unsigned machine int        }</P>
+<P>  VT_VOID            = 24;  {    [T]     C style void                }</P>
+<P>  VT_HRESULT         = 25;  {    [T]                                 }</P>
+<P>  VT_PTR             = 26;  {    [T]     pointer type                }</P>
+<P>  VT_SAFEARRAY       = 27;  {    [T]     (use VT_ARRAY in VARIANT)   }</P>
+<P>  VT_CARRAY          = 28;  {    [T]     C style array               }</P>
+<P>  VT_USERDEFINED     = 29;  {    [T]     user defined type          }</P>
+<P>  VT_LPSTR           = 30;  {    [T][P]  null terminated string      }</P>
+<P>  VT_LPWSTR          = 31;  {    [T][P]  wide null terminated string }</P>
+<P>&nbsp;</P>
+<P>  VT_FILETIME        = 64;  {       [P]  FILETIME                    }</P>
+<P>  VT_BLOB            = 65;  {       [P]  Length prefixed bytes       }</P>
+<P>  VT_STREAM          = 66;  {       [P]  Name of the stream follows  }</P>
+<P>  VT_STORAGE         = 67;  {       [P]  Name of the storage follows }</P>
+<P>  VT_STREAMED_OBJECT = 68;  {       [P]  Stream contains an object   }</P>
+<P>  VT_STORED_OBJECT   = 69;  {       [P]  Storage contains an object  }</P>
+<P>  VT_BLOB_OBJECT     = 70;  {       [P]  Blob contains an object     }</P>
+<P>  VT_CF              = 71;  {       [P]  Clipboard format            }</P>
+<P>  VT_CLSID           = 72;  {       [P]  A Class ID                  }</P>
+<P>&nbsp;</P>
+<P>  VT_VECTOR        = $1000; {       [P]  simple counted array        }</P>
+<P>  VT_ARRAY         = $2000; { [V]        SAFEARRAY*                  }</P>
+<P>  VT_BYREF         = $4000; { [V]                                    }</P>
+<P>  VT_RESERVED      = $8000;</P>
+<P>  VT_ILLEGAL       = $ffff;</P>
+<P>  VT_ILLEGALMASKED = $0fff;</P>
+<P>  VT_TYPEMASK      = $0fff;</P>
+</FONT><FONT SIZE=2><P>&nbsp;</P>
+<P>Before a function call can take place, all of the function call parameters must first be converted into the VARIANT data type, which is a 16-byte packet of data. These VARIANT parameters are then assembled into an array of VARIANTS that are passed to the Automation object via the Invoke function call.</P>
+<P>This early binding mechanism has a number of advantages. 1) At compile time, the caller does not need to know the names of the Automation object’s member functions. 2) At compile time, the caller does not need to know the detailed parameter lists of each function. 3) It is fairly straightforward for an Automation object to implement default parameters and optional parameters. However, this flexibility does not come without a cost.</P>
+</FONT><B><I><FONT FACE="Arial"><P><A name="A2">Performance Implications</A></P>
+</B></I></FONT><FONT SIZE=2><P>Before we look at the solution provided by dual interfaces, let’s take a look at how performance can be improved in the early binding mechanism.</P>
+<P>By far the largest performance hit occurs when communicating with an Automation object that lives in another process space, or in another computer. Remember that under Win32 every process runs within the context of a protected address space that no other process can see. Therefore, passing parameters involves using some form of global memory buffer or some other type of messaging system to pass the actual parameters. Such processes are inevitably slow.</P>
+<P>The best way of optimizing calls to Automation objects that reside outside of your process space is to reduce the number of round-trip calls that are required. Perhaps the most straightforward mechanism would be to cache the results of all calls to GetIDsOfNames after the initial call. Therefore instead of two round-trip calls to invoke a function (one to GetIDsOfNames and a subsequent one to Invoke), we can reduce it to a single call to Invoke.</P>
+<P>However, since most Automation calls generally occur to objects that reside within our own process space, we will assume from this point onward that we will only be discussing calls to Automation objects that reside in our own process space.</P>
+<P>How can we optimize the calls via Invoke for the in-process case? If we could somehow avoid the need for calling Invoke altogether, we could optimize the calls to the member functions of the Automation object. There is a significant performance penalty that is being paid in converting every parameter to a VARIANT before calling Invoke, and converting those parameters back into native data types on the Automation object’s side of the function call.</P>
+<P>We can eliminate the need to convert arguments into arrays of VARIANTS if we could somehow create a specification that allows a caller to identify the function names and parameter types for all of the functions exported by an Automation object. This specification is known as a type library. </P>
+</FONT><B><I><FONT FACE="Arial"><P><A name="A3">The importance of Type Libraries</A></P>
+</B></I></FONT><FONT SIZE=2><P>Automation uses type libraries to identify an object’s capabilities. It lists, among other things, the interfaces supported by an object, the names and parameters of the member functions of each supported interface, and links to the appropriate help file topics.</P>
+<P>A smart Automation controller can bind to an object’s type library to obtain, in one fell swoop, all of the information that it needs to implement early binding. Since it knows all of this information, it can avoid the need to convert to and from the universal VARIANT type and pass the native data types directly to the Automation object itself. It is the avoidance of this conversion process that is at the heart of the performance gains that can be realized through the use of dual interfaces.</P><P>As I mentioned earlier, custom COM interfaces are all derived from IUnknown. Dual interfaces, on the other hand, are all derived from IDispatch. This means that dual interfaces provide the caller with the flexibility of late binding via its GetIDsOfNames and Invoke functions, with the performance advantages of being able to call a function directly through its v-table offset.</P>
+<P>However, to support both late and early binding, the parameters used in a dual-interface function must be <I>automation compatible</I>. This essentially means no user-defined types such as records. To pass a record to an Automation object, you must break up its data members into separate function parameters. This is a small price to pay for the universality that Automation brings to your objects.</P>
+<P>Additional productivity features can also be implemented with the help of type libraries. Syntax checking, integration of the Automation object’s help files into the controller’s integrated development environment, and object browsing are among the many possible features that can be added.</P>
+</FONT><B><I><FONT FACE="Arial"><P><A name="A4">What kind of performance increase can I get?</A></P>
+</B></I></FONT><FONT SIZE=2><P>Performance is an elusive thing to measure in software. Mostly, it depends on the kind of Automation object that you are implementing. Remember that what we are optimizing by using dual interfaces is the amount of time that it takes for the actual function call itself.</P>
+<P>You will get the greatest performance boost if the actual function call is a rate-determining step in your application. Typically, this case crops up when you are calling your Automation object within a very tight loop. If, on the other hand, you are calling a function that takes a long time to complete, you may see little or no performance improvement whatsoever.</P>
+</FONT><B><I><FONT FACE="Arial"><P>An Overview of the ActiveX Enhancements in Delphi 3.0</P>
+</B></I></FONT><FONT SIZE=2><P>Delphi 3.0 brings a number of very exciting enhancements to COM / Automation developers. They can be grouped into two general categories: 1) language enhancements in the form of native support for Automation and COM objects as native types and 2) visual tools that automate some of the more tiresome aspects of ActiveX programming.</P>
+<P>The native support for COM interfaces and COM objects is one of the more exciting features of Delphi 3.0. Quite a few additions to the compiler and a host of supporting classes make creating COM objects very straightforward in Delphi.</P>
+<P>You can declare a COM interface in Delphi 3.0 simply by using the new <B>interface</B> keyword:</P>
+</FONT><FONT FACE="Courier New" SIZE=1><P>IClassFactory = <B>interface</B>(IUnknown)</P>
+<P>    ['{00000001-0000-0000-C000-000000000046}']</P>
+<P>    <B>function</B> CreateInstance(<B>const</B> unkOuter: IUnknown; <B>const</B> iid: TIID;</P>
+<P>      out obj): HResult; <B>stdcall</B>;</P>
+<P>    <B>function</B> LockServer(fLock: BOOL): HResult; <B>stdcall</B>;</P>
+<P>  <B>end</B>;</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>You specify the COM interface’s IID (interface identifier) within the square brackets following the <B>interface</B> keyword.</P>
+<P>When creating a COM object in Delphi 3.0, simply derive from TAutoObject or TComObject. Derive from TComObject if you want Delphi to automatically support the IUnknown interface for you. Derive from TAutoObject if you want Delphi to provide an implementation for IDispatch for you.</P>
+<P>One of the greatest time saving devices in Delphi 3.0 is the ability to support multiple interfaces on a single COM object. This is accomplished through an extension to the <B>class</B> keyword. You can now derive from a single ancestor class, and implement one or more additional COM interfaces. For example:</P>
+</FONT><FONT FACE="Courier New" SIZE=1><P>TMyObject = <B>class</B>( TComObject, IShellExtInit, IPersistFolder, IShellFolder )</P><P>…</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>tells Delphi that you want to create a new COM object that implements the IShellExtInit, IPersistFolder and IShellFolder interfaces.</P>
+<P>Deriving from TComObject instructs Delphi to provide a default implementation of IUnknown for you. In Delphi’s implementation of IUnknown, it will return the correct interface pointers for each of the 4 COM interfaces that are supported by TMyObject. TComObject also handles all of the reference counting details for you.</P>
+<P>If you want to use a COM object, simply declare its interface as a variable. For example, if you wanted to create a COM object and manipulate it through its ISuperDuper interface, you’ll need to have two essential pieces of information. The first is the interface definition of ISuperDuper, and the second is the Class ID of the COM object that implements the ISuperDuper interface. Therefore, somewhere in your code you’ll have the interface declaration of ISuperDuper:</P>
+</FONT><FONT FACE="Courier New" SIZE=1><P>ISuperDuper = <B>interface</B>(IUnknown)</P>
+<P>    [‘{12345678-0000-0000-0000-CBA9876543210}’]</P>
+<P>    <B>function</B> DoSomethingSuper: HResult; <B>stdcall</B>;</P>
+<P>    <B>function</B> DoSomethingThatTakesAnArgument( <B>const</B> GoingIn: Integer; <B>out</B> ComingOut:<BR>
+        IUnknown ): HResult; <B>stdcall</B>;</P>
+<B><P>end;</P>
+</B><P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>To use ISuperDuper you’ll need to declare an interface reference variable:</P>
+</FONT><B><FONT FACE="Courier New" SIZE=1><P>var</P>
+</B><P>    SuperDuper: ISuperDuper;</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>To create an instance of ISuperDuper, you’ll need to have a declaration of the CLSID of the COM object that implements ISuperDuper:</P>
+</FONT><B><FONT FACE="Courier New" SIZE=1><P>const</P>
+</B><P>    CLSID_SuperDuperObject: TGUID = (</P>
+<P>        D1:$00000017;D2:$0000;D3:$0000;D4:($C0,$00,$00,$00,$00,$00,$00,$46));</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>The following line of code creates an instance of the ISuperDuper COM object, and assigns the value of the SuperDuper interface variable:</P>
+</FONT><FONT FACE="Courier New" SIZE=1><P>SuperDuper := CreateComObject( CLSID_SuperDuperObject );</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>If you browse through the comobj.pas file, you’ll see that CreateComObject is prototyped as:</P>
+</FONT><B><FONT FACE="Courier New" SIZE=1><P>function </B>CreateComObject(<B>const</B> ClassID: TGUID): IUnknown;</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>But how, you ask, does Delphi convert between IUnknown and ISuperDuper? Delphi generates an implicit QueryInterface call to obtain an ISuperDuper interface from the SuperDuperObject. The resolution of the interface occurs only at run-time, however, so this means that the compiler cannot detect an incompatible interface assignment at compile time.</P>
+<P>One final note about interface reference variables: they are automatically resource protected. When an interface reference goes out of scope, it automatically calls Release on the object that it is currently assigned to before exiting.</P>
+<P>Taken together, these interface reference variables combine many of the features that C++ developers have grown accustomed to with smart pointers. To summarize, interface reference variables will:</P>
+<UL>
+<LI>Release the COM object that they are assigned to when they go out of scope</LI>
+<LI>convert between COM interfaces through implicit QueryInterface calls</LI>
+<LI>Release the COM object that they are assigned to when they are re-assigned to another COM object</LI></UL>
+
+<P>&nbsp;</P>
+</FONT><B><I><FONT FACE="Arial"><P><A name="A5">Delphi 3.0’s Type Library Editor and Two-way Tools Technology</A></P>
+</B></I></FONT><FONT SIZE=2><P>Creating type libraries used to be an exercise in writing ODL (Object Definition Language) or IDL (Interface Definition Language) files. With Delphi 3.0’s new type library editor, creating type libraries is now a snap.</P>
+<P>The major problem with type libraries in the past was that the tools used to create type libraries knew nothing about Pascal. They were primarily tools that were aimed at C and C++ developers, and contained a number of features that made <I>their</I> lives much easier. If you defined your interface in IDL, the midl.exe type compiler will emit the corresponding C/C++ header file declarations along with the binary type library file for your object(s).</P>
+<P>Delphi 3.0 integrates the type library compiler into Delphi’s IDE. You can edit the type library using Delphi’s graphical type library editor, and synchronize the object with the underlying .pas file simply by clicking the Refresh button (Figure 1). This makes creating COM objects and their associated type library declarations a snap.</P>
+<P>The code that the type library editor generates for you looks like regular Object Pascal code:</P>
+</FONT><FONT FACE="Courier New" SIZE=1><P>TTestObjectA = <B>class</B>(TAutoObject, ITestObjectA)</P>
+<P>  <B>protected</P>
+</B><P>    <B>procedure</B> Proc1(<B>var</B> i: Integer); <B>safecall</B>;</P>
+<P>  <B>end</B>;</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>There’s also a hidden unit that contains most of the other declarations for your object. It has the same name as your type library (which defaults to your project’s name), but with a _TLB suffix appended to your name. It appears in your COM object’s <B>uses</B> clause, and by including this unit in your other Delphi units, you’ll get all of the requisite declarations for the object’s CLSID’s and its interface’s IID’s.</P>
+<P>&nbsp;</P></FONT><B><I><FONT FACE="Arial"><P>Building our Dual-Interface ActiveX Server</P>
+</B></I></FONT><FONT SIZE=2><P>We will use Delphi 3’s new enhancements to build our dual interface ActiveX server:</P>
+<OL>
+
+<LI>From the Object Repository, select New from the File menu.</LI>
+<LI>Click on the ActiveX tab and select ActiveX Library. Delphi will create a new ActiveX library module for you, with the appropriate files in the <B>uses</B> clause, and the correct functions exported.</LI>
+<LI>Go back to the ActiveX tab in the Object Repository and select ActiveX Object. Enter CalcObject as the name of the Automation object to create. Delphi will create a new skeleton ActiveX Object, as well as a default Type Library for your object. You should see the Type Library Editor displayed prominently in the foreground at this point.</LI>
+<LI>Click on the interface for ITCalcObject that was created for you by Delphi. If you examine its properties, you’ll see that its parent interface is IDispatch, indicating that it is declared as a dual interface Automation object.</LI>
+<LI>Start adding some new member functions to your project. In our case, we will add the following Method using the Type Library Editor:</LI>
+</FONT><B><FONT FACE="Courier New" SIZE=1><P>procedure</B> AddOne(i: Integer; <B>var</B> iRet: Integer);</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><LI>Click on the Type Library Editor’s Refresh button, and switch back to your unit’s code editor.</LI>
+<LI>Enter the following implementation to the AddOne stub procedure that was generated for you by Delphi’s type library editor:</LI>
+</FONT><FONT FACE="Courier New" SIZE=1><P>iRet := i + 1;</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><LI>Compile your new Automation object, and select Register ActiveX Server from Delphi’s Run menu to register your Automation object.</LI></OL>
+
+<P>As you can see, building dual interface Automation objects is only slightly more complicated than building a regular Delphi object. The only difference is that you enter the prototypes of your class’s member functions using the Type Library Editor rather than typing code into the <B>interface</B> section of your object’s unit.</P>
+<P>Build and compile the test program (VDemo.dpr) for the Automation object that you just created. In the test program, I illustrate the two different mechanisms that you can use to create an instance of CalcObject in your Delphi applications:</P>
+</FONT><B><FONT FACE="Courier New" SIZE=1><P>  </B>FObj: ITCalcObject;</P>
+<P>  FDispObj: <B>Variant</B>;</P>
+<B><P>  …</P>
+<P>  if</B> Dual <B>then</P>
+</B><P>    FObj := CoTCalcObject.Create</P>
+<P>  <B>else</P>
+</B><P>    FDispObj := CreateOleObject( 'TCalcObject' );</P>
+<P>&nbsp;</P>
+</FONT><FONT SIZE=2><P>The instance of CalcObject that is created and assigned to FObj is a dual-interface Automation object. The instance of CalcObject that is created and assigned to FDispObj is a late-bound Automation object. The difference has to do with the variable types of FObj and FDispObj. FObj is an interface reference variable, and FDispObj is a general-purpose Delphi variant variable that implements Delphi’s generic Automation controller support.</P>
+<P>If you run VDemo, and play around with the setting of the trackbar control, you’ll see some interesting behavior. VDemo creates two separate threads of execution. One uses the CalcObject object as a dual interface object, the other as a late-bound object.</P>
+<P>The trackbar control adjusts the number of times that each thread calls its Automation object before advancing its progress meter. When the trackbar is set to a large value (to the right), you’ll see the most dramatic difference in speed between the dual interface automation object and the late-bound object. When the trackbar is set to a small number, you’ll see that eventually both threads will be executing at the same speed!</P>
+</FONT><B><I><FONT FACE="Arial"><P>Wrapping things up</P>
+</B></I></FONT><FONT SIZE=2><P>All Automation objects created using Delphi 3.0 will be dual-interface objects by default. By using Delphi’s built-in tools for creating and maintaining type libraries, you’ll find that creating Automation objects is a snap. Delphi’s native support for COM objects makes manipulating other people’s Automation objects very straightforward, and less error-prone than ever before.</P>
+</FONT><B><I><FONT FACE="Arial"><P><A name="A6">Recommended Reading:</A></P>
+</B></I></FONT><FONT SIZE=2><P>David Chappell, Understanding ActiveX and OLE: A Guide for Developers and Managers, Microsoft Press, 1996: an extremely good overview of the various ActiveX and OLE technologies.</P>
+<P>Kraig Brockschmidt, Inside OLE 2<SUP>nd</SUP> Edition, Microsoft Press, 1995: the authoritative reference source.</P>
+<P>Dale Rogerson, Inside COM, Microsoft Press, 1997: a very thorough explanation of the fundamental COM technologies.</P>
+<P>Markus Horstmann, From C++ to COM, MSDN CD: one of the clearest treatments of the problems that COM was designed to solve-from the perspective of a C++ programmer.</P></FONT></font><br>
+	<hr>
+		</FONT>
+		<CENTER>
+		<FONT size = 1>&#169; 1997 John Lam. All rights reserved.<BR><BR></FONT>
+		<A href="#TOP"><IMG src="images/top.gif" border=0 alt="Back to top"></A><BR>
+		<BR><FONT FACE="ARIAL,HELVETICA" SIZE="1">
+		<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="5">
+		<TR>
+				<TD ALIGN="right" VALIGN="middle"><a href="/ie/" target="_top"><img src="/images/ie_animated.gif" width="88" height="31" border="0" alt="Microsoft Internet Explorer"></a></TD>
+				<TD ALIGN="center" VALIGN="middle"><IMG SRC="images/bar.gif" width="3" height="43"></TD>
+				<TD ALIGN="left" VALIGN="middle"><a href="/backoffice/designed/logo.htm" target="_top"><IMG SRC="/images/msbo_iis.gif" width="100" height="31" border="0" alt="Microsoft Windows NT Server with Internet Information Server"></a></TD>
+		</TR>
+		</TABLE>
+		</FONT></CENTER><BR>
+	</TD>	
+</TR>
+</TABLE>
+
+</table>
+</body>
+</html>

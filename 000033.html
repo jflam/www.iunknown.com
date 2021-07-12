@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Beware of Heisenberg effects</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000032.html" title="Interface method dispatch cost" />
+
+<link rel="next" href="http://www.iunknown.com/000034.html" title="Athlon interface method dispatch cost" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000032.html">&laquo; Interface method dispatch cost</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000034.html">Athlon interface method dispatch cost &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 10, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Beware of Heisenberg effects</h3>
+
+<p><DIV align=left>When you run things in a JIT system under a debugger, you aren't always looking at what you think you're looking at.</DIV><br />
+<P>Let's consider a simple piece of code:</P><br />
+<P><CODE>static int Add( int x, int y ) <BR>{ <BR>&nbsp; return x + y; <BR>} <BR><BR>static int Main(string[] args) <BR>{ <BR>&nbsp; return Add( 3,&nbsp;4 ); <BR>}</CODE></P><br />
+<P>If you enabled optimizations in a Debug configuration build in VS.NET compiled and ran the program in a debugger, you can examine the generated x86 code. This is what you would see at the call site:</P><br />
+<P><CODE>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; Add( 3, 4 ); <BR>00000000 push ebp <BR>00000001 mov ebp,esp <BR>00000003 push eax <BR>00000004 push esi <BR>00000005 mov dword ptr [ebp-4],ecx <BR>00000008 mov edx,4 <BR>0000000d mov ecx,3 <BR>00000012 call dword ptr ds:[008F510Ch] <BR>00000018 mov esi,eax <BR>0000001a mov eax,esi <BR>0000001c pop esi <BR>0000001d mov esp,ebp <BR>0000001f pop ebp <BR>00000020 ret </CODE></P><br />
+<P><CODE></CODE>Furthermore, if you step into the call instruction, this is what you would see at the other end:</P><br />
+<P><CODE>00000000 push ebp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;setup stack frame<BR>00000001 mov ebp,esp <BR>00000003 sub esp,8 <BR>00000006 push edi <BR>00000007 push esi <BR>00000008 mov edi,ecx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;x and y are in<BR>0000000a mov esi,edx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;ecx and edx<BR>0000000c lea eax,[edi+esi]&nbsp; ;add the numbers<BR>0000000f pop esi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;clean up stack frame<BR>00000010 pop edi <BR>00000011 mov esp,ebp <BR>00000013 pop ebp <BR>00000014 ret</CODE></P><br />
+<P>Now, this hardly looks like optimized code now, does it? But we compiled using the /optimize switch, didn't we?</P><br />
+<P>As it turns out, we <EM>did</EM> compile using the /optimize switch. This causes the C# compiler to generate optimized CIL instructions. However, because we were running the code under the VS.NET debugger, <EM>which is aware of the CLR</EM>, the VS.NET debugger tells the CLR to turn off JIT optimizations [1].</P><br />
+<P>If you ran your code outside of VS.NET, it would actually run using a different x86 instruction sequence. If you run it inside of VS.NET, you run using the instruction sequence shown above. Hence the Heisenberg effect: the act of observing the system causes the system to change.</P><br />
+<P>Fortunately for us, we have a way around this. What we need to do is start the code outside of the scope of the VS.NET debugger, and then "break into" the code to see the generated x86 code. We can do this by taking advantage of the Just-In-Time debugging features of Windows. To do so, we need to insert a call to the Win32 DebugBreak() API in our code.</P><br />
+<P>Here's the stub that defines the signature of DebugBreak() for P/Invoke:</P><br />
+<P><CODE>[ DllImport( "kernel32.dll" ) ] <BR>static extern void DebugBreak();</CODE></P><br />
+<P>This is our modified Main() method:</P><br />
+<P><CODE>static int Main(string[] args) <BR>{ <BR>&nbsp; DebugBreak(); <BR>&nbsp; return Add( 3, 4 ); <BR>}</CODE></P><br />
+<P>If you run the application from the command line, you should see the JIT debugging dialog appear. </P><br />
+<P>Click on Debug, and select "New Instance of Microsoft Development Environment" from the Just-In-Time Debugging dialog. </P><br />
+<P>In the Attach to Process dialog, make sure that the "Common Language Runtime" switch is NOT checked:</P><br />
+<DIV align=left>You will see that you are sitting in the _DbgBreakPoint@0: method. Step over the ret instruction in this method. You should now be at the tail end of the P/Invoke thunk that called the DebugBreak() API. The instructions should resemble:</DIV><br />
+<P><CODE>003FA09F mov byte ptr [ebx+4],1 <BR>003FA0A3 cmp dword ptr ds:[793A7A54h],0 <BR>003FA0AA jne 003FA0C4 <BR>003FA0AC lea esp,[esi-18h] <BR>003FA0AF mov dword ptr [ebx+8],edi <BR>003FA0B2 add esp,8 <BR>003FA0B5 pop edi <BR>003FA0B6 pop esi <BR>003FA0B7 pop ebx <BR>003FA0B8 pop ebp <BR>003FA0B9 add esp,0Ch <BR>003FA0BC ret</CODE></P><br />
+<P>Step over this all of the instructions in this sequence until you hit the ret instruction. When you step over that instruction, your debugger will now be positioned at the call to Add( 3, 4 ). This is what you should see:</P><br />
+<P><CODE>02E1005E mov eax,7 <BR>02E10063 ret</CODE></P><br />
+<P>You'll notice that the JIT compiler was smart enough to completely eliminate the call to the Add() method and replace it with the result of the constant calculation, 7. </P><br />
+<P>As an exercise left to the reader, modify your Main method so that it looks like:</P><br />
+<P><CODE>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; Add( 3, 4 ); <BR>}</CODE></P><br />
+<P>Examine the optimized x86 code using the techniques in this entry. Did you get what you expected?</P><br />
+<P>[1] If you're interested in writing a debugger, you can tell the CLR to turn off JIT optimizations by calling ICorDebugModule::EnableJITDebugging(), and passing false in the bAllowJitOpts parameter.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January 10, 2002 01:41 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="33" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000033.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="33" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

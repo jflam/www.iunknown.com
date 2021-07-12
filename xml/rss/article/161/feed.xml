@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: RubyCLR identity woes</title>
+    <link>http://www.iunknown.com/articles/2006/06/02/rubyclr-identity-woes</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>RubyCLR identity woes</title>
+      <description>&lt;p&gt;The last bug that I wanted to squash before the next release is proving to be a bit tricky.&lt;/p&gt;
+
+
+	&lt;p&gt;Up until today, RubyCLR didn&amp;#8217;t really respect identity of &lt;span class="caps"&gt;CLR&lt;/span&gt; objects all that well. If you marshaled the same &lt;span class="caps"&gt;CLR&lt;/span&gt; object across the interop boundary twice you&amp;#8217;d get two Ruby proxy objects.&lt;/p&gt;
+
+
+	&lt;p&gt;This is a &lt;em&gt;potential&lt;/em&gt; problem if you start stuffing state into those Ruby proxy objects and expect identity to be maintained &amp;#8211; it won&amp;#8217;t. So I fixed that problem today by caching Ruby proxy objects inside of a global hashtable. &lt;del&gt;The key to each object is the value that&amp;#8217;s returned from &lt;code&gt;Object.GetHashCode&lt;/code&gt;.&lt;/del&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;There&amp;#8217;s another problem, however. My interface implementation requires a separate Ruby object. So if you did something like:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;enum = object.as(IEnumerable)&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;enum&lt;/code&gt; and &lt;code&gt;object&lt;/code&gt; would now be two separate objects. This is problematic because Ruby doesn&amp;#8217;t support interfaces natively, so I can&amp;#8217;t really think of ways around this problem.&lt;/p&gt;
+
+
+	&lt;p&gt;Suggestions would now be welcome :)&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; It&amp;#8217;s a really bad idea to use &lt;code&gt;Object.GetHashCode&lt;/code&gt; as an object&amp;#8217;s identity. So please don&amp;#8217;t do this. I&amp;#8217;m working on some other possible ways of solving this problem, but the more I look at the identity problem the harder it becomes. I may not have a fix for this in time for the next drop (pre Tech Ed) as I suspect that this is probably a much harder problem than it appears.&lt;/p&gt;</description>
+      <pubDate>Fri, 02 Jun 2006 15:25:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:9338a7ae4654c7de8bc6ce2207321925</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/06/02/rubyclr-identity-woes</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"RubyCLR identity woes" by Nick Guerrera</title>
+      <description>&lt;p&gt;Also, the value returned from GetHashCode (whether overridden or not) is not guaranteed to be unique to the object instance and therefore cannot be used as the key into a hashtable.&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href="http://blogs.msdn.com/brada/archive/2003/09/30/50396.aspx"&gt;http://blogs.msdn.com/brada/archive/2003/09/30/50396.aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You'll have to effectively store a list of proxy objects for each hash code and then compare the target .NET object of each element in the list to the incoming .NET object for reference equality. &lt;/p&gt;
+
+&lt;p&gt;There's also the hard problem of making sure that the global cache does not prevent prevent objects (both Ruby and .NET) from being GC'ed when they are otherwise unreachable.&lt;/p&gt;</description>
+      <pubDate>Sat, 03 Jun 2006 16:08:49 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/02/rubyclr-identity-woes#comment-521</link>
+    </item>
+    <item>
+      <title>"RubyCLR identity woes" by Nick Guerrera</title>
+      <description>&lt;p&gt;It's probably a good idea to use System.CompilerServices.RuntimeHelpers.GetHashCode. A non-virtual call to Object.GetHashCode is equivalent, but unverifiable. &lt;/p&gt;
+
+&lt;p&gt;As for the interface issue, what about getting rid of the .as operation entirely? It seems out of place to me in a world of duck typing. &lt;/p&gt;
+
+&lt;p&gt;Can you make the original proxy object surface all interface methods as well? I'm sure this already works for implicit interface implementations. For explicit interface implementations, you could elevate them to normal methods in the absence of ambiguity.&lt;/p&gt;
+
+&lt;p&gt;Dealing with ambiguity in the face of explicit interface implementation is the tough part. One dodge would be to use name mangling for disambiguation, but that would break duck typing.&lt;/p&gt;
+
+&lt;p&gt;I think a better approach would be to provide a method on the proxy object which allows the user to do the disambiguation. For example, given an object which implements both IEnumerable.GetEnumerator and IFoo.GetEnumerator, you could do the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;object.select_interface_method("GetEnumerator", IEnumerable)
+x = object.GetEnumerator()
+    -- calls IEnumerable.GetEnumerator()
+
+object.select_interface_method("GetEnumerator", IFoo)
+x = object.GetEnumerator()
+    -- calls IFoo.GetEnumerator()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Just a thought.&lt;/p&gt;</description>
+      <pubDate>Fri, 02 Jun 2006 22:42:49 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/02/rubyclr-identity-woes#comment-519</link>
+    </item>
+    <item>
+      <title>"RubyCLR identity woes" by Wilco Bauwer</title>
+      <description>&lt;p&gt;Right now what I do in IronRuby to support interfaces is create proxy types on the fly (per interface type). Proxy types derive from a shared base class in which I partially deal with identity (or rather equality). It overloads the relevant operators and implements some relevant interfaces by basically forwarding calls to the underlying Ruby object it represents.&lt;/p&gt;
+
+&lt;p&gt;There are some obvious caveats however. Proxy types do not represent the true identity of the underlying Ruby object - it only tries to give you the illusion. When you would actually compare references though (which is what will happen in several scenarios), you will not always get the expected result. Imagine a Ruby object which implements IFoo and IBar and lets say we've got a .NET type with the following methods:&lt;/p&gt;
+
+&lt;p&gt;void X(IFoo f);
+  void Y(IBar b);&lt;/p&gt;
+
+&lt;p&gt;When you would pass the Ruby object to X(IFoo f), a proxy type is generated (if it doesn't exist yet) and it is instantiated (if no instance was created yet). In subsequent calls the same proxy type instance will be passed, in which case identity is preserved.&lt;/p&gt;
+
+&lt;p&gt;However, when you would pass the same Ruby object to Y(IBar b) an instance of a different proxy type is passed. Identity crisis is what follows when object references are compared instead of checking equality.&lt;/p&gt;</description>
+      <pubDate>Fri, 02 Jun 2006 18:18:08 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/02/rubyclr-identity-woes#comment-518</link>
+    </item>
+    <item>
+      <title>"RubyCLR identity woes" by Mark</title>
+      <description>&lt;p&gt;GetHashCode doesn't seem like a very reliable mechanism for identity, especially if the hashtable is global (across all types). I suppose if you're calling Object's GetHashCode rather than doing a virtual call, it wouldn't be as bad.&lt;/p&gt;
+
+&lt;p&gt;Just some "from the hip" brainstorming... Perhaps your interface proxies need to hang off of the original object proxies (or vice versa)somehow so that any state changes made to the interface proxy are actually stored in the original proxy.  Then any marshalling back and forth results in the original object, and the interface proxy can be grabbed again via the "as" operator.  Or perhaps some variant on that idea.&lt;/p&gt;
+
+&lt;p&gt;I might be persuaded to think of the interface transformation as a temporary "view" of an object that would be "undone" in a round-trip back through the CLR. Just some thoughts.&lt;/p&gt;</description>
+      <pubDate>Fri, 02 Jun 2006 16:34:50 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/02/rubyclr-identity-woes#comment-517</link>
+    </item>
+  </channel>
+</rss>

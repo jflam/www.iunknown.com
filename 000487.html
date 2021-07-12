@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: The more you learn the shorter it gets</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000486.html" title="Python books" />
+
+<link rel="next" href="http://www.iunknown.com/000488.html" title="Happy Birthday Matthew!" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000487.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/231"
+    dc:title="The more you learn the shorter it gets"
+    dc:identifier="http://www.iunknown.com/000487.html"
+    dc:subject="Blog"
+    dc:description="I thought that my earlier blog entry on emulating String.Format() in Python had some crufty code in it - specifically the code that expanded a list into a comma separated string. So after a bit of random reading in the..."
+    dc:creator="John"
+    dc:date="2004-09-22T00:55:28-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000486.html">&laquo; Python books</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000488.html">Happy Birthday Matthew! &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">September 22, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">The more you learn the shorter it gets</h3>
+
+<p>I thought that my <a href="http://www.iunknown.com/000485.html">earlier blog entry</a> on emulating <code>String.Format()</code> in Python had some crufty code in it - specifically the code that expanded a list into a comma separated string. So after a bit of random reading in the Python Cookbook tonight, I discovered the <code>map</code> function. </p>
+
+<p>It takes a function object as its first parameter, and list object as its second parameter. It calls the function for each member of the list and returns a new list containing the results of calling that function.</p>
+
+<p>My original version of code looked like:</p>
+
+<pre>
+for n in argIndices:
+    expr += 'mo.group(%s), ' % n
+</pre><p>My new version of code looks like:</p>
+
+<pre>groups = ','.join(map(lambda str: 'mo.group(%s)' % str, argIndices))</pre><p>It also has the side-effect of not requiring the (A,B,) syntax for declaring tuples. </p>
+
+<p>While this is arguably longer than my original version (in characters typed) - learning this technique lets me do a different optimization that may be more efficient than my current implementation. But I'll need to try it out first :)</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at September 22, 2004 12:55 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=487" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="487" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000487.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>You could also use a list comprehension for the job. This powerful construct eliminates the use of both 'map' and 'lambda':</p>
+
+<p>argIndices = (1, 2, 3, 4 , 5) # just for the code snippet to run<br />
+groups = ','.join(map(lambda str: 'mo.group(%s)' % str, argIndices))<br />
+print groups<br />
+groups = ','.join(['mo.group(%s)' % str for str in argIndices])<br />
+print groups<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;kristof&#64;rubin&#46;hu">Kristof Strobl</a> at September 22, 2004 02:49 AM</span>
+</div>
+<div class="comments-body">
+<p>Also note that you could have used a list comprehension to kill some lines in the parser.__init__ function</p>
+
+<p>self.templates = [templateExpression(regex, template) for regex,template in inline_args]</p>
+
+<p>Although it is true they tend to "bulk" the code up somewhat, I still find them much more readable. I think it is because it clearly impresses the intent of the code (i.e. build up a list according to this rule) more clearly than appending does.</p>
+<span class="comments-post">Posted by: Daniel Dunbar at September 22, 2004 09:23 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="487" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

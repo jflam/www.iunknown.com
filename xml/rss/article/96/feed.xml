@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Microsoft Phoenix</title>
+    <link>http://www.iunknown.com/articles/2006/03/21/microsoft-phoenix</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Microsoft Phoenix</title>
+      <description>&lt;p&gt;It&amp;#8217;s been a long time since I thought about Microsoft&amp;#8217;s &lt;a href="http://research.microsoft.com/phoenix/"&gt;Phoenix project&lt;/a&gt;. It&amp;#8217;s a &lt;em&gt;code transformation&lt;/em&gt; platform. For example, it can read x86 instructions, &lt;span class="caps"&gt;CIL&lt;/span&gt; instructions or a &amp;#8220;Universal &lt;span class="caps"&gt;AST&lt;/span&gt;&amp;#8221; into Phoenix&amp;#8217;s Intermediate Representation (IR), transform the IR, and then generate an executable using the &lt;code&gt;c2.exe&lt;/code&gt; optimizing compiler backend that itself was built using Phoenix. This makes it really straightforward to write code transformation tools like a code coverage tool since Phoenix does most of the heavy lifting for you.&lt;/p&gt;
+
+
+	&lt;p&gt;It also means that language developers no longer have to write code generators / optimizers anymore. This is a really powerful idea.&lt;/p&gt;
+
+
+	&lt;p&gt;There is now a set of &lt;a href="http://research.microsoft.com/phoenix/downloads.aspx"&gt;bits available for download&lt;/a&gt;. You should definitely check out the &lt;a href="http://research.microsoft.com/phoenix/demos.aspx"&gt;Phoenix Explorer&lt;/a&gt; demo. It display&amp;#8217;s Phoenix&amp;#8217;s IR of both x86 and &lt;span class="caps"&gt;CIL&lt;/span&gt; code (so it&amp;#8217;s essentially a disassembler). But since Phoenix can consume both x86 and &lt;span class="caps"&gt;CIL&lt;/span&gt; instructions, you do no extra work to disassemble both x86 and &lt;span class="caps"&gt;CIL&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;I took a quick peek at the source code; it looks pretty straightforward (with the exception of having to subclass &lt;code&gt;Phx.Phases.Phase&lt;/code&gt;) to port port the Phoenix Explorer to Ruby :)&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://msdn.microsoft.com/msdnmag/issues/05/11/EndBracket/fig01.gif" alt="" /&gt;&lt;/p&gt;</description>
+      <pubDate>Tue, 21 Mar 2006 21:23:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:7c8dbe27b289d81806f9f52555019e58</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/03/21/microsoft-phoenix</link>
+      <category>Props</category>
+    </item>
+    <item>
+      <title>"Microsoft Phoenix" by Kathy</title>
+      <description>&lt;p&gt;We just had a very unique experience. Rick opened up a brand new MacBook (the black one) from the original packaging. When he lifted the lid to turn it on, it was already on and it woke up. It is running Mac OS X 10.4.6 but it was not configured like a regular Tiger machine. Instead it had a terminal window that was called PhoenixCE. Weird. I also had lots of the services programs in the startup folder like it had been set up to test at the Alpha-geek level. Could you tell us more about what Microsoft's Phoenix is?&lt;/p&gt;</description>
+      <pubDate>Fri, 23 Jun 2006 00:32:37 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/21/microsoft-phoenix#comment-545</link>
+    </item>
+  </channel>
+</rss>

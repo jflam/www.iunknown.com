@@ -1,0 +1,884 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/LessIsBetter" />
+  <script src="/javascripts/cookies.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1156231406" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/application.css?1164503575" media="all" rel="Stylesheet" type="text/css" />
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Less is better</a></span></h1>
+    <h2>John Lam on software</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <div class="atomentry" id="article-96">
+  <h2 class="title">
+    <a href="/articles/2006/03/21/microsoft-phoenix">Microsoft Phoenix</a> 
+    <span class="comment_count">1</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-21T21:23:00-08:00"><span class="typo_date" title="Wed, 22 Mar 2006 05:23:00 GMT">Wed, 22 Mar 2006 05:23:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>It&#8217;s been a long time since I thought about Microsoft&#8217;s <a href="http://research.microsoft.com/phoenix/">Phoenix project</a>. It&#8217;s a <em>code transformation</em> platform. For example, it can read x86 instructions, <span class="caps">CIL</span> instructions or a &#8220;Universal <span class="caps">AST</span>&#8221; into Phoenix&#8217;s Intermediate Representation (IR), transform the IR, and then generate an executable using the <code>c2.exe</code> optimizing compiler backend that itself was built using Phoenix. This makes it really straightforward to write code transformation tools like a code coverage tool since Phoenix does most of the heavy lifting for you.</p>
+
+
+	<p>It also means that language developers no longer have to write code generators / optimizers anymore. This is a really powerful idea.</p>
+
+
+	<p>There is now a set of <a href="http://research.microsoft.com/phoenix/downloads.aspx">bits available for download</a>. You should definitely check out the <a href="http://research.microsoft.com/phoenix/demos.aspx">Phoenix Explorer</a> demo. It display&#8217;s Phoenix&#8217;s IR of both x86 and <span class="caps">CIL</span> code (so it&#8217;s essentially a disassembler). But since Phoenix can consume both x86 and <span class="caps">CIL</span> instructions, you do no extra work to disassemble both x86 and <span class="caps">CIL</span>.</p>
+
+
+	<p>I took a quick peek at the source code; it looks pretty straightforward (with the exception of having to subclass <code>Phx.Phases.Phase</code>) to port port the Phoenix Explorer to Ruby :)</p>
+
+
+	<p><img src="http://msdn.microsoft.com/msdnmag/issues/05/11/EndBracket/fig01.gif" alt="" /></p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/21/microsoft-phoenix#comments">1 comment</a>,
+      <a href="/articles/2006/03/21/microsoft-phoenix" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/96/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/96/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/21/microsoft-phoenix">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/21/microsoft-phoenix;title=Microsoft Phoenix">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-95">
+  <h2 class="title">
+    <a href="/articles/2006/03/16/when-i-was-a-boy-i-used-a-pencil-and-paper">When I was a boy I used a pencil and paper</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-16T22:16:23-08:00"><span class="typo_date" title="Fri, 17 Mar 2006 06:16:23 GMT">Fri, 17 Mar 2006 06:16:23 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>But nowadays kids use digital cameras to <a href="http://www.flickr.com/photos/extraspecial/sets/72057594074203534/">take snapshots of debugging traces</a>.</p>
+
+
+	<p><img src="http://static.flickr.com/40/107310593_31eff49e81.jpg?v=0" alt="" /></p>
+
+
+	<p>This was some sharing of work in progress in getting <a href="http://www.winxponmac.com/">Windows XP to boot on MacIntels</a> which is now apparently a done deal.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/16/when-i-was-a-boy-i-used-a-pencil-and-paper#comments">no comments</a>,
+      <a href="/articles/2006/03/16/when-i-was-a-boy-i-used-a-pencil-and-paper" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/95/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/95/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/16/when-i-was-a-boy-i-used-a-pencil-and-paper">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/16/when-i-was-a-boy-i-used-a-pencil-and-paper;title=When I was a boy I used a pencil and paper">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-94">
+  <h2 class="title">
+    <a href="/articles/2006/03/16/third-drop-of-rubyclr">Third Drop of RubyCLR</a> 
+    <span class="comment_count">29</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-16T20:27:00-08:00"><span class="typo_date" title="Fri, 17 Mar 2006 04:27:00 GMT">Fri, 17 Mar 2006 04:27:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>This is the biggest release of RubyCLR yet. You can <a href="http://www.iunknown.com/images/RubyCLR.zip">download it here</a>. Here&#8217;s a brief summary of RubyCLR as of this drop:</p>
+
+
+	<ul>
+	<li>Reference .NET assemblies by assembly name or by filename </li>
+		<li>Create and manipulate .NET reference and value types</li>
+		<li>Automatically marshal .NET reference and value types to / from Ruby</li>
+		<li>Dynamic generation of interop code using <span class="caps">CIL</span> instructions</li>
+		<li>Create and manipulate generic .NET reference types</li>
+		<li>Discover and consume .NET interfaces on a .NET object</li>
+		<li>Implement .NET event handlers using Ruby blocks</li>
+		<li>Map .NET member names to Ruby names (e.g. WordCount becomes word_count)</li>
+		<li>Mix in Ruby Enumerable support for .NET IEnumerable types</li>
+		<li>Dynamically access .NET <span class="caps">XML</span> documentation from irb (requires text/format &#8211; to
+  make it work uncomment require in rubyclr.rb)</li>
+	</ul>
+
+
+	<p>There are several sample applications to show you what&#8217;s possible:</p>
+
+
+	<ul>
+	<li><strong>GoogleCalc</strong> lets you access Google&#8217;s calculator from a rich client application</li>
+		<li><strong>RssReader</strong> is a Windows Forms 2.0 <span class="caps">RSS</span> reader</li>
+		<li><strong>Math</strong> is a Windows Presentation Foundation (aka Avalon) application that <a href="http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon">renders math equations</a> using a domain specific language</li>
+	</ul>
+
+
+	<p>The source code has been massively reorganized from the last drop. If you&#8217;re using <a href="http://www.activestate.com/komodo/">Komodo</a> you&#8217;ll find Komodo project files in this drop to make it easier to navigate the non C++ source code.</p>
+
+
+	<p>I&#8217;m going to be pretty busy for the next three weeks <a href="http://www.objectsharp.com">doing work to pay the bills around here</a>, so work is going to slow down quite a bit on the bridge. I hope this release is of sufficient quality to sustain y&#8217;all for the next month or so. Let me know by email (jlam at this domain) if you have any reproducible showstopper bugs and I&#8217;ll see what I can do to get a patch out the door.</p>
+
+
+	<p>Enjoy!</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/16/third-drop-of-rubyclr#comments">25 comments</a>,
+      <a href="/articles/2006/03/16/third-drop-of-rubyclr" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/94/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/94/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/16/third-drop-of-rubyclr">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/16/third-drop-of-rubyclr;title=Third Drop of RubyCLR">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-92">
+  <h2 class="title">
+    <a href="/articles/2006/03/15/rubyclr-and-avalon">RubyCLR and Avalon</a> 
+    <span class="comment_count">4</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-15T16:49:00-08:00"><span class="typo_date" title="Thu, 16 Mar 2006 00:49:00 GMT">Thu, 16 Mar 2006 00:49:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here&#8217;s a teaser screenshot:</p>
+
+
+	<p><img src="http://static.flickr.com/56/113024723_7bb322ce42_o.png" alt="" /></p>
+
+
+	<p>The integral was defined by this Ruby code:</p>
+
+
+	<p><code>integral('a', 'b', 'f(x) dx')</code></p>
+
+
+	<p>The image that you see was rendered using the technology formerly known as Avalon. This is a part of the new sample application that will ship in the 3rd drop of RubyCLR (probably sometime tonight, or whenever I get enough time to type up a set of release notes). It will let you interactively create mathematical expressions in an Avalon application.</p>
+
+
+	<p>I used <a href="http://www.valil.com/winfx/math.html">Valentin Iliescu&#8217;s</a> most excellent <code>Math.Equations</code> library to do the heavy lifting. Most of the equations that you see are really custom layout panels. Valentin graciously agreed over lunch to let me ship his assembly (only 45K) along with RubyCLR so that you can see this stuff in action.</p>
+
+
+	<p>The domain specific language that I created for this sample is far from ideal; I gave myself a 1 day time window to create this sample, and I&#8217;ve run out of time. If anyone out there is interested in improving the <span class="caps">DSL</span>, go for it (and please share!).</p>
+
+
+	<p>Here&#8217;s an excerpt of the <span class="caps">DSL</span> that defines the paragraph in the screenshot:</p>
+
+
+<pre><code>
+text 'The first fundamental theorem of calculus states that, if ', expr('f')
+text 'is continuous on the closed interval', expr('[a,b]'), 'and', expr('F')
+text 'is the is the antiderivative (indefinite integral) of ', expr('f')
+text 'on', expr('[a,b]'), ', then ', integral('a', 'b', 'f(x) dx = F(b) - F(a)'), '.'
+</code></pre>
+
+	<p>You&#8217;ll need to have the February 2006 WinFX <span class="caps">CTP</span> to run the <span class="caps">WPF</span> sample (but you won&#8217;t need it to use any of the other code in the bridge).</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/15/rubyclr-and-avalon#comments">4 comments</a>,
+      <a href="/articles/2006/03/15/rubyclr-and-avalon" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/92/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/92/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/15/rubyclr-and-avalon">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/15/rubyclr-and-avalon;title=RubyCLR and Avalon">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-90">
+  <h2 class="title">
+    <a href="/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby">RubyCLR makes .NET feel more like Ruby</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-13T20:37:00-08:00"><span class="typo_date" title="Tue, 14 Mar 2006 04:37:00 GMT">Tue, 14 Mar 2006 04:37:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>As I was implementing my <a href="http://www.iunknown.com/articles/2006/03/10/new-rubyclr-reflection-features">dynamic help</a> feature, I was constantly annoyed by the code that I had to write to manipulate <span class="caps">CLR</span> arrays. That code looked something like this:</p>
+
+
+<pre><code>
+array = get_an_array_from_somewhere
+
+holder_for_a_bunch_of_things = []
+0.upto(array.length - 1) do |i|
+  # gather up a bunch of things
+end
+
+# use holder_for_a_bunch_of_things
+</code></pre>
+
+	<p>Now, most Ruby programmers would rather use the <a href="http://www.ruby-doc.org/core/classes/Enumerable.html#M002099">collect</a> method from the <code>Enumerable</code> module:</p>
+
+
+<pre><code>
+array = get_an_array_from_somewhere
+holder = array.collect do |item|
+  # expression for transforming an item
+end
+</code></pre>
+
+	<p>I&#8217;m happy to say that RubyCLR now automatically mixes in the <a href="http://www.ruby-doc.org/core/classes/Enumerable.html">Enumerable</a> module for any <span class="caps">CLR</span> type that implements the <code>IEnumerable</code> interface. This means that your Ruby programs will <em>feel</em> much more like a Ruby program.</p>
+
+
+	<p>RubyCLR now also automatically defines the <code>&lt;=&gt;</code> method for any object that implements the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemicomparableclasstopic.asp">IComparable</a> interface. It prefers <code>IComparable&lt;T&gt;</code>, but will bind as well to <code>IComparable</code>. This means that you can now use the <code>Enumerable#sort</code> method to sort a .NET array, or list (if that&#8217;s what you want to do).</p>
+
+
+	<p>Here&#8217;s a simple unit test that validates this behavior:</p>
+
+
+<pre><code>
+def test_object_sort
+  john  = Person.new('John')
+  steve = Person.new('Steve')
+  mike  = Person.new('Mike')
+
+  a = ArrayList.new
+  a.add(john)
+  a.add(steve)
+  a.add(mike)
+
+  b = a.sort
+  assert_equal Array, b.class
+  assert_equal 'John', b[0].name
+  assert_equal 'Mike', b[1].name
+  assert_equal 'Steve', b[2].name
+end
+</code></pre>
+
+	<p>The <code>Person</code> object implements the <code>IComparable</code> interface. Notice as well that the <code>Enumerable#sort</code> method returns a Ruby array, not a <span class="caps">CLR</span> array.</p>
+
+
+	<p>I have a lot more ideas about how to further blur the boundary between Ruby and the <span class="caps">CLR</span> (such as letting Ruby objects implement arbitrary <span class="caps">CLR</span> interfaces), but those features will have to wait for a while.</p>
+
+
+	<p>I&#8217;m now in app-writing mode for the next release. There will be a really nice Avalon aka Windows Presentation Foundation sample app, so make sure you go and download the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=F51C4D96-9AEA-474F-86D3-172BFA3B828B&#38;displaylang=en">February WinFX <span class="caps">CTP</span></a> now!</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby#comments">2 comments</a>,
+      <a href="/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/90/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/90/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby;title=RubyCLR makes .NET feel more like Ruby">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-89">
+  <h2 class="title">
+    <a href="/articles/2006/03/10/new-rubyclr-reflection-features">New RubyCLR Reflection Features</a> 
+    <span class="comment_count">1</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-10T20:30:00-08:00"><span class="typo_date" title="Sat, 11 Mar 2006 04:30:00 GMT">Sat, 11 Mar 2006 04:30:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here&#8217;s a screenshot that illustrates some of the new reflection features of RubyCLR. Notice how you can now invoke the <code>help</code> method on a type to get help on the type or for one of its members. You&#8217;ll also notice how I&#8217;m using the new color features of <code>System.Console</code> to improve the readability of the data.</p>
+
+
+	<p>The new reflection code was implemented entirely in Ruby. So it&#8217;s a very good performance stress test since I&#8217;m parsing <span class="caps">XML</span> doc files to retrieve the help that you see. The <code>mscorlib.xml</code> help file is &gt; 7MB, and can be parsed using <code>XmlTextReader</code> driven from Ruby in about 2s. That&#8217;s excellent performance considering the number of times I&#8217;m crossing the interop boundary for a 7MB <span class="caps">XML</span> doc!</p>
+
+
+	<p>Is this a useful feature? I really built it for myself so that I can get help form within an irb session, which I find myself in quite often while writing Ruby code.</p>
+
+
+	<p><img src="http://static.flickr.com/44/110674297_303908d4cd_o.png" alt="" /></p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/10/new-rubyclr-reflection-features#comments">1 comment</a>,
+      <a href="/articles/2006/03/10/new-rubyclr-reflection-features" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/89/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/89/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/10/new-rubyclr-reflection-features">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/10/new-rubyclr-reflection-features;title=New RubyCLR Reflection Features">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-88">
+  <h2 class="title">
+    <a href="/articles/2006/03/08/windows-presentation-foundation-and-rubyclr">Windows Presentation Foundation and RubyCLR</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-08T17:05:00-08:00"><span class="typo_date" title="Thu, 09 Mar 2006 01:05:00 GMT">Thu, 09 Mar 2006 01:05:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I&#8217;ve forgotten most of what little I knew about Avalon aka Windows Presentation Foundation. So I spent a bit of time today trying to remember &#8230; here&#8217;s what I was able to accomplish:</p>
+
+
+	<p><img src="http://static.flickr.com/49/109809504_3cb96cef07_o.png" alt="" /></p>
+
+
+	<p>OK, so that&#8217;s not really all that spectacular. What <strong>is</strong> spectacular, however, is how I can create this thing without having to define any <span class="caps">CLR</span> classes myself (which is impossible using my bridge). Here&#8217;s the <span class="caps">XAML</span> file:</p>
+
+
+<pre><code>
+&lt;Window
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
+  &lt;StackPanel&gt;
+    &lt;Button Name="button1"&gt;Click me&lt;/Button&gt;
+  &lt;/StackPanel&gt;
+&lt;/Window&gt;
+</code></pre>
+
+Note that this technique isn&#8217;t documented very well at all, but a bit of experimentation yielded this:
+<pre><code>
+require 'wpf'
+
+window = XamlReader.load(System::IO::File.open_read('app.xaml'))
+button = window.find_name('button1')
+button.click do |sender, args|
+  puts 'clicked me!'
+end
+Application.new.run(window)
+</code></pre>
+
+	<p>The wicked-cool feature of this code is how <code>XamlReader.load</code> generates a <code>Window</code> object for me from the <span class="caps">XAML</span>. Now it&#8217;s a simple matter for me to find the button and hook up its <code>Click</code> event handler.</p>
+
+
+	<p>Now I&#8217;m not all that happy with the Ruby code. I really want it to look like this:</p>
+
+
+<pre><code>
+window = XamlReader.load(System::IO::File.open_read('app.xaml'))
+window.button1.click do |sender, args|
+  puts 'clicked me!'
+end
+Application.new.run(window)
+</code></pre>
+
+	<p>The <code>window.button1</code> construct is much more Ruby-esque and requires that I hook <code>method_missing</code> in any class that derives from <a href="http://windowssdk.msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref28/html/T_System_Windows_FrameworkElement.asp">FrameworkElement</a> to first try to call <a href="http://windowssdk.msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref28/html/M_System_Windows_FrameworkElement_FindName_1_16219e3a.asp">FindName</a> after any other dynamic name resolution.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/08/windows-presentation-foundation-and-rubyclr#comments">2 comments</a>,
+      <a href="/articles/2006/03/08/windows-presentation-foundation-and-rubyclr" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/88/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/88/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/08/windows-presentation-foundation-and-rubyclr">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/08/windows-presentation-foundation-and-rubyclr;title=Windows Presentation Foundation and RubyCLR">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-87">
+  <h2 class="title">
+    <a href="/articles/2006/03/07/rubyclr-on-vista">RubyCLR on Vista</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-07T11:35:00-08:00"><span class="typo_date" title="Tue, 07 Mar 2006 19:35:00 GMT">Tue, 07 Mar 2006 19:35:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I got Vista Build 5308 up and running on a secondary partition on my Toshiba <span class="caps">M200</span> Tablet PC. Of course, the first thing that I did was get RubyCLR up and running on it. Everything worked great under the new <a href="http://blogs.msdn.com/uac/archive/2006/03/03/Wei_Wang.aspx">User Account Control</a> features of Vista (simply put, you run by default in a non-admin mode, with a reasonably seamless &#8220;su&#8221; experience to elevate privileges when appropriate).</p>
+
+
+	<p>One thing that you will have to do in the next drop of RubyCLR is run a setup script in the RubyCLR distribution directory. It sets up some environment variables, and it creates some performance counters (I use this to help tune the runtime, as well as to provide you with more information about what it&#8217;s doing). Since it creates some performance counters, you&#8217;ll need to run this script as a local administrator. RubyCLR degrades gracefully if the performance counters aren&#8217;t present; you just won&#8217;t see any statistics.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/07/rubyclr-on-vista#comments">2 comments</a>,
+      <a href="/articles/2006/03/07/rubyclr-on-vista" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/87/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/87/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/07/rubyclr-on-vista">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/07/rubyclr-on-vista;title=RubyCLR on Vista">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-86">
+  <h2 class="title">
+    <a href="/articles/2006/03/06/method-overloading-and-class-inheritance">Method overloading and class inheritance</a> 
+    <span class="comment_count">3</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-06T11:15:00-08:00"><span class="typo_date" title="Mon, 06 Mar 2006 19:15:00 GMT">Mon, 06 Mar 2006 19:15:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I need some feedback on a design problem in RubyCLR.</p>
+
+
+	<p>Here&#8217;s the problem in a nutshell: Ruby doesn&#8217;t support method overloading. RubyCLR fakes it out by generating a shim that lets you call the union of all overloaded methods defined by the current class and all ancestor classes.</p>
+
+
+	<p>Now, the biggest feature that I&#8217;m adding to this next drop of the bridge is class-based inheritance of shims. I want to define a shim on the class that it was defined by (via <code>MemberInfo.DeclaringType</code> property). The goal of this is to let folks (who want to) replace the definition of the method where it was defined, and to let all derived classes automatically inherit that method definition. This, of course, doesn&#8217;t work if that method is ever overloaded in derived classes.</p>
+
+
+	<p>For the next drop, I&#8217;m going to take a hybrid approach: define the shim on the declaring Ruby class object if that method is never overloaded in derived classes. If it is overloaded in derived classes, I&#8217;m going to define the shim on the Ruby class that triggered the <code>const_missing</code> event.</p>
+
+
+	<p>I&#8217;d <strong>really</strong> like some second opinions about this, as this is largely stream of consciousness thinking right now. I&#8217;m worried about breaking things in lots of other corner cases that I haven&#8217;t considered yet.</p>
+
+
+	<p>Do I really need to go to a full-blown method name mangling approach to implement this feature correctly?</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/06/method-overloading-and-class-inheritance#comments">3 comments</a>,
+      <a href="/articles/2006/03/06/method-overloading-and-class-inheritance" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/86/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/86/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/06/method-overloading-and-class-inheritance">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/06/method-overloading-and-class-inheritance;title=Method overloading and class inheritance">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-85">
+  <h2 class="title">
+    <a href="/articles/2006/03/06/dull-cubicles-or-dull-people">Dull cubicles or dull people?</a> 
+    <span class="comment_count">3</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-03-06T10:35:00-08:00"><span class="typo_date" title="Mon, 06 Mar 2006 18:35:00 GMT">Mon, 06 Mar 2006 18:35:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Kathy Sierra posted about <a href="http://headrush.typepad.com/creating_passionate_users/2006/02/brain_death_by_.html#comments">how cubicles can cause brain damage</a>. Folks, we&#8217;re mixing up cause and effect.</p>
+
+
+	<p>Nobody likes cubicles. That&#8217;s fine. But simply changing your organization to have beautiful offices with doors that look out over panoramic vistas will <strong>not</strong> let you create wonderful products <em>if you keep the same people</em>.</p>
+
+
+	<p>It&#8217;s the people in your organization that make it dull and lifeless. Let&#8217;s face it, the typical graduate student office is about as institutional and ugly as any cube farm, yet remarkable work gets done every day there. Why? It&#8217;s the people.</p>
+
+
+	<p>Look around you. Would you rather have a door to keep the bozos out, or would you rather get rid of the bozos?</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/03/06/dull-cubicles-or-dull-people#comments">3 comments</a>,
+      <a href="/articles/2006/03/06/dull-cubicles-or-dull-people" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/85/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/85/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/03/06/dull-cubicles-or-dull-people">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/03/06/dull-cubicles-or-dull-people;title=Dull cubicles or dull people?">reddit</a>
+    </li>
+  </ul>
+</div>
+
+
+<p class="pagination">Older posts: <a href="/articles/2006/03/page/1">1</a> 2 <a href="/articles/2006/03/page/3">3</a> </p>
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- search -->
+      <div id="search" class="search">
+	<form action="/articles/search" id="sform" method="get">
+	  <p><input type="text" id="q" name="q" value="" /></p>
+	</form>
+	
+	<div id="loading" class="loading" style="display:none;">Searching...</div>
+	<div id="results" class="results"></div>
+  <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('loading')}, onLoading:function(request){Element.show('loading')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script>
+</div>
+
+
+      <!-- sidebar components -->
+      
+      
+<div class="sidebar-node">
+  <h3>John Lam</h3>
+<a href="/pages/about_me"><img src="http://static.flickr.com/90/222479189_d4e19a202c_t.jpg" width="67" height="100" alt="Self portrait" /></a>
+
+<p>I am a Program Manager on the Common Language Runtime team at Microsoft. I write .NET and Ruby code on a Mac. I'm the creator of <a href="http://www.rubyclr.com">RubyCLR</a>, a high performance bridge between Ruby and .NET. <a href="/pages/about_me">More ...</a>
+
+<table>
+<tr>
+  <td>email:</td>
+  <td>jlam@iunknown.com</td>
+</tr>
+<tr>
+  <td>phone:</td>
+  <td>425 698 9332</td>
+</tr>
+<tr>
+  <td>msn:</td>
+  <td>drjflam@hotmail.com</td>
+</tr>
+<tr>
+  <td>gtalk:</td>
+  <td>drjflam@gmail.com</td>
+</tr>
+</table>
+<br>
+<h3>Syndicate</h3>
+
+<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="/images/rss.png"/></a>&nbsp;
+<a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+<br>
+<form style="padding:3px;text-align:left;" action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Subscribe by email:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=180551" name="url"/><input type="hidden" value="Less is better" name="title"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a></p></form>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+    <div id="delicious">
+    <h3><a href="http://del.icio.us/drjflam">del.icio.us/drjflam</a></h3>
+            <ul>
+      
+      <li>
+        <a href="http://www.washingtonpost.com/wp-dyn/content/article/2007/04/04/AR2007040401721.html?referrer=digg" title="The story about Joshua Bell performing as a busker in Washington DC - $32.17 for 43 minutes worth of work. A very well written article about the importance of context in beauty (my conclusion - not necessarily the article's).">Pearls Before Breakfast - washingtonpost.com</a>
+              </li>
+      
+      <li>
+        <a href="http://bargiel.home.pl/iGTD/" title="A Getting Things Done organizer for the Mac as a desktop application">iGTD</a>
+              </li>
+      
+      <li>
+        <a href="http://blogs.smugmug.com/onethumb/files/ETech-SmugMug-Amazon-2007.pdf" title="">Don MacAskill on how S3 saved SmugMug 692K last year</a>
+              </li>
+      
+      <li>
+        <a href="http://www.people.iup.edu/pnwm/comparison.gif" title="Fun comparison of fictional starships from different SF shows.">Starship size comparison chart</a>
+              </li>
+      
+      <li>
+        <a href="http://www.teach12.com/" title="Bill Gates listens to the lectures from this company - available as downloads as well.">The Teaching Company</a>
+              </li>
+      
+      <li>
+        <a href="http://www.speedtest.net/" title="Found this via StumbleUpon">Speedtest.net - The Global Broadband Speed Test</a>
+              </li>
+      
+      <li>
+        <a href="http://wvs.topleftpixel.com/flash/cntower_timelapse.swf" title="Move your mouse around this picture and see it change.">Downtown Toronto Photo</a>
+              </li>
+      
+      <li>
+        <a href="ftp://gatekeeper.dec.com/pub/DEC/WRL/research-reports/WRL-TR-95.7.pdf" title="">Shared Memory Consistency Models</a>
+              </li>
+      
+      <li>
+        <a href="http://discuss.develop.com/archives/wa.exe?A2=ind0203B&amp;L=DOTNET&amp;P=R375" title="An excellent discussion on the motivation for and implementation of the CLR memory model.">Vance Morrison on CLR Memory Model</a>
+              </li>
+      
+      <li>
+        <a href="http://slideshare.net/" title="A YouTube like service for sharing slides from talks.">SlideShare</a>
+              </li>
+      
+      <li>
+        <a href="http://research.microsoft.com/manuvir/papers/instruction_level_tracing_VEE06.pdf" title="This is MSR's Nirvana framework for dynamically injecting tracing code into x86 binaries at runtime. It lets them travel forwards and backwards in execution flow ('time travel debugging').">Framework for Instruction-level Tracing and Analysis of Program Executions</a>
+              </li>
+          </ul>
+      </div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>My Photos</h3>
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge_new.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">what is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge_new.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2007/3">March 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/2">February 2007</a>
+      <em>(3)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/1">January 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/12">December 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/11">November 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/10">October 2006</a>
+      <em>(8)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/9">September 2006</a>
+      <em>(12)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/8">August 2006</a>
+      <em>(39)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/7">July 2006</a>
+      <em>(29)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/6">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/5">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/4">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/3">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/2">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/1">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(6)</em>
+    </li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Tags</h3>
+<p style="overflow:hidden">
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/barcampearthtoronto">BarCampEarthToronto</a></span>
+<span style="font-size:128.205128205128%"><a href="/articles/tag/dynamiclanguages">DynamicLanguages</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/ironpython">IronPython</a></span>
+<span style="font-size:128.205128205128%"><a href="/articles/tag/life">Life</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/mac">Mac</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/marketing">Marketing</a></span>
+<span style="font-size:76.9230769230769%"><a href="/articles/tag/microsoft">Microsoft</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/parenting">Parenting</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/photography">Photography</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/platforms">Platforms</a></span>
+<span style="font-size:200%"><a href="/articles/tag/props">Props</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/python">Python</a></span>
+<span style="font-size:200%"><a href="/articles/tag/ruby">Ruby</a></span>
+<span style="font-size:200%"><a href="/articles/tag/rubyclr">RubyCLR</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/rubyconf">RubyConf</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/secondlife">SecondLife</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/simplicity">simplicity</a></span>
+<span style="font-size:200%"><a href="/articles/tag/thoughts">Thoughts</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/vim">Vim</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/workspaces">workspaces</a></span>
+</p>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(20)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(58)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(149)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+  
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">Less is better</a></p>
+    <ul>
+      <li>powered by <a href="http://typosphere.org">typo</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Generics and RbDynamicMethod</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Generics and RbDynamicMethod" by jlam</title>
+      <description>&lt;p&gt;I added some features today to &lt;code&gt;RbDynamicMethod&lt;/code&gt; to support the use of generics on &lt;span class="caps"&gt;CLR 2&lt;/span&gt;.0. To get a handle on the problem that I solved, let&amp;#8217;s look at a simple C# example:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+List&amp;lt;String&amp;gt; list = new List&amp;lt;String&amp;gt;();
+list.Add("one");
+list.Add("two");
+return String.Format("{0}, {1}", list[0], list[1]);
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Here&amp;#8217;s the same code created using the .NET &lt;code&gt;DynamicMethod&lt;/code&gt; API:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+DynamicMethod m = new DynamicMethod(String.Empty, 
+  typeof(void), null, 
+  Assembly.GetExecutingAssembly().GetModules()[0]);
+
+ILGenerator g = m.GetILGenerator();
+Type listType = Type.GetType("System.Collections.Generic.List`1[System.String]");
+
+ConstructorInfo ci = listType.GetConstructor(new Type[] { });
+MethodInfo add = listType.GetMethod("Add", new Type[] {typeof(string)});
+MethodInfo get_Item = listType.GetMethod("get_Item", new Type[] {typeof(Int32)});
+
+Type console = Type.GetType("System.Console");
+MethodInfo writeLine = console.GetMethod("WriteLine", 
+  new Type[] {typeof(string), typeof(object), typeof(object)});
+
+LocalBuilder list = g.DeclareLocal(listType);
+
+g.Emit(OpCodes.Newobj, ci);
+g.Emit(OpCodes.Stloc_S, list);
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldstr, "one");
+g.Emit(OpCodes.Callvirt, add);
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldstr, "two");
+g.Emit(OpCodes.Callvirt, add);
+
+g.Emit(OpCodes.Ldstr, "{0}, {1}");
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldc_I4_0);
+g.Emit(OpCodes.Callvirt, get_Item);
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldc_I4_1);
+g.Emit(OpCodes.Callvirt, get_Item);
+
+g.Emit(OpCodes.Call, writeLine);
+g.Emit(OpCodes.Ret);
+
+CallVoidMethod d = (CallVoidMethod)m.CreateDelegate(typeof(CallVoidMethod));
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;You&amp;#8217;ll notice the non-trivial amount of book-keeping code that uses the &lt;code&gt;Reflection&lt;/code&gt; API to lookup constructors, types, and methods. By comparison, the &lt;span class="caps"&gt;CIL&lt;/span&gt; generation code looks pretty clean, except for the annoying, repetitive &amp;#8220;g.Emit(Opcodes.&amp;#8221; text before each instruction.&lt;/p&gt;
+
+
+	&lt;p&gt;Now, look at the same example written using &lt;code&gt;RbDynamicMethod&lt;/code&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+create_ruby_module_function(RbDynamicMethod, 'create_list_string') do
+  include   'System.Collections.Generic'
+  declare   'List&amp;lt;String&amp;gt;', :list
+  newobj    'List&amp;lt;String&amp;gt;()'
+  stloc_s   :list
+  ldloc_s   :list
+  ldstr     'one'
+  callvirt  'List&amp;lt;String&amp;gt;::Add(String)'
+  ldloc_s   :list
+  ldstr     'two'
+  callvirt  'List&amp;lt;String&amp;gt;::Add(String)'
+  ldstr     '{0}, {1}'
+  ldloc_s   :list
+  ldc_i4_0
+  callvirt  'List&amp;lt;String&amp;gt;::get_Item(Int32)'
+  ldloc_s   :list
+  ldc_i4_1
+  callvirt  'List&amp;lt;String&amp;gt;::get_Item(Int32)'
+  call      'static String::Format(String,Object,Object)'
+  call      'static Marshal::ToRubyString(String)'
+  ret
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;A few things have changed since &lt;a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod"&gt;the first drop of the code&lt;/a&gt; First, notice that the delimiter between a type name and a method name has changed from a . to a ::. Second, I&amp;#8217;ve extended the type syntax to support generic types. Third, I now use Ruby symbols to represent variable and label names. Symbols are &lt;a href="http://encyclopedia.thefreedictionary.com/String+intern+pool"&gt;interned strings&lt;/a&gt; and can be recognized by their &amp;#8217;:&amp;#8217; prefix.&lt;/p&gt;
+
+
+	&lt;p&gt;If you call &lt;code&gt;Assembly.GetType(String)&lt;/code&gt; to find a generic type, you&amp;#8217;ll immediately be struck by the rather obtuse syntax:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;System.Collections.Generic.List`1[System.String]&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Imagine typing that every time you wanted to reference a method on that type. Ugh. So I extended my code to search through namespaces that are in scope for that type, which yields the much more humane syntax:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;List&amp;lt;String&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m going to write a few more test cases for this code tonight, but I think that this code is fairly feature complete now. Hopefully I&amp;#8217;ll get another drop out tonight for folks who are interested in following along.&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 09 Dec 2005 16:23:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/09/generics-and-rbdynamicmethod"&gt;Generics and RbDynamicMethod&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/09/generics-and-rbdynamicmethod"&gt;Generics and RbDynamicMethod&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

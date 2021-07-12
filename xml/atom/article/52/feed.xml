@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: A nice Ruby moment today</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/52/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/01/11/a-nice-ruby-moment-today" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:40-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:7f6860c234282195162f9a963894d023</id>
+    <published>2006-01-11T13:19:00-08:00</published>
+    <updated>2006-08-21T15:55:40-07:00</updated>
+    <title type="html">A nice Ruby moment today</title>
+    <link href="http://www.iunknown.com/articles/2006/01/11/a-nice-ruby-moment-today" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;I used to have a chunk of code that looked like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def new_clrobj(ctor_info, sig = null)
+  sig = ctor_info.signature if sig == null
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It now looks like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def new_clrobj(ctor_info, sig = ctor_info.signature)
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It was one of those &amp;#8220;it just works&amp;#8221; moments that makes me love this language.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I used to have a chunk of code that looked like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def new_clrobj(ctor_info, sig = null)
+  sig = ctor_info.signature if sig == null
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It now looks like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def new_clrobj(ctor_info, sig = ctor_info.signature)
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It was one of those &amp;#8220;it just works&amp;#8221; moments that makes me love this language.&lt;/p&gt;</content>
+  </entry>
+</feed>

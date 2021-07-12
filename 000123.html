@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Getting a C++ Bison parser to use a C Flex lexer</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000122.html" title="Flex and Bison" />
+
+<link rel="next" href="http://www.iunknown.com/000124.html" title="Poor customer service at Expedia.com" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000122.html">&laquo; Flex and Bison</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000124.html">Poor customer service at Expedia.com &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">July 03, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Getting a C++ Bison parser to use a C Flex lexer</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I've been spending a bunch of time writing some YACC grammars using <A href="http://www.gnu.org/software/flex/flex.html">Flex</A> and <A href="http://www.gnu.org/software/bison/bison.html">Bison</A>. Flex and Bison are GNU ports of Lex and Yacc respectively. These tools were originally designed to generate C code. However, I wanted to be able to use Bison to generate C++ code. Writing context-free grammars is easy; getting C and C++ code to interop seamlessly is not ;(&nbsp;Man, did I feel lots of pain. The purpose of this entry is to hopefully prevent other folks from feeling the same pain that I felt today.</P><br />
+<P>The generally accepted practice is to let Flex generate C code, and to trick Bison into generating C++ code.[1] This means, however, that you now are mixing C and C++ code within the same application. To fix the inevitable compiler errors that will result from this unholy combination, you'll need to tell your C++ compiler to turn off name mangling for certain symbols. This, of course, requires that you understand how Flex and Bison talk to each other.</P><br />
+<P>Bison calls the Flex-generated yylex() function to obtain the next token from Flex. Since yylex() will be compiled in a "C" source file, you need to disable name mangling of this function. This is conveniently done using the extern "C" directive and declaring the yylex() function prototype in the header of your Bison file:</P><CODE><br />
+<P>extern "C" {<BR>&nbsp; int yylex( void );<BR>}</CODE></P><br />
+<P>In C++ code, you can only define a method once. The yyerror() method is called by Bison-generated code to report errors. Therefore, you must add a forward-reference to your yyerror() implementation that you'll write at the bottom of your Bison source code file by adding:</P><CODE><br />
+<P>int yyerror( const char * ); </P></CODE><br />
+<P>to your Bison file's header.</P><br />
+<P>To complicate matters, I wasn't reading input from stdin and stdout; I was reading input from strings that are passed to my parser. This required me to call the yy_scan_string() and yy_delete_buffer() methods from my C++ code. Therefore, I needed to turn off name mangling for these symbols as well.&nbsp;Here's all of the code that you'll need to add to your&nbsp;Bison file's header to turn off name mangling.</P><CODE><br />
+<P>typedef struct yy_buffer_state *YY_BUFFER_STATE;</P><br />
+<P>extern "C" {<BR>&nbsp; int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yylex( void );<BR>&nbsp; YY_BUFFER_STATE yy_scan_string( const char * );<BR>&nbsp; void&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yy_delete_buffer( YY_BUFFER_STATE );<BR>}</P></CODE><br />
+<P>But wait, there's more pain! In my Bison file, I need to use unions, since I would pass both token values and text values back to my Bison grammar. Here's the union definition from my Bison file:</P><CODE><br />
+<P>%union<BR>{<BR>&nbsp; int&nbsp;&nbsp;&nbsp; token;<BR>&nbsp; char&nbsp; *string;<BR>}</P></CODE><br />
+<P>This union is manifested through a global variable called yylval. Once Bison is finished generating code, you'll wind up with a declaration that looks like:</P><CODE><br />
+<P>typedef union <BR>{<BR>&nbsp; int token;<BR>&nbsp; char *string;<BR>} YYSTYPE;<BR><BR>YYSTYPE yylval;</P></CODE><br />
+<P>However, yylval is defined by Bison, not Flex. And the Bison-generated file is a C++ file, whereas the Flex-generated code is a C file. This means that you need to disable name mangling of yylval.</P><br />
+<P>When Bison generates code, it does so by using a template file called bison.simple. Unfortunately, the version of bison.simple that I got from Wilbur Streett's <A href="http://www.monmouth.com/~wstreett/lex-yacc/lex-yacc.html">otherwise excellent Win32 port of Flex and Bison</A> did not disable name mangling of yylval. Therefore, I needed to replace 117 of his file:</P><CODE><br />
+<P>YYSTYPE yylval;</P></CODE><br />
+<P>with some conditionally compiled code:</P><CODE><br />
+<P>#ifdef __cplusplus<BR>&nbsp; extern "C" YYSTYPE yylval;&nbsp;<BR>#else<BR>&nbsp; YYSTYPE yylval;<BR>#endif</P></CODE><br />
+<P>With these fixes in place, I'm happy to report that I can finally use Bison to generate C++ code, and Flex to generate C code. More importantly, figuring out how to get the generated C++ and C code to talk to each other greatly deepened my understanding of how Flex and Bison work together to generate your parser.</P><br />
+<P>[1] This is an excellent tutorial for Lex and Yacc. In particular, Section 5 is invaluable in telling you why you need to leave Lex as it is and to NOT use the -+ option.</P><br />
+<P><A href="http://www.tldp.org/HOWTO/Lex-YACC-HOWTO.html">http://www.tldp.org/HOWTO/Lex-YACC-HOWTO.html</A></P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at July  3, 2002 12:54 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="123" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000123.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Hi John!, it's easier to work with C++ & Flex, look at the "Generating C++ scanners" section in the man page.</p>
+
+<p><br />
+Regards<br />
+Sebastian Wain<br />
+--<br />
+http://swain.webframe.org<br />
+</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://swain.webframe.org">Sebastian Wain</a> at July  5, 2004 06:02 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="123" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

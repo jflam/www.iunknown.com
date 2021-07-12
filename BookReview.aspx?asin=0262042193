@@ -1,0 +1,161 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Ant Colony Optimization (Bradford Books)
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0262042193" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjYyMDQyMTkzLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEFudCBDb2xvbnkgT3B0aW1pemF0aW9uIChCcmFkZm9yZCBCb29rcyk7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPE1hcmNvIERvcmlnbywgVGhvbWFzIFN0dHpsZTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDQwLjAwOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkNDAuMDA7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDUuMDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Mzs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wMjYyMDQyMTkzL3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47PiTyAXedBHFftfYMjyTx1ItO5ZXY" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0262042193.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Ant Colony Optimization (Bradford Books)</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Marco Dorigo, Thomas Sttzle</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$40.00</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$40.00</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">5.0</span>
+          based on
+          <span id="TotalReviews">3</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0262042193/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">The intelligence and wisdom of ants</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2005-04-28</span>
+                    </div>
+                    <span>Being an ant isn't very complex, but it's a daily fight for life. The losers in that fight don't count, but the winners get to vote.
+<br />
+<br />That is the basis of ant colony optimization. There are many parts to the idea, all of them very simple. First, there are many routes to the goal (food, if you're an ant) - some are better, some worse, you don't know which are which in advance, and the answer may change over time. Second, it's a random search. If you find any answer at all, no matter how convoluted, you get to vote on your route. Third, there are many other ants, all voting. Any leg of a trip that is heavily followed must be part of a good route, and gets many votes. There are details, but that's about it.
+<br />
+<br />Chapters 1-3 are the most readable, and convey the basic spirit of the family of algorithms. Ch. 4-6 will drag a bit, for the general reader, but go into significant detail about the ant algorithm and specific applications. 
+<br />
+<br />Ch. 7 ends the book with a warm, informal discussion of the algorithm's history and some delightful variations. Dorigo, the principal author and founder of the ant school, uses this chapter to express his pure joy at having found such a wonderful thing, and at the similar approaches that others have also found.
+<br />
+<br />The approach has some real limits. For example, it can solve only problems that look like finding the shortest route. The good news is that a wide range of unlikely problems can all be cast in these terms. The better news is that, given the many variations available, some form of the 'stigmergic' approach will probably solve any problem in that range. Best of all, though, is the sheer cleverness and the sincere appreciation expressed by the authors.
+<br />
+<br />Nature is economical, but a brilliant problem solver. This is written by someone who as able to listen in on one of the lessons.
+<br />
+<br />//wiredweird</span>
+                  
+                    <div class="CustomerReviewSummary">A comprehensive and very readable introduction</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-10-04</span>
+                    </div>
+                    <span>Fifteen years after the elegant double-bridge experiments by Deneubourg et al. that formed the basis of the Ant Colony Optimization algorithm, Marco Dorigo, the inventor of ACO, and Thomas Stützle, an expert on stochastic local search methods, have pooled their knowledge to summarize the current state of the art. 
+<br />This book gives a well paced introduction to ACO, describes its use in various optimization problems and gives interesting examples of its applications in industry. Explanations are clear and concise and, with the exception of a few well defined technical terms, free of scientific jargon. It is a pleasure to read for everyone with an interest in optimization theory. However, if you are looking for a book that celebrates the beauty of nature's problem solving capabilities, you are better of with "Swarm Intelligence" or Flake's "Computational Beauty of Nature". The initial idea of ACO may be bio-inspired, but this book has a crystal clear focus of the computational considerations in optimization theory. </span>
+                  
+                    <div class="CustomerReviewSummary">A fine compilation</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>4</span>
+                      /
+                      <span>4</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-09-03</span>
+                    </div>
+                    <span>This book is a fine compilation of what have been done with the Ant Colony paradigm so far. Highly readable, even for people without previous experience in the field of optimization.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0750306645'>
+                      Evolutionary Computation 1: Basic Algorithms and Operators
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 2 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0195131592'>
+                      Swarm Intelligence: From Natural to Artificial Systems (Santa Fe Institute Studies in the Sciences of Complexity Proceedings)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 3 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0262062410'>
+                      Imitation of Life : How Biology Is Inspiring Computing
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 0 based on 0 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1558608729'>
+                      Stochastic Local Search : Foundations & Applications
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 1 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1558605959'>
+                      Swarm Intelligence
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 11 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

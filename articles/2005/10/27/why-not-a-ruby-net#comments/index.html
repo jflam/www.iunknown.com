@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Why not a Ruby.NET?</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    trackback:ping="http://www.iunknown.com/articles/trackback/5"
+    dc:title="Why not a Ruby.NET?"
+    dc:identifier="http://www.iunknown.com/articles/read/5"
+    dc:description="Building a native Ruby implementation on the CLR is an ambitious goal. John Gough and associates are attempting to do exactly this in their Ruby.NET project. This is a much harder"
+    dc:creator="jlam"
+    dc:date="2005-10-26T22:50:39-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a class="admintools" href="/admin/content/edit/5" id="admin_article" style="display: none">edit</a>
+  <h2>Why not a Ruby.NET?</h2>
+  <p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+  <span class="typo_date" title="Thu, 27 Oct 2005 11:00:00 GMT">Thu, 27 Oct 2005 11:00:00 GMT</span></p>
+  <p>Building a native Ruby implementation on the <span class="caps">CLR</span> is an ambitious
+goal. <a href="http://sky.fit.qut.edu.au/~gough/">John Gough</a> and associates are attempting to do exactly this in
+their Ruby.NET project. This is a much harder problem than it looks,
+and kudos to John for even attempting it. The semantics of Ruby are
+significantly different than other <span class="caps">CLR</span> languages.</p>
+
+
+	<p>As a simple example, consider the fact that Ruby does not allow method
+overloading. How would you construct a Ruby type that must override
+methods in an abstract base class that differ only based on their
+signatures?</p>
+
+
+	<p>Another example is the case where you want to surface <span class="caps">CLR</span> features
+natively in Ruby. How, for example, will you declare a generic array
+in a language that does not support type declarations?</p>
+
+
+	<p>Last but certainly not least are the sophisticated features
+in Ruby such as continuations that make it very challenging for an
+implementor to implement efficiently. This feature requires a stack
+copying mechanism that isn&#8217;t a native feature of the <span class="caps">CLR</span>. Can such a
+feature be added to the <span class="caps">CLR</span> without compromising the performance of
+existing languages? This is not clear, and was one of the topics that
+came up for discussion during the <a href="http://decomp.ulb.ac.be:8082/events/dls05/implementingdynamiclanguagesonthe.netclr/">dynamic languages <span class="caps">BOF</span> at <span class="caps">OOPSLA</span></a>.</p>
+
+
+</div>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4> 
+  <p class="postmetadata alt">
+    <small><a href="#respond">Leave a response</a></small>
+  </p>
+  <ol class="comment-list" id="commentList"><li class="graybox" id="comment-2"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_2'); }"  onmouseout="Element.hide('admin_comment_2');" >
+  <div id="admin_comment_2" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/2', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff('comment-2',{duration:0.6});}}); }; return false;">nuke</a><a class="admintools" href="/admin/comments/article/5/edit/2">edit</a></div>
+  <a name="comment-2"></a>
+  <cite><strong>Jason Bock</strong> </cite> said about 2 hours later:<br />
+  <p>Eiffel is another language that does not support method overloading and there&#8217;s a .NET compiler for Eiffel. May be worth a look to see what they had to do to handle the case you mentioned &#8211; this link talks a bit about what they do to handle this:</p>
+
+
+	<p>http://docs.eiffel.com/eiffelstudio/technologies/dotnet/eiffel_dotnet_language/10_conventions/20_names.html</p>
+
+
+	<p>Regards,
+Jason</p>
+</li><li class="graybox" id="comment-3"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_3'); }"  onmouseout="Element.hide('admin_comment_3');" >
+  <div id="admin_comment_3" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/3', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff('comment-3',{duration:0.6});}}); }; return false;">nuke</a><a class="admintools" href="/admin/comments/article/5/edit/3">edit</a></div>
+  <a name="comment-3"></a>
+  <cite><strong>John Lam</strong> </cite> said about 6 hours later:<br />
+  <p>Thanks for the link, Jason.</p>
+
+
+	<p>Wow. That is the most verbose solution that I&#8217;ve ever seen! Maybe when Ruby gets attributes (Matz talked about adding it in 2.0) I could use them to disambiguate. That is, of course, if I ever even attempt that part of the project :)</p>
+</li><li class="graybox" id="comment-4"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_4'); }"  onmouseout="Element.hide('admin_comment_4');" >
+  <div id="admin_comment_4" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/4', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff('comment-4',{duration:0.6});}}); }; return false;">nuke</a><a class="admintools" href="/admin/comments/article/5/edit/4">edit</a></div>
+  <a name="comment-4"></a>
+  <cite><strong><a href="http://www.corebvba.be/blog">Tom Janssens</a></strong> </cite> said 1 day later:<br />
+  <p>While there is no native implementation of Ruby.Net, there is a language that closely resembles ruby, developped as a new language on top of the  CLR  platfom :
+ BOO </p>
+
+
+	<p>http://boo.codehaus.org/</p>
+
+
+	<p>It supports much of the ruby aspects.</p>
+</li><li class="graybox" id="comment-5"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_5'); }"  onmouseout="Element.hide('admin_comment_5');" >
+  <div id="admin_comment_5" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/5', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff('comment-5',{duration:0.6});}}); }; return false;">nuke</a><a class="admintools" href="/admin/comments/article/5/edit/5">edit</a></div>
+  <a name="comment-5"></a>
+  <cite><strong><a href="http://flgr.0x42.net/">Florian Gross</a></strong> </cite> said 1 day later:<br />
+  <p>I was also sort of part of a Google Summer of Code project that tried to implement Ruby.NET for Mono. This project has not yet gotten far, but there&#8217;s some code in  SVN  and you might be able to join forces with us (I was supposed to be the run time guy, but work on that hasn&#8217;t really started. Not sure if I still have enough time for it, either, but it&#8217;s certainly worth a try.)</p>
+
+
+	<p>The code&#8217;s at svn+ssh://mono-cvs.ximian.com/source/trunk/rubynet</p>
+
+
+	<p>Oh, and nowadays I think that doing this in a self-hosting way would be best.</p>
+
+
+	<p>There already is various Ruby&lt;&gt;.NET bridges available on the .NET. I&#8217;d use them to call System.Reflection.Emit from Ruby. You don&#8217;t even need to initially write a parser because Ruby comes with Ripper.</p>
+
+
+	<p>It would probably still be a good idea to at least initially implement the standard library of Ruby in C# just so that performance isn&#8217;t all bad and to keep things simple.</p>
+
+
+	<p>Having a full self-hosted Ruby in Ruby on .NET implementation would be very flexible. It would allow changing the language in itself which is insanely powerful.</p>
+
+
+	<p>Doing all this in a test-driven way would also be priceless.</p>
+
+
+	<p>Isn&#8217;t there some kind of place where folks interested in this could talk together and team up? It seems to noble a project not to do so. Please mail me if anyone of you decides to set something like this up. I&#8217;m definitely interested.</p>
+</li><li class="graybox" id="comment-6"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_6'); }"  onmouseout="Element.hide('admin_comment_6');" >
+  <div id="admin_comment_6" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/6', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff('comment-6',{duration:0.6});}}); }; return false;">nuke</a><a class="admintools" href="/admin/comments/article/5/edit/6">edit</a></div>
+  <a name="comment-6"></a>
+  <cite><strong>John Lam</strong> </cite> said 2 days later:<br />
+  <p>Thanks for the update, Florian. I was wondering what had happened to your project. I&#8217;ll take a look at your code when I get some cycles (probably next week) and I&#8217;ll probably mail you some questions (probably via ruby-talk?) then.</p>
+</li></ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://www.iunknown.com/xml/articlerss/5/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  <a href="http://www.iunknown.com/articles/trackback/5">trackback uri</a>  
+  </small>
+</p>
+
+  <form action="/articles/comment/5" class="commentform" id="commentform" method="post" onsubmit="new Ajax.Updater({success:'commentList'}, '/articles/comment/5', {asynchronous:true, evalScripts:true, insertion:Insertion.Bottom, onComplete:function(request){complete(request)}, onFailure:function(request){failure(request)}, onLoading:function(request){loading()}, parameters:Form.serialize(this)}); return false;">
+
+
+<div class="comment-box">
+  <div id="errors"></div>
+
+  <a name="respond"></a>
+  <table cellpadding="4" cellspacing="0" class="frm-tbl">
+    <tr>
+      <td><p><label for="comment_author">Your name</label></p></td>
+      <td> <input id="comment_author" name="comment[author]" size="20" type="text" /> <small><a href="#" onclick="Element.toggle('guest_url'); Element.toggle('guest_email'); return false;">(leave url/email &#187;)</a></small></td>
+    </tr>
+    <tr id="guest_url" style="display:none;">
+      <td><p><label for="comment_url">Your blog</label></p></td>
+      <td> <input id="comment_url" name="comment[url]" size="30" type="text" /></td>
+    </tr>
+    <tr id="guest_email" style="display:none;">
+      <td><p><label for="comment_email">Your email</label></p></td>
+      <td> <input id="comment_email" name="comment[email]" size="30" type="text" /></td>
+    </tr>
+    <tr>
+      <td><p><label for="comment_body">Your message</label></p></td>
+      <td valign="top" colspan="2">
+        <textarea cols="40" id="comment_body" name="comment[body]" rows="20"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" id="frm-btns">
+      <span id="comment_loading" style="display:none;"><img alt="Spinner" src="/images/spinner.gif" /></span>&nbsp;&nbsp;
+        <input type="submit" name="submit" id="form-submit-button" value="submit" class="button" />
+      </td>
+    </tr>
+  </table>
+</div>
+</form>
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.intel.com/technology/computing/ngma/" title="Description of new microarchitecture in Merom CPU due out 2H2006. Intel claims 2:1 performance / watt relative to Yonah.">Intel® Next Generation Microarchitecture </a></li>
+              <li><a href="http://www.actransit.org/aboutac/bod/memos/193858.pdf" title="Biodiesel is not as good as the hype makes it out to be in this detailed study of its effects">Biodiesel presentation to Alameda-Contra Costa transit district </a></li>
+              <li><a href="http://metaeditor.sourceforge.net/embed/" title="A nice discussion on how to interop between C++ and Ruby">ruby embedded into c++ </a></li>
+              <li><a href="http://technology.guardian.co.uk/weekly/story/0,16376,1677772,00.html" title="The production of a Steve Jobs keynote">Behind the magic curtain </a></li>
+              <li><a href="http://msdn.microsoft.com/msdnmag/issues/06/01/WindowsPresentationFoundation/default.aspx" title="Ian Griffiths and Chris Sells walk you through key features of WPF">Ten things that would surprise you when learning WPF </a></li>
+              <li><a href="http://www.the-gadgetman.com/blog/2005/11/peter-norvig-talk-from-google-today.html" title="Peter Norvig talk about AI in the middle: mediating the author and the reader">Peter Norvig talk about AI in the middle: mediating the author and the reader </a></li>
+              <li><a href="http://www.paulgraham.com/fix.html" title="An amusing look at the primary perceived differences between programming languages">What Languages Fix </a></li>
+              <li><a href="http://media.rubyonrails.org/presentations/pursuitofbeauty.pdf" title="DHH's entirely code-driven presentation that shows off the elegance of the code you can write in Rails">Rails: Pursuit of Beauty </a></li>
+              <li><a href="http://randomhacks.net/articles/2005/12/03/why-ruby-is-an-acceptable-lisp" title="A comparison between Ruby and Lisp. Comments are especially interesting.">Why Ruby is an acceptable LISP </a></li>
+              <li><a href="http://www.hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger" title="James Duncan Davidson on building Rails infrastructure on Tiger">Building Ruby, Rails, LightTPD, and MySQL on Tiger </a></li>
+              <li><a href="http://anandtech.com/cpuchipsets/showdoc.aspx?i=2627&amp;p=1" title="Anandtech's first look at next year's Yonah chip">Intel Yonah Performance Preview </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/69368747/"><img alt="Ruby and WinFX in Kitchener" src="http://static.flickr.com/12/69368747_ef2140186a_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/68194738/"><img alt="Truck" src="http://static.flickr.com/9/68194738_bb69868ca3_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/75988259/"><img alt="Ben's first meal" src="http://static.flickr.com/6/75988259_954802df2d_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/75988247/"><img alt="Do you think I'm sexy?" src="http://static.flickr.com/40/75988247_20ab14dcfb_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/01">January 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10/27">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(9)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(33)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

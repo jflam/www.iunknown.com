@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: RubyCLR progress on implementing CLR interfaces</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/114/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:42-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:4e95369fa3ad8073856e2267f788d8f5</id>
+    <published>2006-04-17T00:19:00-07:00</published>
+    <updated>2006-08-21T15:55:42-07:00</updated>
+    <title type="html">RubyCLR progress on implementing CLR interfaces</title>
+    <link href="http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;A major new feature of RubyCLR is implementing &lt;span class="caps"&gt;CLR&lt;/span&gt; interfaces using Ruby. This will provide most of the goodness of the &amp;#8216;how do I call Ruby code from my .NET code?&amp;#8217; scenario without having to derive a Ruby class from a .NET class (a much harder problem).&lt;/p&gt;
+
+
+	&lt;p&gt;A key driver for this scenario is supporting data binding without having to hand-write &lt;span class="caps"&gt;CLR&lt;/span&gt; wrapper classes for those interfaces (right now I only support calling Ruby code via delegates). This support is there in the current drop, but will be completely rewritten in Ruby in the next drop.&lt;/p&gt;
+
+
+	&lt;p&gt;However, I ran into numerous blocking issues over the past week. True, I was distracted setting up my new MacBook Pro, but I resumed work mid-week on RubyCLR and fought issues in both Ruby and Reflection.Emit (I&amp;#8217;m pretty sure I found a bug in ILGenerator). I&amp;#8217;ve got workarounds for all of those issues, so I&amp;#8217;m pretty sure I can get something up and running tomorrow.&lt;/p&gt;
+
+
+	&lt;p&gt;More news soon.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;A major new feature of RubyCLR is implementing &lt;span class="caps"&gt;CLR&lt;/span&gt; interfaces using Ruby. This will provide most of the goodness of the &amp;#8216;how do I call Ruby code from my .NET code?&amp;#8217; scenario without having to derive a Ruby class from a .NET class (a much harder problem).&lt;/p&gt;
+
+
+	&lt;p&gt;A key driver for this scenario is supporting data binding without having to hand-write &lt;span class="caps"&gt;CLR&lt;/span&gt; wrapper classes for those interfaces (right now I only support calling Ruby code via delegates). This support is there in the current drop, but will be completely rewritten in Ruby in the next drop.&lt;/p&gt;
+
+
+	&lt;p&gt;However, I ran into numerous blocking issues over the past week. True, I was distracted setting up my new MacBook Pro, but I resumed work mid-week on RubyCLR and fought issues in both Ruby and Reflection.Emit (I&amp;#8217;m pretty sure I found a bug in ILGenerator). I&amp;#8217;ve got workarounds for all of those issues, so I&amp;#8217;m pretty sure I can get something up and running tomorrow.&lt;/p&gt;
+
+
+	&lt;p&gt;More news soon.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>mrak</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-04-17T15:55:52-07:00</published>
+    <updated>2006-08-21T19:08:06-07:00</updated>
+    <title type="html">Comment on RubyCLR progress on implementing CLR interfaces by mrak</title>
+    <link href="http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces#comment-433" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;So basically it is ruby code within c# code within ruby code ;-)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-04-17T13:47:04-07:00</published>
+    <updated>2006-08-21T19:08:05-07:00</updated>
+    <title type="html">Comment on RubyCLR progress on implementing CLR interfaces by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces#comment-432" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;RubyCLR bridges the Ruby interpreter and the CLR. So when you call Ruby code, it's executing within the context of the Ruby interpreter (which acts as a host for the CLR).&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>mrak</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-04-17T07:27:58-07:00</published>
+    <updated>2006-08-21T19:08:04-07:00</updated>
+    <title type="html">Comment on RubyCLR progress on implementing CLR interfaces by mrak</title>
+    <link href="http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces#comment-431" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Pardon my ignorance but I've just discovered your RubyCLR project and I was wondering how do you evaluate ruby code within .net code? Do you have your own interpreter or do you call external ruby interpeter?&lt;/p&gt;</content>
+  </entry>
+</feed>

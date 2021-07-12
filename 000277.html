@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Microsoft Patterns and Practices</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000276.html" title="Win-Dev 2003 Wrap-up" />
+
+<link rel="next" href="http://www.iunknown.com/000278.html" title="NAntContrib and SourceForge pain" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000277.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/21"
+    dc:title="Microsoft Patterns and Practices"
+    dc:identifier="http://www.iunknown.com/000277.html"
+    dc:subject=""
+    dc:description="I just downloaded and started reading the latest installment in Microsoft&apos;s Patterns and Practices series: Improving Web Application Security: Threats and Countermeasures. So far I really like what I&apos;ve seen. The problem is, I don&apos;t like reading large volumes of..."
+    dc:creator="John"
+    dc:date="2003-06-24T13:51:57-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000276.html">&laquo; Win-Dev 2003 Wrap-up</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000278.html">NAntContrib and SourceForge pain &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 24, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Microsoft Patterns and Practices</h3>
+
+<p>I just downloaded and started reading the latest installment in Microsoft's Patterns and Practices series: <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnnetsec/html/ThreatCounter.asp">Improving Web Application Security: Threats and Countermeasures</a>. So far I <em>really</em> like what I've seen. The problem is, I don't like reading large volumes of text (this book is 919 pages long!) on my monitors. </p>
+
+<p>Today, I discovered that Staples Canada will do printing from a <span class="caps">PDF</span> document for 3 cents a page on printing quantities of over 1000 pages. If you splice together several of the Patterns and Practices series books, you can easily go over the 1000 page quantity for the 3 cent per page price. They do charge a $6.00 file processing fee, but you can avoid that if you already own Acrobat, since you can splice together several <span class="caps">PDF</span> documents into one large document for printing. They will also do duplex printing for you so that you can consume fewer trees. I'm off to Staples now to do the print; I'll let you know how it turns out.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 24, 2003 01:51 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=277" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="277" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000277.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>You can order a bound copy from MS (expensive) or Amazon (US$35), which is not much more expensive and probably a little more durable...</p>
+
+<p>http://www.amazon.com/exec/obidos/ASIN/0735618909/qid%3D1056481150/sr%3D11-1/ref%3Dsr%5F11%5F1/002-6287590-2385611</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;eric&#64;kepes&#46;net">Eric Kepes</a> at June 24, 2003 03:00 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Configuring OS X</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/112/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/04/12/configuring-os-x" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:41-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:253cb596dcabee8d5cf751f93fbe6e08</id>
+    <published>2006-04-12T21:49:00-07:00</published>
+    <updated>2006-08-21T15:55:41-07:00</updated>
+    <title type="html">Configuring OS X</title>
+    <link href="http://www.iunknown.com/articles/2006/04/12/configuring-os-x" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;I spent some time today setting up &lt;span class="caps"&gt;OS X&lt;/span&gt; the way I want it to be on my new MacBook Pro. At the very least I need it to be as usable as the Windows XP host OS on my &lt;span class="caps"&gt;M200&lt;/span&gt;. So here&amp;#8217;s the apps that I need to configure and get working:&lt;/p&gt;
+
+
+	&lt;p&gt;1. Mail. It took a while to get the Exchange Server support in Mail up and running, but it works fine if your Exchange server has &lt;span class="caps"&gt;IMAP4&lt;/span&gt; support enabled (mine didn&amp;#8217;t by default). All my mail is now synchronized inside of Apple&amp;#8217;s Mail application, and it&amp;#8217;s all accessible via Spotlight. The more I use Spotlight the more amazed I am. It&amp;#8217;s better than Google Desktop Search, so +1 for the &lt;span class="caps"&gt;MBP&lt;/span&gt; so far.&lt;/p&gt;
+
+
+	&lt;p&gt;2. &lt;a href="http://quicksilver.blacktree.com/"&gt;QuickSilver&lt;/a&gt;. The combination of QuickSilver + Spotlight is devastating. &lt;span class="caps"&gt;CTRL&lt;/span&gt;-Space is mapped to QuickSilver and Command-Space is mapped to Spotlight. It makes me ridiculously productive with my hands never leaving the keyboard. In fact, QuickSilver is so good, that I rarely find myself using Expose or Command-Tab. I just hit &lt;span class="caps"&gt;CTRL&lt;/span&gt;-Space and type the first letter or two of the app that I want to run and &lt;em&gt;it just works&lt;/em&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/48/127726947_df0806340c_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;3. &lt;a href="http://www.adiumx.com/"&gt;Adium&lt;/a&gt;. This is a multi-protocol IM client that supports tabbed windows, and has a &lt;em&gt;beautiful&lt;/em&gt; interface. I can now IM folks using both &lt;span class="caps"&gt;MSN&lt;/span&gt; and Google Talk without any difficulties. File transfer works great as well.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/51/127726931_16aa1e3aea_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;4. &lt;a href="http://ranchero.com/netnewswire/"&gt;NetNewsWire&lt;/a&gt; I really like this &lt;span class="caps"&gt;RSS&lt;/span&gt; reader. On Windows I was using &lt;a href="http://www.jetbrains.com/omea/"&gt;Omea Pro&lt;/a&gt; which was OK but it had enough annoying idiosyncracies (er bugs) that I soured on it. So far the only thing I would really like to see in NetNewsWire is support for adding blog posts directly to &lt;a href="http://del.icio.us"&gt;del.icio.us&lt;/a&gt; and Spotlight integration. The latter would rock since I often want to find something inside of blog posts that I save in my reader.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/51/127726941_6364d1b43e.jpg" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;5. &lt;a href="http://wiki.mozilla.org/Mac:Intel"&gt;FireFox 1.5.0.2&lt;/a&gt; Make sure you get the Universal Binary version as the other version is way too slow to be useful. I need my extensions!&lt;/p&gt;
+
+
+	&lt;p&gt;6. &lt;a href="http://www.ragingmenace.com/software/menumeters/"&gt;MenuMeters&lt;/a&gt; I totally love this software. I have Disk I/O and &lt;span class="caps"&gt;CPU&lt;/span&gt; thermometer + % displayed in my menu. It helps me diagose problems in a hurry.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/34/127726932_815744eed3_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;7. &lt;a href="http://www.parallels.com"&gt;Parallels Beta 3&lt;/a&gt;. I can now run Windows hosted inside of &lt;span class="caps"&gt;OS X&lt;/span&gt;! I was really annoyed by a number of things in Beta 2, but these guys are revving their software fast and squashing bugs flat. All of my issues with Beta 2 are now fixed except for the I-beam cursor bug in their video driver (I use black backgrounds for my text editors and the I-beam is black by default making it invisible). So you&amp;#8217;ll need to change your text selection cursor to one of the I-beams that have a white &amp;#8216;halo&amp;#8217;.&lt;/p&gt;
+
+
+	&lt;p&gt;8. &lt;a href="http://doublecommand.sourceforge.net/"&gt;DoubleCommand&lt;/a&gt; lets you remap keys on the keyboard. I hate the fact that under Windows the Option key is treated as the &lt;span class="caps"&gt;ALT&lt;/span&gt; key. So I changed the mapping using DoubleCommand to swap the Option / Command keys on the left side of the keyboard and the Enter / Command keys on the right side of the keyboard. This makes it a bit more awkward to use Mac applications, but it makes my Windows experience &lt;em&gt;much&lt;/em&gt; better (more muscle memory there). It would rock if Parallels would automatically remap the Command key to &lt;span class="caps"&gt;ALT&lt;/span&gt; inside of their virtual machines that run Windows (or make this configurable).&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I no longer need DoubleCommand, as I am now &lt;a href="http://www.iunknown.com/articles/2006/04/13/configuring-parallels-for-windows-xp"&gt;remapping those keys in Windows using a registry hack&lt;/a&gt;&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I spent some time today setting up &lt;span class="caps"&gt;OS X&lt;/span&gt; the way I want it to be on my new MacBook Pro. At the very least I need it to be as usable as the Windows XP host OS on my &lt;span class="caps"&gt;M200&lt;/span&gt;. So here&amp;#8217;s the apps that I need to configure and get working:&lt;/p&gt;
+
+
+	&lt;p&gt;1. Mail. It took a while to get the Exchange Server support in Mail up and running, but it works fine if your Exchange server has &lt;span class="caps"&gt;IMAP4&lt;/span&gt; support enabled (mine didn&amp;#8217;t by default). All my mail is now synchronized inside of Apple&amp;#8217;s Mail application, and it&amp;#8217;s all accessible via Spotlight. The more I use Spotlight the more amazed I am. It&amp;#8217;s better than Google Desktop Search, so +1 for the &lt;span class="caps"&gt;MBP&lt;/span&gt; so far.&lt;/p&gt;
+
+
+	&lt;p&gt;2. &lt;a href="http://quicksilver.blacktree.com/"&gt;QuickSilver&lt;/a&gt;. The combination of QuickSilver + Spotlight is devastating. &lt;span class="caps"&gt;CTRL&lt;/span&gt;-Space is mapped to QuickSilver and Command-Space is mapped to Spotlight. It makes me ridiculously productive with my hands never leaving the keyboard. In fact, QuickSilver is so good, that I rarely find myself using Expose or Command-Tab. I just hit &lt;span class="caps"&gt;CTRL&lt;/span&gt;-Space and type the first letter or two of the app that I want to run and &lt;em&gt;it just works&lt;/em&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/48/127726947_df0806340c_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;3. &lt;a href="http://www.adiumx.com/"&gt;Adium&lt;/a&gt;. This is a multi-protocol IM client that supports tabbed windows, and has a &lt;em&gt;beautiful&lt;/em&gt; interface. I can now IM folks using both &lt;span class="caps"&gt;MSN&lt;/span&gt; and Google Talk without any difficulties. File transfer works great as well.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/51/127726931_16aa1e3aea_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;4. &lt;a href="http://ranchero.com/netnewswire/"&gt;NetNewsWire&lt;/a&gt; I really like this &lt;span class="caps"&gt;RSS&lt;/span&gt; reader. On Windows I was using &lt;a href="http://www.jetbrains.com/omea/"&gt;Omea Pro&lt;/a&gt; which was OK but it had enough annoying idiosyncracies (er bugs) that I soured on it. So far the only thing I would really like to see in NetNewsWire is support for adding blog posts directly to &lt;a href="http://del.icio.us"&gt;del.icio.us&lt;/a&gt; and Spotlight integration. The latter would rock since I often want to find something inside of blog posts that I save in my reader.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/51/127726941_6364d1b43e.jpg" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;5. &lt;a href="http://wiki.mozilla.org/Mac:Intel"&gt;FireFox 1.5.0.2&lt;/a&gt; Make sure you get the Universal Binary version as the other version is way too slow to be useful. I need my extensions!&lt;/p&gt;
+
+
+	&lt;p&gt;6. &lt;a href="http://www.ragingmenace.com/software/menumeters/"&gt;MenuMeters&lt;/a&gt; I totally love this software. I have Disk I/O and &lt;span class="caps"&gt;CPU&lt;/span&gt; thermometer + % displayed in my menu. It helps me diagose problems in a hurry.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/34/127726932_815744eed3_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;7. &lt;a href="http://www.parallels.com"&gt;Parallels Beta 3&lt;/a&gt;. I can now run Windows hosted inside of &lt;span class="caps"&gt;OS X&lt;/span&gt;! I was really annoyed by a number of things in Beta 2, but these guys are revving their software fast and squashing bugs flat. All of my issues with Beta 2 are now fixed except for the I-beam cursor bug in their video driver (I use black backgrounds for my text editors and the I-beam is black by default making it invisible). So you&amp;#8217;ll need to change your text selection cursor to one of the I-beams that have a white &amp;#8216;halo&amp;#8217;.&lt;/p&gt;
+
+
+	&lt;p&gt;8. &lt;a href="http://doublecommand.sourceforge.net/"&gt;DoubleCommand&lt;/a&gt; lets you remap keys on the keyboard. I hate the fact that under Windows the Option key is treated as the &lt;span class="caps"&gt;ALT&lt;/span&gt; key. So I changed the mapping using DoubleCommand to swap the Option / Command keys on the left side of the keyboard and the Enter / Command keys on the right side of the keyboard. This makes it a bit more awkward to use Mac applications, but it makes my Windows experience &lt;em&gt;much&lt;/em&gt; better (more muscle memory there). It would rock if Parallels would automatically remap the Command key to &lt;span class="caps"&gt;ALT&lt;/span&gt; inside of their virtual machines that run Windows (or make this configurable).&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I no longer need DoubleCommand, as I am now &lt;a href="http://www.iunknown.com/articles/2006/04/13/configuring-parallels-for-windows-xp"&gt;remapping those keys in Windows using a registry hack&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Manuel</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-31T11:23:55-07:00</published>
+    <updated>2006-08-21T19:05:41-07:00</updated>
+    <title type="html">Comment on Configuring OS X by Manuel</title>
+    <link href="http://www.iunknown.com/articles/2006/04/12/configuring-os-x#comment-513" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Dear John,&lt;/p&gt;
+
+&lt;p&gt;I found your blog entries by chance, trying to resolve an issue that I have with Parallels and Windows XP / 2000. To put it bluntly, I do not know how to use the Alt key at all! Nothing happens when I press Alt, i.e., no drop down menues are light etc. Completely lost...&lt;/p&gt;
+
+&lt;p&gt;So, when you run Parallels on your MBP, you can simply use the Mac Alt Key to get alt key functionality in Windows?&lt;/p&gt;
+
+&lt;p&gt;Thanks a lot,
+Manuel.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Manuel</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-31T11:03:02-07:00</published>
+    <updated>2006-08-21T19:05:40-07:00</updated>
+    <title type="html">Comment on Configuring OS X by Manuel</title>
+    <link href="http://www.iunknown.com/articles/2006/04/12/configuring-os-x#comment-512" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Dear John,&lt;/p&gt;
+
+&lt;p&gt;I found your blog entries by chance, trying to resolve an issue that I have with Parallels and Windows XP / 2000. To put it bluntly, I do not know how to use the Alt key at all! Nothing happens when I press Alt, i.e., no drop down menues are light etc. Completely lost...&lt;/p&gt;
+
+&lt;p&gt;So, when you run Parallels on your MBP, you can simply use the Mac Alt Key to get alt key functionality in Windows?&lt;/p&gt;
+
+&lt;p&gt;Thanks a lot,
+Manuel.&lt;/p&gt;
+
+&lt;p&gt;mail (at) manuelklein (dot) com&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Michael</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-04-21T20:25:55-07:00</published>
+    <updated>2006-08-21T19:07:58-07:00</updated>
+    <title type="html">Comment on Configuring OS X by Michael</title>
+    <link href="http://www.iunknown.com/articles/2006/04/12/configuring-os-x#comment-436" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thanks for sharing some info to a newby to the Apple world.&lt;/p&gt;</content>
+  </entry>
+</feed>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	<meta name="description" content="It’s alive and it’s real: This second release of my RubyCLR bridge contains a non-trivial Windows Forms 2.0 application written entirely in Ruby. If you don’t want to download the entire drop, you can click here to look at the..." />
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css?v=3" type="text/css" media="screen" />
+	<link rel="stylesheet" href="http://static.typepad.com/.shared:v25.4:typepad:en_us/themes/common/print.css" type="text/css" media="print" />
+	<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	<script type="text/javascript">
+		var TPApp = {};
+		TPApp.app_uri = "http://www.typepad.com/";
+	</script>
+	<script type="text/javascript" src="http://static.typepad.com/.shared:v25.4:typepad:en_us/js/yui/yahoo-dom-event.js"></script>
+	<script type="text/javascript" src="http://static.typepad.com/.shared:v25.4:typepad:en_us/js/app/thumbnail-gallery-min.js"></script>
+
+	<title>John Lam on Software: Second Drop of RubyCLR</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2006/02/indexers-and-ru.html?no_prefetch=1" title="Indexers and Ruby" />
+	<link rel="next" href="http://www.iunknown.com/2006/02/google-calc.html?no_prefetch=1" title="Google Calc" />
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2006/02/second-drop-of.html"
+    trackback:ping="http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e5502afcba8834"
+    dc:title="Second Drop of RubyCLR"
+    dc:identifier="http://www.iunknown.com/2006/02/second-drop-of.html"
+    dc:description="It’s alive and it’s real: This second release of my RubyCLR bridge contains a non-trivial Windows Forms 2.0 application written entirely in Ruby. If you don’t want to download the entire drop, you can click here to look at the..."
+    dc:creator="John Lam"
+    dc:date="2006-02-20T17:19:00-08:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2006/02/indexers-and-ru.html">&laquo; Indexers and Ruby</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2006/02/google-calc.html">Google Calc &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">February 20, 2006</h2>
+
+
+<div class="entry-category-import entry-author-john_lam entry-type-post entry" id="entry-45159242">
+			<h3 class="entry-header">Second Drop of RubyCLR</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p>It&#8217;s alive and it&#8217;s real:</p>
+
+
+	<p><img src="http://static.flickr.com/43/102353551_a14d82507d_o.png" alt="" /></p>
+
+
+	<p>This second release of my RubyCLR bridge contains a non-trivial Windows Forms 2.0 application written <strong>entirely in Ruby</strong>. If you don&#8217;t want to download the entire drop, you can <a href="http://www.iunknown.com/images/rssreader.rb">click here</a> to look at the source.</p>
+
+
+	<p>If you thought you&#8217;ve seen this application before, you&#8217;re right &#8211; it&#8217;s a partial port of Joe Stegman&#8217;s <a href="http://www.windowsforms.net/Default.aspx?tabindex=4&#38;tabid=49"><span class="caps">RSS</span> Reader application</a> that was designed to show off some of the more interesting features of Windows Forms 2.0.</p>
+
+
+	<p>I&#8217;m pretty sure I could have finished porting the rest of the app, but I think I ported enough of it to demonstrate that you can actually use this drop to build a real app.</p>
+
+
+	<p>There are now 106 tests and 165 assertions in the unit test suite. They all pass.</p>
+
+
+	<p>This build now contains release builds of <code>RbDynamicMethod.dll</code> and <code>RubyClrTests.dll</code>, so it should run on any computer that has Ruby 1.8.2 and .NET Frameworks 2.0 <span class="caps">RTM</span> installed.</p>
+
+
+	<p><a href="http://www.iunknown.com/images/RbDynamicMethod.zip">Get the bits here</a>.</p>
+
+
+	<p>Enjoy.</p>
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2006%2F02%2Fsecond-drop-of.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 05:19 PM in <a href="http://www.iunknown.com/import/">import</a> </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2006/02/second-drop-of.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+	
+
+
+		<!-- post footer links -->
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e5502afcba8834</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2006/02/second-drop-of.html">Second Drop of RubyCLR</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list --><a id="c100052896"></a>
+<div class="comment comment-odd" id="comment-100052896">
+	<div class="comment-content" id="comment-100052896-content">
+		<span id="comment-100052896-content"><p>Wow! Impressive John, very impressive.  I look forward to playing with all the bits.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Michael Trier |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052896#comment-6a00d834fc885d53ef00e5501623d58833">February 20, 2006 at 09:02 PM</a>
+	</p>
+</div><a id="c100052898"></a>
+<div class="comment comment-even" id="comment-100052898">
+	<div class="comment-content" id="comment-100052898-content">
+		<span id="comment-100052898-content"><p>Hi!</p>
+
+<p>This all looks very, very promising!</p>
+
+<p>I&#39;d love to be able to write an application UI in .Net (comfortable use of the designer in VS.Net), while writing the core application in Ruby (so terse, so nice to write, so easy to create DSLs!).</p>
+
+<p>Do you think this will be doable ?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.dotnetguru2.org/tbarrere/" href="http://www.dotnetguru2.org/tbarrere/">Thibaut Barr??re</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052898#comment-6a00d834fc885d53ef00e5501624c48833">February 21, 2006 at 04:15 AM</a>
+	</p>
+</div><a id="c100052900"></a>
+<div class="comment comment-odd" id="comment-100052900">
+	<div class="comment-content" id="comment-100052900-content">
+		<span id="comment-100052900-content"><p>Yes - that&#39;s absolutely a goal for this project. A secondary goal for myself (or hopefully someone I can recruit to this project) is to implement the CodeDOM support required to serialize designer output to Ruby. This would let folks use the VS 2005 designers to generate all of the &#39;goo&#39; that I had to write by hand in that sample.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052900#comment-6a00d834fc885d53ef00e5502afd288834">February 21, 2006 at 09:06 AM</a>
+	</p>
+</div><a id="c100052902"></a>
+<div class="comment comment-even" id="comment-100052902">
+	<div class="comment-content" id="comment-100052902-content">
+		<span id="comment-100052902-content"><p>Wow, really, really impressive. I hope to be able to play with this over the next couple of weeks. Thanks for all your hard work - this is great stuff!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Justin |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052902#comment-6a00d834fc885d53ef00e5501623e78833">February 21, 2006 at 12:00 PM</a>
+	</p>
+</div><a id="c100052904"></a>
+<div class="comment comment-odd" id="comment-100052904">
+	<div class="comment-content" id="comment-100052904-content">
+		<span id="comment-100052904-content"><p>Got a chance to play with this. Fantastic. I&#39;ll post my program in the Google News Group. A little feedback here tho:</p>
+
+<p>1) Would be nice if it was a little more forgiving on casing. I know Ruby isn&#39;t, either, but it would be cool if form.Controls.add worked (instead of Add)</p>
+
+<p>2) Delegates seem flakey but I don&#39;t have a better error report. Just seemed like sometimes my button wouldn&#39;t respond to clicks. Is there a delay in hoooking those up somewhere or is it all single-threaded?</p>
+
+<p>3) Automatic determinination of enumeration being used. E.g.:</p>
+
+<p> textBox.AnchorStyles = Left | Right | Top</p>
+
+<p>instead of <br />
+ <br />
+ textBox.AnchorStyle = AnchorStyles::Left | AnchorStyles::Right | AnchorStyles::Top</p>
+
+<p>Again, really fantastic stuff!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Justin |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052904#comment-6a00d834fc885d53ef00e5502afce78834">February 21, 2006 at 04:44 PM</a>
+	</p>
+</div><a id="c100052906"></a>
+<div class="comment comment-even" id="comment-100052906">
+	<div class="comment-content" id="comment-100052906-content">
+		<span id="comment-100052906-content"><p>Thanks for the feedback, Justin!</p>
+
+<p>I&#39;m planning on providing a switch somewhere where I would automatically map ruby-casing to CamelCasing. So:</p>
+
+<p>form.back_color would map to form.BackColor</p>
+
+<p>This is more in line with how some of the Rails ActiveRecord stuff works. I have to think more about that though ...</p>
+
+<p>The delegate problem you&#39;re having is a bit disconcerting though. If you could come up with a repro, that would rock. I recently added some code to deal with holding references onto Ruby blocks to prevent them from being GC&#39;d - this might be causing your problem, though I&#39;m not sure.</p>
+
+<p>The enumeration suggestion sounds cool, but I&#39;m not sure how to implement it. It might be possible by fiddling with scope resolution but I&#39;d have to check with folks who know a lot more about Ruby than I do :)</p>
+
+<p>Keep the comments coming!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052906#comment-6a00d834fc885d53ef00e5502afe618834">February 21, 2006 at 04:51 PM</a>
+	</p>
+</div><a id="c100052908"></a>
+<div class="comment comment-odd" id="comment-100052908">
+	<div class="comment-content" id="comment-100052908-content">
+		<span id="comment-100052908-content"><p>Great stuff! Question...when I click &quot;Go&quot;:</p>
+
+<p>C:\hold&gt;ruby rssreader.rb<br />
+./ruby_dynamic_method.rb:138:in `method_missing&#39;: undefined local variable or me<br />
+thod `grid&#39; for # (NameError)<br />
+        from rssreader.rb:406:in `initialize&#39;<br />
+        from rssreader.rb:404:in `call&#39;<br />
+        from ./rubyclr.rb:275:in `Run&#39;<br />
+        from ./rubyclr.rb:275:in `send&#39;<br />
+        from ./rubyclr.rb:275:in `method_missing&#39;<br />
+        from ./winforms.rb:23:in `Run&#39;<br />
+        from rssreader.rb:434</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.computerzen.com" href="http://www.computerzen.com">Scott Hanselman</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052908#comment-6a00d834fc885d53ef00e5501623e28833">February 21, 2006 at 06:22 PM</a>
+	</p>
+</div><a id="c100052910"></a>
+<div class="comment comment-even" id="comment-100052910">
+	<div class="comment-content" id="comment-100052910-content">
+		<span id="comment-100052910-content"><p>Oh yeah, I forgot to disable that. You&#39;ll see from looking at the source that the event handler binds to a non-existant grid object (it was there earlier, but I forget to delete the code from that event handler).</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052910#comment-6a00d834fc885d53ef00e5501624068833">February 21, 2006 at 06:53 PM</a>
+	</p>
+</div><a id="c100052912"></a>
+<div class="comment comment-odd" id="comment-100052912">
+	<div class="comment-content" id="comment-100052912-content">
+		<span id="comment-100052912-content"><p>John,</p>
+
+<p>OK, I played around this some more and I have some deeper questions. How do I override the initialize method for all controls? I&#39;d like to do something like this:</p>
+
+<p>Control.class_eval do<br />
+ def initialize<br />
+   super<br />
+   MessageBox.Show(&quot;Overriding initialize&quot;)<br />
+ end<br />
+end</p>
+
+<p>and have that MessageBox show up each time I create a control:</p>
+
+<p>Button.new<br />
+TextBox.new</p>
+
+<p>However, it doesn&#39;t work that way. If I override each control class individually , it does. </p>
+
+<p>Any suggestions?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Justin |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052912#comment-6a00d834fc885d53ef00e55016240a8833">February 21, 2006 at 06:58 PM</a>
+	</p>
+</div><a id="c100052914"></a>
+<div class="comment comment-even" id="comment-100052914">
+	<div class="comment-content" id="comment-100052914-content">
+		<span id="comment-100052914-content"><p>John,</p>
+
+<p>I also found some crashing bugs. Here are the unit tests. Note that when these run they crash the interpreter. </p>
+
+<p>require &#39;test/unit&#39;<br />
+require &#39;rubyclr&#39;</p>
+
+<p>RubyClr::reference &#39;System&#39;<br />
+RubyClr::reference &#39;System.Windows.Forms&#39;</p>
+
+<p>include System::Windows::Forms</p>
+
+<p># If any of these tests are run, the ruby interpreter crashes!<br />
+class CrashyTests &lt; Test::Unit::TestCase<br />
+  <br />
+  def test_form_meta_send<br />
+    form = Form.new</p>
+
+<p>    class &lt;&lt; form<br />
+      def init<br />
+        self.send(:Text=, &quot;test_form_meta_send&quot;)<br />
+      end<br />
+    end</p>
+
+<p>    form.init<br />
+    assert(form.Text == &quot;test_form_meta_send&quot;)<br />
+  end<br />
+  <br />
+  def test_form_meta_init<br />
+    form = Form.new</p>
+
+<p>    class &lt;&lt; form<br />
+      def init<br />
+        self.Text = &quot;test_form_meta_min&quot;<br />
+      end<br />
+    end</p>
+
+<p>    form.init<br />
+    assert(form.Text == &quot;&quot;)<br />
+  end</p>
+
+<p>  def test_form_meta_min<br />
+    form = Form.new</p>
+
+<p>    class &lt;&lt; form<br />
+    end</p>
+
+<p>    form.Text = &quot;test_form_meta_min&quot;<br />
+    assert(form.Text == &quot;test_form_meta_min&quot;)<br />
+  end<br />
+  <br />
+  def test_form_per_class<br />
+    form = Form.new</p>
+
+<p>    def form.init<br />
+      self.Text = &quot;test_form_per_class&quot;<br />
+    end</p>
+
+<p>    form.init<br />
+    assert(form.Text == &quot;test_form_per_class&quot;)<br />
+  end<br />
+  <br />
+end</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Justin |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052914#comment-6a00d834fc885d53ef00e5502afe538834">February 21, 2006 at 07:00 PM</a>
+	</p>
+</div><a id="c100052918"></a>
+<div class="comment comment-odd" id="comment-100052918">
+	<div class="comment-content" id="comment-100052918-content">
+		<span id="comment-100052918-content"><p>Ouch, RedCloths bizarre formatting strikes again. I&#39;ll just email you ;)</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Justin |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052918#comment-6a00d834fc885d53ef00e5502afe5d8834">February 21, 2006 at 07:01 PM</a>
+	</p>
+</div><a id="c100052920"></a>
+<div class="comment comment-even" id="comment-100052920">
+	<div class="comment-content" id="comment-100052920-content">
+		<span id="comment-100052920-content"><p>Awesome! Not only the beautiful GUI, it also means I can optimize hungry-for-speed part of my ruby code into various .Net languages (such as Boo). Great work! Thanks.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		piggy |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052920#comment-6a00d834fc885d53ef00e5502afcf78834">February 26, 2006 at 01:09 AM</a>
+	</p>
+</div><a id="c100052922"></a>
+<div class="comment comment-odd" id="comment-100052922">
+	<div class="comment-content" id="comment-100052922-content">
+		<span id="comment-100052922-content"><p>This f&#39;n rocks.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Jeem |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052922#comment-6a00d834fc885d53ef00e5502afd2f8834">March 03, 2006 at 02:04 PM</a>
+	</p>
+</div><a id="c100052926"></a>
+<div class="comment comment-even" id="comment-100052926">
+	<div class="comment-content" id="comment-100052926-content">
+		<span id="comment-100052926-content"><p>Great stuff! I&#39;ve been waiting for Ruby on the CLR - but now that I have seen this I realize this is what I really wanted ;). </p>
+
+<p>Are you going to set up a project on rubyforge?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Eirik |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052926#comment-6a00d834fc885d53ef00e5502afd918834">March 15, 2006 at 04:58 AM</a>
+	</p>
+</div><a id="c100052928"></a>
+<div class="comment comment-odd" id="comment-100052928">
+	<div class="comment-content" id="comment-100052928-content">
+		<span id="comment-100052928-content"><p>That&#39;s awesome John! </p>
+
+<p>Ruby CLR is looking really sweet!</p>
+
+<p>Do you have any examples of using the bridge the other way in .NET to access Ruby? I&#39;m thinking about implementing the bridge in my project. </p>
+
+<p>Thanks. :)</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.projectrideme.com" href="http://www.projectrideme.com">Michael Leung</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052928#comment-6a00d834fc885d53ef00e5501623db8833">July 05, 2006 at 07:19 PM</a>
+	</p>
+</div><a id="c100052930"></a>
+<div class="comment comment-even" id="comment-100052930">
+	<div class="comment-content" id="comment-100052930-content">
+		<span id="comment-100052930-content"><p>I don&#39;t have any explicit scenarios where I &quot;hoist&quot; the Ruby runtime into an existing .NET app. All of my supported scenarios involve delay-loading the CLR into an existing Ruby Win32 process.</p>
+
+<p>This will be something to look at down the road, however, since embedding Ruby as a scripting language for an existing .NET application is another scenario that I&#39;d like to address.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052930#comment-6a00d834fc885d53ef00e5502afcbd8834">July 06, 2006 at 12:35 AM</a>
+	</p>
+</div><a id="c100052932"></a>
+<div class="comment comment-odd" id="comment-100052932">
+	<div class="comment-content" id="comment-100052932-content">
+		<span id="comment-100052932-content"><p>Very cool. :)</p>
+
+<p>One other thing, and this may be in a blog post you wrote or in the sample code (haven&#39;t had a chance to look at it thorougly enough yet):</p>
+
+<p>How do you handle interfaces, since Ruby doesn&#39;t support them?</p>
+
+<p>We&#39;re creating an extensibility (add-in) architecture, and it would be really killer to write add-ins for our application in Ruby using Ruby CLR, but my only concern is the add-in will need to implement the specific memembers of a .NET interface.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.projectrideme.com" href="http://www.projectrideme.com">Michael Leung</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052932#comment-6a00d834fc885d53ef00e5501623ee8833">July 06, 2006 at 09:17 AM</a>
+	</p>
+</div><a id="c100052934"></a>
+<div class="comment comment-even" id="comment-100052934">
+	<div class="comment-content" id="comment-100052934-content">
+		<span id="comment-100052934-content"><p>Thanks, its realy awsome!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.nyolckincs.hu/" href="http://www.nyolckincs.hu/">csikung (chi kung, qigong)</a> |
+		<a href="http://www.iunknown.com/2006/02/second-drop-of.html?cid=100052934#comment-6a00d834fc885d53ef00e5502afccb8834">November 20, 2006 at 03:05 PM</a>
+	</p>
+</div>
+
+		</div>
+        
+	</div>
+    	<!-- comment-form-atp -->
+
+	
+<div id="atp-comments">
+    
+        <div id="comment-preview" class="hiddenBox">
+	<h3 id="header-verify-comment" class="comments-header hiddenBox">Verify your Comment</h3>
+    <h3 id="header-preview-comment" class="comments-header hiddenBox">Previewing your Comment</h3>
+	<div class="comments-content">
+		<div class="comment">
+			<div id="comment-preview-content" class="comment-content">
+			</div>
+			<p class="comment-footer">
+				Posted by: 
+				<span id="comment-preview-author"></span>&nbsp;|&nbsp;<span id="comment-preview-datetime"></span>
+			</p>
+		</div>
+	</div>
+</div>
+<div id="comment-preview-confirmation" class="hiddenBox yellowBox">
+    <p>This is only a preview. Your comment has not yet been posted.</p>
+   	<form id="comment-preview-form"
+   		method="post"
+   		onsubmit="atpComments.interceptPost(commentFormNum); return false;">
+		<input type="submit" name="post" id="comment-confirm-post" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;"/>		    
+		<input type="submit" name="edit" id="comment-edit" value="&nbsp;&nbsp;Edit&nbsp;&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 2); return false;"/>
+        <span id="previewFormSpinner" class="hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+	</form>
+</div>
+<div id="comment-error" class="hiddenBox redBox">	    
+   Your comment could not be posted. Error type: <span id="comment-error-msg"></span> 
+</div>	
+<div id="comment-complete" class="hiddenBox redBox">
+    Your comment has been saved. Comments are moderated and will not appear until approved by the author. <a href="javascript:void 0;" onclick="window.location.hash='#comment-form';window.location.reload(false)">Post another comment</a>
+</div>	
+<div id="comment-captcha" class="hiddenBox yellowBox">	
+    <div id="captchaText">
+	    <p id="captchaFailMsg" class="captchaErrorText hiddenBox">The letters and numbers you entered did not match the image. Please try again.</p>	    	        
+	    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.</p>
+	    <p><span id="comment-captcha-viewalt">Having trouble reading this image? <a href="#comment-captcha" onClick="atpComments.generateCaptcha(commentFormNum);">View an alternate.</a></span></p>
+    </div>
+    <p class=""><img id="captchaImg" /></p>		
+    <form id="comment-captcha-form" 
+		  method="post"
+		  onsubmit="atpComments.submitWithCaptcha(commentFormNum); return false;">
+		<input type="hidden" name="captcha_chal" id="comment-captcha-chal" value="" />
+        <p>
+	        <input id="comment-captcha-text" name="captcha_text" size="10" />
+        </p>
+        <p>
+            <input type="submit" name="continue" id="captcha-continue" value="&nbsp;Continue&nbsp;" />
+            <span id="captchaFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+        </p>
+    </form>
+</div>
+
+    
+	<div id="primary-comment-form" class="comment-form">
+    	<form id="comment-form" action="http://www.iunknown.com/.services/comments"
+    		method="post">
+    		<input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e5502afcba8834" />
+                <input type="hidden" name="token" value="1266464981-cf08a23f06869ab7372603b392cac9173ef72fb2:LogvRnoO5YGYuTeV" />
+    		<div class="comments-open">
+    			<h2 class="comments-open-header" id="comment-title">Post a comment</h2>
+    			<div id="comments-open-content" class="comments-open-content">
+    									
+    				    <p class="comments-open-moderated">
+    						Comments are moderated, and will not appear until the author has approved them.
+    					</p>
+    				
+				
+    									
+    					<div id="comments-open-login" style="display: none;">
+                  <div class="login-list">
+                      
+                      <span class="first">Comment below or sign in with</span> <span class="typepad"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=4d07f455c2a5494c874330333fed966097949dfd&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2006%2F02%2Fsecond-drop-of.html&_portal=typepad">TypePad</a></span> <span class="facebook"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=4d07f455c2a5494c874330333fed966097949dfd&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2006%2F02%2Fsecond-drop-of.html&_portal=typepad&service=facebook">Facebook</a></span> <span class="twitter"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=4d07f455c2a5494c874330333fed966097949dfd&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2006%2F02%2Fsecond-drop-of.html&_portal=typepad&service=twitter">Twitter</a></span> <span>and <a href="https://www.typekey.com/t/typekey/login?v=1.0&t=4d07f455c2a5494c874330333fed966097949dfd&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2006%2F02%2Fsecond-drop-of.html&_portal=typepad&service=openid">more...</a></span>
+                      
+                  </div>
+                  <div class="clr"></div>
+    					</div>
+    					<div id="comments-open-logout" style="display: none;">
+    						You are currently signed in as
+    						<span id="commenter-name">(nobody)</span>.
+    						<a href="http://www.iunknown.com/.services/sitelogout?to=https%3A%2F%2Fwww.typekey.com%2Ft%2Ftypekey%2F%3F__mode%3Dlogout%26_return%3Dhttp%253A%252F%252Fwww.iunknown.com%252F2006%252F02%252Fsecond-drop-of.html">Sign Out</a>
+    					</div>
+    				
+                    	<div id="comments-open-text" style="display:none;">
+        					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="atpComments.maxTextArea(this, 64000);"></textarea>
+            				
+            				<p class="comments-open-subtext">
+            				    (URLs automatically linked.)
+            				</p>			
+            				                    					
+        				</div>
+    				    <div id="comments-open-data" style="display:none;">
+                            <p>Your Information</p>
+                            <p>
+                                (Name and email address are required. Email address will not be displayed with the comment.)
+                            
+                            </p>
+    						<p>
+    							<input id="comment-author" at:default="Name" name="author" size="30" value="Name" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-author" id="comment-author-error" class="comment-error hiddenBox">Name is required to post a comment</label>
+    						</p>
+    						<p>
+    							<input id="comment-email" at:default="Email Address" name="email" size="30" value="Email Address" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-email" id="comment-email-error" class="comment-error hiddenBox">Please enter a valid email address</label>
+    						</p>
+    						<p>
+    							<input id="comment-url" at:default="Web Site URL" name="url" size="30" value="Web Site URL" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-url" id="comment-url-error" class="comment-error hiddenBox">Invalid URL</label>
+    						</p>
+    					</div>
+    			</div>
+                <div id="comments-open-footer" class="comments-open-footer" style="display:none;">
+    				<input type="submit" name="post" id="comment-post-button" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;" disabled="true" />
+    				<input type="submit" name="preview" id="comment-preview-button" value="&nbsp;Preview&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 1); return false;" disabled="true" />
+    				<span id="commentEntryFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+    			</div>
+    		</div>
+    	</form>
+        <noscript>
+            
+			<div id="comments-open-noscript" class="comments-open-noscript">
+		        <form action="http://www.iunknown.com/.services/comments" method="post">
+		            <input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e5502afcba8834" />
+                            <input type="hidden" name="token" value="1266464981-5c53c9d8a2b69edce687bd844bb1a0fab8d90d09:3WAWk7iWngZg5Zqt" />
+		            Name:<br /><input type="text" name="author" size="30" /><br />
+		            Email address:<br /><input type="text" name="email" size="30" /><br />
+		            URL:<br /><input type="text" name="url" size="30" /><br /><br />
+		            Comment:<br /><textarea name="text" cols="40" rows="4"></textarea><br />
+		            
+		            <input type="submit" name="submit" value="Submit" />
+		        </form>
+			</div>
+			
+		</noscript>
+	</div>
+</div>
+
+
+
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2008/03/dynamic-silve-2.html?cid=6a00d834fc885d53ef0120a8684b57970b#comment-6a00d834fc885d53ef0120a8684b57970b">sikat ang pinoy</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silve-2.html">Dynamic Silverlight Part 3: Integrating Silverlight with ASP.NET MVC</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0120a85c2e83970b#comment-6a00d834fc885d53ef0120a85c2e83970b">John Lam</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0128775b4671970c#comment-6a00d834fc885d53ef0128775b4671970c">Stefan Dobrev</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0128772f4662970c#comment-6a00d834fc885d53ef0128772f4662970c">Bret Ferrier (runxc1)</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef0120a82bff6c970b#comment-6a00d834fc885d53ef0120a82bff6c970b">Bret Ferrier (runxc1)</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html?cid=6a00d834fc885d53ef01287708e5c1970c#comment-6a00d834fc885d53ef01287708e5c1970c">Tim</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html?cid=6a00d834fc885d53ef012876f06991970c#comment-6a00d834fc885d53ef012876f06991970c">FutureTurnip</a> on <a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef012876c77c12970c#comment-6a00d834fc885d53ef012876c77c12970c">Phil</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef012876c2d2d1970c#comment-6a00d834fc885d53ef012876c2d2d1970c">John Lam</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef0120a7c033c1970b#comment-6a00d834fc885d53ef0120a7c033c1970b">fred stewart</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/05/dynamic-languages-at-teched-2009.html">Dynamic Languages at TechEd 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/12/index.html">December 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/11/index.html">November 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/05/index.html">May 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/index.html">January 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">December 2009</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				
+							
+					<td>4</td>
+				
+							
+					<td>5</td>
+				</tr>
+							<tr>
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">10</a></td>
+				
+							
+					<td>11</td>
+				
+							
+					<td>12</td>
+				</tr>
+							<tr>
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				
+							
+					<td>19</td>
+				</tr>
+							<tr>
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				
+							
+					<td>26</td>
+				</tr>
+							<tr>
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+<div class="module-custom_html module">
+    <div class="module-content">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+    </div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+		</div>
+	</div>
+	
+
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+
+<script src="http://cdn.media6degrees.com/static/ty2093.js" type="text/javascript"></script></body>
+</html>
+
+<script type="text/javascript">
+var captchaImgAttempts = 0;
+var allowAnonComments = '0';
+var registrationRequired = 0;
+var registrationOptional = 1;
+var emailRequired = 1;
+var useAvatars = 0;
+
+var showSignInMessaging = 0;
+var jsonURL = "/.services/json-rpc";
+
+var captchaSrc = "/.services/captcha?code_encrypted=";
+var alertCommentCannotBeBlank = "You can not leave an empty comment. Please enter some text in the Comment field.";
+var alertEditingExpired = "Sorry, you're no longer allowed to edit this comment. You may have taken too much time before submitting your edit or someone may have already replied to it.";
+
+var alertAuthorCannotBeBlank = "Name must not be blank.";
+var alertEmailCannotBeBlank = "Email Address must not be blank.";
+var alertAuthorAndEmailCannotBeBlank = "Name and email address are both required!";
+var alertEmailIsInvalid = "The Email Address you entered is invalid. Please enter a valid email address.";
+var alertUnauthorizedAction = "The comments on this post are closed.";
+var msgPostReplyTo = "Reply to ";  
+var msgInReplyTo = "In reply to ";
+var msgPostAComment = "Post a comment ";
+var atpCommentsPath = "/.shared/js/atpcomments_yui.js?v=4";
+var hasChanged = 0;
+var hostName = ".iunknown.com";
+var tp_comment_token = "1266464981-b30940a5584201423b7a7c6258f9b58ba1f28c16:uaYZE5BQIk2IlFGw";
+
+var isPage = 0;
+var blog_xid = "6a00d834fc885d53ef00d83531ed5d69e2";
+var xid = "";
+var injectCode = '<div id=\"comment-preview\" class=\"hiddenBox\">\n\t<h3 id=\"header-verify-comment\" class=\"comments-header hiddenBox\">Verify your Comment<\/h3>\n    <h3 id=\"header-preview-comment\" class=\"comments-header hiddenBox\">Previewing your Comment<\/h3>\n\t<div class=\"comments-content\">\n\t\t<div class=\"comment\">\n\t\t\t<div id=\"comment-preview-content\" class=\"comment-content\">\n\t\t\t<\/div>\n\t\t\t<p class=\"comment-footer\">\n\t\t\t\tPosted by: \n\t\t\t\t<span id=\"comment-preview-author\"><\/span>&nbsp;|&nbsp;<span id=\"comment-preview-datetime\"><\/span>\n\t\t\t<\/p>\n\t\t<\/div>\n\t<\/div>\n<\/div>\n<div id=\"comment-preview-confirmation\" class=\"hiddenBox yellowBox\">\n    <p>This is only a preview. Your comment has not yet been posted.<\/p>\n   \t<form id=\"comment-preview-form\"\n   \t\tmethod=\"post\"\n   \t\tonsubmit=\"atpComments.interceptPost(commentFormNum); return false;\">\n\t\t<input type=\"submit\" name=\"post\" id=\"comment-confirm-post\" value=\"&nbsp;Post&nbsp;\" onclick=\"atpComments.interceptPost(commentFormNum); return false;\"/>\t\t    \n\t\t<input type=\"submit\" name=\"edit\" id=\"comment-edit\" value=\"&nbsp;&nbsp;Edit&nbsp;&nbsp;\" onclick=\"atpComments.previewOnly(commentFormNum, 2); return false;\"/>\n        <span id=\"previewFormSpinner\" class=\"hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n\t<\/form>\n<\/div>\n<div id=\"comment-error\" class=\"hiddenBox redBox\">\t    \n   Your comment could not be posted. Error type: <span id=\"comment-error-msg\"><\/span> \n<\/div>\t\n<div id=\"comment-complete\" class=\"hiddenBox redBox\">\n    Your comment has been saved. Comments are moderated and will not appear until approved by the author. <a href=\"javascript:void 0;\" onclick=\"window.location.hash=\'#comment-form\';window.location.reload(false)\">Post another comment<\/a>\n<\/div>\t\n<div id=\"comment-captcha\" class=\"hiddenBox yellowBox\">\t\n    <div id=\"captchaText\">\n\t    <p id=\"captchaFailMsg\" class=\"captchaErrorText hiddenBox\">The letters and numbers you entered did not match the image. Please try again.<\/p>\t    \t        \n\t    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.<\/p>\n\t    <p><span id=\"comment-captcha-viewalt\">Having trouble reading this image? <a href=\"#comment-captcha\" onClick=\"atpComments.generateCaptcha(commentFormNum);\">View an alternate.<\/a><\/span><\/p>\n    <\/div>\n    <p class=\"\"><img id=\"captchaImg\" /><\/p>\t\t\n    <form id=\"comment-captcha-form\" \n\t\t  method=\"post\"\n\t\t  onsubmit=\"atpComments.submitWithCaptcha(commentFormNum); return false;\">\n\t\t<input type=\"hidden\" name=\"captcha_chal\" id=\"comment-captcha-chal\" value=\"\" />\n        <p>\n\t        <input id=\"comment-captcha-text\" name=\"captcha_text\" size=\"10\" />\n        <\/p>\n        <p>\n            <input type=\"submit\" name=\"continue\" id=\"captcha-continue\" value=\"&nbsp;Continue&nbsp;\" />\n            <span id=\"captchaFormSpinner\" class=\"commentSpinner hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n        <\/p>\n    <\/form>\n<\/div>\n'; 
+var commentFormNum;
+var entryPermalink = "http://www.iunknown.com/2006/02/second-drop-of.html";
+var inlineReply = document.createElement("div");
+var commentFooterLinks;
+var commentHeader;
+var commentReplyXID;
+var commentReplyAuthor;
+var commentReplyComplete;
+var inlineReplyLoaded = 0;
+
+function xidToCommentPermalink (entryUrl, xid) {
+    return entryUrl + "?cid=" + xid + "#comment-" + xid;
+}
+
+</script>
+<script type="text/javascript" src="/.shared/js/yui/yuiloader-beta-min.js"></script>
+<script type="text/javascript" src="/.shared/js/atpcomments.js?v=3"></script>
+
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

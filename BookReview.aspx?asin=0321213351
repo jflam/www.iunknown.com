@@ -1,0 +1,191 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Refactoring to Patterns (Addison-Wesley Signature Series)
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0321213351" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMzIxMjEzMzUxLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFJlZmFjdG9yaW5nIHRvIFBhdHRlcm5zIChBZGRpc29uLVdlc2xleSBTaWduYXR1cmUgU2VyaWVzKTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Sm9zaHVhIEtlcmlldnNreTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDQ5Ljk5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkNDkuOTk7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDUuMDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8MTQ7Pj47Pjs7Pjt0PEA8aHR0cDovL3d3dy5hbWF6b24uY29tL2V4ZWMvb2JpZG9zL0FTSU4vMDMyMTIxMzM1MS9yZWY9bm9zaW0vaXVua25vd25jb20tMjA7Pjs7Pjt0PDtsPGk8MD47aTwxPjs+O2w8dDxAPEJvb2sgRGVzY3JpcHRpb247Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFdoYXQgSXMgVGhpcyBCb29rIEFib3V0PyBcPEJSXD5UaGlzIGJvb2sgaXMgYWJvdXQgdGhlIG1hcnJpYWdlIG9mIHJlZmFjdG9yaW5nJiMxNTFcO3RoZSBwcm9jZXNzIG9mIGltcHJvdmluZyB0aGUgZGVzaWduIG9mIGV4aXN0aW5nIGNvZGUmIzE1MVw7d2l0aCBwYXR0ZXJucywgdGhlIGNsYXNzaWMgc29sdXRpb25zIHRvIHJlY3VycmluZyBkZXNpZ24gcHJvYmxlbXMuIFJlZmFjdG9yaW5nIHRvIFBhdHRlcm5zIHN1Z2dlc3RzIHRoYXQgdXNpbmcgcGF0dGVybnMgdG8gaW1wcm92ZSBhbiBleGlzdGluZyBkZXNpZ24gaXMgYmV0dGVyIHRoYW4gdXNpbmcgcGF0dGVybnMgZWFybHkgaW4gYSBuZXcgZGVzaWduLiBUaGlzIGlzIHRydWUgd2hldGhlciBjb2RlIGlzIHllYXJzIG9sZCBvciBtaW51dGVzIG9sZC4gV2UgaW1wcm92ZSBkZXNpZ25zIHdpdGggcGF0dGVybnMgYnkgYXBwbHlpbmcgc2VxdWVuY2VzIG9mIGxvdy1sZXZlbCBkZXNpZ24gdHJhbnNmb3JtYXRpb25zLCBrbm93biBhcyByZWZhY3RvcmluZ3MuICAgIFw8UFw+V2hhdCBBcmUgdGhlIEdvYWxzIG9mIFRoaXMgQm9vaz8gXDxCUlw+VGhpcyBib29rIHdhcyB3cml0dGVuIHRvIGhlbHAgeW91OiAgIFw8UFw+VW5kZXJzdGFuZCBob3cgdG8gY29tYmluZSByZWZhY3RvcmluZyBhbmQgcGF0dGVybnMgIFw8QlJcPkltcHJvdmUgdGhlIGRlc2lnbiBvZiBleGlzdGluZyBjb2RlIHdpdGggcGF0dGVybi1kaXJlY3RlZCByZWZhY3RvcmluZ3MgIFw8QlJcPklkZW50aWZ5IGFyZWFzIG9mIGNvZGUgaW4gbmVlZCBvZiBwYXR0ZXJuLWRpcmVjdGVkIHJlZmFjdG9yaW5ncyAgXDxCUlw+TGVhcm4gd2h5IHVzaW5nIHBhdHRlcm5zIHRvIGltcHJvdmUgZXhpc3RpbmcgY29kZSBpcyBiZXR0ZXIgdGhhbiB1c2luZyBwYXR0ZXJucyBlYXJseSBpbiBhIG5ldyBkZXNpZ24gIFw8QlJcPlRvIGFjaGlldmUgdGhlc2UgZ29hbHMsIHRoaXMgYm9vayBpbmNsdWRlcyB0aGUgZm9sbG93aW5nIGZlYXR1cmVzOiAgIFw8UFw+QSBjYXRhbG9nIG9mIDI3IHJlZmFjdG9yaW5ncyAgXDxCUlw+RXhhbXBsZXMgYmFzZWQgb24gcmVhbC13b3JsZCBjb2RlLCBub3QgdGhlIHRveSBzdHVmZiAgXDxCUlw+UGF0dGVybiBkZXNjcmlwdGlvbnMsIGluY2x1ZGluZyByZWFsLXdvcmxkIHBhdHRlcm4gZXhhbXBsZXMgIFw8QlJcPkEgY29sbGVjdGlvbiBvZiBzbWVsbHMgKGkuZS4sIHByb2JsZW1zKSB0aGF0IGluZGljYXRlIHRoZSBuZWVkIGZvciBwYXR0ZXJuLWRpcmVjdGVkIHJlZmFjdG9yaW5ncyAgXDxCUlw+RXhhbXBsZXMgb2YgZGlmZmVyZW50IHdheXMgdG8gaW1wbGVtZW50IHRoZSBzYW1lIHBhdHRlcm4gIFw8QlJcPkFkdmljZSBmb3Igd2hlbiB0byByZWZhY3RvciB0bywgdG93YXJkcywgb3IgYXdheSBmcm9tIHBhdHRlcm5zICBcPEJSXD5UbyBoZWxwIGluZGl2aWR1YWxzIG9yIGdyb3VwcyBsZWFybiB0aGUgMjcgcmVmYWN0b3JpbmdzIGluIHRoZSBib29rLCB5b3UmIzE0Nlw7bGwgZmluZCBhIHN1Z2dlc3RlZCBzdHVkeSBzZXF1ZW5jZSBvbiB0aGUgaW5zaWRlIGJhY2sgY292ZXIgb2YgdGhlIGJvb2suICAgXDxQXD5XaG8gU2hvdWxkIFJlYWQgVGhpcyBCb29rPyAgXDxQXD5UaGlzIGJvb2sgaXMgZm9yIG9iamVjdC1vcmllbnRlZCBwcm9ncmFtbWVycyBlbmdhZ2VkIGluIG9yIGludGVyZXN0ZWQgaW4gaW1wcm92aW5nIHRoZSBkZXNpZ24gb2YgZXhpc3RpbmcgY29kZS4gTWFueSBvZiB0aGVzZSBwcm9ncmFtbWVycyB1c2UgcGF0dGVybnMgYW5kL29yIHByYWN0aWNlIHJlZmFjdG9yaW5nIGJ1dCBoYXZlIG5ldmVyIGltcGxlbWVudGVkIHBhdHRlcm5zIGJ5IHJlZmFjdG9yaW5nXDsgb3RoZXJzIGtub3cgbGl0dGxlIGFib3V0IHJlZmFjdG9yaW5nIGFuZCBwYXR0ZXJucyBhbmQgd291bGQgbGlrZSB0byBsZWFybiBtb3JlLiAgIFw8UFw+VGhpcyBib29rIGlzIHVzZWZ1bCBmb3IgYm90aCBncmVlbmZpZWxkIGRldmVsb3BtZW50LCBpbiB3aGljaCB5b3UgYXJlIHdyaXRpbmcgYSBuZXcgc3lzdGVtIG9yIGZlYXR1cmUgZnJvbSBzY3JhdGNoLCBhbmQgbGVnYWN5IGRldmVsb3BtZW50LCBpbiB3aGljaCB5b3UgYXJlIG1vc3RseSBtYWludGFpbmluZyBhIGxlZ2FjeSBzeXN0ZW0uICAgXDxQXD5XaGF0IEJhY2tncm91bmQgRG8gWW91IE5lZWQ/IFw8QlJcPlRoaXMgYm9vayBhc3N1bWVzIHlvdSBhcmUgZmFtaWxpYXIgd2l0aCBkZXNpZ24gY29uY2VwdHMgbGlrZSB0aWdodCBjb3VwbGluZyBhbmQgbG9vc2UgY291cGxpbmcgYXMgd2VsbCBhcyBvYmplY3Qtb3JpZW50ZWQgY29uY2VwdHMgbGlrZSBpbmhlcml0YW5jZSwgcG9seW1vcnBoaXNtLCBlbmNhcHN1bGF0aW9uLCBjb21wb3NpdGlvbiwgaW50ZXJmYWNlcywgYWJzdHJhY3QgYW5kIGNvbmNyZXRlIGNsYXNzZXMsIGFic3RyYWN0IGFuZCBzdGF0aWMgbWV0aG9kcywgYW5kIHNvIGZvcnRoLiAgIFw8UFw+SSB1c2UgSmF2YSBleGFtcGxlcyBpbiB0aGlzIGJvb2suIEkgZmluZCB0aGF0IEphdmEgdGVuZHMgdG8gYmUgZWFzeSBmb3IgbW9zdCBvYmplY3Qtb3JpZW50ZWQgcHJvZ3JhbW1lcnMgdG8gcmVhZC4gSSYjMTQ2XDt2ZSBnb25lIG91dCBvZiBteSB3YXkgdG8gbm90IHVzZSBmYW5jeSBKYXZhIGZlYXR1cmVzLCBzbyB3aGV0aGVyIHlvdSBjb2RlIGluIEMrKywgQyMsIFZpc3VhbCBCYXNpYyAuTkVULCBQeXRob24sIFJ1YnksIFNtYWxsdGFsaywgb3Igc29tZSBvdGhlciBvYmplY3Qtb3JpZW50ZWQgbGFuZ3VhZ2UsIHlvdSBvdWdodCB0byBiZSBhYmxlIHRvIHVuZGVyc3RhbmQgdGhlIEphdmEgY29kZSBpbiB0aGlzIGJvb2suICAgXDxQXD5UaGlzIGJvb2sgaXMgY2xvc2VseSB0aWVkIHRvIE1hcnRpbiBGb3dsZXImIzE0Nlw7cyBjbGFzc2ljIGJvb2sgUmVmYWN0b3JpbmcgRi4gSXQgY29udGFpbnMgcmVmZXJlbmNlcyB0byBsb3ctbGV2ZWwgcmVmYWN0b3JpbmdzLCBzdWNoIGFzOiAgIFw8UFw+RXh0cmFjdCBNZXRob2QgIFw8QlJcPkV4dHJhY3QgSW50ZXJmYWNlICBcPEJSXD5FeHRyYWN0IFN1cGVyY2xhc3MgIFw8QlJcPkV4dHJhY3QgU3ViY2xhc3MgIFw8QlJcPlB1bGwgVXAgTWV0aG9kICBcPEJSXD5Nb3ZlIE1ldGhvZCAgXDxCUlw+UmVuYW1lIE1ldGhvZCAgIFw8UFw+UmVmYWN0b3JpbmcgYWxzbyBjb250YWlucyByZWZlcmVuY2VzIHRvIG1vcmUgc29waGlzdGljYXRlZCByZWZhY3RvcmluZ3MsIHN1Y2ggYXM6ICAgXDxQXD5SZXBsYWNlIEluaGVyaXRhbmNlIHdpdGggRGVsZWdhdGlvbiAgXDxCUlw+UmVwbGFjZSBDb25kaXRpb25hbCB3aXRoIFBvbHltb3JwaGlzbSAgXDxCUlw+UmVwbGFjZSBUeXBlIENvZGUgd2l0aCBTdWJjbGFzc2VzICAgXDxQXD5UbyB1bmRlcnN0YW5kIHRoZSBwYXR0ZXJuLWRpcmVjdGVkIHJlZmFjdG9yaW5ncyBpbiB0aGlzIGJvb2ssIHlvdSBkb24mIzE0Nlw7dCBuZWVkIHRvIGtub3cgZXZlcnkgcmVmYWN0b3JpbmcgbGlzdGVkIGFib3ZlLiBJbnN0ZWFkLCB5b3UgY2FuIGZvbGxvdyB0aGUgZXhhbXBsZSBjb2RlIHRoYXQgaWxsdXN0cmF0ZXMgaG93IHRoZSBsaXN0ZWQgcmVmYWN0b3JpbmdzIGFyZSBpbXBsZW1lbnRlZC4gSG93ZXZlciwgaWYgeW91IHdhbnQgdG8gZ2V0IHRoZSBtb3N0IG91dCBvZiB0aGlzIGJvb2ssIEkgZG8gcmVjb21tZW5kIHRoYXQgeW91IGhhdmUgUmVmYWN0b3JpbmcgY2xvc2UgYnkgeW91ciBzaWRlLiBJdCYjMTQ2XDtzIGFuIGludmFsdWFibGUgcmVmYWN0b3JpbmcgcmVzb3VyY2UsIGFzIHdlbGwgYXMgYSB1c2VmdWwgYWlkIGZvciB1bmRlcnN0YW5kaW5nIHRoaXMgYm9vay4gICBcPFBcPlRoZSBwYXR0ZXJucyBJIHdyaXRlIGFib3V0IGNvbWUgZnJvbSB0aGUgY2xhc3NpYyBib29rIERlc2lnbiBQYXR0ZXJucyBEUCwgYXMgd2VsbCBhcyBmcm9tIGF1dGhvcnMgc3VjaCBhcyBLZW50IEJlY2ssIEJvYmJ5IFdvb2xmLCBhbmQgbXlzZWxmLiBUaGVzZSBhcmUgcGF0dGVybnMgdGhhdCBteSBjb2xsZWFndWVzIGFuZCBJIGhhdmUgcmVmYWN0b3JlZCB0bywgdG93YXJkcywgb3IgYXdheSBmcm9tIG9uIHJlYWwtd29ybGQgcHJvamVjdHMuIEJ5IGxlYXJuaW5nIHRoZSBhcnQgb2YgcGF0dGVybi1kaXJlY3RlZCByZWZhY3RvcmluZ3MsIHlvdSYjMTQ2XDtsbCB1bmRlcnN0YW5kIGhvdyB0byByZWZhY3RvciB0bywgdG93YXJkcywgb3IgYXdheSBmcm9tIHBhdHRlcm5zIG5vdCBtZW50aW9uZWQgaW4gdGhpcyBib29rLiAgIFw8UFw+WW91IGRvbiYjMTQ2XDt0IG5lZWQgZXhwZXJ0IGtub3dsZWRnZSBvZiB0aGVzZSBwYXR0ZXJucyB0byByZWFkIHRoaXMgYm9vaywgdGhvdWdoIHNvbWUga25vd2xlZGdlIG9mIHBhdHRlcm5zIGlzIHVzZWZ1bC4gVG8gaGVscCB5b3UgdW5kZXJzdGFuZCB0aGUgcGF0dGVybnMgSSYjMTQ2XDt2ZSB3cml0dGVuIGFib3V0LCB0aGlzIGJvb2sgaW5jbHVkZXMgYnJpZWYgcGF0dGVybiBzdW1tYXJpZXMsIFVNTCBza2V0Y2hlcyBvZiBwYXR0ZXJucywgYW5kIG1hbnkgZXhhbXBsZSBpbXBsZW1lbnRhdGlvbnMgb2YgcGF0dGVybnMuIFRvIGdldCBhIG1vcmUgZGV0YWlsZWQgdW5kZXJzdGFuZGluZyBvZiB0aGUgcGF0dGVybnMsIEkgcmVjb21tZW5kIHRoYXQgeW91IHN0dWR5IHRoaXMgYm9vayBpbiBjb25qdW5jdGlvbiB3aXRoIHRoZSBwYXR0ZXJucyBsaXRlcmF0dXJlIEkgcmVmZXJlbmNlLiAgIFw8UFw+VGhpcyBib29rIHVzZXMgVU1MIDIuMCBkaWFncmFtcy4gSWYgeW91IGRvbiYjMTQ2XDt0IGtub3cgVU1MIHZlcnkgd2VsbCwgeW91JiMxNDZcO3JlIGluIGdvb2QgY29tcGFueS4gSSBrbm93IHRoZSBiYXNpY3MuIFdoaWxlIHdyaXRpbmcgdGhpcyBib29rLCBJIGtlcHQgdGhlIHRoaXJkIGVkaXRpb24gb2YgRm93bGVyJiMxNDZcO3MgVU1MIERpc3RpbGxlZCBGb3dsZXIsIFVEIGNsb3NlIGJ5IG15IHNpZGUgYW5kIHJlZmVycmVkIHRvIGl0IG9mdGVuLjs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz4e9jk7xYgoScjBSUkibz/634A9dg==" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0321213351.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Refactoring to Patterns (Addison-Wesley Signature Series)</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Joshua Kerievsky</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$49.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$49.99</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">5.0</span>
+          based on
+          <span id="TotalReviews">14</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0321213351/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              <table id="EditorialReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Book Description:</DIV>
+                <span id="Label1">What Is This Book About? <BR>This book is about the marriage of refactoring&#151;the process of improving the design of existing code&#151;with patterns, the classic solutions to recurring design problems. Refactoring to Patterns suggests that using patterns to improve an existing design is better than using patterns early in a new design. This is true whether code is years old or minutes old. We improve designs with patterns by applying sequences of low-level design transformations, known as refactorings.    <P>What Are the Goals of This Book? <BR>This book was written to help you:   <P>Understand how to combine refactoring and patterns  <BR>Improve the design of existing code with pattern-directed refactorings  <BR>Identify areas of code in need of pattern-directed refactorings  <BR>Learn why using patterns to improve existing code is better than using patterns early in a new design  <BR>To achieve these goals, this book includes the following features:   <P>A catalog of 27 refactorings  <BR>Examples based on real-world code, not the toy stuff  <BR>Pattern descriptions, including real-world pattern examples  <BR>A collection of smells (i.e., problems) that indicate the need for pattern-directed refactorings  <BR>Examples of different ways to implement the same pattern  <BR>Advice for when to refactor to, towards, or away from patterns  <BR>To help individuals or groups learn the 27 refactorings in the book, you&#146;ll find a suggested study sequence on the inside back cover of the book.   <P>Who Should Read This Book?  <P>This book is for object-oriented programmers engaged in or interested in improving the design of existing code. Many of these programmers use patterns and/or practice refactoring but have never implemented patterns by refactoring; others know little about refactoring and patterns and would like to learn more.   <P>This book is useful for both greenfield development, in which you are writing a new system or feature from scratch, and legacy development, in which you are mostly maintaining a legacy system.   <P>What Background Do You Need? <BR>This book assumes you are familiar with design concepts like tight coupling and loose coupling as well as object-oriented concepts like inheritance, polymorphism, encapsulation, composition, interfaces, abstract and concrete classes, abstract and static methods, and so forth.   <P>I use Java examples in this book. I find that Java tends to be easy for most object-oriented programmers to read. I&#146;ve gone out of my way to not use fancy Java features, so whether you code in C++, C#, Visual Basic .NET, Python, Ruby, Smalltalk, or some other object-oriented language, you ought to be able to understand the Java code in this book.   <P>This book is closely tied to Martin Fowler&#146;s classic book Refactoring F. It contains references to low-level refactorings, such as:   <P>Extract Method  <BR>Extract Interface  <BR>Extract Superclass  <BR>Extract Subclass  <BR>Pull Up Method  <BR>Move Method  <BR>Rename Method   <P>Refactoring also contains references to more sophisticated refactorings, such as:   <P>Replace Inheritance with Delegation  <BR>Replace Conditional with Polymorphism  <BR>Replace Type Code with Subclasses   <P>To understand the pattern-directed refactorings in this book, you don&#146;t need to know every refactoring listed above. Instead, you can follow the example code that illustrates how the listed refactorings are implemented. However, if you want to get the most out of this book, I do recommend that you have Refactoring close by your side. It&#146;s an invaluable refactoring resource, as well as a useful aid for understanding this book.   <P>The patterns I write about come from the classic book Design Patterns DP, as well as from authors such as Kent Beck, Bobby Woolf, and myself. These are patterns that my colleagues and I have refactored to, towards, or away from on real-world projects. By learning the art of pattern-directed refactorings, you&#146;ll understand how to refactor to, towards, or away from patterns not mentioned in this book.   <P>You don&#146;t need expert knowledge of these patterns to read this book, though some knowledge of patterns is useful. To help you understand the patterns I&#146;ve written about, this book includes brief pattern summaries, UML sketches of patterns, and many example implementations of patterns. To get a more detailed understanding of the patterns, I recommend that you study this book in conjunction with the patterns literature I reference.   <P>This book uses UML 2.0 diagrams. If you don&#146;t know UML very well, you&#146;re in good company. I know the basics. While writing this book, I kept the third edition of Fowler&#146;s UML Distilled Fowler, UD close by my side and referred to it often.</span>
+              
+</td></tr></table>
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">A Must Read for All Programmers</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>1</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2005-01-26</span>
+                    </div>
+                    <span>Kerievsky has written a very useful book and I recommend that all programmers read it.  The unification of the two worlds of "patterns" and "refactoring" makes perfect sense, and I find this book an excellent companion to the GOF Design Patterns book.  While the original Design Patterns is a classic, it's presentation of finished patterns made it difficult for programmers to relate these abstract concepts to their own everyday experience.  Kerievsky addresses precisely that problem, and my only criticism would be that the source code associated with each refactoring is not available online.  Hoewever, even in the absence of digital copies of the source code the book is extremely useful, especially for the legions of programmers who must maintain legacy code from earlier systems.  An issue that every programmer faces on a daily basis to a greater or lesser degree.</span>
+                  
+                    <div class="CustomerReviewSummary">Well written, easy to read, and genuinely useful</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2005-01-06</span>
+                    </div>
+                    <span>Refactoring To Patterns brings together the Patterns movement, and the practice of Refactoring commonplace in the Agile community. Whereas the original Gang of Four book told us what patterns were, what sort of problems they solved, and how the code might be structured, Refactoring To Patterns illustrates how, why and when to introduce patterns into an existing codebase.
+<br />
+<br />The opening chapters cover the background, introducing both refactoring and design patterns, and the context in which the book was written. This gives the reader a clear overview of what is involved in Refactoring to Patterns, and paves the way for the refactoring catalogue which makes up the bulk of the book.
+<br />
+<br />The catalogue is divided into chapters based on the type of change required --- is this a refactoring to simplify code, generalize code, or increase encapsulation and protection? Each chapter has an introduction which gives an overview of the refactorings contained within that chapter, followed by the refactorings themselves. These introductions clearly illustrate the principles and choices which would lead one to follow the refactorings that follow.
+<br />
+<br />Each refactoring starts with a brief one sentence summary, and before and after structure diagrams with reference to the structure diagrams for the relevant pattern in the Design Patterns book. The sections that follow then cover the Motivation for using this refactoring, step-by-step Mechanics, and a worked Example, relating back to the steps given for the Mechanics. Finally, some of the refactorings finish with Variations on the same theme. The examples are all pulled from a small sample of projects, which are introduced at the beginning of the catalogue section, and help illuminate the instructions given in the Mechanics section. The mechanics themselves are generally clear, and broken down into small steps --- sometimes smaller steps than I might take in practice, but I think this is probably wise, as large steps can easily confuse. Finally, the Motivation sections do a good job of explaining why one would choose to do a particular refactoring, and any pitfalls to doing so --- the "Benefits and Liabilities" tables provide a useful summary.
+<br />
+<br />This book is well written, easy to read, and genuinely useful. It has helped me put some of the refactorings I do into a larger context, and given me insight into how I can integrate patterns with existing code, rather than designing them in up front. As John Brant and Don Roberts highlight in their Afterword, this is a book to study, the real benefit comes not from knowing the mechanics, but by understanding the motivation, and the process, so that one may apply the same thinking to other scenarios not covered by this book. If you are serious about software development, buy this book, inwardly digest it, and keep it by your side.
+<br />
+<br />Highly Recommended.</span>
+                  
+                    <div class="CustomerReviewSummary">The other reviews say it all, really.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>1</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-12-02</span>
+                    </div>
+                    <span>To sum it up nicely, this is a good book, very good.  I could have lived without all the XML/DOM, though, but still the kind of quality you can usually expect from Addison Wesley publishing.</span>
+                  
+                    <div class="CustomerReviewSummary">Over-complicated examples ruin a superb piece of work.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>18</span>
+                      /
+                      <span>20</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-11-07</span>
+                    </div>
+                    <span>This book is the only one of its kind that tries to use a patterns approach to refactoring. It is a good add-on to Martin Fowler's book. It's a very valuable contribution to the refactoring community. Kerievsky has a no-nonsense, down-to-earth approach to the subject of Patterns. However unlike Fowler who makes an effort to keep the code examples in his book as simple as possible, Kerievsky has made his examples over-complicated with all kinds of detailed finance domain references and the XML DOM. The example he uses to show how the Builder pattern simplifies creation of Composites is like a really heavy chapter on XML processing/generation. 
+<br />The "Replace Conditional Logic with Strategy" is like a chapter on Investments / Loans. It really distracts the reader's attention from the pattern or refactoring.
+<br />This is a shame because it is impossible to write a good book on refactoring without nice examples. It is also a bit surprising that none of the other Amazon reviews mention this issue.</span>
+                  
+                    <div class="CustomerReviewSummary">Excellent Book</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>12</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-10-31</span>
+                    </div>
+                    <span>Code Complete, Design Patterns, Refactoring, Extreme Programming Explained, Design Patterns, Refactoring to Patterns, Code Complete... you get the idea. </span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321125215'>
+                      Domain-Driven Design: Tackling Complexity in the Heart of Software
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 15 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596007124'>
+                      Head First Design Patterns
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 28 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=159059388X'>
+                      Holub on Patterns: Learning Design Patterns by Looking at Code
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 9 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0735619670'>
+                      Code Complete, Second Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 24 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0131177052'>
+                      Working Effectively with Legacy Code
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 10 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

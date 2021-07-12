@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Windows Presentation Foundation and RubyCLR</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Windows Presentation Foundation and RubyCLR": comment by John Lam</title>
+      <description>&lt;p&gt;Yes - after the next drop (hopefully this week) I'll be building a new home for the bridge with a Trac install.&lt;/p&gt;</description>
+      <pubDate>Thu, 09 Mar 2006 08:58:44 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/08/windows-presentation-foundation-and-rubyclr#comment-180</guid>
+      <link>http://www.iunknown.com/articles/2006/03/08/windows-presentation-foundation-and-rubyclr#comment-180</link>
+    </item>
+    <item>
+      <title>"Windows Presentation Foundation and RubyCLR": comment by Jason Bock</title>
+      <description>&lt;p&gt;I've been very interested in your RubyCLR work, but I was wondering if you'll have a "home page" for your bridge. A place where you have the code drops, maybe a list of related blog postings...I'm also asking because I don't really have a good page to link to from my languages site :) :&lt;/p&gt;
+
+&lt;p&gt;http://www.dotnetlanguages.net/DNL/Resources.aspx&lt;/p&gt;
+
+&lt;p&gt;Keep up the good work.&lt;/p&gt;
+
+&lt;p&gt;Regards,
+Jason&lt;/p&gt;</description>
+      <pubDate>Thu, 09 Mar 2006 08:38:33 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/08/windows-presentation-foundation-and-rubyclr#comment-179</guid>
+      <link>http://www.iunknown.com/articles/2006/03/08/windows-presentation-foundation-and-rubyclr#comment-179</link>
+    </item>
+    <item>
+      <title>"Windows Presentation Foundation and RubyCLR" by jlam</title>
+      <description>&lt;p&gt;I&amp;#8217;ve forgotten most of what little I knew about Avalon aka Windows Presentation Foundation. So I spent a bit of time today trying to remember &amp;#8230; here&amp;#8217;s what I was able to accomplish:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/49/109809504_3cb96cef07_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;OK, so that&amp;#8217;s not really all that spectacular. What &lt;strong&gt;is&lt;/strong&gt; spectacular, however, is how I can create this thing without having to define any &lt;span class="caps"&gt;CLR&lt;/span&gt; classes myself (which is impossible using my bridge). Here&amp;#8217;s the &lt;span class="caps"&gt;XAML&lt;/span&gt; file:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+&amp;lt;Window
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&amp;gt;
+  &amp;lt;StackPanel&amp;gt;
+    &amp;lt;Button Name="button1"&amp;gt;Click me&amp;lt;/Button&amp;gt;
+  &amp;lt;/StackPanel&amp;gt;
+&amp;lt;/Window&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+Note that this technique isn&amp;#8217;t documented very well at all, but a bit of experimentation yielded this:
+&lt;pre&gt;&lt;code&gt;
+require 'wpf'
+
+window = XamlReader.load(System::IO::File.open_read('app.xaml'))
+button = window.find_name('button1')
+button.click do |sender, args|
+  puts 'clicked me!'
+end
+Application.new.run(window)
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The wicked-cool feature of this code is how &lt;code&gt;XamlReader.load&lt;/code&gt; generates a &lt;code&gt;Window&lt;/code&gt; object for me from the &lt;span class="caps"&gt;XAML&lt;/span&gt;. Now it&amp;#8217;s a simple matter for me to find the button and hook up its &lt;code&gt;Click&lt;/code&gt; event handler.&lt;/p&gt;
+
+
+	&lt;p&gt;Now I&amp;#8217;m not all that happy with the Ruby code. I really want it to look like this:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+window = XamlReader.load(System::IO::File.open_read('app.xaml'))
+window.button1.click do |sender, args|
+  puts 'clicked me!'
+end
+Application.new.run(window)
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The &lt;code&gt;window.button1&lt;/code&gt; construct is much more Ruby-esque and requires that I hook &lt;code&gt;method_missing&lt;/code&gt; in any class that derives from &lt;a href="http://windowssdk.msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref28/html/T_System_Windows_FrameworkElement.asp"&gt;FrameworkElement&lt;/a&gt; to first try to call &lt;a href="http://windowssdk.msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref28/html/M_System_Windows_FrameworkElement_FindName_1_16219e3a.asp"&gt;FindName&lt;/a&gt; after any other dynamic name resolution.&lt;/p&gt;
+
+</description>
+      <pubDate>Wed, 08 Mar 2006 17:05:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/03/08/windows-presentation-foundation-and-rubyclr"&gt;Windows Presentation Foundation and RubyCLR&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/03/08/windows-presentation-foundation-and-rubyclr"&gt;Windows Presentation Foundation and RubyCLR&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

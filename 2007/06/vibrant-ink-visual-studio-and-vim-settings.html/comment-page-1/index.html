@@ -1,0 +1,1780 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+
+<title>
+  Vibrant Ink, Visual Studio and Vim settings&nbsp;|&nbsp;John Lam on Software</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="http://iunknown.com/wp-content/themes/headlines/style.css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/LessIsBetter" />
+<link rel="pingback" href="http://iunknown.com/xmlrpc.php" />
+   
+<!--[if IE 6]>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/pngfix.js"></script>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/menu.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie6.css" />
+<![endif]-->	
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie7.css" />
+<![endif]-->
+   
+<link rel="alternate" type="application/rss+xml" title="John Lam on Software &raquo; Vibrant Ink, Visual Studio and Vim settings Comments Feed" href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/feed" />
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/jquery/jquery.js?ver=1.4.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/superfish.js?ver=3.0.1'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/woo_tabs.js?ver=3.0.1'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/cufon-yui.js?ver=3.0.1'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/Liberation.font.js?ver=3.0.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://iunknown.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://iunknown.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='John Lam on Software' href='http://iunknown.com' />
+<link rel='start' title='Motorola DROID Review' href='http://iunknown.com/2009/12/motorola-droid-review.html' />
+<link rel='prev' title='VMWare Fusion Rocks' href='http://iunknown.com/2007/06/vmware-fusion-rocks.html' />
+<link rel='next' title='Foo Camp can influence you before you go' href='http://iunknown.com/2007/06/foo-camp-can-influence-you-before-you-go.html' />
+<meta name="generator" content="WordPress 3.0.1" />
+<link rel='canonical' href='http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html' />
+<link rel='shortlink' href='http://iunknown.com/?p=73' />
+<meta name="generator" content="Headlines 2.4.1" />
+<meta name="generator" content="Woo Framework Version 2.5.3" />
+<script type="text/javascript">Cufon.replace("h2, h3, h4, h5, h6, .title, .cufon");</script>
+<style type="text/css">.widget h3 { line-height:22px; }</style>
+<link href="http://iunknown.com/wp-content/themes/headlines/styles/color.css" rel="stylesheet" type="text/css" />
+<link href="http://iunknown.com/wp-content/themes/headlines/custom.css" rel="stylesheet" type="text/css" />
+<!-- Woo Styling -->
+<style type="text/css">
+#logo img { display:none; }
+#logo .site-title, #logo .site-description { display:block; } 
+</style>
+
+<!--[if lte IE 7]>
+<script type="text/javascript">
+jQuery(function() {
+	var zIndexNumber = 1000;
+	jQuery('div').each(function() {
+		jQuery(this).css('zIndex', zIndexNumber);
+		zIndexNumber -= 1;
+	});
+});
+</script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="container">
+       
+	<div id="top">
+    
+		
+        <div id="header" class="col-full">
+       
+            <div id="logo">
+               
+                                
+                                    <span class="site-title"><a href="http://iunknown.com">John Lam on Software</a></span>
+                                
+                    <span class="site-description">Working for The Man in Redmond</span>
+                
+            </div><!-- /#logo -->
+               
+			            <div id="twitter-top">
+            	<div class="logo">
+                    <a href="http://www.twitter.com/john_lam" title="Follow on Twitter"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-twitter.png" alt="Twitter" /></a>                
+                </div>
+                <div class="tweet">
+	                <ul id="twitter_update_list"><li></li></ul>
+                </div>
+            </div><!-- /#topad -->
+			                       
+        </div><!-- /#header -->
+        
+        <div id="navigation">
+        
+			<div id="page-nav">
+    <div class="col-full">
+        <ul id="nav" class="fl">
+        
+            <li><a href="http://iunknown.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-home.png" class="ico-home" alt="Home" /></a></li>
+			        
+            <li class="page_item page-item-2"><a href="http://iunknown.com/about" title="About">About</a></li>
+            
+			            
+            
+        </ul><!-- /#nav1 -->
+        
+        <ul class="rss fr">
+                        <li><a href="http://feeds.feedburner.com/LessIsBetter">Posts</a></li>
+        </ul><!-- /.rss -->
+    </div><!-- /.col-full -->
+</div><!-- /#page-nav -->
+                        
+            <div id="cat-nav">
+                <div class="col-full">
+                    <ul id="secnav" class="fl">
+                    
+					                    
+						      
+                        <li>
+                            <a href="http://iunknown.com/category/ironruby">IronRuby</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/microsoft">Microsoft</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/misc_geek">Misc Geek</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/personal">Personal</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/rubyclr">RubyCLR</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/uncategorized">Uncategorized</a>
+                            
+                                                    </li>        
+                                                
+					                        
+                    </ul><!-- /#nav2 -->
+                    
+                                        <div id="search" class="fr">
+                        <form method="get" id="searchform" action="http://iunknown.com">
+                            <input type="text" class="field" name="s" id="s"  value="Enter keywords..." onfocus="if (this.value == 'Enter keywords...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter keywords...';}" />
+                            <input class="submit btn" type="image" src="http://iunknown.com/wp-content/themes/headlines/images/ico-search.png" value="Go" />
+                        </form>
+                    </div><!-- /#search -->
+                                    </div><!-- /.col-full -->
+            </div><!-- /#cat-nav -->
+            
+        </div><!-- /#navigation -->
+    
+    </div><!--/#top-->       
+    <div id="content" class="col-full">
+		<div id="main" class="col-left">
+		           
+                                    
+                <div class="box">
+                    <div class="post">
+    
+						                           
+                        <h1 class="title">Vibrant Ink, Visual Studio and Vim settings</h1>
+                        
+                        <p class="post-meta">
+							<img src="http://iunknown.com/wp-content/themes/headlines/images/ico-time.png" alt="" />15. Jun, 2007                            <span class="comments"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-comment.png" alt="" /><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html#comments" title="Comment on Vibrant Ink, Visual Studio and Vim settings">34 Comments</a></span>
+                        </p>
+
+																	
+                        <div class="entry">
+							<p><a href="http://www.flickr.com/photos/john_lam/552776709/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1435/552776709_85626b7961.jpg" width="500" height="386" alt="VS and Vim Settings" /></a></p>
+<p>I&#8217;m a big fan of the <a href="http://encytemedia.com/blog/articles/2006/01/03/textmate-vibrant-ink-theme-and-prototype-bundle">Vibrant Ink</a> theme for <a href="http://macromates.com/">Textmate</a>. I spent some time last year porting the color scheme to both <a href="http://www.vim.org/">vim</a> and <a href="http://msdn2.microsoft.com/en-us/vstudio/default.aspx">Visual Studio</a> &#8211; that&#8217;s what you can see in the screenshot. I&#8217;m releasing <a href="http://www.iunknown.com/files/jflam.zip">my _vimrc and vssettings files</a> if you want to experiment with this stuff in your local configuration.</p>
+<p>I also use <a href="http://www.viemu.com/">ViEmu</a> in Visual Studio so that I can use the same keybindings everywhere. This is especially important if you&#8217;re doing Windows development on a Macbook Pro since there are missing keys &#8211; and the key chords that you have to use daily on a MBP to achieve equivalent functionality to a standard PC keyboard are annoying at best, or will lead to RSI at worst.</p>
+<p>You may notice an inconsistency between my vim and VS settings. I was a two-space indent guy before coming to the company, but everyone else around here has a thing for four-space (not tab- yay!) ident, so I caved.</p>
+<p><em>Update:</em> I&#8217;m an even bigger fan of Fusion now, since the crazy race condition problem for grabbing a wireless network connection here on corpnet seems to be gone. This problem manifests itself when I suspend my MBP by closing its lid. When I open the lid, both the Mac OS and Windows machines try to grab their own wireless connection on corpnet (I cannot use NAT). Under Parallels, this would result in my laptop getting booted off corpnet (maybe 50% of the time) until I shut down Parallels, waited until my host OS got a connection to corpnet, and then restarted Parallels. This wasted a ton of time, and resulted in me walking around a lot with the lid open &#8230;</p>
+                        </div>
+                        <div class="fix"></div>
+
+                                                <div id="share">
+							<div class="banner">Share</div>
+                            <a href="http://twitter.com/home/?status=Vibrant Ink, Visual Studio and Vim settings : http://tinyurl.com/ybdhyae"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-twitter.png" alt="Twitter" /></a>
+<a href="http://digg.com/submit?phase=2&amp;url=http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-digg.png" alt="Digg" /></a>                            
+<a href="http://del.icio.us/post?url=http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html&amp;title=Vibrant Ink, Visual Studio and Vim settings"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-delicious.png" alt="Delicious" /></a>                            
+<a href="http://www.stumbleupon.com/submit?url=http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html&amp;title=Vibrant+Ink%2C+Visual+Studio+and+Vim+settings"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-stumbleupon.png" alt="Stumbleupon" /></a>                            
+<a href="http://technorati.com/cosmos/search.html?url=http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-technorati.png" alt="Technorati" /></a>                            
+<a href="http://www.facebook.com/sharer.php?u=http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html&amp;t=Vibrant Ink, Visual Studio and Vim settings"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-facebook.png" alt="Facebook" /></a>
+<a href="mailto:EMAIL ADDRESS?body=http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-mail.png" alt="Email" /></a>                           
+                        </div>
+                                                                        
+                    </div><!-- /.post -->
+                    
+                    <div class="post-bottom">
+                        <div class="fl"><span class="cat"><a href="http://iunknown.com/category/uncategorized" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></span></div>
+                        <div class="fr"></div> 
+                        <div class="fix"></div>                       
+                    </div>
+                    
+                </div><!-- /.box -->
+
+                <div class="more_entries">
+					<div class="fl"><a href="http://iunknown.com/2007/06/vmware-fusion-rocks.html" rel="prev">VMWare Fusion Rocks</a></div>
+					<div class="fr"><a href="http://iunknown.com/2007/06/foo-camp-can-influence-you-before-you-go.html" rel="next">Foo Camp can influence you before you go</a></div>
+                    <div class="fix"></div>                       
+				</div>               
+                
+				
+    
+
+<!-- You can start editing here. -->
+
+<div id="comments">
+
+
+	
+        <h3>34 Responses to &#8220;Vibrant Ink, Visual Studio and Vim settings&#8221;</h3>
+    
+        <ol class="commentlist">
+    
+                             
+	<li class="comment even thread-even depth-1" id="li-comment-793">
+    
+    	<a name="comment-793"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/d57d8b027fe943f061b6187d870443a7?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://codeprairie.net/blogs/chrisortman' rel='external nofollow' class='url url'>Chris Ortman</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-793" title="Direct link to this comment">15. Jun, 2007 at 10:32 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-793">
+                
+                    <p>Have you seen vividchalk for vim?<br />
+<a href="http://vim.sourceforge.net/scripts/script.php?script_id=1891" rel="nofollow">http://vim.sourceforge.net/scripts/script.php?script_id=1891</a></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-794">
+    
+    	<a name="comment-794"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/2e8a8696351166c63ac462f780ec3b5c?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.sax.net/live' rel='external nofollow' class='url url'>Mike Sax</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-794" title="Direct link to this comment">15. Jun, 2007 at 10:34 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-794">
+                
+                    <p>Thanks for sharing John!  What XP theme do you use?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-795">
+    
+    	<a name="comment-795"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/6d77f6f38f80e753487e9ef66404a724?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.winterdom.com/weblog/' rel='external nofollow' class='url url'>Tomas Restrepo</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-795" title="Direct link to this comment">15. Jun, 2007 at 11:08 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-795">
+                
+                    <p>That&#8217;s a pretty nice style, John. I find it a bit &#8220;too vibrant&#8221; for me, but pretty good still <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /><br />
+I had heard about VIMEmu but for some reason I had not bothered to try it&#8230; maybe I will soon!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-796">
+    
+    	<a name="comment-796"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/8c7a98649cdbbdf39eeed17ca9bdbbd3?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://joshuamcharles.com' rel='external nofollow' class='url url'>Josh Charles</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-796" title="Direct link to this comment">15. Jun, 2007 at 11:09 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-796">
+                
+                    <p>Thanks!  Got it up and working on my version of Visual Studio &#8211; This is great!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-797">
+    
+    	<a name="comment-797"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/14ed0e493cb53d196b5124f53ec9c0d2?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.developernotes.com' rel='external nofollow' class='url url'>Nick Parker</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-797" title="Direct link to this comment">16. Jun, 2007 at 8:48 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-797">
+                
+                    <p>Thanks John, much appreciated.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-798">
+    
+    	<a name="comment-798"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/267942571862781dd912de6482a35f46?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.almostserio.us/' rel='external nofollow' class='url url'>Kevin Williams</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-798" title="Direct link to this comment">16. Jun, 2007 at 9:12 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-798">
+                
+                    <p>So sweet &#8211; thanks! The contrast seems a bit too high, but having a VibrantInk look-alike in Visual Studio is great!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-799">
+    
+    	<a name="comment-799"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/5159227f15ff6247f88542812f866c4f?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://xmlhacker.com/' rel='external nofollow' class='url url'>M. David Peterson</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-799" title="Direct link to this comment">17. Jun, 2007 at 11:52 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-799">
+                
+                    <p>@Mike Sax,<br />
+If not mistaken, that&#8217;s the Zune theme.  You can download it from go.microsoft.com/fwlink/?LinkID=75078</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-824">
+    
+    	<a name="comment-824"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.tkachenko.com/blog/archives/000708.html' rel='external nofollow' class='url url'>Signs on the Sand</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-824" title="Direct link to this comment">18. Jun, 2007 at 12:15 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-824">
+                
+                    <p><strong>Vibrant Ink Theme for Visual Studio</strong></p>
+<p>John Lam ported Textmate&#8217;s Vibrant Ink theme to Visual Studio. Get it here. Awesome. Note that toolbarbuttons are nowhere to be seen. I noticed that while I&#8217;monly barely use toolbar, it still takes lots of space and more irritating- d&#8230;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-823">
+    
+    	<a name="comment-823"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://eduardomiranda.net/blogs/dotnet/archive/2007/06/19/mudando-o-visual-do-visual-studio.aspx' rel='external nofollow' class='url url'>Console.Write(this.Opinion)</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-823" title="Direct link to this comment">19. Jun, 2007 at 3:34 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-823">
+                
+                    <p><strong>Mudando o visual do Visual Studio</strong></p>
+<p>Mudando o visual do Visual Studio</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-800">
+    
+    	<a name="comment-800"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/112d61920c9daa3192b59458acf1c8d2?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://jozilla.net/' rel='external nofollow' class='url url'>Jo Vermeulen</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-800" title="Direct link to this comment">25. Jun, 2007 at 6:13 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-800">
+                
+                    <p>Hello John,<br />
+I created a .vim colorscheme based on your initial work:<br />
+<a href="http://blog.jozilla.net/2006/10/5/vibrantink-theme-for-vim" rel="nofollow">http://blog.jozilla.net/2006/10/5/vibrantink-theme-for-vim</a><br />
+<a href="http://www.vim.org/scripts/script.php?script_id=1794" rel="nofollow">http://www.vim.org/scripts/script.php?script_id=1794</a><br />
+Maybe it&#8217;s good to team up and integrate both our work into one colorscheme?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-801">
+    
+    	<a name="comment-801"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/9fdbf90e3f00982fa10ab8024e46d1a7?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Mark Kruger</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-801" title="Direct link to this comment">24. Jul, 2007 at 9:36 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-801">
+                
+                    <p>I am a little late to comment, but what is it about Vibrant Ink that is appealing?<br />
+Is it aesthetics alone or does it help with reading and understanding the code in some way?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-802">
+    
+    	<a name="comment-802"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/4fdce145bab6d27d69e34403f99fd11c?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://danintouch.blogspot.com' rel='external nofollow' class='url url'>Dan</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-802" title="Direct link to this comment">02. Aug, 2007 at 7:39 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-802">
+                
+                    <p>Great work John, looks even better when you set the font to: &#8220;Lucida Sans Typewriter&#8221;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-822">
+    
+    	<a name="comment-822"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blog.wekeroad.com/archive/2007/08/14/rails-y-textmate-theme-for-visual-studio.aspx' rel='external nofollow' class='url url'>Rob Conery</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-822" title="Direct link to this comment">14. Aug, 2007 at 11:41 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-822">
+                
+                    <p><strong>Rails-y TextMate Theme For Visual Studio</strong></p>
+<p>Rails-y TextMate Theme For Visual Studio</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-821">
+    
+    	<a name="comment-821"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://vidmar.net/weblog/archive/2007/09/02/links-of-the-week-1-week-3507.aspx' rel='external nofollow' class='url url'>Bite my bytes</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-821" title="Direct link to this comment">02. Sep, 2007 at 9:47 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-821">
+                
+                    <p><strong>Links of the week #1 (week 35/07)</strong></p>
+<p>Links of the week #1 (week 35/07)</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-820">
+    
+    	<a name="comment-820"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://codeclimber.net.nz/archive/2007/10/12/Pimping-my-Visual-Studio.aspx' rel='external nofollow' class='url url'>CodeClimber</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-820" title="Direct link to this comment">12. Oct, 2007 at 2:11 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-820">
+                
+                    <p><strong>Pimping my Visual Studio</strong></p>
+<p>Pimping my Visual Studio</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-819">
+    
+    	<a name="comment-819"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/peterlau/archive/2007/10/23/vibrant-ink-in-visual-studio.aspx' rel='external nofollow' class='url url'>JrzyShr Dev Guy</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-819" title="Direct link to this comment">23. Oct, 2007 at 10:36 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-819">
+                
+                    <p><strong>Vibrant Ink in Visual Studio</strong></p>
+<p>If you do any Silverlight development, you&#8217;ll likely end up spending a good deal of time switching between</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-803">
+    
+    	<a name="comment-803"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/eb80d8381e251ab4fc5f2eeeb5caa059?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.sandromark78.it' rel='external nofollow' class='url url'>Sandro M.</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-803" title="Direct link to this comment">06. Nov, 2007 at 9:11 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-803">
+                
+                    <p>John, thank you very much for your fantastic job. I have just announced your theme on my blog! Good work!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-818">
+    
+    	<a name="comment-818"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://codeclimber.net.nz/archive/2007/12/04/My-definitive-color-VS-color-schema.aspx' rel='external nofollow' class='url url'>CodeClimber</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-818" title="Direct link to this comment">04. Dec, 2007 at 7:47 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-818">
+                
+                    <p><strong>My definitive color VS color schema</strong></p>
+<p>My definitive color VS color schema</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-817">
+    
+    	<a name="comment-817"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.hanselman.com/blog/VisualStudioProgrammerThemesGallery.aspx' rel='external nofollow' class='url url'>Scott Hanselman's Computer Zen</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-817" title="Direct link to this comment">07. Feb, 2008 at 3:55 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-817">
+                
+                    <p><strong>Visual Studio Programmer Themes Gallery</strong></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-816">
+    
+    	<a name="comment-816"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.hanselman.com/blog/VisualStudioProgrammerThemesGallery.aspx' rel='external nofollow' class='url url'>Scott Hanselman's Computer Zen</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-816" title="Direct link to this comment">08. Feb, 2008 at 12:52 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-816">
+                
+                    <p><strong>Visual Studio Programmer Themes Gallery</strong></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-815">
+    
+    	<a name="comment-815"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.hanselman.com/blog/VisualStudioProgrammerThemesGallery.aspx' rel='external nofollow' class='url url'>Scott Hanselman's Computer Zen</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-815" title="Direct link to this comment">08. Feb, 2008 at 1:41 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-815">
+                
+                    <p><strong>Visual Studio Programmer Themes Gallery</strong></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-814">
+    
+    	<a name="comment-814"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://geeks.ms/blogs/sergiotarrillo/archive/2008/04/02/82179.aspx' rel='external nofollow' class='url url'>SergioTarrillo's RichWeblog</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-814" title="Direct link to this comment">01. Apr, 2008 at 11:29 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-814">
+                
+                    <p><strong>Coleccion de temas para Visual Studio 2008</strong></p>
+<p>Alguna vez leí en un artículo de Internet que un leer sobre un fondo negro cansa menos que leer sobre</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-813">
+    
+    	<a name="comment-813"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://geeks.ms/blogs/eortuno/archive/2008/10/26/protege-tus-ojos-con-temas-de-visual-studio.aspx' rel='external nofollow' class='url url'>Tecnocrata</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-813" title="Direct link to this comment">25. Oct, 2008 at 9:27 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-813">
+                
+                    <p><strong>Protege tus ojos con temas de Visual Studio</strong></p>
+<p>La mayor parte del tiempo que la paso frente al monitor de mi computadora, ya sea en mi trabajo o en</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-812">
+    
+    	<a name="comment-812"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://geeks.ms/blogs/eortuno/archive/2008/10/26/protege-tus-ojos-con-temas-de-visual-studio.aspx' rel='external nofollow' class='url url'>Tecnocrata</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-812" title="Direct link to this comment">27. Oct, 2008 at 10:54 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-812">
+                
+                    <p><strong>Protege tus ojos con temas de Visual Studio</strong></p>
+<p>La mayor parte del tiempo que la paso frente al monitor de mi computadora, ya sea en mi trabajo o en</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-804">
+    
+    	<a name="comment-804"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/656f0e492eb51c2fadd9a88f309cf598?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Mike</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-804" title="Direct link to this comment">03. Nov, 2008 at 12:14 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-804">
+                
+                    <p>Thank you very much.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-805">
+    
+    	<a name="comment-805"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/b89d4d2d3da660d39bcb90712eac9a53?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://360.yahoo.com/afshin_z' rel='external nofollow' class='url url'>Afshin Zavar</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-805" title="Direct link to this comment">13. Nov, 2008 at 9:41 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-805">
+                
+                    <p>What&#8217;s your windows skin? and which software do u use?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-806">
+    
+    	<a name="comment-806"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/24047f32bb374dcff3c6804a95f20a47?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">PHenry</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-806" title="Direct link to this comment">12. Feb, 2009 at 7:54 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-806">
+                
+                    <p>I noticed you mentioned the diff between spaces and tabs.  I&#8217;ve always used tabs but recently move to a company using spaces (2).  Seems more personal preference, or Unix vs Windows?<br />
+What&#8217;s your pros/cons of using either/or?<br />
+I can&#8217;t seem to hit the right google search phrase today.  Thanks.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-807">
+    
+    	<a name="comment-807"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/8cbaa5f1dbad2ef914119dcd1ebe29b7?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">DJ</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-807" title="Direct link to this comment">24. Feb, 2009 at 10:57 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-807">
+                
+                    <p>Very nice &#8211; but I can&#8217;t get NAntAddin to appear when I&#8217;ve got these setting imported.  Anyone else have that issue?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-808">
+    
+    	<a name="comment-808"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/d44f89f8357ebb8b51118aeaee4ea51e?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Ram</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-808" title="Direct link to this comment">09. Mar, 2009 at 3:53 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-808">
+                
+                    <p>Cool Theme. Thanks a lot for sharing !!!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-809">
+    
+    	<a name="comment-809"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/4995af1d9a0c7eb7761fc0156587d5c2?s=70&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Aaron S.</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-809" title="Direct link to this comment">09. Mar, 2009 at 9:07 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-809">
+                
+                    <p>If you use TAB instead of space, it allows the user to set how to represent that indentation.<br />
+Say you like the 2 char indent and I like 4.  If we both keep TABs, then the source is the same, just our individual IDE&#8217;s know how to draw them to our liking.<br />
+If we each replace tab with spaces, every time I reformat source you created, the entire source appears to have changed.<br />
+Why does anyone use spaces?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-810">
+    
+    	<a name="comment-810"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://1.gravatar.com/avatar/141e7e72f2e3ddbb886e5d12a4c7ca53?s=70&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://msdotnetsupport.blogspot.com' rel='external nofollow' class='url url'>Dutt</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-810" title="Direct link to this comment">03. Jun, 2009 at 3:38 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-810">
+                
+                    <p>This is excellent theme than anyone else.<br />
+but Ctrl+F, Search box is not working. Dialog Box is not displying.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-811">
+    
+    	<a name="comment-811"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://profile.typepad.com/6p0120a4f38042970b' rel='external nofollow' class='url url'>B</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#comment-811" title="Direct link to this comment">14. Aug, 2009 at 12:52 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-811">
+                
+                    <p>Thanks a lot, I love this theme!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+        
+        </ol>    
+    
+        <div class="navigation">
+            <div class="fl"></div>
+            <div class="fr"></div>
+            <div class="fix"></div>
+        </div><!-- /.navigation -->
+
+			
+	    		
+        <h3 id="pings">Trackbacks/Pingbacks</h3>
+    
+        <ol class="pinglist">
+            	
+	<li id="comment-2267">
+		<span class="author"><a href='http://labloguera.net/blogs/jonas/archive/2010/07/09/temas-para-visual-studio.aspx' rel='external nofollow' class='url'>¿Sueña el algoritmo con ovejas eléctricas? : “Temas” para Visual Studio</a></span> - 
+		<span class="date">09. Jul, 2010</span>
+		<span class="pingcontent"><p>[...] <a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html" rel="nofollow">http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html</a> [...]</p>
+</span>
+
+</li>
+	
+	<li id="comment-2268">
+		<span class="author"><a href='http://www.iexpertos.com/icap/wordpress/?p=271' rel='external nofollow' class='url'>Curso Web 2.0 &raquo; Blog Archive &raquo; La Bloguera 9 July 2010</a></span> - 
+		<span class="date">09. Jul, 2010</span>
+		<span class="pingcontent"><p>[...] <a href="http://weblogs.asp.net/infinitiesloop/archive/2006/08/06/Join-the-Dark-Side-of-Visual-Studio.aspx" rel="nofollow">http://weblogs.asp.net/infinitiesloop/archive/2006/08/06/Join-the-Dark-Side-of-Visual-Studio.aspx</a> <a href="http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html" rel="nofollow">http://iunknown.com/2007/06/vibrant-ink-visual-studio-and-vim-settings.html</a> Pero de todos los sitios que he encontrado el que posiblemente sea el más interesante es el [...]</p>
+</span>
+
+</li>
+        </ol>
+    	
+		
+
+</div> <!-- /#comments_wrap -->
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+	
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2007/06/vibrant-ink-visual-studio-and-vim-settings.html/comment-page-1#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div><!-- /.cancel-comment-reply -->
+
+		    
+		<form action="http://iunknown.com/wp-comments-post.php" method="post" id="commentform" onsubmit="if (url.value == 'Website (optional)') {url.value = '';}">
+
+	    <div class="left">
+
+		
+			<p>
+                <input type="text" name="author" class="txt" id="commentauthor" tabindex="1" value="Name (required)" onfocus="if (this.value == 'Name (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="email" class="txt" id="email" tabindex="2" value="Email (required)" onfocus="if (this.value == 'Email (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="url" class="txt" id="url" tabindex="3" value="Website (optional)" onfocus="if (this.value == 'Website (optional)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Website (optional)';}" />
+			</p>
+
+		        
+        </div>
+
+		<div class="right">
+        
+		<!--<p><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </p>-->
+
+		<p><textarea name="comment" id="comment" rows="10" cols="50" tabindex="4"></textarea></p>
+
+		<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+		<input type="hidden" name="comment_post_ID" value="73" />
+		
+		<input type='hidden' name='comment_post_ID' value='73' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+				
+        </div>
+        
+		</form><!-- /#commentform -->
+
+	
+	<div class="fix"></div>
+
+</div><!-- /#respond -->
+
+                                                    
+			  
+        
+		</div><!-- /#main -->
+
+        <div id="sidebar" class="col-right">
+
+	<!-- Widgetized Sidebar -->	
+	<div id="text-3" class="widget widget_text"><h3>Subscribe!</h3>			<div class="textwidget"><p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+		</div>		
+    
+	<!-- TABS STARTS --> 
+		<div id="tabs">
+		
+		<ul class="wooTabs tabs">
+			<li><a href="#pop">Popular</a></li>
+			<li><a href="#feat">Latest</a></li>
+            <li><a href="#comm">Comments</a></li>
+			<li><a href="#tagcloud">Tags</a></li>
+		</ul>	
+		
+		<div class="fix"></div>
+		
+		<div class="inside">
+		 <div id="pop">
+			<ul>
+					<li>
+			                
+            <a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html" title="A first look at IronRuby">A first look at IronRuby</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/08/funtwo-unmasked.html" title="funtwo unmasked">funtwo unmasked</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html" title="Dynamic Languages, Microsoft, and me">Dynamic Languages, Microsoft, and me</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2008/03/dynamic-silverlight-part-1-hello-world.html" title="Dynamic Silverlight Part 1: Hello, World!">Dynamic Silverlight Part 1: Hello, World!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html" title="IronRuby on Rubyforge!">IronRuby on Rubyforge!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+                    
+			</ul>
+           </div>
+           
+         <div id="feat"> 
+	        <ul>
+			<li>
+		<a title="Permalink to  Motorola DROID Review" href="http://iunknown.com/2009/12/motorola-droid-review.html" rel="bookmark">Motorola DROID Review</a>
+	<span class="meta">10. Dec, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Passing the torch" href="http://iunknown.com/2009/11/passing-the-torch.html" rel="bookmark">Passing the torch</a>
+	<span class="meta">17. Nov, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Dynamic Languages at TechEd 2009" href="http://iunknown.com/2009/05/dynamic-languages-at-teched-2009.html" rel="bookmark">Dynamic Languages at TechEd 2009</a>
+	<span class="meta">18. May, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Disable that annoying beep on Thinkpads when resuming from Sleep" href="http://iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html" rel="bookmark">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+	<span class="meta">02. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Hello, 2009" href="http://iunknown.com/2009/01/hello-2009.html" rel="bookmark">Hello, 2009</a>
+	<span class="meta">01. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+		
+                    
+			</ul>
+          </div>
+          <div id="comm">  
+			<ul>
+			<li>
+    <img alt='' src='http://0.gravatar.com/avatar/4ad7dd07b56137ee7f0c5df0eb6969c0?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2277" title="on  Passing the torch">
+		GM: Looks like the torch was handed off because it was...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://0.gravatar.com/avatar/80e59186a64b60730e07c6db7bf61637?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2276" title="on  Passing the torch">
+		Louis Salin: What about... now!?
+
+With the news of IronRuby b...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://1.gravatar.com/avatar/f02db29ff83998a5c98eab1d7747a4ad?s=48&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2275" title="on  Passing the torch">
+		James Manning: "will happen later this month" 6+ months ago :)
+...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://0.gravatar.com/avatar/6833fa22704a4277b814a6c4960f346d?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/12/motorola-droid-review.html#comment-2264" title="on  Motorola DROID Review">
+		bob: The Google Voice Integration feature is also the f...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://1.gravatar.com/avatar/117f5367e23fba4305caf41e103d7280?s=48&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html#comment-2263" title="on  A first look at IronRuby">
+		Quiz: Used for my final project , thanks...
+    </a>
+    <div style="clear:both"></div>
+</li>
+                    
+			</ul>
+	      </div>
+			<div id="tagcloud">
+			    			</div>
+		
+	</div><!-- INSIDE END -->
+	
+	</div><!-- TABS END -->
+	
+	<div class="fix" style="height:25px !important;"></div>
+	
+	  
+	<!-- TABS END -->    
+    
+	<!-- Widgetized Sidebar -->	
+	<div id="archives-3" class="widget widget_archive"><h3>Archives</h3>		<select name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> <option value="">Select Month</option> 	<option value='http://iunknown.com/2009/12'> December 2009 </option>
+	<option value='http://iunknown.com/2009/11'> November 2009 </option>
+	<option value='http://iunknown.com/2009/05'> May 2009 </option>
+	<option value='http://iunknown.com/2009/01'> January 2009 </option>
+	<option value='http://iunknown.com/2008/10'> October 2008 </option>
+	<option value='http://iunknown.com/2008/09'> September 2008 </option>
+	<option value='http://iunknown.com/2008/08'> August 2008 </option>
+	<option value='http://iunknown.com/2008/07'> July 2008 </option>
+	<option value='http://iunknown.com/2008/06'> June 2008 </option>
+	<option value='http://iunknown.com/2008/05'> May 2008 </option>
+	<option value='http://iunknown.com/2008/04'> April 2008 </option>
+	<option value='http://iunknown.com/2008/03'> March 2008 </option>
+	<option value='http://iunknown.com/2008/02'> February 2008 </option>
+	<option value='http://iunknown.com/2008/01'> January 2008 </option>
+	<option value='http://iunknown.com/2007/12'> December 2007 </option>
+	<option value='http://iunknown.com/2007/11'> November 2007 </option>
+	<option value='http://iunknown.com/2007/10'> October 2007 </option>
+	<option value='http://iunknown.com/2007/09'> September 2007 </option>
+	<option value='http://iunknown.com/2007/08'> August 2007 </option>
+	<option value='http://iunknown.com/2007/07'> July 2007 </option>
+	<option value='http://iunknown.com/2007/06'> June 2007 </option>
+	<option value='http://iunknown.com/2007/05'> May 2007 </option>
+	<option value='http://iunknown.com/2007/04'> April 2007 </option>
+	<option value='http://iunknown.com/2007/03'> March 2007 </option>
+	<option value='http://iunknown.com/2007/02'> February 2007 </option>
+	<option value='http://iunknown.com/2007/01'> January 2007 </option>
+	<option value='http://iunknown.com/2006/12'> December 2006 </option>
+	<option value='http://iunknown.com/2006/11'> November 2006 </option>
+	<option value='http://iunknown.com/2006/10'> October 2006 </option>
+	<option value='http://iunknown.com/2006/09'> September 2006 </option>
+	<option value='http://iunknown.com/2006/08'> August 2006 </option>
+	<option value='http://iunknown.com/2006/07'> July 2006 </option>
+	<option value='http://iunknown.com/2006/06'> June 2006 </option>
+	<option value='http://iunknown.com/2006/05'> May 2006 </option>
+	<option value='http://iunknown.com/2006/04'> April 2006 </option>
+	<option value='http://iunknown.com/2006/03'> March 2006 </option>
+	<option value='http://iunknown.com/2006/02'> February 2006 </option>
+	<option value='http://iunknown.com/2006/01'> January 2006 </option>
+	<option value='http://iunknown.com/2005/12'> December 2005 </option>
+	<option value='http://iunknown.com/2005/11'> November 2005 </option>
+	<option value='http://iunknown.com/2005/10'> October 2005 </option>
+ </select>
+</div><div id="twitter-1" class="widget widget_twitter"><h3><a href="http://twitter.com/john_lam" class="twitter_title_link">Tweets</a></h3><ul class="twitter"><li class="twitter-item"> Seattle train station has seen better days. Reminds me of the Kingdome. </li><li class="twitter-item"> RT <a href="http://twitter.com/howtogeek" class="twitter-user">@howtogeek</a>: .<a href="http://twitter.com/edbott" class="twitter-user">@edbott</a> Someday humanity will defeat Skynet by installing iTunes and McAfee on it. </li><li class="twitter-item"> Waiting for Superman paints education failure as a tragedy as opposed to a statistic. Go see it: <a href="http://bit.ly/bfP7RE" class="twitter-link">http://bit.ly/bfP7RE</a> </li><li class="twitter-item"> iPad sales "report" <a href="http://bit.ly/cj99AY" class="twitter-link">http://bit.ly/cj99AY</a> me of measuring the length of the emperor of China's nose: <a href="http://bit.ly/9agS4r" class="twitter-link">http://bit.ly/9agS4r</a> </li><li class="twitter-item"> FOSS Blender used to create this fantastic short animated film: <a href="http://youtu.be/eRsGyueVLvQ" class="twitter-link">http://youtu.be/eRsGyueVLvQ</a> (via <a href="http://twitter.com/feliciaday" class="twitter-user">@feliciaday</a>) </li><li class="twitter-item"> <a href="http://twitter.com/xpaulbettsx" class="twitter-user">@xpaulbettsx</a> do you mean CPU and mobo graphics? </li><li class="twitter-item"> <a href="http://twitter.com/jglozano" class="twitter-user">@jglozano</a> I think that would work. My wife would have liked it; it's a great film. You'll appreciate it on a whole other level. </li><li class="twitter-item"> Need a Linux laptop. What is the best supported hardware these days? </li><li class="twitter-item"> The Social Network is like Top Gun for tech entrepreneurs. Seriously. Go see it. </li><li class="twitter-item"> <a href="http://twitter.com/isayx3" class="twitter-user">@isayx3</a> I have a really old 360 which is too loud for a Netflix device. Will get a newer one w/HDMI support soon </li></ul></div>
+<div id="flickr" class="widget">
+	<h3 class="widget_title">Photos on <span>Flick<span>r</span></span></h3>
+	<div class="wrap">
+		<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=18&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=23649168@N00"></script>        
+		<div class="fix"></div>
+	</div>
+</div>
+
+		
+             
+	
+</div><!-- /#sidebar -->
+    </div><!-- /#content -->
+		
+    <!-- Footer Widget Area Starts -->
+	<div id="footer-widgets">
+		<div class="container col-full">
+            <div class="block">
+                		           
+            </div>
+            <div class="block">
+                		           
+            </div>
+            <div class="block last">
+                		           
+            </div>
+   			<div class="fix"></div>
+		</div>    
+    </div>
+    <!-- Footer Widget Area Ends -->
+
+	<div id="footer">
+		<div class="col-full">
+            <div id="copyright" class="col-left">
+                <p>&copy; 2010 John Lam on Software. All Rights Reserved.</p>
+            </div>
+            
+            <div id="credit" class="col-right">
+                <p>Powered by <a href="http://www.wordpress.org">Wordpress</a>. Designed by <a href="http://www.woothemes.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/woothemes.png" width="87" height="21" alt="Woo Themes" /></a></p>
+            </div>
+		</div>
+	</div>
+	<!-- footer Ends -->
+	
+</div><!-- /#container -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&amp;count=1"></script>
+</body>
+</html>

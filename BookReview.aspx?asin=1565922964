@@ -1,0 +1,179 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Win32 Multithreaded Programming
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=1565922964" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8xNTY1OTIyOTY0LjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFdpbjMyIE11bHRpdGhyZWFkZWQgUHJvZ3JhbW1pbmc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEFhcm9uIENvaGVuLCBNaWtlIFdvb2RyaW5nOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkNDkuOTU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPE4vQTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8NC4zOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwxMTs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8xNTY1OTIyOTY0L3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8O2w8aTwwPjtpPDE+Oz47bDx0PEA8Qm9vayBEZXNjcmlwdGlvbjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8VGhpcyBib29rIGNsZWFybHkgZXhwbGFpbnMgdGhlIGNvbmNlcHRzIG9mIG11bHRpdGhyZWFkZWQgcHJvZ3JhbXMgYW5kIHNob3dzICBkZXZlbG9wZXJzIGhvdyB0byBza2lsbGZ1bGx5IGNvbnN0cnVjdCBlZmZpY2llbnQgYW5kIGNvbXBsZXggYXBwbGljYXRpb25zLiAgIEZyb20gYmFzaWMgdGhyZWFkIHN5bmNocm9uaXphdGlvbiB1c2luZyBtdXRleGVzIGFuZCBzZW1hcGhvcmVzLCB0byBhZHZhbmNlZCAgdG9waWNzIGxpa2UgY3JlYXRpbmcgcmV1c2FibGUgdGhyZWFkIHBvb2xzIG9yIGltcGxlbWVudGluZyBhIGRlZmVycmVkICBwcm9jZXNzaW5nIHF1ZXVlLCB0aGUgYm9vayB1c2VzIHJlYWwtd29ybGQgYXBwbGljYXRpb25zIGFuZCBjYXJlZnVsbHkgIGNvbnN0cnVjdGVkIGV4YW1wbGVzIHRvIGlsbHVzdHJhdGUgdGhlIHByaW5jaXBsZXMgb2YgbXVsdGl0aHJlYWRlZCAgcHJvZ3JhbW1pbmcuIFNvbWUgb2YgdGhlIHRvcGljcyBjb3ZlcmVkIGluY2x1ZGU6ICBcPHVsXD5cPGxpXD5Ib3cgdGhlIFdpbmRvd3Mgb3BlcmF0aW5nIHN5c3RlbXMgaGFuZGxlIHRocmVhZHNcPC9saVw+XDxsaVw+TXVsdGl0aHJlYWRpbmcgcHJpbWl0aXZlcyBpbiB0aGUgV2luMzIgQVBJXDwvbGlcPlw8bGlcPlRlY2huaXF1ZXMgZm9yIGdlbmVyYXRpbmcgdGhyZWFkLXNhZmUgZHluYW1pYyBsaW5rIGxpYnJhcmllc1w8L2xpXD5cPGxpXD5BZHZhbmNlZCB0ZWNobmlxdWVzIGZvciB0aHJlYWQgc3luY2hyb25pemF0aW9uXDwvbGlcPlw8bGlcPkJhc2ljIHNjZW5hcmlvcyBmb3IgYnVpbGRpbmcgbXVsdGl0aHJlYWRlZCB1c2VyIGludGVyZmFjZXNcPC9saVw+XDwvdWxcPiAgVGhlIENELVJPTSBmZWF0dXJlcyBNY2wsIHRoZSBhdXRob3JzJyBDKysgY2xhc3MgbGlicmFyeSBmb3IgbXVsdGl0aHJlYWRlZCAgcHJvZ3JhbW1pbmcsIHdoaWNoIGJvdGggd3JhcHMgbXVsdGl0aHJlYWRlZCBBUEkgZnVuY3Rpb25zIGFuZCBlYXNpbHkgc3VwcG9ydHMgIG1vcmUgY29tcGxleCBtdWx0aXRocmVhZGVkIHNjZW5hcmlvcy4gRm9yIHByb2dyYW1tZXJzIHVzaW5nIE1GQywgYW4gYWRkaXRpb25hbCAgbGlicmFyeSwgTWNsNE1mYywgaXMgaW5jbHVkZWQgZm9yIE1GQyBjb21wYXRpYmlsaXR5Ljs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz7j9kHJO8DbaY5qlMlo56SnpTZ51Q==" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/1565922964.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Win32 Multithreaded Programming</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Aaron Cohen, Mike Woodring</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$49.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">N/A</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.3</span>
+          based on
+          <span id="TotalReviews">11</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/1565922964/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              <table id="EditorialReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Book Description:</DIV>
+                <span id="Label1">This book clearly explains the concepts of multithreaded programs and shows  developers how to skillfully construct efficient and complex applications.   From basic thread synchronization using mutexes and semaphores, to advanced  topics like creating reusable thread pools or implementing a deferred  processing queue, the book uses real-world applications and carefully  constructed examples to illustrate the principles of multithreaded  programming. Some of the topics covered include:  <ul><li>How the Windows operating systems handle threads</li><li>Multithreading primitives in the Win32 API</li><li>Techniques for generating thread-safe dynamic link libraries</li><li>Advanced techniques for thread synchronization</li><li>Basic scenarios for building multithreaded user interfaces</li></ul>  The CD-ROM features Mcl, the authors' C++ class library for multithreaded  programming, which both wraps multithreaded API functions and easily supports  more complex multithreaded scenarios. For programmers using MFC, an additional  library, Mcl4Mfc, is included for MFC compatibility.</span>
+              
+</td></tr></table>
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Not a good book for the multithreading novice.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>1998-05-10</span>
+                    </div>
+                    <span>This is the first O'Reilly book I've ever read that I cannot wholeheartedly recommend.<P>The introduction to the book states the it is aimed at the novice. However, the examples in the book contain several novice mistakes. The book also glosses over a few point that an experienced MT programmer would understand, but would be baffling to a novice. I also found a few Win32 mistakes such as their handling of redirection of standard in, out, and error.<P>If you know MT and Win32, it's probably a good book. If you don't keep looking.</span>
+                  
+                    <div class="CustomerReviewSummary">Great book!</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2000-01-03</span>
+                    </div>
+                    <span>This is a great book! It covers kernel objects in detail (mutexes, semaphores, etc.), with simple example code. It also covers methods of interthread communication (memory mapped files, anonymous pipes, etc.). It does not, however, cover the different Win32 threading models (single, apartment, etc.) at all. This is a good book for understanding the basics of Win32 multithreading concepts.</span>
+                  
+                    <div class="CustomerReviewSummary">Not that good actually</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>2</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>22</span>
+                      /
+                      <span>24</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-04-19</span>
+                    </div>
+                    <span>Another failure of O'Reilly's. The book is thick but watery, writing is bad, editing is lacking. The expository parts are hard to understand, for example the chapter describing Monitors is impossible to comprehend (unless you already are familiar with that, in general quite comprehensible, concept.) The book is seriously fattened with reference-level material, in most cases inappropriately, imho. And finally, the C++ library built on top of Win32 threading API is totally out of place--plus its reference occupies half the book, which is unwelcome as well. Moreover, the authors' C++ is highly questionable. I don't think the authors are accomplished C++ designers, their C++ reeks of C, even syntactically. I guess this tome may be helpful somehow somewhere, but I'm yet to figure out in what way though. <P>Finally, I'd like to say that this is not the first underwhelming book from generally-respected O'Reilly that, I notice, is edited by Ron Petrusha (another one was this Windows Error Messages fiasco (edited), and some other, authored pieces.) In the future, I will be very careful buying books with his name--whether as an author or an editor--on the cover, I think to see him having contributed to a book is a bad news.<P>Finally, my suggestion to Windows programmers is to read Richter--he's got enough to make you comfortable with the API, and then carefully work through Kleinman's "Threads" and Norton/DiPasquale's "Threadtime". Both are on pthreads rather than Win32, BUT! -- they are written very clearly and cover the concepts very well; applying these concepts to Win32 environment should be a much lesser task than attempting to grasp them from the muddled babbling in Cohen/Woodring book. "Win32 MT programming" has been sitting on my shelf for a while now, and whenever I work with MT issues I kinda pick it up in perhaps search of some ideas, but no, it's been consistently useless.</span>
+                  
+                    <div class="CustomerReviewSummary">A lot of useful techniques</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-03-08</span>
+                    </div>
+                    <span>I do not deny that the style of writing can be terse at some points. However this book covers a lot of ground on how to write a good , thread safe codes. The class included has provided a lot of usable codes that can be used in complex sowftware projects.</span>
+                  
+                    <div class="CustomerReviewSummary">A very good book on multithreading</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2000-11-18</span>
+                    </div>
+                    <span>I have not seen a better book on multithreading than this one...</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0735615365'>
+                      Debugging Applications for Microsoft .NET and Microsoft Windows
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 6 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201442345'>
+                      Multithreading Applications in Win32: The Complete Guide to Threads
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.7 based on 15 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1572315482'>
+                      Advanced Windows (3rd ed)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.3 based on 47 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201703106'>
+                      Win32 System Programming: A Windows(R) 2000 Application Developer's Guide (2nd Edition)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.9 based on 15 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0735615799'>
+                      Network Programming for Microsoft Windows, Second Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 28 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

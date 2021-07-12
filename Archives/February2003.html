@@ -1,0 +1,281 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/315 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>IUnknown.com - February 2003 Weblog Archives</title>
+<link rel="stylesheet" href="../iunknown.css">
+<script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+<script language="javascript">
+  function HaloScan2(id) { 
+    location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+  }
+</script>
+</head>
+<BODY>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <p><span class="entryTitle">February 2003 Archives</span></p>
+         
+          <div class="entryTitle">Dual monitors yet again</div>
+          <div class="entryDate">2003-02-17</div>
+          <p><P>My name is John, and I'm a perfectionist. It drives me crazy when things don't work <EM>exactly</EM> the way that I want them to. My dual monitor saga / fiasco is a great example of this (sometimes undesirable) personality trait. My transition to managed languages from control-freak languages like C++ is hopefully an encouraging sign.</P>
+<P>But this entry is about dual monitors (again). To recap: I bought two Samsung 172T DVI panels. These are incredible panels - much better than the NEC 1830 panel that preceded them. I'm almost 100% satisfied with these panels except for the slight off-white nature of one of the panels. I had previously attributed this to VGA vs. DVI, but now I can report that it's not VGA connectors that are responsible for the off-white color, but instead it's something in the panel itself.</P>
+<P>I've now switched to a dual DVI connector setup. To do this, I had to ditch my other set of video cards in favor of <A href="http://usa.asus.com/vga/agpv9180/overview.htm">an ASUS V9180 VS card</A>. This is by far the cheapest dual DVI video card that I've come across - I bought mine for ~$120 USD. This is a lot cheaper than a Matrox G550 dual-DVI solution, that would have run about $200 USD. The GeForce MX 440 chipset in this card provides better performance than the G550.[1] The Matrox Parhelia card is ridiculously overpriced, IMHO.</P>
+<P>The great thing about switching to this card is that I can now continue to do development on my Windows XP box, and leave my Win2K3 Server box as a server. For details on why this was the other way around, <A href="../Weblog/Itwasthefreakingmotherboa.html">see my post on dual monitors and motherboard conflicts</A>.</P>
+<P>After <A href="http://radio.weblogs.com/0106747/2003/02/13.html#a213">Scott Hanselman recommended UltraMon</A>, I decided to give it a whirl. I had previously complained about Ultramon's per-monitor taskbar not working with ATI's Hydravision multi-desktop software. I can now report that it doesn't exactly work with nVidia's nView multi-desktop software either. After a bit of digging around in Ultramon's support forums, I found a nice little script that I can use to switch between desktops and restore Ultramon's taskbar. I'ver reproduced it here:</P><CODE>
+<P>Set sys = CreateObject("UltraMon.System")<BR>Set appBars = sys.DockedAppBars</P>
+<P>Set shell = CreateObject("WScript.Shell")<BR>' NOTE: I configured nView to use CTRL-ALT-F10 as a shortcut key to go to the next desktop<BR>shell.SendKeys "^%{F10}"</P>
+<P>WScript.Sleep 1000</P>
+<P>For Each ab In appBars<BR>&nbsp; If ab.Name = "UltraMon Taskbar" Then<BR>&nbsp;&nbsp;&nbsp; If ab.Visible = False Then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ab.Visible = True<BR>&nbsp;&nbsp;&nbsp; End If<BR>&nbsp; End If<BR>Next</P></CODE>
+<P>So far this script has worked OK. But I can't use a shortcut key to run these scripts no matter what keystroke combination that I try. Perhaps it has something to do with the fact that my shell script sends keystrokes, but apparently this works on other computers. Any help here would be greatly appreciated. For now, I added shortcuts to these scripts to my Launch Bar, and I <EM>click </EM>on them to toggle desktops :(</P>
+<P>[1] It's a bit of a slouch <A href="http://www6.tomshardware.com/graphic/20030120/vgacharts-04.html">when compared to modern video cards like the RADEON 9700 PRO</A>, but significantly better than the ATI AIW RADEON card that it replaced, especially on my mid-range 1.6GHz P4 - I can only expect maybe double the perf on UT2003 by switching to a 9700 PRO without upgrading the rest of my computer.</P></p>
+          <p><a href="../Weblog/Dualmonitorsyetagain.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Dual monitors yet again" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Dualmonitorsyetagain.html');"><script type="text/javascript">postCount('Weblog/Dualmonitorsyetagain.html');</script></a></p>
+         
+          <div class="entryTitle">Sparse files on Windows 2000+</div>
+          <div class="entryDate">2003-02-14</div>
+          <p><P>Jason Kaczor points out in a comment that Microsoft <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/fileio/base/sparse_files.asp ">did add sparse file support in Windows 2000</A>. Apparently the authors <A href="../Weblog/SequentialIOperformance.html">in the paper that I referenced</A> didn't use the FSCTL_SET_SPARSE flag in a call to DeviceIoControl() prior to running their benchmarks. </P>
+<P>I'm amazed that someone from the NTFS team didn't set those guys straight before they published their results. I would have assumed that the NTFS team and the Windows performance team guys reviewed their paper.</P></p>
+          <p><a href="../Weblog/SparsefilesonWindows2000+.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Sparse files on Windows 2000+" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/SparsefilesonWindows2000+.html');"><script type="text/javascript">postCount('Weblog/SparsefilesonWindows2000+.html');</script></a></p>
+         
+          <div class="entryTitle">Update on dual monitors</div>
+          <div class="entryDate">2003-02-14</div>
+          <p><P>Scott Hanselman <A href="http://radio.weblogs.com/0106747/2003/02/13.html#a213">commented on my dual monitor migration</A>. He pointed me to a really cool utility called <A href="http://www.realtimesoft.com/">Ultramon</A>. [1] So far I really love the task-bar feature which gives me per-desktop task bars. Unfortunately, the taskbar feature doesn't seem to coexist well with <A href="http://www.ati.com/companyinfo/glossary/hydravision/">ATI's Hydravision utility</A> which gives me additional hardware accelerated virtual desktops, so I only have the per-desktop task bars on my first virtual desktop.</P>
+<P><A href="http://weblogs.cs.cornell.edu/AllThingsDistributed/">Werner Vogels chimes in with geek one-upmanship</A> ... he has THREE flat panels on his desktop. And they're not just any flat panels, these are big huge honking expensive flat panels. Damn, I'm jealous :)</P>
+<P><A href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don "luddite" Box</A> comments about how much he likes the larger 1024 x 768 pixels on his Thinkpad x30. Hey - how many pixels do you need to run emacs and type all those angle brackets anyways? :)</P>
+<P>[1] This brings back memories of my old Commodore PET days where there were a lot of machine-language monitor (think 6502 debugger) utilities. The original machine language monitor on the PET (remember sys 4?) was woefully limited - it could only do hex dumps and display the register stack. This spawned a whole cottage industry of&nbsp;utilities; first there was SuperMon, ExtraMon and eventually ... UltraMon.</P></p>
+          <p><a href="../Weblog/Updateondualmonitors.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Update on dual monitors" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Updateondualmonitors.html');"><script type="text/javascript">postCount('Weblog/Updateondualmonitors.html');</script></a></p>
+         
+          <div class="entryTitle">David Stutz on Microsoft</div>
+          <div class="entryDate">2003-02-14</div>
+          <p><P>David Stutz has left Microsoft, and <A href="http://www.synthesist.net/writing/onleavingms.html">has left a parting note</A>. [Via Scripting News]</P>
+<P>This is an excellent essay by a very smart guy. The first sentence:</P>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+<P>"The market for shrink-wrap PC software began its slow upmarket ooze into Christensen obsolesence right around the time that Microsoft really hit its stride."</P></BLOCKQUOTE>
+<P dir=ltr>speaks volumes for the rest of the piece. For those of you who haven't read the book, I highly recommend that you read <A href="http://www.amazon.com/exec/obidos/ASIN/0066620694/iunknowncom-20">The Innovator's Dilemma by Clayton Christensen</A>. This will explain David's reference in his article, and will help you understand the real threat that open source poses to Microsoft.</P></p>
+          <p><a href="../Weblog/DavidStutzonMicrosoft.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to David Stutz on Microsoft" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/DavidStutzonMicrosoft.html');"><script type="text/javascript">postCount('Weblog/DavidStutzonMicrosoft.html');</script></a></p>
+         
+          <div class="entryTitle">Living the dual monitor lifestyle</div>
+          <div class="entryDate">2003-02-13</div>
+          <p><P>I loved the SyncMaster 172T so much that I bought another. And once I got my motherboard problems out of the way, I'm happily running a 32MB&nbsp;ATI AIW RADEON and a 64MB&nbsp;ATI RADEON 7000 PCI dual-monitor setup. </P>
+<P>One of the really cool features that ATI provides with their drivers is Hydravision support. It lets me run multiple hardware accelerated virtual desktops (up to 9) and I can switch between desktops using their tray icon utility (in theory I can do this using a keystroke but I can't get it to work). The switch is lightning-fast - much faster than the Virtual Desktop Manager utility found in <A href="http://www.microsoft.com/windowsxp/pro/downloads/powertoys.asp">Windows PowerToys</A>. I find that I now use one desktop for email / news stuff, and another desktop for dev stuff (running full VS.NET full screen and debugging a GUI app on another monitor was the main reason I switched to this setup). I suspect I'll use a third desktop for blogging-related stuff.</P>
+<P>Since the 172T is a DVI panel, I can report that there isn't much difference between a DVI and a VGA signal input (the RADEON 7000 only has VGA output), but there is a difference. The text is a tiny bit sharper using DVI, and the whites are whiter - I'm having a hard time trying to make the whites match exactly between the two monitors.</P></p>
+          <p><a href="../Weblog/Livingthedualmonitorlifes.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Living the dual monitor lifestyle" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Livingthedualmonitorlifes.html');"><script type="text/javascript">postCount('Weblog/Livingthedualmonitorlifes.html');</script></a></p>
+         
+          <div class="entryTitle">Sequential I/O performance</div>
+          <div class="entryDate">2003-02-13</div>
+          <p><P>This morning, I was doing some research on sequential I/O performance, and re-read <A href="http://research.microsoft.com/BARC/Sequential_IO/Win2K_IO_MSTR_2000_55.pdf">this excellent research paper</A> <A href="http://research.microsoft.com/barc/Sequential_IO/default.htm">published by Leonard Chung and Jim Gray at MSR</A>. One of the interesting security-related performance issue raised in this paper can be found in Section 4.4, concerning file pre-allocation:</P>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+<P>"When growing a file, it is important to write it in sequential order. Otherwise Windows writes each block twice: once to zero the "gap" and once to write the actual data when the need write finally is issued".</P></BLOCKQUOTE>
+<P dir=ltr>It is necessary to "zero the gap" to prevent reading data that has not been previously written. Otherwise an attacker would be able to extend a file, and attempt to read the data that was there before. Windows prevents this by zeroing out the bytes in the file to guarantee that 0 is returned when reading data that has not been previously written.</P>
+<P dir=ltr>The performance gap is quite severe - write throughput drops by 50% due to the need to write the data twice to disk. Writing to the end of a file does not incur this penalty.</P></p>
+          <p><a href="../Weblog/SequentialIOperformance.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Sequential I/O performance" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/SequentialIOperformance.html');"><script type="text/javascript">postCount('Weblog/SequentialIOperformance.html');</script></a></p>
+         
+          <div class="entryTitle">It was the freaking motherboard</div>
+          <div class="entryDate">2003-02-11</div>
+          <p><P>After wasting the better part of today trying to get multi-monitor support up and running, I finally isolated the problem that was causing my computer to do the hard lockups - it was the freaking motherboard!</P>
+<P>To recap: I wanted to have an AGP card as my primary video card and a PCI card as my secondary video card. My struggles led me to accumulate quite the little collection of video cards - today I bought a RADEON 7000 64MB PCI card and a 32MB&nbsp;nVidia TNT2 PCI card. I already owned a RADEON All-In-Wonder card and a GeForce 2GTS card - both of which are AGP cards. I tried every possible permutation of these cards and the computer still continued to lock up hard after a few minutes (and only if I was doing work on the PCI monitor).</P>
+<P>In desperation, I decided to install the dual-monitor setup on my server computer - an Athlon 1200 computer running on an ASUS A7V133 motherboard. And wouldn't you know it, it worked! As it turns out, it's the <A href="mailto:!@#$%">!@#$%</A> ECS P4ITA2 motherboard with a 1.6GHz Socket 423 P4 on it that caused me all of my grief. </P>
+<P>Unfortunately, my computers are now totally out of sync with their desired roles. It looks like I might have to run Windows 2003 Server on both my P4 box and my Athlon 1200 box. I just have to move my Perforce source code repository to my P4 box, and that should do it; I really don't like having my SCM server on my development machine. </P>
+<P>It looks like I'll be getting a whole lot cozier with Win2K3 ...</P></p>
+          <p><a href="../Weblog/Itwasthefreakingmotherboa.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to It was the freaking motherboard" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Itwasthefreakingmotherboa.html');"><script type="text/javascript">postCount('Weblog/Itwasthefreakingmotherboa.html');</script></a></p>
+         
+          <div class="entryTitle">I wedged my dev box something awful</div>
+          <div class="entryDate">2003-02-11</div>
+          <p><P>I've never seen something happen quite like this. All sorts of applications are dead now on my desktop PC. I'm getting tons of E_NOINTERFACE errors from various applications. Somewhere along the way some proxy/stub DLL or type library got unregistered, and I don't know which one. The symptoms are everwhere: VS.NET can't debug hosted applications, Outlook can no longer launch Word, my Quick Search deskbar app can no longer launch IE. Even InstallShield fails (this is where I first noticed it). Something happened this morning to cause this, but I'm not sure what.</P>
+<P>This computer is fast approaching being unusable, so I'm writing my last entry on this machine prior to repaving it. I suspect it will be faster to repave than to try and find the root of the problem, but who knows?</P></p>
+          <p><a href="../Weblog/Iwedgedmydevboxsomethinga.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to I wedged my dev box something awful" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Iwedgedmydevboxsomethinga.html');"><script type="text/javascript">postCount('Weblog/Iwedgedmydevboxsomethinga.html');</script></a></p>
+         
+          <div class="entryTitle">Why I still love CityDesk</div>
+          <div class="entryDate">2003-02-11</div>
+          <p><P>I've been maintaining this weblog using <A href="http://www.fogcreek.com/CityDesk/index.html">CityDesk</A> for over a year now. I've resisted moving on to other technologies mostly due to inertia. I really want to have track-back features and to have my user comments be part of my domain, but then there is that inertia thing ...</P>
+<P>Today, I was reminded of why I love CityDesk. I recently installed a new video card on my system so that I can do dual-monitor development (run VS.NET full-screen in one, and my app full-screen in the other). Unfortunately, said video card crashes if you even look at it funny. My dev box crashed a couple of times while writing my long string of entries this morning (I'm waiting for the store to open so that I can buy yet another video card). </P>
+<P>But you know what? I didn't lose a single thing. Like a lot of old-school programmers, I habitually hit CTRL-S after writing each sentence; I don't even notice that I'm doing it anymore. But by doing so, I can't really lose much work no matter what happens. Try that with a browser-based editing solution.</P></p>
+          <p><a href="../Weblog/WhyIstillloveCityDesk.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Why I still love CityDesk" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/WhyIstillloveCityDesk.html');"><script type="text/javascript">postCount('Weblog/WhyIstillloveCityDesk.html');</script></a></p>
+         
+          <div class="entryTitle">What's up with CLAW?</div>
+          <div class="entryDate">2003-02-11</div>
+          <p><P>I see that&nbsp;<A href="http://dotnetweblogs.com/sgentile/">Sam Gentile</A> and <A href="http://dotnetweblogs.com/dmarsh/">Drew Marsh</A> have been writing about <A href="../Weblog/HellofromAOSD2002.html">CLAW</A>. So I felt that it's my duty to tell folks what the current status of that project is.</P>
+<P>Currently, CLAW&nbsp;is in limbo; I haven't really touched that codebase since about October or so. The versions that I have been showing at different conferences are an early prototype that I wrote back in about March of last year. I have a different codebase that included a formal definition of an aspect weaving language that I wrote using <A href="http://www.antlr.org">ANTLR</A>. Unfortunately, the new codebase is only partially operational and doesn't have the functionality of the original prototype.</P>
+<P>Why haven't I continued working on CLAW? Since working on the project, I've had rather mixed feelings about AOP as a technology; I believe that AOP, as it stands today, is too complicated to use as a general-purpose development methodology. </P>
+<P>The main issue that I have with AOP is that it is not possible to discern the functionality of code simply by looking at the source code. AOP allows the <EM>deliberate </EM>introduction of side-effects into a codebase. The canonical (and trivial) examples of AOP are always side-effect free: logging and tracing aspects being the ones most often seen. </P>
+<P>Unfortunately, you run into problems the minute you have aspects that contain side-effects. Perhaps the simplest aspect with side-effects&nbsp;is a security aspect. It grants / denies access to a piece of code based on some security policy. While this in and of itself is not necessarily bad (depending on your point of view), things become far more complicated when you have multiple aspects at a single join point. Think about cases where you have both security policy code and business rules enforcement code woven into a single join point. You now have a case where the order in which the aspects are applied become important (among other things). </P>
+<P>Now consider happens when someone needs to fix a bug. Where is that bug? Is it in the method? Is it in the security policy aspect? Is it in the business rules aspect(s)? What if the bug is a result of the <EM>interaction</EM> of those aspects? How do you even know the aspects are there?</P>
+<P>Some of these problems can be solved by a good IDE. The now-defunct&nbsp;<A href="http://www.aisto.com/roeder/Ip/">Intentional Programming project</A> at Microsoft Research produced a phenomenal IDE that can already provide aspect visualization in source code (check out the video at Lutz's site). The <A href="http://www.eclipse.org/aspectj/">AspectJ</A> folks did a great job of integrating aspect visualization into existing tools like Eclipse and Emacs. </P>
+<P>However, I don't have the resources to build an IDE. Anyone who is going to try and push AOP into mainstream development had better have a lot of resources to back up that project. It's really a job for a Microsoft or an IBM (or a really rich Charles Simonyi who can afford to fund his <A href="http://www.intentionalsoftware.com">own AOP company</A>). It doesn't seem like Microsoft is particularly interested in AOP, especially&nbsp;since they canned the IP project. </P>
+<P>Another related problem is adding new functionality. How do you add it? In an aspect? In your codebase? Some combination thereof?&nbsp;I feel that providing devs with more options in these cases are going to lead to some really nasty bugs in large codebases.</P>
+<P>I hope you don't get the impression that I believe that this technology is not without merit. It's extremely powerful and useful, but <EM>not as a general-purpose technique</EM>. I believe that there are two really interesting applications of AOP:</P>
+<OL>
+<LI>
+<DIV>Security policy enforcement / monitoring</DIV>
+<LI>
+<DIV>Diagnostic probes</DIV></LI></OL>
+<P>You could argue that 1) is a special case of 2), but I digress. There are already companies that I know of working in 1), and 2) cannot be far behind. </P>
+<P>Diagnostic probes are particularly interesting. I believe that there are a large class of bugs caused by inappropriate use of API's. Designers of API's could build diagnostic probes (which are cousins of unit tests) that could be used to validate that applications are calling API's correctly. Here's a few trivial examples that I showed using CLAW:</P>
+<OL>
+<LI>
+<DIV>Tracking whether ADO.NET connections were released, and identifying the point in your source where you opened the connection if it wasn't released</DIV>
+<LI>
+<DIV>Enforcing quotas on resources. One particularly interesting one was a scalability policy based on measuring how long it took for transactions to commit. </DIV></LI></OL>
+<P>I think that 2) is fertile ground for further development, but I have moved on to other areas. If anyone is interested in collaborating in these areas, I would consider doing some consulting work to help get you up to speed. I really like this technology, but I just don't have the time and resources to develop it ...</P></p>
+          <p><a href="../Weblog/WhatsupwithCLAW.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to What's up with CLAW?" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/WhatsupwithCLAW.html');"><script type="text/javascript">postCount('Weblog/WhatsupwithCLAW.html');</script></a></p>
+         
+          <div class="entryTitle">I really like the guys at WholeTomato</div>
+          <div class="entryDate">2003-02-11</div>
+          <p><P>In my previous entry, <A href="../Weblog/Ireallywishmoredevswouldm.html">I complained about some apps</A> that assumed that I would be running using a local administrator account. One of those apps was <A href="http://www.wholetomato.com">Visual Assist .NET</A>; fortunately, this story has a happy ending.</P>
+<P>When I repaved my dev box, I installed the latest version of Visual Assist .NET (build 1081 at the time), an intellisense enhancement that I really can't live without. The folks at WholeTomato made quite a lot of improvements between that version and the previous version that I had installed on my computer (I believe it was build 1035). One of their improvements was caching their C++ parse results. Unfortunately, they wrote the cache to ... you guessed it ... \Program Files\Visual Assist .Net\...&nbsp; My workaround was to grant myself write access to the \Program Files\Visual Assist .Net\ directory, which let me continue with my work. </P>
+<P>I emailed the folks at WholeTomato about this problem, and within <EM>less than two weeks</EM>, they had incorporated a fix into their latest build (currently 1085). That's great support, guys. Thanks!</P></p>
+          <p><a href="../Weblog/IreallyliketheguysatWhole.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to I really like the guys at WholeTomato" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/IreallyliketheguysatWhole.html');"><script type="text/javascript">postCount('Weblog/IreallyliketheguysatWhole.html');</script></a></p>
+         
+          <div class="entryTitle">I really wish more devs would make the switch</div>
+          <div class="entryDate">2003-02-11</div>
+          <p><P>Over the past few days, I've installed a couple of client applications that were clearly written by devs who run as local administrator on their computers. In both cases, these applications wrote to \Program Files\App Name\ directory. In both cases, they mistakenly thought that "they" owned that directory. And by "they", I mean the guy who wrote the app thinks that they owned that directory, but that's incorrect. In reality, the administrator who installed their application onto a user's computer owns that directory. And once the user tries to run that application, bam! It blows up in their face. </P>
+<P>There's a whole bunch of areas on the computer that are off-limits to regular users, and for good reason. Among them are HKLM, \Windows, and \Program Files. Remember that keys like HKCR really map to HKLM\Software\Classes. It is really difficult for devs to build software that runs correctly under restricted accounts (like any account that belongs only to the Machine\Users group) unless they themselves run under such an account. So, please ... make the switch! </P>
+<P>There's really nothing that I regularly do during development that I cannot accomplish by running under a regular user account. When I occasionally need to do some administrator-like things, I either temporarily create a new administrator command shell via the runas command, or I log out and log back in as admin to perform those tasks (setting ACL's using Explorer is one of those tasks). </P></p>
+          <p><a href="../Weblog/Ireallywishmoredevswouldm.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to I really wish more devs would make the switch" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Ireallywishmoredevswouldm.html');"><script type="text/javascript">postCount('Weblog/Ireallywishmoredevswouldm.html');</script></a></p>
+         
+          <div class="entryTitle">Watch those defaults!</div>
+          <div class="entryDate">2003-02-10</div>
+          <p><P>Man, I just spent the better part of half a day tracking down a really bizarre bug. It was really strange since it only appeared on my laptop; my desktop ran the app perfectly. Unfortunately, due to the nature of the bug, I thought it was some kind of strange configuration issue on my laptop, so I spent a lot of time trying to track down the differences between the two machines. </P>
+<P>As it turns out, it <EM>was</EM> a configuration difference, but it wasn't one that I expected. Instead, it turned out to be&nbsp;a difference in a default values! The fact that it worked at all on my desktop had to do with a remarkable coincidence of the system provided default value matching a value that I had explicitly (and quite arbitrarily) set in my code. As it turned out, the system provided default was different on my laptop, thereby exposing the bug. </P>
+<P>The lesson to be learned (and I know I've been bitten by these bugs in the past - why didn't I remember???) is to always explicitly initialize values, and don't depend on system-provided defaults.</P>
+<P>&nbsp;</P></p>
+          <p><a href="../Weblog/Watchthosedefaults.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Watch those defaults!" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Watchthosedefaults.html');"><script type="text/javascript">postCount('Weblog/Watchthosedefaults.html');</script></a></p>
+         
+          <div class="entryTitle">Not all flat panels are created equal</div>
+          <div class="entryDate">2003-02-06</div>
+          <p><P>In a bizarre experiment that I decided to do tonight, I fired up all of my flat panel displays on my desktop, and displayed <A href="http://photography-on-the.net/gallery/photo.php?photo=445&amp;exhibition=1">the same photograph</A> on each one. I'm not color correcting these panels since I just repaved my dev boxes and haven't reinstalled / recalibrated the monitors yet. So my subjective analysis focuses on visible detail in the photographs as opposed to the color balance. The colors match quite closely on the panels, however. Generally it's only the white balance that's off.</P>
+<P>Ranked (subjectively) in order:</P>
+<OL>
+<LI>Samsung 172T - hands down. The picture just pops out at you&nbsp;using this display. </LI>
+<LI>NEC 1830. It was very close between this one and the display on my G4 Powerbook.</LI>
+<LI>Powerbook G4. I run my PowerBook using PC gamma (2.2), so the color matching between it and the PC panels were fairly similar.</LI>
+<LI>Thinkpad T23. This is a horrible panel, with really bad field of view characteristics. While it's the highest resolution (14" and 1400 x 1050), the photograph just doesn't have any pop at all on the display.</LI></OL>
+<P>If you're interested in photography, you should check out some of <A href="http://photography-on-the.net/gallery/list.php?exhibition=1">the other photographs in his gallery</A>. And then consider the fact that he imposed very harsh constraints on himself: shooting with available light, no tripods&nbsp;and no cropping!</P></p>
+          <p><a href="../Weblog/Notallflatpanelsarecreate.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Not all flat panels are created equal" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Notallflatpanelsarecreate.html');"><script type="text/javascript">postCount('Weblog/Notallflatpanelsarecreate.html');</script></a></p>
+         
+          <div class="entryTitle">SyncMaster 172T</div>
+          <div class="entryDate">2003-02-06</div>
+          <p><P>The <A href="http://www.samsungusa.com/cgi-bin/nabc/product/b2c_product_detail.jsp?eUser=&amp;prod_id=172T-Silver">Samsung SyncMaster 172T</A> flat panel display rocks! I just bought one of these panels and now have it running side-by-side on my desktop with my NEC MultiSync 1830 flat panel. The new panel is so much brighter than the older monitor. The contrast ratio really is breathtaking - especially if you put nice full screen digital photographs on the screen side-by-side. </P>
+<P>I bought the panel because it has a <A href="http://www.anandtech.com/video/showdoc.html?i=1577&amp;p=2">DVI input</A>, and I wanted to see how good it would look plugged into my RADEON All-In-Wonder video card. But because this monitor is so much better than my old card, I can't really tell whether it's just the monitor or whether the DVI connector has a contributing effect. But if you look at ClearType text rendering (and try factoring out the effect of the&nbsp;better dot pitch of a 17" vs. an 18" panel!) they look comparable in sharpness. But the letters in the Samsung panel seem to "hang" in space better than they do on my NEC.</P>
+<P>If you're looking for an inexpensive flat panel display (I bought mine for $858 CDN - which is better than any US$ price that I've been able to find on the Internet) I would highly recommend getting one of these. A kid that I ran into at the store where I bought my panel was picking up an NEC 1760V - which has faster pixel response times (15ms vs. 25ms for the Samsung). I thought about it, but I decided to stick with the Samsung since my research indicated that this was one of the best panels out there.</P>
+<P>Next thing to pick up is a RADEON 7500 PCI video card so that I can do dual-monitor development on my desktop machine.</P></p>
+          <p><a href="../Weblog/SyncMaster172T.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to SyncMaster 172T" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/SyncMaster172T.html');"><script type="text/javascript">postCount('Weblog/SyncMaster172T.html');</script></a></p>
+         
+          <div class="entryTitle">Scalable API's</div>
+          <div class="entryDate">2003-02-06</div>
+          <p><P><A href="http://www.simplegeek.com">Chris Anderson</A> <A href="http://www.simplegeek.com/2003/02/05.html#a160">wrote today about scalable API's</A>, and in particular about how MVC is not an abstraction that should be applied liberally across all types of applications. </P>
+<P>I couldn't agree more. After spending a limited amount of time working with the Cocoa frameworks on OS X, one of the things that struck me was how much friction was involved in writing a simple event handler. MVC is used everywhere in Cocoa. While Interface Builder abstracts away a significant amount of the details in making this work (it creates an in-memory object graph that defines the View that&nbsp;it serializes to disk for you rather than generating code), you still have to manually do things like define your model and controller classes EVERY SINGLE TIME you want to build a UI. </P>
+<P>The amount of friction involved in this process is substantial. It is nowhere near as simple as double clicking on a button in a traditional RAD-style dev tool and having your editor drop you into the Click event handler. </P>
+<P>That said, the challenges involved in building a "scalable API" are considerably greater than "let's not do MVC". One of the things that I hated about the way classic Windows controls operated was the fact that they held a <EM>copy</EM> of the data that they owned, rather than delegating ownership of that data to some (and almost always more appropriate) application data structure. The last time I spent significant amounts of time writing windows client apps, I almost exclusively used the virtual list view and virtual tree view controls since they finally provided me with the flexibility (and performance) that I required in my app.</P>
+<P>The other thing that also needs to be done in the client app dev space is to provide reasonable hooks to enable unit testing of user interfaces. I would love to see an external mechanism whereby I can drive the entire UI of my application from a test script. Currently, I manually build this layer in the software that I'm writing, but it would be really nice to see a unit-test centric windows client framework in the future.</P></p>
+          <p><a href="../Weblog/ScalableAPIs.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Scalable API's" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/ScalableAPIs.html');"><script type="text/javascript">postCount('Weblog/ScalableAPIs.html');</script></a></p>
+         
+          <div class="entryTitle">Cool C# feature spotted</div>
+          <div class="entryDate">2003-02-02</div>
+          <p><P>I didn't know about namespace aliasing before I spotted it in some sample code this morning:</P>
+<P>using Channels = System.Runtime.Remoting.Channels;</P>
+<P>This is really nice if you have namespace conflicts and need to disambiguate your type references, or if you're from the school of thought that says that you must always use fully qualified type names, but don't want to obscure your code with giant namespace references.</P></p>
+          <p><a href="../Weblog/CoolCfeaturespotted.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Cool C# feature spotted" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/CoolCfeaturespotted.html');"><script type="text/javascript">postCount('Weblog/CoolCfeaturespotted.html');</script></a></p>
+        
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="March2003.html">March 2003</A><br>
+         
+           <A href="February2003.html">February 2003</A><br>
+         
+           <A href="January2003.html">January 2003</A><br>
+         
+           <A href="December2002.html">December 2002</A><br>
+         
+           <A href="November2002.html">November 2002</A><br>
+         
+           <A href="October2002.html">October 2002</A><br>
+         
+           <A href="September2002.html">September 2002</A><br>
+         
+           <A href="August2002.html">August 2002</A><br>
+         
+           <A href="July2002.html">July 2002</A><br>
+         
+           <A href="June2002.html">June 2002</A><br>
+         
+           <A href="May2002.html">May 2002</A><br>
+         
+           <A href="April2002.html">April 2002</A><br>
+         
+           <A href="fog0000000116.html">March 2002</A><br>
+         
+           <A href="fog0000000091.html">February 2002</A><br>
+         
+           <A href="fog0000000046.html">January 2002</A><br>
+         
+           <A href="fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</BODY>
+</HTML>

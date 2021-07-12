@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Interfaces that don't break object identity</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/1086/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/10/05/interfaces-that-dont-break-object-identity" rel="alternate" type="text/html"/>
+  <updated>2006-10-05T14:44:16-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:06bd329e-0ff3-43b7-8aec-b517da736476</id>
+    <published>2006-10-05T11:09:00-07:00</published>
+    <updated>2006-10-05T14:44:16-07:00</updated>
+    <title type="html">Interfaces that don't break object identity</title>
+    <link href="http://www.iunknown.com/articles/2006/10/05/interfaces-that-dont-break-object-identity" rel="alternate" type="text/html"/>
+    <category term="RubyCLR" scheme="http://www.iunknown.com/articles/tag/rubyclr"/>
+    <summary type="html">&lt;p&gt;Warning: danger ahead! A major breaking change is in the works for RubyCLR. I&amp;#8217;ve been unhappy with the way interfaces were handled in RubyCLR since &lt;a href="http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr"&gt;the current implementation also breaks object identity&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Each one of the objects that&amp;#8217;s returned via the &lt;code&gt;as&lt;/code&gt; operator is another Ruby shadow class object. Which means that I&amp;#8217;m now smearing the identity of the &lt;span class="caps"&gt;CLR&lt;/span&gt; object over more than one Ruby shadow class object. This can, as you might imagine, get you into all sorts of trouble.&lt;/p&gt;
+
+
+	&lt;p&gt;The new implementation follows the lead of &lt;a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython"&gt;IronPython&lt;/a&gt;. Interface methods are now invoked using what looks like a static shadow class, where you explicitly pass a reference to the object whose interface methods you&amp;#8217;d like to invoke. Here&amp;#8217;s a simple example of using the &lt;code&gt;IEnumerable&lt;/code&gt; and &lt;code&gt;IEnumerator&lt;/code&gt; interfaces on an &lt;code&gt;ArrayList&lt;/code&gt; object:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_enumerable
+  a = ArrayList.new
+  a.add(1)
+  if a.has_interface? IEnumerable
+    e = IEnumerable.get_enumerator(a)
+    assert IEnumerator.move_next(e)
+    assert 1, IEnumerator.current(e)
+    assert !IEnumerator.move_next(e)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It&amp;#8217;s not as clean as using &lt;code&gt;as&lt;/code&gt;, but I just couldn&amp;#8217;t condone playing fast and loose with object identity like I did in the past.&lt;/p&gt;
+
+
+	&lt;p&gt;I apologize for the impact that this design change makes to your existing code. But I think you&amp;#8217;ll eventually come back to thank me for making this change since you&amp;#8217;ll avoid much more subtle bugs down the road.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; New interface code is now checked into the public subversion repository. Let me know if you have problems porting your code. See the unit tests in &lt;code&gt;tests_basic.rb&lt;/code&gt; for more examples of usage.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Warning: danger ahead! A major breaking change is in the works for RubyCLR. I&amp;#8217;ve been unhappy with the way interfaces were handled in RubyCLR since &lt;a href="http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr"&gt;the current implementation also breaks object identity&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Each one of the objects that&amp;#8217;s returned via the &lt;code&gt;as&lt;/code&gt; operator is another Ruby shadow class object. Which means that I&amp;#8217;m now smearing the identity of the &lt;span class="caps"&gt;CLR&lt;/span&gt; object over more than one Ruby shadow class object. This can, as you might imagine, get you into all sorts of trouble.&lt;/p&gt;
+
+
+	&lt;p&gt;The new implementation follows the lead of &lt;a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython"&gt;IronPython&lt;/a&gt;. Interface methods are now invoked using what looks like a static shadow class, where you explicitly pass a reference to the object whose interface methods you&amp;#8217;d like to invoke. Here&amp;#8217;s a simple example of using the &lt;code&gt;IEnumerable&lt;/code&gt; and &lt;code&gt;IEnumerator&lt;/code&gt; interfaces on an &lt;code&gt;ArrayList&lt;/code&gt; object:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_enumerable
+  a = ArrayList.new
+  a.add(1)
+  if a.has_interface? IEnumerable
+    e = IEnumerable.get_enumerator(a)
+    assert IEnumerator.move_next(e)
+    assert 1, IEnumerator.current(e)
+    assert !IEnumerator.move_next(e)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It&amp;#8217;s not as clean as using &lt;code&gt;as&lt;/code&gt;, but I just couldn&amp;#8217;t condone playing fast and loose with object identity like I did in the past.&lt;/p&gt;
+
+
+	&lt;p&gt;I apologize for the impact that this design change makes to your existing code. But I think you&amp;#8217;ll eventually come back to thank me for making this change since you&amp;#8217;ll avoid much more subtle bugs down the road.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; New interface code is now checked into the public subversion repository. Let me know if you have problems porting your code. See the unit tests in &lt;code&gt;tests_basic.rb&lt;/code&gt; for more examples of usage.&lt;/p&gt;</content>
+  </entry>
+</feed>

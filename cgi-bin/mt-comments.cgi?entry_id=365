@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on I am intrigued by ObjectSpaces</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: I am intrigued by ObjectSpaces</div>
+
+
+<div class="comments-body">
+<p>ObjectSpaces is the MS datagrid of O/R mapping.</p>
+
+<p>Crude and feature limited.</p>
+
+<p>Still a lot of people will end up using it, not realizing how much they miss.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.thona-consulting.com">Thomas Tomiczek</a> at October 28, 2003 05:08 PM</span>
+</div>
+<div class="comments-body">
+<p>OK, Thomas I'll bite :) What features are missing in ObjectSpaces that you would like to see? What's there that makes it suck?</p>
+
+<p>From my limited exposure, I can see how it can simplify my code generation scripts somwehat. But I still like using code gen to create the other artifacts that I will need (SQL database schema, sprocs, entity class declarations etc.)<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October 29, 2003 12:54 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm afraid I don't consider Thomas to be an impartial observer, here. He has a commercial product known as EntityBroker, so I expect him to tell you in his own inimitable way that any O/R mapping tool other than his sucks.<br />
+Does ObjectSpaces have limitations? Yep. It doesn't create your data objects - you instead need to write them yourself or write a framework that does create them, and it doesn't natively support creating the database schema. It's not as fast as a codegenned O/R layer (they anticipate it to be roughly 40% slower). There are other issues I can see, but this comment's getting too long as it is.<br />
+I saw some extremely interesting things at the PDC that make OS more attractive. On Longhorn (yes, unfortunately only Longhorn), you will be able to use the classes in the System.Search namespace to create OPath queries from plain text requests. Imagine a doctor typing "Show me all of the encounters I had with John Lam over the last year."<br />
+I see an opportunity for a company to build a tool to fill in the gaps.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at October 31, 2003 07:45 AM</span>
+</div>
+<div class="comments-body">
+<p>Thomas: You might consider to stop posting anything otherwise then positive. I seem to be just as interested as you in code-gen/or-mapping sollutions but you tend to pass the negative vibe around the web. C'mon you should know better then dishing other peoples work.</p>
+
+<p>I'd love to hear your comments on ObjectsSpaces John.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://weblogs.asp.net/PGielens/">Paul Gielens</a> at November  1, 2003 09:05 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

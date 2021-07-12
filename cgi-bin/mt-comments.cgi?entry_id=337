@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Observations on Adobe Acrobat 5.0 and .NET COM Interop</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Observations on Adobe Acrobat 5.0 and .NET COM Interop</div>
+
+
+<div class="comments-body">
+<p>Might I recommend Win2PDF? http://www.win2pdf.com<br />
+It performs the same duties Distiller does and fully supports the ability to pass a destination filename to Word's PrintOut method. Only costs $35, too. I used it for a project that automatically converts hundreds of documents from Word to PDF every day, and it worked very well.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at September 20, 2003 02:18 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the link, Andy. What's interesting about their product is that they chose to emulate the old Adobe way of specifying the filename for the output PDF file - via a registry key. While a nasty hack, it's necessary until we get some facility for passing XML manifest files to embedded drivers in applications. </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at September 20, 2003 03:07 PM</span>
+</div>
+<div class="comments-body">
+<p>>I fixed my O2K3 interop problem by manually <br />
+>copying assemblies from the GAC to \program <br />
+>files\microsoft .net\primary interop assemblies\.</p>
+
+<p>What's your take on the versioning issues with regards to a common location for PIAs?<br />
+</p>
+<span class="comments-post">Posted by <a href="mailto&#58;rbirkby&#64;hotmail&#46;com">RichB</a> at September 20, 2003 03:19 PM</span>
+</div>
+<div class="comments-body">
+<p>Hmm. Using the registry is just one way of accomplishing that - my apps simply used the OutputFilename parameter of PrintOut and never mucked about with the registry.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at September 21, 2003 06:31 PM</span>
+</div>
+<div class="comments-body">
+<p>I have quit using NAnt and instead am using Menees' MegaBuild tool, which is great for automating VS.NET builds without starting VS.NET.</p>
+
+<p>The utility can do lots of stuff and has a nice GUI. Check it out at :</p>
+
+<p>http://mywebpages.comcast.net/bmenees/index.html</p>
+
+<p>Bye.<br />
+</p>
+<span class="comments-post">Posted by <a href="mailto&#58;pierre&#46;arnaud&#64;opac&#46;ch">Pierre</a> at September 23, 2003 01:56 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

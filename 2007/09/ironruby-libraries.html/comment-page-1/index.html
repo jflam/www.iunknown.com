@@ -1,0 +1,1483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+
+<title>
+  IronRuby Libraries&nbsp;|&nbsp;John Lam on Software</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="http://iunknown.com/wp-content/themes/headlines/style.css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/LessIsBetter" />
+<link rel="pingback" href="http://iunknown.com/xmlrpc.php" />
+   
+<!--[if IE 6]>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/pngfix.js"></script>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/menu.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie6.css" />
+<![endif]-->	
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie7.css" />
+<![endif]-->
+   
+<link rel="alternate" type="application/rss+xml" title="John Lam on Software &raquo; IronRuby Libraries Comments Feed" href="http://iunknown.com/2007/09/ironruby-libraries.html/feed" />
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/jquery/jquery.js?ver=1.3.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/superfish.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/woo_tabs.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/cufon-yui.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/Liberation.font.js?ver=2.9.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://iunknown.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://iunknown.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='John Lam on Software' href='http://iunknown.com' />
+<link rel='start' title='Motorola DROID Review' href='http://iunknown.com/2009/12/motorola-droid-review.html' />
+<link rel='prev' title='Company Meeting Day' href='http://iunknown.com/2007/09/company-meeting-day.html' />
+<link rel='next' title='We need more help and we&#8217;re willing to pay for it!' href='http://iunknown.com/2007/10/we-need-more-help-and-were-willing-to-pay-for-it.html' />
+<meta name="generator" content="WordPress 2.9.2" />
+<link rel='canonical' href='http://iunknown.com/2007/09/ironruby-libraries.html' />
+<meta name="generator" content="Headlines 2.4.1" />
+<meta name="generator" content="Woo Framework Version 2.5.3" />
+<script type="text/javascript">Cufon.replace("h2, h3, h4, h5, h6, .title, .cufon");</script>
+<style type="text/css">.widget h3 { line-height:22px; }</style>
+<link href="http://iunknown.com/wp-content/themes/headlines/styles/color.css" rel="stylesheet" type="text/css" />
+<link href="http://iunknown.com/wp-content/themes/headlines/custom.css" rel="stylesheet" type="text/css" />
+<!-- Woo Styling -->
+<style type="text/css">
+#logo img { display:none; }
+#logo .site-title, #logo .site-description { display:block; } 
+</style>
+
+<!--[if lte IE 7]>
+<script type="text/javascript">
+jQuery(function() {
+	var zIndexNumber = 1000;
+	jQuery('div').each(function() {
+		jQuery(this).css('zIndex', zIndexNumber);
+		zIndexNumber -= 1;
+	});
+});
+</script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="container">
+       
+	<div id="top">
+    
+		
+        <div id="header" class="col-full">
+       
+            <div id="logo">
+               
+                                
+                                    <span class="site-title"><a href="http://iunknown.com">John Lam on Software</a></span>
+                                
+                    <span class="site-description">Working for The Man in Redmond</span>
+                
+            </div><!-- /#logo -->
+               
+			            <div id="twitter-top">
+            	<div class="logo">
+                    <a href="http://www.twitter.com/john_lam" title="Follow on Twitter"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-twitter.png" alt="Twitter" /></a>                
+                </div>
+                <div class="tweet">
+	                <ul id="twitter_update_list"><li></li></ul>
+                </div>
+            </div><!-- /#topad -->
+			                       
+        </div><!-- /#header -->
+        
+        <div id="navigation">
+        
+			<div id="page-nav">
+    <div class="col-full">
+        <ul id="nav" class="fl">
+        
+            <li><a href="http://iunknown.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-home.png" class="ico-home" alt="Home" /></a></li>
+			        
+            <li class="page_item page-item-2"><a href="http://iunknown.com/about" title="About">About</a></li>
+            
+			            
+            
+        </ul><!-- /#nav1 -->
+        
+        <ul class="rss fr">
+                        <li><a href="http://feeds.feedburner.com/LessIsBetter">Posts</a></li>
+        </ul><!-- /.rss -->
+    </div><!-- /.col-full -->
+</div><!-- /#page-nav -->
+                        
+            <div id="cat-nav">
+                <div class="col-full">
+                    <ul id="secnav" class="fl">
+                    
+					                    
+						      
+                        <li>
+                            <a href="http://iunknown.com/category/ironruby">IronRuby</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/microsoft">Microsoft</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/misc_geek">Misc Geek</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/personal">Personal</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/rubyclr">RubyCLR</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/uncategorized">Uncategorized</a>
+                            
+                                                    </li>        
+                                                
+					                        
+                    </ul><!-- /#nav2 -->
+                    
+                                        <div id="search" class="fr">
+                        <form method="get" id="searchform" action="http://iunknown.com">
+                            <input type="text" class="field" name="s" id="s"  value="Enter keywords..." onfocus="if (this.value == 'Enter keywords...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter keywords...';}" />
+                            <input class="submit btn" type="image" src="http://iunknown.com/wp-content/themes/headlines/images/ico-search.png" value="Go" />
+                        </form>
+                    </div><!-- /#search -->
+                                    </div><!-- /.col-full -->
+            </div><!-- /#cat-nav -->
+            
+        </div><!-- /#navigation -->
+    
+    </div><!--/#top-->       
+    <div id="content" class="col-full">
+		<div id="main" class="col-left">
+		           
+                                    
+                <div class="box">
+                    <div class="post">
+    
+						                           
+                        <h1 class="title">IronRuby Libraries</h1>
+                        
+                        <p class="post-meta">
+							<img src="http://iunknown.com/wp-content/themes/headlines/images/ico-time.png" alt="" />10. Sep, 2007                            <span class="comments"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-comment.png" alt="" /><a href="http://iunknown.com/2007/09/ironruby-libraries.html#comments" title="Comment on IronRuby Libraries">23 Comments</a></span>
+                        </p>
+
+																	
+                        <div class="entry">
+							<p>The <a href="http://www.ironruby.net">IronRuby</a> libraries are divided into two groups: built-ins and the standard libraries. We will distribute both sets of libraries in the standard IronRuby distribution. The distinction is whether a library must be required prior to use.</p>
+<p>The code is organized in two separate directories under trunk\src:</p>
+<p><a href="http://www.iunknown.com/WindowsLiveWriter/src.png"><img style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="174" alt="src" src="http://www.iunknown.com/WindowsLiveWriter/src_thumb.png" width="363" border="0"></a></p>
+<p>The built-in libraries are compiled alongside the rest of the compiler into the Ruby.dll assembly (this will be renamed in the future to IronRuby.dll). The standard libraries are compiled into IronRuby.Libraries.dll for the time being. These libraries may be refactored into some additional assemblies in the future, but for the time being we&#8217;ll likely go down the path of extending the assembly-level RubyLibraryAttribute to identify the Ruby libraries implemented within an assembly. All Ruby libraries must contain this attribute. Kernel#require will inspect these attributes when it goes to try and find a library by name.</p>
+<p>Let&#8217;s walk through some simple library code to better understand what&#8217;s going on:</p>
+<p><a href="http://www.iunknown.com/WindowsLiveWriter/Ruby%20-%20Microsoft%20Visual%20Studio.png"><img id="id" style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="316" alt="Ruby - Microsoft Visual Studio" src="http://www.iunknown.com/WindowsLiveWriter/Ruby%20-%20Microsoft%20Visual%20Studio_thumb.png" width="494" border="0"></a> </p>
+<p>This defines a module called Sample which will be loaded implicitly when we require the IronRuby.Libraries assembly. In the future, we will be able to require Sample directly. We can run this code via rbx.exe:</p>
+<p><a href="http://www.iunknown.com/WindowsLiveWriter/Administrator%20Visual%20Studio%202005%20Command%20Prompt%20-%20rbx%20(2).png"><img id="id" style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="190" alt="Administrator Visual Studio 2005 Command Prompt - rbx (2)" src="http://www.iunknown.com/WindowsLiveWriter/Administrator%20Visual%20Studio%202005%20Command%20Prompt%20-%20rbx%20(2)_thumb.png" width="496" border="0"></a> </p>
+<p>There&#8217;s something interesting in the implementation of the Hello method. As you know, all Ruby methods must return a value, yet we&#8217;ve defined Hello as a method that returns void. If you look at the output of the console, you&#8217;ll see that it returns nil, as expected. So how did this magic work? </p>
+<p>Let&#8217;s take a tour via the debugger. Much of the magic happens in <a href="http://ironruby.rubyforge.org/svn/trunk/src/ironruby/Runtime/RubyActionBinder.cs">RubyActionBinder.cs</a>. Set a breakpoint on MakeRuleForInvokeMember&lt;T&gt; and execute the require from the screenshot above (you&#8217;ll need to step over the execution of the require method itself). When you execute Sample.hello, you&#8217;ll hit the breakpoint.</p>
+<p>First, notice that the type of T is DynamicSiteTarget&lt;object, object&gt;. This method is responsible for generating a rule from the available information: the name of the method, the type of the receiver, the execution context, and some information about the parameters.</p>
+<p>What&#8217;s a rule? A rule is (currently) a conditional statement. There are two parts, a Test and a Target. The Test guards the Target, and if true will execute the Target. Rules are used by the DLR to generate Dynamic Sites, which is our mechanism for caching the results of our method lookups.</p>
+<p>Here&#8217;s some pseudo-code for the rule produced by MakeRuleForInvokeMember&lt;T&gt;:</p>
+<div style="font-size: 11pt; background: black; color: white; font-family: consolas">
+<p style="margin: 0px"><span style="color: #ff8000">if</span> (<span style="color: #ff8000">typeof</span>(target) == Sample &amp;&amp; !HasVersionChanged(target))</p>
+<p style="margin: 0px">&nbsp; <span style="color: #ff8000">return</span> target.hello();</p>
+</div>
+<p>
+<style type="text/css">.csharpcode, .csharpcode pre
+{
+font-size: small;
+color: black;
+font-family: consolas, "Courier New", courier, monospace;
+background-color: #ffffff;
+/<em>white-space: pre;</em>/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt
+{
+background-color: #f4f4f4;
+width: 100%;
+margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }
+</style>
+<p>Rules contain DLR expression trees. These expression trees are converted into executable CIL by the DLR. This is what the generated IL looks like after decompiling back to C# using Reflector:</p>
+<div style="font-size: 11pt; background: black; color: white; font-family: consolas">
+<p style="margin: 0px"><span style="color: #ff8000">public</span> <span style="color: #ff8000">static</span> <span style="color: #ff8000">object</span> Handle2(<span style="color: #ff8000">object</span>[] objArray1,</p>
+<p style="margin: 0px">&nbsp; FastDynamicSite&lt;<span style="color: #ff8000">object</span>, <span style="color: #ff8000">object</span>&gt; site1, <span style="color: #ff8000">object</span> obj1)</p>
+<p style="margin: 0px">{</p>
+<p style="margin: 0px">&nbsp; <span style="color: #ff8000">if</span> ((obj1 == ((RubyModule) objArray1[0])) </p>
+<p style="margin: 0px">&nbsp;&nbsp;&nbsp;&nbsp; &amp;&amp; (((RubyModule) objArray1[1]).Version == 0&#215;815))</p>
+<p style="margin: 0px">&nbsp; {</p>
+<p style="margin: 0px">&nbsp;&nbsp;&nbsp; Sample.Hello((RubyModule) obj1);</p>
+<p style="margin: 0px">&nbsp;&nbsp;&nbsp; <span style="color: #ff8000">return</span> <span style="color: #ff8000">null</span>;</p>
+<p style="margin: 0px">&nbsp; }</p>
+<p style="margin: 0px">&nbsp; <span style="color: #ff8000">return</span> site1.UpdateBindingAndInvoke(obj1);</p>
+<p style="margin: 0px">}</p>
+</div>
+<p>Notice that we return null from the site since the method binder knows that we are invoking a void method, so we generate the correct return statement.</p>
+<p>If you want to see the dynamic site yourself, you can run IronRuby in debug mode using these command line switches:</p>
+<p>rbx.exe -X:SaveAssemblies -X:StaticMethods -D app.rb</p>
+<p>app.rb is a file that contains the code that we&#8217;re running. IronRuby will generate a file called snippets1.dll in the same directory as app.rb. Open it up using <a href="http://www.aisto.com/roeder/dotnet/">Reflector</a>, and you&#8217;ll see the dynamic site that we generate for calling Sample#hello:</p>
+<p><a href="http://www.iunknown.com/WindowsLiveWriter/Lutz%20Roeders%20.NET%20Reflector.png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" height="449" alt="Lutz Roeders .NET Reflector" src="http://www.iunknown.com/WindowsLiveWriter/Lutz%20Roeders%20.NET%20Reflector_thumb.png" width="504" border="0"></a> </p>
+<p><a href="http://www.iunknown.com/WindowsLiveWriter/Lutz%20Roeders%20.NET%20Reflector%20(3).png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" height="514" alt="Lutz Roeders .NET Reflector (3)" src="http://www.iunknown.com/WindowsLiveWriter/Lutz%20Roeders%20.NET%20Reflector%20(3)_thumb.png" width="499" border="0"></a> </p>
+<p>Quite a lot of the code in the RubyActionBinder is targeted for refactoring, so this isn&#8217;t what it&#8217;s going to look like in the long run. However, it&#8217;s a good start and it generates correct, fast code today.</p>
+<p>In a future post, I&#8217;ll walk you through more complex samples where we accept parameters, dispatch to blocks, throw exceptions etc. Hope this helps you understand some of what we&#8217;re doing for method dispatch to C# library code today.</p></p>
+                        </div>
+                        <div class="fix"></div>
+
+                                                <div id="share">
+							<div class="banner">Share</div>
+                            <a href="http://twitter.com/home/?status=IronRuby Libraries : http://tinyurl.com/y9hlelg"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-twitter.png" alt="Twitter" /></a>
+<a href="http://digg.com/submit?phase=2&amp;url=http://iunknown.com/2007/09/ironruby-libraries.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-digg.png" alt="Digg" /></a>                            
+<a href="http://del.icio.us/post?url=http://iunknown.com/2007/09/ironruby-libraries.html&amp;title=IronRuby Libraries"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-delicious.png" alt="Delicious" /></a>                            
+<a href="http://www.stumbleupon.com/submit?url=http://iunknown.com/2007/09/ironruby-libraries.html&amp;title=IronRuby+Libraries"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-stumbleupon.png" alt="Stumbleupon" /></a>                            
+<a href="http://technorati.com/cosmos/search.html?url=http://iunknown.com/2007/09/ironruby-libraries.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-technorati.png" alt="Technorati" /></a>                            
+<a href="http://www.facebook.com/sharer.php?u=http://iunknown.com/2007/09/ironruby-libraries.html&amp;t=IronRuby Libraries"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-facebook.png" alt="Facebook" /></a>
+<a href="mailto:EMAIL ADDRESS?body=http://iunknown.com/2007/09/ironruby-libraries.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-mail.png" alt="Email" /></a>                           
+                        </div>
+                                                                        
+                    </div><!-- /.post -->
+                    
+                    <div class="post-bottom">
+                        <div class="fl"><span class="cat"><a href="http://iunknown.com/category/uncategorized" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></span></div>
+                        <div class="fr"></div> 
+                        <div class="fix"></div>                       
+                    </div>
+                    
+                </div><!-- /.box -->
+
+                <div class="more_entries">
+					<div class="fl"><a href="http://iunknown.com/2007/09/company-meeting-day.html" rel="prev">Company Meeting Day</a></div>
+					<div class="fr"><a href="http://iunknown.com/2007/10/we-need-more-help-and-were-willing-to-pay-for-it.html" rel="next">We need more help and we&#8217;re willing to pay for it!</a></div>
+                    <div class="fix"></div>                       
+				</div>               
+                
+				
+    
+
+<!-- You can start editing here. -->
+
+<div id="comments">
+
+
+	
+        <h3>23 Responses to &#8220;IronRuby Libraries&#8221;</h3>
+    
+        <ol class="commentlist">
+    
+                             
+	<li class="comment even thread-even depth-1" id="li-comment-402">
+    
+    	<a name="comment-402"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/3fee1d6bdede65d1d7fc087424974d0f?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.telerik.com/blogs/silverlight_team' rel='external nofollow' class='url url'>Kiril</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-402" title="Direct link to this comment">11. Sep, 2007 at 11:59 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-402">
+                
+                    <p>I have a question for you&#8230;where can I find the settings in order to make my VS to look like screenshot 2 <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' />  &#8230; nice article though</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-403">
+    
+    	<a name="comment-403"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-403" title="Direct link to this comment">12. Sep, 2007 at 8:50 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-403">
+                
+                    <p>@Kiril: here&#8217;s the link: <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html" rel="nofollow">http://www.iunknown.com/2007/06/vibrant_ink_vis.html</a><br />
+Beware that if all you want is the coloring that you&#8217;ll need to check the appropriate options in VS when importing my settings file.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-404">
+    
+    	<a name="comment-404"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/d91500918a07bfae5b38b8943fd42fbe?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blowmage.com/' rel='external nofollow' class='url url'>Mike Moore</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-404" title="Direct link to this comment">13. Sep, 2007 at 9:15 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-404">
+                
+                    <p>This is probably a stupid question, but how do you force VS to not place the &#8220;{&#8221; on a new line?  It looks like the IronRuby and IronPython format the code with the &#8220;{&#8221; at the end of the previous line, but VS keeps moving it to a new line for me.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-405">
+    
+    	<a name="comment-405"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-405" title="Direct link to this comment">13. Sep, 2007 at 9:48 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-405">
+                
+                    <p>@Mike:<br />
+In Tools/Options/Text Editor/C#/Formatting/New Lines<br />
+uncheck place open brace on new line for &#8230; check boxes.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-406">
+    
+    	<a name="comment-406"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/d91500918a07bfae5b38b8943fd42fbe?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blowmage.com/' rel='external nofollow' class='url url'>Mike Moore</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-406" title="Direct link to this comment">13. Sep, 2007 at 4:30 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-406">
+                
+                    <p>See?  I told you it was a stupid question.  If only I could set that on a project by project basis&#8230;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-407">
+    
+    	<a name="comment-407"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/02381bc41289754b79380eeeaa8e2588?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.yashlabs.com/wp' rel='external nofollow' class='url url'>Josh</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-407" title="Direct link to this comment">16. Sep, 2007 at 11:16 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-407">
+                
+                    <p>Nice one. Thanks, John.<br />
+Have a great special day.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-408">
+    
+    	<a name="comment-408"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/060f58318a3206390f685a93f41abc9e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Chris</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-408" title="Direct link to this comment">26. Sep, 2007 at 5:01 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-408">
+                
+                    <p>silly question but is the DLR &#038; IronRuby tied to silverlight? will IronRuby work with all aspects of .net?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-409">
+    
+    	<a name="comment-409"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-409" title="Direct link to this comment">26. Sep, 2007 at 6:55 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-409">
+                
+                    <p>@Chris: Nope DLR + Ruby is not tied at all to Silverlight. It will run anywhere the CLR (and CLI compliant runtimes like Mono) can run.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-410">
+    
+    	<a name="comment-410"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/899f97295621824a5f482a286f5062ca?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Jeremy Woertink</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-410" title="Direct link to this comment">27. Sep, 2007 at 5:34 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-410">
+                
+                    <p>I tried following the screencast so I can check out IronRuby, but when I try to build it in console with rake compile, I get &#8220;Could not find RubyGem pathname2 (>= 0.0.0)&#8221;<br />
+when I try to do it in VS I click on &#8220;Rebuild Solution&#8221; and nothing happens. It literally just sits there like I never clicked anything. Any ideas?<br />
+~Jeremy</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-411">
+    
+    	<a name="comment-411"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-411" title="Direct link to this comment">27. Sep, 2007 at 7:28 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-411">
+                
+                    <p>@Jeremy:<br />
+If you update from svn, you should get the new Rakefile that will automatically install the pathname2 gem. If that doesn&#8217;t work you can manually install via &#8220;gem install pathname2&#8243;<br />
+Regarding VS, you&#8217;ll need to change the build configuration to Debug. I removed ExternalDebug and ExternalRelease from the latest source drops and you likely have an older .suo lying around that defaults to ExternalDebug.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-412">
+    
+    	<a name="comment-412"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/357a20e8c56e69d6f9734d23ef9517e8?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">winterheat</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-412" title="Direct link to this comment">27. Sep, 2007 at 11:58 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-412">
+                
+                    <p>could you increase the padding to code a bit so that it is farther away from border?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-413">
+    
+    	<a name="comment-413"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/1bb8cc6d9ef0717c23a5c95986caea82?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.softmind.biz' rel='external nofollow' class='url url'>SoftMind</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-413" title="Direct link to this comment">05. Oct, 2007 at 5:37 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-413">
+                
+                    <p>Hi John,<br />
+Just curious to know about the code conversion.<br />
+Currently we have few tools that converts the Vb.Net codes to C# and Vice Versa.<br />
+In future will it be possible to convert the IronRuby Codes to C# and Vice Versa&#8230;?<br />
+Just Curious thats all.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-414">
+    
+    	<a name="comment-414"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-414" title="Direct link to this comment">05. Oct, 2007 at 3:30 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-414">
+                
+                    <p>@SoftMind:<br />
+You can do this sort-of today by decompiling IronRuby to C# via Reflector. However, the generated code is not pretty at all and does not reflect the way you would want to code the same algorithm in C#.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-415">
+    
+    	<a name="comment-415"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/b2d41dd9318af774b61a60b89a7a1f08?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">TalbottC</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-415" title="Direct link to this comment">12. Nov, 2007 at 10:50 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-415">
+                
+                    <p>John, I installed ruby186-26_rc2.  After &#8220;gem install pathname2&#8243; which installs pathname2 (1.5.2) I get the following error when I try to &#8220;rake compile&#8221;: &#8220;c:/ruby/lib/ruby/gems/1.8/gems/pathname2-1.5.2/lib/pathname2.rb:487: [BUG] Segmentation fault ruby 1.8.6 (2007-09-24) [i386-mswin32]&#8220;.  Maybe it would work with a different version of pathname2.  Any ideas?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-416">
+    
+    	<a name="comment-416"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/94c2dc4c7e8e6a5fd4192088088e8697?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.pghcodingdojo.org' rel='external nofollow' class='url url'>Greg Akins</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-416" title="Direct link to this comment">13. Nov, 2007 at 9:35 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-416">
+                
+                    <p>I did<br />
+> gem install &#8211;remote pathname2<br />
+and used my VS.Net SDK command window (to fix some path errors)<br />
+and everything compiled fine.<br />
+Using Ruby 1.8.5 on Windows XP</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-417">
+    
+    	<a name="comment-417"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-417" title="Direct link to this comment">13. Nov, 2007 at 11:44 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-417">
+                
+                    <p>@TalbottC:<br />
+There seems to be a problem with the latest builds of Ruby 1.8.6. I downgraded to a pre-rc build and pathname2 works just fine.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-418">
+    
+    	<a name="comment-418"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/b2d41dd9318af774b61a60b89a7a1f08?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">TalbottC</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-418" title="Direct link to this comment">13. Nov, 2007 at 8:56 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-418">
+                
+                    <p>Thanks John.  That did the trick.  I downgraded to 1.8.6-25 and it works great.  BTW: great talk at P&#038;P Summit in Redmond last week.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-419">
+    
+    	<a name="comment-419"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/073818f10579167621e78c2bf0d089d8?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Eduardo Flores</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-419" title="Direct link to this comment">15. Nov, 2007 at 4:49 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-419">
+                
+                    <p>Hi John,<br />
+I&#8217;m crafting a StringIO class for IR and hope to send for consideration soon (as a base for the yaml).<br />
+I&#8217;m quite new on this and don&#8217;t know which namespace it should belong. Currently I have it on Ruby.Builtins but should it go on Libraries?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-420">
+    
+    	<a name="comment-420"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/073818f10579167621e78c2bf0d089d8?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Eduardo Flores</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-420" title="Direct link to this comment">15. Nov, 2007 at 7:22 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-420">
+                
+                    <p>Sorry, I meant that they should go on Ruby.Extensions</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-421">
+    
+    	<a name="comment-421"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/9c9b1522608ad7b4bae15693efdf17ac?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://myfavoritemovies.spaces.live.com' rel='external nofollow' class='url url'>Nair</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-421" title="Direct link to this comment">07. Apr, 2008 at 6:46 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-421">
+                
+                    <p>Is the pathname2 still an issue or is it been resolved? I checkout the code last week and getting the same error. May be I am missing something?<br />
+Thanks.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-422">
+    
+    	<a name="comment-422"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-422" title="Direct link to this comment">07. Apr, 2008 at 9:20 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-422">
+                
+                    <p>@Nair: gem install pathname2</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-423">
+    
+    	<a name="comment-423"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/0078f58fc8e984a38e467e41948dbc6d?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Doug Blank</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-423" title="Direct link to this comment">23. May, 2008 at 8:28 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-423">
+                
+                    <p>I had to &#8220;gem install &#8211;remote pathname2&#8243; to get that to work. Now I&#8217;m getting:<br />
+$ rake compile mono=1<br />
+(in /home/dblank/ironruby/trunk)<br />
+Error: Could not find file &#8220;/home/dblank/ironruby/trunk/src/microsoft.scripting.core/Microsoft.Scripting.txt&#8221;.<br />
+rake aborted!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-424">
+    
+    	<a name="comment-424"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/15b0813a02f338f4c0fd8f493e9419bb?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://iomegatrix.com' rel='external nofollow' class='url url'>TJ</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/ironruby-libraries.html/comment-page-1#comment-424" title="Direct link to this comment">25. May, 2008 at 10:40 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-424">
+                
+                    <p>I have made a simple implementation of Win32API. I also tested it with some C++ dll and it works great. But I would like to know if you guys already have an implementation and if you don&#8217;t. Then i can give you my implementation.<br />
+Thanks</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+        
+        </ol>    
+    
+        <div class="navigation">
+            <div class="fl"></div>
+            <div class="fr"></div>
+            <div class="fix"></div>
+        </div><!-- /.navigation -->
+
+			
+		
+
+</div> <!-- /#comments_wrap -->
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+	
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2007/09/ironruby-libraries.html/comment-page-1#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div><!-- /.cancel-comment-reply -->
+
+		    
+		<form action="http://iunknown.com/wp-comments-post.php" method="post" id="commentform" onsubmit="if (url.value == 'Website (optional)') {url.value = '';}">
+
+	    <div class="left">
+
+		
+			<p>
+                <input type="text" name="author" class="txt" id="commentauthor" tabindex="1" value="Name (required)" onfocus="if (this.value == 'Name (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="email" class="txt" id="email" tabindex="2" value="Email (required)" onfocus="if (this.value == 'Email (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="url" class="txt" id="url" tabindex="3" value="Website (optional)" onfocus="if (this.value == 'Website (optional)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Website (optional)';}" />
+			</p>
+
+		        
+        </div>
+
+		<div class="right">
+        
+		<!--<p><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </p>-->
+
+		<p><textarea name="comment" id="comment" rows="10" cols="50" tabindex="4"></textarea></p>
+
+		<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+		<input type="hidden" name="comment_post_ID" value="54" />
+		
+		<input type='hidden' name='comment_post_ID' value='54' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+				
+        </div>
+        
+		</form><!-- /#commentform -->
+
+	
+	<div class="fix"></div>
+
+</div><!-- /#respond -->
+
+                                                    
+			  
+        
+		</div><!-- /#main -->
+
+        <div id="sidebar" class="col-right">
+
+	<!-- Widgetized Sidebar -->	
+	<div id="text-3" class="widget widget_text"><h3>Subscribe!</h3>			<div class="textwidget"><p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+		</div>		
+    
+	<!-- TABS STARTS --> 
+		<div id="tabs">
+		
+		<ul class="wooTabs tabs">
+			<li><a href="#pop">Popular</a></li>
+			<li><a href="#feat">Latest</a></li>
+            <li><a href="#comm">Comments</a></li>
+			<li><a href="#tagcloud">Tags</a></li>
+		</ul>	
+		
+		<div class="fix"></div>
+		
+		<div class="inside">
+		 <div id="pop">
+			<ul>
+					<li>
+			                
+            <a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html" title="A first look at IronRuby">A first look at IronRuby</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/08/funtwo-unmasked.html" title="funtwo unmasked">funtwo unmasked</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html" title="Dynamic Languages, Microsoft, and me">Dynamic Languages, Microsoft, and me</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2008/03/dynamic-silverlight-part-1-hello-world.html" title="Dynamic Silverlight Part 1: Hello, World!">Dynamic Silverlight Part 1: Hello, World!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html" title="IronRuby on Rubyforge!">IronRuby on Rubyforge!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+                    
+			</ul>
+           </div>
+           
+         <div id="feat"> 
+	        <ul>
+			<li>
+		<a title="Permalink to  Motorola DROID Review" href="http://iunknown.com/2009/12/motorola-droid-review.html" rel="bookmark">Motorola DROID Review</a>
+	<span class="meta">10. Dec, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Passing the torch" href="http://iunknown.com/2009/11/passing-the-torch.html" rel="bookmark">Passing the torch</a>
+	<span class="meta">17. Nov, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Dynamic Languages at TechEd 2009" href="http://iunknown.com/2009/05/dynamic-languages-at-teched-2009.html" rel="bookmark">Dynamic Languages at TechEd 2009</a>
+	<span class="meta">18. May, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Disable that annoying beep on Thinkpads when resuming from Sleep" href="http://iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html" rel="bookmark">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+	<span class="meta">02. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Hello, 2009" href="http://iunknown.com/2009/01/hello-2009.html" rel="bookmark">Hello, 2009</a>
+	<span class="meta">01. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+		
+                    
+			</ul>
+          </div>
+          <div id="comm">  
+			<ul>
+			<li>
+    <img alt='' src='http://www.gravatar.com/avatar/d1e701feeafaf4228572298aea23d13f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2007/07/outlook-zen.html#comment-2224" title="on  Outlook Zen">
+		Frank S: I've been using Jello 5 for the last few years.  J...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/634e0589ae0ec312596b20e8c95474ae?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2119" title="on  Passing the torch">
+		Mattias: Now we are really curious... the announcement is d...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/52bf71ded85623e0f7f976192399621f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2016" title="on  Passing the torch">
+		Dave Bettin: New dynamic language?...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/0ad20a1e4b560f1c2771903112cc4fa9?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2008/03/dynamic-silverlight-part-3-integrating-silverlight-with-asp-net-mvc.html#comment-174" title="on  Dynamic Silverlight Part 3: Integrating Silverlight with ASP.NET MVC">
+		sikat ang pinoy: Creating silverlight on asp.net mvc are now easy. ...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-31" title="on  Passing the torch">
+		John Lam: Hang in there ... will happen later this month! So...
+    </a>
+    <div style="clear:both"></div>
+</li>
+                    
+			</ul>
+	      </div>
+			<div id="tagcloud">
+			    			</div>
+		
+	</div><!-- INSIDE END -->
+	
+	</div><!-- TABS END -->
+	
+	<div class="fix" style="height:25px !important;"></div>
+	
+	  
+	<!-- TABS END -->    
+    
+	<!-- Widgetized Sidebar -->	
+	<div id="archives-3" class="widget widget_archive"><h3>Archives</h3>		<select name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> <option value="">Select Month</option> 	<option value='http://iunknown.com/2009/12'> December 2009 </option>
+	<option value='http://iunknown.com/2009/11'> November 2009 </option>
+	<option value='http://iunknown.com/2009/05'> May 2009 </option>
+	<option value='http://iunknown.com/2009/01'> January 2009 </option>
+	<option value='http://iunknown.com/2008/10'> October 2008 </option>
+	<option value='http://iunknown.com/2008/09'> September 2008 </option>
+	<option value='http://iunknown.com/2008/08'> August 2008 </option>
+	<option value='http://iunknown.com/2008/07'> July 2008 </option>
+	<option value='http://iunknown.com/2008/06'> June 2008 </option>
+	<option value='http://iunknown.com/2008/05'> May 2008 </option>
+	<option value='http://iunknown.com/2008/04'> April 2008 </option>
+	<option value='http://iunknown.com/2008/03'> March 2008 </option>
+	<option value='http://iunknown.com/2008/02'> February 2008 </option>
+	<option value='http://iunknown.com/2008/01'> January 2008 </option>
+	<option value='http://iunknown.com/2007/12'> December 2007 </option>
+	<option value='http://iunknown.com/2007/11'> November 2007 </option>
+	<option value='http://iunknown.com/2007/10'> October 2007 </option>
+	<option value='http://iunknown.com/2007/09'> September 2007 </option>
+	<option value='http://iunknown.com/2007/08'> August 2007 </option>
+	<option value='http://iunknown.com/2007/07'> July 2007 </option>
+	<option value='http://iunknown.com/2007/06'> June 2007 </option>
+	<option value='http://iunknown.com/2007/05'> May 2007 </option>
+	<option value='http://iunknown.com/2007/04'> April 2007 </option>
+	<option value='http://iunknown.com/2007/03'> March 2007 </option>
+	<option value='http://iunknown.com/2007/02'> February 2007 </option>
+	<option value='http://iunknown.com/2007/01'> January 2007 </option>
+	<option value='http://iunknown.com/2006/12'> December 2006 </option>
+	<option value='http://iunknown.com/2006/11'> November 2006 </option>
+	<option value='http://iunknown.com/2006/10'> October 2006 </option>
+	<option value='http://iunknown.com/2006/09'> September 2006 </option>
+	<option value='http://iunknown.com/2006/08'> August 2006 </option>
+	<option value='http://iunknown.com/2006/07'> July 2006 </option>
+	<option value='http://iunknown.com/2006/06'> June 2006 </option>
+	<option value='http://iunknown.com/2006/05'> May 2006 </option>
+	<option value='http://iunknown.com/2006/04'> April 2006 </option>
+	<option value='http://iunknown.com/2006/03'> March 2006 </option>
+	<option value='http://iunknown.com/2006/02'> February 2006 </option>
+	<option value='http://iunknown.com/2006/01'> January 2006 </option>
+	<option value='http://iunknown.com/2005/12'> December 2005 </option>
+	<option value='http://iunknown.com/2005/11'> November 2005 </option>
+	<option value='http://iunknown.com/2005/10'> October 2005 </option>
+ </select>
+</div><div id="twitter-1" class="widget widget_twitter"><h3><a href="http://twitter.com/john_lam" class="twitter_title_link">Tweets</a></h3><ul class="twitter"><li>No public Twitter messages.</li></ul></div>
+<div id="flickr" class="widget">
+	<h3 class="widget_title">Photos on <span>Flick<span>r</span></span></h3>
+	<div class="wrap">
+		<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=18&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=23649168@N00"></script>        
+		<div class="fix"></div>
+	</div>
+</div>
+
+		
+             
+	
+</div><!-- /#sidebar -->
+    </div><!-- /#content -->
+		
+    <!-- Footer Widget Area Starts -->
+	<div id="footer-widgets">
+		<div class="container col-full">
+            <div class="block">
+                		           
+            </div>
+            <div class="block">
+                		           
+            </div>
+            <div class="block last">
+                		           
+            </div>
+   			<div class="fix"></div>
+		</div>    
+    </div>
+    <!-- Footer Widget Area Ends -->
+
+	<div id="footer">
+		<div class="col-full">
+            <div id="copyright" class="col-left">
+                <p>&copy; 2010 John Lam on Software. All Rights Reserved.</p>
+            </div>
+            
+            <div id="credit" class="col-right">
+                <p>Powered by <a href="http://www.wordpress.org">Wordpress</a>. Designed by <a href="http://www.woothemes.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/woothemes.png" width="87" height="21" alt="Woo Themes" /></a></p>
+            </div>
+		</div>
+	</div>
+	<!-- footer Ends -->
+	
+</div><!-- /#container -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&amp;count=1"></script>
+</body>
+</html>

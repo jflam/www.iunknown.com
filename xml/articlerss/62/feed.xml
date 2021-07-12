@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Hardware changes</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Hardware changes" by jlam</title>
+      <description>&lt;p&gt;I&amp;#8217;ve had it with &lt;span class="caps"&gt;HDD&lt;/span&gt; failures on workstations. I didn&amp;#8217;t suffer much in the way of data loss, it&amp;#8217;s just the freaking inconvenience of it that drives me crazy.&lt;/p&gt;
+
+
+	&lt;p&gt;I just finished building a new workstation that runs on an &lt;a href="http://www.techreport.com/reviews/2005q2/opteron-x75/index.x?pg=1"&gt;Opteron 175&lt;/a&gt; processor. I thought I&amp;#8217;d collect my observations on this process here for folks who may want to build something on this platform in the future.&lt;/p&gt;
+
+
+	&lt;p&gt;First off, I didn&amp;#8217;t want &lt;a href="http://en.wikipedia.org/wiki/Scalable_Link_Interface"&gt;SLI&lt;/a&gt;, so I didn&amp;#8217;t want to pay for it. I elected to purchase an nForce4 chipset &lt;a href="http://www.asus.com/products4.aspx?l1=3&amp;#38;l2=15&amp;#38;l3=171&amp;#38;model=455&amp;#38;modelmenu=1"&gt;ASUS &lt;span class="caps"&gt;A8N E&lt;/span&gt;&lt;/a&gt; motherboard instead of one of the nForce4 &lt;span class="caps"&gt;SLI&lt;/span&gt; chipset motherboards. That was a minor mistake. This motherboard cannot boot from an external &lt;span class="caps"&gt;USB&lt;/span&gt; drive (which is a pain), nor does it have any Firewire ports (long story short, my 3G iPod doesn&amp;#8217;t sync to &lt;span class="caps"&gt;USB 2 &lt;/span&gt;- only Firewire for some bizarre reason). I didn&amp;#8217;t figure this out of course until I had the entire computer assembled, and by that time I&amp;#8217;d be dammed if I was going to rip it apart to replace the motherboard! Bottom line: don&amp;#8217;t skimp on the mobo (or at least read and memorize the specs before you buy!)&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m now running &lt;span class="caps"&gt;RAID 0&lt;/span&gt;+1 across 4&amp;#215;250GB 7200rpm disks. I hope that the chances of &lt;span class="caps"&gt;HDD&lt;/span&gt; failure causing downtime on that system are a thing of the past. My primary server runs a &lt;span class="caps"&gt;RAID5&lt;/span&gt; array with 4&amp;#215;160GB disks, so I&amp;#8217;ve always had redundancy there (but I haven&amp;#8217;t suffered a failure on those drives yet either). But I&amp;#8217;ll now have performance and redundancy with &lt;span class="caps"&gt;RAID 0&lt;/span&gt;+1 on the workstation.&lt;/p&gt;
+
+
+	&lt;p&gt;A warning for folks who are running nForce &lt;span class="caps"&gt;RAID&lt;/span&gt; and want to install Vista &amp;#8211; it won&amp;#8217;t work. Apparently the February &lt;span class="caps"&gt;CTP&lt;/span&gt; will fix this issue. I might drop Vista onto a vmware image just to see how it works &amp;#8211; it&amp;#8217;s been a while since I&amp;#8217;ve looked at that OS. I&amp;#8217;d love to see it run native though :)&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m amazed by how responsive this system is &amp;#8211; it feels more responsive than the Pentium &lt;span class="caps"&gt;D820&lt;/span&gt; that it replaced. I was doing a lot of multitasking when I was rebuilding my image, and it just felt like there was always more cycles available.&lt;/p&gt;
+
+
+	&lt;p&gt;The Opteron 175 ran really cool during the things I was doing (SpamBayes training, installing &lt;span class="caps"&gt;VS 2005&lt;/span&gt;, lots of downloading simultaneously). The &lt;span class="caps"&gt;CPU&lt;/span&gt; utilization was consistently &gt; 80%, yet the &lt;span class="caps"&gt;CPU&lt;/span&gt; temperature monitor never went above 42C the entire time.&lt;/p&gt;
+
+
+	&lt;p&gt;It&amp;#8217;s quiet too: I&amp;#8217;m housing everything in a &lt;a href="http://www.antec.com/us/productDetails.php?ProdID=15139"&gt;Sonata II&lt;/a&gt; case, and even 4&amp;#215;7200 rpm disks under my feet don&amp;#8217;t seem to make much of a racket at all &amp;#8211; it&amp;#8217;s only a bit louder than the Shuttle &lt;span class="caps"&gt;SB31P&lt;/span&gt; that it&amp;#8217;s replacing.&lt;/p&gt;
+
+
+	&lt;p&gt;Bottom line: I&amp;#8217;m happy with how quickly things came together from my favorite hardware suppliers: &lt;span class="caps"&gt;ASUS &lt;/span&gt;+ Antec.&lt;/p&gt;
+
+</description>
+      <pubDate>Tue, 07 Feb 2006 09:09:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/07/hardware-changes"&gt;Hardware changes&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/07/hardware-changes"&gt;Hardware changes&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

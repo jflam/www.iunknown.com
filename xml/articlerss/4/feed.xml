@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Why another Ruby to CLR bridge?</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Why another Ruby to CLR bridge?": comment by Anson Tsao</title>
+      <description>&lt;p&gt;John,&lt;/p&gt;
+
+
+	&lt;p&gt;There are a couple of other folks you should credit for the C++/CLI design. Herb Sutter and Brandon Bray. Herb was responsible for much of the syntax innovations such as context sensitive keywords (ref class), and Brandon was responsible for writing the language specification and probably knows more about language design details than anyone else.&lt;/p&gt;</description>
+      <pubDate>Wed, 02 Nov 2005 13:00:18 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/11/01/why-another-ruby-to-clr-bridge#comment-9</guid>
+      <link>http://www.iunknown.com/articles/2005/11/01/why-another-ruby-to-clr-bridge#comment-9</link>
+    </item>
+    <item>
+      <title>"Why another Ruby to CLR bridge?" by jlam</title>
+      <description>&lt;p&gt;There are at least two other Ruby to &lt;span class="caps"&gt;CLR&lt;/span&gt; bridges. There is the &lt;a href="http://www.saltypickle.com/rubydotnet"&gt;Salty
+Pickle bridge&lt;/a&gt; written by John Pierce and Ben Schroeder, and there is another bridge
+written by &lt;a href="http://sourceforge.net/projects/rubydotnet"&gt;Thomas Sondergaard&lt;/a&gt;. These bridges heavily leverage the
+existing &lt;span class="caps"&gt;CLR &lt;/span&gt;Reflection &lt;span class="caps"&gt;API&lt;/span&gt; and its dynamic method invocation
+infrastructure.&lt;/p&gt;
+
+
+	&lt;p&gt;Because of this, these bridges are not particularly
+efficient in either space or time. Reflective method invocation is a
+very heavyweight operation, as &lt;a href="http://www.saltypickle.com/RubyDotNet/20"&gt;these benchmarks&lt;/a&gt; will bear
+out. Furthermore, if value types are marshaled across the boundary,
+these objects will be boxed and placed on the &lt;span class="caps"&gt;CLR GC&lt;/span&gt; heap, resulting
+in an increase in memory pressure.&lt;/p&gt;
+
+
+	&lt;p&gt;Writing my own bridge lets me fix these problems, and it gave me an
+excuse to study the Ruby extension interfaces and the &lt;span class="caps"&gt;CLR V2&lt;/span&gt;
+lightweight code generation &lt;span class="caps"&gt;API&lt;/span&gt;. It also gave me an excuse to try out
+&lt;a href="http://blogs.msdn.com/slippman/"&gt;Stan Lippman&amp;#8217;s&lt;/a&gt; excellent work in fixing the Managed C++ syntax in
+Whidbey.&lt;/p&gt;
+
+
+	&lt;p&gt;My bridge addresses method invocation performance by generating &lt;span class="caps"&gt;CIL&lt;/span&gt;
+stubs on the fly using the new &lt;a href="http://msdn2.microsoft.com/en-us/library/80h6baz2.aspx"&gt;DynamicMethod&lt;/a&gt; API in Whidbey. These
+&lt;span class="caps"&gt;CIL&lt;/span&gt; stubs are directly bound to the Ruby object&amp;#8217;s methods. So once
+those &lt;span class="caps"&gt;CIL&lt;/span&gt; stubs have been JITed by the &lt;span class="caps"&gt;CLR&lt;/span&gt;, a method call from Ruby
+goes &lt;strong&gt;directly&lt;/strong&gt; into managed code. The only overhead is that incurred
+by marshaling parameters from their Ruby representation to the
+corresponding &lt;span class="caps"&gt;CLR&lt;/span&gt; representation.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;From my comments, Anson Tsao mentioned a couple of other folks I should credit for the MC++ syntax:&lt;/p&gt;
+
+
+	&lt;blockquote&gt;
+		&lt;p&gt;There are a couple of other folks you should credit for the C++/CLI design. &lt;a href="http://www.gotw.ca/"&gt;Herb Sutter&lt;/a&gt; and &lt;a href="http://blogs.msdn.com/branbray/"&gt;Brandon Bray&lt;/a&gt;. Herb was responsible for much of the syntax innovations such as context sensitive keywords (ref class), and Brandon was responsible for writing the language specification and probably knows more about language design details than anyone else.&lt;/p&gt;
+	&lt;/blockquote&gt;
+
+</description>
+      <pubDate>Tue, 01 Nov 2005 07:00:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/01/why-another-ruby-to-clr-bridge"&gt;Why another Ruby to CLR bridge?&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/01/why-another-ruby-to-clr-bridge"&gt;Why another Ruby to CLR bridge?&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

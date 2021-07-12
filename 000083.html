@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: The sorry state of technical information</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000082.html" title="Virtual Directories and Visual Studio .NET" />
+
+<link rel="next" href="http://www.iunknown.com/000084.html" title="Working for a living" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000082.html">&laquo; Virtual Directories and Visual Studio .NET</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000084.html">Working for a living &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">March 21, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">The sorry state of technical information</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>Warning: this is a mild rant.</P><br />
+<P>Preamble: I'm writing this piece mostly as a direct result of spending lots of not-so-quality time with another runtime environment that begins with "J". I don't mean to point out any specific technology vendor in this rant: this applies to all technology vendors. Some are just more guilty than others ;)</P><br />
+<P>I make my living (that is the work that pays my bills) by educating the software development community. Mostly this comes in the form of writing books and articles and speaking <A href="http://www.wintellect.com">in classrooms</A> and conferences. I spend lots of time suffering with poor documentation and writing lots of test code to figure out how a certain technology <EM>really</EM> works. In turn, I take that experience and distill it to its essence it when I teach a class or write an article. </P><br />
+<P>Through extensive experience, I've found that lectures do a very poor job of transferring knowledge about <EM>how</EM> to do a task. I have found that overall, students rarely complete the labs in class perfectly the first time, even if common mistakes are pointed out in the lectures. Apparently, a fair amount of learning occurs as the information travels through your fingertips and into the software that you're creating.</P><br />
+<P>This takes me to the point of this rant: how technical information is laid out in vendor documentation. It is the exception rather than the rule where you find task-oriented documentation. When I learn a new technology, I typically like to read the <EM>why</EM> first. I want to understand <EM>why </EM>different components were designed the way they were and why they interact with each other in the ways that they do. The crucial step, however, is to translate that information through my fingertips; I need to understand <EM>how</EM> to create those components and what steps that I need to take to take to make that happen. It is here that vendor documentation usually falls flat on its face.</P><br />
+<P>Vendor documentation rarely shows you how to complete common tasks. A notable exception to this observation are the <A href="http://samples.gotdotnet.com/quickstart/howto/">Quickstart tutorials</A> in the .NET Framework SDK. These are sets of short articles which quickly show how you can do common tasks, such as opening and reading a file from the filesystem. However, outside of this single data point, I have yet to see this in other vendor documentation (and in my defense if it exists, it sure as heck isn't obvious - a link to these articles should be prominently displayed on the first page of the documentation). This really needs to be improved. </P><br />
+<P>Book publishers should sit up and take notice of this failing as well. Today's bloat-books that purport to answer the "How do I ..." questions utterly fail in this regard as well. These books are mostly warmed-over versions of the vendor documentation and do not provide answers to a simple question like "How do I create a web service using vendor X's technology?" </P><br />
+<P>I feel that there are two broad categories of books: the "How do I ..." and the "Why ... " books. Software developers rarely have the time to read from cover-to-cover a "How do I ..." book. On the other hand, they should make the time to read from cover-to-cover "Why ..." books, since this directly affects their fundamental understanding of the technology that they use every day. For folks (not me) who want to write&nbsp;"How do I ..." books, your aim&nbsp;should be to get your reader to the point where they have code that they can test and tweak to their heart's content <EM>as quickly as possible</EM>. </P><br />
+<P>However, I feel that books fail to communicate "How do I ..." information adequately. There is simply too much friction in books (when was the last time that you cracked open the CD or downloaded the sample code for a book?). I have an answer that I believe works, though, and more will be revealed in the coming weeks and months on this web log. </P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at March 21, 2002 07:22 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="83" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000083.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: How to misuse code coverage</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000302.html" title="What does &quot;Enterprise&quot; mean?" />
+
+<link rel="next" href="http://www.iunknown.com/000304.html" title="Freemind: an incredible thought organization tool" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000303.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/47"
+    dc:title="How to misuse code coverage"
+    dc:identifier="http://www.iunknown.com/000303.html"
+    dc:subject=""
+    dc:description="Steve Makofsky Steve points to this excellent paper by Brian Marick that focuses on an important source of bugs: faults of omission. Your code coverage tool can only tell you about code that exists that wasn&apos;t executed. It can&apos;t tell..."
+    dc:creator="John"
+    dc:date="2003-07-28T10:37:40-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000302.html">&laquo; What does "Enterprise" mean?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000304.html">Freemind: an incredible thought organization tool &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">July 28, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">How to misuse code coverage</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><a href="http://www.furrygoat.com/archives/000529.html">Steve Makofsky</a> Steve points to this <a href="http://www.testing.com/writings/coverage.pdf"><em>excellent</em> paper by Brian Marick</a> that focuses on an important source of bugs: faults of omission. Your code coverage tool can only tell you about code <em>that exists</em> that wasn't executed. It can't tell you anything about code that you need to write - that is code that fixes faults of omission. The simple rule of thumb that Brian proposes is that:</p>
+
+<blockquote><p>If part of your test suite is weak in a way coverage can detect, it's likely also weak in a way that coverage can't detect.</p></blockquote>
+
+<p>I strongly recommend that all developers take a close look at Brian's article. I had to re-read his article a few times to get what he's saying, since his recommendations are quite abstract. But you won't regret the time invested.</p>
+
+<p>I'm now thinking about integrating a code coverage tool into my NAnt/NUnit build system. There doesn't seem to be any open source <span class="caps">CLR</span> tools yet - I'm going to take a quick look at Rational's Quantify and NuMega's DevPartner products to see whether they can be integrated into an automated build system.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at July 28, 2003 10:37 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=303" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="303" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000303.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Don't you mean Rational PureCoverage instead of Rational Quantify?</p>
+
+<p>Also, I guess it should be possible to accomplish this task with Rational's test-tools. Look for Rational PureAPI (for .NET and Java2) and PureCoverage API (unmanaged c/c++).<br />
+There is also a great bunch of command-arguments you can send to them :)</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;a-haeber&#64;frisurf&#46;no">Andreas Haeber</a> at July 31, 2003 02:45 PM</span>
+</div>
+<div class="comments-body">
+<p>AutomatedQA.com => AQTime .NET Edition</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://weblogs.asp.net/Yreynhout">Yves Reynhout</a> at August  6, 2003 07:42 PM</span>
+</div>
+<div class="comments-body">
+<p>There is a small open source tool called NCover -its available in the GotDotNet workspaces.  I've no idea how useful it is yet, as I've not had time to experiment.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.mlevison.com">Mark Levison</a> at February 18, 2004 12:55 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

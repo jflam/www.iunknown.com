@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: VMWare Woes</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000029.html" title="Microsoft HomeStation" />
+
+<link rel="next" href="http://www.iunknown.com/000031.html" title="Pentium Instruction Timings" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000029.html">&laquo; Microsoft HomeStation</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000031.html">Pentium Instruction Timings &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 08, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">VMWare Woes</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>Sometimes it seems like I am destined to spend my entire life installing software. Today was one of those days. I wanted to do something simple: set up a bunch of <A href="http://www.vmware.com">VMWare</A> virtual machines so that I could started filling out the testing matrix for my product. I had quite a lot of success earlier this year setting up <A href="http://www.vmware.com/products/desktop/ws_features.html">VMWare Workstation 3.0</A> on Windows XP and running a Linux guest operating system on it. I thought that Linux would be the tough operating system to install. I was wrong.</P><br />
+<P>In October, I had installed VMWare Workstation 3.0 on my Thinkpad T-23 laptop that ran the release bits of Windows XP as the host operating system. I then proceeded to install a SUSE Linux 7.2 distribution on it without any problems. The SUSE installer worked flawlessly under VMWare. </P><br />
+<P>This afternoon, I attempted to install a Windows XP Professional guest operating system under VMWare on my Thinkpad T-23. After taking what seemed to be an eternity to go from the BIOS screen to Windows XP booting off of my CD drive, I managed to format the VMWare virtual disk with NTFS and get through the part where the Windows XP setup where all of the setup files are copied from the CD to the virtual disk. When the computer rebooted, it would NOT boot from the virtual disk. CPU utilization was pegged at 100% and the computer just sat there and taunted me.</P><br />
+<P>Being foolish, I attempted the install again. And for good luck, one more time, varying silly little things like whether I was doing a fast format for NTFS or not. Nothing worked.</P><br />
+<P>In frustration, I turned to using my desktop PC to install Windows XP under VMWare Workstation. This time, the installation of Windows XP Professional worked flawlessly. I then proceeded to apply all known patches to this build of XP, activated it, and archived the copy to a ZIP file so that I could use it as a baseline "clean" install of XP.</P><br />
+<P>Once I verified that everything worked correctly, I proceeded to install Visual Studio.NET Beta 2 Enterprise Edition (I wanted to check out the UML reverse-engineering features of Visio). The Component Update worked just fine. However, when I proceeded to begin the install of VS.NET, it barfed repeatedly part-way through the install, complaining of a corrupt or missing *.MSM file. </P><br />
+<P>Being foolish, I attempted the install again. Twice. No luck. I posted a plea on the DOTNET list, and got a reply from a Microsoftie. Hopefully something might come of this.</P><br />
+<P>Thinking that it was an OS + VMWare + VS.NET conflict of some sort, I decided to go and try my luck with Windows 2000 as the guest operating system.</P><br />
+<P>One of the things that I quickly learned about VMWare is that you had BETTER get correct the type of guest operating system that you will be installing. Foolishly, on my first attempt, I had specified Windows 2000 Professional (actually, I had intended to install it and then discovered that I only had bootable CD's for Server and Advanced Server handy). That blew about half an hour as the Win2K Server install formatted and copied all of the files only to have VMWare refuse to boot off the hard drive (it was complaining about a missing ntoskrnl.exe file).</P><br />
+<P>The next time through, I specified that I was installing Windows 2000 Server, and the base OS installed just fine. Then I decided to apply Service Pack 2. Foolishly (are you seeing a pattern here?) I decided to turn off the "do you want to backup files so that you can uninstall this service pack later?" switch. I got part way through the install of SP2 only to have the installer barf while trying to uncompress mshtml.dl_. I canceled completely out of the install, and had a half-baked install of Win2K. So I had to repave again.</P><br />
+<P>The third time that I installed Win2K, everything installed fine once again. However, this time when I attempted to install SP2, I made sure that I backed up the base system files. However, the install barfed again, but this time on a different file: hypertrm.dl_. Now I'm beginning to hate life. This time, I told the SP2 install to continue, but to skip copying that file. I would manually replace it later.</P><br />
+<P>Looking at patterns, it now seems really clear to me that it might be a problem with my CD-ROM drive. It's actually a Plextor CDRW drive that no longer burns CDR's on WinXP after I installed a Pioneer 16X DVD on the same box. Hmmm ... </P><br />
+<P>I'm going to finish up this entry now (it's 3:10am and I'm REALLY tired). However, I think I might have isolated the problem so I'll have somewhere to begin in the morning.</P><br />
+<P>Why can't I just write software and stay far, far away from hardware?!!</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January  8, 2002 02:04 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="30" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000030.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I felt like I was reading something I did when I read your woes with VMWare. I have VMWare installed on a Windows XP host, but I think I worked because I imaged the entire drive onto a large hard drive on my thinkpad think I swapped them.  Installing Server wasn't easy though.  Even though it is a bootable CD, the system would not recognize it.  I did something weird.  I "viewed" the CD in explorer in the host, copied the setup files into a folder(that I created) in the VMWare directory and then tried it again and it worked! (At least that's what I remember doing...doh!)  Anyway, a friend of mine is not having the same exact problem.  I am going to print your woes and solution and have it handy for when she comes over with her think pad.<br />
+Please write some more and your solutions.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;victoria&#46;verdejo&#64;chase&#46;com">Victoria Verdejo</a> at January 16, 2003 09:20 AM</span>
+</div>
+<div class="comments-body">
+<p>It felt like deja-vu all over again, when I read your woes with VMWare. I have VMWare installed on a Windows XP host, but I think I worked because I imaged the entire drive onto a large hard drive on my thinkpad then I swapped the drives.  Installing Server wasn't easy though.  Even though it is a bootable CD, the system kept saying "no OS found".  I did something weird.  I "viewed" the CD in explorer in the host, copied the setup files into a folder(that I created) in the VMWare directory and then tried it again and it worked! (At least that's what I remember doing...doh!)  Anyway, a friend of mine is having the same exact problem with her ThinkPad.  I am going to print your woes and solution and have it handy for when she comes over with her ThinkPad.<br />
+Please write some more and your solutions.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;victoria&#46;verdejo&#64;chase&#46;com">Victoria Verdejo</a> at January 16, 2003 09:23 AM</span>
+</div>
+<div class="comments-body">
+<p>It felt like deja-vu all over again, when I read your woes with VMWare. I have VMWare installed on a Windows XP host, but I think I worked because I imaged the entire drive onto a large hard drive on my thinkpad then I swapped the drives.  Installing Server wasn't easy though.  Even though it is a bootable CD, the system kept saying "no OS found".  I did something weird.  I "viewed" the CD in explorer in the host, copied the setup files into a folder(that I created) in the VMWare directory and then tried it again and it worked! (At least that's what I remember doing...doh!)  Anyway, a friend of mine is having the same exact problem with her ThinkPad.  I am going to print your woes and solution and have it handy for when she comes over with her ThinkPad.<br />
+Please write some more and your solutions.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;IUNKnown&#46;com">Victoria Verdejo</a> at January 16, 2003 09:25 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: July 2003 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2003_06.html" title="June 2003" />
+
+<link rel="next" href="http://www.iunknown.com/2003_08.html" title="August 2003" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2003_06.html">&laquo; June 2003</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2003_08.html">August 2003 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000305"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/49"
+    dc:title="UI Programming and Unit Tests "
+    dc:identifier="http://www.iunknown.com/2003_07.html#000305"
+    dc:subject=""
+    dc:description="I spent some time today thinking about the best way of writing unit tests for GUI code. The key is determining whether your rendering code is issuing the correct set / sequence of commands to the graphics subsystem. At some..."
+    dc:creator="John"
+    dc:date="2003-07-30T20:57:44-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 30, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000305"></a>
+<h3 class="title">UI Programming and Unit Tests </h3>
+
+<p>I spent some time today thinking about the best way of writing unit tests for <span class="caps">GUI</span> code. The key is determining whether your rendering code is issuing the correct set / sequence of commands to the graphics subsystem. </p>
+
+<p>At some point, you have to take it on faith that the commands that you issue to the graphics subsystem will result in pixels being painted at the correct positions on the screen. This is not what I'm trying to accomplish in my unit tests; that's what Microsoft and the device driver writers have to guarantee will happen.</p>
+
+<p>Instead, I would be happy if I could capture a "correct result" in my unit tests. Imagine that you could describe the correct result as an <span class="caps">XML</span> document that contains the rendering commands and their parameters. For example:</p>
+
+<pre>
+&lt;DrawEllipse&gt;
+  &lt;Pen name=&quot;Pens.Black&quot;/&gt;
+  &lt;Rectangle x=&quot;1&quot; y=&quot;1&quot; width=&quot;100&quot; height=&quot;100&quot;/&gt; 
+&lt;/DrawEllipse&gt; 
+</pre><p>Next, imagine that I can intercept the call to <code>Graphics.DrawEllipse( Pen pen, Rectangle rect )</code>. I could then log the method call as <span class="caps">XML,</span> which can easily be compared to the correct result using an <a href="http://apps.gotdotnet.com/xmltools/xmldiff/"><span class="caps">XML</span> diff tool</a>. </p>
+
+<p>In practice, this is a lot harder than it looks. If you examine the <code>System.Drawing.Graphics</code> class, you'll find two problems. The first is that the class is sealed, which prevents you from deriving a plug-compatible class from it. However, even if the class wasn't sealed, you would wouldn't be able to intercept the methods because methods like <code>DrawEllipse</code> aren't virtual. </p>
+
+<p>In an ideal world, Microsoft would have defined the interface to the Graphics class via an <code>IGraphics</code> interface. This way, we would be free to cruft up our own plug-compatible implementation that could be used in place of the <em>real</em> <code>Graphics</code> class when we run our unit tests.</p>
+
+<p>One way of solving this problem would be to pull out the ultimate hacker weapons - runtime method interception extensions to the <span class="caps">CLR. </span>My project-in-limbo, <span class="caps">CLAW,</span> would have let me solve this problem by defining an interception layer between the caller and the real <code>Graphics</code> object.</p>
+
+<p>There is, of course, a simpler way of solving a subset of the UI rendering problem. You can create a <code>Graphics</code> object that <em>wraps</em> the existing <code>Graphics</code> object. </p>
+
+<pre>
+public void DrawEllipse( Pen pen, Rectangle rect ) {
+  if( Test ) 
+    LogCall( pen, rect );
+  else
+    Graphics.DrawEllipse( pen, rect );
+}
+</pre><p>The problem with this approach is, of course, that this only works with code that was compiled explicitly against the surrogate <code>Graphics</code> class. So this technique would only be able to test <em>your</em> custom rendering code, but wouldn't be able to test whether Framework rendering code was rendering correctly.</p>
+
+<p>Any thoughts about how to solve this problem without resorting to runtime method interception of the real <code>Graphics</code> class would be welcome.&Acirc;&nbsp;</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000305.html">08:57 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=305" onclick="OpenComments(this.href); return false">Comments (6)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=305" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000304"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/48"
+    dc:title="Freemind: an incredible thought organization tool"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000304"
+    dc:subject=""
+    dc:description="I&apos;ve been using an open-source tool called FreeMind for the past couple of days. This is hands-down the most incredible brainstorming / thought organization tool that I&apos;ve ever seen. FreeMind is essentially a fancy XML editor. It lets you create..."
+    dc:creator="John"
+    dc:date="2003-07-28T22:27:51-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 28, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000304"></a>
+<h3 class="title">Freemind: an incredible thought organization tool</h3>
+
+<p>I've been using an open-source tool called <a href="http://freemind.sourceforge.net/">FreeMind</a> for the past couple of days. This is hands-down the most incredible brainstorming / thought organization tool that I've ever seen. </p>
+
+<p>FreeMind is essentially a fancy <span class="caps">XML</span> editor. It lets you create single-rooted recursive hierarchies of information. But the presentation and editing is so powerful and intuitive that it pretty much eliminates any friction involved in <em>restructuring</em> your <span class="caps">XML</span> document. You also have the ability to link to external <span class="caps">URL</span>'s and external files. </p>
+
+<p>The way I use FreeMind is to initially capture a mind-dump of ideas relating to a single topic. Then I start noticing clusters of ideas that relate to one another and I use FreeMind to reorganize those ideas into their natural order. </p>
+
+<p>See for yourself. Surf over to the <a href="http://freemind.sourceforge.net/">FreeMind homepage on SourceForge</a>.  Make sure that you check out the screenshots of the program. It was worth reinstalling the Java runtime on my computer just to run this application. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000304.html">10:27 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=304" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=304" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000303"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/47"
+    dc:title="How to misuse code coverage"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000303"
+    dc:subject=""
+    dc:description="Steve Makofsky Steve points to this excellent paper by Brian Marick that focuses on an important source of bugs: faults of omission. Your code coverage tool can only tell you about code that exists that wasn&apos;t executed. It can&apos;t tell..."
+    dc:creator="John"
+    dc:date="2003-07-28T10:37:40-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000303"></a>
+<h3 class="title">How to misuse code coverage</h3>
+
+<p><a href="http://www.furrygoat.com/archives/000529.html">Steve Makofsky</a> Steve points to this <a href="http://www.testing.com/writings/coverage.pdf"><em>excellent</em> paper by Brian Marick</a> that focuses on an important source of bugs: faults of omission. Your code coverage tool can only tell you about code <em>that exists</em> that wasn't executed. It can't tell you anything about code that you need to write - that is code that fixes faults of omission. The simple rule of thumb that Brian proposes is that:</p>
+
+<blockquote><p>If part of your test suite is weak in a way coverage can detect, it's likely also weak in a way that coverage can't detect.</p></blockquote>
+
+<p>I strongly recommend that all developers take a close look at Brian's article. I had to re-read his article a few times to get what he's saying, since his recommendations are quite abstract. But you won't regret the time invested.</p>
+
+<p>I'm now thinking about integrating a code coverage tool into my NAnt/NUnit build system. There doesn't seem to be any open source <span class="caps">CLR</span> tools yet - I'm going to take a quick look at Rational's Quantify and NuMega's DevPartner products to see whether they can be integrated into an automated build system.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000303.html">10:37 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=303" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=303" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000302"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/46"
+    dc:title="What does &quot;Enterprise&quot; mean?"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000302"
+    dc:subject=""
+    dc:description="The term &quot;Enterprise&quot; seems to have many meanings. Here&apos;s my stab: Enterprise applications are much more expensive Enterprise applications are used by more than one person concurrently Enterprise applications are typically browser-hosted today Enterprise applications solve business problems1 Enterprise developers..."
+    dc:creator="John"
+    dc:date="2003-07-25T21:12:28-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 25, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000302"></a>
+<h3 class="title">What does "Enterprise" mean?</h3>
+
+<p>The term "Enterprise" seems to have many meanings. Here's my stab:</p>
+
+
+<ul>
+<li>Enterprise applications are much more expensive</li>
+<li>Enterprise applications are used by more than one person concurrently</li>
+<li>Enterprise applications are typically browser-hosted today</li>
+<li>Enterprise applications solve business problems<sup class="footnote"><a href="http://www.iunknown.com/000302.html#fn1">1</a></sup></li>
+<li>Enterprise developers need to use more expensive tools</li>
+</ul>
+
+<p>But I don't think that Enterprise applications are necessarily any more complex than non-Enterprise applications. I don't think that anyone would call a C++ compiler an Enterprise application, yet I would argue that it is far more complex than most Enterprise applications today. </p>
+
+<p>From a developer standpoint, do you really need to use Enterprise tools (read: more expensive) to build Enterprise applications? I use <span class="caps">VS.NET </span>Enterprise Architect because it's the most expensive version of <span class="caps">VS.NET</span> that comes "for free" with my <span class="caps">MSDN </span>Universal subscription. I know lots of folks who install Windows 2003 Enterprise Server because it&acirc;&#128;&#153;s the most expensive version of Windows (I know I did). I know it makes us feel better to use the more expensive tools, but do we really need to use any of the more expensive features?</p>
+
+<p>The reason why I'm writing this is due to my frustration with tool vendors that only seek to sell expensive bundles of software to "Enterprise" developers. As an example, I can't buy a copy of <a href="http://www.compuware.com/products/driverstudio/softice.htm">NuMega's SoftICE debugger</a> without buying their SoftICE Driver Suite product which costs $999!. Now, I don't write device drivers, but I could use a proven kernel-mode debugger every now and then. NuMega has lost me as a potential customer, and I'm thankful that MS gives away <a href="http://www.microsoft.com/whdc/ddk/debugging/default.mspx">WinDbg</a> for free for the odd time that I need to use a kernel-mode debugger.</p>
+
+<p>[1] As opposed to technology problems, although you can argue that some business problems <span class="caps">ARE</span> technology problems.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000302.html">09:12 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=302" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=302" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000301"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/45"
+    dc:title="The truth about cscomp.dll"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000301"
+    dc:subject=""
+    dc:description="On the DOTNET-LANGUAGE-DEVS mailing list, I posted a question about why there was a cscomp.dll even though the frameworks don&apos;t use it directly. I just double-checked today, and the only folks that use cscomp.dll is VS.NET. You can verify this..."
+    dc:creator="John"
+    dc:date="2003-07-24T14:11:23-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 24, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000301"></a>
+<h3 class="title">The truth about cscomp.dll</h3>
+
+<p>On the <a href="http://discuss.microsoft.com/archives/dotnet-language-devs.html"><span class="caps">DOTNET</span>-LANGUAGE-DEVS</a> mailing list, I posted a question about why there was a <code>cscomp.dll</code> even though the frameworks don't use it directly. I just double-checked today, and the only folks that use cscomp.dll is <span class="caps">VS.NET. </span>You can verify this for yourself by running <a href="http://www.sysinternals.com/ntw2k/freeware/procexp.shtml"><span class="caps">PROCEXP</span></a> on your computer.</p>
+
+<p>The <span class="caps">ASP.NET</span> folks elected not to use cscomp.dll so that they could sandbox the compilation process. Here's the answer from Grant Richins at <span class="caps">MS </span>(via Lars Bergstrom):</p>
+
+<blockquote><p>"Cscomp.dll is loaded in-process for the <span class="caps">IDE</span> scenario.  He is correct that avoiding the call to CreateProcess would save some time, but by running the compiler out-of-process, <span class="caps">ASP.NET</span> is able to isolate itself even better by giving the compiler process very few privileges (at one point the compiler couldn't even write to the temp directory!).  Also any exception that happens in the compiler is completely isolated to the compiler process and has no way to bring down all of <span class="caps">ASP.NET.</span><br/><br/><br />
+We had considered exposing a managed in-process C# compiler for <span class="caps">ASP.NET</span> and the CodeDom.  In fact we even wrote the code (see Microsoft.CSharp.Compiler), but when <span class="caps">ASP.NET</span> and the CodeDom decided not to use it, we decided to deprecate it.  Its only real savings (besides the unneeded CreateProcess) was that it could compile source code passed in as strings and thus not cause file I/O, but I'm not sure if that savings wasn't swallowed up by the cost of interop.  We wanted to remove it entirely because we didn't have good test coverage for it, but too late in our ship cycle we discovered some other teams had introduced dependencies on this interface unbeknownst to us.  So we recommend customers don't use it because we are planning on ripping it out in a few versions."</p></blockquote>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000301.html">02:11 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=301" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=301" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000300"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/44"
+    dc:title="SMTP mail configuration"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000300"
+    dc:subject=""
+    dc:description="It seems like an increasing number of mail servers have been configured to reject email that originates directly from a host on a known ISP&apos;s subnet. Recently I started getting a number of mail rejection notices from a few mail..."
+    dc:creator="John"
+    dc:date="2003-07-24T14:02:21-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000300"></a>
+<h3 class="title">SMTP mail configuration</h3>
+
+<p>It seems like an increasing number of mail servers have been configured to reject email that originates directly from a host on a known <span class="caps">ISP</span>'s subnet. Recently I started getting a number of mail rejection notices from a few mail servers, and have finally gotten around to reconfiguring Exchange to route my outgoing email through my <span class="caps">ISP</span>'s <span class="caps">SMTP</span> server. Like most (hopefully all?) others, my <span class="caps">ISP</span> requires authentication so I had to spend some time on the phone with tech support resetting the password for an email account that I never use :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000300.html">02:02 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=300" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=300" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000299"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/43"
+    dc:title="Phoenix"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000299"
+    dc:subject=""
+    dc:description="<![CDATA[I've been thinking about doing some work again on code injection techniques, especially as it relates to monitoring and diagnostics.&nbsp;Today, I came across this reference to MSR's Phoenix project via Mary Jo Foley's Microsoft Watch site. Phoenix looks like a...]]>"
+    dc:creator="John"
+    dc:date="2003-07-23T11:53:31-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 23, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000299"></a>
+<h3 class="title">Phoenix</h3>
+
+<p>I've been thinking about doing some work again on code injection techniques, especially as it relates to monitoring and diagnostics.&nbsp;Today, I came across this reference to <a href="http://www.research.microsoft.com/phoenix/"><span class="caps">MSR</span>'s Phoenix project</a> via <a href="http://www.microsoft-watch.com/article2/0,0,1201208,00.asp?kc=MWRSS02129TX1K0000535">Mary Jo Foley's Microsoft Watch site</a>. Phoenix looks like a very interesting toolkit that wraps <span class="caps">API</span>'s around much of the nasty grunge that is associated with generating code (at either compile time - or hopefully at runtime as well). Things like PE file reading / writing, <span class="caps">CIL </span>/ metadata reading / writing are all nasty bits that tool writers / academics would otherwise have to write themselves. <a href="http://www.research.microsoft.com/phoenix/Phoenix-Faculty-Summit-2003.ppt">Slide 8</a> from the overview slide deck says it all.</p>
+
+<p>Wow. I can't wait until they get these bits out into general distribution. But their timeline makes it seem like it won't be until late 2005 that we see the Phoenix bits generally available :(</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000299.html">11:53 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=299" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=299" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000298"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/42"
+    dc:title="Creating Windows ISO CD images"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000298"
+    dc:subject=""
+    dc:description="Steve Shockley set me a pointer via my comments to the &quot;Windows Compact Disk Management Script (WINCDMAN)&quot;: http://berns.cae.wisc.edu/pages/wincdman.asp. Thanks, Steve! I wish I had known about this BEFORE I downloaded 2GB of ISO images for Win2K, WinXP and Win2K3 from..."
+    dc:creator="John"
+    dc:date="2003-07-22T10:51:49-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 22, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000298"></a>
+<h3 class="title">Creating Windows ISO CD images</h3>
+
+<p>Steve Shockley set me a pointer via my comments to the "Windows Compact Disk Management Script (WINCDMAN)": http://berns.cae.wisc.edu/pages/wincdman.asp. Thanks, Steve! I wish I had known about this <span class="caps">BEFORE I</span> downloaded 2GB of <span class="caps">ISO</span> images for Win2K, WinXP and Win2K3 from <span class="caps">MSDN. </span>My <span class="caps">MSDN</span> universal subscription doesn't ship the <span class="caps">ISO</span> images - just the CD layouts on <span class="caps">DVD</span>'s. This utility would have saved me a bunch of time; I hope this link helps out somebody else.</p>
+
+<p>Related to my post about <a href="http://www.iunknown.com/000296.html">improving the <span class="caps">OOBE</span> for open source projects</a>, I noticed that <a href="http://berns.cae.wisc.edu/">Bryan Berns</a> (the creator of <span class="caps">WINCDMAN</span>) also redistributes a set of free / open source tools with <span class="caps">WINCDMAN. </span>He links to the original providers of the tools from his web site that contains his script. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000298.html">10:51 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=298" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=298" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000297"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/41"
+    dc:title="I just noticed a cool feature in Reflector&apos;s decompiler"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000297"
+    dc:subject=""
+    dc:description="While spelunking around inside ASP.NET tonight, I noticed that Lutz has added some more intelligence to his decompiler. The CLR doesn&apos;t preserve local variable names in metadata, so decompilers need to assign some kind of symbolic name to the variable...."
+    dc:creator="John"
+    dc:date="2003-07-21T21:11:36-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 21, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000297"></a>
+<h3 class="title">I just noticed a cool feature in Reflector's decompiler</h3>
+
+<p>While spelunking around inside <span class="caps">ASP.NET</span> tonight, I noticed that Lutz has added some more intelligence to his <a href="http://www.aisto.com/roeder/dotnet/">decompiler</a>. The <span class="caps">CLR</span> doesn't preserve local variable names in metadata, so decompilers need to assign <em>some</em> kind of symbolic name to the variable. If you look at tools like <span class="caps">ILDASM,</span> it uses rather unimaginative names like V_0, V_1, etc. Reflector, on the other hand, takes the last "word" in camel-cased notation and uses that as the variable name. For example, IDictionaryEnumerator becomes enumerator1. What a brilliant idea! Well, done, Lutz!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000297.html">09:11 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=297" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=297" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000296"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/40"
+    dc:title="Improving OOBE for open source?"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000296"
+    dc:subject=""
+    dc:description="The CodeRef build environment uses three different open source tools: NAnt, NUnit, and NSIS. One of my challenges is improving the Out-Of-the-Box-Experience (OOBE) for folks who want to work on the source code. I really want to avoid the long..."
+    dc:creator="John"
+    dc:date="2003-07-21T13:22:52-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000296"></a>
+<h3 class="title">Improving OOBE for open source?</h3>
+
+<p>The CodeRef build environment uses three different open source tools: NAnt, NUnit, and <span class="caps">NSIS. </span>One of my challenges is improving the Out-Of-the-Box-Experience (OOBE) for folks who want to work on the source code. I really want to avoid the long list of instructions for creating the build environment, since I firmly believe that this discourages people from even trying to work on the source code. Instead, I would like to have my build script automatically install the correct versions of those tools in a private path that gets setup for just that project. </p>
+
+<p>Currently, I'm packaging a minimal set of bits from NAnt, NUnit, and <span class="caps">NSIS</span> along with CodeRef. This worries me because I'm not sure whether I'm a) violating the license agreement(s) by repackaging the bits, and b) whether the bits that I pull out will actually work reliably in my build environment.  </p>
+
+<p>To improve the <span class="caps">OOBE,</span> the various open source tools in the .NET world need to standardize on an installer that can be scripted from the outside. This way a master install script could install NUnit 2.0 and NAnt 1.0 for one project, and NUnit 3.0B2 and NAnt 0.8.3RC1 for another project.  p. The way I envision this working is as follows: a "master" installer dictates to the "component" installer what directory tree to install into. The component installer has to report the "bin" path of the installed component to the master installer. The master installer would use the path information to create a shell script that would setup the correct build environment. This is similar to the way the vcvars32.bat file sets up the command-line environment in <span class="caps">VS.NET. </span></p>
+
+<p>Do folks have thoughts along these lines? I'm fairly certain that <span class="caps">NSIS</span> can't do what I need, and I don't have enough knowledge about <span class="caps">MSI</span>'s to know whether they can fit the bill.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000296.html">01:22 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=296" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=296" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000295"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/39"
+    dc:title="Foiled by csc.exe"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000295"
+    dc:subject=""
+    dc:description="I was writing a NAnt build script yesterday that compiles a number of separate projects. Some of these projects are really simple, and I felt that it was a waste to have to create a new Win32 process to host..."
+    dc:creator="John"
+    dc:date="2003-07-20T21:07:32-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 20, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000295"></a>
+<h3 class="title">Foiled by csc.exe</h3>
+
+<p>I was writing a NAnt build script yesterday that compiles a number of separate projects. Some of these projects are really simple, and I felt that it was a waste to have to create a new Win32 process to host csc.exe as it compiled the code. So today, I spent some time poking around with Reflector to see whether the <code>System.CodeDom</code> classes would let me host the C# compiler inside of the NAnt Win32 process. </p>
+
+<p>Unfortunately, this does not seem to be the case. If you decompile <code>System.CodeDom.Compiler.Compile()</code> using Reflector, you'll see that it simply shells out to csc.exe via the call to <code>Executor.ExecWaitWithCapture()</code>. This is somewhat disappointing since csc.exe is simply a wrapper around cscomp.dll, which exports a method called <code>CreateCompilerFactory()</code> which is called from csc.exe. </p>
+
+<p>I'm surprised that MS didn't choose to use <code>cscomp.dll</code> from <code>Microsoft.CSharp.CSharpCodeGenerator</code>. I would imagine that this would give <span class="caps">ASP.NET</span> a significant performance boost when compiling .aspx and related files since this avoids the overhead involved in calling <code>CreateProcess</code>. I'll have to hunt around a bit more in <code>System.Web.dll</code> to make sure that this isn't in fact the case.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000295.html">09:07 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=295" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=295" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000294"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/38"
+    dc:title="VMWare 4.0 and Microsoft Windows versions"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000294"
+    dc:subject=""
+    dc:description="I&apos;m repaving my virtual machines under VMWare Workstation 4.0. One of the really nice things that I&apos;ve noticed on the MSDN subscriber downloads is that Microsoft is finally including ISO images of the operating system with the latest service packs..."
+    dc:creator="John"
+    dc:date="2003-07-18T12:25:50-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 18, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000294"></a>
+<h3 class="title">VMWare 4.0 and Microsoft Windows versions</h3>
+
+<p>I'm repaving my virtual machines under VMWare Workstation 4.0. One of the really nice things that I've noticed on the <span class="caps">MSDN</span> subscriber downloads is that Microsoft is finally including <span class="caps">ISO</span> images of the operating system <em>with the latest service packs included</em>. This saves a considerable amount of time when repaving machines with older operating systems like Windows 2000 Professional.  </p>
+
+<p>I also upgraded my testing box to 1.5GB of <span class="caps">RAM</span> so that I can run two or more VM's concurrently. I was amazed at how cheap it was to buy 1.5GB of <span class="caps">PC133 SDRAM</span> these days - less than $300 <span class="caps">CDN </span>(yes I know it's cheaper via Pricewatch.com, but the price difference becomes a wash once you pay the extortion, er I mean brokerage fees from the various shippers).</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000294.html">12:25 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=294" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=294" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000293"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/37"
+    dc:title="Thanks, Werner!"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000293"
+    dc:subject=""
+    dc:description="After my last mini-rant about GotDotNet workspaces and SourceForge, Werner Vogels kindly offered to host my forthcoming CodeRef project over at sscli.net. I&apos;m quite happy with the experience after working with their tools for the past couple of days. The..."
+    dc:creator="John"
+    dc:date="2003-07-18T00:08:03-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000293"></a>
+<h3 class="title">Thanks, Werner!</h3>
+
+<p>After my last <a href="http://www.iunknown.com/000291.html">mini-rant about GotDotNet workspaces and SourceForge</a>, <a href="http://weblogs.cs.cornell.edu/AllThingsDistributed/archives/000088.html">Werner Vogels</a> kindly offered to host my forthcoming CodeRef project over at <a href="http://www.sscli.net">sscli.net</a>. I'm quite happy with the experience after working with their tools for the past couple of days. The performance is great (unlike SourceForge), and I can actually get things done the way I want to do them (unlike the GotDotNet workspaces). </p>
+
+<p>The biggest hurdle that I had to overcome was my unfamiliarity with <span class="caps">CVS,</span> and a bit of fighting with <span class="caps">ISA </span>Server to open up port 2401 correctly. Fortunately, there are some <a href="http://cvsbook.red-bean.com/">great</a> <a href="http://www.cvshome.org/docs/manual/">resources</a> available that helped me get up to speed quickly. I like the fact that I can have both a <a href="http://www.cvsnt.org/">command-line</a> as well as a <a href="http://www.tortoisecvs.org/">Windows explorer shell extension</a> to manage my source code. The former makes it easier to integrate with <a href="http://nant.sourceforge.net">NAnt</a>, and the latter makes it easier to do things like delete files from the repository (using the command-line <span class="caps">CVSNT</span> interface to do this is an excruciating form of torture).</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000293.html">12:08 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=293" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=293" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000292"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/36"
+    dc:title="Framework 1.1 and NUnit gotcha"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000292"
+    dc:subject=""
+    dc:description="<![CDATA[If you're using V1.1.4322 of the frameworks, and you're writing unit tests using NUnit 2.0, you'll need to add the following to both the nunit-console.exe.config and nunit-gui.exe.config files: &lt;startup&gt; &lt;supportedRuntime version=&quot;v1.1.4322&quot; /&gt; &lt;/startup&gt;NUnit 2.0 is compiled against V1.0 of the...]]>"
+    dc:creator="John"
+    dc:date="2003-07-17T22:57:11-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 17, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000292"></a>
+<h3 class="title">Framework 1.1 and NUnit gotcha</h3>
+
+<p>If you're using <span class="caps">V1.1.4322</span> of the frameworks, and you're writing unit tests using NUnit 2.0, you'll need to add the following to both the nunit-console.exe.config and nunit-gui.exe.config files: </p>
+
+<pre><code>&lt;startup&gt;
+  &lt;supportedRuntime version=&quot;v1.1.4322&quot; /&gt; 
+&lt;/startup&gt;</code></pre><p>NUnit 2.0 is compiled against <span class="caps">V1.0</span> of the frameworks, and at some point you'll wind up trying to load both <span class="caps">V1.0</span> and <span class="caps">V1.1</span> versions of mscorlib.dll, which is prohibited by the <span class="caps">CLR. </span>By adding this to your application's configuration files, you'll force the NUnit test harness code to run under <span class="caps">V1.1</span> of the frameworks, thereby solving your problem without forcing you to recompile the NUnit binaries.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000292.html">10:57 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=292" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=292" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000291"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/35"
+    dc:title="Sheesh - it&apos;s hard to give away code these days!"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000291"
+    dc:subject=""
+    dc:description="I just spent some time uploading an early Alpha build of CodeRef into a GotDotNet Workspace. I was looking forward to a better user experience than SourceForge. However, I was disappointed. Here, in no particular order are some of the..."
+    dc:creator="John"
+    dc:date="2003-07-14T18:34:23-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 14, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000291"></a>
+<h3 class="title">Sheesh - it's hard to give away code these days!</h3>
+
+<p>I just spent some time uploading an early Alpha build of CodeRef into a <a href="http://www.gotdotnet.com/community/workspaces/">GotDotNet Workspace</a>. I was looking forward to a better user experience than <a href="http://sourceforge.net/">SourceForge</a>. However, I was disappointed. Here, in no particular order are some of the issues: </p>
+
+
+<ul>
+<li>Horrible performance using the Source Control (WinForms control embedded into IE) option. When the control initializes, it ties up the UI thread of IE to communicate with the mothership. This pretty well locks up IE entirely while it does whatever it needs to do to initialize itself.  </li>
+<li>I can only successfully connect maybe 25% of the time today to my workspace using the Source Control. I tried it on two different computers here, and I have roughly the same success rate on each one. </li>
+<li>No command line interface. This makes it much harder for me to integrate <span class="caps">GDN</span> source control into my existing NAnt-driven build system&nbsp;for CodeRef. </li>
+</ul>
+
+<p>I really don't want to host my open source projects using SourceForge either (and to make things worse, I can't connect right now to SourceForge either). I might spend a bit of time looking at setting up a public Perforce server to host CodeRef instead, but I really want all of the other features that <span class="caps">GDN</span> and SF offers - bug tracking, mailing lists etc.  </p>
+
+<p>Why do things have to be so difficult?!!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000291.html">06:34 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=291" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=291" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000290"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/34"
+    dc:title="Open source licensing"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000290"
+    dc:subject=""
+    dc:description="I&apos;m getting ready to release at least one (and possibly more) open source projects. I just found this site that collects a vast array of &quot;approved&quot; open source licenses. I&apos;m leaning towards the BSD license right now...."
+    dc:creator="John"
+    dc:date="2003-07-11T19:38:25-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 11, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000290"></a>
+<h3 class="title">Open source licensing</h3>
+
+<p>I'm getting ready to release at least one (and possibly more) open source projects. I just found <a href="http://www.opensource.org/licenses/">this site</a> that collects a vast array of "approved" open source licenses. I'm leaning towards the <span class="caps">BSD</span> license right now.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000290.html">07:38 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=290" onclick="OpenComments(this.href); return false">Comments (6)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=290" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000289"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/33"
+    dc:title="Unit testing .EXE&apos;s"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000289"
+    dc:subject=""
+    dc:description="I was hoping that VS.NET 2003 would let me reference code in an .EXE assembly. Unfortunately, the IDE still prevents me from doing this, which makes writing unit tests for EXE-based code more painful (your .EXE project becomes a shell..."
+    dc:creator="John"
+    dc:date="2003-07-10T11:46:06-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 10, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000289"></a>
+<h3 class="title">Unit testing .EXE's</h3>
+
+<p>I was hoping that <span class="caps">VS.NET 2003</span> would let me reference code in an .EXE assembly. Unfortunately, the <span class="caps">IDE </span><em>still</em> prevents me from doing this, which makes writing unit tests for <span class="caps">EXE</span>-based code more painful (your .EXE project becomes a shell for a library project that contains the real code). This is a limitation that's imposed by the <span class="caps">IDE GUI,</span> and is <em>not</em> a limitation of the compilers; the C# compiler happily lets me reference types in an .EXE assembly.  </p>
+
+<p>If anyone from the <span class="caps">VS.NET</span> team reads this, can you remove this arbitrary limitation from the Whidbey release of <span class="caps">VS.NET</span>? Pretty-please? :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000289.html">11:46 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=289" onclick="OpenComments(this.href); return false">Comments (6)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=289" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000288"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/32"
+    dc:title="Lawrence Lessig on Free Culture"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000288"
+    dc:subject=""
+    dc:description="This is one of the most creative presentations that I have ever seen. Pedagogically, this &quot;slide deck&quot; (really it&apos;s a Flash movie) rocks. His &quot;refrain&quot; is the central point of the talk and he revisits it after making each new..."
+    dc:creator="John"
+    dc:date="2003-07-08T14:44:19-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 08, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000288"></a>
+<h3 class="title">Lawrence Lessig on Free Culture</h3>
+
+<p><a href="http://randomfoo.net/oscon/2002/lessig/free.html">This is one of the most creative presentations</a> that I have ever seen. Pedagogically, this "slide deck" (really it's a Flash movie) rocks. His "refrain" is the central point of the talk and he revisits it after making each new point. It's <em>much</em> better than the standard way of presenting your "agenda" on a slide that's used to separate sections of your talk. Each time he revisits his refrain, he paraphrases it in a different way.  </p>
+
+<p><span class="caps">PS I</span> want to attribute this link to someone, but I wound up arriving there through several other links, and I closed down the other window already.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000288.html">02:44 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=288" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=288" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000287"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/31"
+    dc:title="Fun (sort of) with XML"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000287"
+    dc:subject=""
+    dc:description="<![CDATA[ Like Craig, I&rsquo;ve been spending some time building an XML authoring system. &nbsp;Yesterday, I wrote a simple WordML compiler that will take an existing document and insert external references into the document. My motivation for doing this was to...]]>"
+    dc:creator="John"
+    dc:date="2003-07-03T14:41:42-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 03, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000287"></a>
+<h3 class="title">Fun (sort of) with XML</h3>
+
+<div class="Section1"> <p><a href="http://staff.develop.com/candera/weblog2/permalink.aspx/7a967c01-84d8-4f06-8696-49ec754d4766">Like Craig</a>, I&rsquo;ve been spending some time building an XML authoring system. &nbsp;Yesterday, I wrote a simple <span class="SpellE">WordML</span> compiler that will take an existing document and insert external references into the document. My motivation for doing this was to try and eliminate the inevitable bugs that creep into a manuscript whenever you cut and paste code fragments into the document. What my system lets you do is insert a reference like:</p> <p>&lt;&lt;\temp\<span class="SpellE">somecodefile.cs</span>&gt;&gt;</p> <p>into your word document, and my <span class="SpellE">WordML</span> compiler will replace the reference with the contents of <span class="SpellE">somecodefile.cs</span>.</p> <p>This works fine for my current writing project, &ldquo;A Busy Developer&rsquo;s Guide to <span class="SpellE">GSLgen</span>&rdquo;. However, later on, I&rsquo;m going to need to insert some code <i style='mso-bidi-font-style:normal'><span style='font-style:italic;mso-bidi-font-style:normal'>fragments</span></i> into my Word document. This requires a bit more processing on my part, which I can accomplish with a bit of regular expression work. For example, if I had this reference:</p> <p>&lt;&lt;\temp\somecodefile.cs#codefrag1&gt;&gt;</p> <p>It would pull a code fragment that is marked using comments and #region statements, such as:</p> <p>// #region codefrag1<br /> public void <span class="SpellE">DoSomething</span>()<br /> {<br /> }<br /> // #<span class="SpellE">endregion</span> codefrag1</p> <p>Since I want this to work with more than one kind of source code file, I&rsquo;m going to build a plug-in mechanism that allows folks to write their own regular expressions that parse source code files in their favorite programming language.</p> 
+
+<p>One other thing: I transform the WordML document in place via XmlDocument. I did this mostly because I was in a hurry and I didn't want to deal with the pain that is XmlReader/Writer. It would be <i>so</i> much nicer if there was <a href="http://www.gnu.org/software/sed/sed.html">sed</a>-like support for modifying XML streams in the frameworks.</p>
+
+<p>I&rsquo;ll release the source code in the next couple of days once I&rsquo;ve had a chance to <span class="SpellE">dogfood</span> it.</p></div>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000287.html">02:41 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=287" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=287" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000286"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/30"
+    dc:title="Partial types in C# 2.0"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000286"
+    dc:subject=""
+    dc:description=" The new partial types feature in the Whidbey release of C# will make RAD-style development more seamless. Rather than hide generated code using #region directives, generated code can simply live in an external file that can be managed by..."
+    dc:creator="John"
+    dc:date="2003-07-01T20:55:28-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 01, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000286"></a>
+<h3 class="title">Partial types in C# 2.0</h3>
+
+<div class="Section1"> <p>The new <a href="http://www.gotdotnet.com/team/csharp/learn/Future/VCS%20Language%20Changes.aspx">partial types feature</a> in the Whidbey release of C# will make RAD-style development more seamless. Rather than hide generated code using #region directives, generated code can simply live in an external file that can be managed by the IDE. Developers can write code without ever having to see the generated code, which should make it harder for folks to inadvertently modify tool-generated code.</p></div>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000286.html">08:55 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=286" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=286" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000285"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/29"
+    dc:title="What&apos;s the most important [open] problem in computer science?"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000285"
+    dc:subject=""
+    dc:description=" [via Harry Pierson] Todd Proebsting, a researcher at MSR, argues very eloquently that it is Improving Programmer Productivity. I highly recommend that you watch the video of his presentation on Disruptive Programming Language Technologies...."
+    dc:creator="John"
+    dc:date="2003-07-01T20:20:13-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000285"></a>
+<h3 class="title">What's the most important [open] problem in computer science?</h3>
+
+<div class="Section1"> <p>[<span class="GramE">via</span> <a href="http://www.devhawk.net/Default.aspx?date=1/17/2003#7">Harry Pierson</a>] <a href="http://research.microsoft.com/~toddpro/">Todd <span class="SpellE">Proebsting</span></a>, a researcher at MSR, argues very eloquently that it is Improving Programmer Productivity. I highly recommend that you watch <a href="http://stanford-online.stanford.edu/courses/ee380/020424-ee380-100.asx">the video</a> of his presentation on Disruptive Programming Language Technologies.</p></div>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000285.html">08:20 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=285" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=285" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000284"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/28"
+    dc:title="Frans Bouma weighs in on code generation"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000284"
+    dc:subject=""
+    dc:description="<![CDATA[ [via Harry Pierson] It seems like code generation is on the collective consciousness these days. Frans Bouma wrote a nice entry about code generation in his blog. After reading this entry, I&rsquo;m now intrigued by the LLBLGen tool that...]]>"
+    dc:creator="John"
+    dc:date="2003-07-01T19:32:27-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000284"></a>
+<h3 class="title">Frans Bouma weighs in on code generation</h3>
+
+<div class="Section1"> <p>[via <a href="http://www.devhawk.net/default.aspx?date=7/1/2003#149">Harry Pierson</a>] It seems like code generation is on the collective consciousness these days. <a href="http://weblogs.asp.net/fbouma/archive/06292003.aspx">Frans Bouma</a> wrote a nice entry about code generation in his blog. After reading this entry, I&rsquo;m now intrigued by the <a href="http://www.sd.nl/software/llblgen.asp">LLBLGen</a> tool that he created for generating data access layers in .NET. I&rsquo;ll have to go and check it out.</p></div>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000284.html">07:32 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=284" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=284" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000283"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/27"
+    dc:title="Another code generation essay"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000283"
+    dc:subject=""
+    dc:description="<![CDATA[ [via Andres Aguiar] Writing code is stupid.&nbsp;This is another well-written essay on the forces that motivate code generation....]]>"
+    dc:creator="John"
+    dc:date="2003-07-01T14:29:18-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000283"></a>
+<h3 class="title">Another code generation essay</h3>
+
+<div class="Section1"> <p>[via <span class="ListBulletChar"><a href="http://weblogs.asp.net/aaguiar/">Andres Aguiar</a></span>] <a href="http://www.brainnoodles.com/weblog/stories/2003/04/24/writingCodeIsStupid.html">Writing code is stupid</a>.&nbsp;This is another well-written essay on the forces that motivate code generation.</p></div>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000283.html">02:29 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=283" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=283" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000280"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/24"
+    dc:title="ActiveSMART"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000280"
+    dc:subject=""
+    dc:description="I just downloaded a copy of ActiveSMART after my BIOS told me to replace my HDD on my desktop computer. The only reason I noticed this was because I had to replace the power supply in my desktop.1 If you&apos;re..."
+    dc:creator="John"
+    dc:date="2003-07-01T12:19:39-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000280"></a>
+<h3 class="title">ActiveSMART</h3>
+
+<p>I just downloaded a copy of <a href="http://www.ariolic.com/activesmart/">ActiveSMART</a> after my <span class="caps">BIOS</span> told me to replace my <span class="caps">HDD</span> on my desktop computer. The only reason I noticed this was because I had to replace the power supply in my desktop.<sup class="footnote"><a href="http://www.iunknown.com/000280.html#fn1">1</a></sup></p>
+
+<p>If you're like a lot of other people I know, you tend to not perform hard resets of your computer very often (SMART diagnostics only run on hard resets, not software-initiated reboots). Unfortunately, if this is the case, you'll find that your <span class="caps">BIOS S.M.A.R.T.</span> diagnostics aren't actually all that useful since it could easily be months between hard resets of my computer.</p>
+
+<p>I found that this utility does a <em>great</em> job of telling me exactly what my <span class="caps">HDD</span>'s are up to on my computer. It also helps to demystify for me exactly <em>what</em> <span class="caps">S.M.A.R.T.</span> diagnostics actually are. I've also got it set up to email me alerts if one of my computer's <span class="caps">HDD</span>'s are about to go south (it polls your <span class="caps">HDD</span>'s diagnostics every hour). It's well worth the $24.95.</p>
+
+<p>[1] I just installed an Enermax EG-365P-VE, which does a great job of cooling the case with its <span class="caps">TWO</span> built in fans.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000280.html">12:19 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=280" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=280" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_07.html#000279"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/23"
+    dc:title="Another one bites the dust"
+    dc:identifier="http://www.iunknown.com/2003_07.html#000279"
+    dc:subject=""
+    dc:description="I see that Clemens Vasters has also soured on AOP. The primary weakness of the AOP approach is due to the difficulty of writing stateful aspects that are composable. In his piece, Clemens calls stateful aspects &quot;opaque aspects&quot; and stateless..."
+    dc:creator="John"
+    dc:date="2003-07-01T10:54:23-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000279"></a>
+<h3 class="title">Another one bites the dust</h3>
+
+<p>I see that <a href="http://radio.weblogs.com/0108971/2003/06/30.html#a206">Clemens Vasters</a> has also soured on <span class="caps">AOP. </span>The primary weakness of the <span class="caps">AOP</span> approach is due to the difficulty of writing stateful aspects that are composable. In his piece, Clemens calls stateful aspects "opaque aspects" and stateless aspects "passive aspects". While he describes a bunch of nasty technical issues that got in the way of having a clean implementation, the composability problem will nevertheless limit the utility of <span class="caps">AOP.</span></p>
+
+<p>The only point that I disagree with in his article is how he characterizes AspectJ pointcuts as equivalent to the use of attributes in the <span class="caps">CLR. </span>AspectJ pointcuts are an example of a "push" mechanism for weaving aspects, whereas attributes are an example of a "pull" mechanism for weaving aspects. In AspectJ, you don't need to touch the source code to weave an aspect into a particular join point, whereas with attributes you do need to touch the source code to achieve the same effect.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000279.html">10:54 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=279" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=279" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

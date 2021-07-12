@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Why __arglist is undocumented</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000061.html" title="Thwarted by Google" />
+
+<link rel="next" href="http://www.iunknown.com/000063.html" title="Dynamically typed languages suck" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000061.html">&laquo; Thwarted by Google</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000063.html">Dynamically typed languages suck &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 06, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Why __arglist is undocumented</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>Today was an interesting day. </P><br />
+<P>I started off the day with a problem: I needed to pass an arbitrary set of parameters to a constructor. The standard way of doing this in C# is to use the params object[] syntax in the constructor's argument list. I talked about this in <A href="Weblog/fog0000000050.html">an earlier entry</A> in my weblog.</P><br />
+<P>The problem with this approach is that the caller has to do the heavy lifting. It has to:</P><br />
+<OL><br />
+<LI>Create an array of objects<br />
+<LI>Assign each of the parameters that you wish to pass to an element in the object array. You need to box valuetypes before stuffing them into the array.<br />
+<LI>Pass the array of objects to the method</LI></OL><br />
+<P>However, I was intrigued by the varargs calling convention that is supported by the CLR. This seemed to be a cleaner way of passing an arbitrary set of parameters since all that you needed to do was push the parameters onto the call stack and invoke the method. The method would then parse the parameters itself using the System.ArgIterator type.</P><br />
+<P>I looked through the docs and couldn't find any way of implementing varargs methods using C# (or MC++ for that matter). So, I started writing the methods using CIL. I decided to hedge my bets, so I posted a message to the DOTNET list to see whether folks had heard of a way to either call a varargs method from C# or to implement a varargs method using C#. <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0202a&amp;L=dotnet&amp;F=&amp;S=&amp;P=76067">Jason Bock replied</A> with the suggestion to use the undocumented __arglist keyword in C# to <EM>call</EM> a varargs method.</P><br />
+<P>After a bit of experimentation, I managed to figure out how to use __arglist to both call a varargs method and to implement a varargs method. Here's a simple code fragment that illustrates its usage:</P><br />
+<P><CODE>class Class1 <BR>{&nbsp;<BR>&nbsp; static int AddABunchOfInts( __arglist ) <BR>&nbsp; { <BR>&nbsp;&nbsp;&nbsp; int result = 0; <BR>&nbsp;&nbsp;&nbsp; System.ArgIterator iter = new System.ArgIterator( __arglist ); <BR>&nbsp;&nbsp;&nbsp; int argCount = iter.GetRemainingCount(); <BR>&nbsp;&nbsp;&nbsp; for( int i = 0; i &lt; argCount; i++ ) <BR>&nbsp;&nbsp;&nbsp; { <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.TypedReference typedRef = iter.GetNextArg(); <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result += (int)TypedReference.ToObject( typedRef ); <BR>&nbsp;&nbsp;&nbsp; } <BR>&nbsp;&nbsp;&nbsp; return result; <BR>&nbsp; }&nbsp;<BR>&nbsp; static int Main( string[] args )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;return AddABunchOfInts( __arglist( 2, 3, 4 ) );<BR>&nbsp; }<BR>}</CODE></P><br />
+<P>If you look at the CIL code that is generated for the Main() method, you will see that it just pushes the three constants onto the stack and calls the AddABunchOfInts() method.</P><br />
+<P><CODE>&nbsp; IL_0000:&nbsp; ldc.i4.2<BR>&nbsp; IL_0001:&nbsp; ldc.i4.3<BR>&nbsp; IL_0002:&nbsp; ldc.i4.4<BR>&nbsp; IL_0003:&nbsp; call&nbsp;vararg int32 Client.Class1::AddABunchOfInts()</CODE></P><br />
+<P>I was <EM>ecstatic</EM>. I thought wow, this is the way we should always call methods that expect a variable number of parameters. Who wants to use something crufty like params object[]? Why on earth is __arglist undocumented? Why aren't varargs methods used in more places in the Framework Class Libraries?</P><br />
+<P>As it turns out, there's a very good reason why __arglist is undocumented. The performance of the varargs calling convention&nbsp;is <EM>horrible</EM>.</P><br />
+<P>I did a super-simple benchmark to illustrate the relative difference in performance. Here are the three method signatures for methods that will add three integers together. The relative time taken to call each of these three methods is&nbsp;shown in square brackets:</P><CODE><br />
+<OL><br />
+<LI><br />
+<DIV>[1]&nbsp;&nbsp; int AddThreeInts( int x, int y, int z )</DIV><br />
+<LI><br />
+<DIV>[68]&nbsp; int AddThreeIntsUsingObjectArray( params object[] args )</DIV><br />
+<LI><br />
+<DIV>[680] int AddThreeIntsUsingArgList(&nbsp;__arglist )</DIV></LI></OL></CODE><br />
+<P>As you can see, the varargs&nbsp;calling convention is TEN TIMES SLOWER than the parameter array method. Then Mattias Sjogren <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0202a&amp;L=dotnet&amp;F=&amp;S=&amp;P=77324">showed me a cool trick</A> on the DOTNET list where you replace:</P><br />
+<P><CODE>result += (int)TypedReference.ToObject( typedRef );</CODE></P><br />
+<P>with</P><br />
+<P><CODE>result += __refvalue( typedRef, int );</CODE></P><br />
+<P>This narrowed the gap to a 5x spread between varargs and parameter arrays.</P><br />
+<P>Unless I'm missing something in my benchmarks, the take home message here is clear: do NOT use varargs methods if you care about performance!</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February  6, 2002 05:46 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="62" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000062.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="62" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

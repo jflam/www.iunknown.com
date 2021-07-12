@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: RubyCLR now lets you implement CLR interfaces in Ruby</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/115/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/04/18/rubyclr-now-lets-you-implement-clr-interfaces-in-ruby" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:42-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:ae0e5cc90c2b04d244244bc413791db2</id>
+    <published>2006-04-18T17:57:00-07:00</published>
+    <updated>2006-08-21T15:55:42-07:00</updated>
+    <title type="html">RubyCLR now lets you implement CLR interfaces in Ruby</title>
+    <link href="http://www.iunknown.com/articles/2006/04/18/rubyclr-now-lets-you-implement-clr-interfaces-in-ruby" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;The first pass of the code for implementing &lt;span class="caps"&gt;CLR&lt;/span&gt; interfaces in Ruby is now working. Here&amp;#8217;s a simple example of implementing &lt;code&gt;IEnumerator&lt;/code&gt; in Ruby:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class RubyEnumerator
+  implements IEnumerator
+
+  def initialize(ruby_object)
+    @position = -1
+    @ruby_object = ruby_object
+  end
+
+  # NOTE: hack for properties - will be "current" when done
+  def get__current
+    @ruby_object[@position]
+  end
+
+  def move_next
+    @position += 1
+    @ruby_object.length != @position
+  end
+
+  def reset
+    @position = -1
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Here&amp;#8217;s the modification to the Ruby &lt;code&gt;Array&lt;/code&gt; class to support &lt;code&gt;IEnumerable&lt;/code&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class Array
+  implements IEnumerable
+
+  def get_enumerator
+    RubyEnumerator.new(self)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Here&amp;#8217;s the set of unit tests that validates this behavior. Note the use of inlined C#:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class ImplicitDataBindingTests &amp;lt; TestCase
+  inline :csharp do |compiler|
+    compiler.compile &amp;lt;&amp;lt;-EOF
+      using System.Collections;
+      namespace RubyClr.Tests {
+        public class RubyArrayDataBindingTarget {
+          public static int[] EnumArray(IEnumerable obj) {
+            ArrayList al = new ArrayList();
+            foreach(int current in obj)
+              al.Add(current);
+            return (int[])al.ToArray(typeof(int));
+          }
+        }
+      }
+    EOF
+  end
+
+  def test_array_bind
+    numbers = [1, 2, 3, 4, 5]
+    result = RubyArrayDataBindingTarget.enum_array(numbers)
+    assert_equal 1, result[0]
+    assert_equal 5, result[4]
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;</summary>
+    <content type="html">&lt;p&gt;The first pass of the code for implementing &lt;span class="caps"&gt;CLR&lt;/span&gt; interfaces in Ruby is now working. Here&amp;#8217;s a simple example of implementing &lt;code&gt;IEnumerator&lt;/code&gt; in Ruby:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class RubyEnumerator
+  implements IEnumerator
+
+  def initialize(ruby_object)
+    @position = -1
+    @ruby_object = ruby_object
+  end
+
+  # NOTE: hack for properties - will be "current" when done
+  def get__current
+    @ruby_object[@position]
+  end
+
+  def move_next
+    @position += 1
+    @ruby_object.length != @position
+  end
+
+  def reset
+    @position = -1
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Here&amp;#8217;s the modification to the Ruby &lt;code&gt;Array&lt;/code&gt; class to support &lt;code&gt;IEnumerable&lt;/code&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class Array
+  implements IEnumerable
+
+  def get_enumerator
+    RubyEnumerator.new(self)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Here&amp;#8217;s the set of unit tests that validates this behavior. Note the use of inlined C#:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class ImplicitDataBindingTests &amp;lt; TestCase
+  inline :csharp do |compiler|
+    compiler.compile &amp;lt;&amp;lt;-EOF
+      using System.Collections;
+      namespace RubyClr.Tests {
+        public class RubyArrayDataBindingTarget {
+          public static int[] EnumArray(IEnumerable obj) {
+            ArrayList al = new ArrayList();
+            foreach(int current in obj)
+              al.Add(current);
+            return (int[])al.ToArray(typeof(int));
+          }
+        }
+      }
+    EOF
+  end
+
+  def test_array_bind
+    numbers = [1, 2, 3, 4, 5]
+    result = RubyArrayDataBindingTarget.enum_array(numbers)
+    assert_equal 1, result[0]
+    assert_equal 5, result[4]
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;</content>
+  </entry>
+</feed>

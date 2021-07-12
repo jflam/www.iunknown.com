@@ -1,0 +1,96 @@
+; TextPad syntax definitions for Java
+; Copyright (C) 1998-2000, Helios Software Solutions
+
+C=1
+
+[Syntax]
+Namespace1 = 6
+IgnoreCase = No
+KeyWordLength =
+BracketChars = {[()]}
+OperatorChars = -+*/<>!~%^&|=
+PreprocStart = #
+SyntaxStart =
+SyntaxEnd =
+HexPrefix = 0x
+CommentStart = $(
+CommentEnd = )
+CommentStartAlt =
+CommentEndAlt =
+SingleComment = --
+SingleCommentCol =
+SingleCommentAlt =
+SingleCommentColAlt =
+SingleCommentEsc =
+StringsSpanLines = Yes
+StringStart = "
+StringEnd = "
+StringAlt =
+StringEsc = \
+CharStart = '
+CharEnd = '
+CharEsc = \
+
+[Keywords 1]
+output
+append
+close
+literal
+for
+endfor
+if
+elsif
+else
+endif
+while
+endwhile
+next
+last
+define
+new
+endnew
+delete
+copy
+move
+sort
+load
+xml
+save
+include
+gsl
+template
+endtemplate
+function
+endfunction
+macro
+endmacro
+invoke
+echo
+abort
+return
+
+[Keywords 2]
+count
+index
+item
+name
+exists
+timestamp
+defined
+env
+length
+substr
+trim
+justify
+macro
+deleted
+
+[Preprocessor keywords]
+#define
+#elif
+#else
+#endif
+#error
+#if
+#undef
+#warning

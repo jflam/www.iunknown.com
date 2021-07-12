@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Interfaces that don't break object identity</title>
+    <link>http://www.iunknown.com/articles/2006/10/05/interfaces-that-dont-break-object-identity</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Interfaces that don't break object identity</title>
+      <description>&lt;p&gt;Warning: danger ahead! A major breaking change is in the works for RubyCLR. I&amp;#8217;ve been unhappy with the way interfaces were handled in RubyCLR since &lt;a href="http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr"&gt;the current implementation also breaks object identity&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Each one of the objects that&amp;#8217;s returned via the &lt;code&gt;as&lt;/code&gt; operator is another Ruby shadow class object. Which means that I&amp;#8217;m now smearing the identity of the &lt;span class="caps"&gt;CLR&lt;/span&gt; object over more than one Ruby shadow class object. This can, as you might imagine, get you into all sorts of trouble.&lt;/p&gt;
+
+
+	&lt;p&gt;The new implementation follows the lead of &lt;a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython"&gt;IronPython&lt;/a&gt;. Interface methods are now invoked using what looks like a static shadow class, where you explicitly pass a reference to the object whose interface methods you&amp;#8217;d like to invoke. Here&amp;#8217;s a simple example of using the &lt;code&gt;IEnumerable&lt;/code&gt; and &lt;code&gt;IEnumerator&lt;/code&gt; interfaces on an &lt;code&gt;ArrayList&lt;/code&gt; object:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_enumerable
+  a = ArrayList.new
+  a.add(1)
+  if a.has_interface? IEnumerable
+    e = IEnumerable.get_enumerator(a)
+    assert IEnumerator.move_next(e)
+    assert 1, IEnumerator.current(e)
+    assert !IEnumerator.move_next(e)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It&amp;#8217;s not as clean as using &lt;code&gt;as&lt;/code&gt;, but I just couldn&amp;#8217;t condone playing fast and loose with object identity like I did in the past.&lt;/p&gt;
+
+
+	&lt;p&gt;I apologize for the impact that this design change makes to your existing code. But I think you&amp;#8217;ll eventually come back to thank me for making this change since you&amp;#8217;ll avoid much more subtle bugs down the road.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; New interface code is now checked into the public subversion repository. Let me know if you have problems porting your code. See the unit tests in &lt;code&gt;tests_basic.rb&lt;/code&gt; for more examples of usage.&lt;/p&gt;</description>
+      <pubDate>Thu, 05 Oct 2006 11:09:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:06bd329e-0ff3-43b7-8aec-b517da736476</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/10/05/interfaces-that-dont-break-object-identity</link>
+      <category>RubyCLR</category>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Code generation with GSLgen: Step 0</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Code generation with GSLgen: Step 0</div>
+
+
+<div class="comments-body">
+<p>Hmm, that last remark's not entirely correct...<br />
+given the following xml document:<br />
+Running the following script:<br />
+.#Spanglish.gsl<br />
+.echo -&gt;one-&gt;two-&gt;three-&gt;four.spanish<br />
+will generate the output<br />
+[some date and time] gsl M: quattro<br />
+This is a risky thing to do unless you know for a fact that the path exists because GSL will throw an error if any of those path elements don't exist. However! This is an opportunity for a wrapper function.<br />
+-Andy</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.hoppersoft.com/Andy">Andy Hopper</a> at April 26, 2003 07:08 PM</span>
+</div>
+<div class="comments-body">
+<p>Snot. I thought Haloscan would entitize my comment. Here's that magic XML document:<br />
+&lt;documentElement script="test.gsl"&gt;<br />
+  &lt;one spanish="uno"&gt;<br />
+    &lt;two spanish="dos"&gt;<br />
+      &lt;three spanish="tres"&gt;<br />
+        &lt;four spanish="quattro"&gt;<br />
+        &lt;/four&gt;<br />
+      &lt;/three&gt;<br />
+    &lt;/two&gt;<br />
+  &lt;/one&gt;<br />
+&lt;/documentElement&gt;</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.hoppersoft.com/Andy">Andy Hopper</a> at April 26, 2003 07:11 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the catch, Andy! What I meant to say (and didn't) was that you can't use XPath like syntax using the dot operator (which is what you would intuitively expect) such as one.two.three.four, since you can't distinguish between elements and attributes in such a scheme. I figured that I would introduce the arrow operator in the next article, but you beat me to the punch </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at April 27, 2003 07:44 AM</span>
+</div>
+<div class="comments-body">
+<p>for those wanting to build on OS X, here is a script I put together<br />
+#!/bin/sh<br />
+echo `grep -A 1 '^*predefines:' /usr/libexec/gcc/darwin/ppc/3.1/specs` -<br />
+D__FreeBSD__ &gt; tmpspecs<br />
+for i in */boomake; do<br />
+    perl -pi -e 's/cp lib/cp -p lib/' $i<br />
+done<br />
+CCOPTS="-O2 -Wall -specs=`pwd`/tmpspecs" ./build.sh<br />
+# end of script</p>
+<span class="comments-post">Posted by Dave Lee at April 27, 2003 12:54 PM</span>
+</div>
+<div class="comments-body">
+<p>I guess haloscan ignores  tags, so here is the script properly formattedhttp://cherryville.org/build-gslgen.txt<br />
+to run it do a `sh ./build-gslgen.txt`<br />
+this script needs to be run in the directory you unpacked the rbase archive.</p>
+<span class="comments-post">Posted by Dave Lee at April 27, 2003 01:05 PM</span>
+</div>
+<div class="comments-body">
+<p>Whoa, Dave. This might mean that I'm going to have to fight my wife for the TiBook </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at April 28, 2003 10:28 PM</span>
+</div>
+<div class="comments-body">
+<p>John,<br />
+You've done some work with GSLgen and FreeMind. Since the output of FreeMind is an XML document, have you attempted using FreeMind to define the class structure of components and input into GSLgen?<br />
+Unfortuately, the XML structure is full of "node" nodes instead of real names. Maybe running it through an XSLT could put it into a better format. FreeMind was simple to use and gives a nice structure picture of the classes as you enter items. <br />
+This thought came about when I was looking at FreeMind after your article about it. I found myself adding more detail to some fixes I was going to make to a program. I ended up creating some structures and flow charting some methods.</p>
+
+<p>Jeff</p>
+<span class="comments-post">Posted by <a href="mailto&#58;jeffpclark&#64;columbus&#46;rr&#46;com">Jeff Clark</a> at December  2, 2003 06:55 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

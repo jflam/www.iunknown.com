@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: GSLgen updated!</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000232.html" title="Hello ... is this thing on?" />
+
+<link rel="next" href="http://www.iunknown.com/000234.html" title="Code generation comments from Pieter Hintjens" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000232.html">&laquo; Hello ... is this thing on?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000234.html">Code generation comments from Pieter Hintjens &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">April 18, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">GSLgen updated!</h3>
+
+<p><P>Readers of this weblog know that I'm a big fan of GSLgen, which is by far the best <A href="Weblog/Whenlessismore.html">code generation</A> tool that I've come across. The good news is that GSLgen has been updated to V3.1. It's not available as a standalone product, however. Instead, it's integrated into a <A href="http://www.imatix.com/downloads.htm">suite of open source tools called RealiBase</A>. You'll need to download the source and compile using VC++ 6.0.[1] </P><br />
+<P>There's a bit of bad news as well. GSLgen/2 was released under <A href="Files/gslgen_license.txt">a very liberal license</A> that let you do essentially whatever you wanted with it. GSLgen/3.1, however, is released under GPL for open source projects and under the "iMatix commercial license" for commercial work. I'm still in the process of trying to find out what the cost of an iMatix commercial license is, since we would very much like to use some of the new features in GSLgen/3.1 (most notably the ability to return values from functions) in our code generation scripts.</P><br />
+<P>[1]&nbsp;I tried for a few minutes to get it to build using VS 7.1 and the latest Platform SDK; I suspect that you'll do what I did and give up and simply install VS 6.0. I'm AMAZED at how quickly VS 6.0 installs on a modern computer :)</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at April 18, 2003 09:40 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="233" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000233.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I got it to compile under VS7 (aka VS.NET), but I did have to copy some files around to make the libero makefile happy. I'm certain it could be fixed by modifying a path, but frankly, I'm too lazy to climb through someone else's makefile. For those of you who'd like to join me in my decadence, here's the list of files that need to be copied to the Microsoft Visual Studio .NETVc7lib folder:<br />
+uuid.lib<br />
+mpr.lib<br />
+winmm.lib<br />
+wsock32.lib<br />
+odbc32.lib<br />
+shell32.lib<br />
+netapi32.lib<br />
+advapi32.lib<br />
+comdlg32.lib<br />
+gdi32.lib<br />
+user32.lib<br />
+If I find myself with some free time, I'll noodle out where the path needs to be modified.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;Andy&#46;Hopper&#64;mindspring&#46;com">Andy Hopper</a> at April 19, 2003 09:46 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the tip, Andy! I see that you have more patience than me </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at April 20, 2003 12:18 PM</span>
+</div>
+<div class="comments-body">
+<p>it seems to me that you can use GSLgen commecrially as long as you aren't modifying its code, or directly linking its code into your software.  if you are modifying the GSLgen source (or linking), and distributing these modifications, then you would need to either provide the modified source (thus conforming to the GPL) or purchase a commercial license.<br />
+under the GPL, you can freely redistribute unmodified source or binaries.  this means the GSLgen command line tool can be used (and distributed) commercially, as long as it remains unmodified.</p>
+<span class="comments-post">Posted by: Dave Lee at April 21, 2003 04:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks, Dave! I still haven't heard back from the imatix folks about their take on the license, but I agree with your interpretation of the license.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at April 23, 2003 07:25 AM</span>
+</div>
+<div class="comments-body">
+<p>FWIW, I spent a few more minutes spelunking into this, and the modifications needed will be more than just modifying a path in a file--the dependence on the appropriate libraries being in a "lib" subdirectory off the VC7 directory is fairly widely scattered, along with a couple of other, smaller issues.  Andy Hopper's got the right idea .  Extra cool points for using hard links though....</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dabbler&#64;rudeboy&#46;org">David Pickett</a> at April 27, 2003 04:52 PM</span>
+</div>
+<div class="comments-body">
+<p>I don't know why your emails did not reach me, but probably the amount of spam we get has something to do with it.  </p>
+
+<p>David Lee is correct, GSL's license has no impact on the work you produce with it, only on derived tools that incorporate GSL in some way - e.g. DLLs, modified versions, etc.  This is pretty standard and we chose this route because we want our software to be freely used but without giving our commercial competitors a free ride.</p>
+
+<p>Anyone making commercial code generators that reuse GSL code has to pay for a license.  Everyone else (those making GPL'd derivations and those using GSL to generate code) have nothing to do except enjoy the technology.<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;ph&#64;imatix&#46;com">Pieter Hintjens</a> at October 26, 2003 05:11 AM</span>
+</div>
+<div class="comments-body">
+<p>I have read (several times) the documentation on GSLgen, however I would like some examples. I am trying to generate SQL stored procedures with GSLgen and I need to use the index and count built in functions. My problem is understanding scope definitions.</p>
+
+<p>Can you give me any examples or direct me to some?<br />
+Thanks<br />
+Gary Minor</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;GaryM45&#64;Controlware&#46;net">Gary Minor</a> at December 22, 2003 11:41 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

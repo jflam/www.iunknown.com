@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Why Ruby rocks for DSLs</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Why Ruby rocks for DSLs" by jlam</title>
+      <description>&lt;p&gt;I just did a quick hack tonight to test out some ideas for generating a &lt;span class="caps"&gt;CLR &lt;/span&gt;&lt;code&gt;DynamicMethod&lt;/code&gt; from Ruby. Here&amp;#8217;s what I was able to accomplish:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+include ILGenerator
+
+create_ruby_method('say_hello') do
+  ldstr    'Hello, World'
+  call     'static System.Console.WriteLine(System.String)'
+  ldc_i4_4
+  ret
+end
+
+say_hello
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Is that syntax lovely or what?&lt;/p&gt;
+
+</description>
+      <pubDate>Sun, 04 Dec 2005 23:52:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/04/why-ruby-rocks-for-dsls"&gt;Why Ruby rocks for DSLs&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/04/why-ruby-rocks-for-dsls"&gt;Why Ruby rocks for DSLs&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

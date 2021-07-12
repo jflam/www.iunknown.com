@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Building a new desktop and RAID performance</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000402.html" title="Whidbey implementation of System.CodeDom.CodeDomProvider.CreateParser()" />
+
+<link rel="next" href="http://www.iunknown.com/000404.html" title="Resizing JPEG images using System.Imaging" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000403.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/147"
+    dc:title="Building a new desktop and RAID performance"
+    dc:identifier="http://www.iunknown.com/000403.html"
+    dc:subject="Blog"
+    dc:description="I finally got around to updating my venerable desktop computer this weekend. It was a 1.6GHz P4 with 768MB RDRAM. I simply needed more RAM to run multiple virtual computers simultaneously using VPC. After pricing 512MB RDRAM RIMM&apos;s, I realized..."
+    dc:creator="John"
+    dc:date="2004-02-06T12:06:15-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000402.html">&laquo; Whidbey implementation of System.CodeDom.CodeDomProvider.CreateParser()</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000404.html">Resizing JPEG images using System.Imaging &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 06, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Building a new desktop and RAID performance</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>I finally got around to updating my venerable desktop computer this weekend. It was a 1.6GHz P4 with 768MB <span class="caps">RDRAM. I</span> simply needed more <span class="caps">RAM</span> to run multiple virtual computers simultaneously using <span class="caps">VPC. </span>After pricing 512MB <span class="caps">RDRAM RIMM</span>'s, I realized that it would be cheaper to just buy a whole new computer. </p>
+
+<p>I went down to my local computer parts store and went home with a bag of parts to build my new desktop:</p>
+
+
+<ul>
+<li><span class="caps">ASUS P4P800</span> motherboard</li>
+<li>2 120GB Seagate 7200RM <span class="caps">SATA</span> drives</li>
+<li>4 Kingston 512MB "3A" DIMMs</li>
+<li>Intel <span class="caps">P4 2.8C</span></li>
+<li>Antec "Silence" case</li>
+<li>Toshiba 4X <span class="caps">DVD</span>-R/RW <span class="caps">DVD</span></li>
+</ul>
+
+<p>Since I already have a 128MB <span class="caps">ASUS 9560VS</span> dual <span class="caps">DVI</span> video card to drive my twin Samsung 172T <span class="caps">DVI</span> panels, I skipped upgrading the video subsystem.</p>
+
+<p>It's been over two years since I built a desktop <span class="caps">PC. I</span> was blown away at how much attention to detail there was in the Antec case. This case, which includes a 380W power supply, is &lt; $100US, and I had been accustomed to crappy workmanship in cases with this price tag. That combined with assembling the case using <span class="caps">SATA</span> connectors instead of ribbon connectors made for an incredibly pleasant experience. I also had a great helper:</p>
+
+<p><img src="Files/mafoo_engineer.jpg" alt="Building his first computer"></p>
+
+<p>I created a <span class="caps">RAID0</span> array using the built-in Intel <span class="caps">ICH5R SATA RAID</span> controller. This, and an earlier discussion with <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a> about <span class="caps">RAID</span> controllers got me interested in this hardware category. A bit of searching revealed a number of places where there are comprehensive reviews of various controllers. </p>
+
+<p>One of the most interesting that I read was one created by <a href="http://research.microsoft.com/~Gray/">Jim Gray</a>. Titled <a href="ftp://ftp.research.microsoft.com/pub/tr/tr-2003-70.pdf">A Quick Look at Serial <span class="caps">ATA </span>(SATA) Performance</a>, it provides a quick look at the performance characteristics of a 4-port 3Ware 8506-4 controller vs. a 4-port Highpoint 1540 controller. The 3Ware card is ~$86 / port vs. ~$18 / port for the Highpoint card. The 3Ware card provides significantly better sequential I/O performance than the Highpoint card, but the Highpoint card provides somewhat better random I/O performance. The sequential I/O performance of the 3Ware card can partially be explained by the bus connector; the 3Ware card supports 66MHz/64bit (528MBps) <span class="caps">PCI</span> interface vs. the 33MHz/32bit (132MBps) interface of the Highpoint card (see Figure 1 from the review). </p>
+
+<p>Bottom line: inexpensive <span class="caps">RAID</span> controllers have a significant price/performance advantage with random I/O performance.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February  6, 2004 12:06 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=403" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="403" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000403.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>The antec case rocks - I've had one for about 5 months now. It really makes a big difference having a quieter case - especially if your work area is quite small - as mine is.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;ianm&#64;activestate&#46;com">Ian MacLean</a> at February  8, 2004 08:45 AM</span>
+</div>
+<div class="comments-body">
+<p>Raid 0 also DOUBLES your chance of drive failure, which is why I don't use it. The additional performance isn't worth the risk; buy 2gb of memory instead. The fastest disk of all is the one in memory, eg, cache.</p>
+
+<p>I suppose if you're religious about backups, but human</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.codinghorror.com/">Jeff Atwood</a> at July  3, 2004 09:37 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="403" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

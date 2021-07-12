@@ -1,0 +1,909 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+	<meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	<title>John Lam on Software</title>
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.typepad.com/t/rsd/1292386" />
+			<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://iunknown.typepad.com/foaf.rdf" />
+	
+        
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- entries -->
+
+			<h2 class="date-header">May 11, 2007</h2>
+	
+	<div class="entry" id="entry-33955172">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/05/rounding_up_dlr.html">Rounding up DLR questions</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p>I thought I'd answer some more questions that have shown up around the web about the DLR. I was out for a short vacation before getting back to the office middle of this week.</p>
+
+<p><a title="Photo Sharing" href="http://www.flickr.com/photos/john_lam/493292350/"><img height="375" alt="DSCF0414.jpg" src="http://farm1.static.flickr.com/199/493292350_e2a89c6452.jpg" width="500" /></a> </p>
+
+<ol><li><em>Is the CoreCLR available for a standalone download?<br /><br /></em>No. It's designed to be used with Silverlight. Jamie Cansdale has figured out how to extract the assemblies out of the redist and <a href="http://weblogs.asp.net/nunitaddin/archive/2007/05/10/silverlight-console-applications.aspx">run a console application using it</a>. Why? Because it makes sense to be able to run your unit tests using the target runtime. </li>
+
+<li><em>Is the DLR itself available for standalone download?<br /><br /></em>Not at this time. Right now you can download it as part of the <a href="http://www.codeplex.com/IronPython/Release/ProjectReleases.aspx?ReleaseId=438">IronPython 2.0 Alpha release on Codeplex</a>. </li>
+
+<li>Will I be able to host the DLR myself in my own .NET applications?<br /><br />Yes. We have a generic hosting API, and we internally have a number of hosts built using it, including a console host for the desktop CLR, various test harnesses for our test team etc. </li>
+
+<li>Does JS support generics?<br /><br />Not with this release, but it is on the roadmap. </li>
+
+<li>Is the DLR just IronPython's libraries pulled out into a reusable form?<br /><br />At a certain level, this is true (a simple example is the BigInteger type). However, it does go considerably deeper than this. The DLR has a more ambitious goal of unifying the programming model of static languages and dynamic languages in the most efficient way possible. For details on this, see Jim Hugunin's two posts on <a href="http://blogs.msdn.com/hugunin/archive/2007/05/02/the-one-true-object-part-1.aspx">The One True Object</a>, particularly <a href="http://blogs.msdn.com/hugunin/archive/2007/05/04/the-one-true-object-part-2.aspx">Part 2</a>.</li>
+
+<li>What about languages beyond the four (IronPython, IronRuby, JScript, and VB) that Microsoft is building? Can the DLR actually be used by folks outside the company?<br /><br />At the time of this writing, it's exactly 11 days since we shipped bits to the world. Peter Fisk is making good progress porting his <a href="http://vistasmalltalk.wordpress.com/2007/05/11/calling-methods-from-smalltalk-dlr/">Smalltalk implementation to the DLR</a>. </li></ol>
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Frounding_up_dlr.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 01:28 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/rounding_up_dlr.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/rounding_up_dlr.html#comments">Comments (7)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/rounding_up_dlr.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			<h2 class="date-header">May 07, 2007</h2>
+	
+	<div class="entry" id="entry-33676716">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/05/clearing_the_ai.html">Clearing the air about Silverlight and the DLR</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p>It's been interesting looking at the reactions from around the blogosphere. With so many people playing telephone, I thought I'd collect a bunch of facts together in one place so that folks can get a clearer picture about what we're doing.</p>
+
+<ol>
+<li><p>The DLR requires the CLR. So this means that it only works with the Silverlight 1.1 Alpha that was released at MIX, and <em>not</em> the Silverlight 1.0 Beta.</p></li>
+<li><p>The source code for DLR, IronPython (and IronRuby when it is released) are being released under the <a href="http://www.microsoft.com/resources/sharedsource/licensingbasics/permissivelicense.mspx">Ms-PL</a>. The Ms-PL is a BSD-style license.</p></li>
+<li><p>The DLR will also run on top of the desktop CLR V2.0, not just the Silverlight CLR. We have a generic hosting API that lets us retarget the DLR to run on top of arbitrary hosts. Silverlight is only one such host.</p></li>
+<li><p>The Silverlight 1.1 Alpha bits released at MIX include the DLR, IronPython and managed JScript.</p></li>
+<li><p>Silverlight lets you run compiled .NET code in the browser, not just Python and JScript code. Any assembly that has been compiled to target the Silverlight libraries should just work. So if you want to write code in C#, VB.NET or <a href="http://boo.codehaus.org/">Boo</a> to target Silverlight, knock yourself out.</p></li>
+<li><p>Our JScript implementation targets the <a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">ECMAScript 3.0</a> specification.</p></li>
+<li><p>We will implement four languages for the DLR: IronPython, IronRuby, JScript, and Visual Basic. As of this writing we are only releasing the source code for IronPython and IronRuby under the Ms-PL. We have not decided whether we will release the source code for either JScript or Visual Basic. </p></li>
+<li><p>Silverlight is targeted at browsers that run on the two most popular client operating systems: Windows and Mac OS X. <a href="http://tirania.org/blog/">Miguel de Icaza</a> was quoted as saying that they will <a href="http://linux.slashdot.org/linux/07/05/03/2033219.shtml">release a Mono+Linux implementation of Silverlight by the end of the year</a>.</p></li>
+<li><p>Silverlight V1.1 will only target Intel Mac OS X machines.</p></li>
+</ol>
+
+<p>Is there anything else that I missed?</p>
+
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fclearing_the_ai.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 07:00 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/clearing_the_ai.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/clearing_the_ai.html#comments">Comments (16)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/clearing_the_ai.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/05/clearing_the_ai.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/silverlight" rel="tag">silverlight</a>
+		</p>
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			<h2 class="date-header">May 03, 2007</h2>
+	
+	<div class="entry" id="entry-33601750">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/05/silverlight_do_.html">Silverlight: do you love it or hate it?</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p>Wow. Technorati is normally a wonderful resource, but with > 500 posts per day on Silverlight, it's really hard to see who's saying what. So I thought that I'd try and summarize a bit of what's been going on for folks who are interested in following the conversation:</p>
+
+<p><a href="http://blog.jonudell.net/2007/04/30/a-conversation-with-john-lam-about-the-dynamic-language-runtime-silverlight-and-ruby/">Jon Udell interviewed me</a> and added his insightful (as always) commentary.</p>
+
+<p><a href="http://diveintomark.org/archives/2007/05/02/silly-season">Mark Pilgram hates everything</a></p>
+
+<p>Darryl Taft of eWEEK <a href="http://www.eweek.com/article2/0,1895,2123793,00.asp">interviewed Jim and me</a>, and he also wrote <a href="http://www.eweek.com/article2/0,1895,2123859,00.asp">a nice article on our MIX announcement</a>.</p>
+
+<p><a href="http://arstechnica.com/news.ars/post/20070430-microsoft-reveals-dynamic-language-runtime-for-net.html">ArsTechnica has a nice writeup on the DLR</a> but the <a href="http://episteme.arstechnica.com/eve/forums?a=tpc&amp;s=50009562&amp;f=174096756&amp;m=710006174831&amp;r=710006174831">forum comments</a> are also worth a read.</p>
+
+<p><a href="http://www.hanselman.com/blog/PuttingMixSilverlightTheCoreCLRAndTheDLRIntoContext.aspx">Scott Hanselman has a really nice writeup on Silverlight and the DLR</a>. I love the energy flow diagram, the calling out of the DLR, the choice of license, and the awesome quotes :)</p>
+
+<p><a href="http://tirania.org/blog/archive/2007/May-01.html">Miguel de Icaza really liked what he saw</a>. I love how he uses terms like "adorable" and "fantastic" in describing technology. He also comments on our choice of the <a href="http://www.microsoft.com/resources/sharedsource/licensingbasics/permissivelicense.mspx">Ms-PL license</a> for the DLR and Python/Ruby:</p>
+
+<blockquote>
+  <p>The release for the DLR is done under the terms of the Microsoft Permissive License (MsPL) which is by all means an open source license. This means that we can use and distribute the DLR as part of Mono without having to build it from scratch. A brilliant move by Microsoft.</p>
+</blockquote>
+
+<p><a href="http://laribee.com/blog/2007/05/01/mix07-more-dynamic-language-runtime">David Laribee</a> really gets the "Just Glue It" theme from our talk.</p>
+
+<p>Peter Fisk, the Vista Smalltalk guy, is <a href="http://vistasmalltalk.wordpress.com/2007/04/30/mix07-silverlight-announcements/">really excited about porting to DLR</a></p>
+
+<blockquote>
+  <p>For my work, two things are of importance:
+  * the release of a CTP of the Silverlight CLR will finally allow me to examine its capabilities and limitations, so that I can proceed with porting Vista Smalltalk to Silverlight
+  * the DLR should allow me to build a much higher performance version of Vista Smalltalk</p>
+  
+  <p>Over the next several weeks, I will be preparing a new release of Vst/.Net to integrate with the DLR and be better synchronized with the Flash version (Vst/Flash). Hopefully, I can reach a point where scripts can be run with minimal modifications across Flash/Apollo/Silverlight/Vista.</p>
+</blockquote>
+
+<p>And after he had a chance to play with it, <a href="http://vistasmalltalk.wordpress.com/2007/05/01/dynamic-code-in-silverlight/">he was even more impressed</a></p>
+
+<blockquote>
+  <p>This is very impressive technology that is certain to impact how applications are built and delivered. I think that it will mark the beginning of the broad acceptance of Rich Internet Applications in the marketplace - and this will probably benefit Adobe as well.</p>
+  
+  <p>My congratulations to the folks at Microsoft for some excellent software engineering.</p>
+</blockquote>
+
+<p><a href="http://www.techcrunch.com/2007/05/01/take-time-to-understand-silverlight-its-important/">Michael Arrington is excited by Silverlight</a> and <a href="http://www.techcrunch.com/2007/04/30/silverlight-the-web-just-got-richer/">Nik Cubrilovic has a more detailed overview on Techcrunch</a>. They have >383K subscribers via Feedburner. Amazing.</p>
+
+<p>Alexey Gavrilov <a href="http://metalinkltd.com/?p=118">really digs the DLR Console</a>.</p>
+
+<blockquote>
+  <p>This is my favorite sample so far — IronPython, JavaScript and XAML console implemented on IronPython. It has syntax highlighting and code auto-competition already so I guess it won’t take long until we see complete IDE running inside the browser!</p>
+</blockquote>
+
+<p>Finally, you know you've made the big time when you have your own <a href="http://en.wikipedia.org/wiki/IronRuby">Wikipedia</a> page :)</p>
+
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fsilverlight_do_.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 12:05 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/silverlight_do_.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/silverlight_do_.html#comments">Comments (5)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/silverlight_do_.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/05/silverlight_do_.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/ruby" rel="tag">ruby</a>, <a href="http://technorati.com/tag/silverlight" rel="tag">silverlight</a>
+		</p>
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			<h2 class="date-header">May 02, 2007</h2>
+	
+	<div class="entry" id="entry-33587816">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/05/showtime_at_mix.html">Showtime at MIX!</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p><style type="text/css">.flickr-photo { border: solid 2px #000000; }.flickr-yourcomment { }.flickr-frame { text-align: left; padding: 3px; }.flickr-caption { font-size: 0.8em; margin-top: 0px; }</style><div class="flickr-frame"> <a href="http://www.flickr.com/photos/john_lam/479915925/" title="photo sharing"><img src="http://farm1.static.flickr.com/227/479915925_ad4e8d835c.jpg" class="flickr-photo" alt="" /></a><br />    <span class="flickr-caption"><a href="http://www.flickr.com/photos/john_lam/479915925/">Where we lived for 12 hours</a>, originally uploaded by <a href="http://www.flickr.com/people/john_lam/">John Lam</a>.</span></div>             <p class="flickr-yourcomment">  The demo machines were all staged backstage to make switching between all of the different computers easier. We had a primary and backup machine for our demo (as did all of the other demos). So just in case something bad happened, we could switch to the backup machine to continue the demo. <br /><br />I drove our demo backstage, mirroring what Scott did just in case we had to switch. Our demo went off without a hitch, but boy was it nerve-wracking. This was much more difficult to do than my talk at MIX, even though it only took 2 minutes here vs. the 1 hour + duration of our talk (and we were doing far more high-risk things than we were doing in the keynote).<br /><br />This photo captures the setup for all of the different machines - the two 17" MacBook Pros that we used for our demos were sitting on the top shelf of this photo. You can also see one of the four giant projection screens in the background.</p></p>
+
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fshowtime_at_mix.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 02:44 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/showtime_at_mix.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/showtime_at_mix.html#comments">Comments (0)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/showtime_at_mix.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			
+	
+	<div class="entry" id="entry-33587534">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/05/backstage_at_mi.html">Backstage at MIX</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p><style type="text/css">.flickr-photo { border: solid 2px #000000; }.flickr-yourcomment { }.flickr-frame { text-align: left; padding: 3px; }.flickr-caption { font-size: 0.8em; margin-top: 0px; }</style><div class="flickr-frame"> <a href="http://www.flickr.com/photos/john_lam/479916261/" title="photo sharing"><img src="http://farm1.static.flickr.com/223/479916261_87edec7a4b.jpg" class="flickr-photo" alt="" /></a><br />    <span class="flickr-caption"><a href="http://www.flickr.com/photos/john_lam/479916261/">Blast off!</a>, originally uploaded by <a href="http://www.flickr.com/people/john_lam/">John Lam</a>.</span></div>              <p class="flickr-yourcomment">  I was backstage all day Sunday from about 10am to 11pm getting things setup for Scott's demo of the DLR and IronRuby during his keynote. This was the first time that I've been involved in a keynote; it's absolutely amazing how much equipment was involved in pulling off the show.<br /><br />I only brought my 80-200 f/2.8 lens to the show, so I couldn't capture the ideal wide-angle shot. This was just one of the many, many consoles that folks were using to control ... stuff.</p></p>
+
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fbackstage_at_mi.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 02:36 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/backstage_at_mi.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/backstage_at_mi.html#comments">Comments (0)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/backstage_at_mi.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			
+	
+	<div class="entry" id="entry-33575992">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/05/how_many_progra.html">How many programming languages run in your browser?</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p>On Saturday night, I created my first-ever screencast that shows the DLR Console that <a href="http://blogs.msdn.com/hugunin">Jim</a> wrote. I demonstrate interop between all four programming languages, as well as some of the support in DLR Console for working with XAML and Silverlight.</p>
+
+<p><a href="http://silverlight.net/Learn/learnvideo.aspx?video=74"><img src="http://silverlight.net/Themes/silverlight/images/learn/video-thumb-74.jpg"></a></p>
+
+<p>Let me know what you think!</p>
+
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fhow_many_progra.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 09:40 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/how_many_progra.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/how_many_progra.html#comments">Comments (11)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/how_many_progra.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/05/how_many_progra.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/ironpython" rel="tag">ironpython</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/jscript" rel="tag">jscript</a>, <a href="http://technorati.com/tag/ruby" rel="tag">ruby</a>, <a href="http://technorati.com/tag/vb" rel="tag">vb</a>
+		</p>
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			<h2 class="date-header">May 01, 2007</h2>
+	
+	<div class="entry" id="entry-33552588">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/05/postdemo_hangov.html">Post-Demo hangover</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				Wow. That was a fun talk that Jim and I did at Mix.
+
+For the Ruby fans in the audience, here was the final version of the application that we wrote:
+
+<code><pre>
+# This downloads a compiled C# assembly that contains a Button
+require 'Silverlight.Samples.Controls,Version=0.0.0.0'
+
+# This imports a JS and a VB module that each contain code that we will use
+JS = require '3DText.js'
+VB = require 'technorati.vbx'
+
+# We don't have include working yet ...
+Controls = Silverlight.Samples.Controls
+Document = System.Windows.Browser.HtmlPage.Document
+
+def initialize(sender, args)
+  # Create an instance of the downloaded C# button
+  b = Controls.Button.new
+  b.text = "Click Me"
+
+  JS.initialize
+
+  # Map Ruby block to .NET event from C#
+  b.click do |sender, args|
+    JS.clearList
+
+    # This uses a member injector to retrieve a reference to a HTML
+    # input element from the hosting HTML page
+    term  = Document.searchTerm.value
+
+    # This retrieves data from Technorati via Yahoo Pipes serialized 
+    # as JSON data, and then runs a LINQ over Objects query against it
+    items = VB.GetTitles(term)
+
+    # Blocks work, yay!
+    items.each { |item| JS.initializeName(item) }
+
+    # Play that funky designer animation
+    JS.playAnimation
+  end
+  
+  root.Children.Add(b)
+end
+</pre></code>
+
+Keep in mind that the Ruby code here was done in about 4 weeks worth of dev time by our stud developer Tomas Matousek (of <a href="http://www.codeplex.com/Phalanger">Phalanger</a> fame, and my office-mate) with some random input from yours truly.
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fpostdemo_hangov.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 06:51 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/postdemo_hangov.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comments">Comments (9)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/05/postdemo_hangov.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/microsoft" rel="tag">microsoft</a>, <a href="http://technorati.com/tag/ruby" rel="tag">ruby</a>
+		</p>
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			
+	
+	<div class="entry" id="entry-33521030">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/05/demo_day.html">Demo Day</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p><a href="http://www.flickr.com/photos/john_lam/479901702/" title="Photo Sharing"><img src="http://farm1.static.flickr.com/222/479901702_df8a2e1c14.jpg" width="500" height="330" alt="Showtime!" /></a></p>
+
+<p>Go big or go home. </p>
+
+<p>If you're at MIX and reading this, you must come to our talk (Just Glue It!) that I'm giving with <a href="http://blogs.msdn.com/hugunin">Jim Hugunin</a> at 11:45 today. We will build an app on stage that uses FIVE different programming languages.</p>
+
+<p>Yes, it's contrived but that's not the point. The point is to show you that cross language interop is real, and is something that we're taking very seriously. To be honest, the fact that some things "just work" is surprising even us. If you implement a new language, such as Ruby on the DLR, and you do it right, you'll find that quite a lot of the interop comes for free.</p>
+
+<p>Hope to see you there!</p>
+
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fdemo_day.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 06:56 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/demo_day.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/demo_day.html#comments">Comments (4)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/05/demo_day.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/05/demo_day.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/c%23" rel="tag">c#</a>, <a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/jscript" rel="tag">jscript</a>, <a href="http://technorati.com/tag/microsoft" rel="tag">microsoft</a>, <a href="http://technorati.com/tag/mix" rel="tag">mix</a>, <a href="http://technorati.com/tag/python" rel="tag">python</a>, <a href="http://technorati.com/tag/ruby" rel="tag">ruby</a>, <a href="http://technorati.com/tag/visual%2Bbasic" rel="tag">visual basic</a>
+		</p>
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			<h2 class="date-header">April 30, 2007</h2>
+	
+	<div class="entry" id="entry-33511444">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/04/reboot.html">Reboot</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p><img src="http://www.qzx.com/about/stuff/reboot.gif" alt="Reboot Image" title="" /></p>
+
+<p>I don't know what happened earlier today, but my Dreamhost based blog just died. I don't have any cycles to troubleshoot things right now, so I did the simplest possible thing - I'm rebooting my blog over here on <a href="http://www.typepad.com">TypePad</a>.</p>
+
+<p><a href="http://www.feedburner.com">Feedburner</a> should be syndicating my feeds automatically, so you shouldn't need to do anything if you're reading this blog via an RSS reader. The archives, of course, are now AWOL until I scrape the data back out of the database and import over here.</p>
+
+<p>I'm really hoping that TypePad will allow me to outsource all of the pain of maintaining my own blog engine on a shared host somewhere in the cloud. So far I like what I see in the interface - I have lots to talk about now!</p>
+
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F04%2Freboot.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 11:28 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/04/reboot.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/04/reboot.html#comments">Comments (3)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/04/reboot.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+	
+			
+	
+	<div class="entry" id="entry-33511164">
+					<h3 class="entry-header"><a href="http://www.iunknown.com/2007/04/introducing_iro.html">Introducing IronRuby</a></h3>
+		
+		<div class="entry-content">
+			<div class="entry-body">
+				<p><img src="http://www.microsoft.com/silverlight/asp/images/logo_main_sl.gif" alt="Silverlight Logo" title="" /></p>
+
+<p>It's official! At <a href="http://weblogs.asp.net/scottgu/">Scott Guthrie's</a> keynote at MIX today, we announced that we are implementing Ruby to run on top of the .NET platform! We're calling it IronRuby as an homage to <a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython">IronPython</a>, it is a shared source project, and we will be releasing it later this year on <a href="http://www.codeplex.com/">CodePlex</a> under the <a href="http://www.microsoft.com/resources/sharedsource/licensingbasics/permissivelicense.mspx">Microsoft Permissive License</a> (a BSD-style license for folks who just want the elevator pitch).</p>
+
+<p>At <a href="http://www.visitmix.com">MIX</a>, we will demonstrate our existing implementation. Even in its rudimentary form, we are able to show interop with statically typed .NET libraries, and code written in JScript, VB, and Python. What's really hot about our implementation is that it runs on top of the <a href="http://www.silverlight.net">Silverlight</a> platform, which means that you can write Silverlight applications in Ruby on supported browsers (Internet Explorer, Firefox, Safari) on Mac and Windows. </p>
+
+<p>You'll be able to experience some of this <em>today</em> via a <a href="http://www.microsoft.com/silverlight">one-time 4.5MB download of the Silverlight runtime</a>. This includes the cross-platform CLR and libraries, the Dynamic Language Runtime (DLR), and the Python and JScript programming languages. Later this year, we will release another redist that will add support for Ruby and VB.</p>
+
+<p>The DLR is what makes all of this possible. While the CLR is a great platform for dynamic languages, the DLR makes it better. It provides a shared set of language services such as a dynamic type system, fast dynamic dispatch, smart code generation, and a hosting API. It layers on top of the CLR, which provides its own set of shared services such as a world class JIT and GC, sandboxed security model, and debugging/profiling interfaces. <a href="http://blogs.msdn.com/hugunin/">Jim Hugunin</a> is the DLR Architect, and he's writing a series of blog posts that describes the why and how of the DLR.</p>
+
+<p>I would like to acknowledge the tremendous efforts of our team (the Dynamic Language Runtime team and our partner JScript and VB teams) in getting this release out the door in time for MIX. I'll be introducing members of the team to you on this blog (or better yet, convincing/shaming folks on the team to start/resume blogging) so that you can meet the folks who are making this stuff a reality.</p>
+
+<p>Finally, I apologize for being silent about what we've been doing in this space. But this is now full disclosure - so we will be working with the community in a fully open fashion from this point onwards. IronPython has a 3 week release cycle with a live repository (you'll be able to get changes the moment we check them in), and we're going to try to keep this tradition alive with Ruby. </p>
+
+<p>Let me know what you think by contacting me via mail (jflam at you-know-what-company) or by leaving comments on this blog or by writing your own blog entries (I'll find you via <a href="http://www.technorati.com/search/www.iunknown.com">Technorati</a>).</p>
+
+<p>See y'all around the blogosphere!</p>
+
+			</div>
+			
+							<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F04%2Fintroducing_iro.html" type="text/javascript"></script>
+			
+		</div>
+		<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 11:03 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/04/introducing_iro.html">Permalink</a>
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/04/introducing_iro.html#comments">Comments (8)</a>
+				
+									<span class="separator">|</span>
+					<a href="http://www.iunknown.com/2007/04/introducing_iro.html#trackback">TrackBack (0)</a>
+				
+			</p>
+			<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/04/introducing_iro.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/mix07" rel="tag">mix07</a>, <a href="http://technorati.com/tag/ruby" rel="tag">ruby</a>, <a href="http://technorati.com/tag/silverlight" rel="tag">silverlight</a>
+		</p>
+	
+
+
+			<!-- post footer links -->
+
+
+		</div>
+	</div>
+			<div class="pager-bottom pager-entries pager content-nav">
+		<div class="pager-inner">
+			<span class="pager-left">
+				<a href="http://www.iunknown.com/page/6/"><span class="chevron">&#171;</span>
+					<span class="pager-label"></span></a>
+			</span>
+			<span class="separator">|</span>
+			<span class="pager-right">
+				<a href="http://www.iunknown.com/page/8/"><span class="pager-label"></span>
+					<span class="chevron">&#187;</span></a>
+			</span>
+		</div>
+	</div>
+	
+	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/p/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+                        <script type="text/javascript" src="http://www.iunknown.com/services/recent-comments.js"></script>
+            
+            
+		</ul>
+	</div>
+</div>
+	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/want-to-work-on.html">Want to work on languages at Microsoft?</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/helping-those-w.html">Helping those who help you</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/how-to-say-than.html">How to say 'thank you'</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/surviving-at-mi.html">Surviving at Microsoft: Knowing who has the answer</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/the-democratiza.html">The Democratization of Data</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/welcome-wayne-k.html">Welcome, Wayne Kelly!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/ironruby-sun-an.html">IronRuby, Sun, and Lang.net</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html">Lang.net wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/01/latest-dlr-host.html">Latest DLR Hosting Spec</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/01/help-wanted-iro.html">Help wanted: IronPython PM</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/01/index.html">January 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/12/index.html">December 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/index.html">November 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/index.html">October 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/index.html">September 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/08/index.html">August 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/index.html">July 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/index.html">June 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/05/index.html">May 2007</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-categories module">
+	<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Categories</a></h2>
+	<div class="module-content">
+		<ul class="module-list">
+						<li class="module-list-item"><a href="http://www.iunknown.com/current_affairs/index.html">Current Affairs</a></li>
+						<li class="module-list-item"><a href="http://www.iunknown.com/import/index.html">import</a></li>
+			
+		</ul>
+	</div>
+</div>
+<div class="module-calendar module">
+	<h2 class="module-header">February 2008</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html">1</a></td>
+				
+							
+					<td>2</td>
+				</tr>
+							<tr>
+					<td><a href="http://www.iunknown.com/2008/02/ironruby-sun-an.html">3</a></td>
+				
+							
+					<td>4</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/02/welcome-wayne-k.html">5</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/02/the-democratiza.html">6</a></td>
+				
+							
+					<td>7</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/02/surviving-at-mi.html">8</a></td>
+				
+							
+					<td>9</td>
+				</tr>
+							<tr>
+					<td>10</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/02/how-to-say-than.html">11</a></td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/02/helping-those-w.html">14</a></td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				</tr>
+							<tr>
+					<td>17</td>
+				
+							
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/02/want-to-work-on.html">20</a></td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				</tr>
+							<tr>
+					<td>24</td>
+				
+							
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		Powered by <a href="http://www.typepad.com/t/app/track?poweredby-2419952" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+<!-- ph=1 -->

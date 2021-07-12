@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: I Need More Hours in a Day!</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/910/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/09/08/i-need-more-hours-in-a-day" rel="alternate" type="text/html"/>
+  <updated>2006-09-08T11:57:43-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:8c1386f8-6b5a-4c9d-b0f4-1b86f142d6ad</id>
+    <published>2006-09-08T11:57:17-07:00</published>
+    <updated>2006-09-08T11:57:43-07:00</updated>
+    <title type="html">I Need More Hours in a Day!</title>
+    <link href="http://www.iunknown.com/articles/2006/09/08/i-need-more-hours-in-a-day" rel="alternate" type="text/html"/>
+    <category term="RubyCLR" scheme="http://www.iunknown.com/articles/tag/rubyclr"/>
+    <category term="Thoughts" scheme="http://www.iunknown.com/articles/tag/thoughts"/>
+    <summary type="html">&lt;p&gt;&lt;img src="http://www.rubyclr.com/images/splash-logo.jpg" style="float:left;margin-right:20px;margin-bottom:20px;" width="50px"&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;RubyCLR &lt;em&gt;will only compile on Ruby 1.8.2&lt;/em&gt;. There, I said it. The pre-built &lt;code&gt;runtime.dll&lt;/code&gt; &lt;strong&gt;will run on 1.8.4&lt;/strong&gt;, but you will not be able to build. There are a whole pile of issues around getting it to build on 1.8.4 (and I believe on 1.8.5 as well).&lt;/p&gt;
+
+
+	&lt;p&gt;I took a quick look last night during a break from my current battles in refactoring the existing RubyCLR codebase. In short, it&amp;#8217;s not pretty. It also won&amp;#8217;t be resolved until I finish refactoring the current codebase and writing some long-overdue documentation.&lt;/p&gt;
+
+
+	&lt;p&gt;I would love to make it a higher-priority item, but unless someone can donate some time to figuring out what&amp;#8217;s blocking compilation (and execution &amp;#8211; there&amp;#8217;s a nasty seg fault that happens when running nmake) this will have to go on the back-burner.&lt;/p&gt;
+
+
+	&lt;p&gt;Now where did I put that human cloning book?&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;&lt;img src="http://www.rubyclr.com/images/splash-logo.jpg" style="float:left;margin-right:20px;margin-bottom:20px;" width="50px"&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;RubyCLR &lt;em&gt;will only compile on Ruby 1.8.2&lt;/em&gt;. There, I said it. The pre-built &lt;code&gt;runtime.dll&lt;/code&gt; &lt;strong&gt;will run on 1.8.4&lt;/strong&gt;, but you will not be able to build. There are a whole pile of issues around getting it to build on 1.8.4 (and I believe on 1.8.5 as well).&lt;/p&gt;
+
+
+	&lt;p&gt;I took a quick look last night during a break from my current battles in refactoring the existing RubyCLR codebase. In short, it&amp;#8217;s not pretty. It also won&amp;#8217;t be resolved until I finish refactoring the current codebase and writing some long-overdue documentation.&lt;/p&gt;
+
+
+	&lt;p&gt;I would love to make it a higher-priority item, but unless someone can donate some time to figuring out what&amp;#8217;s blocking compilation (and execution &amp;#8211; there&amp;#8217;s a nasty seg fault that happens when running nmake) this will have to go on the back-burner.&lt;/p&gt;
+
+
+	&lt;p&gt;Now where did I put that human cloning book?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:3cd348a2-2ea3-4f60-a308-690940c6b5a3</id>
+    <published>2006-10-11T03:49:05-07:00</published>
+    <updated>2006-10-17T20:10:00-07:00</updated>
+    <title type="html">Comment on I Need More Hours in a Day! by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/09/08/i-need-more-hours-in-a-day#comment-1131" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I use 1.8.2-15 Stable Release of the 1-click installer. You'll need to download the source code separately from &lt;a href="http://raa.ruby-lang.org/project/ruby/1.8.2" rel="nofollow"&gt;http://raa.ruby-lang.org/project/ruby/1.8.2&lt;/a&gt;. Unzip / untar the source code into the same directory that you installed the 1-click installer (c:\ruby on my computer).&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>So many Versions  of 1.8.2 </name>
+    </author>
+    <id>urn:uuid:f6b5b38a-1b7f-4322-8ca3-4e26a6748992</id>
+    <published>2006-10-11T02:59:26-07:00</published>
+    <updated>2006-10-17T20:09:42-07:00</updated>
+    <title type="html">Comment on I Need More Hours in a Day! by So many Versions  of 1.8.2 </title>
+    <link href="http://www.iunknown.com/articles/2006/09/08/i-need-more-hours-in-a-day#comment-1129" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;hi,
+there are so many version of  Ruby 1.8.2. check below.
+which version i have to use.&lt;/p&gt;
+
+&lt;p&gt;and i am not able to find src/win32 folder when i installed ruby.
+from where i can get the src folder.&lt;/p&gt;
+
+&lt;p&gt;1.8.2-15 Stable Release&lt;br /&gt;
+  1.8.2-14 Final&lt;br /&gt;
+  1.8.2-14_rc11&lt;br /&gt;
+  1.8.2-14_rc10&lt;br /&gt;
+  1.8.2-14_rc7  &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>sean.ohalpin@gmail.com</name>
+    </author>
+    <id>urn:uuid:d0bceca2-e765-4270-8829-541312cf915a</id>
+    <published>2006-09-25T09:18:45-07:00</published>
+    <updated>2006-09-28T12:51:33-07:00</updated>
+    <title type="html">Comment on I Need More Hours in a Day! by sean.ohalpin@gmail.com</title>
+    <link href="http://www.iunknown.com/articles/2006/09/08/i-need-more-hours-in-a-day#comment-1011" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hi Jon - we've had no problems compiling with VS2005 + Ruby 1.8.4 (following your instructions exactly). What problems have you had? &lt;/p&gt;
+
+&lt;p&gt;Thanks for RubyCLR by the way! :)&lt;/p&gt;
+
+&lt;p&gt;Best regards,
+Sean&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Will Green</name>
+    </author>
+    <id>urn:uuid:eee986d5-b584-439a-9d18-ac60712f5b06</id>
+    <published>2006-09-08T15:55:18-07:00</published>
+    <updated>2006-09-09T06:35:31-07:00</updated>
+    <title type="html">Comment on I Need More Hours in a Day! by Will Green</title>
+    <link href="http://www.iunknown.com/articles/2006/09/08/i-need-more-hours-in-a-day#comment-912" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Would being able to build with the full-blown Visual Studio 2005 be of any help?  I have an MSDN subscription through work, and I have VS 2005 on my home machine.&lt;/p&gt;
+
+&lt;p&gt;Doesn't hurt that my manager has expressed interrest in Ruby on the .Net platform, either. As long as I do it on my own time.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Kurtiss Hare</name>
+    </author>
+    <id>urn:uuid:3784876a-3740-485a-950c-143a41b37076</id>
+    <published>2006-09-08T13:07:16-07:00</published>
+    <updated>2006-09-09T06:35:20-07:00</updated>
+    <title type="html">Comment on I Need More Hours in a Day! by Kurtiss Hare</title>
+    <link href="http://www.iunknown.com/articles/2006/09/08/i-need-more-hours-in-a-day#comment-911" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;After a bit of messing around, I was able to build RubyCLR drop 4, using Visual C++ 2005 Express, the latest Microsoft Platform SDK for Windows Server 2003 SP1, and Ruby 1.8.5.  If I remember correctly, the main hurdles I had to overcome were adding the proper environment vars to the Visual Studio 2005 command prompt:&lt;/p&gt;
+
+&lt;p&gt;INCLUDE=C:\Program Files\Microsoft Platform SDK\Include;%INCLUDE
+LIB=C:\Program Files\Microsoft Platform SDK\Lib;%LIB%&lt;/p&gt;
+
+&lt;p&gt;It's different per-architecture, but the x86 file is at VSDIR\Common 7\Tools\vsvars32.bat.&lt;/p&gt;
+
+&lt;p&gt;I added the Platform SDK Include directory to the project includes (alongside Ruby185 and Ruby185\win32).  I built against msvcrt-ruby18.lib, ws2_32.lib, and ole32.lib, which live in the Platform SDK Lib directory, or ruby\lib.&lt;/p&gt;
+
+&lt;p&gt;Where are folks getting stuck?&lt;/p&gt;</content>
+  </entry>
+</feed>

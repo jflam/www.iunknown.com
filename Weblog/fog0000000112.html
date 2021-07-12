@@ -1,0 +1,178 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/112 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>References to other assemblies</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">References to other assemblies</div>
+        <div class="entryDate">2002-02-28</div>
+        <p><P>Ever wondered how one assembly references types in another assembly? The following is a simplified explanation of what goes on. This is a lab-style entry. If you <EM>really</EM> want to understand how this happens, follow along using your own computer.</P>
+<P>In this example, we're going to look at System.Xml.Dll using ILDASM. Run the following command from the directory that contains System.Xml.Dll:</P>
+<P><CODE>ildasm /tokens&nbsp;system.xml.dll</CODE></P>
+<P>Notice that I used the /tokens command line switch that instructs ILDASM to display token values in its disassembly.</P>
+<P>Navigate to the System.Xml.XmlDocument class and find its Load( System.IO.Stream ) method. This is a method that clearly references a type (System.IO.Stream) that is defined inside of another assembly (mscorlib).</P>
+<P>When you disassemble the method it by double-clicking on the method name in ILDASM, you should see the following lines at the top of the disassembly window:</P>
+<P><CODE>.method /*060002DF*/ public hidebysig newslot virtual instance void&nbsp; Load(class [mscorlib/* 23000001 */]System.IO.Stream/* 0100000F */ inStream) cil managed</CODE></P>
+<P>Metadata in assemblies is identified by tokens. The token values in our disassembly are enclosed inside of the inline comments (/* */). </P>
+<P>There are many different types of metadata tokens. Tokens can refer to type definitions, type references, method definitions, method references, and so on. The type of a token can be readily discerned by looking at the value of its most signifant byte.</P>
+<P>In our example, there are three types of tokens in the disassembly shown above:</P>
+<OL>
+<LI>
+<DIV>A MethodDef (method definition) token (0x060002DF)</DIV>
+<LI>
+<DIV>An AssemblyRef (assembly reference) token (0x23000001)</DIV>
+<LI>
+<DIV>A TypeRef (type reference) token (0x0100000F)</DIV></LI></OL>
+<P>The remaining 24 bits of the token value is either an index into a row in a metadata table (as is the case for all three tokens types shown here) or an offset into a heap (which is the case for all String and UserString tokens).</P>
+<P>You can find definitions of all token types in the Partition II - Metadata specification in the %FrameworkSDK%\Tool Developers Guide\docs directory.</P>
+<P>The token that we're going to focus on is the TypeRef token. In our example, this token referes to the System.IO.Stream type in the mscorlib assembly. The question that we want answered is what information is required to find that type at runtime? In other words, what does MSCOREE have to do to find this type?</P>
+<P>To see this in action, we need to use a tool that ships as uncompiled source code in the Framework SDK. That tool is METAINFO. Navigate to the %FrameworkSDK%\Tool Developers Guide\Samples\metainfo directory. Build the sample by typing the following command in your command prompt:</P>
+<P><CODE>nmake</CODE></P>
+<P>To make your life easier, put METAINFO.EXE on your path by copying Debug\Metainfo.exe to a directory on your path (I like to put it in my \Windows directory).</P>
+<P>Next you want to dump the metadata in System.Xml.Dll out to a text file that you can read. Issue the following command from the directory that contains System.Xml.Dll:</P>
+<P><CODE>metainfo -raw -heaps System.Xml.Dll &gt; out.txt</CODE></P>
+<P>Open the generated text file, out.txt, using Notepad. The second table that you will see is the TypeRef table. Locate the 0F row in this table. This, of course, corresponds to the row in the TypeRef table that would be referenced by our TypeRef token whose value is 0x0100000F:</P>
+<P><CODE>&nbsp;&nbsp; f == 0:ResolutionScope[23000001], 1:string#27c, 2:string#283</CODE></P>
+<P>There are three columns in this row. The first column is the ResolutionScope of this type reference. This tells the execution engine which assembly this type resides in. The next two columns provide offsets into the Strings heap for the type's name and the type's namespace. Here are the relevant entries from the Strings heap:</P>
+<P><CODE>0000027c: Stream<BR>00000283: System.IO</CODE></P>
+<P>Note that the fact that there is a namespace column in the TypeRef table does <EM>not</EM> mean that the runtime understands namespaces. This presence of a namespace column only serves to act as a form of data compression in the metadata tables. This is understandable since many types can be referenced from the same namespace, and this scheme avoids duplicating the namespace string unnecessarily in the Strings heap.</P>
+<P>Let's turn our attention to the ResolutionScope token. In this case, the ResolutionScope token happens to be an AssemblyRef token (0x23000001). Here's the first row from the AssemblyRef table:</P>
+<P><CODE>35: AssemblyRef&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cRecs:&nbsp;&nbsp;&nbsp; 2(0x2), cbRec: 28(0x1c), cbTable:&nbsp;&nbsp;&nbsp; 56(0x38)<BR>&nbsp; col&nbsp; 0:&nbsp; MajorVersion oCol: 0, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 1:&nbsp; MinorVersion oCol: 2, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 2:&nbsp; BuildNumber&nbsp; oCol: 4, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 3:&nbsp; RevisionNumber oCol: 6, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 4:&nbsp; Flags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol: 8, cbCol:4, ULONG&nbsp; <BR>&nbsp; col&nbsp; 5:&nbsp; PublicKeyOrToken oCol: c, cbCol:4, blob&nbsp;&nbsp; <BR>&nbsp; col&nbsp; 6:&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol:10, cbCol:4, string <BR>&nbsp; col&nbsp; 7:&nbsp; Locale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol:14, cbCol:4, string <BR>&nbsp; col&nbsp; 8:&nbsp; HashValue&nbsp;&nbsp;&nbsp; oCol:18, cbCol:4, blob&nbsp;&nbsp; <BR>-------------------------------------------------<BR>&nbsp;&nbsp; 1 == 0:0001, 1:0000, 2:0ce4, 3:0000, 4:00000000, 5:blob#14, 6:string#7, 7:string#0, 8:blob#0</CODE></P>
+<P>Notice here that I also printed out the legend that is supplied by MetaInfo to simplify our discussion. </P>
+<P>All of the information found in this table is used to locate the assembly that is referenced. In this case, these are what their values are:</P>
+<UL>
+<LI>
+<DIV>MajorVersion = 1</DIV>
+<LI>
+<DIV>Minor Version = 0</DIV>
+<LI>
+<DIV>Build Number = 3705</DIV>
+<LI>
+<DIV>Revision Number = 0</DIV>
+<LI>
+<DIV>Flags = 0</DIV>
+<LI>
+<DIV>PublicKeyOrToken = b7 7a 5c 56 19 34 e0 89</DIV>
+<LI>
+<DIV>Name = mscorlib</DIV>
+<LI>
+<DIV>Locale = NULL</DIV>
+<LI>
+<DIV>Hash Value = NULL</DIV></LI></UL>
+<P>This information is passed by MSCOREE to a mysterious piece of OS software called Fusion. It lives inside fusion.dll. Fusion's job is to use this information together with a bewildering array of policy information to locate the correct assembly on your computer. The details&nbsp;are described in the Framework SDK documentation in the <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconhowruntimelocatesassemblies.asp">How the Runtime Locates Assemblies</A> and <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconassemblies.asp">Assembly Versioning</A> articles.</P>
+<P>Unfortunately for guys like me, there isn't a documented API where I can pass this information and get back a path to the correct assembly. This limitation makes it virtually impossible (unless I want to duplicate the functionality of fusion.dll myself - unlikely) for me to correctly resolve assembly references at runtime. There are hacks that I am using to work around this problem, but none of them make me particularly happy.</P>
+<P>Hopefully this has helped to clarify some of the questions that y'all might have about how type references are resolved in the CLR. Please send comments to the usual place.</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/fog0000000112.html');"><script type="text/javascript">postCount('Weblog/fog0000000112.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

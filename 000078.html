@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: IL Corner: the ldtoken instruction</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000077.html" title="What is a RuntimeMethodHandle?" />
+
+<link rel="next" href="http://www.iunknown.com/000079.html" title="STL Custom Iterators" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000077.html">&laquo; What is a RuntimeMethodHandle?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000079.html">STL Custom Iterators &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">March 06, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">IL Corner: the ldtoken instruction</h3>
+
+<p><P>My friend <A href="http://www.wintellect.com/about/instructors.asp?id=3">Jeffrey Richter</A> sent me a really cryptic email several weeks ago. I had MSN messenger'd him a question about how one converts a MethodDef token into a MethodBase object. However, MSN Messenger does not <EM>really</EM> show you someone else's status in real time, so he didn't see my message until later. He replied using Hotmail since I had since logged off for the evening. His message contained a subject of "Does ldtoken do this?"</P><br />
+<P>Now, when I finally got around to checking my Hotmail account, I didn't really understand what he meant by this. When I ran into Jeffrey at VS Live a few weeks ago, he remembered that message and asked me if it had helped me out. At that time I had no idea what he was referring to. He reminded me&nbsp;about what I had asked him and a light bulb went off in my head.&nbsp;</P><br />
+<P>When I got home, I took a closer look at the CIL documentation in the Partition III ECMA spec. Wow. That's all I can say. Wow. The ldtoken instruction does <EM>exactly</EM> what I needed. It is a really unusual instruction since what it does is convert a MethodDef, TypeDef, and FieldDef token into a RuntimeMethodHandle, a RuntimeTypeHandle or a RuntimeFieldHandle object, respectively. You can use these handle objects to construct the appropriate System.Reflection objects at runtime.</P><br />
+<P>Before we go any further, I need to explain why I even care about this instruction. Most of my CLR spelunking relates to solving real problems in my runtime aspect weaver. The problem that was sitting on the back-burner for a while was how to integrate my runtime aspect weaver with the System.Reflection API's. </P><br />
+<P>When I weave new code at some join-point, one of the pieces of information that I provide the advice method with is the name of the method that was weaved. In the M3 build of my runtime aspect weaver that I showed at VS Live!, I simply passed the name of the method as part of the CallContext object that I create in my dynamic proxy. </P><br />
+<P>However, I wanted more power than that. What if the advice method wanted to reflect on that method to get more information about the context of the call? In order to enable this, I needed to provide the advice method with a System.Reflection.MethodBase object that represents the original method that was weaved. In my previous implementation of my CallContext object, I actually walked the stack to find the MethodBase object:</P><br />
+<P><CODE>// Caller is always one past the dynamic interceptor on the call stack<BR>protected MethodBase TargetMethod<BR>{<BR>&nbsp; get<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; StackTrace trace = new StackTrace();<BR>&nbsp;&nbsp;&nbsp; if( trace.FrameCount &lt; 2 )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new Exception( "Not enough stack frames in StackTrace!" );</P><br />
+<P>&nbsp;&nbsp;&nbsp; StackFrame frame = trace.GetFrame( 2 );<BR>&nbsp;&nbsp;&nbsp; return frame.GetMethod();<BR>&nbsp; }<BR>}</CODE></P><br />
+<P>Now this is a really crufty hack since I shouldn't need to walk the call stack to get the MethodBase object. After all, I already know the MethodDef token of the method being weaved! So ... what I needed to be able to do was to convert a MethodDef token into a MethodBase object. The key, as it turns out, is the RuntimeMethodHandle object.</P><br />
+<P>To create a RuntimeMethodHandle object, you need to generate a ldtoken instruction. The ldtoken instruction also contains the token that needs to be encoded, so it is 5 bytes in length. Here's an example from some experiments that I did today:</P><br />
+<P><CODE>IL_0000:&nbsp; /* D0&nbsp;&nbsp; | (06)000007&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */ ldtoken&nbsp;&nbsp;&nbsp; method instance void Library.AnotherType/* 02000003 */::DoNothing() /* 06000007 */</CODE></P><br />
+<P>As you can see, the MethodDef token (0x06000007) is part of the ldtoken instruction. This is not a problem for my runtime aspect weaver, since I need to generate the dynamic proxies on the fly, so generating custom ldtoken instructions is very straightforward.</P><br />
+<P>To obtain a MethodBase object from a RuntimeMethodHandle object, all you need to do is call the static GetMethodFromHandle() method:</P><br />
+<P><CODE>MethodBase method = MethodBase.GetMethodFromHandle( handle );</CODE></P><br />
+<P>As you can see, ldtoken is a very powerful instruction. Unfortunately, it isn't really useful for folks other than compiler writers since you need to dynamically emit this instruction at runtime. It would be nice, however, if there were a new method on System.Reflection.Module that would let folks look up MethodBase objects based on a MethodDef token; this would provide valuable integration with the unmanaged metadata API's.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at March  6, 2002 11:43 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="78" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000078.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

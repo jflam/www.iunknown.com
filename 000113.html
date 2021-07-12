@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Effective NAnt</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000112.html" title="Stateful vs. stateless tests" />
+
+<link rel="next" href="http://www.iunknown.com/000114.html" title="Update on free vs. checked builds" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000112.html">&laquo; Stateful vs. stateless tests</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000114.html">Update on free vs. checked builds &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 25, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Effective NAnt</h3>
+
+<p><P>I spent a lot more time than I had wanted to working on the build process for CLAW. In retrospect, I think that I had seriously underestimated the complexities involved in building a fully automated build script. Throw in the learning curve associated with writing NAnt scripts, and then adding a few features to NAnt that I thought were essential and you have all of the ingrediants for a blown schedule ;)</P><br />
+<P>I have finally arrived at a build script that I think I'm happy with. Along the way, however, I made a whole bunch of observations about creating build files that I wanted to collect in one place. This is the purpose of this entry: to try and share a bit of what I learned.</P><br />
+<P><STRONG>Clean and prepare tasks should be separated</STRONG></P><br />
+<P>This is a total non-issue if you are building simple projects that consist entirely of one build file. In this case, combining both operations in the same task is no different than executing each of these tasks separately. </P><br />
+<P>CLAW, however, is built from a series of separate projects. In this case, your clean and prepare tasks must be separated; particularly if you're concerned about maintaining encapsulation in your build files. This is necessary because the clean task is a destructive task, and the prepare task is a constructive task. The tasks need to call nested tasks in <EM>reverse order</EM>. </P><br />
+<P>The clean task must tell all child tasks to clean before it does its own cleaning. This must be done because your child&nbsp;projects will most likely be managing directories underneath the directory that is managed by the master project. You cannot delete a directory that still contains other files / directories; you must clean the child directories before the parent directories.</P><br />
+<P>Similarly, your prepare task must build directories beginning with the master project's directories, followed by the child project's directories.</P><br />
+<P><STRONG>Beware of tri-state builds</STRONG></P><br />
+<P>In NAnt, it's very straightforward to execute either a release build or a debug build by writing tasks that examine the state of a property called, for example, <EM>debug</EM>. The targets would look like:</P><CODE><br />
+<P>&lt;target name="compile-debug" if="${debug}"&gt; ...<BR>&lt;target name="compile-release" unless="${debug}"&gt; ...<BR><BR>&lt;target name="compile"&gt;<BR>&nbsp; &lt;call target="compile-debug"/&gt;<BR>&nbsp; &lt;call target="compile-release"/&gt;<BR>&lt;/target&gt;</P></CODE><br />
+<P>If debug is true, only the compile-debug target will execute. Similarly, if debug is false, only the compile-release target will execute.</P><br />
+<P>But what should you do if you need to build <EM>both</EM> debug and release builds? You might be tempted to create a new target called compile-all. However, if you do this you will wind up with an explosion in the number of targets that you must define. For example, you cannot simply modify a property on the fly within a method; the following code will NOT work:</P><CODE><br />
+<P>&lt;target name="compile"&gt;<BR>&nbsp; &lt;property&nbsp;name="debug" value="true"/&gt;<BR>&nbsp; &lt;call target="compile-debug"/&gt;<BR>&nbsp; &lt;property name="debug" value="false"/&gt;<BR>&nbsp; &lt;call target="compile-release"/&gt;<BR>&lt;/target&gt;</P></CODE><br />
+<P>This is due to the fact that properties are not evaluated during the execution of a task. They are evaluated prior to executing the code within a task.</P><br />
+<P>While there are certainly solutions to this problem, (I'll leave it as an exercise to the reader to figure out the solution), that solution is NOT ideal. Instead, what you should do is define a second property called release. Your code now becomes:</P><CODE><br />
+<P>&lt;target name="compile-debug" if="${debug}"&gt; ...<BR>&lt;target name="compile-release" if="${release}"&gt; ...<BR><BR>&lt;target name="compile"&gt;<BR>&nbsp; &lt;call target="compile-debug"/&gt;<BR>&nbsp; &lt;call target="compile-release"/&gt;<BR>&lt;/target&gt;</P></CODE><br />
+<P>Both targets will compile if&nbsp;the debug and release properties are both set to true.</P><br />
+<P><STRONG>Ensure that your unit tests succeed before checking in your build</STRONG></P><br />
+<P>There is really no point checking in your build if your unit tests fail on that build. Therefore, your unit tests must return a non-zero result if they fail. For example if you were using a CppUnit test harness, your main method should resemble:</P><CODE><br />
+<P>int _tmain(int argc, _TCHAR* argv[])<BR>{<BR>&nbsp; CppUnit::TextUi::TestRunner runner;<BR>&nbsp; runner.addTest( ComTest::suite() );</P><br />
+<P>&nbsp; return runner.run() ? 0: 1;<BR>}</P></CODE><br />
+<P>A non-zero return value will cause an exception to fire inside of NAnt. When this happens you must take appropriate action.</P><br />
+<P>To handle exceptions in NAnt, you must define a property called nant.onfailure and set its value to the name of the target that you want to execute in event of failure. In the case of my build file, I point nant.onfailure to a target that will undo all prior SourceSafe checkout operations.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 25, 2002 01:08 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="113" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000113.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Would you please send me all of your knowledge about NAnt? We are at desing step for a PointOfSale project.<br />
+thanks in advance</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;saeed_1356&#64;yahoo&#46;com">Saeid</a> at April 30, 2003 06:59 AM</span>
+</div>
+<div class="comments-body">
+<p>I agree with Saeid... could you just serialize your brain and email it to me?  Binary serialization preferrable.  Thanks in advance.</p>
+<span class="comments-post">Posted by:  at October 23, 2003 02:10 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

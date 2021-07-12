@@ -1,0 +1,144 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<Title>Author Biography</Title>
+
+<HEAD>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="Visual Notepad 1.0">
+<TITLE>COM is good for you. Have you thought about COM today?</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF"
+text="#000000" topmargin="0" leftmargin="0">
+
+<STYLE>
+
+	.textRed	{ color:red; font-weight:bold }
+	.textBlack	{ color:black; font-weight:bold }
+	.dropDown	{ position:relative;top:10;left:10;cursor:'hand' }
+
+	H1		{ font:'14pt Arial' }
+	H2		{ font:'14pt Arial';border-bottom:1px outset green }
+	H3		{ font:'12pt Arial';font-weight:bold;cursor:'hand' }
+	H4		{ font:'8pt Arial';font-weight:normal;font-style:italic }
+	H5		{ font: '10pt Arial' }
+
+</STYLE>
+
+<SCRIPT>
+	function ChangeDisplay( element )
+	{
+		if( element.style.display == "" ) {
+			element.style.display = "none";
+		} else {
+			element.style.display = "";
+		}
+		window.event.cancelBubble = true;
+	}
+
+	function Dummy()
+	{
+		return True;
+	}
+
+	function IsIE( browsertype )
+	{
+		return True;
+
+		if( browsertype.Browser == "IE" ) {
+			if( browserType.Version >= 4 ) {
+				return True;
+			}
+		}
+		return False;
+	}
+</SCRIPT>
+
+<SCRIPT language=vbscript>
+	Sub NewBuildTOC()
+
+		dim anchorTags
+		dim objTOC
+		dim doc
+
+		set anchorTags = parent.frames( "MainFrame" ).document.anchors
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><HEAD></HEAD><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white>"
+		doc.write "<STYLE>H4 { font:'8pt Arial';font-weight:normal;font-style:italic }</STYLE><H4>"
+		doc.write "<BR><BR><BR><B>Contents</U></B><BR><HR>"
+
+		for i = 0 to anchorTags.length - 1
+			doc.write "<A href='#" & anchorTags( i ).name & "' target='MainFrame'>"
+			doc.write anchorTags( i ).innerText & "</A><BR>"
+		next
+
+		doc.write "<HR>"
+		doc.write "</H4></BODY></HTML>"
+		doc.close()
+
+	End Sub
+
+	Sub ClearTOC()
+
+		dim doc
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white></BODY></HTML>"
+		doc.close()
+
+	End Sub
+</SCRIPT>
+
+<P>
+	<FONT face="VERDANA, ARIAL, HELVETICA">
+	<IMG src="images/onepixel.gif" vspace="30" hspace="10" width="1" height="1"></IMG>
+	<IMG src="/images/iunknownlogo.gif"></IMG>
+	<IMG src="images/onepixel.gif" hspace="81" width="1" height="1"></IMG>
+	</FONT>
+</P>
+
+<TABLE border="0">
+<TR>
+    <TD width="10" valign=TOP>&nbsp
+	</TD>
+    <TD width="480">
+		<FONT face="VERDANA, ARIAL, HELVETICA">
+
+	<font size = 3><b><a href="mailto:jlam@iunknown.com                                                                                                                                                                                                                                         ">
+	John                                               Lam                                               </a></b></font>
+	<p>
+	<font size = 2>
+	<p>John is the President of Naleco Research Inc. <a href="http://www.naleco.com">Naleco Research</a> is the developer of RADFind 96, an acclaimed high-speed file finder for Windows 95. Naleco Research also has under development a number of exciting new tools that will enhance the COM and ActiveX experience for all developers.</p>
+<p>John frequently contributes to the pages of PC Magazine, with articles relating to COM, OLE and ActiveX technologies. Many of his articles can be found on Naleco Research's new IUnknown.com <a href="http://www.iunknown.com">web site</a>, as well as on PC Magazines <a href="http://www.pcmag.com">web site</a>.</p>
+<p>John will be teaching the Essential COM course at <a href="http://www.develop.com">DevelopMentor</a> starting in October. Look to DevelopMentor for all of your COM training needs. They are truly a very cool company to be associated with.</p>
+<p>John also speaks annually at the <a href="http://www.borland.com/borcon97">Borland Developer's Conference</a>, and will be appearing again this year in Nashville. Look for his talks on the new Dual Interface features in Delphi 3, and Fusing Win32 Applications with the Windows Shell.</p>
+<p>John has shipped numerous shrink-wrapped applications recently, and for the Commodore PET / 64 computers in the distant past. One of the many diversions that he has had in his life culminated in the receipt of a Doctorate in Organic Chemistry from the University of Toronto.</p><br>
+	</font>
+	 <br>
+	</p>
+	<hr>
+			</FONT>
+		<CENTER>
+		<FONT size = 1>&#169; 1997 John Lam. All rights reserved.<BR><BR></FONT>
+		<A href="#TOP"><IMG src="images/top.gif" border=0 alt="Back to top"></A><BR>
+		<BR><FONT FACE="ARIAL,HELVETICA" SIZE="1">
+		<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="5">
+		<TR>
+				<TD ALIGN="right" VALIGN="middle"><a href="/ie/" target="_top"><img src="/images/ie_animated.gif" width="88" height="31" border="0" alt="Microsoft Internet Explorer"></a></TD>
+				<TD ALIGN="center" VALIGN="middle"><IMG SRC="images/bar.gif" width="3" height="43"></TD>
+				<TD ALIGN="left" VALIGN="middle"><a href="/backoffice/designed/logo.htm" target="_top"><IMG SRC="/images/msbo_iis.gif" width="100" height="31" border="0" alt="Microsoft Windows NT Server with Internet Information Server"></a></TD>
+		</TR>
+		</TABLE>
+		</FONT></CENTER><BR>
+	</TD>	
+</TR>
+</TABLE>
+
+</table>
+</body>
+</html>

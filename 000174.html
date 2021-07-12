@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: How Macs are faster than PCs and other lies</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000173.html" title="From the fantasy hardware department" />
+
+<link rel="next" href="http://www.iunknown.com/000175.html" title="Living with code generation" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000173.html">&laquo; From the fantasy hardware department</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000175.html">Living with code generation &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 15, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">How Macs are faster than PCs and other lies</h3>
+
+<p><P>Anyone who has read my weblog recently knows that I am suffering from an affliction that I share with many other Windows developers that I know: Mac envy. Several times over the past week, I almost walked home with a new Mac of one form or another. The closest I came was last week when I spent some time at a local Mac dealership. When I found out that a PowerMac sporting dual G4 867 processors was only $2599 CDN, I could literally feel that credit card burning a hole in my pocket. Just before I whipped out my Visa card, I was overcome by a brief moment of sanity, where I decided to go and do some more research about how fast G4 processors were before I committed to a new Mac.</P><br />
+<P>At home, I had laid out on my desktop a number of Mac brochures that I had procured from the Campus Computer Shop at the University of Toronto. There was one part of the brochure that had caught my eye: just how much faster G4 processors running on the PowerMacs were than the latest generation Intel processor in August, 2002: the 2.53GHz P4. Here's a scanned image of that part of the brochure:</P><SPAN><br />
+<CENTER><IMG height=930 alt=[Image] hspace=4 src="Images/lies.jpg" width=542 border=0 cd:pos="0"><BR clear=all></CENTER></SPAN><br />
+<P>I was amazed by Apple's claim that a dual 1.25GHz P4 was 90% faster than a 2.53GHz P4 at running Photoshop. Heck, the lowly dual 867MHz PowerMac that I almost bought was 45% faster than those puny 2.53GHz P4's! Or so Apple claims ...</P><br />
+<P>I decided to check those claims for myself. A little bit of work with Google soon revealed <A href="http://www.digitalvideoediting.com/2002/07_jul/features/cw_macvspc2.htm">this review that was published by Digital Video Editing magazine</A>. What blew me away was just how much faster the P4 was than the G4 in performing&nbsp;a complex set of Photoshop 7 transformations:</P><br />
+<UL><br />
+<LI><br />
+<DIV>Convert background to layer</DIV><br />
+<LI><br />
+<DIV>Resize image 500 percent</DIV><br />
+<LI><br />
+<DIV>Apply Inner Glow</DIV><br />
+<LI><br />
+<DIV>Apply Gradient Overlay</DIV><br />
+<LI><br />
+<DIV>Make four different adjustment layers (Curves, Gradient Map, Selective Color and Color Balance)</DIV><br />
+<LI><br />
+<DIV>Make text</DIV><br />
+<LI><br />
+<DIV>Set antialias</DIV><br />
+<LI><br />
+<DIV>Warp text (arc)</DIV><br />
+<LI><br />
+<DIV>Warp text (flag)</DIV><br />
+<LI><br />
+<DIV>Rasterize text</DIV><br />
+<LI><br />
+<DIV>Set selection</DIV><br />
+<LI><br />
+<DIV>Duplicate</DIV><br />
+<LI><br />
+<DIV>Scale 411 percent</DIV><br />
+<LI><br />
+<DIV>Save alpha</DIV><br />
+<LI><br />
+<DIV>Select inverse</DIV><br />
+<LI><br />
+<DIV>Fill with solid color</DIV></LI></UL><br />
+<P>The 2.53GHz P4 was <EM>twice as fast </EM>as a PowerMac with dual 1GHz G4's: 4s to complete this set of operations vs. 8s for the PowerMac. <A href="http://www.digitalvideoediting.com/2002/11_nov/reviews/cw_macvspciii.htm">There's an update to that article</A> where they tested a 3.06GHz P4 vs. a dual 1.25GHz PowerMac. These new results are even uglier for the Mac.</P><br />
+<P>What was even more interesting was that I found the link to the above review on a Mac advocacy site: the Mac News Network. <A href="http://www.macnn.com/news.php?id=15410">Check out for yourself the reader reaction to that article</A>. What amazed me about the reader reaction was that there were virtually no comments along the lines "oh those Digital Video Editing guys were just bought off by Intel". Almost all of the reader reaction was critical of Apple for falling behind PC's in raw computing performance.</P><br />
+<P>Needless to say, when I first read that review I seriously soured on the idea of buying a PowerMac because it was fast. Because it isn't. It's not even in the same league as current PC hardware. And do you know what the scary thing is? Current PC hardware is absolutely dirt cheap these days. I just got a brochure from Dell in the mail where I could buy a 2.53GHz P4 system for $1240 CDN. Yes, that's right, for roughly 1/2 the price of that dual PowerMac, I could buy an Intel system that would be <EM>significantly faster</EM>. We're talking about a price / performance differential of nearly 4:1!</P><br />
+<P>Another disappointing thing is how Apple gets favorable treatment by the press. Whereas Microsoft <A href="http://www.wired.com/news/mac/0,2125,55785,00.html">got a ton of negative press over its fake Switch ads</A>, I haven't seen any negative press over Apple's blatant lies about the performance of their G4 processors vs. Intel P4 processors. </P><br />
+<P>I think I'm still going to get a Mac (most likely a PowerBook), though. I really want to run OS X for a while to see how it performs in day-to-day tasks. I want to see how another community thinks user interfaces should be designed. I want to take a closer look at the Objective-C programming language. I want to build some apps using the Cocoa framework. I want to have a full-time Unix box nearby. However, one thing's for certain: I'm not going to buy it because it's fast.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December 15, 2002 10:14 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="174" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000174.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Who cares about which is faster?  Why is it all about speed with some people?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;7rcd&#64;qlink&#46;queensu&#46;ca">Connor</a> at August 20, 2003 04:37 PM</span>
+</div>
+<div class="comments-body">
+<p>Remember that it was Apple that raised the issue via the ad. I (and others) simply called them on it.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at August 20, 2003 05:48 PM</span>
+</div>
+<div class="comments-body">
+<p>Nope, I don't believe it. That doesn't make sense.</p>
+
+<p>I believe that it's because of the crappy way that Windows is built. If you were running Linux on that Pentium it would be much faster than the G4. My processor has been at 100% in Windows when it's hardly doing any work.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;Taz_G2000&#64;hotmail&#46;com">Taz</a> at March  4, 2004 02:14 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

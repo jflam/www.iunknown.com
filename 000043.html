@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Alignment Cost: Processor Effects</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000042.html" title="Lutz Roeder's Reflector.NET Rocks!" />
+
+<link rel="next" href="http://www.iunknown.com/000044.html" title="Getting current method" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000042.html">&laquo; Lutz Roeder's Reflector.NET Rocks!</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000044.html">Getting current method &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 23, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Alignment Cost: Processor Effects</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>After publishing my <A href="Weblog/fog0000000073.html">previous entry</A> on the cost of loop alignment for Pentium III-M processors, I decided to look at what the results would be for different architectures. Since I did all of my experiments using a model system that consisted of a bunch of inline assembler compiled using Visual C++, I could run the benchmark application unmodified on all of the different computers that I have lying around my house. <A href="Files/Results.xls">This spreadsheet</A> summarizes all of the results for the following processors:</P><br />
+<OL><br />
+<LI>166MHz Pentium&nbsp;MMX<br />
+<LI>150MHz Pentium Pro<br />
+<LI>400MHz Celeron<br />
+<LI>600MHz Celeron<br />
+<LI>1130MHz Pentium III-M<br />
+<LI>1200MHz Athlon<br />
+<LI>1600MHz Pentium 4</LI></OL><br />
+<P>All of the Intel P6 architecture processors (processors 2-5 on my list) share the following characteristics:</P><br />
+<OL><br />
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary<br />
+<LI>A one cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched<br />
+<LI>A one cycle penalty for the <EM>second </EM>additional 16-byte paragraph that needs to be fetched</LI></OL><br />
+<P>The Intel P5 architecture processor (processor 1 on my list) has the following characteristics:</P><br />
+<OL><br />
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary<br />
+<LI>A half-cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched<br />
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL><br />
+<P>The Athlon architecture processor (processor 6 on my list) has the following characteristics:</P><br />
+<OL><br />
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary<br />
+<LI>A one cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched<br />
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL><br />
+<P>The Intel P7 architecture processor (processor 7 on my list) has the following characteristics:</P><br />
+<OL><br />
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary<br />
+<LI>No penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched<br />
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL><br />
+<P>Clearly, all of the P6 architecture processors could benefit greatly from compiler optimizations that minimize the number of 16-byte paragraphs that a loop resides in. The P7 architecture processors are not sensitive to 16-byte alignment effects due to its new <A href="http://developer.intel.com/technology/itj/q12001/articles/art_2.htm">NetBurst architecture</A>. All of the instructions in our loops are executed directly from the Pentium 4's Trace Cache. The P5 and Athlon processors are somewhat less sensitive to 16-byte alignment effects since the 1 cycle penalty is paid on only the first additional 16 byte paragraph that is fetched from memory.</P><br />
+<P>To run the benchmark software on your computer, <A href="Files/AlignmentCost2.zip">click here</A> to download the source code. Note that you must do a debug build, otherwise you will mess up the code alignment of the inline assembly instructions.</P><br />
+<P>Currently, the JIT in the CLR does not seem to optimize for the number of 16 byte paragraphs that a loop resides in. I have seen examples of non-debug JIT'ed x86 code that straddle a 16 byte paragraph boundary unnecessarily. This would be a very useful JIT optimization in future versions of the CLR since the P6 architecture processors are clearly the mainstream processors of today.</P><br />
+<P>I should also point out that these are <EM>extremely </EM>contrived benchmarks. I am measuring very simple model systems in an effort to understand exactly how the CPU executes specific instruction sequences. The simple counter loop that I was using in these systems executes in two cycles. The padded counter loop executes in six cycles.&nbsp;A one cycle penalty is very large (50%, 18% respectively) in these systems. Your mileage will definitely vary in real-world systems.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January 23, 2002 11:24 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="43" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000043.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

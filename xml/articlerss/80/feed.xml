@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on RubyCLR and auto_dispose</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"RubyCLR and auto_dispose": comment by John Lam</title>
+      <description>&lt;p&gt;I have a similar method called auto&lt;em&gt;close for classes (like XmlTextReader) that don't implement IDisposable. I needed to have some way to distinguish the methods, so I settled on the auto&lt;/em&gt;zzz methods.&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 12:44:59 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose#comment-166</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose#comment-166</link>
+    </item>
+    <item>
+      <title>"RubyCLR and auto_dispose": comment by Dave</title>
+      <description>&lt;p&gt;you don't like the name "using"?&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 12:16:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose#comment-165</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose#comment-165</link>
+    </item>
+    <item>
+      <title>"RubyCLR and auto_dispose": comment by John Lam</title>
+      <description>&lt;p&gt;Yes - the as method was a big step forward in working with interfaces. All of that + hopefully a first pass of generics will be in the next drop.&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 09:45:58 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose#comment-163</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose#comment-163</link>
+    </item>
+    <item>
+      <title>"RubyCLR and auto_dispose": comment by G??nter Szolderits</title>
+      <description>&lt;p&gt;Your implementation looks really good! I didn't know that obj.as exists. Nice piece of code :-)&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 02:29:29 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose#comment-162</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose#comment-162</link>
+    </item>
+    <item>
+      <title>"RubyCLR and auto_dispose" by jlam</title>
+      <description>&lt;p&gt;In the &lt;a href="http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr"&gt;second drop of RubyCLR&lt;/a&gt;, I had a broken implementation of &lt;code&gt;auto_dispose&lt;/code&gt;, which automatically calls an object&amp;#8217;s &lt;a href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfSystemIDisposableClassDisposeTopic.asp"&gt;Dispose&lt;/a&gt; method for you. Fortunately, Gunter Szolderits noticed this problem, and sent me a really lovely implementation that allows for parallel assignment. That means that instead of writing this:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+auto_dispose(D.new) do |dc|
+  auto_dispose(AD.new) do |adc|
+    adc.good_method
+  end
+  dc.good_method
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;you can now write this:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+auto_dispose(D.new, AD.new) do |dc, adc|
+  adc.good_method
+  dc.good_method
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Using the new &lt;a href="http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr"&gt;interfaces&lt;/a&gt; implementation, the implementation of &lt;code&gt;auto_dispose&lt;/code&gt; now looks like this:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def auto_dispose(*objs)
+  yield(*objs) if block_given?
+ensure
+  objs.each do |obj|
+    if obj != nil 
+      disposable = obj.as IDisposable
+      disposable.dispose if disposable != nil
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Now, is that pretty or what? And I mean both the usage and the implementation!&lt;/p&gt;
+
+</description>
+      <pubDate>Mon, 27 Feb 2006 20:39:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/27/rubyclr-and-auto_dispose"&gt;RubyCLR and auto_dispose&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/27/rubyclr-and-auto_dispose"&gt;RubyCLR and auto_dispose&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Junction Points and Win2K+</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Junction Points and Win2K+</div>
+
+
+<div class="comments-body">
+<p>Also checkout FSUTIL that ships with Windows XP and Windows 2003.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.raboof.com/">Atif Aziz</a> at February 26, 2004 07:10 PM</span>
+</div>
+<div class="comments-body">
+<p>If I'm not mistaken, I can only create hard links with fsutil and not junction points.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 26, 2004 07:17 PM</span>
+</div>
+<div class="comments-body">
+<p>a) All this is a waste of time as all browsers normalise url requests to a server anyway. i.e. even if you have [img src="../images/logo.gif"] in a file in the /test/ folder -- a GET request will be made for "/images/logo.gif" - the server doesn't see the parent path.</p>
+
+<p>b) Why fiddle with junction points? Just add a virtual *sub*directory! Virtual directories can be added anywhere in a directory hierarchy in IIS. (In fact you can add a vDir with the same same as an existing one, and if effectively 'overrides' the real one)</p>
+<span class="comments-post">Posted by Duncan Smart at February 26, 2004 09:20 PM</span>
+</div>
+<div class="comments-body">
+<p>Talking of hardlinks, SysInternals also have a tool that does that, even on NT (an "interesting" usage of the Backup/Restore API if memory serves...)</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://blogs.geekdojo.net/pdbartlett">Paul Bartlett</a> at February 27, 2004 04:57 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the link to Mark's junction util! It's most useful.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://dotnet.org.za/ernst/">Ernst</a> at February 27, 2004 09:42 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

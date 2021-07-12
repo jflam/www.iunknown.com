@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: C++ programmer ethos</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000374.html" title="aspnet_compiler.exe rocks!" />
+
+<link rel="next" href="http://www.iunknown.com/000376.html" title="We start training 'em young in the Lam family ..." />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000375.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/119"
+    dc:title="C++ programmer ethos"
+    dc:identifier="http://www.iunknown.com/000375.html"
+    dc:subject="Blog"
+    dc:description="Why is it that whenever I start writing [Managed]C++ code that I: Feel the urge to write wrapper classes Worry much more about failure conditions / scenarios Think obsessively about const-correctness Well, writing wrapper classes is pretty much all that..."
+    dc:creator="John"
+    dc:date="2003-11-11T10:59:41-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000374.html">&laquo; aspnet_compiler.exe rocks!</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000376.html">We start training 'em young in the Lam family ... &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">November 11, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">C++ programmer ethos</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>Why is it that whenever I start writing [Managed]C++ code that I:</p>
+
+
+<ol>
+<li>Feel the urge to write wrapper classes</li>
+<li>Worry much more about failure conditions / scenarios</li>
+<li>Think obsessively about const-correctness</li>
+</ol>
+
+<p>Well, writing wrapper classes is pretty much all that I use MC++ for these days. There's a bunch of unmanaged Win32 <span class="caps">API</span>'s that I need to call from managed code and MC++ is the perfect tool for the job (only a masochist would try and manipulate <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/security/security/sid.asp">SIDs</a> from C#/VB.NET).  </p>
+
+<p>Yes, I know that Whidbey provides wrappers for SIDs and their friends in <code>System.Security.AccessControl</code>, but I need to deploy systems <em>today</em> on <span class="caps">V1.1.</span></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at November 11, 2003 10:59 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=375" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="375" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000375.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>See above. You'll like it-)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://samgentile.com/blog/posts/10613.aspx">Sam Gentile</a> at November 11, 2003 11:58 AM</span>
+</div>
+<div class="comments-body">
+<p>Maybe it is of no use, but it looks like there are lots of such wrappers in this project:<br />
+http://www.gotdotnet.com/Community/UserSamples/Details.aspx?SampleGuid=2cb20e79-d706-4706-9ea0-26188257ee7d<br />
+(SDC Build tool from ms)<br />
+under this folder you will find wrappers for sid, ace, acl etc.:<br />
+MainSolution\Microsoft.Sdc.Configuration\Win32Security<br />
+</p>
+<span class="comments-post">Posted by: AsbjornM at November 11, 2003 01:03 PM</span>
+</div>
+<div class="comments-body">
+<p>Hello!</p>
+
+<p>here are few links to materials (about programming win32 security in managed code) that you may find handy:</p>
+
+<p>First two managed libs for manipulating with win32 security:</p>
+
+<p>GotDotNet User Sample: ACLs in .NET <br />
+(http://www.gotdotnet.com/Community/UserSamples/Details.aspx?SampleGuid=e6098575-dda0-48b8-9abf-e0705af065d9)</p>
+
+<p>NT Security Classes for .NET (managed C++)<br />
+(http://www.codeproject.com/dotnet/NTSecurityNET.asp)</p>
+
+<p>here is another example how to do this with managed C++ in WinDev Journal</p>
+
+<p>Win32 Security in Managed C++<br />
+(http://www.windevnet.com/documents/win0309b/)</p>
+
+<p>And also Keith Brown work on his new book and new lib on this topic</p>
+
+<p>"a .net developer's guide to Windows security"<br />
+(http://www.develop.com/kbrown/book/)<br />
+(http://www.develop.com/technology/resourcedetail.aspx?id=ee929f0b-1f9d-4a2a-92a1-911706bd7b52)</p>
+
+<p>hth,<br />
+Slavo.</p>
+
+<p><br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;slavof&#64;zoznam&#46;sk">Slavomir Furman</a> at November 12, 2003 04:52 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for posting these links, Slavo! The Code Project sample by David Hall is really nice. I took a quick peek at the code today, and it looks really solid. It might even persuade me to abandon writing my MC++ wrappers for this stuff ... but wait I'm a C++ programmer, right? Don't we all have to invent our own String er .. I mean SecurityIdentity wrapper classes? :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at November 12, 2003 11:37 PM</span>
+</div>
+<div class="comments-body">
+<p>John<br />
+How much C++ do you work on nowadays?  The recent change of direction the MC++ team has took in reinventing a wholly different way of accessing the CLR/CLI stuff without the use of strange keywords like __gc, __box etc. might probably change your mind, wouldn't it? :-)<br />
+If you hook on to Andy Rich's blog (http://blogs.gotdotnet.com/arich) you'd see a lot of those improvements.</p>
+<span class="comments-post">Posted by: Dilip at November 13, 2003 10:53 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="375" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

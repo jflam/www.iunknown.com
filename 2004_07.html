@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: July 2004 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2004_06.html" title="June 2004" />
+
+<link rel="next" href="http://www.iunknown.com/2004_08.html" title="August 2004" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2004_06.html">&laquo; June 2004</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2004_08.html">August 2004 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_07.html#000472"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/216"
+    dc:title="Imagine a world without the Angle Bracket Tax"
+    dc:identifier="http://www.iunknown.com/2004_07.html#000472"
+    dc:subject="Blog"
+    dc:description="I had a dream tonight: project BuildAll default BuildAll { target BuildManifest { foreach(Line lab.dir in &amp;#147;manifest.txt&amp;#148;) nant(&amp;#147;${lab.dir}/app.build&amp;#148;, &amp;#147;Build&amp;#148;); } target BuildAll { foreach(Folder lab.dir in &amp;#147;.&amp;#148;) nant(&amp;#147;${lab.dir}/app.build&amp;#148;, &amp;#147;Build&amp;#148;); } target Clean { foreach(Folder lab.dir in &amp;#147;.&amp;#148;) nant(&amp;#147;${lab.dir}/app.build&amp;#148;, &amp;#147;Clean&amp;#148;); }..."
+    dc:creator="John"
+    dc:date="2004-07-09T01:15:01-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 09, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000472"></a>
+<h3 class="title">Imagine a world without the Angle Bracket Tax</h3>
+
+<p>I had a dream tonight:</p>
+
+<pre><code>
+project BuildAll default BuildAll
+{
+  target BuildManifest
+  {
+    foreach(Line lab.dir in &#147;manifest.txt&#148;)
+      nant(&#147;${lab.dir}/app.build&#148;, &#147;Build&#148;);
+  }
+
+  target BuildAll
+  {
+    foreach(Folder lab.dir in &#147;.&#148;)
+      nant(&#147;${lab.dir}/app.build&#148;, &#147;Build&#148;);
+  }
+
+  target Clean
+  {
+    foreach(Folder lab.dir in &#147;.&#148;)
+      nant(&#147;${lab.dir}/app.build&#148;, &#147;Clean&#148;);
+  }
+}
+</code></pre>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000472.html">01:15 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=472" onclick="OpenComments(this.href); return false">Comments (10)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=472" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_07.html#000471"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/215"
+    dc:title="Databinding and application architecture"
+    dc:identifier="http://www.iunknown.com/2004_07.html#000471"
+    dc:subject="Blog"
+    dc:description="Recently I&apos;ve been doing some thinking about Web Services and DataSets. In particular, I&apos;ve been thinkiing about what has encouraged folks to want to pass DataSets over the wire using Web Services. My current thinking is that the seductiveness of..."
+    dc:creator="John"
+    dc:date="2004-07-08T17:48:29-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">July 08, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000471"></a>
+<h3 class="title">Databinding and application architecture</h3>
+
+<p>Recently I've been doing some thinking about Web Services and DataSets. In particular, I've been thinkiing about what has encouraged folks to want to pass DataSets over the wire using Web Services. </p>
+
+<p>My current thinking is that the seductiveness of databinding against DataSets in Windows Forms has exerted an unnatural bias on developers. Since there is so much friction involved in implementing databinding against collections of custom entity objects, developers have reverted to databinding against DataSets. This has led folks to marshal said DataSets over the wire using Web Services, which is against the spirit of Web Services.</p>
+
+<p>Thoughts?</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000471.html">05:48 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=471" onclick="OpenComments(this.href); return false">Comments (13)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=471" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_07.html#000470"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/214"
+    dc:title="New Bloggers on the scene"
+    dc:identifier="http://www.iunknown.com/2004_07.html#000470"
+    dc:subject="Blog"
+    dc:description="Jeff Prosise, Jeffrey Richter, and John Robbins at Wintellect have started a communual blog. Matt Pietrek, a new MS employee and an old friend from our WinDev/WinSummit days has started blogging as well. His first post points to Raymond Chen&apos;s..."
+    dc:creator="John"
+    dc:date="2004-07-08T17:39:21-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000470"></a>
+<h3 class="title">New Bloggers on the scene</h3>
+
+<p>Jeff Prosise, Jeffrey Richter, and John Robbins at Wintellect have started a <a href="http://www.wintellect.com/weblogs/wintellect/">communual blog</a>. </p>
+
+<p>Matt Pietrek, a new MS employee and an old friend from our WinDev/WinSummit days has started blogging as well. His <a href="http://blogs.msdn.com/matt_pietrek/archive/2004/07/08/177477.aspx">first post</a> points to <a href="http://blogs.msdn.com/oldnewthing/archive/2003/12/18/44425.aspx">Raymond Chen's flame</a> of his <a href="http://msdn.microsoft.com/msdnmag/issues/03/12/CriticalSections/">Critical Sections Internals article</a> in <span class="caps">MSDN </span>Magazine. I wonder if having access to source code will change Matt's view of Windows internals or whether he'll continue to use SoftICE :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000470.html">05:39 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=470" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=470" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_07.html#000469"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/213"
+    dc:title="Test Driven Development Seminar"
+    dc:identifier="http://www.iunknown.com/2004_07.html#000469"
+    dc:subject="Blog"
+    dc:description="We&apos;re launching our Architect&apos;s Breakfast series here in Toronto. Our first breakfast will be focused on Test Driven Development. I&apos;ll be there, along with the rest of the ObjectSharp partners. See you then!..."
+    dc:creator="John"
+    dc:date="2004-07-08T17:22:33-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000469"></a>
+<h3 class="title">Test Driven Development Seminar</h3>
+
+<p>We're launching our <a href="http://www.objectsharp.com/abseries/abfaq.asp">Architect's Breakfast series</a> here in Toronto. Our first breakfast will be focused on <a href="http://www.objectsharp.com/TTDInvitation/invite.asp">Test Driven Development</a>. I'll be there, along with the rest of the ObjectSharp partners. See you then!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000469.html">05:22 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=469" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=469" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Evaluating Software Architectures: Methods and Case Studies
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=020170482X" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjAxNzA0ODJYLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEV2YWx1YXRpbmcgU29mdHdhcmUgQXJjaGl0ZWN0dXJlczogTWV0aG9kcyBhbmQgQ2FzZSBTdHVkaWVzOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxQYXVsIENsZW1lbnRzLCBSaWNrIEthem1hbiwgTWFyayBLbGVpbjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDU0Ljk5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkNDcuMjk7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQuNTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Mjs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wMjAxNzA0ODJYL3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47PgTnjO1Yh159qMl22PItf0MddXZ4" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/020170482X.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Evaluating Software Architectures: Methods and Case Studies</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Paul Clements, Rick Kazman, Mark Klein</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$54.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$47.29</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">2</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/020170482X/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Depends on what you want.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-07-01</span>
+                    </div>
+                    <span>What this book does, it does very well. It presents three techniques for reviewing the suitability of a software architecture. The presentation style is clear, complete, and reasonably frank about the problems an architecture evaluator is likely to encounter.<P>The oldest of the three techniques presented is SAAM, the Software Architecture Analysis Model. It's primary goal is to determine how well a system's structure addresses the technical requirements of the application, and its probable success at addressing future changes of requirements.<P>ATAM, the Architecture Tradeoff Analysis Method, descends from SAAM but is far more complete. It starts upstream of the requirements, at the business model behind the application, then moves forward methodically through the top-level design. At each step, reviewers update the list of technical risks and non-risks (relatively safe items). ATAM is open-ended, in the sense that the project's own goals define the specific measures of quality that apply - it doesn't force-fit every project onto one Procrustean axis of measure.<P>If ATAM is SAAM grown large, then ARID (Active Reviews for Intermediate Design) is SAAM scaled down. Where ATAM and SAAM address strategic issues about complete systems, ARID incorporates tactical information about specific design issues. It's not as narrow as standard design review techniques, but not as broad as an architecture review.<P>ATAM is the main focus of the book, with more pages than SAAM and ARID combined. All three are described in full detail, however. The authors identify the specific skill sets, roles, and responsibilities that must be involved at each step. They present checklists for eliciting the kinds of information needed, even specifics of meeting agendas and meeting room equipment.<P>That creates my second impression of this book: I was very disappointed. This book is for meeting organizers, and deals very little with technical specifics. That is not at all what I hoped for. It is not the fault of the book that it fails to meet my expectations. In my present work, however, the authors present just about nothing to enhance my project's technical content.<P>This is a process book. It seems to be a good one. It takes what works in other design review methodologies, then expands that to the highest level of the software project. It gives enough detail that you can tune specifics of the process to specifics of your project. Still, it's just a process book.</span>
+                  
+                    <div class="CustomerReviewSummary">Essential reading for practicing SW architects</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>58</span>
+                      /
+                      <span>60</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-04-12</span>
+                    </div>
+                    <span>The authors provide an in-depth treatment of three methods for<br>evaluating software architectures, all of which were developed at the<br>Software Engineering Institute with involvement by the authors. The<br>methods examined are:<BR>(1) ATAM (Architecture Tradeoff Analysis<br>Method)<BR>(2) SAAM (Software Architecture Analysis Method)<BR>(3)<br>ARID (Active Reviews for Intermediate Designs)<P>Each of the above<br>address software evaluations in increasing levels of detail, with the<br>book's main emphasis on ATAM.<P>What makes this book so valuable is<br>the fact that you can learn much about developing software<br>architectures from the criteria with which they are evaluated. For<br>example, the discussion on quality attributes is eye-opening because<br>what architects consider to be well formed quality attributes are<br>usually too vague to properly evaluate, resulting in ill defined<br>architectures in the first place. Knowing how to evaluate the<br>architecture will provide the keys for defining a solid architecture.<br>More important is the way the authors define the outputs of the<br>architecture evaluation, which gives the practicing architect a<br>framework for design that fully meets the evaluation criteria. The<br>net result is that a defined architecture will unambiguously<br>communicate the design to the development team, as well as to the QA<br>team. <P>I especially like the business oriented approach that<br>addresses the costs and benefits of evaluation, the three approaches<br>from which to choose that best meets technical and business goals, and<br>the case studies that support each of the approaches. Another strong<br>point about this book is architecture is also evaluated with<br>production in mind. Too many books only consider architecture from<br>the development point of view, or in rare cases, from development and<br>QA points of view. The evaluation techniques in this book extend to<br>support and maintenance. The authors make selection of the best<br>technique easy by comparing them in Chapter 9, and provide an approach<br>to implement evaluations in Chapter 10.<br><p><br>If you're an architect I also recommend augmenting the excellent<br>material in this book with Design and Use of Software Architectures by<br>Jan Bosch , which gives an alternate method to ATAM that is more<br>complete in many respects. Even if you espouse Bosch's approach,<br>however, the approach and techniques given in Evaluating Software<br>Architectures: Methods and Case Studies are complementary. I personally<br>recommend both books and assign equal value to them.<br></span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201703327'>
+                      Software Product Lines : Practices and Patterns
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 6 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201775948'>
+                      Beyond Software Architecture: Creating and Sustaining Winning Solutions
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 21 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201674947'>
+                      Design and Use of Software Architectures
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 3 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201703726'>
+                      Documenting Software Architectures: Views and Beyond
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 4 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321154959'>
+                      Software Architecture in Practice, Second Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 16 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

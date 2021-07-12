@@ -1,0 +1,591 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<Title>Current Story</Title>
+
+<HEAD>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="Visual Notepad 1.0">
+<TITLE>COM is good for you. Have you thought about COM today?</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF"
+text="#000000" topmargin="0" leftmargin="0">
+
+<STYLE>
+
+	.textRed	{ color:red; font-weight:bold }
+	.textBlack	{ color:black; font-weight:bold }
+	.dropDown	{ position:relative;top:10;left:10;cursor:'hand' }
+
+	H1		{ font:'14pt Arial' }
+	H2		{ font:'14pt Arial';border-bottom:1px outset green }
+	H3		{ font:'12pt Arial';font-weight:bold;cursor:'hand' }
+	H4		{ font:'8pt Arial';font-weight:normal;font-style:italic }
+	H5		{ font: '10pt Arial' }
+
+</STYLE>
+
+<SCRIPT>
+	function ChangeDisplay( element )
+	{
+		if( element.style.display == "" ) {
+			element.style.display = "none";
+		} else {
+			element.style.display = "";
+		}
+		window.event.cancelBubble = true;
+	}
+
+	function Dummy()
+	{
+		return True;
+	}
+
+	function IsIE( browsertype )
+	{
+		return True;
+
+		if( browsertype.Browser == "IE" ) {
+			if( browserType.Version >= 4 ) {
+				return True;
+			}
+		}
+		return False;
+	}
+</SCRIPT>
+
+<SCRIPT language=vbscript>
+	Sub NewBuildTOC()
+
+		dim anchorTags
+		dim objTOC
+		dim doc
+
+		set anchorTags = parent.frames( "MainFrame" ).document.anchors
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><HEAD></HEAD><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white>"
+		doc.write "<STYLE>H4 { font:'8pt Arial';font-weight:normal;font-style:italic }</STYLE><H4>"
+		doc.write "<BR><BR><BR><B>Contents</U></B><BR><HR>"
+
+		for i = 0 to anchorTags.length - 1
+			doc.write "<A href='#" & anchorTags( i ).name & "' target='MainFrame'>"
+			doc.write anchorTags( i ).innerText & "</A><BR>"
+		next
+
+		doc.write "<HR>"
+		doc.write "</H4></BODY></HTML>"
+		doc.close()
+
+	End Sub
+
+	Sub ClearTOC()
+
+		dim doc
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white></BODY></HTML>"
+		doc.close()
+
+	End Sub
+</SCRIPT>
+
+<P>
+	<FONT face="VERDANA, ARIAL, HELVETICA">
+	<IMG src="images/onepixel.gif" vspace="30" hspace="10" width="1" height="1"></IMG>
+	<IMG src="/images/iunknownlogo.gif"></IMG>
+	<IMG src="images/onepixel.gif" hspace="81" width="1" height="1"></IMG>
+	</FONT>
+</P>
+
+<TABLE border="0">
+<TR>
+    <TD width="10" valign=TOP>&nbsp
+	</TD>
+    <TD width="480">
+		<FONT face="VERDANA, ARIAL, HELVETICA">
+
+	<font size="3"><b>ATL Can Mean Fast, Lightweight Controls!                                                                                                                                                                                                                  </b></font><br>
+	<font size="1">By </font><a href="author.asp?AuthorID=1">
+	<font size="1"> John                                               Lam                                               </font></a>
+	<font size="1"><br>Last updated on 
+		Wednesday, July 09, 1997
+	 at 3:54:03 PM<br><br></font>
+	<font size="2"><A HREF="http://www8.zdnet.com/pcmag/issues/1613/contents.htm">
+<font size = 1><I>First appeared in the July 1997 issue of PC Magazine</I></a></font>
+<P>Size matters. So does speed. Recently there has been a disturbing
+trend toward the use of large class libraries that implement every
+conceivable feature a programmer might want to include in an
+application. Unfortunately, users have paid for quicker development
+turnaround times by being stuck with fatter, slower applications.</P>
+<P>The rapid adoption of the Internet as a new medium for software
+distribution has emphasized the need for smaller applications. Since
+ActiveX controls are the ideal candidates for distributing small blocks
+of self-contained functionality, developers have been reexamining the
+methods they use to create ActiveX controls.</P>
+<P>The Active Template Library (ATL), Version 2.0, a significant
+upgrade to Version 1.1, plays an important role in the quest to improve
+ActiveX development. Whereas the previous version included support only
+for nonvisual ActiveX controls, ATL 2.0 adds wizard support for
+creating visual ActiveX controls. An Object Wizard lets you create a
+fully functional skeleton control that has support for stock
+properties, single- and multiple-threaded apartment threading models,
+and subclassed Windows controls.</P>
+<P>ATL 2.0 ships with Visual C++ 5.0. A version that works with Visual
+C++ 4.2b is also freely available for download from
+<I>www.microsoft.com./VISUALC/prodinfo</I>. The only difference between
+the two versions of ATL is in their wizard support, which is enhanced
+in Visual C++ 5.0. Both versions generate your ATL ActiveX controls
+using the same set of source code files.</P>
+<H3><A name="A0">
+OUR TEST-BED ACTIVEX CONTROL
+</A>
+</H3>
+<P>This column will take you on a tour of the reference ActiveX control
+created for &quot;Creating Component Software Gets Easier&quot; (<I>PC
+Magazine</I>, April 22, 1997). The reference ActiveX control is a text
+box that fires an event whenever the input focus leaves the control.
+The code in the user-defined event handler sets a Boolean variable to
+TRUE or FALSE, and if the latter, the control changes its background to
+a user-defined error color.</P>
+<P>The ActiveX control uses a custom property and a custom event. Our
+custom property stores the color that indicates the error condition.
+Our custom event passes two parameters to the calling program when the
+keyboard focus leaves the control. The first is the contents of the
+text box as a string, and the second is a Boolean value that lets the
+control know whether its data is valid. If the Boolean is FALSE, the
+control sets its background color to the error color. If the Boolean is
+TRUE, it sets its background color back to the original background
+color.</P>
+<H3><A name="A1">
+ACTIVEX CONTROL ARCHITECTURE
+</A>
+</H3>
+<P>ActiveX controls communicate with their host container through a
+bewildering number of Component Object Model (COM) interfaces. But
+don't let that discourage you. We can simplify our discussion by
+grouping them into the following categories:</P>
+<UL>
+<P><LI>
+UI management includes interfaces that manage interactions
+between user, container, and ActiveX control<I>.</I>
+</LI></P>
+<P><LI>
+Method invocation includes interfaces used to invoke methods
+on an ActiveX control.
+</LI></P>
+<P><LI>
+Container event management includes interfaces used to trigger
+events in the container.
+</LI></P>
+<P><LI>
+Property manipulation includes interfaces that allow user,
+container, and ActiveX control to interact with properties.
+</LI></P>
+</UL>
+<P>Figure 1 is a graphical representation of these interface groups.</P>
+<P>The UI management group contains interfaces for instructing a
+control about how and when to draw or activate itself, as well as
+notifying a control of changes to its container's state.</P>
+<P>Typically, the calling application invokes a control's methods
+directly. This does not require any coordination between the control
+and the container, since the application makes direct calls to the
+control's IDispatch or dual interface.</P>
+<P>The container handles a control's outgoing events using the
+interfaces in the container event management group. The container uses
+the control's type information to generate a compatible IDispatch or
+dual interface to receive event notifications from the control. The
+control calls the appropriate interface methods to fire events. It is
+the container's responsibility to map these calls to the appropriate
+event handlers in the calling application.</P>
+<P>The property manipulation group contains interfaces that allow a
+control to expose its properties. For example, you may want a control
+to enumerate the OLE DB data providers on a user's computer before
+presenting them in a list. Typically, an ActiveX property page object
+that manipulates the control's properties through these interfaces
+implements this kind of functionality.</P>
+<P>Clearly, this is a very brief overview of the ActiveX control
+architecture. For further information, please see the references at the
+end of this column.</P>
+<H3><A name="A2">
+BUILDING OUR ACTIVEX CONTROL
+</A>
+</H3>
+<P>Before we begin our tour, we'll use the ATL wizards to create a new
+skeleton control that does the following:</P>
+<UL>
+<P><LI>
+implements the Font, BackColor, ForeColor, and Text
+properties;
+</LI></P>
+<P><LI>
+uses the single-threaded apartment threading model;
+</LI></P>
+<P><LI>
+subclasses a Windows Edit control; and
+</LI></P>
+<P><LI>
+implements a color stock property page.
+</LI></P>
+</UL>
+<P>We use the ATL Project Wizard to create a new ATL project and use
+the Object Wizard to create a control with the features we want.
+(&quot;Creating Component Software Gets Easier,&quot; in our issue of
+April 22, 1997, gives an in-depth discussion on how the ATL wizards
+work.)</P>
+<P>Once you have created your skeleton ATL control, you can then
+compile and test it in your favorite container. A good test container
+is Visual Basic 5.0 Control Creation Edition, which you can download
+for free from Microsoft's Web site
+(<I>www.microsoft.com/vbasic</I>).</P>
+<P>Once you have a skeleton control, how do you build on the foundation
+and create the specific control you want? The best way to understand a
+complex piece of code is to break it up into sections. We will look at
+how properties are implemented, how events are generated, how a control
+makes its state persistent, and how it draws itself.</P>
+<P>In the course of the following discussion, I'll give you code
+snippets that you will add to your ATL project, but space conditions
+preclude showing where in the files they should go. For details--and
+plenty of comments--you can download the complete source code from PC
+Magazine Online (see the sidebar &quot;Getting the Files,&quot; at the
+end of the Utilities column, for details).</P>
+<H3><A name="A3">
+PROPERTIES
+</A>
+</H3>
+<P>Developers using your control will interact with it primarily
+through its stock and custom properties. The ActiveX SDK already
+defines the behavior of stock properties. These include the BackColor,
+Font, and Picture properties. The behavior of custom properties is left
+for you to decide.</P>
+<P>We used the Object Wizard to select the stock properties for our
+control. The wizard uses the ATL IStockPropertyImpl class to provide
+the default implementation for the four stock properties in our
+control: ForeColor, BackColor, Font, and Text.</P>
+<P>Unfortunately, creating custom properties is not quite so easy. ATL
+2.0 does not yet provide wizard assistance for the creation of custom
+properties. If you want to add custom properties to our control, you're
+going to have to roll up your sleeves and edit some Interface
+Definition Language (IDL) code. Fortunately, this is not as difficult
+as it may seem. All you have to do is cut and paste and modify some of
+the IDL that has already been generated for you by the ATL wizards.</P>
+<P>Our test-bed control uses a single custom property, ErrorColor. To
+add it to the control, we place the following lines into the IDL file
+that was generated for us by the Object Wizard:</P>
+<PRE>
+    [propput, id(0)] HRESULT
+    ErrorColor([in]OLE_COLOR clr);
+    [propget, id(0)] HRESULT
+    ErrorColor([out,retval]OLE_COLOR*
+    pclr);
+</PRE>
+<P>The above code is very similar to the code that ATL generated for
+our stock properties. Notice how our ErrorColor property is actually
+implemented as a pair of get and put functions.</P>
+<P>Microsoft's IDL compiler (MIDL) takes our IDL file and creates a
+type library file. Our control's container will use this type library
+to determine what properties are supported by our control.</P>
+<P>MIDL also generates the appropriate C++ header declarations for
+these properties in our code. Our property put and property get methods
+are defined as put_ErrorColor and get_ErrorColor. Now we just have to
+add the following lines of code to implement our custom ErrorColor
+property:</P>
+<PRE>
+    OLE_COLOR m_clrErrorColor;
+    STDMETHOD(put_ErrorColor)( OLE_COLOR
+    Color )
+    {
+    m_clrErrorColor = Color;
+    return S_OK;
+    }
+    STDMETHOD(get_ErrorColor)
+    ( OLE_COLOR*
+    pColor )
+    {
+    *pColor = m_clrErrorColor;
+    return S_OK;
+    }
+</PRE>
+<P>Finally, we add the following entry to our ATL control's property
+map:</P>
+<PRE>
+    PROP_ENTRY(&quot;Error Color&quot;, 0,
+    CLSID_StockColorPage )
+</PRE>
+<P>The property map is used to bind a property to a property page, as
+well as to instruct ATL to provide a default persistence
+implementation. ATL also provides an implementation for a stock color
+property page; all you have to do is add its class ID to your property
+entry.</P>
+<H3><A name="A4">
+EVENTS
+</A>
+</H3>
+<P>Implementing events requires a little more work. Most of it is
+simple bookkeeping, making it an obvious candidate for automation in
+future versions of the Object Wizard (or an Interface Wizard).</P>
+<P>First, you must define your outgoing interface and event in your
+control's IDL file:</P>
+<PRE>
+    [
+    uuid(B5C629A1-76B7-11D0-BC62-
+    00A0243ABE0B), helpstring(&quot;Event
+    interface for AtlEditCtl&quot;)
+    ]
+    dispinterface _AtlEditCtlEvents
+    {
+    properties:
+    methods:
+    [id(1)] void Validate([in]BSTR
+    Text,
+    [out]VARIANT_BOOL* Valid);
+    };
+</PRE>
+<P>The important line is the one that defines our Validate event. We
+are passing a string parameter (OLE Automation strings are known as
+BSTRs, or Basic strings) by value, and a Boolean parameter by
+reference<I>.</I> The [in] and [out] modifiers signify pass-by-value
+and pass-by-reference, respectively. Once you have finished editing the
+IDL file, compile the IDL file from within Developer Studio.</P>
+<P>The third wizard included with ATL is the Proxy Generator (Figure
+2). It reads a type library file and generates C++ code to fire events
+on our outgoing interface. In the sample control, we have used the
+Proxy Generator to create a new class called
+CProxy_AtlEditCtlEvents.</P>
+<P>Your control must derive from CProxy_AtlEditCtlEvents and
+IConnectionPointContainer to add support for outgoing event interfaces.
+Just add the following two lines to your control's inheritance list:</P>
+<PRE>
+    public CProxy_AtlEditCtlEvents
+    &lt;CAtlEditCtl&gt;,
+    public IConnectionPointContainerImpl
+    &lt;CAtlEditCtl&gt;
+</PRE>
+<P>Add the following line to add the IConnectionPointContainer
+interface to the list of those supported by your control.</P>
+<PRE>
+    COM_INTERFACE_ENTRY_IMPL
+    (IConnectionPointContainer)
+</PRE>
+<P>ATL's IUnknown implementation takes care of mapping all
+QueryInterface calls to the appropriate class that implements an
+interface--as long as there is a corresponding entry in the interface
+table for that class.</P>
+<P>Finally, we add a new connection-point map:</P>
+<PRE>
+    BEGIN_CONNECTION_POINT_MAP
+    (CAtlEditCtl)
+    CONNECTION_POINT_ENTRY
+    (DIID__AtlEditCtlEvents)
+    CONNECTION_POINT_ENTRY
+    (IID_IPropertyNotifySink)
+     END_CONNECTION_POINT_MAP()
+</PRE>
+<P>Connection-point maps are used by ATL's implementation of the
+IConnectionPointContainer interface. IConnectionPointContainer is the
+interface that the control's container uses to find out what outgoing
+interfaces our control supports. ATL's implementation of
+IConnectionPointContainer uses the map to return the control's outgoing
+interface to its container.</P>
+<P>With all of the bookkeeping finally out of the way, we can finally
+turn our attention to writing the code that actually fires the event.
+When a user causes the focus to shift away from a particular window,
+Windows sends a WM_KILLFOCUS message to that window. To handle this
+message, we add the following to our edit control window's message
+map:</P>
+<PRE>
+MESSAGE_HANDLER(WM_KILLFOCUS, OnSubclassKillFocus)
+</PRE>
+<P>We can install our own handler for the WM_KILLFOCUS message:</P>
+<PRE>
+    ...
+    Validate( Text, &amp;Valid );
+    // fire the actual event
+    if( Valid )
+    {
+    m_clrBackColor =
+    m_clrCurrentBackColor;
+    }
+    else
+    {
+    m_clrCurrentBackColor =
+    m_clrBackColor;
+    m_clrBackColor =
+    m_clrErrorColor;
+    }
+    FireViewChange();
+    ...
+</PRE>
+<P>By checking the Valid parameter, our control can determine whether
+its contents are valid. If they are, this code sets the control's color
+to the current background color of the control. If the control's
+contents are not valid, it sets the control's color to the color
+specified by the ErrorColor property.</P>
+<H3><A name="A5">
+PERSISTENCE AND AMBIENT PROPERTIES
+</A>
+</H3>
+<P>A control must be able to save and load its properties to and from
+persistent storage. After a user finishes setting all of our control's
+properties at design time, he will probably want to save his work to a
+file. When a user compiles an application, the compiler needs to save
+the control's properties to the executable file. In both cases, the
+control's container will have to ask the control to save its properties
+to an IStream interface that it provides.</P>
+<P>All of our control's properties are already persistent, since ATL
+provides default persistence support through its property-map
+mechanism. Recall how we added an entry for our ErrorColor property in
+ATL's property map? You also made ErrorColor persistent at the same
+time. However, if you have custom properties that cannot be mapped
+using ATL's generic property map mechanism, you will have to add your
+own code.</P>
+<P>An ActiveX control's persistence is managed by the
+IPersistStreamInit interface. Its member functions Load and Save handle
+loading and saving a control's properties through an IStream interface
+provided by the control's container. Below is our control's
+implementation of Load.</P>
+<PRE>
+    STDMETHOD(Load)(LPSTREAM pStm)
+    {
+    HRESULT hr;
+    hr = IPersistStreamInitImpl
+    &amp;lt;CAtlEditCtl&amp;gt;::Load( pStm );
+    if( FAILED( hr ) )
+    return hr;
+    // Your custom persistence code
+    // goes here
+    return S_OK;
+    }
+</PRE>
+<P>The boldfaced line calls ATL's stock property persistence
+implementation first. If you want to add your own custom persistence
+code, you must add it after ATL has had an opportunity to load its
+properties first.</P>
+<P>When you create a new control by dragging and dropping it from the
+tool palette, the new control's properties must be initialized from
+scratch. A well-behaved control should initialize some of its stock
+properties by querying the container for its ambient properties.</P>
+<P>You should implement this one-time initialization code in the
+InitNew member function of IPersistStreamInit. I have excerpted a few
+lines from our control's InitNew to show you how to query a control
+container for its ambient properties. The functions GetAmbientBackColor
+and GetAmbientForeColor are both implemented for you by ATL:</P>
+<PRE>
+    if( SUCCEEDED( GetAmbientBackColor
+    ( clrBack ) ) )
+    m_clrBackColor = clrBack;
+    if( SUCCEEDED( GetAmbientForeColor
+    ( clrFore ) ) )
+    m_clrForeColor = clrFore;
+</PRE>
+<H3><A name="A6">
+DESIGN-TIME VS. RUN-TIME BEHAVIOR
+</A>
+</H3>
+<P>Your ActiveX control will exhibit different behavior depending on
+whether it is in a design-time environment or a run-time environment.
+In the case of our ActiveX control, the Edit window is not actually
+instantiated at design time by a container such as VB4. During design
+time, we must draw the way the control will appear in the run-time
+environment, so that the user can use the visual feedback to design a
+user interface.</P>
+<P>I handle this in our control's OnDraw event handler. I use the Win32
+DrawEdge function to draw our control's bounding rectangle, and I paint
+the text contained in our control's Text property using the font
+specified by our control's Font property. (For details, see OnDraw in
+AtlEditCtl.cpp.)</P>
+<H3>
+<A name="A7">
+Windows control miscellany
+</A>
+</H3>
+<P>You may be wondering how our ActiveX control actually sets our edit
+control's foreground and background colors. When a Windows Edit control
+is about to paint itself, it sends a WM_CTLCOLOREDIT message to its
+parent window to ask the parent window to set its foreground and
+background colors. We add a handler for this message in our control's
+message map and drop in the following code:</P>
+<PRE>
+    COLORREF clrBack, clrFore;
+    if( FAILED( OleTranslateColor
+    ( m_clrBackColor, m_hPalette,
+    &amp;clrBack ) ) )
+    OleTranslateColor( OLE_COLOR_WINDOW_BACKGROUND, m_hPalette, &amp;clrBack );
+    if( FAILED( OleTranslateColor( m_clrForeColor, m_hPalette,
+    &amp;clrFore ) ) )
+    OleTranslateColor(OLE_COLOR_WINDOW_TEXT,
+    m_hPalette, &amp;clrFore );
+    ::SetTextColor( (HDC)wParam, clrFore );
+    ::SetBkColor( (HDC)wParam, clrBack );
+</PRE>
+<P>We use the function OleTranslateColor, provided by the OLE
+libraries, to convert the OLE_COLOR parameters to the COLORREF values
+required by the Win32 API functions SetTextColor and SetBkColor.</P>
+<H3><A name="A8">
+SUMMING THINGS UP
+</A>
+</H3>
+<P>If you want to test our new ActiveX control, just drop it into your
+favorite container. Set the ErrorColor property to the color that you
+want, and add some validation code to the event handler:</P>
+<PRE>
+    Private Sub VBValidEdit1_Validate(ByVal Text As String, Valid As Boolean )
+    If Text = &quot;ActiveX&quot; then
+    Valid = True
+    Else
+    Valid = False
+    End If
+    End Sub
+</PRE>
+<P>I hope this column has given you some insights into how you can
+build your own ActiveX controls from scratch. Feel free to use our
+model as a starting point for building your own ActiveX controls. It
+provides all of the requisite hooks to handle property persistence,
+interactions with a container's ambient properties, and custom
+events.</P>
+<H3><A name="A9">
+FURTHER READING
+</A>
+</H3>
+<P><I>Understanding ActiveX and OLE: A Guide for Developers and
+Managers</I>, by David Chappell (Microsoft Press, 1996), is an
+excellent overview of the various ActiveX and OLE technologies.</P>
+<I>ACTIVEX CONTROLS INSIDE AND OUT,</I> BY ADAM DENNING (MICROSOFT
+PRESS, 1997), PROVIDES A GOOD IN-DEPTH LOOK AT CREATING ACTIVEX
+CONTROLS WITH AND WITHOUT MFC.
+<P>The OCX 96 specification is part of the ActiveX SDK, which you can
+download from <I>www.microsoft.com/activex</I>.</P>
+
+John Lam is president of Naleco Research (www.naleco.com), developer of
+RADFind 96, a high-speed file finder for Windows 95.
+
+Figure 1: <I>AN OVERVIEW OF THE INTERFACES ACTIVEX CONTROLS USE FOR
+INTERACTION WITH THEIR CONTAINERS. </I>
+
+Figure 2: <I>THE PROXY GENERATOR IS USED TO GENERATE A C++ CLASS THAT
+ENCAPSULATES AN OUTGOING INTERFACE.</I></font><br>
+	<hr>
+		</FONT>
+		<CENTER>
+		<FONT size = 1>&#169; 1997 John Lam. All rights reserved.<BR><BR></FONT>
+		<A href="#TOP"><IMG src="images/top.gif" border=0 alt="Back to top"></A><BR>
+		<BR><FONT FACE="ARIAL,HELVETICA" SIZE="1">
+		<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="5">
+		<TR>
+				<TD ALIGN="right" VALIGN="middle"><a href="/ie/" target="_top"><img src="/images/ie_animated.gif" width="88" height="31" border="0" alt="Microsoft Internet Explorer"></a></TD>
+				<TD ALIGN="center" VALIGN="middle"><IMG SRC="images/bar.gif" width="3" height="43"></TD>
+				<TD ALIGN="left" VALIGN="middle"><a href="/backoffice/designed/logo.htm" target="_top"><IMG SRC="/images/msbo_iis.gif" width="100" height="31" border="0" alt="Microsoft Windows NT Server with Internet Information Server"></a></TD>
+		</TR>
+		</TABLE>
+		</FONT></CENTER><BR>
+	</TD>	
+</TR>
+</TABLE>
+
+</table>
+</body>
+</html>

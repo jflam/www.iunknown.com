@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Indexers and Ruby</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Indexers and Ruby" by jlam</title>
+      <description>&lt;p&gt;I can support indexers (properties with parameters) in my bridge. So these tests pass:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+  def test_property_overload_resolution
+    o = System::PropertyOverloads.new
+    o[4] = 42
+    o['5'] = 43
+    assert_equal 42, o[4]
+    assert_equal 43, o[5]
+    assert_equal 42, o['4']
+    assert_equal 43, o['5']
+  end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;given these properties written in C++:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+property int default[int] {
+  int get(int index) { return _values[index]; }
+  void set(int index, int value) { _values[index] = value; }
+}
+
+property int default[String^] {
+  int get(String^ index) { return _values[Convert::ToInt32(index)]; }
+  void set(String^ index, int value) { _values[Convert::ToInt32(index)] = value; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I was writing some corner case tests to validate my new &lt;code&gt;fastproperty&lt;/code&gt; code generator (for non-overloaded properties, I bind directly to the method to avoid a runtime lookup) when I came across this interesting oddity:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+static property int OverloadedProperty {
+  int get() { return 1; }
+}
+
+static property int OverloadedProperty[int] {
+  int get(int x) { return _overloadedValue; }
+  void set(int x, int value) { _overloadedValue = value; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Note that in C++ I can overload non-default properties (I don&amp;#8217;t think you can do this in C# or VB). The &lt;span class="caps"&gt;CLR&lt;/span&gt;, of course, supports this but it appears that the languages don&amp;#8217;t.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m not really sure how to support this case in Ruby:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;PropertyTests.OverloadedProperty[]&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;It resolves into a call to &lt;code&gt;OverloadedProperty&lt;/code&gt;, followed by a call to the &lt;code&gt;[]&lt;/code&gt; method on the object that was returned by &lt;code&gt;OverloadedProperty&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;I don&amp;#8217;t think there are cases in the libraries that require this, nor can I think of a good reason why I should support this case.&lt;/p&gt;
+
+
+	&lt;p&gt;What do y&amp;#8217;all think?&lt;/p&gt;
+
+</description>
+      <pubDate>Mon, 20 Feb 2006 11:05:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/20/indexers-and-ruby"&gt;Indexers and Ruby&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/20/indexers-and-ruby"&gt;Indexers and Ruby&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

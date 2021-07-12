@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Multi-module assemblies</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000072.html" title="Why run a web log?" />
+
+<link rel="next" href="http://www.iunknown.com/000074.html" title="References to other assemblies" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000072.html">&laquo; Why run a web log?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000074.html">References to other assemblies &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 25, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Multi-module assemblies</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>OK. I've got a confession to make: I've never written a multi-module assembly. But then again, you probably haven't written one of these either, right? Come on, admit it. There's no shame in it ;)</P><br />
+<P>Today, I actually had to create one of these things so that I could examine the effects that multi-module assemblies would have on my runtime aspect weaver. Before we get there, let's quickly review the difference between a module and an assembly.</P><br />
+<P><A href="http://msdn.microsoft.com/library/en-us/cpguide/html/cpconassembliesoverview.asp?frame=true">Assemblies are&nbsp;defined</A> quite nicely in the Framework SDK documentation. You can refer to the documentation for details, but I'm going to define an assembly as a <EM>logical</EM> module, where a module is a classic Win32 PE file. I call it a logical module because it can be composed of one or more <EM>physical</EM> modules that are bound together through an <A href="http://msdn.microsoft.com/library/en-us/cpguide/html/cpconassemblymanifest.asp?frame=true">assembly manifest</A>.</P><br />
+<P>Most modules that you are likely to encounter (such as the Framework SDK assemblies) are single module assemblies. The manifest, metadata, code, and resources all live inside of a single Win32 PE file. </P><br />
+<P>However, there are cases where some other developer wanted to combine code that was written using different programming languages into a single assembly. To do this, she would instruct her compilers to compile the code into a <EM>module</EM>, rather than an assembly. Once that was done, she would generate the assembly manifest that binds the modules together into a logical assembly using the assembly linker tool. </P><br />
+<P>This is best illustrated by an example. In our example, we will create a multi-module assembly that contains both C# and VB.NET code.</P><br />
+<P>Here's the C# code:</P><br />
+<P><CODE>using System;</P><br />
+<P>namespace Module1<BR>{<BR>&nbsp; public class AClassInModule1<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; public static void SayHello()<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine( "Hello from Module1" );<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }<BR>}</CODE></P><br />
+<P>To tell the C# compiler to compile this code into a module instead of an assembly, you would have to issue the following command from your command prompt:</P><br />
+<P><CODE>csc /t:module module1.cs</CODE></P><br />
+<P>Note that the compiler generated a new file called module1.netmodule. The default filename extension for all .NET modules is .netmodule.</P><br />
+<P>Here's the VB.NET code:</P><br />
+<P><CODE>Imports System</P><br />
+<P>Namespace Module2</P><br />
+<P>&nbsp; Public Class AClassInModule2<BR>&nbsp; <BR>&nbsp;&nbsp;&nbsp; Public Shared Sub SayHello()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine( "Hello from VB Module2" )<BR>&nbsp;&nbsp;&nbsp; End Sub</P><br />
+<P>&nbsp; End Class</P><br />
+<P>End Namespace<BR></CODE></P><br />
+<P>To tell the VB.NET compiler to compile this code into a module instead of an assembly, you would have to issue the following command from your command prompt:</P><br />
+<P><CODE>vbc /t:module module2.vb</CODE></P><br />
+<P>The VB.NET compiler generated a new file called module2.netmodule.</P><br />
+<P>To generate the manifest that binds the two modules that we created earlier, we need to use the assembly linker utility (AL.EXE). Here's the command that generates a DLL that contains the assembly manifest:</P><br />
+<P><CODE>al /t:lib /out:master.dll module1.netmodule module2.netmodule</CODE></P><br />
+<P>If you look at the manifest that is generated by AL.EXE using ILDASM, you'll see the following (edited) manifest:</P><br />
+<P><CODE>// Deleted extern assembly references <BR>.assembly master<BR>{<BR>&nbsp; //&nbsp;Deleted DebuggableAttribute comment<BR>&nbsp; .hash algorithm 0x00008004<BR>&nbsp; .ver 0:0:0:0<BR>}<BR>.file Module1.netmodule<BR>&nbsp; //&nbsp;Deleted hash<BR>.file Module2.netmodule<BR>&nbsp; //&nbsp;Deleted hash<BR>.class extern public Module1.AClassInModule1<BR>{<BR>&nbsp; .file Module1.netmodule<BR>&nbsp; .class 0x02000002<BR>}<BR>.class extern public Module2.AClassInModule2<BR>{<BR>&nbsp; .file Module2.netmodule<BR>&nbsp; .class 0x02000002<BR>}<BR>.module master.dll<BR>// MVID: {6DBAEEA8-9B41-436A-A7F8-2A4824175652}<BR>.imagebase 0x00400000<BR>.subsystem 0x00000003<BR>.file alignment 512<BR>.corflags 0x00000001<BR>// Image base: 0x02ee0000</CODE></P><br />
+<P>The manifest reveals several interesting things:</P><br />
+<UL><br />
+<LI><br />
+<DIV>The .file declarations identify the two .netmodule files that were created by the csc.exe and vbc.exe compilers. </DIV><br />
+<LI><br />
+<DIV>All public types must be explicitly exported from those modules using the .class extern declarations. </DIV><br />
+<LI><br />
+<DIV>The .class extern declarations map the name of the Type to the module that it was implemented in and its TypeDef token value. </DIV><br />
+<LI><br />
+<DIV>An interesting observation: the two exported types have the same TypeDef token value: 0x02000002. This should not be surprising since TypeDef tokens are scoped by the <EM>module</EM> that they are defined in and not by the <EM>assembly</EM> that they are found in.</DIV></LI></UL><br />
+<P>Why does all of this information exist? To make it possible for the execution engine to resolve type references at runtime. You may not know this, but the runtime always resolves types based on their full names (namespace + name).[1] When a compiler needs to generate code to call a method on one of our exported types, it needs to generate a reference to that type. That reference must contains the referenced type's full name. At runtime, when the execution engine attempts to locate the referenced type, it needs to consult the master.dll's manifest to resolve the type name to a module + TypeDef token for the referenced type. </P><br />
+<P>This opens up a potentially nasty can of worms for the developer who created the two modules in the first place. Since&nbsp;the two modules were compiled independently of each other, the possibility of a name conflict exists. Since each compiler has no knowledge of the other module being compiled, it cannot inform her of a name collision at compile time. </P><br />
+<P>You would expect that the assembly linker would at least warn you of an impending name collision, right? Wrong. It silently picks the type from the first module and exports that type only.&nbsp;Be careful!</P><br />
+<P>Enough introductory stuff. In a future entry in this web log, I'll discuss why I had to create this multi-module assembly in the first place. As it turns out, writing this entry really helped me solidify my understanding of the more arcane details of multi-module assemblies. This is another reason for me to <A href="Weblog/fog0000000109.html">maintain this web log</A>: there is no better way to really understand something than by trying to explain it to somebody else. </P><br />
+<P>As always, please feel free to <A href="mailto:jlam@iunknown.com">send comments my way</A>.</P><br />
+<P>[1] Namespaces are a work of fiction; the runtime does not have any knowledge of namespaces, they are just created by the compilers to ease the burden on developers.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 25, 2002 02:01 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="73" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000073.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I have one big issue since one week.<br />
+ is .netmodule will have manifest ?<br />
+I was developed 2 .net modules and combines <br />
+these .netmodules to the dll.<br />
+At any time if I check, the .netmodule is having manifest.<br />
+according to microsoft .netmodule don't have manifest.<br />
+only assembly will have manifest.<br />
+If I see manifest, I didn't find any difference <br />
+between .netmodule and assembly <br />
+anybody can give the explanation.<br />
+Please contact me at rosireddyr@ctd.hcltech.com<br />
+thanks<br />
+Rosi</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;rosireddyr&#64;ctd&#46;hcltech&#46;com">Rosireddyr</a> at February 20, 2003 04:14 AM</span>
+</div>
+<div class="comments-body">
+<p>is there a way to see from a compiled module or assembly if the code was vb.net code or C# or another langage ?</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.happytocode.com">Jonx</a> at May  9, 2003 06:07 AM</span>
+</div>
+<div class="comments-body">
+<p>If the module was written using VB.NET, there is inevitably a reference to the Microsoft.VisualBasic assembly present. I'm not sure if this is true 100% of the time, but it is in all the VB.NET assemblies that I've ever looked at.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May  9, 2003 08:28 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>I am new .NET learner. In your URL I see how files are linked to modules and assemblies. You say that it exports only the first type ( in spite of different namespaces it gets same typedef token).. So how do I ensure the both types are exported to the run time separately?  <br />
+Also I really need to understand the hierarchical link between process, app domain, and assembly.<br />
+Can you give me some example?</p>
+
+<p>Best Regards<br />
+Vishwa<br />
+</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com/000073.html">Vishwa Rao</a> at January 23, 2004 12:59 PM</span>
+</div>
+<div class="comments-body">
+<p>I am new .NET learner. In your URL I see how files are linked to modules and assemblies. You say that it exports only the first type ( in spite of different namespaces it gets same typedef token).. So how do I ensure the both types are exported to the run time separately? <br />
+Also I really need to understand the hierarchical link between process, app domain, and assembly.<br />
+Can you give me some example?</p>
+
+<p>Best Regards<br />
+Vishwa</p>
+
+<p><br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;vhrao&#64;houston&#46;rr&#46;com">Vishwa Rao</a> at January 23, 2004 01:06 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

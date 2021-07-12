@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: A Journey of a Thousand Miles begins with a Single step.</title>
+    <link>http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>A Journey of a Thousand Miles begins with a Single step.</title>
+      <description>&lt;pre&gt;
+qsort []     = []
+qsort (s:xs) = qsort [x|x &amp;lt;- xs,x &amp;lt; s] ++ [s] ++ qsort[x|x &amp;lt;-xs, x &amp;gt;= s]
+&lt;/pre&gt;
+
+	&lt;p&gt;I&amp;#8217;ll admit that I&amp;#8217;ve never really understood the QuickSort algorithm until yesterday. I&amp;#8217;m amazed by the clarity and simplicity of the algorithm once all of the surrounding cruft is stripped away.&lt;/p&gt;</description>
+      <pubDate>Thu, 01 Jun 2006 15:44:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:bba72b985697ab1bd54f6195da2a781c</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"A Journey of a Thousand Miles begins with a Single step." by gabriele</title>
+      <description>&lt;p&gt;I still think the ruby version is mucb cleaner, even if I miss pattern matching :(&lt;/p&gt;
+
+&lt;pre&gt;
+ def qsort(list)
+  return [] if list.empty?
+  x, xs = *list
+  less, more = xs.partition{|y| y &lt;/pre&gt;</description>
+      <pubDate>Sat, 10 Jun 2006 11:08:39 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step#comment-528</link>
+    </item>
+    <item>
+      <title>"A Journey of a Thousand Miles begins with a Single step." by Nick Guerrera</title>
+      <description>&lt;p&gt;Got it. &lt;/p&gt;
+
+&lt;p&gt;I think the term "cruft" is confusing in this context since it's often used to describe code which is of poor quality or entirely redundant.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Cruft"&gt;http://en.wikipedia.org/wiki/Cruft&lt;/a&gt;&lt;/p&gt;</description>
+      <pubDate>Fri, 02 Jun 2006 12:30:23 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step#comment-516</link>
+    </item>
+    <item>
+      <title>"A Journey of a Thousand Miles begins with a Single step." by John Lam</title>
+      <description>&lt;p&gt;No no no! I didn't mean to say that "cruft" is not essential to a good Quicksort implementation. I just meant that it's an impedement to understanding.&lt;/p&gt;</description>
+      <pubDate>Fri, 02 Jun 2006 10:28:30 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step#comment-515</link>
+    </item>
+    <item>
+      <title>"A Journey of a Thousand Miles begins with a Single step." by Nick Guerrera</title>
+      <description>&lt;p&gt;The natural recursive definition of quicksort is beautiful and simple. On the journey to discovering the full ingenuity of the algorithm, I can't imagine anywhere else to start. However, I wouldn't classify good pivot selection or sorting in place as "cruft". After all, they put the "quick" in quicksort...&lt;/p&gt;</description>
+      <pubDate>Thu, 01 Jun 2006 23:59:03 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step#comment-514</link>
+    </item>
+  </channel>
+</rss>

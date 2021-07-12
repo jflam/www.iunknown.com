@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: My Runtime Aspect Weaver</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000074.html" title="References to other assemblies" />
+
+<link rel="next" href="http://www.iunknown.com/000075.html" title="What is AOP?" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000267.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/11"
+    dc:title="My Runtime Aspect Weaver"
+    dc:identifier="http://www.iunknown.com/000267.html"
+    dc:subject="Favorites"
+    dc:description="This article describes some of the implementation details of my runtime aspect weaver (RAW) for the CLR. It is designed to give folks an idea about the direction that I&apos;m going in building this technology. It also highlights some of..."
+    dc:creator="John"
+    dc:date="2002-03-03T02:58:08-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000074.html">&laquo; References to other assemblies</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000075.html">What is AOP? &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">March 03, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">My Runtime Aspect Weaver</h3>
+
+<P>This article describes some of the implementation details of my runtime aspect weaver (RAW) for the <A href="http://www.gotdotnet.com/team/clr/about_clr.aspx">CLR</A>. It is designed to give folks an idea about the direction that I'm going in building this technology. It also highlights some of the challenges that lay ahead for my implementation as well.</P>
+<P>The RAW is responsible for weaving a set of methods using code that is provided by a set of aspects. The mapping of aspects to target methods is provided by a set of <EM>weave instructions</EM>, which are generated by a separate weave compiler. Currently, all weaving is performed at runtime; it is a future goal of this technology to emit assmblies that contain the weaved code.</P>
+<P>The aspect code is provided by a set of assemblies that are generated using any CLR-compatible compiler. Invidivdual aspects could be compiled using any CLR compatible langauge, and these aspects can be weaved with target methods that were compiled using any CLR compatible langauge. This allows us to perform true cross-language aspect weaving (CLAW), and is a key feature that will be demonstrated during my talk at the AOSD conference.[1]</P>
+<P>The programmer defines the weave using a set of XML <EM>weave definition files </EM>that are provided as input to the weave compiler. A weave definition file contains a set of weave definitions; each weave definition describes how a join point must be mapped to an aspect. The join points are identified using an <A href="http://www.w3.org/TR/xpath">XPath</A>-derived syntax that selects the appropriate portions of the target methods to weave. These join points are mapped to aspect code by the weave definition. The weave compiler compiles the weave definition files into a weave instruction file that is used by the RAW to perform the actual weaving at runtime.[2] At the time of the writing of this article, the weave definition file syntax is in a high state of flux; this article will be updated once the syntax has stabilized.</P>
+<P>The RAW operates by weaving code prior to JIT compilation of a target method. To do so, the RAW is provided with a weave instruction file at application start-up time. At JIT compilation time, the RAW reads the existing CIL of the target method, constructs an annotated abstract syntax tree (AST), weaves in the appropriate code, and writes the modified CIL into memory. The&nbsp;JIT compiler then compiles the modified CIL, and executes it.</P>
+<P>The RAW hooks into the CLR using the unmanaged profiling interfaces. The interfaces in question are:</P>
+<OL>
+<LI>ICorProfilerCallback, which must be implemented by the runtime aspect weaver 
+<LI>ICorProfilerCallbackInfo, which is implemented by the runtime and provides services to clients</LI></OL>
+<P>These interfaces are very well documented by the Profiling document that can be found in the <A href="http://www.gotdotnet.com/team/clr/about_clr_Tools.aspx">Tool Developers Guide</A> directory of the Framework SDK.</P>
+<P>Since these interfaces are <EM>unmanaged</EM>, all of the runtime aspect weaver code is implemented using C++. The reason why profilers must be unmanaged is that they may attempt to do unusual things like allocate memory during a garbage collection, which would lead to deadlock situations if the code were managed.</P>
+<P>The profiling interfaces operate using an event-based mechanism. At initialization time, my aspect weaver informs the execution engine (EE) about what events it is interested in monitoring. At runtime, the EE calls the appropriate event methods on the ICorProfilerCallback interface that is implemented by the aspect weaver. Some of the key events that my aspect weaver is interested in are:</P>
+<UL>
+<LI>Module Loads 
+<LI>Assembly Loads 
+<LI>JIT compilation</LI></UL>
+<P>One of the really awesome features of the CLR is the ability to force existing compiled code to be re-JIT compiled. To make this possible, all method calls are bound using indirect x86 call instructions. This allows future versions of the RAW to re-weave existing aspects at runtime. This could be useful for adding and removing diagnostic code from an existing running application without having to shut down and restart the application!</P>
+<P>The unmanaged metadata interfaces provide very low-level access to the CIL and metadata in a module. To support the weaving operations required by the RAW, an extensive unmanaged metadata library had to be constructed.&nbsp;The library largely mirrors the System.Reflection namespace wherever possible, since this is an excellent starting point. However, it adds many features that are not supported by System.Reflection, such as the ability to read, modify, and rewrite the CIL for an existing method. Currently, most of the engineering effort in RAW is devoted to building this library. </P>
+<P>That's the current status of the project at the time of this writing. This page will serve as the permanent location of all status reports on the implementation of my RAW.</P>
+<P>[1] The first International <A href="http://trese.cs.utwente.nl/aosd2002/">Aspect Oriented Software Development Conference</A> to be held April 22-25 at the University of Twente in Enschede, Netherlands. See the demonstration scedule for more information about when my <A href="http://trese.cs.utwente.nl/aosd2002/index.php?content=clawclr">Cross Language Aspect Weaving (CLAW) talk</A> will be held.</P>
+<P>[2] A future version of this technology will weave code during a post compilation step in the build process. This is required for efficiency, since some weaves are very computationally expensive.</P>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at March  3, 2002 02:58 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=267" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="267" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000267.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

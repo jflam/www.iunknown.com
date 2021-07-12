@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on First Drop of RbDynamicMethod</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"First Drop of RbDynamicMethod": comment by John Lam</title>
+      <description>&lt;p&gt;Justin, it does exactly what you said it does. It&amp;#8217;s going to form the core of my Ruby &amp;lt;=&amp;gt;  CLR  bridge. The first rev of the bridge (which I haven&amp;#8217;t publicly released) was written mostly in C++, which made it much more difficult to maintain, particularly as features such as the &lt;code&gt;create_safe_ruby_method&lt;/code&gt; became needed.&lt;/p&gt;
+
+
+	&lt;p&gt;The goal is to not really expand the C++ code much more than what you currently see, and to build the rest of the bridge entirely in Ruby.&lt;/p&gt;</description>
+      <pubDate>Wed, 07 Dec 2005 13:05:21 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod#comment-52</guid>
+      <link>http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod#comment-52</link>
+    </item>
+    <item>
+      <title>"First Drop of RbDynamicMethod": comment by Justin</title>
+      <description>&lt;p&gt;I downloaded the code and checked out the Ruby side (I&amp;#8221;m not real intersted in the C++), but I don&amp;#8217;t quite understand what this accomplishes. Does this create a method, from ruby, that runs in a .NET context, using the  CLR ? Would you mind providing a more complete example of use? It looks like a cool project and I&amp;#8217;d love to see more!&lt;/p&gt;</description>
+      <pubDate>Wed, 07 Dec 2005 12:38:31 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod#comment-51</guid>
+      <link>http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod#comment-51</link>
+    </item>
+    <item>
+      <title>"First Drop of RbDynamicMethod": comment by John Lam</title>
+      <description>&lt;p&gt;It seems to work fine for me. Can you try again? Anyone else having a problem?&lt;/p&gt;</description>
+      <pubDate>Wed, 07 Dec 2005 08:44:05 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod#comment-50</guid>
+      <link>http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod#comment-50</link>
+    </item>
+    <item>
+      <title>"First Drop of RbDynamicMethod": comment by Barry Allison</title>
+      <description>&lt;p&gt;I&amp;#8217;m getting an error on that link&lt;/p&gt;
+
+
+	&lt;p&gt;File not found&lt;/p&gt;
+
+
+	&lt;p&gt;Change this error message for pages not found in public/404.html&lt;/p&gt;</description>
+      <pubDate>Wed, 07 Dec 2005 01:23:36 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod#comment-49</guid>
+      <link>http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod#comment-49</link>
+    </item>
+    <item>
+      <title>"First Drop of RbDynamicMethod" by jlam</title>
+      <description>&lt;p&gt;Here&amp;#8217;s &lt;a href="/images/RbDynamicMethod.zip"&gt;a drop&lt;/a&gt; of my &lt;code&gt;RbDynamicMethod&lt;/code&gt; library. You&amp;#8217;ll need to have some version of Visual C++ 2005 installed to compile it. I&amp;#8217;ve supplied a &lt;code&gt;Rakefile&lt;/code&gt;, so the build is pretty painless provided that you have &lt;code&gt;cl.exe&lt;/code&gt; somewhere on your path.&lt;/p&gt;
+
+
+	&lt;p&gt;All of the C++ code can be found in &lt;code&gt;RbDynamicMethod.h&lt;/code&gt;. All of the Ruby code can be found in &lt;code&gt;Tests\ruby_dynamic_method.rb&lt;/code&gt;. The documentation is in &lt;code&gt;Tests\tests.rb&lt;/code&gt; :)&lt;/p&gt;
+
+
+	&lt;p&gt;My most recent addition is a &lt;code&gt;create_safe_ruby_method&lt;/code&gt; wrapper. It creates a method that is callable from Ruby, but wraps the entire user-defined block in an exception handler that traps nearly all&lt;sup&gt;&lt;a href="#fn1"&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;span class="caps"&gt;CLR&lt;/span&gt; exceptions and maps them to a Ruby &lt;code&gt;RuntimeError&lt;/code&gt; exception.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a normal &lt;code&gt;create_ruby_method&lt;/code&gt; from the unit tests. The weird &lt;code&gt;ldc_i4_4&lt;/code&gt; instruction is required since this is a Ruby varargs method that has a &lt;code&gt;VALUE (int, VALUE*, VALUE)&lt;/code&gt; signature, and I need to return a &lt;code&gt;Qnil&lt;/code&gt; (integer value 4) from this method.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+create_ruby_method('convert_clr_exception') do
+  try
+    ldstr    'error'
+    newobj   'Exception.ctor(String)'
+    throw_ex
+  catch_ex   'Exception'
+    call     'static ExceptionHelper.RaiseRubyException(Exception)'
+  end_try
+  ldc_i4_4
+  ret
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Here&amp;#8217;s the same method via &lt;code&gt;create_safe_ruby_method&lt;/code&gt;, also from the unit tests:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+create_safe_ruby_method('catch_clr_exception') do
+  ldstr    'error'
+  newobj   'Exception.ctor(String)'
+  throw_ex
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Comments and suggestions would be greatly appreciated.&lt;/p&gt;
+
+
+	&lt;p&gt;[1] My code catches exceptions that derive only from &lt;code&gt;Exception&lt;/code&gt; whereas it&amp;#8217;s possible to throw exceptions that derive from &lt;code&gt;Object&lt;/code&gt;.&lt;/p&gt;
+
+</description>
+      <pubDate>Tue, 06 Dec 2005 23:39:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod"&gt;First Drop of RbDynamicMethod&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod"&gt;First Drop of RbDynamicMethod&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

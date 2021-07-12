@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Revised VersionTask</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000103.html" title="NAnt, Build Numbers and Visual SourceSafe" />
+
+<link rel="next" href="http://www.iunknown.com/000105.html" title="Building C++ projects with NAnt" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000103.html">&laquo; NAnt, Build Numbers and Visual SourceSafe</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000105.html">Building C++ projects with NAnt &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 18, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Revised VersionTask</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I spent a bit more time this morning thinking about the VersionTask code. I decided that the way that I calculated the Revision Number (a.k.a. PrivatePart of the FILEVERSIONINFO) wasn't flexible enough. I wanted not only to have a mechanism where I auto-generated that number based on the number of seconds since the start of the day / 10, but I also wanted to be able to increment that number. </P><br />
+<P>It became obvious to me that the ability to increment the revision number becomes important once you ship code. If you're going to continue to patch existing code by releasing service packs, you need to keep the build number constant, but increment the revision number. </P><br />
+<P>This also requires that you branch the source tree, and I can't really think of a way to capture that in the NAnt build script automatically. I added the ability to freeze a build number by allowing you to specify "noincrement" for the buildtype attribute. However, you still need to manually specify this in your build file when you branch the source tree to handle revisions to that shipping version.</P><br />
+<P>To support this new feature, I needed to persist the version information structure back to the build.number file regardless of which algorithm you used to generate the build number. However, this also requires that the build.number file get checked into your source control system, and requires your build script to explicitly check out and check back in the build.number file. </P><br />
+<P>I added these new features to the VersionTask.cs file that I shipped yesterday. This file <EM>replaces </EM>the old file that was there before. Among the things that I did were to clean up some names of methods to more accurately reflect what they did. I now distinguish explicitly between:</P><br />
+<OL><br />
+<LI>Version number = major.minor,build.revsion (as a string)</LI><br />
+<LI>Build number = the third octet in the version number</LI><br />
+<LI>Revision number = the fourth octet in the version number</LI></OL><br />
+<P>I added ways for you to specify the semantics for the build number:</P><br />
+<OL><br />
+<LI>monthday = calculate the build number based on the # months since the start of the project * 100 + the current day of the current month</LI><br />
+<LI>increment = increment the build number each time you build</LI><br />
+<LI>noincrement = freeze the build number - this is used only for cases where you have shipped the code and wish to freeze. </LI></OL><br />
+<P>I added ways for you to specify the semantics for the revision number:</P><br />
+<OL><br />
+<LI>automatic = calculate the revision number based on the # seconds since the start of the day / 10</LI><br />
+<LI>increment = increment the revision number each time you build during the same day. This assumes that you're using the monthday build number algorithm. If you're using the increment build number algorithm, this value is ALWAYS 0 - as it will be if you roll over to a new day in using the monthday algorithm.</LI></OL><br />
+<P><A href="Files/VersionTask.cs">Click here</A> to grab the new source file.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 18, 2002 01:17 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="104" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000104.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Do you have unit tests of this Task?</p>
+
+<p>Do you know if there are any plans to include this feature in 0,8.4?</p>
+
+<p>thx in advance</p>
+
+<p>rido</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.zonalibre.org/blog/ridoiscoding/">rido</a> at November 19, 2003 06:50 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

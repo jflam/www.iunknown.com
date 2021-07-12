@@ -1,0 +1,162 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Google, Amazon, and Beyond: Creating and Consuming Web Services
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=1590591313" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8xNTkwNTkxMzEzLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEdvb2dsZSwgQW1hem9uLCBhbmQgQmV5b25kOiBDcmVhdGluZyBhbmQgQ29uc3VtaW5nIFdlYiBTZXJ2aWNlczs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8QWxleGFuZGVyIE5ha2hpbW92c2t5LCBUb20gTXllcnM7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQzOS45OTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDM5Ljk5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwzLjA7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDM7Pj47Pjs7Pjt0PEA8aHR0cDovL3d3dy5hbWF6b24uY29tL2V4ZWMvb2JpZG9zL0FTSU4vMTU5MDU5MTMxMy9yZWY9bm9zaW0vaXVua25vd25jb20tMjA7Pjs7Pjt0PHA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47PjtsPGk8MD47aTwxPjs+O2w8dDxAPFxlOz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz4JByrJ7wSwx5IrQj7oJvMH4+tPrw==" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/1590591313.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Google, Amazon, and Beyond: Creating and Consuming Web Services</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Alexander Nakhimovsky, Tom Myers</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$39.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$39.99</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">3.0</span>
+          based on
+          <span id="TotalReviews">3</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/1590591313/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Web services in Java well covered</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>4</span>
+                      /
+                      <span>5</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-08-09</span>
+                    </div>
+                    <span>As titles go "Google, Amazon, and Beyond" sounds to me like Buzz Lightyear's latest slogan, but it's actually quite a good book about writing software to consume and provide web services.
+<br />
+<br />The first two chapters are introductory material, though the authors quickly introduce some code with JavaScript routines to talk to both Google and Amazon. The second of them does a good job explaining the intricacies of DOM and how you use it to build a web page in Java. Then the authors get down to some serious work at using Java, including stand-alone applications and applets, to access web services.
+<br />
+<br />They move fast throughout the book; this is not one to read quickly or without ready access to a computer. That said, the writing is good; the text is understandable and all the code is well explained.
+<br />
+<br />The book covers a wide gamut of techniques and technologies, including SOAP and REST on the query side, and XSLT and XPath on the output side.
+<br />
+<br />Then the book moves on to instructions for offering your own services. This part of the book starts off with WebDAV using Tomcat, though there is a short digression into Java Server Pages before really getting down to the nitty gritty. Finally the book shows how to use WSDL and Axis to easily create full web applications.
+<br />
+<br />You can see that this volume covers a lot of territory. This breadth may well be the book's largest flaw; its wide reach means no topic gets a really deep coverage and a number of topics do not get the coverage they deserve. Indeed I would have to say that only a much better Java programmer than I would get full value from this volume -- there were parts where the authors lost me entirely and it took an effort to get back my understanding, occasionally resorting to a Java manual.
+<br />
+<br />The publishers have a page for the book that has an example chapter, table of contents, index and source code. The example chapter, 4, details how to build a SOAP server using Java and provides an excellent example for the book. If you're a little unsure of your Java skills, take a look at this chapter and see if you can easily understand the code and explanation. If you can, then this volume should have no surprises for you.
+<br />
+<br />It should be said that nothing about the book's cover tells you how much of it relies on Java, though a good read of the table of contents makes it obvious. I would have personally preferred a book that was more general in the programming language it used, covering more of the tactics and methods rather than examining specific code. If, on the other hand, you are an experienced Java programmer looking for a book on programming web services in that language, then this is an excellent volume.</span>
+                  
+                    <div class="CustomerReviewSummary">A bunch of technologies</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>9</span>
+                      /
+                      <span>10</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-04-25</span>
+                    </div>
+                    <span>Web Services are a promising future for distributed computations on the net. So far there has been much speculation. But to develop anything nontrivial presents a severe problem to programmers. It is hard to simulate a large, multigigabyte database, that has credible applications.<p>Luckily, two successful Internet companies, Google and Amazon, have done so. They offer access to their data via XML queries. The authors thus explain how you can sign up with these companies and use their Web Services as a testbed. They treat each company separately and show examples of how you can mine the data and possibly integrate it with your own data and display the results, typically in a browser fashion.<p>The companies are used as learning examples, since many of you are likely to have already used their regular browser based offerings. The authors use this familiarity to motivate why and how you can get at the data, without all that HTML clutter of a pre-Web Service screen scraping approach. They also use this as a vehicle to explain how to use DOM, SOAP, XSLT and JSPs on your website, as part of your Web Service. Tomcat is chosen as the web container because it is very stable and, let's face it, free. So you do gain fluency in an impressive number of important packages.<p>They even offer examples of how to use DAV. This, in the 10 year history of the web, refers to distributed authoring. It was present in the http specifications of 1992/3. But this has rarely been implemented in browsers or http servers ever since. A backwater that is now starting to attract attention. Especially when recast in the rubric of Web Services.</span>
+                  
+                    <div class="CustomerReviewSummary">Too much triviality</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>2</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>17</span>
+                      /
+                      <span>27</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-01-16</span>
+                    </div>
+                    <span>Yes, this book deals with many aspects of Web Services technology.<p>Unfortunately, the authors haven't hesitated to fill this book with a lot of triviality and white space. You'll have to read through many extensive descriptions and a lot of javascript that doesn't deserve much attention. Selecting the right object in IE or Netscape makes the presented code qualify as a Cross-Browser Framework. And when moving from javascript to java, the authors seem to be unaware of any OO methodology, sticking to static procedural implementations. Experienced java and C++ programmers will gradually loose interest when reading this book.<p>Where other authors delightfully underline the Author's Press promise, these authors bring disappointment to the serious reader.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0782143393'>
+                      Mining eBay Web Services: Building Applications with the eBay API
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 1.0 based on 1 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596005423'>
+                      Amazon Hacks: 100 Industrial-Strength Tips and Tools
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 13 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0782143334'>
+                      Mining Google Web Services: Building Applications with the Google API
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 0 based on 0 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0782143075'>
+                      Mining Amazon Web Services: Building Applications with the Amazon API
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.5 based on 7 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0764584456'>
+                      Professional Web APIs: Google, eBay, PayPal, Amazon.com, MapPoint, FedEx
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 0 based on 0 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Native Ruby array data binding</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Native Ruby array data binding": comment by John Lam</title>
+      <description>&lt;p&gt;Mark - I agree with your suggestion. I just have to think a bit more about how to make it happen. &lt;/p&gt;
+
+&lt;p&gt;Mail me later on this weekend if you have any spare cycles, and I can run some ideas by you then.&lt;/p&gt;
+
+&lt;p&gt;BTW, if you look at the source code for nested types, you'll see the grotesque hack that's in there right now as a placeholder :)&lt;/p&gt;
+
+&lt;p&gt;Thanks!&lt;/p&gt;</description>
+      <pubDate>Fri, 24 Feb 2006 20:20:09 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/native-ruby-array-data-binding#comment-160</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/native-ruby-array-data-binding#comment-160</link>
+    </item>
+    <item>
+      <title>"Native Ruby array data binding": comment by Mark</title>
+      <description>&lt;p&gt;Great progress.  I'm curious why you didn't just handle this in the marshalling of the array into the CLR-world. (always wrap them with the IList helper)  That seems far more trivial than, say..supporting nested types (bravo on that).&lt;/p&gt;
+
+&lt;p&gt;If you're assigning to a common interface, or passing as an argument (IEnumerable, ICollection, IList, etc.), create an appropriate wrapper (either statically or dynamically for real fun) and assign it instead.&lt;/p&gt;
+
+&lt;p&gt;I haven't gotten a chance to look at your latest drop (stupid day job), but I'd love to help you figure out how to implement this approach.  I know you're driving to support certain scenarios, but seems like a broader approach would solve the subset of issues for databinding and open up opportunities for more scenarios and a more seamless experience across the boundary.&lt;/p&gt;
+
+&lt;p&gt;+1 for RubyForge project.&lt;/p&gt;</description>
+      <pubDate>Fri, 24 Feb 2006 12:51:01 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/native-ruby-array-data-binding#comment-158</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/native-ruby-array-data-binding#comment-158</link>
+    </item>
+    <item>
+      <title>"Native Ruby array data binding": comment by Justin</title>
+      <description>&lt;p&gt;Ideally, you'd want to just assign the array directly to the data source:&lt;/p&gt;
+
+&lt;p&gt;list&lt;em&gt;box.data&lt;/em&gt;source = names&lt;/p&gt;
+
+&lt;p&gt;That's how it is in .NET and it also feels more natural in Ruby. Of course, technically that could be a challenge.&lt;/p&gt;</description>
+      <pubDate>Fri, 24 Feb 2006 12:15:24 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/native-ruby-array-data-binding#comment-157</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/native-ruby-array-data-binding#comment-157</link>
+    </item>
+    <item>
+      <title>"Native Ruby array data binding" by jlam</title>
+      <description>&lt;p&gt;I spent some time today hacking out an experimental implementation of native Ruby array data binding. It works by using a &lt;span class="caps"&gt;CLR&lt;/span&gt; helper class called &lt;code&gt;DataBinder&lt;/code&gt; that implements &lt;code&gt;IList&lt;/code&gt;, and calls back to Ruby using delegates to retrieve the data. This gives the following usage model:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+names = ['John', 'Paul', 'George', Ringo']
+list_box.data_source = names.make_bindable
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;To make this work, I inject a &lt;code&gt;make_bindable&lt;/code&gt; method into the &lt;code&gt;Array&lt;/code&gt; class:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def make_bindable
+  binder = DataBinder.new
+  binder.get_data do |sender, args|
+    args.current_object = self[args.index]
+  end
+  binder.get_count do |sender, args|
+    args.count = self.length
+  end
+  binder
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Thoughts? Does this feel good?&lt;/p&gt;
+
+</description>
+      <pubDate>Thu, 23 Feb 2006 23:42:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/23/native-ruby-array-data-binding"&gt;Native Ruby array data binding&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/23/native-ruby-array-data-binding"&gt;Native Ruby array data binding&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Enterprise Services!</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000169.html" title="Enterprise Services?" />
+
+<link rel="next" href="http://www.iunknown.com/000171.html" title="A new year" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000169.html">&laquo; Enterprise Services?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000171.html">A new year &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 02, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Enterprise Services!</h3>
+
+<p><P>My thanks go out to both <A href="http://radio.weblogs.com/0108971/2002/11/30.html#a43">Clemens</A> and <A href="http://www.dotnetremoting.cc/DotNetCentric/2002/11/30.asp#a351">Ingo</A> who have both influenced my thinking in this area. I now see that managed <EM>declarative</EM> transactions are the way to go. This combined with the fact that <A href="http://www.gotdotnet.com/team/xmlentsvcs/esfaq.aspx#1.2">ES calls are special-cased by the runtime to avoid P/Invoke overhead</A>, means that there really isn't any excuse not to use this technology.</P><br />
+<P>Ingo also pointed to this link to the <A href="http://www.gotdotnet.com/team/xmlentsvcs/esfaq.aspx">Enterprise Services FAQ on GotDotNet</A>, which (among other things) says that the next release of ES will automatically promote single-RM transactions into distributed transactions only when necessary. </P><br />
+<P>To celebrate this moment, I went down to my storage locker to retrieve a book that I thought that I didn't need anymore in the new world: <A href="http://www.gotdotnet.com/team/tewald/spoutlet.aspx">Tim Ewald's</A> most excellent <A href="http://www.amazon.com/exec/obidos/redirect?tag=iunknowncom-20&amp;path=tg/detail/-/0201615940/qid=1038875851/sr=8-1">Transactional COM+</A> book. Reading the chapter on transaction streams is a must for anyone doing ES work.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December  2, 2002 04:21 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="170" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000170.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>great book indeed!<br />
+At my last job I was involved with a system built on Transactional COM+.  The problem was nobody new how to use it...they just relied on kamakazi sytle coding.  Transactional COM+ (the book) helped me greatly ... the transaction stream information was very helpful!<br />
+http://www.stronglytyped.com/weblog/TransactionalCOM+Building.html</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.stronglytyped.com">Richard Caetano</a> at December  3, 2002 11:38 AM</span>
+</div>
+<div class="comments-body">
+<p>What changed your mind, John? I agree that COM+ seems unnecessary unless you need distributed transactions (which most never do).</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.sellsbrothers.com">Chris Sells</a> at December  4, 2002 10:51 AM</span>
+</div>
+<div class="comments-body">
+<p>I like declarative transactions. This way, I can build components that can vote on the outcome of a transaction without resorting to a design pattern that requires passing SqlConnection objects as parameters. <br />
+Now if they would only hurry up and fix the issue with single RM transactions using 2PC, we'd be set!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December  6, 2002 10:37 AM</span>
+</div>
+<div class="comments-body">
+<p>Thnx for the pointers John</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://weblog.brokenwire.net">P.Gielens</a> at December  8, 2002 08:01 AM</span>
+</div>
+<div class="comments-body">
+<p>At last you agreed guys! And we working in far snow deserts can now work efficiently without choosing sides. Until this point of agreement was reached I felt like I had to rewrite my code every second day </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;vagif&#64;online&#46;no">Vagif Abilov</a> at December 11, 2002 09:04 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

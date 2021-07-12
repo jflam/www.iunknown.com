@@ -1,0 +1,1597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: February 2004 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2004_01.html" title="January 2004" />
+
+<link rel="next" href="http://www.iunknown.com/2004_03.html" title="March 2004" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2004_01.html">&laquo; January 2004</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2004_03.html">March 2004 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000425"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/169"
+    dc:title="Why use C# for this?"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000425"
+    dc:subject="Blog"
+    dc:description="Brad Abrams has a pointer to P/Invoke signatures that were created by the C# team. Why anyone would want to use C# for interop is beyond me. In non-trivial cases, there are way too many opportunities to make mistakes while..."
+    dc:creator="John"
+    dc:date="2004-02-29T11:51:29-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 29, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000425"></a>
+<h3 class="title">Why use C# for this?</h3>
+
+<p><a href="http://blogs.msdn.com/brada/archive/2004/02/28/81586.aspx">Brad Abrams has a pointer to P/Invoke signatures that were created by the C# team</a>. Why <em>anyone</em> would want to use C# for interop is beyond me. In non-trivial cases, there are way too many opportunities to make mistakes while porting C/C++ header files to C# P/Invoke signatures. Since these cases involve structs and/or structs that contain pointers to other structs, you're ultimately responsible for explicit memory management. You might as well just use Managed C++ and get on with your life :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000425.html">11:51 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=425" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=425" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000424"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/168"
+    dc:title="Funny comment on Lisp and code generation"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000424"
+    dc:subject="Blog"
+    dc:description="Another problem is with encapsulation. If I make a change local to a C function, it&apos;s usually safe to assume that the effects of that change will be local. With the code generation approach, though, the change may affect the..."
+    dc:creator="John"
+    dc:date="2004-02-27T09:47:55-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 27, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000424"></a>
+<h3 class="title">Funny comment on Lisp and code generation</h3>
+
+<blockquote><p>Another problem is with encapsulation.  If I make a change local to a C function, it's usually safe to assume that the effects of that change will be local.  With the code generation approach, though, the change may affect the functions which are generated and functions which those generate, and so on.  Trying to puzzle that kind of thing out is <em>really hard on the molars</em>.</p></blockquote>
+
+<p>(my emphasis). Seen on the <a href="http://discuss.fogcreek.com/joelonsoftware/default.asp?cmd=show&amp;ixPost=31402">Joel On Software forums</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000424.html">09:47 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=424" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=424" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000423"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/167"
+    dc:title="Gaining administrator privileges on a web server"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000423"
+    dc:subject="Blog"
+    dc:description="As a follow-up to my recent post on security, I thought that I&apos;d write up a few quick thoughts about compromised web servers. In this scenario, let&apos;s assume that I&apos;ve managed to gain administrator privileges on your web server. If..."
+    dc:creator="John"
+    dc:date="2004-02-26T20:12:24-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 26, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000423"></a>
+<h3 class="title">Gaining administrator privileges on a web server</h3>
+
+<p>As a follow-up to my <a href="http://www.iunknown.com/000419.html">recent post on security</a>, I thought that I'd write up a few quick thoughts about compromised web servers. In this scenario, let's assume that I've managed to gain administrator privileges on your web server. If this is in fact the case then it's game over. Let's consider why.</p>
+
+<p>With administrator privileges, I can replace any and all code that is running on your web server. This includes, for example, code that handles login requests. I could replace your <code>login.aspx</code> page and wait for an administrator to log in. Once I have that administrator's password, I have compromised your application.</p>
+
+<p>Let's say that you placed some countermeasures on your system. Your login handler is digitally signed, and the authentication sub-system of your web application makes a <code>StrongNamePermission</code> demand against all callers. This means that I can't capture passwords in the login handler anymore. In this case I'd simply replace the code in your authentication sub-system. While this is harder than just replacing a <code>login.aspx</code> page, it can still be done since I'm an administrator on your web server.</p>
+
+<p>If I were a script-kiddie who lacked the sophistication to replace the code in your authentication sub-system, I could simply replace <code>mscoree.dll</code> with one that was built from, say, the Rotor sources. This would allow me to circumvent all code-access security countermeasures in your software. Note that I don't need to create the hacked <code>mscoree.dll</code>, I just need to know where I can find a copy. Now I can simply replace your login handler with a standard one from my hacker toolkit.</p>
+
+<p>What this really calls out for is a digital rights management solution. You could imagine buying a computer in the future which has been spec'd by the manufacturer to only execute code that was digitally signed using one of an approved set of public keys / public key tokens that you provide. To hack this computer would require physical access which raises the bar considerably.</p>
+
+<p>Hopefully I've convinced you that you can't defend against a compromised administrator account. Another scenario to consider that hasn't gotten much publicity is that of a <em>rogue developer</em>. I'll write some thoughts about this scenario later.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000423.html">08:12 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=423" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=423" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000422"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/166"
+    dc:title="Obscure ASP security hole"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000422"
+    dc:subject="Blog"
+    dc:description="While reading the IIS 6.0 Resource Kit today (no I don&apos;t actually read resource kits for fun, but we should all do it more often), I came across this following security nugget for folks who are still writing ASP code:..."
+    dc:creator="John"
+    dc:date="2004-02-26T15:20:26-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000422"></a>
+<h3 class="title">Obscure ASP security hole</h3>
+
+<p>While reading the <span class="caps">IIS 6.0 </span>Resource Kit today (no I don't actually read resource kits for fun, but we should all do it more often), I came across this following security nugget for folks who are still writing <span class="caps">ASP</span> code: <code>Global.asa</code> events are run under different security contexts - and not the ones that you would necessarily expect!</p>
+
+<p><code>Application_OnStart()</code> and <code>Session_OnStart()</code> run under the security context of the impersonated user. However, the <code>Application_OnEnd()</code> and <code>Session_OnEnd()</code> events run using the process identity. Now, if you are running your <span class="caps">IIS</span> application under Low isolation then those two events are running as <span class="caps">SYSTEM. </span>If you are an <span class="caps">ISP</span> that lets folks upload <code>global.asa</code> files, then those folks could conceivably use the <code>FileSystemObject</code> to access arbitrary files (including other web application files) with impunity. Ooops.</p>
+
+<p><span class="caps">PS </span>This is fixed in <span class="caps">IIS 6.0 </span>- where these events now run as <code>Anonymous User</code>.</p>
+
+<p><iframe marginwidth="0" marginheight="0" width="120" height="240" scrolling="no" frameborder="0" src="http://rcm.amazon.com/e/cm?o=1&amp;l=as1&amp;f=ifr&amp;t=iunknowncom-20&amp;p=8&amp;asins=0735614202&amp;IS2=1&amp;lt1=_blank"><MAP NAME="boxmap-p8"><AREA SHAPE="RECT" COORDS="14, 200, 103, 207" HREF="http://rcm.amazon.com/e/cm/privacy-policy.html?o=1" ><AREA COORDS="0,0,10000,10000" HREF="http://www.amazon.com/exec/obidos/redirect-home/iunknowncom-20" ></MAP><img src="http://rcm-images.amazon.com/images/G/01/rcm/120x240.gif" width="120" height="240" border="0" usemap="#boxmap-p8" alt="Shop at Amazon.com"></iframe>    </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000422.html">03:20 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=422" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=422" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000421"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/165"
+    dc:title="Junction Points and Win2K+"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000421"
+    dc:subject="Blog"
+    dc:description="NTFS has a great feature called junction points that let you create directory aliases starting in Windows 2000. This lets you avoid security issues that result from parent-path canonicalization attacks. For example, in IIS 6.0, parent paths are disabled (e.g...."
+    dc:creator="John"
+    dc:date="2004-02-26T15:05:04-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000421"></a>
+<h3 class="title">Junction Points and Win2K+</h3>
+
+<p><span class="caps">NTFS</span> has a great feature called <a href="http://support.microsoft.com/?kbid=205524">junction points</a> that let you create directory aliases starting in Windows 2000. This lets you avoid security issues that result from <a href="http://www.microsoft.com/mspress/books/sampchap/5612b.asp">parent-path canonicalization attacks</a>. For example, in <span class="caps">IIS 6.0,</span> parent paths are disabled (e.g. you cannot use relative URLs that do innocuous-looking stuff like &lt;img src="../Images/MyImage.jpg"/&gt;). This is common in web applications that need to share common files such as images. They usually have directory structures that look like:</p>
+
+<pre>
+VDir
++--Images
++--App1
++--App2
+</pre><p>To avoid file path canonicalization attacks, you need to do is create junction points in <span class="caps">NTFS. </span>This results in directory structures that look like:</p>
+
+<pre>
+VDir
++--Images
++--App1
+   +--Images*
++--App2
+   +--Images*
+</pre><p>Note that the directories marked by (*) are actually junction points and <span class="caps">NOT</span> real subdirectories. This lets you rewrite your <span class="caps">HTML</span> to look like: &lt;img src="Images/MyImage.jpg"/&gt;.</p>
+
+<p>Now <em>creating</em> junction points is a whole other matter entirely. For reasons that I don't understand, Windows doesn't ship with any tools that let you create junction points. You must either purchase a copy of the Windows 2000 Resource Kit so that you can use its <code>linkd</code> utility, or you can download Mark Russinovich's most excellent <a href="http://www.sysinternals.com/ntw2k/source/misc.shtml#junction"><code>junction</code> utility</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000421.html">03:05 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=421" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=421" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000420"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/164"
+    dc:title="Composition in Photography: A Tutorial"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000420"
+    dc:subject="Blog"
+    dc:description="While surfing tonight, I came across this wonderful set of lessons on photographic composition...."
+    dc:creator="John"
+    dc:date="2004-02-25T22:35:11-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 25, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000420"></a>
+<h3 class="title">Composition in Photography: A Tutorial</h3>
+
+<p>While surfing tonight, I came across this wonderful set of lessons on <a href="http://194.100.88.243/petteri/pont/Photography_lessons/a_about/_Teaching_composition.html">photographic composition</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000420.html">10:35 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=420" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=420" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000419"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/163"
+    dc:title="Security is hard"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000419"
+    dc:subject="Blog"
+    dc:description="Security is much harder than most folks make it out to be. Today, I went to the Microsoft Canada MSDN Security Briefing in Toronto. I went to see Steve Ballmer speak, since I have never heard him speak live before...."
+    dc:creator="John"
+    dc:date="2004-02-25T21:52:14-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000419"></a>
+<h3 class="title">Security is hard</h3>
+
+<p>Security is much harder than most folks make it out to be. Today, I went to the Microsoft Canada <span class="caps">MSDN </span>Security Briefing in Toronto. I went to see Steve Ballmer speak, since I have never heard him speak live before. While I thought Steve would be leading off, he wound up closing the conference, so I stuck around for a few talks before heading off to other meetings only to return at the end to hear Steve speak. </p>
+
+<p><a href="http://www.paul.bz/blog.aspx">Paul Murphy</a> gave the talks that I saw at the briefing. While Paul is certainly a talented speaker, he fell way short on depth of knowledge. Also, instead of acknowledging that he didn't know the answer to a particular question, instead he tried to make up answers which, while sounding authoritative, actually turned out to be incorrect. </p>
+
+<p>For example, when asked how an organization might defend against a <em>rogue administrator</em>, he suggested using the <span class="caps">DPAPI</span> user store to encrypt credentials. This is worse than admitting the truth: that you can't defend against a rogue administrator. Instead, it lulls folks who follow his advice into a false sense of security.</p>
+
+<p>This is similar to a discussion that happened concurrently in the blogosphere. <a href="http://www.interact-sw.co.uk/iangblog/2004/02/25/appserversecurity">Ian Griffiths</a> correctly called to task <a href="http://weblogs.asp.net/rhurlbut/archive/2004/02/14/73081.aspx">Robert Hurlbut's</a> comments on using application servers that reside on a separate physical tier as a means to defend against compromised web servers. If the reason why you're adding a separate physical tier is <em>only</em> for "passthrough" security, then Ian's argument is that you're not accomplishing anything. Complexity is the enemy of security, and you need to keep things as simple as possible. I highly recommend that folks read Ian's post for the full description.</p>
+
+<p><span class="caps">BTW, I</span> absolutely loved Steve's talk. He's an extremely charismatic speaker, and is someone who can definitely rally the troops. <span class="caps">MUCH</span> better than Bill at giving inspirational talks. I went away wanting to crank on code tonight (which I will!)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000419.html">09:52 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=419" onclick="OpenComments(this.href); return false">Comments (7)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=419" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000418"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/162"
+    dc:title="Photoshop CS and NeatImage"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000418"
+    dc:subject="Blog"
+    dc:description="I shot some NEF1 images using my Nikon 5700 this weekend to test out the Shadows and Highlights feature of Photoshop CS. Below you can see the shot straight out of the camera: After some processing with Photoshop CS (shadows..."
+    dc:creator="John"
+    dc:date="2004-02-23T23:30:54-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 23, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000418"></a>
+<h3 class="title">Photoshop CS and NeatImage</h3>
+
+<p>I shot some <span class="caps">NEF</span><sup class="footnote"><a href="http://www.iunknown.com/000418.html#fn1">1</a></sup> images using my Nikon 5700 this weekend to test out the Shadows and Highlights feature of Photoshop <span class="caps">CS. </span>Below you can see the shot straight out of the camera:</p>
+
+<p><img src="Images/Path-And-Bridge-Unprocessed.jpg"/></p>
+
+<p>After some processing with Photoshop <span class="caps">CS </span>(shadows +38 and highlights -19) and a bit of juicing the colors of the image, and some unsharp mask sharpening, this is the result:</p>
+
+<p><img src="Images/Path-And-Bridge-Processed.jpg"/></p>
+
+<p>What I noticed was that noise becomes critical when using Shadows and Highlights. This is due to the fact that you are right-shifting the noisiest part of the histogram when you are boosting shadows. I scrubbed the image using <a href="http://www.neatimage.com">NeatImage</a>, but even after post processing the noise in the shadows on the right of the image is still quite obvious. </p>
+
+<p>This means that even at <span class="caps">ISO 100 </span>(which is what I shot this image at), noise is still very important if you are trying to maximize the dynamic range of the camera. I still have to shoot a side-by-side comparison between using this technique and shooting bracketed exposures. On a landscape shot like this one, it's quite possible. However, there are lots of other situations where you can only shoot one image ...</p>
+
+<p>[1] <span class="caps">NEF</span> is the Nikon version of <span class="caps">RAW. </span>This is the raw, unprocessed data straight out of the image sensor. In the case of the Nikon 5700, this contains 12 bits of information per pixel. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000418.html">11:30 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=418" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=418" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000417"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/161"
+    dc:title="Win32 Structured Exception Handling"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000417"
+    dc:subject="Blog"
+    dc:description="I&apos;ve been spending some time recently reviewing Win32 structured exception handling. It&apos;s still relevant today in managed code since managed exceptions are implemented on top of Win32 SEH. Here&apos;s a few links to some excellent resources on SEH: Matt Pietrek&apos;s..."
+    dc:creator="John"
+    dc:date="2004-02-18T12:04:24-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 18, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000417"></a>
+<h3 class="title">Win32 Structured Exception Handling</h3>
+
+<p>I've been spending some time recently reviewing Win32 structured exception handling. It's still relevant today in managed code since managed exceptions are implemented on top of Win32 <span class="caps">SEH. </span>Here's a few links to some excellent resources on <span class="caps">SEH</span>:</p>
+
+
+<ul>
+<li>Matt Pietrek's <a href="http://www.microsoft.com/msj/0197/exception/exception.aspx">Crash Course on the Depths of Win32 Structured Exception Handling</a></li>
+</ul>
+
+
+<ul>
+<li>Chris Brumme's <a href="http://blogs.msdn.com/cbrumme/archive/2003/10/01/51524.aspx">The Exception Model</a></li>
+</ul>
+
+
+<ul>
+<li>Jeffrey Richter, Programming Applications for Microsoft Windows (aka Advanced Windows) 4th Edition Chapters 23-25.</li>
+</ul>
+
+
+<ul>
+<li>David Solomon and Mark Russinovich, Inside Windows 2000 3rd Edition, Chapter 3.</li>
+</ul>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000417.html">12:04 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=417" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=417" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000416"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/160"
+    dc:title="ASP.NET 2.0 Code compilation model"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000416"
+    dc:subject="Blog"
+    dc:description="My article on the ASP.NET 2.0 code compilation model is up on CodeGuru now. Comments / feedback more than welcome here...."
+    dc:creator="John"
+    dc:date="2004-02-18T11:52:56-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000416"></a>
+<h3 class="title">ASP.NET 2.0 Code compilation model</h3>
+
+<p>My <a href="http://www.codeguru.com/net_asp/CodeComp.html">article on the <span class="caps">ASP.NET 2.0</span> code compilation model</a> is up on CodeGuru now.</p>
+
+<p>Comments / feedback more than welcome here.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000416.html">11:52 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=416" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=416" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000415"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/159"
+    dc:title="Code coverage isn&apos;t everything"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000415"
+    dc:subject="Blog"
+    dc:description="Today, Scott Hanselman wrote about why test coverage is important. While this is certainly true, it is important to not fall in love with code coverage as an absolute metric. This is due to the fact that code coverage can..."
+    dc:creator="John"
+    dc:date="2004-02-18T11:41:25-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000415"></a>
+<h3 class="title">Code coverage isn't everything</h3>
+
+<p>Today, <a href="http://www.hanselman.com/blog/PermaLink.aspx?guid=0ec758c0-e0b5-4380-a7ca-c30e1e4f3a9b">Scott Hanselman</a> wrote about why test coverage is important. While this is certainly true, it is important to not fall in love with code coverage as an absolute metric. This is due to the fact that code coverage can only tell you about faults of <em>commission</em>, not faults of <em>omission</em>.</p>
+
+<p>For more details, <a href="http://www.iunknown.com/000303.html">see this post</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000415.html">11:41 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=415" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=415" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000414"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/158"
+    dc:title="Perl integration with .Net?"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000414"
+    dc:subject="Blog"
+    dc:description="Has anyone out there written a managed wrapper around the ActiveState PerlEz interface? I really want to integrate my new-found Perl love with ASP.NET 2.0...."
+    dc:creator="John"
+    dc:date="2004-02-18T11:38:18-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000414"></a>
+<h3 class="title">Perl integration with .Net?</h3>
+
+<p>Has anyone out there written a managed wrapper around the ActiveState PerlEz interface? I really want to integrate my new-found Perl love with <span class="caps">ASP.NET 2.0.</span></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000414.html">11:38 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=414" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=414" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000413"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/157"
+    dc:title="A few more AutoShow images"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000413"
+    dc:subject="Blog"
+    dc:description="Here are a few more images from the Auto Show. I really love how fast my new deskop rips through processing these images. Now I just have to figure out how to program Photoshop to optimize my digital workflow...."
+    dc:creator="John"
+    dc:date="2004-02-16T22:59:04-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 16, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000413"></a>
+<h3 class="title">A few more AutoShow images</h3>
+
+<p>Here are a few more images from the Auto Show. I really love how fast my new deskop rips through processing these images. Now I just have to figure out how to program Photoshop to optimize my digital workflow.</p>
+
+<p><img src="Images/Volkswagen-W10-Engine-Detai.jpg"/><br />
+<br/><br />
+<br/><br />
+<img src="Images/Toyota-Concept-Car.jpg"/><br />
+<br/><br />
+<br/><br />
+<img src="Images/Mercedes-SLR.jpg"/><br />
+<br/><br />
+<br/><br />
+<img src="Images/C6-Corvette.jpg"/></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000413.html">10:59 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=413" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=413" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000412"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/156"
+    dc:title="Fun time at the Canadian Auto Show"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000412"
+    dc:subject="Blog"
+    dc:description="I had a fun time at the Canadian Auto show yesterday. Part of the fun was seeing the cars, but a large part of the fun was getting an opportunity to shoot some photos. Here&apos;s one that I rather like:..."
+    dc:creator="John"
+    dc:date="2004-02-16T22:23:29-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000412"></a>
+<h3 class="title">Fun time at the Canadian Auto Show</h3>
+
+<p>I had a fun time at the Canadian Auto show yesterday. Part of the fun was seeing the cars, but a large part of the fun was getting an opportunity to shoot some photos. Here's one that I rather like:</p>
+
+<p><img src="Files/Lamborghini-Gallagro.jpg"/></p>
+
+<p>This image was shot at <span class="caps">ISO 200</span> on my trusty Nikon 5700. After spending a day with the camera, I had an opportunity to reflect on my eventual upgrade to a <span class="caps">DSLR. </span>Pros: much better low-light performance from a) lower noise in the sensor and b) better auto-focus in low light. Cons: having to look through the viewfinder for most shots - I'm very happy with video-camera style shooting using the twisting <span class="caps">LCD</span> monitor on my 5700.</p>
+
+<p>I can still compensate for most of the cons with technique. To solve the poor low-light focus problems, I use the AF-lock button to focus on another subject that is at the same distance as the subject that I want to shoot, and recompose. For the noise problem, I use <a href="http://www.neatimage.com/">Neat Image</a> to scrub noise out of my photos. </p>
+
+<p>I also upgraded last night to <a href="http://www.adobe.com/products/photoshop/main.html">Photoshop CS</a> as well. The killer feature in this version of Photoshop is Shadows and Highlights. Through a very simple <span class="caps">UI,</span> you can bring detail out of the shadows of your photographs- effectively increasing the dynamic range of your images. This is similar to the <a href="http://www.iunknown.com/000307.html">bracketed exposures technique that I discussed earlier</a>, but with the advantage of only requiring a single image. I've mostly avoided shooting <span class="caps">RAW</span> using my 5700. But with Photoshop <span class="caps">CS, I</span> can now manipulate the 12-bit per channel files directly in 16-bit mode. Combined with Shadows and Highlights, I'm really excited about some of the images that I'll be able to create.</p>
+
+<p>Here's a sample of shadows and highlights in action. The first image is a shot straight out of the camera. The second image is a shot that was processed using Shadows and Highlights. There is a dramatic difference between these two images in spite of the fact that 1) I shot the image at <span class="caps">ISO 400</span> and 2) I didn't use <span class="caps">RAW</span> mode - this is a <span class="caps">JPEG</span> from the camera, so I've lost 4 bits per channel of information.</p>
+
+<p><img src="Files/Sunset-before.jpg"/><br />
+<br/><br />
+<br/><br />
+<img src="Files/Sunset.jpg"/></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000412.html">10:23 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=412" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=412" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000411"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/155"
+    dc:title="The origins of IDisposable"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000411"
+    dc:subject="Blog"
+    dc:description="A wonderful trip down memory lane to the early days of the DOTNET list and Brian Harry&apos;s original post on IDisposable...."
+    dc:creator="John"
+    dc:date="2004-02-16T00:39:35-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000411"></a>
+<h3 class="title">The origins of IDisposable</h3>
+
+<p>A wonderful trip down memory lane to the early days of the <span class="caps">DOTNET</span> list and <a href="http://discuss.develop.com/archives/wa.exe?A2=ind0010A&amp;L=DOTNET&amp;P=R28572">Brian Harry's original post on IDisposable</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000411.html">12:39 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=411" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=411" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000410"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/154"
+    dc:title="Using Perl to Syntax Color C#"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000410"
+    dc:subject="Blog"
+    dc:description="It&apos;s been a long time since I&apos;ve written anything in Perl. Tonight, I wrote a simple C# syntax coloring app, that converts C# source code into syntax-colored HTML. As this is the second Perl program that I can recall ever..."
+    dc:creator="John"
+    dc:date="2004-02-14T02:45:46-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 14, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000410"></a>
+<h3 class="title">Using Perl to Syntax Color C#</h3>
+
+<p>It's been a long time since I've written anything in Perl. Tonight, I wrote a simple C# syntax coloring app, that converts C# source code into syntax-colored <span class="caps">HTML. </span>As this is the second Perl program that I can recall ever writing, suggestions for improvements would be more than welcome. Here's the Perl script that makes it all happen:
+
+<pre><code>
+$DoubleQuotedString = qr/
+  (
+    &quot;           # Start of string
+    (           
+      \\.       # Ignore any escaped characters
+    |
+      [^&quot;\\]    # But not &quot;\
+    )*
+    &quot;           # End of string
+  )
+/x;
+#&quot; hack required for syntax hilighting in TextPad.
+
+$CSharpQuotedString = qr/
+  @
+  (
+    &quot;
+    (
+      &quot;&quot;        # Ignore &quot;&quot;
+    |
+      (^&quot;&quot;&quot;)*   # But not &quot;&quot;&quot;
+    )*
+    &quot;
+  )
+/x;
+#&quot;
+
+$EmptyLine = qr/^\s*\Z/;
+
+$CSharpComment = qr/\/\/.*/;
+
+$CSharpKeywords = qr/
+  \b
+  (
+    abstract | as | base | bool | break | byte | case |
+    catch | char | checked | class | const | continue |
+    decimal | default | delegate | do | double | else |
+    enum | event | explicit | extern | false | finally |
+    fixed | float | for | foreach | goto | if | implicit |
+    in | int | interface | internal | is | lock | long |
+    namespace | new | null | object | operator | out |
+    override | partial | params | private | protected |
+    public | readonly | ref | return | sbyte | sealed |
+    short | sizeof | stackalloc | static | string |
+    struct | switch | this | throw | true | try | typeof |
+    uint | ulong | unchecked | unsafe | ushort | using |
+    virtual | volatile | void | where | while | yield
+  )
+  \b
+/x;
+
+print &quot;&lt;html&gt;&lt;head&gt;&lt;link rel='stylesheet' href='csharp.css'&gt;&lt;\/head&gt;&lt;body&gt;&lt;div class='code'&gt;\r\n&quot;;
+
+@file = &lt;&gt;;
+foreach(@file)
+{
+  /(^\s*\/\/.*)/      &amp;&amp; do { print &quot;&lt;div class='comment'&gt;$1&lt;\/div&gt;\r\n&quot;; next; };
+  /\G($EmptyLine)/    &amp;&amp; do { print &quot;&lt;div class='line'&gt;&amp;nbsp;&lt;\/div&gt;\r\n&quot;; next; };
+  
+  print &quot;&lt;div class='line'&gt;&quot;;
+  PARSER:
+  {
+    m/\G($CSharpComment)/gc       &amp;&amp; do { print &quot;&lt;span class='comment'&gt;$1&lt;\/span&gt;&quot;; redo; };
+    m/\G($DoubleQuotedString)/gc  &amp;&amp; do { print &quot;&lt;span class='stringliteral'&gt;$1&lt;\/span&gt;&quot;; redo; };
+    m/\G($CSharpQuotedString)/gc  &amp;&amp; do { print &quot;&lt;span class='stringliteral'&gt;@$1&lt;\/span&gt;&quot;; redo; };
+    m/\G($CSharpKeywords)/gc      &amp;&amp; do { print &quot;&lt;span class='keyword'&gt;$1&lt;\/span&gt;&quot;; redo; };
+
+    m/\G\ /gc                     &amp;&amp; do { print &quot;&amp;nbsp;&quot;; redo; };
+    m/\G(\r)/gc                   &amp;&amp; do { print &quot;\r\n&quot;; redo; };
+    m/\G(.)/gc                    &amp;&amp; do { print $1; redo; };
+    print &quot;&lt;\/div&gt;\r\n&quot;;
+  }
+}
+
+print &quot;&lt;\/div&gt;&lt;\/body&gt;&lt;\/html&gt;\r\n&quot;;
+</code></pre><p>I use an external <span class="caps">CSS</span> stylesheet to define the appropriate formatting for this <span class="caps">HTML</span>:
+
+<pre><code>
+.code
+{
+  font-family: courier new;
+  font-size: 1em;
+}
+
+.comment 
+{
+  color: green;
+}
+
+.keyword
+{
+  color: blue;
+}
+
+.stringliteral
+{
+  color: red;
+}
+</code></pre><p>Here's some sample <span class="caps">HTML</span> that was generated:
+<br>
+<br>
+<div class='code'>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System;</div>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System.Drawing;</div>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System.Drawing.Drawing2D;</div>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System.Drawing.Imaging;</div>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System.IO;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'><span class='keyword'>namespace</span>&nbsp;Blog</div>
+
+<div class='line'>{</div>
+
+<div class='line'>&nbsp;&nbsp;<span class='keyword'>public</span>&nbsp;<span class='keyword'>sealed</span>&nbsp;<span class='keyword'>class</span>&nbsp;ThumbnailGenerator</div>
+
+<div class='line'>&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>readonly</span>&nbsp;<span class='keyword'>string</span>&nbsp;directory_;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>readonly</span>&nbsp;<span class='keyword'>int</span>&nbsp;width_;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>readonly</span>&nbsp;<span class='keyword'>int</span>&nbsp;height_;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>readonly</span>&nbsp;<span class='keyword'>int</span>&nbsp;border_;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;Bitmap&nbsp;thumbnails_;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;ThumbnailGenerator(<span class='keyword'>string</span>&nbsp;directory,&nbsp;<span class='keyword'>int</span>&nbsp;width,&nbsp;<span class='keyword'>int</span>&nbsp;height,&nbsp;<span class='keyword'>int</span>&nbsp;border)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;directory_&nbsp;&nbsp;=&nbsp;directory;&nbsp;<span class='comment'>// test public</span></div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;width;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;height;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;border;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>public</span>&nbsp;<span class='keyword'>static</span>&nbsp;ThumbnailGenerator&nbsp;CreateThumbnailsFromDirectory(<span class='keyword'>string</span>&nbsp;directory,&nbsp;<span class='keyword'>int</span>&nbsp;width,&nbsp;<span class='keyword'>int</span>&nbsp;height,&nbsp;<span class='keyword'>int</span>&nbsp;border)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;ThumbnailGenerator(directory,&nbsp;width,&nbsp;height,&nbsp;border);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>public</span>&nbsp;<span class='keyword'>string</span>&nbsp;Directory</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get&nbsp;{&nbsp;<span class='keyword'>return</span>&nbsp;directory_;&nbsp;}</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;Bitmap&nbsp;CreateThumbnailBitmap(<span class='keyword'>int</span>&nbsp;thumbnails)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;Bitmap(width_&nbsp;*&nbsp;thumbnails,&nbsp;height_);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;Size&nbsp;GetThumbnailBounds()</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;Size(width_&nbsp;-&nbsp;2&nbsp;*&nbsp;border_,&nbsp;height_&nbsp;-&nbsp;2&nbsp;*&nbsp;border_);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;RectangleF&nbsp;GetLandscapeThumbnailBounds(Bitmap&nbsp;source,&nbsp;<span class='keyword'>int</span>&nbsp;number)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SizeF&nbsp;thumbnailBounds&nbsp;=&nbsp;GetThumbnailBounds();</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;width&nbsp;=&nbsp;thumbnailBounds.Width;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;height&nbsp;=&nbsp;thumbnailBounds.Width&nbsp;/&nbsp;source.Width&nbsp;*&nbsp;source.Height;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;x&nbsp;=&nbsp;number&nbsp;*&nbsp;width_&nbsp;+&nbsp;border_;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;y&nbsp;=&nbsp;border_&nbsp;+&nbsp;(thumbnailBounds.Height&nbsp;-&nbsp;height)&nbsp;/&nbsp;2;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;RectangleF(x,&nbsp;y,&nbsp;width,&nbsp;height);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;RectangleF&nbsp;GetPortraitThumbnailBounds(Bitmap&nbsp;source,&nbsp;<span class='keyword'>int</span>&nbsp;number)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SizeF&nbsp;thumbnailBounds&nbsp;=&nbsp;GetThumbnailBounds();</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;width&nbsp;=&nbsp;thumbnailBounds.Height&nbsp;/&nbsp;source.Height&nbsp;*&nbsp;source.Width;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;height&nbsp;=&nbsp;thumbnailBounds.Height;&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;x&nbsp;=&nbsp;number&nbsp;*&nbsp;width_&nbsp;+&nbsp;border_&nbsp;+&nbsp;(thumbnailBounds.Width&nbsp;-&nbsp;width)&nbsp;/&nbsp;2;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;y&nbsp;=&nbsp;border_;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;RectangleF(x,&nbsp;y,&nbsp;width,&nbsp;height);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>void</span>&nbsp;CreateThumbnail(<span class='keyword'>string</span>&nbsp;path,&nbsp;<span class='keyword'>int</span>&nbsp;number)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>using</span>&nbsp;(Bitmap&nbsp;source&nbsp;=&nbsp;<span class='keyword'>new</span>&nbsp;Bitmap(path))</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RectangleF&nbsp;bounds;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>if</span>&nbsp;(source.Width&nbsp;&gt;&nbsp;source.Height)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bounds&nbsp;=&nbsp;GetLandscapeThumbnailBounds(source,&nbsp;number);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>else</span></div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bounds&nbsp;=&nbsp;GetPortraitThumbnailBounds(source,&nbsp;number);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>using</span>&nbsp;(Graphics&nbsp;g&nbsp;=&nbsp;Graphics.FromImage(thumbnails_))</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.SmoothingMode&nbsp;=&nbsp;SmoothingMode.HighQuality;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.DrawImage(source,&nbsp;bounds);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;ImageCodecInfo&nbsp;GetEncoder(<span class='keyword'>string</span>&nbsp;mimeType)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImageCodecInfo[]&nbsp;encoders&nbsp;=&nbsp;ImageCodecInfo.GetImageDecoders();</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>for</span>&nbsp;(<span class='keyword'>int</span>&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;encoders.Length;&nbsp;++i)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>if</span>&nbsp;(encoders[i].MimeType&nbsp;==&nbsp;mimeType)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;encoders[i];</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>null</span>;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>void</span>&nbsp;Save(<span class='keyword'>string</span>&nbsp;path,&nbsp;<span class='keyword'>int</span>&nbsp;quality)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>if</span>&nbsp;(thumbnails_&nbsp;==&nbsp;<span class='keyword'>null</span>)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>throw</span>&nbsp;<span class='keyword'>new</span>&nbsp;Exception(<span class='stringliteral'>"You must resize the public bitmap before you save it."</span>);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImageCodecInfo&nbsp;ci&nbsp;=&nbsp;GetEncoder(<span class='stringliteral'>"image/jpeg"</span>);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>if</span>&nbsp;(ci&nbsp;==&nbsp;<span class='keyword'>null</span>)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>throw</span>&nbsp;<span class='keyword'>new</span>&nbsp;Exception(<span class='stringliteral'>"Failed to get <span class="caps">JPEG</span> image encoder."</span>);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EncoderParameters&nbsp;parameters&nbsp;=&nbsp;<span class='keyword'>new</span>&nbsp;EncoderParameters(1);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameters.Param<sup class="footnote"><a href="http://www.iunknown.com/000410.html#fn0">0</a></sup>&nbsp;=&nbsp;<span class='keyword'>new</span>&nbsp;EncoderParameter(Encoder.Quality,&nbsp;(<span class='keyword'>long</span>)quality);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thumbnails_.Save(path,&nbsp;ci,&nbsp;parameters);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>public</span>&nbsp;<span class='keyword'>void</span>&nbsp;Run(<span class='keyword'>string</span>&nbsp;thumbnailFile,&nbsp;<span class='keyword'>int</span>&nbsp;quality)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>string</span>[]&nbsp;files&nbsp;=&nbsp;System.IO.Directory.GetFiles(Directory,&nbsp;@<span class='stringliteral'>"*.jpg but "</span><span class='stringliteral'>"this is a test"</span><span class='stringliteral'>""</span>);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thumbnails_&nbsp;=&nbsp;CreateThumbnailBitmap(files.Length);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>int</span>&nbsp;imageNumber&nbsp;=&nbsp;0;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>foreach</span>&nbsp;(<span class='keyword'>string</span>&nbsp;file&nbsp;<span class='keyword'>in</span>&nbsp;files)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CreateThumbnail(file,&nbsp;imageNumber++);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save(thumbnailFile,&nbsp;quality);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;&nbsp;}</div>
+
+<div class='comment'>//</div>
+
+<div class='comment'>//	class App</div>
+
+<div class='comment'>//	{</div>
+
+<div class='comment'>//		[STAThread]</div>
+
+<div class='comment'>//		static void Main(string[] args)</div>
+
+<div class='comment'>//		{</div>
+
+<div class='comment'>//      Generator generator = Generator.CreateThumbnailsFromDirectory(@"c:\Dev\Blog\Web\Galleries\Barcelona\", 64, 64, 4);</div>
+
+<div class='comment'>//      generator.Run(@"c:\Dev\Blog\Web\Galleries\Barcelona\thumbnails.db", 80);</div>
+
+<div class='comment'>//		}</div>
+
+<div class='comment'>//	}</div>
+
+<div class='line'>}</div>
+
+</div>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000410.html">02:45 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=410" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=410" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000409"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/153"
+    dc:title="Zestyfind: another reason to not run as local admin"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000409"
+    dc:subject="Blog"
+    dc:description="I just got back from a neighbor&apos;s whose computer has been &quot;taken over&quot; by ZestyFind. The trojan that is installed on the computer pops up random ads on your computer, and takes over your search windows. If you try to..."
+    dc:creator="John"
+    dc:date="2004-02-14T01:16:02-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000409"></a>
+<h3 class="title">Zestyfind: another reason to not run as local admin</h3>
+
+<p>I just got back from a neighbor's whose computer has been "taken over" by ZestyFind. The trojan that is installed on the computer pops up random ads on your computer, and takes over your search windows. If you try to visit google, you'll wind up seeing a zestyfind search window showing up on top of the google window.</p>
+
+<p>I spent some time tracking down the usual places where stuff like this likes to hide. There's an interesting layering of different mechanisms in place. There's software installed into <code>HKLM\Software\Microsoft\Windows\CurrentVersion\Run</code>, as one might expect. There are <span class="caps">NT </span>Services installed onto your computer. There's a whole bunch of suspect .exe files installed into the <code>\Windows</code> directory. I hunted down quite a few of these things and eliminated them (using tools like Process Explorer and Spy++), and it was still there. </p>
+
+<p>My neighbor didn't know how most of that stuff got there. He thought it had something to do with <a href="http://www.dqsd.net">Dave Bau's most excellent search bar</a>. But I run that every day on my computers without any problems. All of his anti-virus software and personal firewall software was up to date as well. </p>
+
+<p>In the end, we figured it would be faster for him to repave than it would be for me to track down the real cause of the problem. By not running as a local administrator, it would be much harder for him to download and install ActiveX controls in his browser, which is how we figure the trojan got onto his computer in the first place. </p>
+
+<p>Be careful out there.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000409.html">01:16 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=409" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=409" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000408"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/152"
+    dc:title="Where did the security tab go in XP?"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000408"
+    dc:subject="Blog"
+    dc:description="Until recently, I have NEVER run a copy of Windows XP that wasn&apos;t a member of a domain. As part of my switch to the Virtual PC lifestyle, I created a number of VPC&apos;s that are standalone computers. Today, I..."
+    dc:creator="John"
+    dc:date="2004-02-13T13:20:44-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 13, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000408"></a>
+<h3 class="title">Where did the security tab go in XP?</h3>
+
+<p>Until recently, I have <span class="caps">NEVER</span> run a copy of Windows XP that wasn't a member of a domain. As part of my switch to the Virtual PC lifestyle, I created a number of <span class="caps">VPC</span>'s that are standalone computers. Today, I went to change some file <span class="caps">DACL</span>'s and to my amazement, the Security Tab wasn't there! Whoa. After a bit of Googling, I found <a href="http://windows.about.com/library/tips/bltip542.htm">this</a>. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000408.html">01:20 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=408" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=408" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000407"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/151"
+    dc:title="Writing YABE (Yet Another Blog Engine) in ASP.NET 2.0"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000407"
+    dc:subject="Blog"
+    dc:description="I&apos;ve got most of the core of my new ASP.NET 2.0 blogging engine working now. It&apos;s been a fun experience, and I&apos;ve had an opportunity to test about 50% of the new features of ASP.NET 2.0. So far I really..."
+    dc:creator="John"
+    dc:date="2004-02-12T00:18:21-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 12, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000407"></a>
+<h3 class="title">Writing YABE (Yet Another Blog Engine) in ASP.NET 2.0</h3>
+
+<p>I've got most of the core of my new <span class="caps">ASP.NET 2.0</span> blogging engine working now. It's been a fun experience, and I've had an opportunity to test about 50% of the new features of <span class="caps">ASP.NET 2.0. </span>So far I really like a lot of what I've tried. Here's a list of the features that I'm using in the engine:</p>
+
+
+<ul>
+<li>Image handlers (the new .asix files)</li>
+<li>Themes </li>
+<li>Master pages</li>
+<li>Web parts</li>
+<li>Generics</li>
+</ul>
+
+<p>Here's a list of 1.x features that I'm using as well:</p>
+
+
+<ul>
+<li>User controls</li>
+<li>Custom controls</li>
+<li><span class="caps">XSLT</span><sup class="footnote"><a href="http://www.iunknown.com/000407.html#fn1">1</a></sup> </li>
+<li>DataList / DataGrid and a combination of Eval() and <a href="http://www.iunknown.com/000405.html">old-school DataBinder.Eval() databinding</a>.</li>
+<li>System.Drawing stuff</li>
+<li>Client-side javascript scripts</li>
+</ul>
+
+<p>I can definitely attest to the fact that I've written this engine using far fewer lines of code than was required by <span class="caps">ASP.NET 1</span>.x. I'm spending a lot of time refactoring code in <span class="caps">ASP.NET 2.0</span> because I can. If I have enough cycles, I'll back-port my blog engine to <span class="caps">ASP.NET 1</span>.x and do a line count comparison.</p>
+
+<p>One thing that is annoying about the web parts implementation in the alpha bits: it spews out some really nasty-looking &lt;table&gt; elements. I'm really hoping that the <span class="caps">ASP.NET</span> team provides an option to render using &lt;div&gt; elements and <span class="caps">CSS</span> table layout attributes instead. I'm trying to make the <span class="caps">HTML</span> that my blog engine spits out compliant with the <a href="http://www.csszengarden.com"><span class="caps">CSS </span>Zen Garden <span class="caps">HTML</span></a> so that I can leverage some of the really awesome <span class="caps">CSS</span> design work that has gone into that <span class="caps">HTML</span> schema. This means that I'm going to have to punt web parts until this gets fixed. Oh well, such is life with bits that are a year away from shipping :)</p>
+
+<p>[1] Because the <span class="caps">XML</span>DataSource object isn't working in the alpha bits. It was a lot of fun writing some <span class="caps">XSLT</span> again.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000407.html">12:18 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=407" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=407" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000406"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/150"
+    dc:title="Refactoring in ASP.NET 2.0 "
+    dc:identifier="http://www.iunknown.com/2004_02.html#000406"
+    dc:subject="Blog"
+    dc:description="I&apos;ve been spending some time implementing a blog engine as an excuse to spend some quality time with ASP.NET 2.0. I started off by writing code the way I would have using ASP.NET 1.x. Once I got rolling, however, I..."
+    dc:creator="John"
+    dc:date="2004-02-08T10:36:19-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 08, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000406"></a>
+<h3 class="title">Refactoring in ASP.NET 2.0 </h3>
+
+<p>I've been spending some time implementing a blog engine as an excuse to spend some quality time with <span class="caps">ASP.NET 2.0. I</span> started off by writing code the way I would have using <span class="caps">ASP.NET 1</span>.x. Once I got rolling, however, I started using some of the new <span class="caps">ASP.NET 2.0</span> features and something struck me right away: I was refactoring my application.</p>
+
+<p>My .aspx pages and my code separation files got smaller. I wound up using a mix of custom controls, user controls, master pages, and web parts to build smaller, and <strong>more understandable</strong> abstractions. This is really important, since it is far easier to understand what a specific part of my site is doing without having to wade through reams of irrelevant code. </p>
+
+<p>One thing, however, that I can't wait to see is a fix for the <a href="http://www.iunknown.com/000400.html">project reference bug</a>. It was a frustrating experience building my custom control because I couldn't recompile <strong>just the control</strong>. I had to run the application before I could see whether it could compile, and this put a significant drag on my productivity. <span class="caps">CTRL</span>-SHIFT-B is part of my developer lifestyle :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000406.html">10:36 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=406" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=406" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000405"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/149"
+    dc:title="User Control data binding bug in ASP.NET 2.0"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000405"
+    dc:subject="Blog"
+    dc:description="I just spent some time tracking down a bizarre bug in Venus (ASP.NET 2.0). A bit of background: when you&apos;re programming with templated controls like a DataList, you often use databinding expressions to bind fields of the current row to..."
+    dc:creator="John"
+    dc:date="2004-02-07T01:21:24-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 07, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000405"></a>
+<h3 class="title">User Control data binding bug in ASP.NET 2.0</h3>
+
+<p>I just spent some time tracking down a bizarre bug in Venus (ASP.NET 2.0). A bit of background: when you're programming with templated controls like a <code>DataList</code>, you often use databinding expressions to bind fields of the current row to a control. For example:</p>
+
+<pre><code>
+
+&lt;asp:DataList runat=&quot;server&quot;&gt;
+  &lt;itemtemplate&gt;
+    &lt;asp:label runat=&quot;server&quot; text='&lt;%# DataBinder.Eval(Container.DataItem, &quot;field&quot;) %&gt;'/&gt;
+  &lt;/itemtemplate&gt;
+&lt;/asp:DataList&gt;
+
+</code></pre><p>The databinding expression, <code>DataBinder.Eval(Container.DataItem, &quot;field&quot;)</code> is rather verbose, however. In <span class="caps">ASP.NET 2.0,</span> this expression is simplified to: <code>Eval(&quot;field&quot;)</code>. Much, better, right?</p>
+
+<p>Now let's look at how this is implemented. There is a new method on the <code>Page</code> class called <code>Eval</code>. Note that they put this helper method in the <code>Page</code> class ...</p>
+
+<p>Tonight, I was moving some code to a user control. All of a sudden, my <code>Eval(...)</code> expressions were blowing up with compiler errors. This, of course, is due to the fact that <code>Eval(...)</code> was added to only the <code>Page</code> class, and not to a class that both <code>UserControl</code> and <code>Page</code> derive from. Ooops. </p>
+
+<p>Moral of the story: when using the Alpha bits, you'll need to revert to the old-school <code>DataBinder.Eval()</code> syntax when databinding in a user control.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000405.html">01:21 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=405" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=405" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000404"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/148"
+    dc:title="Resizing JPEG images using System.Imaging"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000404"
+    dc:subject="Blog"
+    dc:description="I needed to resize an image on my laptop today, and realized that I didn&apos;t have Photoshop installed since my last repave. So I just whipped up a simple little C# class that will do the dirty work. The nice..."
+    dc:creator="John"
+    dc:date="2004-02-06T12:13:29-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 06, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000404"></a>
+<h3 class="title">Resizing JPEG images using System.Imaging</h3>
+
+<p>I needed to resize an image on my laptop today, and realized that I didn't have Photoshop installed since my last repave. So I just whipped up a simple little C# class that will do the dirty work. The nice feature of this class is the ability to specify the image quality of the saved <span class="caps">JPEG</span> image. Enjoy!</p>
+
+<pre><code>
+public sealed class Resizer
+{
+  private Bitmap bitmap_;
+  private Bitmap result_;
+
+  private Resizer(string path)
+  {
+    bitmap_ = new Bitmap(path, true);
+  }
+
+  private ImageCodecInfo GetEncoder(string mimeType)
+  {
+    ImageCodecInfo[] encoders = ImageCodecInfo.GetImageDecoders();
+
+    for (int i = 0; i &lt; encoders.Length; ++i)
+      if (encoders[i].MimeType == mimeType)
+        return encoders[i];
+
+    return null;
+  }
+
+  public static Resizer CreateFromPath(string path)
+  {
+    return new Resizer(path);
+  }
+
+  public Bitmap Bitmap
+  {
+    get { return bitmap_; }
+  }
+
+  public void Resize(Size size)
+  {
+    if (result_ != null)
+      result_.Dispose();
+
+    result_ = new Bitmap(bitmap_, size);
+    using (Graphics g = Graphics.FromImage(result_))
+    {
+      g.SmoothingMode = SmoothingMode.HighQuality;
+      g.DrawImage(result_, 0, 0, size.Width, size.Height);
+    }
+  }
+
+  public void Resize(Size size, string path, int quality)
+  {
+    Resize(size);
+    Save(path, quality);
+  }
+
+  public void Save(string path, int quality)
+  {
+    if(result_ == null)
+      throw new Exception(&quot;You must resize the bitmap before you save it.&quot;);
+
+    ImageCodecInfo ci = GetEncoder(&quot;image/jpeg&quot;);
+    if(ci == null)
+      throw new Exception(&quot;Failed to get JPEG image encoder.&quot;);
+
+    EncoderParameters parameters = new EncoderParameters(1);
+    parameters.Param[0] = new EncoderParameter(Encoder.Quality, (long)quality);
+    result_.Save(path, ci, parameters);
+  }
+}
+</code></pre>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000404.html">12:13 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=404" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=404" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000403"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/147"
+    dc:title="Building a new desktop and RAID performance"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000403"
+    dc:subject="Blog"
+    dc:description="I finally got around to updating my venerable desktop computer this weekend. It was a 1.6GHz P4 with 768MB RDRAM. I simply needed more RAM to run multiple virtual computers simultaneously using VPC. After pricing 512MB RDRAM RIMM&apos;s, I realized..."
+    dc:creator="John"
+    dc:date="2004-02-06T12:06:15-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000403"></a>
+<h3 class="title">Building a new desktop and RAID performance</h3>
+
+<p>I finally got around to updating my venerable desktop computer this weekend. It was a 1.6GHz P4 with 768MB <span class="caps">RDRAM. I</span> simply needed more <span class="caps">RAM</span> to run multiple virtual computers simultaneously using <span class="caps">VPC. </span>After pricing 512MB <span class="caps">RDRAM RIMM</span>'s, I realized that it would be cheaper to just buy a whole new computer. </p>
+
+<p>I went down to my local computer parts store and went home with a bag of parts to build my new desktop:</p>
+
+
+<ul>
+<li><span class="caps">ASUS P4P800</span> motherboard</li>
+<li>2 120GB Seagate 7200RM <span class="caps">SATA</span> drives</li>
+<li>4 Kingston 512MB "3A" DIMMs</li>
+<li>Intel <span class="caps">P4 2.8C</span></li>
+<li>Antec "Silence" case</li>
+<li>Toshiba 4X <span class="caps">DVD</span>-R/RW <span class="caps">DVD</span></li>
+</ul>
+
+<p>Since I already have a 128MB <span class="caps">ASUS 9560VS</span> dual <span class="caps">DVI</span> video card to drive my twin Samsung 172T <span class="caps">DVI</span> panels, I skipped upgrading the video subsystem.</p>
+
+<p>It's been over two years since I built a desktop <span class="caps">PC. I</span> was blown away at how much attention to detail there was in the Antec case. This case, which includes a 380W power supply, is &lt; $100US, and I had been accustomed to crappy workmanship in cases with this price tag. That combined with assembling the case using <span class="caps">SATA</span> connectors instead of ribbon connectors made for an incredibly pleasant experience. I also had a great helper:</p>
+
+<p><img src="Files/mafoo_engineer.jpg" alt="Building his first computer"></p>
+
+<p>I created a <span class="caps">RAID0</span> array using the built-in Intel <span class="caps">ICH5R SATA RAID</span> controller. This, and an earlier discussion with <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a> about <span class="caps">RAID</span> controllers got me interested in this hardware category. A bit of searching revealed a number of places where there are comprehensive reviews of various controllers. </p>
+
+<p>One of the most interesting that I read was one created by <a href="http://research.microsoft.com/~Gray/">Jim Gray</a>. Titled <a href="ftp://ftp.research.microsoft.com/pub/tr/tr-2003-70.pdf">A Quick Look at Serial <span class="caps">ATA </span>(SATA) Performance</a>, it provides a quick look at the performance characteristics of a 4-port 3Ware 8506-4 controller vs. a 4-port Highpoint 1540 controller. The 3Ware card is ~$86 / port vs. ~$18 / port for the Highpoint card. The 3Ware card provides significantly better sequential I/O performance than the Highpoint card, but the Highpoint card provides somewhat better random I/O performance. The sequential I/O performance of the 3Ware card can partially be explained by the bus connector; the 3Ware card supports 66MHz/64bit (528MBps) <span class="caps">PCI</span> interface vs. the 33MHz/32bit (132MBps) interface of the Highpoint card (see Figure 1 from the review). </p>
+
+<p>Bottom line: inexpensive <span class="caps">RAID</span> controllers have a significant price/performance advantage with random I/O performance.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000403.html">12:06 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=403" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=403" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_02.html#000402"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/146"
+    dc:title="Whidbey implementation of System.CodeDom.CodeDomProvider.CreateParser()"
+    dc:identifier="http://www.iunknown.com/2004_02.html#000402"
+    dc:subject="Blog"
+    dc:description="{ ldnull ret } Bummer. It would be so great if this were implemented - it would make it much easier to create a whole new generation of source code analysis tools for use in automated build processes...."
+    dc:creator="John"
+    dc:date="2004-02-05T08:41:23-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">February 05, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000402"></a>
+<h3 class="title">Whidbey implementation of System.CodeDom.CodeDomProvider.CreateParser()</h3>
+
+<p>{<br />
+  ldnull<br />
+  ret<br />
+}</p>
+
+<p>Bummer. It would be so great if this were implemented - it would make it much easier to create a whole new generation of source code analysis tools for use in automated build processes. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000402.html">08:41 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=402" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=402" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

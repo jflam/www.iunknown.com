@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: RubyCLR now resolves types in top-level namespaces</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/107/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/03/31/rubyclr-now-resolves-types-in-top-level-namespaces" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:41-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:16f2ac51f97a948cec6da433493a0d63</id>
+    <published>2006-03-31T17:50:00-08:00</published>
+    <updated>2006-08-21T15:55:41-07:00</updated>
+    <title type="html">RubyCLR now resolves types in top-level namespaces</title>
+    <link href="http://www.iunknown.com/articles/2006/03/31/rubyclr-now-resolves-types-in-top-level-namespaces" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;Up until now, RubyCLR did not support finding types in the top-level (global) namespace. If you were writing code that used types in the global namespace (which you will if you don&amp;#8217;t scope things by namespace &amp;#8211; typically for your own libraries), it wouldn&amp;#8217;t work correctly.&lt;/p&gt;
+
+
+	&lt;p&gt;I had punted on this bug for a while but finally had to fix it when I added JScript.NET compilation support to RubyCLR today. JScript.NET does not support declaring types in namespaces (as far as I can tell &amp;#8211; I&amp;#8217;m by no means a JScript.NET dev).&lt;/p&gt;
+
+
+	&lt;p&gt;It required refactoring how I handled the boundary case of a type that wasn&amp;#8217;t scoped by a Ruby Module.&lt;/p&gt;
+
+
+	&lt;p&gt;So this code &lt;em&gt;finally&lt;/em&gt; works:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+inline :jscript do |compiler|
+  compiler.compile &amp;lt;&amp;lt;-EOF
+    class JScriptClass {
+      function sayHello() {
+        return "hello" 
+      }
+    }
+  EOF
+end
+
+def test_inline_jscript
+  assert_equal 'hello', JScriptClass.new.sayHello
+end
+&lt;/code&gt;&lt;/pre&gt;</summary>
+    <content type="html">&lt;p&gt;Up until now, RubyCLR did not support finding types in the top-level (global) namespace. If you were writing code that used types in the global namespace (which you will if you don&amp;#8217;t scope things by namespace &amp;#8211; typically for your own libraries), it wouldn&amp;#8217;t work correctly.&lt;/p&gt;
+
+
+	&lt;p&gt;I had punted on this bug for a while but finally had to fix it when I added JScript.NET compilation support to RubyCLR today. JScript.NET does not support declaring types in namespaces (as far as I can tell &amp;#8211; I&amp;#8217;m by no means a JScript.NET dev).&lt;/p&gt;
+
+
+	&lt;p&gt;It required refactoring how I handled the boundary case of a type that wasn&amp;#8217;t scoped by a Ruby Module.&lt;/p&gt;
+
+
+	&lt;p&gt;So this code &lt;em&gt;finally&lt;/em&gt; works:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+inline :jscript do |compiler|
+  compiler.compile &amp;lt;&amp;lt;-EOF
+    class JScriptClass {
+      function sayHello() {
+        return "hello" 
+      }
+    }
+  EOF
+end
+
+def test_inline_jscript
+  assert_equal 'hello', JScriptClass.new.sayHello
+end
+&lt;/code&gt;&lt;/pre&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Fatih Orhan</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-04-05T15:55:03-07:00</published>
+    <updated>2006-08-21T19:08:06-07:00</updated>
+    <title type="html">Comment on RubyCLR now resolves types in top-level namespaces by Fatih Orhan</title>
+    <link href="http://www.iunknown.com/articles/2006/03/31/rubyclr-now-resolves-types-in-top-level-namespaces#comment-422" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Looking really nice. So with ability to inline C# (and JScript.NET), i can design forms in VS.NET IDE, inline some Designer generated code in my beloved Ruby and bind some events to it. oooh i can't wait :) when can we get it?
+And thank you for this, you filling a very needed gap with your bridge (eheh), i appreciate that.
+sorry if parts of this message didn't make sense, english is not my native language.&lt;/p&gt;</content>
+  </entry>
+</feed>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Lies, damn lies and benchmarks</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Lies, damn lies and benchmarks": comment by John Lam</title>
+      <description>&lt;p&gt;Rob, It&amp;#8217;s always fun to talk to students! Feel free to contact me later on about how this project is going.&lt;/p&gt;</description>
+      <pubDate>Wed, 09 Nov 2005 16:31:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/11/07/lies-damn-lies-and-benchmarks#comment-14</guid>
+      <link>http://www.iunknown.com/articles/2005/11/07/lies-damn-lies-and-benchmarks#comment-14</link>
+    </item>
+    <item>
+      <title>"Lies, damn lies and benchmarks": comment by Rob Loach</title>
+      <description>&lt;p&gt;Hi John,&lt;/p&gt;
+
+
+	&lt;p&gt;I met you at the Launch with Chris and just thought I&amp;#8217;d say hi.  I took a quick look at the stuff you did with the bridge and it perked my interested!  It&amp;#8217;s been pretty busy on the classes front (gotta feed the family), but when I get the chance, I&amp;#8217;ll take a longer look at it and tell you what I think.&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks a lot John, and I&amp;#8217;ll talk to you later.&lt;/p&gt;
+
+
+	&lt;p&gt;Rob Loach&lt;/p&gt;</description>
+      <pubDate>Tue, 08 Nov 2005 20:34:10 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/11/07/lies-damn-lies-and-benchmarks#comment-13</guid>
+      <link>http://www.iunknown.com/articles/2005/11/07/lies-damn-lies-and-benchmarks#comment-13</link>
+    </item>
+    <item>
+      <title>"Lies, damn lies and benchmarks" by jlam</title>
+      <description>&lt;p&gt;I decided to run some &lt;strong&gt;very&lt;/strong&gt; crude benchmarks using my Ruby / .NET bridge just to get a feel for where my code was in relation to the performance of other bridges. I know that my approach is correct and should yield excellent performance. There are, however, a number of optimizations that have yet to be implemented.&lt;/p&gt;
+
+
+	&lt;p&gt;The benchmark that I&amp;#8217;m using here is really attempting to isolate the interop performance of reading an integer from .NET and marshaling the result back to Ruby. I have a few more tricks up my sleeve for optimizing the performance of marshaling a value type back to Ruby from .NET that I haven&amp;#8217;t implemented yet, so this number is likely to improve.&lt;/p&gt;
+
+
+	&lt;p&gt;The C# code looks like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+ArrayList k = new ArrayList(); int r = 0;
+for(int i = 0; i &amp;lt; 1000000000; ++i)
+  r += k.Count;
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The Ruby code looks like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+a, b = ArrayList.new, 0
+benchmark.times { b += a.Count }
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I attempt to correct for Ruby loop overhead by subtracting the time taken to run this calculation:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+m = 0
+benchmark.times { m += 0 }
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The C# code ran at a rate of 205M iterations / second. The Ruby code ran at a corrected rate of 3.2M iterations / second.&lt;/p&gt;
+
+
+	&lt;p&gt;My bridge marshals an integer value type from .NET to Ruby at a rate that is 65X slower than a single register load. That&amp;#8217;s not bad for a start.&lt;/p&gt;
+
+
+	&lt;p&gt;By comparison, if you look at the SaltyPickle bridge that heavily relies on reflection, you&amp;#8217;ll find that their cost is on the order of 18,000X slower. They also have the side-effect that there is a lot of increased pressure on the GC to collect all of the boxed integers that are used by Reflection. It&amp;#8217;s unclear whether GC time is factored into their observed times.&lt;/p&gt;
+
+
+	&lt;p&gt;I need to run a real performance study later on once my bridge matures a bit more. But I think things are already going pretty well when my bridge runs &lt;strong&gt;275X faster&lt;/strong&gt; than an existing bridge :)&lt;/p&gt;
+
+</description>
+      <pubDate>Mon, 07 Nov 2005 07:00:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/07/lies-damn-lies-and-benchmarks"&gt;Lies, damn lies and benchmarks&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/07/lies-damn-lies-and-benchmarks"&gt;Lies, damn lies and benchmarks&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

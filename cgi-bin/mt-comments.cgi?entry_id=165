@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Securing the aspnet_wp.exe worker process</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Securing the aspnet_wp.exe worker process</div>
+
+
+<div class="comments-body">
+<p>excellent...</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www25.brinkster.com/rchildress">Rick</a> at November 23, 2002 04:29 PM</span>
+</div>
+<div class="comments-body">
+<p>I was unaware that I had aspnet_wp.exe on my machine.  I found out when I went into my user accounts to change my password and saw the ASP.NET Machine Account.  I am therefore concerned about why it is there and what it is used for.  Please enlighten me on this subject.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;dmprime&#64;zigs&#46;net">Dragon Master Prime</a> at June  8, 2003 07:39 PM</span>
+</div>
+<div class="comments-body">
+<p>The ASP.NET machine account is special, restricted privilege account that is created by the .NET Frameworks to host ASP.NET applications. If you are not using ASP.NET on your computer, you can safely disable this account.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at June  8, 2003 10:44 PM</span>
+</div>
+<div class="comments-body">
+<p>I just stumbled across two accounts that I was unaware were on my computer. One is "ASP.NET Machine A" I am concerned about how this may have gotten there to begin with. What it does, and if I need to worry about some kind of a security risk as a result. I wonder also, what would happen if I were to simpley delete the account. Does anyone have any information they can give me? Perhaps a link to some reference material even? I don't know if I can find this site again, or remember to come back here to look for a response, so probable to email me is the only way I would get it.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;alive4u3&#64;yahoo&#46;com">Jake</a> at September 19, 2003 10:44 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

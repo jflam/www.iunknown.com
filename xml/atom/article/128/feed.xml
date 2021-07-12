@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Hi-fidelity two-way binding in RubyCLR</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/128/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/05/08/hi-fidelity-two-way-binding-in-rubyclr" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:42-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:daaa4ccf631b57ee925b7da95443d086</id>
+    <published>2006-05-08T21:56:00-07:00</published>
+    <updated>2006-08-21T15:55:42-07:00</updated>
+    <title type="html">Hi-fidelity two-way binding in RubyCLR</title>
+    <link href="http://www.iunknown.com/articles/2006/05/08/hi-fidelity-two-way-binding-in-rubyclr" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;It feels like I&amp;#8217;ve just implemented another RubyCLR this weekend. And in a way, I did. In earlier versions of RubyCLR, binding was one way &amp;#8211; Ruby objects would hold onto references to &lt;span class="caps"&gt;CLR&lt;/span&gt; objects. &lt;span class="caps"&gt;CLR&lt;/span&gt; objects could interact with Ruby objects only via delegates that call Ruby blocks.&lt;/p&gt;
+
+
+	&lt;p&gt;Now binding is two-way.&lt;/p&gt;
+
+
+	&lt;p&gt;Ruby objects can be marshaled to the &lt;span class="caps"&gt;CLR&lt;/span&gt;, and the &lt;span class="caps"&gt;CLR&lt;/span&gt; can directly invoke methods on those objects. Furthermore, Ruby objects can fire events via delegates in &lt;span class="caps"&gt;CLR&lt;/span&gt; code. This means that I can now do data binding notifications.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a simple example:&lt;/p&gt;
+
+
+	&lt;p&gt;I use &lt;code&gt;ActiveRecord&lt;/code&gt; to read the first record from the &lt;code&gt;People&lt;/code&gt; table:&lt;/p&gt;
+
+
+&lt;code&gt;@john = Person.find_first&lt;/code&gt;
+
+	&lt;p&gt;Next I create a &lt;a href="http://msdn2.microsoft.com/en-US/library/system.windows.forms.bindingsource.aspx"&gt;BindingSource&lt;/a&gt; to act as a broker between &lt;code&gt;ActiveRecord&lt;/code&gt; and the data-aware controls in Windows Forms:&lt;/p&gt;
+
+
+&lt;code&gt;binding_source = @john.as_binding_source&lt;/code&gt;
+
+	&lt;p&gt;The calls to &lt;code&gt;create_textbox&lt;/code&gt; simply bind the &lt;code&gt;Text&lt;/code&gt; property of &lt;code&gt;TextBox&lt;/code&gt; controls to &lt;code&gt;ActiveRecord&lt;/code&gt; fields:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+create_textbox(form, 30, 10, binding_source, 'name')
+create_textbox(form, 60, 10, binding_source, 'age')    
+create_textbox(form, 60, 120, binding_source, 'age')
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Finally, I have a &lt;code&gt;Button&lt;/code&gt; that triggers a Ruby block that increments the &lt;code&gt;age&lt;/code&gt; property of the &lt;code&gt;ActiveRecord&lt;/code&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+change_button.click do |sender, args|
+  # Notice that I'm changing the ActiveRecord object here!
+  @john.age += 1
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;&lt;a href="http://rubyforge.org/plugins/scmsvn/viewcvs.php/trunk/Samples/DataBinding/bind_textboxes.rb?root=rubyclr&amp;#38;view=markup"&gt;Click here&lt;/a&gt; to see the entire sample.&lt;/p&gt;
+
+
+	&lt;p&gt;Behind the scenes, there is property change notification happening. &lt;code&gt;ActiveRecord&lt;/code&gt; objects in RubyCLR also implement the new &lt;a href="http://msdn2.microsoft.com/en-us/library/system.componentmodel.inotifypropertychanged.aspx"&gt;INotifyPropertyChanged&lt;/a&gt;. interface. This interface fires an event whenever a property in the &lt;code&gt;ActiveRecord&lt;/code&gt; object has changed.&lt;/p&gt;
+
+
+	&lt;p&gt;Once I got the two-way plumbing working, implementing &lt;code&gt;INotifyPropertyChanged&lt;/code&gt; was ridiculously easy:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+implements INotifyPropertyChanged
+
+alias activerecord_method_missing method_missing
+
+def method_missing(symbol, *params)
+  symbol_name   = symbol.to_s
+  equals_offset = symbol_name =~ /=$/
+
+  return activerecord_method_missing(symbol, *params) unless equals_offset
+
+  attribute_name = symbol_name[0..equals_offset - 1]
+
+  if !self.attributes.include?(attribute_name) or params.length != 1
+    return activerecord_method_missing(symbol, *params) 
+  end
+
+  write_attribute(attribute_name, params.first)
+  if defined?(@clr_shadow_object)
+    if @clr_shadow_object.property_changed != nil
+      @clr_shadow_object.property_changed.invoke(@clr_shadow_object,
+        PropertyChangedEventArgs.new(attribute_name))
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;If you squint just a little bit, you&amp;#8217;ll see that this code looks for a call to methods with the signature &lt;code&gt;zzz=&lt;/code&gt; where &lt;code&gt;zzz&lt;/code&gt; is a member of the &lt;code&gt;attributes&lt;/code&gt; collection of the &lt;code&gt;ActiveRecord&lt;/code&gt; object. I override the default &lt;code&gt;ActiveRecord&lt;/code&gt; implementation (which is also accomplished via &lt;code&gt;method_missing&lt;/code&gt;) of those methods to set the property &lt;strong&gt;and&lt;/strong&gt; fire the &lt;code&gt;PropertyChanged&lt;/code&gt; event.&lt;/p&gt;
+
+
+	&lt;p&gt;So this means that changes to &lt;code&gt;ActiveRecord&lt;/code&gt; objects &lt;em&gt;done in Ruby&lt;/em&gt; cause things to happen transparently in the &lt;span class="caps"&gt;CLR&lt;/span&gt;. And with very few lines of meta-programming code required to make it happen.&lt;/p&gt;
+
+
+	&lt;p&gt;The sound you hear right now is that of thousands of code generation folks slapping their foreheads in unison. Believe me, if you were coding up business entity objects in C#, you&amp;#8217;d be reaching for &lt;a href="http://www.codesmithtools.com/"&gt;CodeSmith&lt;/a&gt; right about now.&lt;/p&gt;
+
+
+	&lt;p&gt;But with Ruby you don&amp;#8217;t have to. And that&amp;#8217;s a good thing.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;It feels like I&amp;#8217;ve just implemented another RubyCLR this weekend. And in a way, I did. In earlier versions of RubyCLR, binding was one way &amp;#8211; Ruby objects would hold onto references to &lt;span class="caps"&gt;CLR&lt;/span&gt; objects. &lt;span class="caps"&gt;CLR&lt;/span&gt; objects could interact with Ruby objects only via delegates that call Ruby blocks.&lt;/p&gt;
+
+
+	&lt;p&gt;Now binding is two-way.&lt;/p&gt;
+
+
+	&lt;p&gt;Ruby objects can be marshaled to the &lt;span class="caps"&gt;CLR&lt;/span&gt;, and the &lt;span class="caps"&gt;CLR&lt;/span&gt; can directly invoke methods on those objects. Furthermore, Ruby objects can fire events via delegates in &lt;span class="caps"&gt;CLR&lt;/span&gt; code. This means that I can now do data binding notifications.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a simple example:&lt;/p&gt;
+
+
+	&lt;p&gt;I use &lt;code&gt;ActiveRecord&lt;/code&gt; to read the first record from the &lt;code&gt;People&lt;/code&gt; table:&lt;/p&gt;
+
+
+&lt;code&gt;@john = Person.find_first&lt;/code&gt;
+
+	&lt;p&gt;Next I create a &lt;a href="http://msdn2.microsoft.com/en-US/library/system.windows.forms.bindingsource.aspx"&gt;BindingSource&lt;/a&gt; to act as a broker between &lt;code&gt;ActiveRecord&lt;/code&gt; and the data-aware controls in Windows Forms:&lt;/p&gt;
+
+
+&lt;code&gt;binding_source = @john.as_binding_source&lt;/code&gt;
+
+	&lt;p&gt;The calls to &lt;code&gt;create_textbox&lt;/code&gt; simply bind the &lt;code&gt;Text&lt;/code&gt; property of &lt;code&gt;TextBox&lt;/code&gt; controls to &lt;code&gt;ActiveRecord&lt;/code&gt; fields:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+create_textbox(form, 30, 10, binding_source, 'name')
+create_textbox(form, 60, 10, binding_source, 'age')    
+create_textbox(form, 60, 120, binding_source, 'age')
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Finally, I have a &lt;code&gt;Button&lt;/code&gt; that triggers a Ruby block that increments the &lt;code&gt;age&lt;/code&gt; property of the &lt;code&gt;ActiveRecord&lt;/code&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+change_button.click do |sender, args|
+  # Notice that I'm changing the ActiveRecord object here!
+  @john.age += 1
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;&lt;a href="http://rubyforge.org/plugins/scmsvn/viewcvs.php/trunk/Samples/DataBinding/bind_textboxes.rb?root=rubyclr&amp;#38;view=markup"&gt;Click here&lt;/a&gt; to see the entire sample.&lt;/p&gt;
+
+
+	&lt;p&gt;Behind the scenes, there is property change notification happening. &lt;code&gt;ActiveRecord&lt;/code&gt; objects in RubyCLR also implement the new &lt;a href="http://msdn2.microsoft.com/en-us/library/system.componentmodel.inotifypropertychanged.aspx"&gt;INotifyPropertyChanged&lt;/a&gt;. interface. This interface fires an event whenever a property in the &lt;code&gt;ActiveRecord&lt;/code&gt; object has changed.&lt;/p&gt;
+
+
+	&lt;p&gt;Once I got the two-way plumbing working, implementing &lt;code&gt;INotifyPropertyChanged&lt;/code&gt; was ridiculously easy:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+implements INotifyPropertyChanged
+
+alias activerecord_method_missing method_missing
+
+def method_missing(symbol, *params)
+  symbol_name   = symbol.to_s
+  equals_offset = symbol_name =~ /=$/
+
+  return activerecord_method_missing(symbol, *params) unless equals_offset
+
+  attribute_name = symbol_name[0..equals_offset - 1]
+
+  if !self.attributes.include?(attribute_name) or params.length != 1
+    return activerecord_method_missing(symbol, *params) 
+  end
+
+  write_attribute(attribute_name, params.first)
+  if defined?(@clr_shadow_object)
+    if @clr_shadow_object.property_changed != nil
+      @clr_shadow_object.property_changed.invoke(@clr_shadow_object,
+        PropertyChangedEventArgs.new(attribute_name))
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;If you squint just a little bit, you&amp;#8217;ll see that this code looks for a call to methods with the signature &lt;code&gt;zzz=&lt;/code&gt; where &lt;code&gt;zzz&lt;/code&gt; is a member of the &lt;code&gt;attributes&lt;/code&gt; collection of the &lt;code&gt;ActiveRecord&lt;/code&gt; object. I override the default &lt;code&gt;ActiveRecord&lt;/code&gt; implementation (which is also accomplished via &lt;code&gt;method_missing&lt;/code&gt;) of those methods to set the property &lt;strong&gt;and&lt;/strong&gt; fire the &lt;code&gt;PropertyChanged&lt;/code&gt; event.&lt;/p&gt;
+
+
+	&lt;p&gt;So this means that changes to &lt;code&gt;ActiveRecord&lt;/code&gt; objects &lt;em&gt;done in Ruby&lt;/em&gt; cause things to happen transparently in the &lt;span class="caps"&gt;CLR&lt;/span&gt;. And with very few lines of meta-programming code required to make it happen.&lt;/p&gt;
+
+
+	&lt;p&gt;The sound you hear right now is that of thousands of code generation folks slapping their foreheads in unison. Believe me, if you were coding up business entity objects in C#, you&amp;#8217;d be reaching for &lt;a href="http://www.codesmithtools.com/"&gt;CodeSmith&lt;/a&gt; right about now.&lt;/p&gt;
+
+
+	&lt;p&gt;But with Ruby you don&amp;#8217;t have to. And that&amp;#8217;s a good thing.&lt;/p&gt;</content>
+  </entry>
+</feed>

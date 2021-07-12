@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Reverse-engineering Google</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000058.html" title="JitCost revisited" />
+
+<link rel="next" href="http://www.iunknown.com/000060.html" title="Compressed digital audio revealed" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000058.html">&laquo; JitCost revisited</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000060.html">Compressed digital audio revealed &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 05, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Reverse-engineering Google</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I've been writing my web log for just over two months now. It's been fun to read my web server logs to figure out exactly how people got to my site, and what web crawlers are visiting my site. I noticed that <A href="http://www.google.com/bot.html">GoogleBot</A> would come by several times before I actually saw anything appearing in their search engine. It took <A href="Weblog/fog0000000045.html">almost a month</A> before <A href="http://www.google.com">Google</A> finally recognized my existence and added me to their search results index.</P><br />
+<P>One of the things that I had coveted for quite a while was more frequent visits by GoogleBot, due to the fact that my web log's content changes several times a week (yes, I do strive for daily updates but sometimes work gets in the way ;). You can tell that Google visits your site frequently if you see a date on the line of green text that is underneath each search result. That's the date that Google last visited your site. If you don't have a date, that means that Google will only visit you roughly once a month (at least based on my experiments).</P><br />
+<P>Now, I didn't know what algorithm Google used to determine whether to increase its frequency of visits. Foolishly, I thought that they would try to look at the difference in content between visits to determine if the site had changed enough to be worth crawling more frequently, and gradually reduce the interval between crawls until it converged on your update frequency.[1]</P><br />
+<P>It all changed when I recently saw that Ingo Rammer, who maintains the excellent <A href="http://www.dotnetremoting.cc/">DotNetRemoting</A> web site, recently added a <A href="http://www.dotnetremoting.cc/DotNetCentric/">web log</A> to his site. I decided to do a <A href="http://www.google.com/search?hl=en&amp;q=ingo+rammer">search for Ingo Rammer</A> using Google and boy was I pissed off that he got a date in his green text! After all, he just started!!! So, this got me thinking ... what's different between Ingo's web page and mine? </P><br />
+<P>As it turned out, one word in particular stood out: the word WebLog in the title of his page. Would this work on my web site, I wondered? Well, you can <A href="http://www.google.com/search?hl=en&amp;q=john+lam">see for yourself now</A>. ;) It's the little things in life that make me happy ;)</P><br />
+<P>[1]&nbsp; I found <A href="http://pdclab.cs.ucdavis.edu/sws/SWS/KwongGertz-DB.pdf">this paper by Kwong and Gertz</A> that outlines one possible algorithm to predict the update frequency of a page based on historical data, the update frequency of nearby pages in its domain tree. </P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February  5, 2002 01:53 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="59" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000059.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

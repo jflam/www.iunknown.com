@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on The magic ratio 4:3 </title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: The magic ratio 4:3 </div>
+
+
+<div class="comments-body">
+<p>The portrait style layout isn't entirely an effect of influence from the paper medium.  Studies show that the narrower layouts are easier to read.  The eye has trouble reading very long lines, so many websites are specifically designed to use only a fraction of the width available on modern screens.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://software.ericsink.com/">Eric Sink</a> at October  2, 2003 06:28 PM</span>
+</div>
+<div class="comments-body">
+<p>Whoops, I forgot to mention that everything would be in a two or even possibly a three column format. I totally agree that it's far too difficult to read very long lines. </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October  2, 2003 07:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Will your newsletter look good on the wide-aspect (16:9) notebook from Dell that I hope to get for Christmas?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://hurcane.homelinux.net/blog">hurcane</a> at October  3, 2003 08:43 AM</span>
+</div>
+<div class="comments-body">
+<p>I hope so. It will probably be letter-boxed since 4:3 is the dominant format today. I'll make sure it looks good on my tiBook.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October  3, 2003 09:18 AM</span>
+</div>
+<div class="comments-body">
+<p>Bet I'm more frustrated than you john... haha. Aspect ratio aside... resolution is a killer too. Those stupid narrow layouts don't resize worth a shiz either.</p>
+
+<p>I've got a dell that's wide-aspect (a lil less that 16:9) running 1920x1200. Win/IE makes it painful to resize fonts (accessibility feature) cause most of teh stupid narrow layouts think they know better than the user.</p>
+
+<p>Enter Firebird (mozilla)... ctrl-scrollwheel sizes fonts... and guess what.?.? I'm usually viewing a stupid narrow layout with 3 words/column. hahahaha.</p>
+
+<p>Oh, oh... worse yet the font is so small that I had to bump up the windows (winXP but it doesn't matter) system font. OMG. An oversized system doesn't work well in web pages, but at least it works WORSE in windows proper. Virtually no application looks right after you up the system font size.</p>
+
+<p>That is all! ha!</p>
+
+<p>/jhd</p>
+<span class="comments-post">Posted by <a href="mailto&#58;blog&#64;dhom&#46;net">Dhominator</a> at October  7, 2003 02:50 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on What's the big deal about Safari?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: What's the big deal about Safari?</div>
+
+
+<div class="comments-body">
+<p>I dont think it's about "new solutions" for Apple, more of a shift to be not as dependant on MS.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.furrygoat.com">Steve Makofsky</a> at January 12, 2003 10:01 AM</span>
+</div>
+<div class="comments-body">
+<p>Agreed. But I can't help to think that this is pushing MS's buttons in the wrong way. But I can see things from Apple's point of view as well ... I like the fact that Keynote will light a fire underneath the PowerPoint team.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January 13, 2003 07:09 AM</span>
+</div>
+<div class="comments-body">
+<p><br />
+I am guessing it has less to do with MS specifically and generally more to do with the fact that it was a 3rd party that owns the primary browser for their platform.  Email and web browsing are obviously two big chunks, that I am sure they would want to have development control over.  I think "solving the web browsing problem" is just a nessesary step for them to have greater control over their software.  I expect safari will become more integrated with other mac software than they would be able to do with IE.  Branding may have also played a role, cause safari looks more like the other iApps than IE does.</p>
+<span class="comments-post">Posted by Dave Lee at January 13, 2003 12:43 PM</span>
+</div>
+<div class="comments-body">
+<p>Should we bet on Apple going to court over integrating Safari with other software?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www25.brinkster.com/rchildress">Rick</a> at January 13, 2003 01:26 PM</span>
+</div>
+<div class="comments-body">
+<p>One thing that stands out with Safari is their use of the brushed metal look. According to Apple's own UI guidelines, brushed metal apps are only for non-document oriented applications such as iTunes or iPhoto. However, web browsers are document oriented, so it doesn't really fit into the model.<br />
+I agree with Dave's integration observation. Safari gives OS X an integrated HTML parsing engine which is important for developers who want to leverage HTML in their own applications. It would be really nice if they could wrap it as a Cocoa control as well.<br />
+As for a lawsuit - I don't think that's likely since Apple controls the entire platform, unlike MS who was caught blocking entry to competitors on a platform that they didn't control completely.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January 13, 2003 09:29 PM</span>
+</div>
+<div class="comments-body">
+<p>I was being sarcastic :P</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www25.brinkster.com/rchildress">Rick</a> at January 13, 2003 09:32 PM</span>
+</div>
+<div class="comments-body">
+<p>one other thing?  how is enhancing, fixing and repackaging and existing library/product (khtml) a "new solution"?<br />
+I would agree with you 100% if they built it from scratch, but taking one of the several opensource html parser/engines and packaging is not a "new solution".  It is intelligent extension/re-use.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;jkaczor&#64;acoupleanerds&#46;com">Jason Kaczor</a> at January 14, 2003 07:58 PM</span>
+</div>
+<div class="comments-body">
+<p>The thing that rankles me about Safari is that Apple is making technical justifications as to why they built Safari. Apparently they just can't seem to bring themselves to tell the truth and say that they're sticking it to MS. It would be fun to be a fly on the wall at the post MacWorld meetings in the MS Mac Business Unit </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January 16, 2003 09:14 AM</span>
+</div>
+<div class="comments-body">
+<p>I dont' think that web browsing is a solved problem - and definetly its not sovled by IE. some points for thought<br />
+* There's a lot to be said about standard compliance which have not been said yet. also - web standards are always evolving and IE doesn't seem to keep up - mostly because the IE team is busy inventing their own standards.<br />
+* Competition is never a bad word, and if by releaseing a new project Apple will force MS to revamp their offerings for the Mac (IIRC IE for mac has not been updated in ell over a year now).</p>
+<span class="comments-post">Posted by <a href="mailto&#58;guss&#64;typo&#46;co&#46;il">Guss</a> at January 16, 2003 11:48 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

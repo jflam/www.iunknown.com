@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Microsoft vs. Open Source</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Microsoft vs. Open Source</div>
+
+
+<div class="comments-body">
+<p>John,<br />
+How are you?  A Fortune magazine article reports:<br />
+"[Microsoft] product development groups shower [Bill Gates] with meticulously researched 'opportunity maps' showing the competitive landscape for a certain software market."<br />
+These maps, of course, are foundational to Microsoft's efforts to come up with a package of services that are truly compelling and which would convince subscribers to sign up (the increase-lower-limit-of-expectations scenario).<br />
+What does a company look like that is optimized to develop opportunity maps?<br />
+As it happens, not long ago my business plan for an such a company was circulated internally at Microsoft.  I subsequently received the following e-mail from Randy Hinrichs, Manager of Microsoft Research's Learning Sciences<br />
+and Technology Group:<br />
+"Frank, you are a good man. Have you thought about joining this team? Your only alternative, of course, is venture capital. But their usual models require getting rid of the 'originator' within the first eighteen months. With Netscape it took a little longer, but you get the idea."<br />
+The business plan is online, at www.opportunityservices.com/businessplan.html.<br />
+Also, the Microsoft-specific lead-in can be seen at www.opportunityservices.com/indexms.html<br />
+Let me know if you have any questions, comments, etc.<br />
+Enjoy,<br />
+Frank Ruscica<br />
+Founder<br />
+The Opportunity Services Group :: Have Fun to Get Ready<br />
+www.opportunityservices.com<br />
+http://www.opportunityservices.com/indexms.html</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.opportunityservices.com">Frank Ruscica</a> at March 11, 2003 09:07 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

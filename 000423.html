@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Gaining administrator privileges on a web server</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000422.html" title="Obscure ASP security hole" />
+
+<link rel="next" href="http://www.iunknown.com/000424.html" title="Funny comment on Lisp and code generation" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000423.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/167"
+    dc:title="Gaining administrator privileges on a web server"
+    dc:identifier="http://www.iunknown.com/000423.html"
+    dc:subject="Blog"
+    dc:description="As a follow-up to my recent post on security, I thought that I&apos;d write up a few quick thoughts about compromised web servers. In this scenario, let&apos;s assume that I&apos;ve managed to gain administrator privileges on your web server. If..."
+    dc:creator="John"
+    dc:date="2004-02-26T20:12:24-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000422.html">&laquo; Obscure ASP security hole</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000424.html">Funny comment on Lisp and code generation &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 26, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Gaining administrator privileges on a web server</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>As a follow-up to my <a href="http://www.iunknown.com/000419.html">recent post on security</a>, I thought that I'd write up a few quick thoughts about compromised web servers. In this scenario, let's assume that I've managed to gain administrator privileges on your web server. If this is in fact the case then it's game over. Let's consider why.</p>
+
+<p>With administrator privileges, I can replace any and all code that is running on your web server. This includes, for example, code that handles login requests. I could replace your <code>login.aspx</code> page and wait for an administrator to log in. Once I have that administrator's password, I have compromised your application.</p>
+
+<p>Let's say that you placed some countermeasures on your system. Your login handler is digitally signed, and the authentication sub-system of your web application makes a <code>StrongNamePermission</code> demand against all callers. This means that I can't capture passwords in the login handler anymore. In this case I'd simply replace the code in your authentication sub-system. While this is harder than just replacing a <code>login.aspx</code> page, it can still be done since I'm an administrator on your web server.</p>
+
+<p>If I were a script-kiddie who lacked the sophistication to replace the code in your authentication sub-system, I could simply replace <code>mscoree.dll</code> with one that was built from, say, the Rotor sources. This would allow me to circumvent all code-access security countermeasures in your software. Note that I don't need to create the hacked <code>mscoree.dll</code>, I just need to know where I can find a copy. Now I can simply replace your login handler with a standard one from my hacker toolkit.</p>
+
+<p>What this really calls out for is a digital rights management solution. You could imagine buying a computer in the future which has been spec'd by the manufacturer to only execute code that was digitally signed using one of an approved set of public keys / public key tokens that you provide. To hack this computer would require physical access which raises the bar considerably.</p>
+
+<p>Hopefully I've convinced you that you can't defend against a compromised administrator account. Another scenario to consider that hasn't gotten much publicity is that of a <em>rogue developer</em>. I'll write some thoughts about this scenario later.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 26, 2004 08:12 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=423" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="423" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000423.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>One way to mitigate such a threat is via the combination of least privilege policies and monitoring.  The act of logging on as administrator could be out of the norm.  Runas techniques should be used whenever possible during administration.  A compromised machine can turn off logging of course.  Just the act of logging on as administrator can be logged.  This leaves some food for thought.  I wonder if I truly can capture an administrator logging on before a bad guy has a chance to delete the log.  That is if I have a way to log remotely.  Which off the top of my head I do not know if that is possible.  I know there are tools for collecting logs centrally but I don’t know if they are built to push logs and if the monitor would notice the absence of logs, maybe through a heart beat technique.  Still holes can be punched in this also but it is something to think about.  </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.deploymentcentric.com/blogs/joe">Joseph E Shook</a> at February 27, 2004 12:00 AM</span>
+</div>
+<div class="comments-body">
+<p>The act of erasing the security log generates an entry in the log. So you can definitely tell if someone has erased the security log - which should be a red flag.</p>
+
+<p>Other tools periodically scan the logs on a computer for anomalous behavior. Microsoft Operations Manager is one tool that does exactly this.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 27, 2004 11:58 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

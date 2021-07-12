@@ -1,0 +1,129 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/37 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>More assembly language fun</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">More assembly language fun</div>
+        <div class="entryDate">2001-12-21</div>
+        <p><P>My work on reverse-engineering the P/Invoke call stub continues. <A href="http://www.donbox.com">Don Box's</A> posting of <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0112c&amp;L=dotnet&amp;F=&amp;S=&amp;P=33308">some annotated disassembly</A> for the key It Just Works (IJW) thunk on the <A href="http://discuss.develop.com/dotnet.html">DOTNET</A> list helped me figure out what a key instruction sequence did. However, the thunk that Don posted is not the only thunk that gets invoked. It's considerably more complex than this, hence the delay in getting my P/Invoke internals article finished. Stay tuned for further updates.</P>
+<P>I found that I had to brush up on a lot of stuff that I haven't had to use for a long time. The last time I did any significant reverse-engineering of x86 code was when I had to disassemble shell32.dll to figure out how to write Explorer namespace extensions before Microsoft semi-documented how to do this. Here's a collection of more resources to check out as you begin diving into x86 code:</P>
+<OL>
+<LI><A href="http://www.wheaty.net">Matt Pietrek's</A> excellent <A href="http://www.microsoft.com/msj/0298/hood0298.htm">Just Enough Assembly Language to Get By <EM>Under the Hood</EM>&nbsp;column from February 1998</A> that gives you just enough assembly language to get by. 
+<LI>Matt's <A href="http://www.microsoft.com/msj/0698/hood0698.htm">Just Enough Assembly Language to Get By Part II</A>. 
+<LI>Steve Loughran's excellent <A href="http://www.iseran.com/Win32/CodeForSpeed/">Code for Speed paper</A>. This is a great look at lots of pieces of the performance puzzle that often get overlooked. From CPU architecture to memory to tools to threading issues to C++ coding practices, this is a great introduction to the zen of performance measurement.
+<LI>Chapter 6 of <A href="http://www.wintellect.com/about/instructors.asp?id=2">John Robbins</A> most excellent <A href="http://www.amazon.com/exec/obidos/ASIN/0735608865/qid%3D948813117/sr%3D1-1/107-1596383-3252568">Debugging Applications</A> book from MS Press.</LI></OL><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/fog0000000037.html');"><script type="text/javascript">postCount('Weblog/fog0000000037.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

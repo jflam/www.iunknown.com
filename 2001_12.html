@@ -1,0 +1,909 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: December 2001 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+
+<link rel="next" href="http://www.iunknown.com/2002_01.html" title="January 2002" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2002_01.html">January 2002 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">December 28, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000022"></a>
+<h3 class="title">Holiday musings</h3>
+
+<p><P>I spent the better part of this holiday season setting up various bits of Entertainment PC equipment for both myself and my parents. The short version of the story can <A href="Weblog/fog0000000033.html">be found here</A>. The long version of the story can <A href="Articles/fog0000000034.html">be found here</A>. The final saga in the story can <A href="Articles/fog0000000041.html">be found here</A>. </P><br />
+<P>The verdict: if you build an Entertainment PC that will play back video, DVD, and digitally recorded video on a computer monitor, today's technology is excellent. If you want to play back that same content on a <EM>television</EM>, wait until the manufacturers get their act together.</P><br />
+<P>I'm sneaking a bit of time away from family and friends to update my weblog. I'll need a whole whack of uninterrupted time to finish my investigation of the mechanism of P/Invoke dispatch, so I hope to get that out for your viewing pleasure by the beginning of the new year.</P><br />
+<P>In the meantime, to keep you busy over the holidays, here's <A href="Files/metadata_internals.pdf">some slides from my Metadata Internals talk</A> that I gave this year at the <A href="http://www.winsummit.com">WinSummit 2001</A> conference. This was a really fun talk that I gave to a really small number of developers (what nobody is interested in the internals of metadata??? ;) The focus of this talk was to help folks understand the relationship between MSIL instructions, metadata tokens, and the metadata on-disk format. It also compares and contrasts the various metadata API's that are available, and examines their strengths and weaknesses. Enjoy! And as always, please feel free to <A href="mailto:jlam@iunknown.com">send me feedback</A>.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000022.html">02:21 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=22" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 21, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000021"></a>
+<h3 class="title">Why Don Box is smarter than me</h3>
+
+<p><P>I complained <A href="Weblog/fog0000000029.html">in an earlier entry</A> about how the VS.NET debugger sucked since it wouldn't let me see the P/Invoke goo that was being called when I stepped into a call. As my friend and mentor <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0112c&amp;L=dotnet&amp;F=&amp;S=&amp;P=33518">Don Box pointed out on the DOTNET list</A>, all you have to do is turn off the Common Language Runtime checkbox in the "Choose the program types that you want to debug" field of the Attach To Process dialog box that pops up during a Just-In-Time debugging event.</P><br />
+<P>&lt;sheepishly&gt;At least I forced myself to learn how to use WinDBG in the process ... &lt;/sheepishly&gt;</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000021.html">02:17 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=21" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000020"></a>
+<h3 class="title">More assembly language fun</h3>
+
+<p><P>My work on reverse-engineering the P/Invoke call stub continues. <A href="http://www.donbox.com">Don Box's</A> posting of <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0112c&amp;L=dotnet&amp;F=&amp;S=&amp;P=33308">some annotated disassembly</A> for the key It Just Works (IJW) thunk on the <A href="http://discuss.develop.com/dotnet.html">DOTNET</A> list helped me figure out what a key instruction sequence did. However, the thunk that Don posted is not the only thunk that gets invoked. It's considerably more complex than this, hence the delay in getting my P/Invoke internals article finished. Stay tuned for further updates.</P><br />
+<P>I found that I had to brush up on a lot of stuff that I haven't had to use for a long time. The last time I did any significant reverse-engineering of x86 code was when I had to disassemble shell32.dll to figure out how to write Explorer namespace extensions before Microsoft semi-documented how to do this. Here's a collection of more resources to check out as you begin diving into x86 code:</P><br />
+<OL><br />
+<LI><A href="http://www.wheaty.net">Matt Pietrek's</A> excellent <A href="http://www.microsoft.com/msj/0298/hood0298.htm">Just Enough Assembly Language to Get By <EM>Under the Hood</EM>&nbsp;column from February 1998</A> that gives you just enough assembly language to get by.<br />
+<LI>Matt's <A href="http://www.microsoft.com/msj/0698/hood0698.htm">Just Enough Assembly Language to Get By Part II</A>.<br />
+<LI>Steve Loughran's excellent <A href="http://www.iseran.com/Win32/CodeForSpeed/">Code for Speed paper</A>. This is a great look at lots of pieces of the performance puzzle that often get overlooked. From CPU architecture to memory to tools to threading issues to C++ coding practices, this is a great introduction to the zen of performance measurement.<br />
+<LI>Chapter 6 of <A href="http://www.wintellect.com/about/instructors.asp?id=2">John Robbins</A> most excellent <A href="http://www.amazon.com/exec/obidos/ASIN/0735608865/qid%3D948813117/sr%3D1-1/107-1596383-3252568">Debugging Applications</A> book from MS Press.</LI></OL></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000020.html">01:55 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=20" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000019"></a>
+<h3 class="title">Space 1999</h3>
+
+<p><P>I just watched an Episode of <A href="http://members.tripod.com/kevinmccorrytv/sp1999ep0.html">Space: 1999</A> on DVD. It was <A href="http://www.geocities.com/digitalcinema/space1999set3.html">"The Last Enemy"</A>. What a massive trip down memory lane! If you were a fan of this late 1970's science fiction television series, this was the episode where the moon wound up wandering into a solar system that had two planets that were found on opposite sides of their sun. Because they were on opposite sides of the sun, they couldn't shoot directly at each other. When the moon wandered into their solar system, it wound up being the perfect missile platform for gunships from both planets. Commander John Koenig wound up brokering a truce between the two planets, only to be tricked by the scheming Dione whose apparently crippled gunship was just playing possum.</P><br />
+<P>The entire first season is <A href="http://www.amazon.com/exec/obidos/ASIN/B0000524FE/qid=1008917307/sr=1-1/ref=sr_1_11_1/107-1596383-3252568">now available on DVD</A>. Highly recommended.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000019.html">01:37 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=19" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 20, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000018"></a>
+<h3 class="title">Hardware Wonderland</h3>
+
+<p><P>I've been busy and not attending to this weblog for the past few days because I've been doing my annual hardware experiment. This Christmas, I decided to build a couple of entertainment PC's (EPC's) for the <EM>really</EM> good people on my list. It was also my first foray into the world of PC-TV connectivity, and Personal Video Recorders (aka <A href="http://www.tivo.com/home_flash.asp">Tivo</A> devices). Not surprisingly, I was lead like the proverbial lam to the slaughter. Here's the <A href="Articles/fog0000000034.html">long account</A> of my experiences. The rest of this entry is a short summary of my findings, in hopes that it will be useful to anyone attempting to wade into this minefield-laden bleeding-edge area.</P><br />
+<P>EPC's need to be the most powerful computers in your household. Period. Do NOT compromise here. Real-time <A href="http://www.microsoft.com/hwdev/tech/stream/vidcap/vidportext.asp">video capture</A> is very computationally expensive. Based on my experiments, you will need <EM>at a minimum</EM>, a 1.2Ghz <A href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_756,00.html">Athlon</A> processor or better to do real-time MPEG-2 encoding at the near-DVD quality level supported by the <A href="http://www.microsoft.com/hwdev/tech/stream/DirectX_VA/default.asp">Microsoft DirectShow codec</A>.</P><br />
+<P>Do yourself a favor and buy a <A href="http://www.logitech.com/cf/products/productoverview.cfm/104">Logitech wireless keyboard and mouse</A>. Until we have <A href="http://www.microsoft.com/mobile/pocketpc/default.asp">Pocket PC's</A> with the right remote control software built-in to control your EPC, this is the best that you can get.</P><br />
+<P>DVD drives are <EM>noisy</EM>. Especially ones that run at high speed like my <A href="http://www.pioneerelectronics.com/Pioneer/CDA/Industrial/IndustrialProductDetails/0,1444,1742,00.html">Pioneer 16X DVD</A> drive. If you plan on running one of these beasts in your living room, you need to download <A href="http://www.cdspeed2000.com/go.php3?link=download.html">Nero DriveSpeed</A>, which lets you reduce the speed of your DVD drive during playback. I can successfully limit playback to 1X, which makes it a <EM>very </EM>quiet drive. On my computer (which is running Windows XP Pro), however, you will need to startup Nero DriveSpeed, change the speed setting, and then exit. Why? If DriveSpeed is running my DVD player (the one that shipped with my <A href="http://www.ati.com/na/pages/products/pc/aiw_radeon/">All-In-Wonder RADEON</A>), believes that the DVD drive was setup for a different region and refuses to play my North American region DVDs. Ugh. Based on my experiments, the speed setting will stick around for at least the next time that you run your DVD player software (I use the ATI DVD player that came with my All-In-Wonder RADEON card).</P><br />
+<P><A href="http://www.snapstream.com/products/sspvs/">SnapStream Personal Video Station</A> software rocks. However, using my setup (ATI All-In-Wonder RADEON + <A href="http://www.americas.creative.com/products/category.asp?Category=165&amp;MainCategory=1">Creative Audigy</A>) you will need to change your recording settings so that it doesn't mess with your audio mixer settings. By default, it winds up muting the line-in channel which means that you will not have any sound in your recording. The downside of this is that you will need to turn off the sound on your PC while it is recording if you don't want to be disturbed. Actually, this is quite annoying if you want to playback WMA files on your EPC while the PVS is running.</P><br />
+<P>When using the DVD playback features of the All-In-Wonder RADEON, make sure that you use the AC-3 passthrough to your Dolby Digital receiver (it's just a cable with RCA connectors on both ends). </P><br />
+<P>I'm quite happy with my setup now that it is (almost) up and running. I will be even happier once somebody comes up with a turn-key solution with a real remote control.</P><br />
+<P>I'm also <EM>very</EM> happy that I'm a user-mode software guy and not a device driver guy. Having to deal with the mishmash of "standards" that make for a PC and having to test for conflicts in all of the bizarro hardware configurations that users will inevitably have is enough to turn anyone away from software development. My hats off to those guys for even trying.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000018.html">03:18 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=18" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 17, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000017"></a>
+<h3 class="title">Reverse-engineering fun</h3>
+
+<p><P>I'm having a lot of fun these days disassembling x86 code. I haven't had this much fun since the good old days when me and some friends produced the first annotated disassembly of the ROM's inside the venerable Commodore 4040 dual disk drive in 1981. This led to the creation of various disk drive utilities like sector manipulation programs, a fast replacement for the disk drive's formatting routines (which were really brain-dead), and some high-speed disk copying programs. It also led to the creation of a bunch of fun "products", the most interesting of them being the CCC Bit Bug's Sing-Song program that made Commodore 1541 disk drives&nbsp;play a song by ramming the disk drive head against the head stop at varying frequencies. Aaahh, those were the days.</P><br />
+<P>Enough nostalgia. I'm rather new to the world of disassembling x86 code, but I figured that its high time that I scratched this particular itch. I've been spending some time reading the documentation for WinDBG. In particular, there is one particularly great article in there that shows an annotated disassembly of some typical C++ code. This code even calls some methods on COM interfaces so that you can see what that looks like. Since its buried inside of the WinDBG help file (and I can't link to it from here), I've <A href="Files/Annotated_x86_Disassembly.pdf">reproduced it here</A> for your convenience.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000017.html">01:12 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=17" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 16, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000016"></a>
+<h3 class="title">WinDBG Rocks</h3>
+
+<p><P>While researching how <A href="http://www.microsoft.com/partner/products/MicrosoftNET/miller.ppt">P/Invoke</A> works, I found out a nasty limitation in the Visual Studio .NET debugger. Here's the scenario: you're stepping through some unmanaged code in the debugger. This code was originally called from some managed code. When I step over the <A href="http://developer.intel.com/design/pentium4/manuals/24547004.pdf">x86 ret</A> instruction, it jumps <EM>directly</EM> back into managed code. You don't see any of the P/Invoke goo that makes the unmanaged&nbsp;call possible. Now, for most developers this isn't an issue. In fact the P/Invoke goo just gets in the way. BUT, if you're trying to figure out how the P/Invoke goo works, it becomes a blocking issue. It would be really nice if the debugger folks could give us a switch that lets us turn this behavior on and off.</P><br />
+<P>I checked with my friend <A href="http://www.wheaty.net">Matt Pietrek</A>, and he confirmed that this was an issue that annoyed him to no end as well. When I asked him what I could do about it, he gave me a typical <A href="http://www.compuware.com/products/numega/">NuMega</A> response: use <A href="http://www.compuware.com/products/numega/drivercentral/components/si_driver.htm">SoftICE</A>. My old copy of SoftICE wouldn't run on Windows XP, so I went on over to NuMega's web site. I was shocked to find out that the only way that I could get SoftICE was to purchase a copy of their SoftICE Driver Suite product ($999!!!!). Here's a hint for NuMega: maybe someone just wants the debugger and NOT all of that other stuff. Why not break it out as a separate SKU and get an extra sale? I'd be more than happy to pay $300-$400 for SoftICE, but $999 is going to make me go elsewhere.</P><br />
+<P>So, where did I go? Back to Microsoft, of course. I've never really spent much time reverse-engineering Windows OS code, so I haven't really needed to use a kernel-mode debugger. As it turns out Microsoft <EM>gives away</EM> a very nice kernel-mode debugger: WinDBG. I went and <A href="http://www.microsoft.com/ddk/debugging/default.asp">downloaded the latest release version of WinDBG (3.0.20.0)</A> and cranked it up. Lo and behold, I could step through everything and see the P/Invoke code in action. What a great tool, and what a great price.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000016.html">04:22 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=16" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 14, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000015"></a>
+<h3 class="title">Don't Tell Me I'm Wrong</h3>
+
+<p><P>When someone tells me I'm wrong, it makes me determined to figure out exactly what is going on in a system. The great thing about computers and software is that there generally is a correct answer. Unfortunately, we tend to believe what we read in books and magazines or what we hear at classes and conferences. Part of being a good software developer is having the ability to verify the facts for yourself. </P><br />
+<P>As an example of this, recently on the <A href="http://discuss.develop.com/dotnet.html">DOTNET</A> list, <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0112b&amp;L=dotnet&amp;F=&amp;S=&amp;P=56496">someone from Microsoft</A> challenged my understanding of how P/Invoke worked. Now, I heard about how P/Invoke worked from Jim Miller, Microsoft's Lead Program Manager for the CLR. <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0112b&amp;L=dotnet&amp;F=&amp;S=&amp;P=57076">I figured that he <EM>must be right</EM></A>. </P><br />
+<P>Regardless, I decided to try and figure out exactly how P/Invoke worked for myself. Along the way, I made some very interesting discoveries, which I'm currently summarizing in a paper. That paper is currently under development, after which I'm going to send it off for review by some friends at Microsoft. Once that's done, I'll post it here for you to read.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000015.html">02:14 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=15" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 12, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000014"></a>
+<h3 class="title">More CppUnit Fun</h3>
+
+<p><P>I just spent the better part of the afternoon building a simple test harness infrastructure using <A href="http://cppunit.sourceforge.net/">CppUnit</A> and VS.NET. Here's the <A href="Files/UnitTest.zip">sample VS.NET solution</A>.</P><br />
+<P>There are three C++ projects in the solution. The Library project contains the code library that is under development. It is compiled into a static link library. The DLL project uses the Library static link library to generate a DLL. The Harness project contains all of the test cases that will be run against the code in the Library project.</P><br />
+<P>I think that this is a reasonable layout for the code in these projects. Please <A href="mailto:jlam@iunknown.com">email me</A> if you think otherwise.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000014.html">05:02 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=14" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 11, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000013"></a>
+<h3 class="title">CppUnit</h3>
+
+<p><P>I've been aware of <A href="http://www.xprogramming.com/">Extreme Programming</A> (XP) for quite some time now. Unfortunately, due to the <A href="Weblog/fog0000000019.html">type of work</A> that I've been doing for the past few years, I've never had the occasion to use it on real production code.</P><br />
+<P>One of the things that fascinates me the most about XP is its emphasis on <A href="http://www.xprogramming.com/xpmag/expUnitTestsat100.htm">automated unit testing</A>. I spent quite a bit of time experimenting with it in Java about a year ago, after first seeing references to it in Martin Fowler's most excellent book: <A href="http://www.refactoring.com">Refactoring</A>. I just spent a bit of time over at <A href="http://www.c2.com/cgi/wiki?WelcomeVisitors">Wiki</A> reading <A href="http://c2.com/cgi/wiki?CodeUnitTestFirst">Code Unit Test First</A>. I particularly love the analogy <A href="http://c2.com/cgi/wiki?RobCrawford">Rob Crawford</A> wrote:</P><br />
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px"><br />
+<P><EM>"It struck me last night while painting a wall: <A href="http://c2.com/cgi/wiki?CodeUnitTestFirst"><EM>CodeUnitTestFirst</EM></A></EM><EM> is the programming equivalent of using masking tape and drop cloths. On the surface it doesn't look like you're making "progress", but the safety it gives you lets you work faster and safer."</EM></P></BLOCKQUOTE><br />
+<P>But I'm programming exclusively in C++ these days. So, after some helpful suggestions from the folks on the <A href="http://discuss.develop.com/dotnet.html">DOTNET</A> list, I turned to <A href="http://cppunit.sourceforge.net/">CppUnit</A>, which is essentially a port of <A href="http://www.junit.org/">JUnit</A> over to C++. All I wanted to do was to create a "Hello, World" application using CppUnit. But guess what? The docs suck, and I battled with bizarro compiler switch settings for about half an hour before finally getting the thing to build successfully. <A href="Articles/fog0000000025.html">This article</A> is a summary of what you need to do to get your first "Hello, World" CppUnit unit testing application up and running.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000013.html">11:11 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=13" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000012"></a>
+<h3 class="title">How to improve the perf of VS.NET</h3>
+
+<p>Every time that I repave my machine, I always turn off all of the animations since it gives my machine the appearance of running slowly. Until today, I always found the sliding windows in VS.NET very annoying, but didn't do anything to switch them off. While wandering around in the dialogs in the IDE, I discovered how to turn off this annoying feature: goto Tools\Options. Under Environment\General Settings&nbsp;(the default one that appears), turn off the checkbox for "Animate Environment Tools". Presto. Instant performance boost! This makes me SO happy.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000012.html">05:36 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=12" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000011"></a>
+<h3 class="title">Krispy Kreme</h3>
+
+<p>Yum. I just got back from standing in line at the <A href="http://www.krispykreme.com/ca/index.htm">grand opening</A> of the first-ever <A href="http://www.krispykreme.com">Krispy Kreme</A> that opened outside of the United States. I got me a dozen Original Glazed and one dozen assorted. These things are the crack cocaine of donuts. I gotta have another now. ;) ;)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000011.html">03:36 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=11" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000010"></a>
+<h3 class="title">Tree Maps</h3>
+
+<p>I just ran across this link to a <A href="http://netscan.research.microsoft.com">sociological research</A> project at Microsoft Research. Its goal is to study the formation of the <A href="http://netscan.research.microsoft.com/Start.asp?Content=FAQ">structure and dynamics of human interactions on Usenet</A>. One of the most interesting parts of the site is the <A href="http://netscan.research.microsoft.com/Netscan/nsBox.asp">tree map</A> that shows the structure of groups on Usenet, and the size of those groups based on number of postings.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000010.html">11:03 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=10" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 10, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000009"></a>
+<h3 class="title">Rocky</h3>
+
+<p>For those of you who are Rocky movie fans, you have to check out <A href="http://espn.go.com/page2/s/simmons/011207.html">this detailed analysis</A> of which Rocky movie is the best Rocky movie. Well worth the read.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000009.html">09:24 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=9" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 08, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000008"></a>
+<h3 class="title">Pedagogy and developer training</h3>
+
+<p><P>I've spent the last four+ years of my life training software developers at two different training organizations: <A href="http://www.develop.com">DevelopMentor</A> and <A href="http://www.wintellect.com">Wintellect</A>. I've also spoken at far more developer conferences than I can remember. In my <A href="About/fog0000000009.html">other life</A>, I ran very successful undergraduate tutorials in <A href="http://www.chem.utoronto.ca/coursenotes/CHM240/RAB.webfolder/">introductory Organic Chemistry</A>. I would like to think that I have learned something from all that experience. </P><br />
+<P>I recently added an introductory slide to my classes which stresses why we are doing what we are doing in the classes. It reminds us of how much we retain based on the teaching method:</P><br />
+<OL><br />
+<LI><br />
+<DIV>14% of what you hear </DIV><br />
+<LI><br />
+<DIV>22% of what you see </DIV><br />
+<LI><br />
+<DIV>30% of what you do </DIV><br />
+<LI><br />
+<DIV>42% of what you hear, see and do </DIV><br />
+<LI><br />
+<DIV>72% if the material resonates with your frame of reference</DIV><br />
+<LI><br />
+<DIV>92% of what you teach others </DIV></LI></OL><br />
+<P><EM>At best</EM>, we can hope to achieve 42% in a class where there are labs and lectures: the traditional five-day training class. It is highly unlikely that we can get to the 72% plateau because there isn't enough time for the students to build systems so that they can create their own frame of reference. The 92% plateau is even further out of reach since we don't have the ability to let the students teach others within a controlled environment. So what can we do about this sorry state of affairs?</P><br />
+<P>Update (2/9/02): Here's an old Oriental Proverb that says a similar thing:</P><br />
+<P align=center><EM>"I listen and forget;<BR>I read and understand;<BR>I see and remember;<BR>I do and learn."</EM></P><br />
+<P>I recently read <A href="http://philip.greenspun.com/">Philip Greenspun</A> and <A href="http://www-swiss.ai.mit.edu/~hal/">Hal Abelson's</A> <A href="http://philip.greenspun.com/teaching/teaching-software-engineering">excellent paper</A> on lessons learned from teaching software engineering to <A href="http://www.mit.edu">MIT</A> undergraduates. Anyone who is interested in the process of teaching others (particularly about software engineering) really must read this paper. The core take-home lessons from this paper are:</P><br />
+<UL><br />
+<LI><br />
+<DIV>Build the class around problem sets to reinforce core knowledge</DIV><br />
+<LI><br />
+<DIV>Have the class break up into teams to build a project that runs the entire length of the class</DIV><br />
+<LI><br />
+<DIV>Invite alumni to supervise a twice-weekly lab</DIV></LI></UL><br />
+<P>These three elements nail points 4-6 above. The course also lasts an MIT semester (13 weeks).&nbsp; </P><br />
+<P>There are problems with this approach, however. Arguably the most difficult to deal with is that the developers who wish to engage in such a program must live within commuting distance of the training center. This is due to the 13 week duration of the class. Second, since the developers who would participate in such a class have other responsibilities, it would be unlikely that the class could meet for more than 1 mandatory and 1 optional night per week. Third, the instructor for the class must live within commuting distance of the training center - for the very same reasons.</P><br />
+<P>I believe that this is what we must strive for in professional software developer education. However, this would require that training companies break with the revenue model for offering developer education - the 5 day class. Will it be an effective means of teaching? Of this I have no doubt. Will this be successful? I don't know. </P><br />
+<P>Please <A href="mailto:jlam@iunknown.com">let me know</A> what you think about this approach to teaching. If I hear back from enough of you, perhaps we could change the way folks think about professional software education.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000008.html">12:17 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=8" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 06, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000007"></a>
+<h3 class="title">Prototyping and Refactoring</h3>
+
+<p><P>I have spent the last three weeks working on a prototype for some really cool CLR plumbing. One of the fun things about writing prototypes is that you get to ignore all of that engineering stuff and focus on trying to figure out if something is possible. Well, after three weeks of very focused work, I discovered that everything that I want to do is in fact possible. Now comes the hard part: trying to create a build that actually does something&nbsp;<EM>useful</EM>.</P><br />
+<P>One of the things that you quickly discover about any prototype codebase is that it is <EM>extremely</EM> brittle and resistant to change. Why? Because you were too busy figuring out if stuff is possible vs. engineering solid software. Now, the temptation always is to throw out that prototype and start again. But I'm resisting that temptation because I need to continue to prototype <EM>after</EM> I've built an intermediate build that I intend on using for a period of time.</P><br />
+<P>To enable further work on the prototype codebase, I need to refactor the existing code. One of the reasons that the prototype is so complex is that there is duplicate code scattered all over the code base. There are complex data structures intermingled with core behavior. I'm abusing COM horribly (like calling interface methods from threads that haven't called <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/com/cmf_a2c_36qt.asp">CoInitialize()</A> yet -- and no, it's not because I'm lazy, it's a much more complicated problem than that). I've got bizarre global variables sitting in my code because I haven't designed the caching objects to take care of them yet. I need to fix my code base before I can use it, much less extend it.</P><br />
+<P>I tend to refactor fairly naturally since I've been programming for a long time. Earlier this year, however, I discovered <A href="http://www.martinfowler.com/">Martin Fowler's</A> most excellent book: <A href="http://www.amazon.com/exec/obidos/ASIN/0201485672/qid=1007686735/sr=8-1/ref=sr_8_3_1/107-1596383-3252568">Refactoring: Improving the Design of Existing Code</A>. I've spent the better part of yesterday and today refactoring my code base. However, instead of doing stuff like "hmmm, I need to move this redundant code into a separate method", I've been forcing myself to look up the refactoring method in the list of refactorings in Fowler's book. So, I've been saying stuff like "<A href="http://www.refactoring.com/catalog/extractMethod.html">Extract Method</A>" to myself instead. The benefit of this is that I'm learning lots of interesting refactoring methodologies that I wouldn't have otherwise used, and it creates a vocabulary that I can use to communicate with other developers. Try it, I'm sure you'll grow to love it like I have.</P><br />
+<P>Another tip for those times when you are heavily refactoring your codebase: use your version control system. Make small changes, test those changes, and check those changes back into your VCS. Believe me, it's an awesome safety net for those times when you've got your code dissected into a million pieces and you can't remember how to put it back together again ...</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000007.html">05:31 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=7" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 05, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000006"></a>
+<h3 class="title">Chris Sells on Delegates</h3>
+
+<p>Chris Sells <A href="http://www.sellsbrothers.com/writing/default.aspx?content=delegates.htm">just published</A> an awesome article, er-story on C# support for CLR delegates. Damn that was a great story. Talk about raising the bar for technical writing! John Bristowe's follow-up on the <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0112a&amp;L=dotnet&amp;F=&amp;S=&amp;P=31965">DOTNET-L</A> was just as entertaining. Thanks, Chris!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000006.html">05:05 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=6" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000005"></a>
+<h3 class="title">Intellectual property and MSIL</h3>
+
+<p><P>A <A href="http://www.wiseowl.com/about/about.aspx">friend of mine</A> is on the verge of publishing <A href="http://www.wiseowl.com/products/Products.aspx">an MSIL code obfuscator</A>. This has generated a fair amount of interest in intellectual property issues on the <A href="http://discuss.develop.com/archives/wa.exe?A1=ind0112a&amp;L=dotnet#9">DOTNET-L</A>. There are lots of folks who support the idea of code obfuscation, and lots of folks who don't. In the end, (and no offense to Brent, I really want to see him succeed) I think that code obfuscation is a red herring. </P><br />
+<P>People pay lots of lip service to code obfuscation, but when it comes time to pony up cold hard cash for a product, they wilt. This has been the case in the Java world, where code obfuscators and decompilers run rampant. Even the best of the code obfuscators in the Java world have a hard time supporting even <A href="http://www.ahpah.com/products.html">a small development shop</A>.</P><br />
+<P>The very best a code obfuscator can do is get you back on par with optimized C++ code. But it can't even really do that since it's far easier to read MSIL instructions than x86 instructions (unless your name is <A href="http://www.wheaty.net">Matt Pietrek</A>).</P><br />
+<P>A good software engineer can always construct a compatible product by examining the inputs and outputs of someone else's product. How the internals of that product are implemented are not really of concern to them. Think about it: how many times have you actually pulled useful code out of an <EM><A href="http://jakarta.apache.org/tomcat/index.html"><EM>open source </EM>product</A></EM> which has the source code, comments and documentation available?</P><br />
+<P>So how does someone protect their intellectual property? Using a punitive measure as opposed to a preventative measure. That's right, companies sue people. Unfortunately, this also means that larger companies with deeper pockets can outlast smaller companies with not-so-deep pockets. But such is life ... it ain't fair ;) </P><br />
+<P>This also partly explains&nbsp;why companies (especially large companies) obtain software patents: to use as a defense mechanism in case someone else comes knocking to try and claim their IP as their own. It is rare that they are used as an offensive weapon except in the cases of companies who are merely fronts for lawyers who <A href="http://www.usatoday.com/life/cyber/ccarch/2001-08-16-sinrod.htm">scare large companies</A> into paying royalties for patents that they purchased (i.e. <A href="http://www.e-data.com/">http://www.e-data.com/</A>) </P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000005.html">03:01 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=5" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000004"></a>
+<h3 class="title">Visual Studio .NET vs. Frontier</h3>
+
+<p><P dir=ltr style="MARGIN-RIGHT: 0px">As promised, here's a response to one of <A href="http://scriptingnews.userland.com/backissues/2001/12/03#helpPayTheBills"><FONT color=#808080>Dave Winer's offensive postings</FONT></A>.<br />
+<P dir=ltr><EM>"Microsoft sent an offer to get $800 off Visual Studio .NET so I can build powerful Web services applications using SOAP. Now be forewarned, a commercial message follows. Why would you pay Microsoft all that money, when you could buy a year's subscription to </EM><A href="http://frontier.userland.com/"><EM><FONT color=#808080>Frontier</FONT></EM></A><EM>, and get XML-RPC support along with SOAP, for a mere $899 per year, and when the subscription expires, you can keep using it. (It also has a full content management system baked in, and it's a 13 year codebase so it probably runs with a little more stability than Microsoft's new codebase.)"</EM> </P><br />
+<P dir=ltr>Seeing stuff like this makes me mad. Dave, you write a content management system.</P><br />
+<P dir=ltr>And not a particularly good one [1]. <A href="http://msdn.microsoft.com/vstudio/"><FONT color=#808080>Visual Studio .NET</FONT></A> (in case you didn't know) is a general-purpose set of developer tools. And given what you get vs. the price you pay, probably the best deal going in software. Comparing Frontier to Visual Studio .NET makes about as much sense as comparing <A href="http://www3.corel.com/cgi-bin/gx.cgi/AppLogic+FTContentServer?pagename=Corel/Product/Details&amp;id=CC1MSNDMYJC"><FONT color=#808080>Corel PerfectOffice</FONT></A> to Visual Studio .NET. </P><br />
+<P dir=ltr>Also, there's nothing in the license agreement in Visual Studio .NET that prohibits you from continuing to use it a year, two years or a thousand years from now. Just like nothing stops folks from continuing to use Visual Studio 6 today, years after its release. </P><br />
+<P dir=ltr>What utter nonsense. </P><br />
+<P dir=ltr>[1] Joel had to write a daemon <A href="http://www.joelonsoftware.com/articles/fog0000000008.html"><FONT color=#808080>"which watches Manila and restarts it when it crashes (about once every two days)."</FONT></A> </P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000004.html">03:00 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=4" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 02, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000003"></a>
+<h3 class="title">My old plan</h3>
+
+<p><P>So, what am I up to these days?</P><br />
+<P>I spend most of my time thinking about <A href="http://research.microsoft.com/~emeijer/Papers/CLR.pdf">Microsoft's Common Language Runtime</A>.</P><br />
+<P>I am spending&nbsp;an increasing amount of time thinking about <A href="http://www.aosd.net">Aspect-Oriented Programming</A>.</P><br />
+<P>I plan on teaching once a month for <A href="http://www.wintellect.com">Wintellect</A>. </P><br />
+<P>I plan on speaking at the following conferences in 2002:</P><br />
+<UL><br />
+<LI><A href="http://msdn.microsoft.com/events/teched/">Microsoft Tech-Ed</A> in New Orleans on April 9-13, 2002<br />
+<LI><A href="http://www.devconnections.com/c/default.asp">WinDev / DevConnections</A> in New Orleans on April 30&nbsp;- May 3, 2002<br />
+<LI><A href="http://www.winsummit.com">WinSummit</A> in Davos, CH, October 7-11, 2002</LI></UL><br />
+<P>I plan on writing a bunch of stuff about CLR and the internals of the Framework Class Libraries and posting it on this site. This material will be collected together to form a <EM>CLR Internals</EM> book.&nbsp;This book will be published entirely on this site. Sometime in the future, this book might be turned into a <A href="http://www.arsdigita.com/books/panda/how-to-buy">dead tree version</A>.</P><br />
+<P>I plan on speaking at a small number of internal corporate conferences during the year.</P><br />
+<P>I plan on spending a lot of time hanging out on the <A href="http://discuss.develop.com/dotnet.html">DOTNET list</A>.</P><br />
+<P>I plan on writing various rants here about technology from time to time.</P><br />
+<P>I plan on writing a small number of CLR articles in various developer publications.</P><br />
+<P>I am working day and night on some technology that will change the way folks think about the code that they wrote, and the code that other people wrote.&nbsp;And no, it isn't the revelation that everything that you wrote yesterday is great and that all of the code that everybody else wrote sucks ;) And no, it's not yet another <A href="http://www.saurik.com/net/exemplar/">decompiler</A> ... check back early next year for the answers.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000003.html">04:24 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=3" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000002"></a>
+<h3 class="title">Design</h3>
+
+<p><P>It certainly seems all the rage with my friends these days to come up with web sites with fancy graphics and layout. I don't want to name any names here, but <A href="http://www.sellsbrothers.com">Chris Sells</A>, <A href="http://www.wiseowl.com">Brent Rector</A>, and <A href="http://www.subliminalsystems.com/">Ted Pattison</A> certainly have spiffy new digs on the web.</P><br />
+<P>So, not wanting to be outdone, I came up with this design for my new web log. As a software developer, I don't want my friends to think that I've gone soft and am now <EM>designing</EM> web sites for a living. No no no. I stole, uh, I mean <EM>derived inspiration from</EM> <A href="http://www.ericalba.com/vent/">Eric Alba's</A> most excellent web log that I stumbled across this weekend. </P><br />
+<P><A href="mailto:jlam@iunknown.com?subject=Your web site design blows chunks because ...">Let me know what you think</A>.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000002.html">02:37 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=2" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">December 01, 2001</h2>
+
+
+<div class="blogbody">
+<a name="000001"></a>
+<h3 class="title">I'm back!</h3>
+
+<p><P>I'm back on the web again, after a protracted absence. Why was I off the air for such a long time? <A href="http://www.dictionary.com/cgi-bin/dict.pl?term=hubris">Hubris</A>.</P><br />
+<P>Huh? What's hubris got to do with the lack of a web presence? It's quite simple, actually, I made the mistake of writing content management software in my spare time. I wrote many, many pieces of software for creating web logs that never saw the light of day. I would start writing the code, pump a bunch of content into it, vow that I would ship the content on the web some day, and then get distracted and move onto something else. Repeat this cycle a few times as each time I revisited my earlier efforts and realized that my code sucked and there you have it.</P><br />
+<P>A friend of mine wrote the book <A href="http://www.amazon.com/exec/obidos/ASIN/0672313502/qid=1007263318/sr=1-1/ref=sr_1_2_1/107-1596383-3252568">Teach Yourself Database Programming with Visual C++ 6 in 21 Days</A>. In his first chapter, he wrote "First off, don't write a database!". Doh! I wished that I had actually read that before my various attempts at writing content management software.</P><br />
+<P>So, why am I back on the air again? I purchased some content management software that doesn't make me want to sit down and write it myself. It's <A href="http://www.joelonsoftware.com">Joel Spolsky's</A> <A href="http://www.fogcreek.com/CityDesk/">CityDesk</A> software from his company, <A href="http://www.fogcreek.com">Fog Creek Software</A>. It works remarkably well, and contains all of the features that I <EM>need</EM>. It, of course, contains a bunch of features that I don't need, and it doesn't contain a bunch of features that I <EM>want</EM>, but it does exactly what I&nbsp;need to publish content again. And that's more than good enough for me.</P><br />
+<P>The feature that makes CityDesk rock so hard is the fact that I can use it in an <EM>offline</EM>&nbsp; mode. I tend to lead a rather nomadic lifestyle which involves wandering around to various cafes, libraries and bookstores with my laptop during the day so that I don't get cabin fever in my apartment. Joel totally gets it when he chose to write a "thick client" application for content management. More on this in a future rant.</P><br />
+<P>So, there you have it. What am I doing these days? Check out <A href="About/fog0000000010.html">my plan</A>.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000001.html">07:26 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=1" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2001_12.html#000261"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/5"
+    dc:title="About me"
+    dc:identifier="http://www.iunknown.com/2001_12.html#000261"
+    dc:subject="About"
+    dc:description="My name is John Lam. I&apos;m a software developer first and foremost. I have shipped eight commercial products that I know of. If you look at that list of products, you&apos;ll notice that there was a conspicuous absence of any..."
+    dc:creator="John"
+    dc:date="2001-12-01T03:17:26-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000261"></a>
+<h3 class="title">About me</h3>
+
+<P>My name is <A href="mailto:jlam@iunknown.com">John Lam</A>. I'm a software developer first and foremost. I have shipped <A href="000263.html">eight commercial products</A> that I know of. If you look at that list of products, you'll notice that there was a conspicuous absence of any activity from 1986 until 1995. That was because I was busy working <A href="000262.html">on my other life</A>.</P>
+<P>I've spent most of my time since 1997 educating the software development community. I've co-authored two books, and authored or co-authored many articles for various publications. My sort-of&nbsp;up-to-date bibliography can be <A href="000264.html">found here</A>.</P>
+<P>From 1997 to 2000, I worked at <A href="http://www.develop.com">DevelopMentor</A>. I started off there as a COM instructor, like most of the other folks who joined towards the end of the 1990's. I then left the comfortable surroundings of COM and ventured into the murky waters of the web and XML. I authored and maintained DevelopMentor's popular Essential Web Applications class from 1998 until the time I left. Along the way, I got roped into <A href="http://www.w3.org/XML/">XML</A> and contributed to DevelopMentor's Essential XML class, and co-authored Essential XML with <A href="http://www.donbox.com">Don Box</A> and <A href="http://staff.develop.com/aarons">Aaron Skonnard</A>.</P>
+<P>Since April of 2001, I've been doing my training work with <A href="http://www.wintellect.com">Wintellect</A>. I co-authored our <A href="http://www.wintellect.com/training.asp?id=3">Programming ASP.NET</A> class with <A href="http://www.wintellect.com/instructors/prosise">Jeff Prosise</A>. There are some really smart guys at Wintellect: <A href="http://www.wintellect.com/instructors/richter/default.asp">Jeffrey Richter</A>, <A href="http://www.wintellect.com/instructors/robbins/default.asp">John Robbins</A>, <A href="http://www.vb2themax.com/">Franceso Balena</A>, and <A href="http://www.programmers.net/artic/Esposito/">Dino Esposito</A> are some of the names that you've probably heard of.</P>
+<P>I left DevelopMentor at the end of 2000 because I wasn't happy with the fact that I hadn't shipped anything besides conference talks, slide decks, articles and books since 1997. I was itching to ship something that other people actually use in their work. </P>
+<P>A chance meeting with Hugh Teegan at the Speaker's event at the <A href="http://www.winsummit.com">WinSummit</A> conference in October of 2000 confirmed the path that my life was going to take. Hugh works at Microsoft. He also co-developed Transactional Active Server Pages. Hearing the excitement in his voice as he described the process of shipping the product really reaffirmed my feelings that I really need to develop software again. That talk also made it much easier for me to stick to my guns when I had to have my chat with Don Box at the end of November when I announced my intention to leave DevelopMentor (Don's a very persuasive guy).</P>
+<P>So, what's next? Here's <A href="000265.html">my plan</A> for the next couple of years.</P>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000261.html">03:17 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=261" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=261" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2001_12.html#000266"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/10"
+    dc:title="About this site"
+    dc:identifier="http://www.iunknown.com/2001_12.html#000266"
+    dc:subject="About"
+    dc:description="<![CDATA[This web log is a place where I write my observations on various software development topics. For example, last year I wrote quite a bit about my runtime aspect weaver for the&nbsp;CLR. Weblogs are also interesting mediums for carrying on...]]>"
+    dc:creator="John"
+    dc:date="2001-12-01T02:48:42-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000266"></a>
+<h3 class="title">About this site</h3>
+
+This web log is a place where I write my observations on various software development topics. For example, last year I wrote quite a bit about my <A href="000267.html">runtime aspect weaver</A> for the&nbsp;CLR. Weblogs are also interesting mediums for carrying on public on-line conversations with other folks. See my links for other folks whose weblogs I actively monitor using Aggie. If you're interested in who I am and what I do, <A href="000261.html">look here</A>.</P>
+<P>What's up with this domain name? Well, back in 1997, during my first visit to <A href="http://www.develop.com">DevelopMentor</A> prior to my becoming an instructor there, <A href="http://www.donbox.com">Don Box</A> and I drove over to the DMV to pick up his new vanity plate for his car. It was, of course, IUNKNWN (because California, unlike Ontario, Canada where I live only lets you have 7 letters on your vanity plates). Now wanting to be outdone, when I flew home, I checked to see if this domain was taken. The rest, of course, is history.</P>
+<P>This domain, of course, dates me technology-wise. I tried getting the iunknown.com of the new world, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemobjectclasstopic.asp">System.Object</A>, but I'm having a hard time convincing the folks at <A href="http://www.icann.org/">ICANN</A> to create a top-level namespace of Object :)
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000266.html">02:48 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=266" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=266" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2001_12.html#000265"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/9"
+    dc:title="My Plan"
+    dc:identifier="http://www.iunknown.com/2001_12.html#000265"
+    dc:subject="About"
+    dc:description="So, what am I up to these days? I spend some of my time thinking about Microsoft&apos;s Common Language Runtime. I am spending an increasing amount of time thinking about Generative Programming. I still think about Aspect-Oriented Programming, although I&apos;m..."
+    dc:creator="John"
+    dc:date="2001-12-01T02:47:11-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000265"></a>
+<h3 class="title">My Plan</h3>
+
+<P>So, what am I up to these days?</P>
+<P>I spend some of my time thinking about <A href="http://research.microsoft.com/~emeijer/Papers/CLR.pdf">Microsoft's Common Language Runtime</A>.</P>
+<P>I am spending an increasing amount of time thinking about <A href="/Weblog/Whenlessismore.html">Generative Programming</A>.</P>
+<P>I still think about <A href="/Files/Intro_to_AOP.ppt">Aspect-Oriented Programming</A>, although I'm not as convinced of its ability to change the world as I once was.</P>
+<P>Now that the economy seems to be on the road to recovery, I actually am teaching once a month for <A href="http://www.wintellect.com">Wintellect</A>. </P>
+<P>I spend quite a bit of time pondering the effectiveness of instructor-led training. I am working on some technology that should demonstrably improve the ability of my students to recall what I taught them when it comes time for them to actually use that knowledge.</P>
+<P>I am the C++ and C# conference chair for the following <A href="http://www.devconnections.com/">DevConnections</A> conferences in 2003:</P>
+<UL>
+<LI>
+<DIV>New Orleans, May 6-9, 2003</DIV>
+<LI>
+<DIV>Palm Springs, Oct 12(?), 2003</DIV></LI></UL>
+<P>I also plan on speaking at the following conferences in 2003:</P>
+<UL>
+<LI><A href="http://www.devconnections.com/c/default.asp">WinDev </A>in Boston sometime in the Spring of 2003 
+<LI><A href="http://www.winsummit.com">WinSummit</A> in Davos, CH, October, 2003</LI></UL>
+<P>I plan on writing various rants here about technology from time to time.</P>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000265.html">02:47 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=265" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=265" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2001_12.html#000264"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/8"
+    dc:title="My Publications"
+    dc:identifier="http://www.iunknown.com/2001_12.html#000264"
+    dc:subject="About"
+    dc:description="<![CDATA[I have co-authored two very different books, approximately 4 years apart. The first book that I co-authored was the Delphi Developer's Handbook.&nbsp;I wrote it with Marco Cantu and Tim Gooch: &nbsp; Amazingly enough, Amazon is still selling used copies of...]]>"
+    dc:creator="John"
+    dc:date="2001-12-01T02:44:59-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000264"></a>
+<h3 class="title">My Publications</h3>
+
+<P>I have co-authored two very different books, approximately 4 years apart.</P>
+<P>The first book that I co-authored was the <A href="http://www.amazon.com/exec/obidos/ASIN/0782119875/qid=1007319389/sr=1-1/ref=sr_1_6_1/107-1596383-3252568">Delphi Developer's Handbook</A>.&nbsp;I wrote it with <A href="http://www.marcocantu.com">Marco Cantu</A> and Tim Gooch:</P>
+<DIV align=center><A href="http://www.amazon.com/exec/obidos/ASIN/0782119875/qid=1007319389/sr=1-1/ref=sr_1_6_1/107-1596383-3252568"><IMG height=140 alt=[Image] hspace=4 src="/Images/Delphi_Developers_Handbook.jpg" width=115 border=0></A><BR clear=all></DIV>
+<DIV align=left>&nbsp;</DIV>
+<DIV align=left>Amazingly enough, Amazon is still selling used copies of this book. It was written in 1997, and mostly refers to Delphi 3.</DIV>
+<P>The second book that I co-authored was Essential XML. I wrote it with <A href="http://www.donbox.com">Don Box</A> and <A href="http://staff.develop.com/aarons">Aaron Skonnard</A>:</P>
+<CENTER><A href="http://www.amazon.com/exec/obidos/ASIN/0201709147/qid=1007319674/sr=2-3/ref=sr_2_7_3/107-1596383-3252568"><IMG height=140 alt=[Image] hspace=4 src="/Images/essential_xml.jpg" width=112 border=0></A><BR clear=all></CENTER>
+<P>This was back in the day when I was <EM>very</EM> into XML. Now, I look at it as just another (useful) technology in my toolbox. There are more interesting problems to solve than the interop problem, although I'm sure that <A href="http://staff.develop.com/ewald/">some</A>&nbsp;<A href="http://www.donbox.com">others</A> would disagree with me ;)</P>
+<P>This is my attempt at generating a comprehensive list of all of my on-line publications.</P>
+<OL>
+<LI>
+<DIV>
+<DIV><A href="http://www.pcmag.com/article/0,2997,s%253D1611%2526a%253D3119,00.asp">Microsoft IIS, COM+ and ASP. May 22, 2001</A>. This was the one and only review that I have ever written in a print publication. It was fun doing it once, but I don't think I'll ever do it again ...</DIV></DIV>
+<LI>
+<DIV>
+<DIV><A href="http://www.pcmag.com/article/0,2997,ss%253D1479%2526s%253D1880%2526a%253D1890,00.asp">Secure your Web Applications. PC Magazine, May 8, 2001</A>. I wrote this piece for PC Magazine to discuss four different attack scenarios for your web site: a) Can I see what your visitors are seeing? b) Can I impersonate your visitors? c) Can I impersonate you? and d) Can I get your computers to do my bidding?</DIV></DIV>
+<LI>
+<DIV><A href="http://www.pcmag.com/article/0,2997,s%253D1486%2526a%253D1892,00.asp">One Session Per User. PC Magazine, May 8, 2001</A>. I wrote this piece to discuss a specific session management problem that is common to web applications: how do I detect whether the same user is logged in multiple times to my web application?</DIV>
+<LI>
+<DIV><A href="http://www.pcmag.com/article/0,2997,s%253D1487%2526a%253D2360,00.asp">Auto-refreshing. PC Magazine, April 3, 2001</A>. I wrote this piece to explain to developers how to get their browser to automatically refresh content.</DIV>
+<LI><A href="http://msdn.microsoft.com/msdnmag/issues/0800/XSLT/XSLT.asp">XSL Transformations. MSDN Magazine, August 2000</A>. This is an excerpt from Essential XML where we discuss some possible applications for XSLT in transforming incompatible XML schemas. Since this time, I've revised my position on XSLT and XML documents: XSLT is truly only useful for transforming XML documents into HTML. This will be the subject of a future rant on this site. 
+<LI><A href="http://www.microsoft.com/mind/defaulttop.asp?page=/mind/0999/webapp/webapp.htm&amp;nav=/mind/0999/inthisissuecolumns0999.htm">Architecting your Web Applications, Microsoft Internet Developer Magazine, September 1999</A>. This article presents a somewhat radical view of building web applications: create them as a single page that is downloaded to the browser, and use it as the session state manager. Since this time, I've also revised my position on this technique: it's too&nbsp;difficult to implement for most developers. Also, recent technology developments such as ASP.NET make it far easier to pass session state as part of a page's call context.</LI></OL>
+<P>There's quite a few more articles to add to the above list ... but Google can probably find them faster for you in any event :)</P>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000264.html">02:44 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=264" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=264" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2001_12.html#000263"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/7"
+    dc:title="My Products"
+    dc:identifier="http://www.iunknown.com/2001_12.html#000263"
+    dc:subject="About"
+    dc:description="This is a list of all of the commercial software products that I&apos;ve shipped and the approximate dates that they did ship (some of the stuff from the 80&apos;s are approximate dates - to the best of my recollection). Vic-20..."
+    dc:creator="John"
+    dc:date="2001-12-01T02:39:46-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000263"></a>
+<h3 class="title">My Products</h3>
+
+<P>This is a list of all of the commercial software products that I've shipped and the approximate dates that they did ship (some of the stuff from the 80's are approximate dates - to the best of my recollection).</P>
+<OL>
+<LI><A href="http://www.kdef.com/geek/vic/">Vic-20</A> port of WordPro 3 Plus (1983) 
+<LI>80-column multitasking "operating system" for the <A href="http://www.c64.org/">Commodore 64</A> (1984) 
+<LI>High-speed spelling checker for WordPro 64 (1985) 
+<LI>GT4 cartridge for the Commodore 64 (1985) 
+<LI>First linking assembler for the Commodore 64 (1986) 
+<LI><A href="http://www.cibc.com">CIBC</A> OnLine banking application for CIBC Cash Management Services (1995) 
+<LI>RADFind 96 high-speed file finder for Win9x (1996) 
+<LI><A href="http://www.corel.com">Corel Paradox 8</A>&nbsp;- application manager for the Paradox frame<STRONG>work</STRONG> (1997) </LI></OL>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000263.html">02:39 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=263" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=263" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2001_12.html#000262"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/6"
+    dc:title="My Other Life"
+    dc:identifier="http://www.iunknown.com/2001_12.html#000262"
+    dc:subject="About"
+    dc:description="I spent the years from 1986 through 1995 studying Organic Chemistry at the University of Toronto. Why the life change? In the middle of 1986, as I was preparing to graduate from high school, I was very unhappy with the..."
+    dc:creator="John"
+    dc:date="2001-12-01T02:31:58-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000262"></a>
+<h3 class="title">My Other Life</h3>
+
+<P>I spent the years from 1986 through 1995 studying <A href="http://www.chem.utoronto.ca/gradinfo/research/organic.html">Organic Chemistry</A> at the <A href="http://www.utoronto.ca">University of Toronto</A>. Why the life change? In the middle of 1986, as I was preparing to graduate from <A href="http://schools.tdsb.on.ca/agincourtci/">high school</A>, I was very unhappy with the state of software development. Remember, however, that I worked on Commodore computers, programming various incarnations of the venerable <A href="http://www.programmersheaven.com/zone5/cat440/3443.htm">MOSTEK 6502</A> microprocessor. From 1979, when I first laid hands on a Commodore PET at <A href="http://www.gbrownc.on.ca/campuslocations/index.html">George Brown College</A> in Toronto, through 1986 <EM>nothing had changed</EM>. Sure, I had color graphics and 64K vs. 8K of RAM. Sure, I had a 1541 floppy disk drive vs. a tape drive. But that improvement wasn't even an order of magnitude. Contrast that with the change in PC technology from 1994 through 2001!</P>
+<P>So, to protest the lame state of affairs in my little corner of computing, I decided to do something completely different. I decided to study chemistry at the University of Toronto. I had a lot of fun during those years. I accumulated my three degrees, and my mom is very happy that I'm a Doctor. I learned a lot of transferable life skills during those years as well: the ability to think critically, the ability to communicate both in writing and in the classroom, and the dangers of basing your work on untested assumptions. </P>
+<P>During this time, I actually spent very little time working on computers. Sure, I used them to type up reports and perform calculations, but I spent very little time actually writing software. To be fair, towards the end of my Ph.D., I got the bug again and wrote some software to automate the pH-stat in our lab, and to analyze NMR spectra on PCs. </P>
+<P>So, what did I actually do during my time in Chemistry? I worked in <A href="http://www.chem.utoronto.ca/people/academic/klugerr.html">Professor Ronald Kluger's</A> lab from 1990-1995, where I figured out the detailed mechanism of the fragmentation reaction of a model thiamin adduct: hydroxybenzyl thiamin. If you're interested in this stuff, check out&nbsp;my <A href="/Files/THESIS2.pdf">Ph.D Thesis</A>. </P>
+<P>&nbsp;</P>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000262.html">02:31 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=262" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=262" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

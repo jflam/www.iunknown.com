@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Junction Points and Win2K+</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000420.html" title="Composition in Photography: A Tutorial" />
+
+<link rel="next" href="http://www.iunknown.com/000422.html" title="Obscure ASP security hole" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000421.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/165"
+    dc:title="Junction Points and Win2K+"
+    dc:identifier="http://www.iunknown.com/000421.html"
+    dc:subject="Blog"
+    dc:description="NTFS has a great feature called junction points that let you create directory aliases starting in Windows 2000. This lets you avoid security issues that result from parent-path canonicalization attacks. For example, in IIS 6.0, parent paths are disabled (e.g...."
+    dc:creator="John"
+    dc:date="2004-02-26T15:05:04-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000420.html">&laquo; Composition in Photography: A Tutorial</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000422.html">Obscure ASP security hole &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 26, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Junction Points and Win2K+</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><span class="caps">NTFS</span> has a great feature called <a href="http://support.microsoft.com/?kbid=205524">junction points</a> that let you create directory aliases starting in Windows 2000. This lets you avoid security issues that result from <a href="http://www.microsoft.com/mspress/books/sampchap/5612b.asp">parent-path canonicalization attacks</a>. For example, in <span class="caps">IIS 6.0,</span> parent paths are disabled (e.g. you cannot use relative URLs that do innocuous-looking stuff like &lt;img src="../Images/MyImage.jpg"/&gt;). This is common in web applications that need to share common files such as images. They usually have directory structures that look like:</p>
+
+<pre>
+VDir
++--Images
++--App1
++--App2
+</pre><p>To avoid file path canonicalization attacks, you need to do is create junction points in <span class="caps">NTFS. </span>This results in directory structures that look like:</p>
+
+<pre>
+VDir
++--Images
++--App1
+   +--Images*
++--App2
+   +--Images*
+</pre><p>Note that the directories marked by (*) are actually junction points and <span class="caps">NOT</span> real subdirectories. This lets you rewrite your <span class="caps">HTML</span> to look like: &lt;img src="Images/MyImage.jpg"/&gt;.</p>
+
+<p>Now <em>creating</em> junction points is a whole other matter entirely. For reasons that I don't understand, Windows doesn't ship with any tools that let you create junction points. You must either purchase a copy of the Windows 2000 Resource Kit so that you can use its <code>linkd</code> utility, or you can download Mark Russinovich's most excellent <a href="http://www.sysinternals.com/ntw2k/source/misc.shtml#junction"><code>junction</code> utility</a>.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 26, 2004 03:05 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=421" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="421" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000421.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Also checkout FSUTIL that ships with Windows XP and Windows 2003.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.raboof.com/">Atif Aziz</a> at February 26, 2004 07:10 PM</span>
+</div>
+<div class="comments-body">
+<p>If I'm not mistaken, I can only create hard links with fsutil and not junction points.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 26, 2004 07:17 PM</span>
+</div>
+<div class="comments-body">
+<p>a) All this is a waste of time as all browsers normalise url requests to a server anyway. i.e. even if you have [img src="../images/logo.gif"] in a file in the /test/ folder -- a GET request will be made for "/images/logo.gif" - the server doesn't see the parent path.</p>
+
+<p>b) Why fiddle with junction points? Just add a virtual *sub*directory! Virtual directories can be added anywhere in a directory hierarchy in IIS. (In fact you can add a vDir with the same same as an existing one, and if effectively 'overrides' the real one)</p>
+<span class="comments-post">Posted by: Duncan Smart at February 26, 2004 09:20 PM</span>
+</div>
+<div class="comments-body">
+<p>Talking of hardlinks, SysInternals also have a tool that does that, even on NT (an "interesting" usage of the Backup/Restore API if memory serves...)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://blogs.geekdojo.net/pdbartlett">Paul Bartlett</a> at February 27, 2004 04:57 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the link to Mark's junction util! It's most useful.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://dotnet.org.za/ernst/">Ernst</a> at February 27, 2004 09:42 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Generics in RubyCLR</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Generics in RubyCLR": comment by John Lam</title>
+      <description>&lt;p&gt;+1 for List.of()&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 21:31:53 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr#comment-172</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr#comment-172</link>
+    </item>
+    <item>
+      <title>"Generics in RubyCLR": comment by null</title>
+      <description>&lt;p&gt;List.of(Int32).new&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 21:10:54 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr#comment-171</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr#comment-171</link>
+    </item>
+    <item>
+      <title>"Generics in RubyCLR": comment by John Lam</title>
+      <description>&lt;p&gt;Hmmm ... the first solution doesn't pan out because of a possible conflict with the syntax for static properties. The second one could work out, but it looks confusing. The third one, using blocks, I haven't really thought of that before. I'll have to try that out. Thanks, Dave!&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 20:01:08 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr#comment-170</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr#comment-170</link>
+    </item>
+    <item>
+      <title>"Generics in RubyCLR": comment by Dave</title>
+      <description>&lt;p&gt;you could emulate C# syntax with other brackets:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List[Int32]&lt;/li&gt;
+&lt;li&gt;List(Int32)&lt;/li&gt;
+&lt;li&gt;List{Int32}&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 18:22:12 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr#comment-169</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr#comment-169</link>
+    </item>
+    <item>
+      <title>"Generics in RubyCLR" by jlam</title>
+      <description>&lt;p&gt;I got a crude implementation of generics up and running in RubyCLR today. It does what these tests say it does, and nothing more :)&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class GenericsTests &amp;lt; TestCase
+  include System::Collections::Generic
+
+  def test_make_generic_type
+    c = List.cons(Int32)
+    assert_equal 'System::Collections::Generic::List_generic_Int32', c.name
+    assert_equal 'System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]', c.clr_type.full_name
+  end
+
+  def test_create_generic_type
+    list = List.cons(Int32).new
+    assert_equal 'List`1', list.clr_type.name
+  end
+
+  def test_call_generic_type
+    list = List.cons(Int32).new
+    list.add(42)
+    assert_equal 42, list[0]
+  end
+
+  def test_type_conversion_error
+    assert_raises TypeError do
+      list = List.cons(Int32).new
+      list.add('42')
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;As for feedback, I&amp;#8217;m not all that happy with the name &lt;code&gt;cons&lt;/code&gt; for the method that creates a generic type. Suggestions would be welcome (but they have to be easy to type, since I&amp;#8217;m competing with &lt;code&gt;List&amp;lt;Int32&amp;gt;&lt;/code&gt; :)&lt;/p&gt;
+
+
+	&lt;p&gt;I also ran some crude performance benchmarks for adding 1M integers to each data structure:&lt;/p&gt;
+
+
+	&lt;ul&gt;
+	&lt;li&gt;&lt;code&gt;ArrayList&lt;/code&gt;   = 1.15s&lt;/li&gt;
+		&lt;li&gt;&lt;code&gt;List&amp;lt;Int32&amp;gt;&lt;/code&gt; = 1.00s&lt;/li&gt;
+		&lt;li&gt;Ruby &lt;code&gt;Array&lt;/code&gt;  = 0.66s&lt;/li&gt;
+	&lt;/ul&gt;
+
+
+	&lt;p&gt;I just wanted to get some order of magnitude estimates of performance. So far I&amp;#8217;m quite happy with the performance of the bridge. 1M method calls / second is nothing to sneeze at.&lt;/p&gt;
+
+</description>
+      <pubDate>Tue, 28 Feb 2006 17:21:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/28/generics-in-rubyclr"&gt;Generics in RubyCLR&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/28/generics-in-rubyclr"&gt;Generics in RubyCLR&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

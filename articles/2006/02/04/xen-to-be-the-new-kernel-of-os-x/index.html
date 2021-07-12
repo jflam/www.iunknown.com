@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Xen to be the new kernel of OS X?</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    trackback:ping="http://www.iunknown.com/articles/trackback/60"
+    dc:title="Xen to be the new kernel of OS X?"
+    dc:identifier="http://www.iunknown.com/articles/read/60"
+    dc:description="I saw this post from Colin, the guy who runs the winxponmac.com contest site. Apparently, he talked to one of the guys from X"
+    dc:creator="jlam"
+    dc:date="2006-06-03T09:48:17-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a class="admintools" href="/admin/content/edit/60" id="admin_article" style="display: none">edit</a>
+  <h2>Xen to be the new kernel of OS X?</h2>
+  <p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+  <span class="typo_date" title="Sat, 04 Feb 2006 15:52:00 GMT">Sat, 04 Feb 2006 15:52:00 GMT</span></p>
+  <p>I saw <a href="http://forum.onmac.net/showthread.php?t=5">this post</a> from Colin, the guy who runs the <a href="http://www.winxponmac.com">winxponmac.com</a> contest site. Apparently, he talked to one of the guys from <a href="http://xensource.com/">XenSource</a>, and this was the most interesting parts of the conversation:</p>
+
+
+	<blockquote>
+		<p>Currently, Apple uses the Mach Kernel to interface with the hardware. However, &#8220;Mach&#8221; is essentially outdated and causes a lot of the bottlenecks with programs having to create a lot more processes than necessary to get the job done. The guy from Xen told me they have been talking a great deal with the Apple guys about replacing Mach with Xen. This is a really big deal! This would be consistent with reports that Apple has filed patents related to Virtualization.</p>
+	</blockquote>
+
+
+	<p>Read the rest of the post for more details (and links). Xen is an open-source virtualization monitor a&#8217;la VMWare and <span class="caps">VPC</span>. It apparently is <a href="http://www.cl.cam.ac.uk/Research/SRG/netos/xen/performance.html">much more efficient</a> than either VMWare or <span class="caps">VPC</span> when the guest OS has been modified to run on Xen. However, with the advent of the new Intel Vanderpool virtualization technology, the guest OS can run <em>unmodified</em> at Ring 1 privilege. Now, it&#8217;s likely that both VMWare and <span class="caps">VPC</span> will exploit this new hardware feature, but it would rock if we could have built-in virtualization in the host OS.</p>
+
+
+</div>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4> 
+  <p class="postmetadata alt">
+    <small><a href="#respond">Leave a response</a></small>
+  </p>
+  <ol class="comment-list" id="commentList"></ol>
+
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://www.iunknown.com/xml/articlerss/60/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  <a href="http://www.iunknown.com/articles/trackback/60">trackback uri</a>  
+  </small>
+</p>
+
+  <form action="/articles/comment/60" class="commentform" id="commentform" method="post" onsubmit="new Ajax.Updater({success:'commentList'}, '/articles/comment/60', {asynchronous:true, evalScripts:true, insertion:Insertion.Bottom, onComplete:function(request){complete(request)}, onFailure:function(request){failure(request)}, onLoading:function(request){loading()}, parameters:Form.serialize(this)}); return false;">
+
+
+<div class="comment-box">
+  <div id="errors"></div>
+
+  <a name="respond"></a>
+  <table cellpadding="4" cellspacing="0" class="frm-tbl">
+    <tr>
+      <td><p><label for="comment_author">Your name</label></p></td>
+      <td> <input id="comment_author" name="comment[author]" size="20" type="text" /> <small><a href="#" onclick="Element.toggle('guest_url'); Element.toggle('guest_email'); return false;">(leave url/email &#187;)</a></small></td>
+    </tr>
+    <tr id="guest_url" style="display:none;">
+      <td><p><label for="comment_url">Your blog</label></p></td>
+      <td> <input id="comment_url" name="comment[url]" size="30" type="text" /></td>
+    </tr>
+    <tr id="guest_email" style="display:none;">
+      <td><p><label for="comment_email">Your email</label></p></td>
+      <td> <input id="comment_email" name="comment[email]" size="30" type="text" /></td>
+    </tr>
+    <tr>
+      <td><p><label for="comment_body">Your message</label></p></td>
+      <td valign="top" colspan="2">
+        <textarea cols="40" id="comment_body" name="comment[body]" rows="20"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" id="frm-btns">
+      <span id="comment_loading" style="display:none;"><img alt="Spinner" src="/images/spinner.gif" /></span>&nbsp;&nbsp;
+        <input type="submit" name="submit" id="form-submit-button" value="submit" class="button" />
+      </td>
+    </tr>
+  </table>
+</div>
+</form>
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.sciam.com/print_version.cfm?articleID=000B557A-71ED-146C-ADB783414B7F0000" title="Scientific American: The Flipping Point">Scientific American: The Flipping Point </a></li>
+              <li><a href="http://blogs.msdn.com/tims/articles/475132.aspx" title="Tim Sneath : Windows Presentation Foundation Blogs">Tim Sneath : Windows Presentation Foundation Blogs </a></li>
+              <li><a href="http://windowssdk.msdn.microsoft.com/en-us/library/ms746683.aspx" title="Base Elements">Base Elements </a></li>
+              <li><a href="http://blogs.msdn.com/text/" title="WPF Text Blog">WPF Text Blog </a></li>
+              <li><a href="http://www.washingtonpost.com/wp-dyn/content/article/2006/04/14/AR2006041401209_pf.html" title="Founder of Greenpeace in an editorial that advocates a return to nuclear power as a way to combat climate change.">Going Nuclear </a></li>
+              <li><a href="http://www.velonews.com/" title="VeloNews: The Journal of Competitive Cycling">VeloNews: The Journal of Competitive Cycling </a></li>
+              <li><a href="http://illconsidered.blogspot.com/" title="A Few Things Ill Considered">A Few Things Ill Considered </a></li>
+              <li><a href="http://www.iunknown.com/" title="Less is better">Less is better </a></li>
+              <li><a href="http://www.nybooks.com/articles/19131" title="Jim Hansen, Director of NASA Goddard Institute weighs in on an Inconvenient Truth. Contains interesting personal anecdotes on his rocky relationship with Al Gore.">The New York Review of Books: The Threat to the Planet </a></li>
+              <li><a href="http://www.youtube.com/watch?v=QjA5faZF1A8&amp;feature=Favorites&amp;page=1&amp;t=t&amp;f=b" title="You just have to watch this guitar solo to believe it. Amazing.">You just have to watch this guitar solo to believe it. Amazing. </a></li>
+              <li><a href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms" title="For the archives">ActiveRecord and Windows Forms </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102310404/"><img alt="Ruby RSS Reader" src="http://static.flickr.com/36/102310404_c16b55d745_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/140020351/"><img alt="ActiveRecord and Windows Forms" src="http://static.flickr.com/55/140020351_6a1828085b_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102769655/"><img alt="Google Calculator using RubyCLR" src="http://static.flickr.com/27/102769655_160658c51e_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/127726931/"><img alt="Adium" src="http://static.flickr.com/51/127726931_16aa1e3aea_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/07">July 2006</a>
+      <em>(16)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/06">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/05">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/04">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/03">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02/04">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(1)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(50)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(122)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

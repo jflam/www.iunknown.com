@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+	<meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: RubyCLR and Avalon</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2006/03/rubyclr-makes-n.html?no_prefetch=1" title="RubyCLR makes .NET feel more like Ruby" />
+	<link rel="next" href="http://www.iunknown.com/2006/03/why-ruby-for-ne.html?no_prefetch=1" title="Why Ruby? (for .NET folks)" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2006/03/rubyclr-and-ava.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/25820348"
+    dc:title="RubyCLR and Avalon"
+    dc:identifier="http://www.iunknown.com/2006/03/rubyclr-and-ava.html"
+    dc:description="Here’s a teaser screenshot: The integral was defined by this Ruby code: integral(&#39;a&#39;, &#39;b&#39;, &#39;f(x) dx&#39;) The image that you see was rendered using the technology formerly known as Avalon. This is a part of the new sample application that..."
+    dc:creator="John Lam"
+    dc:date="2006-03-15T16:49:00-08:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2006/03/rubyclr-makes-n.html">&laquo; RubyCLR makes .NET feel more like Ruby</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2006/03/why-ruby-for-ne.html">Why Ruby? (for .NET folks) &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">March 15, 2006</h2>
+
+
+<div class="entry" id="entry-45159286">
+			<h3 class="entry-header">RubyCLR and Avalon</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p>Here&#8217;s a teaser screenshot:</p>
+
+
+	<p><img src="http://static.flickr.com/56/113024723_7bb322ce42_o.png" alt="" /></p>
+
+
+	<p>The integral was defined by this Ruby code:</p>
+
+
+	<p><code>integral('a', 'b', 'f(x) dx')</code></p>
+
+
+	<p>The image that you see was rendered using the technology formerly known as Avalon. This is a part of the new sample application that will ship in the 3rd drop of RubyCLR (probably sometime tonight, or whenever I get enough time to type up a set of release notes). It will let you interactively create mathematical expressions in an Avalon application.</p>
+
+
+	<p>I used <a href="http://www.valil.com/winfx/math.html">Valentin Iliescu&#8217;s</a> most excellent <code>Math.Equations</code> library to do the heavy lifting. Most of the equations that you see are really custom layout panels. Valentin graciously agreed over lunch to let me ship his assembly (only 45K) along with RubyCLR so that you can see this stuff in action.</p>
+
+
+	<p>The domain specific language that I created for this sample is far from ideal; I gave myself a 1 day time window to create this sample, and I&#8217;ve run out of time. If anyone out there is interested in improving the <span class="caps">DSL</span>, go for it (and please share!).</p>
+
+
+	<p>Here&#8217;s an excerpt of the <span class="caps">DSL</span> that defines the paragraph in the screenshot:</p>
+
+
+<pre><code>
+text 'The first fundamental theorem of calculus states that, if ', expr('f')
+text 'is continuous on the closed interval', expr('[a,b]'), 'and', expr('F')
+text 'is the is the antiderivative (indefinite integral) of ', expr('f')
+text 'on', expr('[a,b]'), ', then ', integral('a', 'b', 'f(x) dx = F(b) - F(a)'), '.'
+</code></pre>
+
+	<p>You&#8217;ll need to have the February 2006 WinFX <span class="caps">CTP</span> to run the <span class="caps">WPF</span> sample (but you won&#8217;t need it to use any of the other code in the bridge).</p>
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2006%2F03%2Frubyclr-and-ava.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 04:49 PM in <a href="http://www.iunknown.com/import/index.html">import</a> </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2006/03/rubyclr-and-ava.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/25820348</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2006/03/rubyclr-and-ava.html">RubyCLR and Avalon</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content">
+			<!-- comment list -->
+	<a id="c100053024">

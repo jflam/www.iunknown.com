@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Improving OOBE for open source?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Improving OOBE for open source?</div>
+
+
+<div class="comments-body">
+<p>Hi,<br />
+Maybe this can be solved by using merge modules?<br />
+Each software, nant, nunit, etc, will be packaged as a merge module and you own software will be the master install by beeing a standard setup and by including each specific merge module you need?<br />
+John.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;knipjo&#64;hotmail&#46;com">Jonx</a> at July 23, 2003 08:00 AM</span>
+</div>
+<div class="comments-body">
+<p>You can create a merge module for them as Jonx mentioned above, but you run the risk of changing the component GUIDs that come in the original packaging. These are used to keep track of reference counting for shared components. Gets messy if you mix these up. Licensing will come into play by "re-packaging" them this way.</p>
+
+<p>The other route is to make a main MSI which calls the other installations. The main MSI can instruct the others where to install and to perform it silently, making the user think that there is only one installation going on.</p>
+
+<p>Custom Actions in the MSI can make the decisions or record the INSTALLDIR of the individual components.</p>
+
+<p>NUnit comes in an MSI, I don't have NAnt so I'm not sure about this one. This isn't as much re-packaging as it is re-distributing, but I'm sure you'd have to make arrangements for the products.<br />
+</p>
+<span class="comments-post">Posted by <a href="mailto&#58;jeff&#46;clark&#64;bmwfs&#46;com">Jeff Clark</a> at July 29, 2003 02:50 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

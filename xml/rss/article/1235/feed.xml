@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Unicode and Ruby</title>
+    <link>http://iunknown.com/articles/2006/11/03/unicode-and-ruby</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Unicode and Ruby</title>
+      <description>&lt;p&gt;I was quite depressed listening to &lt;a href="http://www.tbray.org/ongoing/"&gt;Tim Bray&lt;/a&gt; talk about Unicode and Ruby at RubyConf. While Tim did a wonderful job at explaining the problems, he didn&amp;#8217;t really provide much in the way of a solution. Which is why I was quite happy when I read Julian Tarkhanov&amp;#8217;s &lt;a href=":http://www.fngtps.com/files/2/2006/06/rstm01-unicode_in_rails.pdf"&gt;slide deck&lt;/a&gt; from his Unicode presentation at the &lt;a href="http://www.fngtps.com/2006/05/rails-show-and-tell-meeting"&gt;Rails Show and Tell meeting in Amerstam&lt;/a&gt; where he introduces his &lt;a href="http://julik.textdriven.com/svn/tools/rails_plugins/unicode_hacks/"&gt;Unicode hacks&lt;/a&gt; libraries.&lt;/p&gt;
+
+
+	&lt;p&gt;I really like his idea about using an accessor proxy on &lt;code&gt;String&lt;/code&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+name = 'Claus Müller'
+puts name.reverse #=&amp;gt; rell??M sualC
+name.length #=&amp;gt; 13
+
+puts name.chars.reverse #=&amp;gt; rellüM sualC
+name.chars.length #=&amp;gt; 12
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Notice how accessing the same string via the &lt;code&gt;chars&lt;/code&gt; accessor correctly reverses the German string.&lt;/p&gt;</description>
+      <pubDate>Fri, 03 Nov 2006 06:55:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:bd4b019f-b218-4ec0-ab9e-ce0e8d0a4daf</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://iunknown.com/articles/2006/11/03/unicode-and-ruby</link>
+      <category>Ruby</category>
+      <category>Unicode</category>
+    </item>
+    <item>
+      <title>"Unicode and Ruby" by Eric Hodel</title>
+      <description>&lt;p&gt;You can do this with scan in utf-8 mode:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$KCODE = 'u'
+s = "foo\317\200bar"
+puts s.scan(/./).reverse.join # =&amp;gt; "rabπoof"
+&lt;/code&gt;&lt;/pre&gt;</description>
+      <pubDate>Sat, 06 Jan 2007 20:08:56 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:db612650-eb56-4491-b883-25a3e18ee34b</guid>
+      <link>http://iunknown.com/articles/2006/11/03/unicode-and-ruby#comment-1540</link>
+    </item>
+    <item>
+      <title>"Unicode and Ruby" by Charles Oliver Nutter</title>
+      <description>&lt;p&gt;This is actually available now as the ActiveSupport::MultiByte included in edge rails. We're hoping to provide native support for it in the next release of JRuby. I think it's on the right track, and it's certainly got a good chance of getting wide exposure since it will be included in Rails.&lt;/p&gt;</description>
+      <pubDate>Fri, 03 Nov 2006 08:50:23 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:ab609c02-c9d0-48f3-9323-cd2da030d193</guid>
+      <link>http://iunknown.com/articles/2006/11/03/unicode-and-ruby#comment-1239</link>
+    </item>
+  </channel>
+</rss>

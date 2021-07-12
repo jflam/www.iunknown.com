@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Hosting ASP.NET in a WinForms app</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000098.html" title="I've got debugging support implemented!" />
+
+<link rel="next" href="http://www.iunknown.com/000100.html" title="Toronto .NET User's Group" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000098.html">&laquo; I've got debugging support implemented!</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000100.html">Toronto .NET User's Group &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 07, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Hosting ASP.NET in a WinForms app</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>This entry doesn't have anything to do with aspect-oriented programming. I'm on my way back home after teaching my ASP.NET class to the nice folks at <A href="http://www.unumprovident.com/">UNUM Provident</A> in Portland, Maine. After missing my connecting flight at LaGuardia, I'm sitting in the United Lounge writing this piece on my experiences with hosting ASP.NET inside of a WinForms application.</P><br />
+<P>Before I begin, let me explain why I'm interested in hosting ASP.NET inside of a WinForms app. One of the things that I like to do (when I have the energy) is to go out and take pictures of the area around where I happen to be teaching a class. I've got a fair collection of digital photographs from lots of different places, and I'd like to publish them on this web site. However, what has always frustrated me was the difficulty in creating what amounts to a photo essay using traditional web logging tools such as the one that I'm using to create this entry.</P><br />
+<P>I've been itching to write a WinForms app, and I've been itching to learn the syntax of VB.NET, so I decided to write an app that will let me create photo essays. The concept is real simple: let a user select a bunch of digital photographs, let them annotate those photographs with text, and let them publish the generated photo essay to a web server as a collection of static HTML pages and images. There are several other requirements that I have for my application:</P><br />
+<UL><br />
+<LI>It will automatically resize my pictures and generate thumbnails, as well as several other differently sized versions of the same picture.<br />
+<LI>It will let me publish my photo essay using arbitrary templates written using ASP.NET.<br />
+<LI>It will save the photo essay in a MSDE database.</LI></UL><br />
+<P>Hosting ASP.NET turns out to be ridiculously simple. At first, I first tried to do it the hard way: I derived my own class from System.Web.HttpWorkerRequest. This led to all sorts of frustration. Thankfully, while I was teaching my class up in Portland, <A href="http://staff.develop.com/onion/resources.htm">Fritz Onion</A> and I hung out one evening after the <A href="http://www.mainebytes.com">MaineBytes</A> user group meeting that Fritz spoke at. Fritz pointed that I really should be using System.Web.Hosting.SimpleWorkerRequest in my hosting scenario. He also sent along some sample code that illustrated this. Wow. That changed everything. In 5 minutes I had ASP.NET hosted inside of my application.</P><br />
+<P>Here's the sample code that Fritz sent along:</P><CODE><br />
+<P>using System;<BR>using System.IO;<BR>using System.Web;<BR>using System.Web.Hosting;</P><br />
+<P>public class MyExeHost : MarshalByRefObject<BR>{<BR>&nbsp; public void ProcessRequest(String page)<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; HttpWorkerRequest hwr = <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new SimpleWorkerRequest(page, null, Console.Out);<BR>&nbsp;&nbsp;&nbsp; HttpRuntime.ProcessRequest(hwr);<BR>&nbsp; }<BR>}</P><br />
+<P>public class App<BR>{<BR>&nbsp; public static void Main(string[] args)<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; MyExeHost host = (MyExeHost)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ApplicationHost.CreateApplicationHost(typeof(MyExeHost), "/",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Directory.GetCurrentDirectory());<BR>&nbsp;&nbsp;&nbsp; foreach (String page in args)<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; host.ProcessRequest(page);<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }<BR>}</P></CODE><br />
+<P>While Fritz's code got me most of the way to my solution, one other thing that I needed to do was to have my ASP.NET host add some additional objects to the HttpContext. One of the objects that I wanted to add was a DataSet object that would contain the list of images and their associated text. This would let the ASP.NET page databind against that DataSet to generate the final list / set of images.</P><br />
+<P>To make this work, I need to intercept the creation of the HttpContext object and add my DataSet object to the HttpContext object. This required me to derive a custom handler from the System.Web.SimpleWorkerRequest class. The key method that I need to override was the SetEndOfSendNotification method. In this method, the extraData parameter will contain the newly created HttpContext object. Here's the code that makes this possible:</P><CODE><br />
+<P>public class CustomWorkerRequest : SimpleWorkerRequest<BR>{<BR>&nbsp; public CustomWorkerRequest( string page, string query, TextWriter writer ) : base( page, query, writer ) {}</P><br />
+<P>&nbsp; public override void SetEndOfSendNotification( EndOfSendNotification callback, object extraData ) <BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; base.SetEndOfSendNotification( callback, extraData );</P><br />
+<P>&nbsp;&nbsp;&nbsp; HttpContext context = extraData as HttpContext;<BR>&nbsp;&nbsp;&nbsp; if( context != null )<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // TODO: add a reference to a DataSet object here that would contain<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // the data to be injected into the web page. The web page will databind<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // against this DataSet to generate the photoesssay HTML<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }<BR>}</P></CODE><br />
+<P>Hopefully this helps anyone else walking down this path. Feel free to <A href="mailto:jlam@iunknown.com">send me some email</A> if you have comments / questions / suggestions.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June  7, 2002 11:57 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="99" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000099.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="99" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

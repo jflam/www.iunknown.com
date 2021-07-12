@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: References to other assemblies</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000073.html" title="Multi-module assemblies" />
+
+<link rel="next" href="http://www.iunknown.com/000267.html" title="My Runtime Aspect Weaver" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000073.html">&laquo; Multi-module assemblies</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000267.html">My Runtime Aspect Weaver &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 28, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">References to other assemblies</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>Ever wondered how one assembly references types in another assembly? The following is a simplified explanation of what goes on. This is a lab-style entry. If you <EM>really</EM> want to understand how this happens, follow along using your own computer.</P><br />
+<P>In this example, we're going to look at System.Xml.Dll using ILDASM. Run the following command from the directory that contains System.Xml.Dll:</P><br />
+<P><CODE>ildasm /tokens&nbsp;system.xml.dll</CODE></P><br />
+<P>Notice that I used the /tokens command line switch that instructs ILDASM to display token values in its disassembly.</P><br />
+<P>Navigate to the System.Xml.XmlDocument class and find its Load( System.IO.Stream ) method. This is a method that clearly references a type (System.IO.Stream) that is defined inside of another assembly (mscorlib).</P><br />
+<P>When you disassemble the method it by double-clicking on the method name in ILDASM, you should see the following lines at the top of the disassembly window:</P><br />
+<P><CODE>.method /*060002DF*/ public hidebysig newslot virtual instance void&nbsp; Load(class [mscorlib/* 23000001 */]System.IO.Stream/* 0100000F */ inStream) cil managed</CODE></P><br />
+<P>Metadata in assemblies is identified by tokens. The token values in our disassembly are enclosed inside of the inline comments (/* */). </P><br />
+<P>There are many different types of metadata tokens. Tokens can refer to type definitions, type references, method definitions, method references, and so on. The type of a token can be readily discerned by looking at the value of its most signifant byte.</P><br />
+<P>In our example, there are three types of tokens in the disassembly shown above:</P><br />
+<OL><br />
+<LI><br />
+<DIV>A MethodDef (method definition) token (0x060002DF)</DIV><br />
+<LI><br />
+<DIV>An AssemblyRef (assembly reference) token (0x23000001)</DIV><br />
+<LI><br />
+<DIV>A TypeRef (type reference) token (0x0100000F)</DIV></LI></OL><br />
+<P>The remaining 24 bits of the token value is either an index into a row in a metadata table (as is the case for all three tokens types shown here) or an offset into a heap (which is the case for all String and UserString tokens).</P><br />
+<P>You can find definitions of all token types in the Partition II - Metadata specification in the %FrameworkSDK%\Tool Developers Guide\docs directory.</P><br />
+<P>The token that we're going to focus on is the TypeRef token. In our example, this token referes to the System.IO.Stream type in the mscorlib assembly. The question that we want answered is what information is required to find that type at runtime? In other words, what does MSCOREE have to do to find this type?</P><br />
+<P>To see this in action, we need to use a tool that ships as uncompiled source code in the Framework SDK. That tool is METAINFO. Navigate to the %FrameworkSDK%\Tool Developers Guide\Samples\metainfo directory. Build the sample by typing the following command in your command prompt:</P><br />
+<P><CODE>nmake</CODE></P><br />
+<P>To make your life easier, put METAINFO.EXE on your path by copying Debug\Metainfo.exe to a directory on your path (I like to put it in my \Windows directory).</P><br />
+<P>Next you want to dump the metadata in System.Xml.Dll out to a text file that you can read. Issue the following command from the directory that contains System.Xml.Dll:</P><br />
+<P><CODE>metainfo -raw -heaps System.Xml.Dll &gt; out.txt</CODE></P><br />
+<P>Open the generated text file, out.txt, using Notepad. The second table that you will see is the TypeRef table. Locate the 0F row in this table. This, of course, corresponds to the row in the TypeRef table that would be referenced by our TypeRef token whose value is 0x0100000F:</P><br />
+<P><CODE>&nbsp;&nbsp; f == 0:ResolutionScope[23000001], 1:string#27c, 2:string#283</CODE></P><br />
+<P>There are three columns in this row. The first column is the ResolutionScope of this type reference. This tells the execution engine which assembly this type resides in. The next two columns provide offsets into the Strings heap for the type's name and the type's namespace. Here are the relevant entries from the Strings heap:</P><br />
+<P><CODE>0000027c: Stream<BR>00000283: System.IO</CODE></P><br />
+<P>Note that the fact that there is a namespace column in the TypeRef table does <EM>not</EM> mean that the runtime understands namespaces. This presence of a namespace column only serves to act as a form of data compression in the metadata tables. This is understandable since many types can be referenced from the same namespace, and this scheme avoids duplicating the namespace string unnecessarily in the Strings heap.</P><br />
+<P>Let's turn our attention to the ResolutionScope token. In this case, the ResolutionScope token happens to be an AssemblyRef token (0x23000001). Here's the first row from the AssemblyRef table:</P><br />
+<P><CODE>35: AssemblyRef&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cRecs:&nbsp;&nbsp;&nbsp; 2(0x2), cbRec: 28(0x1c), cbTable:&nbsp;&nbsp;&nbsp; 56(0x38)<BR>&nbsp; col&nbsp; 0:&nbsp; MajorVersion oCol: 0, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 1:&nbsp; MinorVersion oCol: 2, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 2:&nbsp; BuildNumber&nbsp; oCol: 4, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 3:&nbsp; RevisionNumber oCol: 6, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 4:&nbsp; Flags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol: 8, cbCol:4, ULONG&nbsp; <BR>&nbsp; col&nbsp; 5:&nbsp; PublicKeyOrToken oCol: c, cbCol:4, blob&nbsp;&nbsp; <BR>&nbsp; col&nbsp; 6:&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol:10, cbCol:4, string <BR>&nbsp; col&nbsp; 7:&nbsp; Locale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol:14, cbCol:4, string <BR>&nbsp; col&nbsp; 8:&nbsp; HashValue&nbsp;&nbsp;&nbsp; oCol:18, cbCol:4, blob&nbsp;&nbsp;&nbsp;<BR>=================================================<BR>&nbsp;&nbsp; 1 == 0:0001, 1:0000, 2:0ce4, 3:0000, 4:00000000, 5:blob#14, 6:string#7, 7:string#0, 8:blob#0</CODE></P><br />
+<P>Notice here that I also printed out the legend that is supplied by MetaInfo to simplify our discussion. </P><br />
+<P>All of the information found in this table is used to locate the assembly that is referenced. In this case, these are what their values are:</P><br />
+<UL><br />
+<LI><br />
+<DIV>MajorVersion = 1</DIV><br />
+<LI><br />
+<DIV>Minor Version = 0</DIV><br />
+<LI><br />
+<DIV>Build Number = 3705</DIV><br />
+<LI><br />
+<DIV>Revision Number = 0</DIV><br />
+<LI><br />
+<DIV>Flags = 0</DIV><br />
+<LI><br />
+<DIV>PublicKeyOrToken = b7 7a 5c 56 19 34 e0 89</DIV><br />
+<LI><br />
+<DIV>Name = mscorlib</DIV><br />
+<LI><br />
+<DIV>Locale = NULL</DIV><br />
+<LI><br />
+<DIV>Hash Value = NULL</DIV></LI></UL><br />
+<P>This information is passed by MSCOREE to a mysterious piece of OS software called Fusion. It lives inside fusion.dll. Fusion's job is to use this information together with a bewildering array of policy information to locate the correct assembly on your computer. The details&nbsp;are described in the Framework SDK documentation in the <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconhowruntimelocatesassemblies.asp">How the Runtime Locates Assemblies</A> and <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconassemblies.asp">Assembly Versioning</A> articles.</P><br />
+<P>Unfortunately for guys like me, there isn't a documented API where I can pass this information and get back a path to the correct assembly. This limitation makes it virtually impossible (unless I want to duplicate the functionality of fusion.dll myself - unlikely) for me to correctly resolve assembly references at runtime. There are hacks that I am using to work around this problem, but none of them make me particularly happy.</P><br />
+<P>Hopefully this has helped to clarify some of the questions that y'all might have about how type references are resolved in the CLR. Please send comments to the usual place.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 28, 2002 12:09 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="74" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000074.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="74" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

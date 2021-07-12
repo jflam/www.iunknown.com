@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on What's up with CLAW?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: What's up with CLAW?</div>
+
+
+<div class="comments-body">
+<p>Thank you John for your well thought out and clear response.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://dotnetweblogs.com/sgentile/">Sam Gentile</a> at February 11, 2003 09:44 AM</span>
+</div>
+<div class="comments-body">
+<p>Just a thought but how about making the project opensource John?</p>
+<span class="comments-post">Posted by Andrew Stopford at February 12, 2003 08:06 AM</span>
+</div>
+<div class="comments-body">
+<p>I'm thinking about it. Unfortunately, I just don't have the cycles to clean up the code and write the docs so that someone can actually start building stuff on top of it. Sam can vouch for this - installing it and getting it running is really nasty. But it is on the list of things that I'd like to do.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 12, 2003 09:16 AM</span>
+</div>
+<div class="comments-body">
+<p>Thats what I was thinking, if you can't find the code a new home, release it to the wild.<br />
+If you do decide on opensourcing the code, and don't plan on being the maintainer, you could "audition" some hopefuls by getting them to help clean the code and write the docs.</p>
+<span class="comments-post">Posted by Dave Lee at February 12, 2003 04:29 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the suggestion, Dave. I'll think about doing this once I get some cycles. March is shaping up to be a real busy month ...</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 13, 2003 09:12 AM</span>
+</div>
+<div class="comments-body">
+<p>With test driven design and usage of MockObjects (perhaps provided by the API designers)  you can flush out incorrect API usage at unit test time.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;zohar&#46;melamed&#64;bnpparibas&#46;com">Zohar Melamed</a> at March  5, 2003 08:16 AM</span>
+</div>
+<div class="comments-body">
+<p>I am interested in applying AOP to security. John, would you provide more information for me to find those companies in this area? I just want to find more references. By now,I just know of "New Aspects of Security":<br />
+http://www.newaspects.com/</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by <a href="mailto&#58;hminwell&#64;yahoo&#46;com">Minwell Huang</a> at July 19, 2003 03:49 AM</span>
+</div>
+<div class="comments-body">
+<p>I've completed an pull-aspect engine using Proxy, but have not been able to use it due to the fact that I can only access MarshalByRef objects with it. I need to update my engine to handle any object type I require, and thus I think I need to hook into Profiler like you did. However, I've had a look and found it daunting. Have you got any docs/examples which I can use to get going?</p>
+<span class="comments-post">Posted by <a href="mailto&#58;sean&#46;hederman&#64;ast&#46;co&#46;za">Sean Hederman</a> at October 27, 2003 09:54 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

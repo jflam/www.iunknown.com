@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Quickbooks 2003 from a non-privileged account</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000385.html" title="Wintellect Retreat" />
+
+<link rel="next" href="http://www.iunknown.com/000387.html" title="Dynamic SQL vs. sproc performance" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000386.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/130"
+    dc:title="Quickbooks 2003 from a non-privileged account"
+    dc:identifier="http://www.iunknown.com/000386.html"
+    dc:subject="Blog"
+    dc:description="<![CDATA[Warning software usability rant ahead I can't believe that QuickBooks 2003&Acirc;&nbsp;doesn't run from a non-privileged account. Isn't this software supposed to be Windows logo certified? It just crashes if you don't have the correct write privileges enabled on the install...]]>"
+    dc:creator="John"
+    dc:date="2003-12-19T13:24:27-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000385.html">&laquo; Wintellect Retreat</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000387.html">Dynamic SQL vs. sproc performance &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 19, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Quickbooks 2003 from a non-privileged account</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><strong>Warning software usability rant ahead</strong></p>
+
+<p>I can't believe that QuickBooks 2003&Acirc;&nbsp;doesn't run from a non-privileged account. Isn't this software supposed to be Windows logo certified? It just crashes if you don't have the correct write privileges enabled on the install directory when you try and run it from a non-privileged account.</p>
+
+<p>This is pretty ridiculous for a program that ships in 2003, two full years after Windows XP became the default business OS on new computers. It tries to write within the \Program Files\Intuit directory and gets very upset if it can't do that.</p>
+
+<p>The auto-update feature is also totally user-unfriendly. It doesn't tell you that you have to restart QuickBooks prior to installing the update. It also doesn't tell you that you need to restart Windows in order for the updates to "take".</p>
+
+<p>To properly install the software, you must temporarily add yourself to the local administrators group on your computer - you can't just do a runas /user:administrator cmd to open a command prompt to do the install. If you do, the required registry entries will be made under the <span class="caps">HKCU,</span> which is the administrator account, not as you. I'm just hoping that I can get the Internet connectivity stuff working so I can download my bank statements. It simply refuses to do anything on my desktop - a silent failure with no evidence of what went wrong. I'm having slightly better luck on my laptop, but the jury's still out.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December 19, 2003 01:24 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=386" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="386" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000386.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I hate apps that do that. I work around it by getting a CMD shell up with your account with the 'administrator bucky bits' set by saving the following into a .CMD file and running it. It'll prompt for the local admin password and then your user account, and then you'll have a kludge-able environment for installing software that has logo issues.</p>
+
+<p>setlocal<br />
+set _User_=%USERDOMAIN%\%USERNAME%<br />
+set _Admin_=Administrator<br />
+set _Group_=Administrators<br />
+set _Prog_="cmd.exe /k Title *** %1 as Admin *** && cd c:\ && color 2F"</p>
+
+<p>if "%1"=="" (<br />
+	runas /u:%_Admin_% "%~f0 %_User_%"<br />
+) else (<br />
+	net localgroup %_Group_% %1 /ADD<br />
+	runas /u:%1 %_Prog_%<br />
+	net localgroup %_Group_% %1 /DELETE<br />
+)<br />
+endlocal</p>
+
+<p>Many thanks to the original author of this, who was not me and whose name has been lost in the depths of time (okay, so it's really been lost due to e-mail retention ).<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;larsberg&#64;online&#46;microsoft&#46;com">LarsBerg</a> at December 19, 2003 01:58 PM</span>
+</div>
+<div class="comments-body">
+<p>Yeah, it blows. But Intuit generally sucks when it comes to software. </p>
+
+<p>I suggested to Keith weeks ago that he put QuickBooks in his security hall of shame. Not sure if he has yet. </p>
+
+<p>What's particularly galling about QuickBooks requiring admin rights is that you may be delegating bookkeeping duty to a subordinate who you don't want to give admin rights to. What if they download some crappy Trojan while they're supposed to be working? </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://staff.develop.com/candera">Craig Andera</a> at December 19, 2003 02:59 PM</span>
+</div>
+<div class="comments-body">
+<p>The other part of QuickBooks that I don't appreciate is when sending an invoice via e-mail, it runs through their services, instead of directly from your e-mail to the customers.<br />
+They really don't explain what reminants, if any, of your company's invoice are stored at their facilities.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;jeffpclark&#64;columbus&#46;rr&#46;com">Jeff Clark</a> at January 10, 2004 08:51 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="386" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

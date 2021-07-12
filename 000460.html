@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: It's here!</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000459.html" title="Another one gets assimilated" />
+
+<link rel="next" href="http://www.iunknown.com/000461.html" title="Do I get DCE using LH under Virtual PC?" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000460.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/204"
+    dc:title="It&apos;s here!"
+    dc:identifier="http://www.iunknown.com/000460.html"
+    dc:subject="Blog"
+    dc:description="My Inspiron 8600 showed up today. After tearing open the package, I discovered to my horror that there isn&apos;t a trackpoint device (aka eraser head). I guess I had assumed that Dells would have a dual pointing device, but I..."
+    dc:creator="John"
+    dc:date="2004-06-07T21:35:18-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000459.html">&laquo; Another one gets assimilated</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000461.html">Do I get DCE using LH under Virtual PC? &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 07, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">It's here!</h3>
+
+<p>My Inspiron 8600 showed up today. After tearing open the package, I discovered to my <em>horror</em> that there isn't a trackpoint device (aka eraser head). I guess I had assumed that Dells would have a dual pointing device, but I was wrong. Fortunately, I've adapted rather well to the touch pad (much to my surprise) and I'm not hating it quite as much as I thought I would. The only thing that I don't like is having to shift my hand to reach the touchpad. With the eraser, your index finger is positioned exactly where it needs to be without requiring reposition your hand.</p>
+
+<p>I immediately repaved using Windows <span class="caps">XP </span>Pro, and got my baseline image (Office + Virtual PC) installed. I'm copying the April <span class="caps">MSDN </span>Library onto the host, and will re-install <span class="caps">MSDN</span> in my guest OS's.</p>
+
+<p>The keyboard takes a bit of getting used to - it's a different layout from the Thinkpad. I miss the groupings of the function keys, and the Windows key is positioned exactly where the Alt key is on the Thinkpad. Overall, however, the action is pretty good - about what I had expected. </p>
+
+<p>The display is incredible. I'm blown away by the amount of real estate that I now have. I'm still running fonts at 96ppi, and scaling them appropriately for applications that I care about (command prompts + TextPad + <span class="caps">VS.NET</span>). I don't mind having the menus etc. take up less space with the 96ppi fonts - I treat them almost like icons - they're not things you generally <em>read</em>. </p>
+
+<p>One thing that I really like is the improved scrolling speed for ClearType-rendered fonts. My ThinkPad and it's crappy 8MB S3 graphics card was horrible at scrolling <span class="caps">HTML</span> help rendered using ClearType. </p>
+
+<p>I like the fact that the <span class="caps">USB 2.0</span> port can power my external hard drive. On my <span class="caps">T23, I</span> had to connect to a <span class="caps">USB</span> card <span class="caps">AND</span> the <span class="caps">USB 1.1</span> port for power.</p>
+
+<p>I'll have more impressions once I'm done installing software.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June  7, 2004 09:35 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=460" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="460" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000460.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Very very strange.</p>
+
+<p>I have a Dell 8600 (bought Nov 2003) and it DOES have a eraser head along with the trackpad. However, the mouse buttons that go along with the eraser head have long been a source of controversy on Dell's forums since they royally suck .. they are very mushy and nearly unusable.</p>
+
+<p>Dell must have just changed the base keyboard to one that doesn't have an touchpoint eraser-head and therefore doesn't include the badly designed buttons.</p>
+
+<p>I almost always use a logitech usb mouse with the laptop anyways .. even the trackpad is not particularly great.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://sastools.com/b2/">Sanjay</a> at June  7, 2004 11:48 PM</span>
+</div>
+<div class="comments-body">
+<p>Mine has the eraser-head too! I just set mine up to be used for scrolling. I mostly use the trackpad. It kinda sucks even just for scrolling.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://blogs.msdn.com/dancre">Dan Crevier</a> at June  8, 2004 01:32 AM</span>
+</div>
+<div class="comments-body">
+<p>Hey I have the Dell 9100.  I also have the WUXGA monitor running at 1920X1200.  It truly is a productivity enhancer if your eyes can handle it.  I have no problems.  I also have 2GB DDR RAM, but I bought it from dallas memory.  This is truly an awsome machine even though it is a thicker than the 8600.  I give up on battery life for power.  </p>
+
+<p>I have experienced similar boot up speed increases as you mentioned in a previous post.  I have a firewire externa drive at home but I want to get a external drive the is self powered via the USB 2.0 port and is small (2.5in).  Could you share with us the drive you purchased?</p>
+
+<p>An alternative would be a second internal drive. I talked to Dell for 2 hours about it a few weeks back.  See my posting here:  http://www.deploymentcentric.com/Blogs/joe/PermaLink.aspx?guid=918bf483-28be-485f-b9af-8cdfa1b159f8</p>
+
+<p>Anyways thanks for your posting.  </p>
+
+<p>Oh ya I am running Virtual Server Beta.  If I shut the lid and proceed into hibernation as I do every day on the way into the office and on the way home, the machine does not completely shut down.  It appears to be shut down but something is running becuase after an hour in my bag the machine is hot as if it has been running.  This doesn't always happen.  But I the other day I left the machine in my bag for a little over 2 hours.  When I opened it, it was hot enough to fry eggs.  So be warned.  VMWare has never done this.  So watch out for Virtual Server (it is beta)...<br />
+</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.deploymentcentric.com/blogs/joe">Joseph E Shook</a> at June  8, 2004 03:03 AM</span>
+</div>
+<div class="comments-body">
+<p>Joe, I bought a $30 USB2 2.5" enclosure and a $200 60GB 5400 rpm Fujitsu drive (all prices Canadian - your mileage will vary). It draws power from the USB2 port using only a single connector. On my T23, I had to plug in a USB2 card into my PC Card slot AND I had to supply power to the drive via the USB 1.1 port on the back of my laptop.</p>
+
+<p>I don't know what the battery life looks like with the external spindle powered up though - and I need to repeat my benchmark tests on the internal and external drives on the Dell.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at June  8, 2004 07:25 AM</span>
+</div>
+<div class="comments-body">
+<p>Textpad? Right on! I do more C# in that than I do in VS.NET.</p>
+
+<p>Having real estate on a laptop is awesome. My Sager is getting a little long in the tooth (it's still a P4 2.8 w/1GB Ram @ a year old) but the 1600x1200 15" is just killer for programming. 1024x768 or even 1200x1024 seems painfull, even on a desktop monitor.</p>
+
+<p>I'm tempted to trade up for a 16.5" or 17" with the same resolution.</p>
+
+<p>Personally, I've never like those little eraser nubs, especially if the case isn't designed right. Then then put a pressure point on the LCD.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://today.icantfocus.com/blog/">Chris</a> at June  8, 2004 09:39 AM</span>
+</div>
+<div class="comments-body">
+<p>Dells have pretty darn good graphics cards overall. I have a 64M GeForce4 440 Go on my 2-year-old Inspiron. Unreal Tournament 2004 runs reeeeeeeeealy smooth much to my delight. :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.aspnetresources.com">Milan Negovan</a> at June  8, 2004 09:43 AM</span>
+</div>
+<div class="comments-body">
+<p>Ditto here -- got an 8600 in January and it also has the nipple and the extra buttons (which do kind of suck!). But it's clear looking at the current image online that they no longer have that. Seems funny to me that they'd make such a visible change and not change the model number or rev or anything.</p>
+
+<p>One thing I really like about the keyboard is that the arrow keys are offset a little from the neigboring keys, so I can consistently find them without looking. It's a small detail but I think it makes a huge difference. It looks like they still do that. I don't know if that's a common layout, but it looks like some of their lower-end models have them flush with the bottom key row, which I think would drive me nuts.<br />
+</p>
+<span class="comments-post">Posted by: irf at June  8, 2004 09:56 AM</span>
+</div>
+<div class="comments-body">
+<p>They did change the "rev", the new one is described as "8600 without parallel and serial connectors" on the support site -- so it's not just the eraser head and squishy buttons that are missing. This happened at about the same time the new 2MB Pentium M chips were announced.</p>
+
+<p>I don't much care for the eraser head on my 8600 because it has this sandpaper texture that irritates my finger. Equally annoying is that the squishy buttons can't be assigned separate functions from the big ones.</p>
+
+<p>If your laptop is mostly being used next to a desktop PC, Synergy and Win2VNC will let you "share" the keyboard and mouse. Both have their warts but either one gets the job done.</p>
+
+<p>http://synergy2.sourceforge.net/<br />
+http://www.deboer.gmxhome.de/</p>
+
+<p>Joseph: Never trust that a Dell laptop is hibernating until it's dropped out of the GUI. My old Dell frequently experienced that problem under NT4 and W2K.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.ntwizards.net">Bryce</a> at June  9, 2004 04:37 AM</span>
+</div>
+<div class="comments-body">
+<p>I didn't notice the serial ports were removed as well. That was one of my primary reasons for picking the 8600 since I still use a lot of old DOS-based programs to talk to industrial controllers which won't work over USB-based serial ports. </p>
+
+<p>John, I would recommend taking a look at the M60 version from Dell .. It is essentially the same as the 8600 used (same case, etc.) to be and it DOES have a track point and serial/parallel ports, etc. </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://sastools.com/b2/">Sanjay</a> at June 13, 2004 05:33 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="460" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: My old plan</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000002.html" title="Design" />
+
+<link rel="next" href="http://www.iunknown.com/000004.html" title="Visual Studio .NET vs. Frontier" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000002.html">&laquo; Design</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000004.html">Visual Studio .NET vs. Frontier &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 02, 2001</h2>
+
+<div class="blogbody">
+
+<h3 class="title">My old plan</h3>
+
+<p><P>So, what am I up to these days?</P><br />
+<P>I spend most of my time thinking about <A href="http://research.microsoft.com/~emeijer/Papers/CLR.pdf">Microsoft's Common Language Runtime</A>.</P><br />
+<P>I am spending&nbsp;an increasing amount of time thinking about <A href="http://www.aosd.net">Aspect-Oriented Programming</A>.</P><br />
+<P>I plan on teaching once a month for <A href="http://www.wintellect.com">Wintellect</A>. </P><br />
+<P>I plan on speaking at the following conferences in 2002:</P><br />
+<UL><br />
+<LI><A href="http://msdn.microsoft.com/events/teched/">Microsoft Tech-Ed</A> in New Orleans on April 9-13, 2002<br />
+<LI><A href="http://www.devconnections.com/c/default.asp">WinDev / DevConnections</A> in New Orleans on April 30&nbsp;- May 3, 2002<br />
+<LI><A href="http://www.winsummit.com">WinSummit</A> in Davos, CH, October 7-11, 2002</LI></UL><br />
+<P>I plan on writing a bunch of stuff about CLR and the internals of the Framework Class Libraries and posting it on this site. This material will be collected together to form a <EM>CLR Internals</EM> book.&nbsp;This book will be published entirely on this site. Sometime in the future, this book might be turned into a <A href="http://www.arsdigita.com/books/panda/how-to-buy">dead tree version</A>.</P><br />
+<P>I plan on speaking at a small number of internal corporate conferences during the year.</P><br />
+<P>I plan on spending a lot of time hanging out on the <A href="http://discuss.develop.com/dotnet.html">DOTNET list</A>.</P><br />
+<P>I plan on writing various rants here about technology from time to time.</P><br />
+<P>I plan on writing a small number of CLR articles in various developer publications.</P><br />
+<P>I am working day and night on some technology that will change the way folks think about the code that they wrote, and the code that other people wrote.&nbsp;And no, it isn't the revelation that everything that you wrote yesterday is great and that all of the code that everybody else wrote sucks ;) And no, it's not yet another <A href="http://www.saurik.com/net/exemplar/">decompiler</A> ... check back early next year for the answers.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December  2, 2001 04:24 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="3" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000003.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

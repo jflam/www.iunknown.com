@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Constraints and unit testing</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Constraints and unit testing</div>
+
+
+<div class="comments-body">
+<p>Cool idea,</p>
+
+<p>I will integrate that into MbUnit</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://blog.dotnetwiki.org">Jonathan de Halleux</a> at May  6, 2004 04:01 AM</span>
+</div>
+<div class="comments-body">
+<p>John,</p>
+
+<p>You are scaring me, more VB code? :)</p>
+
+<p><br />
+Anson</p>
+<span class="comments-post">Posted by <a href="mailto&#58;ansont&#64;microsoft&#46;com">Anson Tsao</a> at May  6, 2004 02:06 PM</span>
+</div>
+<div class="comments-body">
+<p>Good idea, indeed. But you should rather inherit from Assert rather than from Assertion which has been deprecated in NUnit&#160;2.1, from what I understand.</p>
+
+<p>Pierre</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://opac.ch/people/arnaud/">Pierre Arnaud</a> at May  7, 2004 02:22 AM</span>
+</div>
+<div class="comments-body">
+<p>How about an assertion to make sure a method contains an assertion?</p>
+<span class="comments-post">Posted by RichB at May  7, 2004 11:31 AM</span>
+</div>
+<div class="comments-body">
+<p>Anson: Come on over to the dark side, it's really quite nice over here :)</p>
+
+<p>Pierre: Thanks for the tip. I'll modify the code.</p>
+
+<p>RichB: That's actually a really interesting idea. It's a lot more work, however, since it involves parsing IL. That said, it might be an interesting side project. Thanks for the idea!<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May  7, 2004 11:49 AM</span>
+</div>
+<div class="comments-body">
+<p>Thoughts on adding...?<br />
+AssertIsAssignableFrom(Type type, Type ancestor)<br />
+AssertDoesImplement(Type class, Type interface)<br />
+AssertIsSingleton(Type singleton)<br />
+...maybe AssertDoesNotHavePublicConstructor</p>
+
+<p>Seems like most of these things are static code analysis things....traditionally more of the domain of fxCop rather than NUnit. Of course fxCop is an across the board testing of best practices and not one off's here and there like NUnit.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.ObjectSharp.com/blogs/barry">Barry Gervin</a> at May 16, 2004 11:55 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

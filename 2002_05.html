@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: May 2002 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2002_04.html" title="April 2002" />
+
+<link rel="next" href="http://www.iunknown.com/2002_06.html" title="June 2002" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2002_04.html">&laquo; April 2002</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2002_06.html">June 2002 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">May 24, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000098"></a>
+<h3 class="title">I've got debugging support implemented!</h3>
+
+<p>Until recently, my CLAW aspects have been too simple to require debugging support. This week, I've been pretty busy creating some new demos for CLAW. One demo in particular is a rather sophisticated aspect, and I had to fire up the VS.NET debugger to fix it. To my surprise, some modifications that I made to CLAW a few weeks ago actually worked (I hadn't gotten around to testing them yet), and bingo, I was debugging my aspect in VS.NET!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000098.html">04:28 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=98" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">May 22, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000097"></a>
+<h3 class="title">Enforcing development policies using aspects</h3>
+
+<p><P>One of the best sessions at the AOSD conference was the AspectJ tutorial by Jim Hugunin and Erik Hilsdale. These guys are extremely pragmatic, and that really appeals to me. They're driven by their goal of getting their technology adopted, and they are interested in anything that furthers that cause. Their pragmatism (and hard work!) is probably the main reason why AspectJ is the clear front-runner in AOP tools. </P><br />
+<P>One of the key ideas that I took away from that tutorial was the notion of enforcing development policies using aspects. One example that particularly resonated with me was the use of an aspect to log all unhandled RuntimeExceptions. This is a great example of a&nbsp; transparent development policy; they program the way they normally do and the policy gets applied by the compiler. The reason why it is a transparent policy has to do with the fact that logging exceptions is orthogonal and (hopefully) free of side effects. </P><br />
+<P>The problem with this example, however,&nbsp;is that it is yet another example of aspects being good for logging. Frankly, there are far too many examples of this sort, and yet it is difficult to envision new applications without appealing to the community at large.</P><br />
+<P>I'm trying to collect information from the community at large as to what kinds of development policies you could see being enforced by aspects. Jim &amp; Erik showed in the AspectJ tutorial an interesting use of a compile-time aspect that would throw a compile-time error if someone tried to bypass a factory pattern when creating objects of a particular type. </P><br />
+<P>I'm <EM>very</EM> interested in more feedback along these lines. What kinds of development practices require constraints? I've already created an aspect that will throw an exception if the size of ViewState in an ASP.NET page exceeds a pre-determined threshold. I suspect that there's a fair number of these types of constraints that could be weaved into applications using CLAW.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000097.html">05:16 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=97" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">May 20, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000096"></a>
+<h3 class="title">Resisting repaving is good for you</h3>
+
+<p><P>If you're like me, you tend to love having a nice, pristine machine to work on. As we all know, over time, our computers gradually degrade as we install more software, use bizarre combinations of features of existing software, or write really nasty bits that hook into existing software ;) This is a story of me successfully resisting my urge to repave whenever I run into a nasty problem.</P><br />
+<P>This weekend, as part of <A href="Weblog/GetOrganized.html">my larger effort to reorganize my life</A>, I decided to fix some of the IT problems in our home office. One of our other computers (a dual proc Win2K Advanced Server box) kept on faulting in spoolsv.exe. This, of course, meant that you couldn't print using that machine. Also, Active Directory was messed up something awful, and I couldn't add any new accounts to our Exchange Server. It would fail with a "The name could not be resolved. The name could not be matched to a name in the address list." error every time I attempted to check a name in Exchange.</P><br />
+<P>These two issues killed the better part of a day. The first one - spoolsv.exe, could be fixed by some judicious editing of the registry.[1] This one was actually quite easy to find - just type "spoolsv.exe" into Google, and it's the 4th entry. </P><br />
+<P>The second problem, however, turned out to be really evil. My first step was to streamline my Active Directory install. I killed a redundant domain controller on my network , and got myself down to a single Global Catalog Server. This wasn't as easy as it looked - I had to manually delete Active Directory on that machine by - you will never guess - editing the registry and deleting the \winnt\ntds directory from the machine.[2]</P><br />
+<P>Once I got to that stage, I blew many hours twiddling various Exchange settings and messing around with ADSIEdit. It got to the point where I almost was ready to repave. However, repaving my Exchange / Domain Controller box would result in several days worth of downtime. I was almost willing to live with not being able to add a new account to Exchange to avoid several days worth of reinstallation / backups / restores. </P><br />
+<P>My savior turned out to be Google, once again. However instead of trying to find the solution on the Web, the answer turned up in a search of Google Groups. At roughly 3am, I found a link to this Microsoft KB article[3] that had me make yet another very minor tweak to the Registry. Apparently, installing the Q311401 Windows 2000 Security Rollup Package on my Global Catalog Server was what prevented name resolution in the Exchange Global Catalog List. </P><br />
+<P>Needless to say, I was <EM>very </EM>happy to find this KB article. It also goes to show how difficult it is to be a part-time sys admin without having better diagnostic tools for determining what these problems are and linking the diagnostic tools to the solutions / KB articles. However, the bigger take-home message was that it is possible to fix a machine without repaving. In fact repaving in this case would have only cost me a few days worth of work with ZERO benefit since I would most likely install the Q311401 Security Rollup Package before trying to add the accounts. </P><br />
+<P>[1] <A href="http://www.jsifaq.com/SUBJ/tip4900/rh4900.htm">http://www.jsifaq.com/SUBJ/tip4900/rh4900.htm</A></P><br />
+<P>[2] <A href="http://www.jsifaq.com/SUBG/TIP3200/rh3222.htm">http://www.jsifaq.com/SUBG/TIP3200/rh3222.htm</A></P><br />
+<P>[3] <A href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q309622">http://support.microsoft.com/default.aspx?scid=kb;en-us;Q309622</A></P><br />
+<P>&nbsp;</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000096.html">12:29 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=96" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">May 09, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000095"></a>
+<h3 class="title">Get Organized!</h3>
+
+<p><P>OK, this entry has very little to do with software. But wait, maybe it does ...</P><br />
+<P>The spring conference circuit was especially busy for me this year. Lots of stuff piled up all at once it seemed. In a two month period, I spoke at VS Live, Tech Ed, WinDev and AOSD, taught a class at Microsoft SVC, went on a vacation, and attended a wedding. I racked up way more frequent flyer miles than I really wanted to.</P><br />
+<P>There was also this not-so-insignificant event called Tax Time (April 30 in Canada). That left my home office littered with unbelievable amounts of paper. It got so bad that I just stopped going into my office. Instead I would pack up my laptop and go somewhere else to work.</P><br />
+<P>Now that all of the hectic travel is over, I have resolved to fix this problem. I just read a book that looks like it was written just for me: <A href="http://www.amazon.com/exec/obidos/ASIN/0609807773/iunknowncom-20">Order from Chaos by Liz Davenport</A>. Every part of this book that I've read seems <EM>so obvious</EM>. But sometimes it takes someone (or a book) stating the obvious to you over and over again to send you on your way.</P><br />
+<P>I'm at Pre-Step 1: Pre-organizing - Creating a Vacuum. This chapter begins with:</P><br />
+<P align=center>OVERWHELMING AMOUNTS OF OLD STUFF ALERT!</P><br />
+<P align=center>READ THIS ALERT FIRST!</P><br />
+<P>I am so<EM> </EM>loving this book!!!</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000095.html">04:31 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=95" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">May 05, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000094"></a>
+<h3 class="title">Hello from WinDev 2002</h3>
+
+<p><P>The spring conference circuit is finally over! After logging over 20,000 miles over the past month, I'm relieved to be writing this on the plane ride home, where I plan on staying put for at least 6 weeks or so.</P><br />
+<P>I presented several sessions at WinDev 2002 in New Orleans this year. There were some oldies: Understanding XSLT, which I have presented quite a few times in the past, and some brand new talks such as WebForms Internals. The WebForms Internals talk provided me with an excuse to show off CLAW to yet another audience. The demo, however, required me to modify CLAW so that it works with ASP.NET code.</P><br />
+<P>I spent the first couple of days at WinDev updating CLAW so that it works correctly inside the aspnet_wp.exe worker process. This proved to be rather painful for two reasons. The first was complications involved in recompiling CLAW itself, and the second involved complications involved in redefining weaves.</P><br />
+<P>To understand why recompiling CLAW was painful, we need to understand how the CLR loads profilers.&nbsp;CLR profilers are loaded based on the presence of two environment variables: Cor_Enable_Profiling and COR_PROFILER. Cor_Enable_Profiling must be set to 0x01, and COR_PROFILER must be set to the CLSID of the COM object that contains the profiler's implementation. When the CLR creates a new managed process, it looks for the presence of these environment variables. If they are set, it loads the designated profiler. </P><br />
+<P>However, recompiling CLAW was painful because </P><br />
+<P>&nbsp;Recompiling CLAW required rebooting IIS using the IISRESET command .to restart inetinfo.exe, and by extension, aspnet_wp.exe which is a child process of inetinfo.exe.</P><br />
+<P>&nbsp;</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000094.html">08:30 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=94" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

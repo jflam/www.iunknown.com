@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Virtual PC</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000184.html" title="Some more TiBook observations" />
+
+<link rel="next" href="http://www.iunknown.com/000186.html" title="IUnknown lives!" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000184.html">&laquo; Some more TiBook observations</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000186.html">IUnknown lives! &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 01, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Virtual PC</h3>
+
+<p><P>To celebrate the new year, I decided that I needed to get Windows XP up and running on my TiBook. I went out and bought a copy of <A href="http://www.connectix.com/products/vpc6m.html">Virtual PC&nbsp;6</A>&nbsp;, and had it up and running in about 5 minutes. A few hours later, I had Windows XP SP 1 + all of the current patches installed. </P><br />
+<P>I even got ClearType enabled on a Windows XP session on my TiBook! It really is too bad that OS X doesn't have native support for ClearType. Hopefully Apple can license ClearType from MS (they have to since <A href="http://www.microsoft.com/typography/cleartype/default.htm">ClearType is heavily patented by Microsoft</A>). My display looks a bit better after I followed Steve Makofsky's suggestion to make sure that font smoothing is turned on for LCD panels. </P><br />
+<P>I'm totally amazed by <A href="http://www.byte.com/art/9711/sec4/art4.htm">the technology behind Virtual PC</A>. Even with the recent performance bump provided by Version 6, the performance is still fairly slow, so I doubt that I'll be getting rid of my T23 anytime soon :) I haven't done any benchmarks yet, but I will once I get VS.NET up and running on my TiBook.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January  1, 2003 01:42 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="185" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000185.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Why even go there with installing XP on the TiBook?  I though U bought the TiBook to lean about MacOS etc?  Why pollute it with XP.</p>
+<span class="comments-post">Posted by: anonymous at January  2, 2003 09:26 AM</span>
+</div>
+<div class="comments-body">
+<p>I'm doing it mostly for shock value. I fully plan on presenting all of my Windows development talks at upcoming conferences on my TiBook. That, of course, requires that I be able to type / run Windows code on my TiBook.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  2, 2003 09:57 AM</span>
+</div>
+<div class="comments-body">
+<p>Running VPC 6 on my G4 at 400MHz with 384mb RAM and I find it so slow, eg accessing any mode takes from 5 to 10 minutes. Dowloading progs about 30 minutes. I am really disappointed as I have been running Verson 4 very successfully. Do you have any solutions, please.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;bill&#46;babs&#64;ntlworld&#46;com">BILL CAMPBELL</a> at February  3, 2003 06:43 AM</span>
+</div>
+<div class="comments-body">
+<p>What's Crackin! - Just need to go Play Bingo - for my Online Bingo Habit! But I cannot Find a Good Bingo Online website to cover my bingo addiction!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.party-bingo-player.com/">Bingo</a> at October 25, 2004 03:06 AM</span>
+</div>
+<div class="comments-body">
+<p>What's Crackin! - Just need to go Play Bingo - for my Online Bingo Habit! But I cannot Find a Good Bingo Online website to cover my bingo addiction!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.party-bingo-player.com/">Bingo</a> at October 25, 2004 03:17 AM</span>
+</div>
+<div class="comments-body">
+<p>What's Crackin! - Just need to go Play Bingo - for my Online Bingo Habit! But I cannot Find a Good Bingo Online website to cover my bingo addiction!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.party-bingo-player.com/">Bingo</a> at October 25, 2004 03:29 AM</span>
+</div>
+<div class="comments-body">
+<p>What's Crackin! - Just need to go Play Bingo - for my Online Bingo Habit! But I cannot Find a Good Bingo Online website to cover my bingo addiction!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.party-bingo-player.com/">Bingo</a> at October 25, 2004 03:31 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="185" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

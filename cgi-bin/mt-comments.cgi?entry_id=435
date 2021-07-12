@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Arguments against shared assemblies</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Arguments against shared assemblies</div>
+
+
+<div class="comments-body">
+<p>But isn't that sometime what is really wanted?</p>
+
+<p>Going back to my custom control example - what if I am the Web Architect and I want to make sure that every Web Application on a machine (which in a large company may need to be in different applications due to requirements or just development) uses *my* header/footer/navigation control - and application are *forbidden* from changing them.  In my experience this is often the case at large companies that are implementing ASP.NET.<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://staff.develop.com/jfland/">Jon Flanders</a> at April  1, 2004 01:56 PM</span>
+</div>
+<div class="comments-body">
+<p>I agree with you that this is what is required in your scenario. You are effectively building a "platform" for the rest of your developers' applications. You take the oath to not introduce breaking changes, and all is well.</p>
+
+<p>However, in my experience, I find that far too many folks put all sorts of stuff that *changes* in their shared assemblies, and this introduces all sorts of breaking changes in dependent applications. This is particularly the case when there isn't a well-defined release schedule for the "platform" code and the dependent code.<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at April  1, 2004 04:53 PM</span>
+</div>
+<div class="comments-body">
+<p>I think I agree with you more if you/we are talking about creating an API rather than implementing one.  Hopefully that makes sense - impelementing a data access layer for example, versus deriving from Control or implementing IHttpModule.</p>
+
+<p>In the former case I agree with you that you have to be extremely careful about not breaking your "interface" or implementation.</p>
+
+<p>In the latter case, I think it is much safer (although certainly the "interface" is harder to break, the implementation can be hosed - to use a Canadian term ;-)).<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://staff.develop.com/jfland/">Jon Flanders</a> at April  1, 2004 10:56 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

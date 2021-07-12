@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Improving OOBE for open source?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000295.html" title="Foiled by csc.exe" />
+
+<link rel="next" href="http://www.iunknown.com/000297.html" title="I just noticed a cool feature in Reflector's decompiler" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000296.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/40"
+    dc:title="Improving OOBE for open source?"
+    dc:identifier="http://www.iunknown.com/000296.html"
+    dc:subject=""
+    dc:description="The CodeRef build environment uses three different open source tools: NAnt, NUnit, and NSIS. One of my challenges is improving the Out-Of-the-Box-Experience (OOBE) for folks who want to work on the source code. I really want to avoid the long..."
+    dc:creator="John"
+    dc:date="2003-07-21T13:22:52-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000295.html">&laquo; Foiled by csc.exe</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000297.html">I just noticed a cool feature in Reflector's decompiler &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">July 21, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Improving OOBE for open source?</h3>
+
+<p>The CodeRef build environment uses three different open source tools: NAnt, NUnit, and <span class="caps">NSIS. </span>One of my challenges is improving the Out-Of-the-Box-Experience (OOBE) for folks who want to work on the source code. I really want to avoid the long list of instructions for creating the build environment, since I firmly believe that this discourages people from even trying to work on the source code. Instead, I would like to have my build script automatically install the correct versions of those tools in a private path that gets setup for just that project. </p>
+
+<p>Currently, I'm packaging a minimal set of bits from NAnt, NUnit, and <span class="caps">NSIS</span> along with CodeRef. This worries me because I'm not sure whether I'm a) violating the license agreement(s) by repackaging the bits, and b) whether the bits that I pull out will actually work reliably in my build environment.  </p>
+
+<p>To improve the <span class="caps">OOBE,</span> the various open source tools in the .NET world need to standardize on an installer that can be scripted from the outside. This way a master install script could install NUnit 2.0 and NAnt 1.0 for one project, and NUnit 3.0B2 and NAnt 0.8.3RC1 for another project.  p. The way I envision this working is as follows: a "master" installer dictates to the "component" installer what directory tree to install into. The component installer has to report the "bin" path of the installed component to the master installer. The master installer would use the path information to create a shell script that would setup the correct build environment. This is similar to the way the vcvars32.bat file sets up the command-line environment in <span class="caps">VS.NET. </span></p>
+
+<p>Do folks have thoughts along these lines? I'm fairly certain that <span class="caps">NSIS</span> can't do what I need, and I don't have enough knowledge about <span class="caps">MSI</span>'s to know whether they can fit the bill.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at July 21, 2003 01:22 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=296" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="296" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000296.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Hi,<br />
+Maybe this can be solved by using merge modules?<br />
+Each software, nant, nunit, etc, will be packaged as a merge module and you own software will be the master install by beeing a standard setup and by including each specific merge module you need?<br />
+John.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;knipjo&#64;hotmail&#46;com">Jonx</a> at July 23, 2003 08:00 AM</span>
+</div>
+<div class="comments-body">
+<p>You can create a merge module for them as Jonx mentioned above, but you run the risk of changing the component GUIDs that come in the original packaging. These are used to keep track of reference counting for shared components. Gets messy if you mix these up. Licensing will come into play by "re-packaging" them this way.</p>
+
+<p>The other route is to make a main MSI which calls the other installations. The main MSI can instruct the others where to install and to perform it silently, making the user think that there is only one installation going on.</p>
+
+<p>Custom Actions in the MSI can make the decisions or record the INSTALLDIR of the individual components.</p>
+
+<p>NUnit comes in an MSI, I don't have NAnt so I'm not sure about this one. This isn't as much re-packaging as it is re-distributing, but I'm sure you'd have to make arrangements for the products.<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;jeff&#46;clark&#64;bmwfs&#46;com">Jeff Clark</a> at July 29, 2003 02:50 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

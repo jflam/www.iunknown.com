@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: A nice Ruby moment today</title>
+    <link>http://www.iunknown.com/articles/2006/01/11/a-nice-ruby-moment-today</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>A nice Ruby moment today</title>
+      <description>&lt;p&gt;I used to have a chunk of code that looked like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def new_clrobj(ctor_info, sig = null)
+  sig = ctor_info.signature if sig == null
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It now looks like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def new_clrobj(ctor_info, sig = ctor_info.signature)
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It was one of those &amp;#8220;it just works&amp;#8221; moments that makes me love this language.&lt;/p&gt;</description>
+      <pubDate>Wed, 11 Jan 2006 13:19:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:7f6860c234282195162f9a963894d023</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/01/11/a-nice-ruby-moment-today</link>
+      <category>Thoughts</category>
+    </item>
+  </channel>
+</rss>

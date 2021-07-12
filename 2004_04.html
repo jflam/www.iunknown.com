@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: April 2004 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2004_03.html" title="March 2004" />
+
+<link rel="next" href="http://www.iunknown.com/2004_05.html" title="May 2004" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2004_03.html">&laquo; March 2004</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2004_05.html">May 2004 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_04.html#000438"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/182"
+    dc:title="Comment spam and ineffectiveness of ip address filtering"
+    dc:identifier="http://www.iunknown.com/2004_04.html#000438"
+    dc:subject="Blog"
+    dc:description="I&apos;ve been fighting a battle with the comment spammers for some time now on this blog. Most of you don&apos;t notice the comment spam because I get to it fairly quickly. However, one thing that I&apos;ve realized is that the..."
+    dc:creator="John"
+    dc:date="2004-04-28T10:36:37-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">April 28, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000438"></a>
+<h3 class="title">Comment spam and ineffectiveness of ip address filtering</h3>
+
+<p>I've been fighting a battle with the comment spammers for some time now on this blog. Most of you don't notice the comment spam because I get to it fairly quickly. However, one thing that I've realized is that the IP address filtering feature of Movable Type is next to useless, since the same spammer now appears from apparently random IP addresses. I was curious about how this works, and just discovered that <a href="http://www.medasys.com/company/fr/mis/securite/docsecurite/smartspoof-en.pdf">it's due to <span class="caps">ARP</span> cache poisoning</a>. A fascinating read for any of you who are fighting spam on your own blogs.</p>
+
+<p><strong>Update:</strong> From my comments, it does appear that what I'm seeing isn't due to <span class="caps">ARP</span> cache poisoning. Doing some quick reverse <span class="caps">DNS</span> lookups shows that most of the spam is coming from various ISPs (rr.com and aol.com). So either the spammers have a bunch of "zombie" computers that they 0wn, or they're simply logging in through dial-up connections. Since it looks like the spam is entered by hand, I suspect the latter.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000438.html">10:36 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=438" onclick="OpenComments(this.href); return false">Comments (9)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=438" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_04.html#000437"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/181"
+    dc:title="Various fun VB.NET observations"
+    dc:identifier="http://www.iunknown.com/2004_04.html#000437"
+    dc:subject="Blog"
+    dc:description="I created some VB.NET code where I needed an array with 1 element. This forced me to have to dimension the array with what looks like zero elements: Dim myArray(0) As MyType. I&apos;m also having a lot of fun with..."
+    dc:creator="John"
+    dc:date="2004-04-08T15:01:16-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">April 08, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000437"></a>
+<h3 class="title">Various fun VB.NET observations</h3>
+
+<p>I created some <span class="caps">VB.NET</span> code where I needed an array with 1 element. This forced me to have to dimension the array with what looks like zero elements: <code>Dim myArray(0) As MyType</code>.</p>
+
+<p>I'm also having a lot of fun with NUnit these days. One thing that I like to do is write stuff out to the Console. Here's a simple class that lets you write unit tests that assert output to the console:</p>
+
+<pre><code>
+Public Class ConsoleTester : Inherits Assertion
+
+  Private writer_ As StringWriter
+  Private oldWriter_ As TextWriter
+
+  &lt;SetUp()&gt; Public Sub Setup()
+    oldWriter_ = System.Console.Out
+    writer_ = New StringWriter
+    System.Console.SetOut(writer_)
+  End Sub
+
+  &lt;TearDown()&gt; Public Sub TearDown()
+    System.Console.SetOut(oldWriter_)
+  End Sub
+
+  Protected ReadOnly Property ConsoleOutput()
+    Get
+      Return writer_.GetStringBuilder().ToString
+    End Get
+  End Property
+
+End Class
+</code></pre>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000437.html">03:01 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=437" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=437" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_04.html#000436"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/180"
+    dc:title="Why I love my D70"
+    dc:identifier="http://www.iunknown.com/2004_04.html#000436"
+    dc:subject="Blog"
+    dc:description="I&apos;m loving my D70 more and more these days. Just last night, Carolyn and Matthew joined me in Kansas City. We awoke this morning to wonderful light filling our hotel room at around 6:00am. Here&apos;s a photo of Matthew taken..."
+    dc:creator="John"
+    dc:date="2004-04-01T12:37:12-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">April 01, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000436"></a>
+<h3 class="title">Why I love my D70</h3>
+
+<p>I'm loving my <span class="caps">D70</span> more and more these days. Just last night, Carolyn and Matthew joined me in Kansas City. We awoke this morning to wonderful light filling our hotel room at around 6:00am. Here's a photo of Matthew taken in that light using the awesome 50mm F/1.8D lens:</p>
+
+<p><img src="Images/Mafoo-In-Morning-Light.jpg" alt="" /></p>
+
+<p>The only thing that I did to this image was adjust the exposure by -0.3EV in Photoshop <span class="caps">CS. </span>This was a 1/200s shot at F4 at <span class="caps">ISO400.</span></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000436.html">12:37 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=436" onclick="OpenComments(this.href); return false">Comments (17)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=436" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_04.html#000435"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/179"
+    dc:title="Arguments against shared assemblies"
+    dc:identifier="http://www.iunknown.com/2004_04.html#000435"
+    dc:subject="Blog"
+    dc:description="When you put an assembly into the GAC, you need to make sure that you never introduce breaking changes into that assembly. However, a particularly serious problem that arises is how the &quot;no breaking changes&quot; rule can severely limit your..."
+    dc:creator="John"
+    dc:date="2004-04-01T12:32:44-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000435"></a>
+<h3 class="title">Arguments against shared assemblies</h3>
+
+<p>When you put an assembly into the <span class="caps">GAC,</span> you need to make sure that you never introduce breaking changes into that assembly. However, a particularly serious problem that arises is how the "no breaking changes" rule can severely limit your ability to innovate. Oftentimes when you want to innovate you can only do so by introducing breaking changes (just ask someone on the Windows team about how hard it is to innovate without introducing breaking changes).</p>
+
+<p>So here's another way of looking at whether you should have code in the <span class="caps">GAC</span>: is this code going to be stable for a long time? If the velocity of change in that code is going to be high, you are far better off deploying that code as private assemblies.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000435.html">12:32 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=435" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=435" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

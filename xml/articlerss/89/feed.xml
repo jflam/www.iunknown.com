@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on New RubyCLR Reflection Features</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"New RubyCLR Reflection Features": comment by Justin</title>
+      <description>&lt;p&gt;That is a very cool feature - only Ruby would let you integrate help into the application that way. &lt;/p&gt;
+
+&lt;p&gt;One of the things I keep wondering about is how to get an IDE that's as nice as Visual Studio available for Ruby. I know, don't shoot me, but I happen to thing VS is a sweet program. IntelliSense is the best thing that ever happened to C#.&lt;/p&gt;
+
+&lt;p&gt;With Ruby, though, its difficult to do that because an object's definition could change at any time, and can changed in any number of ways. Maybe the way to provide intelligent help is just add a method to every object called "help". That method could have a default that goes to the RI or RDOC documents and then could be overridden on a per-object basis for custom libraries or for code that is very dynamic. &lt;/p&gt;
+
+&lt;p&gt;Anyways, just rambling but that is great!&lt;/p&gt;</description>
+      <pubDate>Mon, 13 Mar 2006 13:58:37 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/10/new-rubyclr-reflection-features#comment-185</guid>
+      <link>http://www.iunknown.com/articles/2006/03/10/new-rubyclr-reflection-features#comment-185</link>
+    </item>
+    <item>
+      <title>"New RubyCLR Reflection Features" by jlam</title>
+      <description>&lt;p&gt;Here&amp;#8217;s a screenshot that illustrates some of the new reflection features of RubyCLR. Notice how you can now invoke the &lt;code&gt;help&lt;/code&gt; method on a type to get help on the type or for one of its members. You&amp;#8217;ll also notice how I&amp;#8217;m using the new color features of &lt;code&gt;System.Console&lt;/code&gt; to improve the readability of the data.&lt;/p&gt;
+
+
+	&lt;p&gt;The new reflection code was implemented entirely in Ruby. So it&amp;#8217;s a very good performance stress test since I&amp;#8217;m parsing &lt;span class="caps"&gt;XML&lt;/span&gt; doc files to retrieve the help that you see. The &lt;code&gt;mscorlib.xml&lt;/code&gt; help file is &gt; 7MB, and can be parsed using &lt;code&gt;XmlTextReader&lt;/code&gt; driven from Ruby in about 2s. That&amp;#8217;s excellent performance considering the number of times I&amp;#8217;m crossing the interop boundary for a 7MB &lt;span class="caps"&gt;XML&lt;/span&gt; doc!&lt;/p&gt;
+
+
+	&lt;p&gt;Is this a useful feature? I really built it for myself so that I can get help form within an irb session, which I find myself in quite often while writing Ruby code.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/44/110674297_303908d4cd_o.png" alt="" /&gt;&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 10 Mar 2006 20:30:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/03/10/new-rubyclr-reflection-features"&gt;New RubyCLR Reflection Features&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/03/10/new-rubyclr-reflection-features"&gt;New RubyCLR Reflection Features&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

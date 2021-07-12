@@ -1,0 +1,244 @@
+.method public static valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >'* modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) 
+        FindAddr(valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >'* A_0,
+                 valuetype std.'list<Employee,std::allocator<Employee> >' modreq([Microsoft.VisualC]Microsoft.VisualC.NeedsCopyConstructorModifier)* emps,
+                 valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >' modreq([Microsoft.VisualC]Microsoft.VisualC.NeedsCopyConstructorModifier)* name) cil managed
+{
+  .vtentry 1 : 1
+  // Code size       291 (0x123)
+  .maxstack  3
+  .locals ([0] unsigned int32 V_0,
+           [1] valuetype std.'list<Employee,std::allocator<Employee> >'/iterator V_1,
+           [2] valuetype std.'list<Employee,std::allocator<Employee> >'/iterator V_2,
+           [3] valuetype std.'list<Employee,std::allocator<Employee> >'/iterator i)
+  .language '{3A12D0B7-C26C-11D0-B442-00A0244A1DD2}', '{994B45C4-E6E9-11D2-903F-00C04FA302A1}', '{5A869D0B-6611-11D3-BD2A-0000F80849BD}'
+// Source File 'c:\work\iunknown\effective clr\exceptionalcpp\lib\lib.cpp' 
+//000017: {
+  IL_0000:  ldc.i4.0
+  IL_0001:  stloc.0
+//000018:     for( list< Employee >::iterator i = emps.begin();
+  .try
+  {
+    .try
+    {
+      .try
+      {
+        IL_0002:  ldarg.1
+        IL_0003:  ldloca.s   i
+        IL_0005:  call       valuetype std.'list<Employee,std::allocator<Employee> >'/iterator* modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.list<Employee,std::allocator<Employee> >.begin'(valuetype std.'list<Employee,std::allocator<Employee> >'* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier),
+                                                                                                                                                                                                                        valuetype std.'list<Employee,std::allocator<Employee> >'/iterator*)
+        IL_000a:  pop
+//000019:          i != emps.end();
+        IL_000b:  leave.s    IL_0050
+//000020:          i++ )
+//000021:     {
+//000022:         if( (*i).name_ == name )
+//000023:             return i->addr_;
+//000024:     }
+//000025:     return "";
+        IL_000d:  leave.s    IL_001b
+      }  // end .try
+      fault
+      {
+        IL_000f:  ldsfld     int32** __unep@??1?$list@UEmployee@@V?$allocator@UEmployee@@@std@@@std@@$$FQAE@XZ
+        IL_0014:  ldarg.1
+        IL_0015:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                      void*)
+        IL_001a:  endfinally
+      }  // end handler
+      IL_001b:  leave.s    IL_0029
+    }  // end .try
+    fault
+    {
+      IL_001d:  ldsfld     int32** __unep@??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$FQAE@XZ
+      IL_0022:  ldarg.2
+      IL_0023:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                    void*)
+      IL_0028:  endfinally
+//000020:          i++ )
+    }  // end handler
+    .try
+    {
+      .try
+      {
+        IL_0029:  ldloca.s   i
+        IL_002b:  ldloca.s   V_2
+        IL_002d:  ldc.i4.0
+        IL_002e:  call       valuetype std.'list<Employee,std::allocator<Employee> >'/iterator* modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.list<Employee,std::allocator<Employee> >.iterator.++'(valuetype std.'list<Employee,std::allocator<Employee> >'/iterator* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier),
+                                                                                                                                                                                                                              valuetype std.'list<Employee,std::allocator<Employee> >'/iterator*,
+                                                                                                                                                                                                                              int32)
+        IL_0033:  pop
+//000021:     {
+//000022:         if( (*i).name_ == name )
+//000023:             return i->addr_;
+//000024:     }
+//000025:     return "";
+        IL_0034:  leave.s    IL_0042
+      }  // end .try
+      fault
+      {
+        IL_0036:  ldsfld     int32** __unep@??1?$list@UEmployee@@V?$allocator@UEmployee@@@std@@@std@@$$FQAE@XZ
+        IL_003b:  ldarg.1
+        IL_003c:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                      void*)
+        IL_0041:  endfinally
+      }  // end handler
+      IL_0042:  leave.s    IL_0050
+    }  // end .try
+    fault
+    {
+      IL_0044:  ldsfld     int32** __unep@??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$FQAE@XZ
+      IL_0049:  ldarg.2
+      IL_004a:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                    void*)
+      IL_004f:  endfinally
+//000020:          i++ )
+    }  // end handler
+    .try
+    {
+      .try
+      {
+        IL_0050:  ldloca.s   i
+        IL_0052:  ldarg.1
+        IL_0053:  ldloca.s   V_1
+        IL_0055:  call       valuetype std.'list<Employee,std::allocator<Employee> >'/iterator* modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.list<Employee,std::allocator<Employee> >.end'(valuetype std.'list<Employee,std::allocator<Employee> >'* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier),
+                                                                                                                                                                                                                      valuetype std.'list<Employee,std::allocator<Employee> >'/iterator*)
+        IL_005a:  call       bool modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.list<Employee,std::allocator<Employee> >.const_iterator.!='(valuetype std.'list<Employee,std::allocator<Employee> >'/const_iterator modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier)* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier),
+                                                                                                                                                                      valuetype std.'list<Employee,std::allocator<Employee> >'/const_iterator modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier)* modopt([Microsoft.VisualC]Microsoft.VisualC.IsCXXReferenceModifier))
+        IL_005f:  brtrue.s   IL_0063
+        IL_0061:  leave.s    IL_00d4
+//000021:     {
+//000022:         if( (*i).name_ == name )
+        IL_0063:  ldloca.s   i
+        IL_0065:  call       valuetype Employee* modopt([Microsoft.VisualC]Microsoft.VisualC.IsCXXReferenceModifier) modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.list<Employee,std::allocator<Employee> >.iterator.*'(valuetype std.'list<Employee,std::allocator<Employee> >'/iterator modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier)* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier))
+        IL_006a:  ldarg.2
+        IL_006b:  call       bool modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) 'std.=='(valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >' modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier)* modopt([Microsoft.VisualC]Microsoft.VisualC.IsCXXReferenceModifier),
+                                                                                                           valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >' modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier)* modopt([Microsoft.VisualC]Microsoft.VisualC.IsCXXReferenceModifier))
+        IL_0070:  brtrue.s   IL_0074
+        IL_0072:  leave.s    IL_00b3
+//000023:             return i->addr_;
+        IL_0074:  ldarg.0
+        IL_0075:  ldloca.s   i
+        IL_0077:  call       valuetype Employee* modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.list<Employee,std::allocator<Employee> >.iterator.->'(valuetype std.'list<Employee,std::allocator<Employee> >'/iterator modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier)* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier))
+        IL_007c:  ldc.i4.s   28
+        IL_007e:  add
+        IL_007f:  call       valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >'* modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.basic_string<char,std::char_traits<char>,std::allocator<char> >.__ctor'(valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >'* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier),
+                                                                                                                                                                                                                                                              valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >' modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier)* modopt([Microsoft.VisualC]Microsoft.VisualC.IsCXXReferenceModifier))
+        IL_0084:  pop
+        IL_0085:  ldloc.0
+        IL_0086:  ldc.i4.1
+        IL_0087:  or
+        IL_0088:  stloc.0
+        IL_0089:  leave.s    IL_0097
+      }  // end .try
+      fault
+      {
+        IL_008b:  ldsfld     int32** __unep@??1?$list@UEmployee@@V?$allocator@UEmployee@@@std@@@std@@$$FQAE@XZ
+        IL_0090:  ldarg.1
+        IL_0091:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                      void*)
+        IL_0096:  endfinally
+      }  // end handler
+      IL_0097:  ldarg.1
+      IL_0098:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.list<Employee,std::allocator<Employee> >.__dtor'(valuetype std.'list<Employee,std::allocator<Employee> >'* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier))
+      IL_009d:  leave.s    IL_00ab
+    }  // end .try
+    fault
+    {
+      IL_009f:  ldsfld     int32** __unep@??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$FQAE@XZ
+      IL_00a4:  ldarg.2
+      IL_00a5:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                    void*)
+      IL_00aa:  endfinally
+    }  // end handler
+    IL_00ab:  ldarg.2
+    IL_00ac:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.basic_string<char,std::char_traits<char>,std::allocator<char> >.__dtor'(valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >'* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier))
+//000022:         if( (*i).name_ == name )
+    IL_00b1:  leave.s    IL_011f
+//000023:             return i->addr_;
+//000024:     }
+    .try
+    {
+      .try
+      {
+        IL_00b3:  leave      IL_0029
+//000025:     return "";
+        IL_00b8:  leave.s    IL_00c6
+      }  // end .try
+      fault
+      {
+        IL_00ba:  ldsfld     int32** __unep@??1?$list@UEmployee@@V?$allocator@UEmployee@@@std@@@std@@$$FQAE@XZ
+        IL_00bf:  ldarg.1
+        IL_00c0:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                      void*)
+        IL_00c5:  endfinally
+      }  // end handler
+      IL_00c6:  leave.s    IL_00d4
+    }  // end .try
+    fault
+    {
+      IL_00c8:  ldsfld     int32** __unep@??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$FQAE@XZ
+      IL_00cd:  ldarg.2
+      IL_00ce:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                    void*)
+      IL_00d3:  endfinally
+    }  // end handler
+    .try
+    {
+      .try
+      {
+        IL_00d4:  ldarg.0
+        IL_00d5:  ldsflda    valuetype $ArrayType$0x2f06ae88 '?A0xe390182c.unnamed-global-0'
+        IL_00da:  call       valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >'* modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.basic_string<char,std::char_traits<char>,std::allocator<char> >.__ctor'(valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >'* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier),
+                                                                                                                                                                                                                                                              int8 modopt([Microsoft.VisualC]Microsoft.VisualC.NoSignSpecifiedModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier)*)
+        IL_00df:  pop
+        IL_00e0:  ldloc.0
+        IL_00e1:  ldc.i4.1
+        IL_00e2:  or
+        IL_00e3:  stloc.0
+        IL_00e4:  leave.s    IL_00f2
+      }  // end .try
+      fault
+      {
+        IL_00e6:  ldsfld     int32** __unep@??1?$list@UEmployee@@V?$allocator@UEmployee@@@std@@@std@@$$FQAE@XZ
+        IL_00eb:  ldarg.1
+        IL_00ec:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                      void*)
+        IL_00f1:  endfinally
+      }  // end handler
+      IL_00f2:  ldarg.1
+      IL_00f3:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.list<Employee,std::allocator<Employee> >.__dtor'(valuetype std.'list<Employee,std::allocator<Employee> >'* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier))
+      IL_00f8:  leave.s    IL_0106
+    }  // end .try
+    fault
+    {
+      IL_00fa:  ldsfld     int32** __unep@??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$FQAE@XZ
+      IL_00ff:  ldarg.2
+      IL_0100:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                    void*)
+      IL_0105:  endfinally
+    }  // end handler
+    IL_0106:  ldarg.2
+    IL_0107:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) 'std.basic_string<char,std::char_traits<char>,std::allocator<char> >.__dtor'(valuetype std.'basic_string<char,std::char_traits<char>,std::allocator<char> >'* modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier) modopt([Microsoft.VisualC]Microsoft.VisualC.IsConstModifier))
+    IL_010c:  leave.s    IL_011f
+  }  // end .try
+  fault
+  {
+    IL_010e:  ldloc.0
+    IL_010f:  ldc.i4.1
+    IL_0110:  and
+    IL_0111:  brfalse.s  IL_011e
+    IL_0113:  ldsfld     int32** __unep@??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$$FQAE@XZ
+    IL_0118:  ldarg.0
+    IL_0119:  call       void modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) __CxxCallUnwindDtor(method unmanaged thiscall void modopt([mscorlib]System.Runtime.CompilerServices.CallConvThiscall) *(void*),
+                                                                                                                  void*)
+    IL_011e:  endfinally
+//000022:         if( (*i).name_ == name )
+  }  // end handler
+  IL_011f:  ldarg.0
+  IL_0120:  br.s       IL_0122
+//000023:             return i->addr_;
+//000024:     }
+//000025:     return "";
+//000026: }
+  IL_0122:  ret
+} // end of method 'Global Functions'::FindAddr

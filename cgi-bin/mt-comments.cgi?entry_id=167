@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on How to uninstall Windows Messenger</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: How to uninstall Windows Messenger</div>
+
+
+<div class="comments-body">
+<p>Thanks a lot!</p>
+<span class="comments-post">Posted by Daniel Gómez-Tagle at June  6, 2003 01:21 PM</span>
+</div>
+<div class="comments-body">
+<p>thank you soooooo much</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://?">dave </a> at August  1, 2003 03:02 AM</span>
+</div>
+<div class="comments-body">
+<p>This is very good!<br />
+I have installed Windows Messenger 6.0 and any time i open Outlook Express the old Windows Messenger 4.7 start whidout my permissions... ;)</p>
+
+<p>this is a very fast trik to disinstall Windows Messenger 4.7 tanks!</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.rogledi.com">Emanuele Rogledi</a> at October 16, 2003 11:07 AM</span>
+</div>
+<div class="comments-body">
+<p>I had the same problem in win XP, but this solved my problem - great!<br />
+</p>
+<span class="comments-post">Posted by c at October 27, 2003 09:49 AM</span>
+</div>
+<div class="comments-body">
+<p>nice! thanks!</p>
+<span class="comments-post">Posted by thedude at November 14, 2003 12:00 AM</span>
+</div>
+<div class="comments-body">
+<p>I love you! 4.7 would always start up even though I had 6.0 installed. You would think it would be in the add-remove list. Thanks for the great fix.</p>
+<span class="comments-post">Posted by Hugo at December  4, 2003 11:49 PM</span>
+</div>
+<div class="comments-body">
+<p>ABSOLUTELY GREAT !</p>
+<span class="comments-post">Posted by <a href="mailto&#58;salvador&#46;garcia&#64;sympatico&#46;ca">Sal</a> at January 22, 2004 07:23 PM</span>
+</div>
+<div class="comments-body">
+<p>you are wonderful</p>
+<span class="comments-post">Posted by <a href="mailto&#58;frtay&#64;msn&#46;com">francis</a> at February 18, 2004 03:55 AM</span>
+</div>
+<div class="comments-body">
+<p>you are wonderful</p>
+<span class="comments-post">Posted by <a href="mailto&#58;frtay&#64;msn&#46;com">francis</a> at February 18, 2004 03:55 AM</span>
+</div>
+<div class="comments-body">
+<p>THANK YOU THANK YOU THANK YOU!!<br />
+You have done a great job...</p>
+
+<p>We are all grateful for this!<br />
+kisses :)</p>
+<span class="comments-post">Posted by <a href="mailto&#58;pitafsigma&#64;hotmail&#46;com">Pit Afsigma</a> at February 21, 2004 05:14 AM</span>
+</div>
+<div class="comments-body">
+<p>Oh man was this helpful.  Might want to add that this has to be done in C: prompt mode for the newbs.  Start menu-All Programs-Accesories-Command Prompt- then paste in the removal code above.  Very Easy!!  Thanks again.</p>
+<span class="comments-post">Posted by  at April 15, 2004 08:30 PM</span>
+</div>
+<div class="comments-body">
+<p>Even simpler, Start->Run, then paste the code and hit enter.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;talktonick&#64;hotmail&#46;com">Skew</a> at July  1, 2004 09:10 PM</span>
+</div>
+<div class="comments-body">
+<p>THANKS THANKS THANKS THANKS THANKS THANKS THANKS<br />
+THANKS THANKS THANKS THANKS THANKS THANKS THANKS THANKS THANKS THANKS THANKS THANKS THANKS THANKS<br />
+THANKS THANKS THANKS THANKS THANKS THANKS THANKS<br />
+THANKS THANKS THANKS THANKS THANKS THANKS THANKS<br />
+THANKS THANKS THANKS THANKS THANKS THANKS THANKS<br />
+THANKS THANKS THANKS THANKS THANKS THANKS THANKS<br />
+THANKS THANKS THANKS THANKS THANKS THANKS THANKS</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com/000167.html">Squidward_X</a> at October  8, 2004 05:31 PM</span>
+</div>
+<div class="comments-body">
+<p>Just type Start:Run and type in the line.</p>
+<span class="comments-post">Posted by Squidward_X at October  8, 2004 05:33 PM</span>
+</div>
+<div class="comments-body">
+<p>Nice ! i was looking for a solution for a long time </p>
+<span class="comments-post">Posted by <a href="mailto&#58;denthaas&#64;hotmail&#46;com">Kristof</a> at October 31, 2004 05:56 AM</span>
+</div>
+<div class="comments-body">
+<p>hey all fine</p>
+<span class="comments-post">Posted by <a href="mailto&#58;littleangel_90&#64;hotmail&#46;com">marmat</a> at November  3, 2004 12:48 PM</span>
+</div>
+<div class="comments-body">
+<p>wtf is this info not available thru microsoft?</p>
+<span class="comments-post">Posted by <a href="mailto&#58;aussie457&#64;hotmail&#46;com">big  simo</a> at November 10, 2004 07:32 AM</span>
+</div>
+<div class="comments-body">
+<p>It's excellent. And works everytime. Too bad this is kinda "cryptical" to see for users worldwide. Micro$oft has really been an buttache to this one.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://bakkelun.cmoh.net">Sobient</a> at November 14, 2004 02:21 PM</span>
+</div>
+<div class="comments-body">
+<p> You can also visit some information about... Thanks!!! </p>
+<span class="comments-post">Posted by <a href="mailto&#58;azaddin6716&#64;work&#46;com"></a> at December  1, 2004 11:26 PM</span>
+</div>
+<div class="comments-body">
+<p>EXCELLENT!!!!</p>
+<span class="comments-post">Posted by <a href="mailto&#58;jorst2&#64;hotmail&#46;com">Jors</a> at December  5, 2004 10:50 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="entry_id" value="167" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="button" onclick="window.close()" value="&nbsp;Cancel&nbsp;" />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+
+</body>
+</html>

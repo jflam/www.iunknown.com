@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Building bridges</title>
+    <link>http://www.iunknown.com/articles/2005/10/26/building-bridges</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Building bridges</title>
+      <description>&lt;p&gt;I&amp;#8217;ve been building a bridge from Ruby to the &lt;span class="caps"&gt;CLR&lt;/span&gt; in my spare
+time. It&amp;#8217;s a complicated piece of software, and I plan on explaining
+how I created it in a series of posts on this blog. At the time of
+this writing, I can consume &lt;span class="caps"&gt;CLR&lt;/span&gt; objects from Ruby scripts &lt;strong&gt;and&lt;/strong&gt;
+implement event handlers in Ruby scripts. The Ruby language can make
+it possible for people to create applications that would be more
+difficult and take more time using C# or VB.NET. The Ruby language has
+certainly changed the way I think while writing code; I hope to bring
+that power to people writing .NET code today. Here&amp;#8217;s a teaser:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+require   'RubyShim'
+reference 'System.Windows.Forms'
+
+include System::Drawing
+include System::Windows::Forms
+
+f               = Form.new
+f.Text          = 'My Form'
+f.AllowDrop     = true 
+f.SuspendLayout
+
+label1          = Label.new
+label1.Location = Point.new(40, 32)
+label1.Width    = 200
+label1.Text     = 'My Label'
+
+button1          = Button.new
+button1.Name     = "MyButton" 
+button1.Location = Point.new(40, 57)
+button1.Text     = 'Click me'
+
+button1.Click do |sender, args|
+  p = sender.Location
+  label1.Text = "clicked on #{sender.Name} at #{p.X}, #{p.Y}" 
+end
+
+f.Controls.Add(label1)
+f.Controls.Add(button1)
+f.ResumeLayout
+
+Application.Run(f)
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;This will be an open-source project, and will be redistributed under
+an &lt;a href="http://www.opensource.org/licenses/mit-license.php"&gt;&lt;span class="caps"&gt;MIT&lt;/span&gt;-style license&lt;/a&gt;. I have not yet released the source code since it is largely proof-of-concept code at this time. If anyone
+really wants to take a look at it right now, just send me &lt;a href="jlam@iunknown.com"&gt;an
+email&lt;/a&gt; and I&amp;#8217;l be more than happy to share.&lt;/p&gt;
+
+
+	&lt;p&gt;I believe that I have solved most of the hard problems. I have Windows
+Forms and Avalon applications written in Ruby and running on my
+computer today.&lt;/p&gt;</description>
+      <pubDate>Wed, 26 Oct 2005 07:00:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:2187aa1d31950bc316821f0fc53f6a9e</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2005/10/26/building-bridges</link>
+      <category>Thoughts</category>
+    </item>
+  </channel>
+</rss>

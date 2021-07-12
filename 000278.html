@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: NAntContrib and SourceForge pain</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000277.html" title="Microsoft Patterns and Practices" />
+
+<link rel="next" href="http://www.iunknown.com/000279.html" title="Another one bites the dust" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000278.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/22"
+    dc:title="NAntContrib and SourceForge pain"
+    dc:identifier="http://www.iunknown.com/000278.html"
+    dc:subject=""
+    dc:description="After my NAnt/NUnit talk at WinDev, a number of folks asked me about additional tasks that will integrate their version control system into their build system. I have successfully implemented NAnt build systems that talk to VSS, but I have..."
+    dc:creator="John"
+    dc:date="2003-06-25T18:40:23-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000277.html">&laquo; Microsoft Patterns and Practices</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000279.html">Another one bites the dust &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 25, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">NAntContrib and SourceForge pain</h3>
+
+<p>After my NAnt/NUnit talk at WinDev, a number of folks asked me about additional tasks that will integrate their version control system into their build system. I have successfully implemented NAnt build systems that talk to <span class="caps">VSS,</span> but I have since migrated my development over to <a href="http://www.perforce.com">Perforce</a>. I looked around for some Perforce tasks, but didn't find any, so I figure I'd write them and contribute them back to the community.</p>
+
+<p>I have been using a private build of NAnt for some time now, which was based on a snapshot of stuff that I got almost a year ago. I decided today to go and grab the latest sources from SourceForge and sync my private build up with the public build. The "nightly builds" can be downloaded from the <a href="http://nantcontrib.sourceforge.net/">NAntContrib home page</a>. However, these builds can't actually be built, as there are a number of things missing. So I resigned myself to grabbing all of the sources from the NAntContrib <span class="caps">CVS</span> repository. This was when I was introduced to a load of pain. </p>
+
+<p>The first wrong thing that I did was try to access <span class="caps">CVS</span> from computers inside my firewall. However, as I discovered, apparently you cannot have <span class="caps">RRAS, ISA</span> and <span class="caps">CVS</span> access all at the same time. You can have two of the three but not all three. If anyone knows of a way of opening up port 2401 so that I can talk to <span class="caps">CVS</span> from behind my <span class="caps">ISA</span> server, I'd really love to hear about it. I tried almost every combination, and some <a href="http://groups.google.ca/groups?hl=en&amp;lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=cvs&amp;btnG=Google+Search&amp;meta=group%3Dmicrosoft.public.isaserver">Google searches</a> yielded other folks who had the same observations. Apparently it's <span class="caps">RRAS</span> that's the culprit.</p>
+
+<p>In desperation, I used Terminal Server to start a <span class="caps">CVS</span> session with SourceForge from my <span class="caps">ISA </span>Server computer. This time, I ran into another set of problems. Silly me, I followed the <a href="http://sourceforge.net/cvs/?group_id=54790">instructions to talk to <span class="caps">CVS</span></a>. Each time I tried that, I got back a wonderfully informative error message:<br> <code>cvs [login aborted]: Error reading from server cvs.sourceforge.net: 0:&lt;br&gt;
+No such file or directory</code><br></p>
+
+<p>I turned to my friend <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a>, who has also done work on NAnt, and he came back with the following magic incantations that work:<br><br />
+<code>cvs -d:pserver:anonymous@cvs.nantcontrib.sourceforge.net:/cvsroot/nantcontri
+b login&lt;br&gt;
+cvs -z3 -d:pserver:anonymous@cvs.nantcontrib.sourceforge.net:/cvsroot/nantco
+ntrib co NAntContrib</code><br><br />
+Worked like a charm. I hope this helps someone else who's trying to grab the NAntContrib sources.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 25, 2003 06:40 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=278" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="278" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000278.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Hello John<br />
+Thanks about windev_2003.zip</p>
+
+<p>"Access to the project CVS servers is provided via SSH (for developers) and the CVS pserver protocols (for non-developers). SSH uses TCP port 22; CVS pserver uses TCP port 2401. <br />
+Many firewalls block outbound traffic on these ports, thus preventing SourceForge.net developers and users from accessing the project CVS servers. <br />
+To work around this limitation, we now offer the ability to connect to the project CVS servers using alternate ports (using different hostnames).<br />
+....<br />
+To access the project CVS server using anonymous pserver-based access from behind a firewall,you may connect to port 443 or port 80 of cvs-pserver.sourceforge.net. Traffic to port 443 and to port 80 of cvs-pserver.sourceforge.net is <br />
+redirected to cvs.sourceforge.net."</p>
+
+<p>http://sourceforge.net/docman/display_doc.php?docid=768&group_id=1#firewall</p>
+
+<p>I'm looking forward to hear from you about NCodeGen</p>
+
+<p>with Best wishes<br />
+</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://sourceforge.net/users/mars-man/">Edris</a> at June 26, 2003 01:34 AM</span>
+</div>
+<div class="comments-body">
+<p>John,<br />
+Thoroughly enjoyed your talks at WinDev 2003 and have been convinced that test-first development is a great thing.  Can you point me in the direction of some examples of how to use NUnit to test more 'complex' code such as UI code or data access code?</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;bnewton&#64;stewart&#46;com">Brian</a> at July  9, 2003 09:00 PM</span>
+</div>
+<div class="comments-body">
+<p>John,</p>
+
+<p>How's progress on the Perforce tasks? I'm about ready to write my own, but if you're going to be contributing them soon, I'll hold off. If you want to collaborate to get them out sooner, I'm up for that, too.</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;lawrencer&#64;pacficdentalservices&#46;com">Richard Lawrence</a> at July 25, 2003 02:40 PM</span>
+</div>
+<div class="comments-body">
+<p>John,</p>
+
+<p>Any chance I can get my hands on the NAnt tasks for Perforce you mentioned about a couple of months ago?</p>
+
+<p>Thanks,<br />
+-bill</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;bcraun&#64;financialware&#46;com">Bill Craun</a> at October  1, 2003 07:27 PM</span>
+</div>
+<div class="comments-body">
+<p>John, <br />
+I understand you've already solved the ISA problem, but for those (including me) who kept hitting this page in search for an answer, here it is:</p>
+
+<p>1. Add a "CVS pserver" protocol definition to the ISA server Policy Elements; Port 2401, Outbound.<br />
+2. Add a new Protocol Rule, allowing internal computers or users to use the "CVS pserver" protocol.</p>
+
+<p>(My initial thought was that allowing all ip traffic for internal computers would suffice, but apparently it doesn't.)</p>
+
+<p>cheers,<br />
+Gertjan</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;gjs&#64;xs4all&#46;nl">schuur</a> at June  4, 2004 04:31 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="278" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

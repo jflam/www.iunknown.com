@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Cross-technology abstractions</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000238.html" title="Puppy advice" />
+
+<link rel="next" href="http://www.iunknown.com/000240.html" title="Dave Thomas on Code Generation" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000238.html">&laquo; Puppy advice</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000240.html">Dave Thomas on Code Generation &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">April 26, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Cross-technology abstractions</h3>
+
+<p><P>Many applications contain abstractions that span a technology boundary. The most common case is the data access layer, where part of your abstraction is implemented in a general-purpose programming language, and part of your abstraction is implemented in SQL. This has led to the development of many code generation tools that target this particular problem: defining your object-relational mapping layer in one place, and generating the code and SQL that is required by your application.</P><br />
+<P>However, this is not the only place where you will find these types of cross-technology boundary abstractions. For example, consider </P><br />
+<UL><br />
+<LI>user interface: mapping user interface definition(s) to a database or application schema<br />
+<LI>remoting: mapping the remotable interface of an application to its internal API<br />
+<LI>configuration: mapping configuration information (registry, XML, directory service) to its internal API<br />
+<LI>security: mapping operating system / runtime security model to application services</LI></UL><br />
+<P>Since these mappings are virtually guaranteed to evolve over the lifetime of your application, capturing their definitions in a single place lets you <EM>efficiently evolve</EM> your application. However, it is not just important to capture their definitions in a single place, it is important to capture <EM>how</EM> those abstractions are implemented; you need fine-grained control over what code gets generated.</P><br />
+<P>These two elements: capturing abstractions in a single place, and fine-grained control over the generated code are the keys to code generation. My mid-term goal is to catalog and document code generation patterns that arise in different problem domains. The patterns will be documented on this web site, an accompanying newsletter in the near future, and a book once there is a compelling story. If you are actively working in code generation in your existing applications, <A href="mailto:jlam@iunknown.com">I'd love to hear from you</A>. I am really interested in hearing about the problems you have run into, and how they fit into my existing catalog of patterns. In return, I'm willing to share any unpublished patterns that might you solve your problem.</P><br />
+<P>If you are in the process of updating an existing application, or are building a new application from scratch, you have an ideal opportunity to introduce code generation into your development organization. I can help make this process considerably less painful for you by helping to sell the concept to management and your development staff. The code generation patterns that I have captured can help you bootstrap the process and reduce the amount of friction that you'll encounter in the early on. Feel free to contact me at: <A href="mailto:jlam@iunknown.com">jlam@iunknown.com</A>.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at April 26, 2003 03:32 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="239" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000239.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Don't have pingback/trackback magic for my wablog, i'll have to do it the old fashioned way.<br />
+See comment here: http://radio.weblogs.com/0112946/2003/04/29.html#a146</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://radio.weblogs.com/0112946">Alexis Smirnov</a> at April 29, 2003 11:27 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

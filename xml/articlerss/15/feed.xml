@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Ruby, COM and the CLR</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Ruby, COM and the CLR": comment by John Lam</title>
+      <description>&lt;p&gt;My mistake Jamie. It was a C++ linker switch /CLRTHREADATTRIBUTE:STA and not an app.config setting.&lt;/p&gt;</description>
+      <pubDate>Wed, 16 Nov 2005 00:20:37 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/11/11/ruby-com-and-the-clr#comment-16</guid>
+      <link>http://www.iunknown.com/articles/2005/11/11/ruby-com-and-the-clr#comment-16</link>
+    </item>
+    <item>
+      <title>"Ruby, COM and the CLR": comment by Jamie Cansdale</title>
+      <description>&lt;p&gt;Hi John,&lt;/p&gt;
+
+
+	&lt;p&gt;You said, &amp;#8220;You can instruct the  CLR  at intialization time to have threads default to their own  STA  (via an app.config file or via an  STA Thread attribute on your application???s Main method)&amp;#8221;&lt;/p&gt;
+
+
+	&lt;p&gt;I haven&amp;#8217;t been able to find any documentation about setting the default threading model using app.config settings. Could you point me in the right direction?&lt;/p&gt;
+
+
+	&lt;p&gt;Thanks, Jamie.&lt;/p&gt;</description>
+      <pubDate>Mon, 14 Nov 2005 06:20:35 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/11/11/ruby-com-and-the-clr#comment-15</guid>
+      <link>http://www.iunknown.com/articles/2005/11/11/ruby-com-and-the-clr#comment-15</link>
+    </item>
+    <item>
+      <title>"Ruby, COM and the CLR" by jlam</title>
+      <description>&lt;p&gt;If you want to write code that interacts with windows (note the lowercase w) and &lt;span class="caps"&gt;COM&lt;/span&gt;, then your thread must live in its own single threaded apartment (STA). This poses a problem if you want to write some Windows Forms code in Ruby. Here&amp;#8217;s the problem in a nutshell:&lt;/p&gt;
+
+
+	&lt;p&gt;If you&amp;#8217;re using my bridge, the &lt;span class="caps"&gt;CLR&lt;/span&gt; is delay-loaded; it loads when my bridge is loaded by the Ruby interpreter. Now Ruby doesn&amp;#8217;t know anything about &lt;span class="caps"&gt;COM&lt;/span&gt;, so Ruby doesn&amp;#8217;t turn on &lt;span class="caps"&gt;COM&lt;/span&gt; via a &lt;code&gt;CoInitializeEx&lt;/code&gt; call at startup. So I should have a chance to turn on &lt;span class="caps"&gt;COM&lt;/span&gt; on behalf of Ruby (more on why this is bad later) when my bridge loads. One of the really nice things about using MC++ is that the compiler/libraries does a bunch of auto-magical startup code to hoist the &lt;span class="caps"&gt;CLR&lt;/span&gt; into memory when my bridge loads. This is where our problems begin.&lt;/p&gt;
+
+
+	&lt;p&gt;In V1.0 and V1.1 of the &lt;span class="caps"&gt;CLR&lt;/span&gt;, the runtime &lt;em&gt;theoretically&lt;/em&gt; didn&amp;#8217;t turn on &lt;span class="caps"&gt;COM&lt;/span&gt; either (it actually did in a number of corner cases). This lets you write code like:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;Thread::CurrentThread::ApartmentState = ApartmentState::STA;&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;However, under V2.0 of the &lt;span class="caps"&gt;CLR&lt;/span&gt; all threads automatically start in the &lt;span class="caps"&gt;MTA &lt;/span&gt;- which means that you can no longer write code like the line above. You can instruct the &lt;span class="caps"&gt;CLR&lt;/span&gt; at &lt;strong&gt;intialization time&lt;/strong&gt; to have threads default to their own &lt;span class="caps"&gt;STA &lt;/span&gt;(via an &lt;code&gt;app.config&lt;/code&gt; file or via an &lt;code&gt;STAThread&lt;/code&gt; attribute on your application&amp;#8217;s &lt;code&gt;Main&lt;/code&gt; method), or you can intialize &lt;span class="caps"&gt;COM&lt;/span&gt; yourself before you initialize the &lt;span class="caps"&gt;CLR&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;For a variety of reasons, if the &lt;span class="caps"&gt;CLR&lt;/span&gt; is delay-loaded, there really is no way to &lt;em&gt;declaratively&lt;/em&gt; tell the &lt;span class="caps"&gt;CLR&lt;/span&gt; about your intentions with respect to &lt;span class="caps"&gt;COM&lt;/span&gt;. This leaves you with one other option: turn on &lt;span class="caps"&gt;COM&lt;/span&gt; yourself &lt;em&gt;before&lt;/em&gt; the &lt;span class="caps"&gt;CLR&lt;/span&gt; loads.&lt;/p&gt;
+
+
+	&lt;p&gt;Now how can you do this without hacking Ruby itself? Anson Tsao, and old friend of mine at Microsoft provided me with the answer as I was feverishly coding up my bridge in anticipation of its first internal review meeting.&lt;/p&gt;
+
+
+	&lt;p&gt;I had an Avalon demo application that I was coding up for Matthew&amp;#8217;s second year birthday and it was refusing to run because the calling thread was not an &lt;span class="caps"&gt;STA&lt;/span&gt; thread! Now, as anyone with a 2 year old knows, they can get rather upset when things don&amp;#8217;t go their way :) But thankfully at the very last minute, Anson provided me with this hack:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+void InitializedManagedRubyBridge() {
+  ...
+}
+
+#pragma unmanaged
+// Main entry point
+__declspec(dllexport) void Init_RubyShim() {
+  CoInitializeEx(0, COINIT_APARTMENTTHREADED);
+  InitializeManagedRubyBridge();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Notice how I can mix unmanaged and managed code inside the same &lt;span class="caps"&gt;DLL&lt;/span&gt;! If I define my &lt;span class="caps"&gt;DLL&lt;/span&gt; entry point in unmanaged code, I can turn on &lt;span class="caps"&gt;COM&lt;/span&gt; and then jump into my managed code. The call to &lt;code&gt;InitializeManagedRubyBridge()&lt;/code&gt; gets intercepted by MC++ libraries which in turn hoist the &lt;span class="caps"&gt;CLR&lt;/span&gt; into memory before calling my method.&lt;/p&gt;
+
+
+	&lt;p&gt;This is a nice way to solve this problem. In a future post, I&amp;#8217;ll point out how this doesn&amp;#8217;t &lt;em&gt;really&lt;/em&gt; solve this problem in all cases but likely solves this problem in most cases that users of my bridge will run across.&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 11 Nov 2005 07:00:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/11/ruby-com-and-the-clr"&gt;Ruby, COM and the CLR&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/11/ruby-com-and-the-clr"&gt;Ruby, COM and the CLR&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

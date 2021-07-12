@@ -1,0 +1,549 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<Title>Current Story</Title>
+
+<HEAD>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="Visual Notepad 1.0">
+<TITLE>COM is good for you. Have you thought about COM today?</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF"
+text="#000000" topmargin="0" leftmargin="0">
+
+<STYLE>
+
+	.textRed	{ color:red; font-weight:bold }
+	.textBlack	{ color:black; font-weight:bold }
+	.dropDown	{ position:relative;top:10;left:10;cursor:'hand' }
+
+	H1		{ font:'14pt Arial' }
+	H2		{ font:'14pt Arial';border-bottom:1px outset green }
+	H3		{ font:'12pt Arial';font-weight:bold;cursor:'hand' }
+	H4		{ font:'8pt Arial';font-weight:normal;font-style:italic }
+	H5		{ font: '10pt Arial' }
+
+</STYLE>
+
+<SCRIPT>
+	function ChangeDisplay( element )
+	{
+		if( element.style.display == "" ) {
+			element.style.display = "none";
+		} else {
+			element.style.display = "";
+		}
+		window.event.cancelBubble = true;
+	}
+
+	function Dummy()
+	{
+		return True;
+	}
+
+	function IsIE( browsertype )
+	{
+		return True;
+
+		if( browsertype.Browser == "IE" ) {
+			if( browserType.Version >= 4 ) {
+				return True;
+			}
+		}
+		return False;
+	}
+</SCRIPT>
+
+<SCRIPT language=vbscript>
+	Sub NewBuildTOC()
+
+		dim anchorTags
+		dim objTOC
+		dim doc
+
+		set anchorTags = parent.frames( "MainFrame" ).document.anchors
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><HEAD></HEAD><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white>"
+		doc.write "<STYLE>H4 { font:'8pt Arial';font-weight:normal;font-style:italic }</STYLE><H4>"
+		doc.write "<BR><BR><BR><B>Contents</U></B><BR><HR>"
+
+		for i = 0 to anchorTags.length - 1
+			doc.write "<A href='#" & anchorTags( i ).name & "' target='MainFrame'>"
+			doc.write anchorTags( i ).innerText & "</A><BR>"
+		next
+
+		doc.write "<HR>"
+		doc.write "</H4></BODY></HTML>"
+		doc.close()
+
+	End Sub
+
+	Sub ClearTOC()
+
+		dim doc
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white></BODY></HTML>"
+		doc.close()
+
+	End Sub
+</SCRIPT>
+
+<P>
+	<FONT face="VERDANA, ARIAL, HELVETICA">
+	<IMG src="images/onepixel.gif" vspace="30" hspace="10" width="1" height="1"></IMG>
+	<IMG src="/images/iunknownlogo.gif"></IMG>
+	<IMG src="images/onepixel.gif" hspace="81" width="1" height="1"></IMG>
+	</FONT>
+</P>
+
+<TABLE border="0">
+<TR>
+    <TD width="10" valign=TOP>&nbsp
+	</TD>
+    <TD width="480">
+		<FONT face="VERDANA, ARIAL, HELVETICA">
+
+	<font size="3"><b>Structured Storage: A View from Delphi                                                                                                                                                                                                                    </b></font><br>
+	<font size="1">By </font><a href="author.asp?AuthorID=1">
+	<font size="1"> John                                               Lam                                               </font></a>
+	<font size="1"><br>Last updated on 
+		Wednesday, July 09, 1997
+	 at 10:21:40 PM<br><br></font>
+	<font size="2"><A HREF="http://www8.zdnet.com/pcmag/issues/1422/contents.htm">
+<font size = 1><I>First appeared in the December 19, 1995 issue of PC Magazine</I></a></font>
+<P>As we move boldly into the world of Windows 95 and 32-bit applications, OLE (Object Linking and Embedding) is becoming the key technology around which many great Windows applications are built. In fact, if you want to display the Windows 95 logo in your application, it must support OLE functionality. So what exactly is OLE functionality? There are two faces to OLE: one that the user sees and another that the application developer sees.</P>
+<P>Users see OLE as the technology that enables them to share information between different applications. Users can create documents assembled from various pieces of information created by other OLE-compliant applications. They can seamlessly transfer information between OLE-compliant applications by using OLE drag-and-drop. Finally, in-place editing allows users to edit these embedded pieces of information without leaving the application they're currently working in (see Figure 1). The end result of these technologies is a paradigm shift from an application-centric view of our work toward a document-centric view of our work.</P>
+<P>The developer sees OLE technology as a solution to a number of difficult problems. One of the most difficult problems that Windows developers face is making applications communicate with each other. In the past, there was a lack of industry-wide standards, so developers had to use the equivalent of a secret handshake; if you didn't know the handshake, you couldn't join the party. What OLE has done is to standardize that handshake. As long as you know how to say hello and can answer a few basic questions about yourself, you're in.</P>
+<P>Another difficult problem that developers face when writing applications is how to store an application's data to permanent storage. In the past, developers only needed to develop a custom file format that would store the data specific to their application. In today's software environment, where users expect to be able to embed data created by one application into any other application, the challenge becomes much more difficult for developers. They would now have to write large amounts of code to manage difficult tasks such as adding objects to their application's file, expanding objects already in the file, and deleting objects from the file. The OLE development team at Microsoft devised a solution to this problem by creating an operating system extension that standardizes access to compound files through a common set of interfaces. This operating system extension, known as OLE Structured Storage (SS), will be the focus of this article. After looking at the Component Object Model (COM) and how it relates to structured storage, we'll use Borland Delphi to build a sample application that browses SS files.</P>
+<H3><A name="A0">OLE Structured Storage</A></H3>
+<P>What features does OLE Structured Storage make available to the user? One of the most useful features is the Summary Info dialog box, shown in Figure 2. Not only can users manipulate this data in the application that created the document, but they can also search for documents by using any application that can search for summary information. This feature is extensively used throughout the Microsoft Office line of applications, under the Find File... menu option.</P>
+<P>How about the developer's perspective? By now you have probably guessed that the summary information is stored inside an SS file. For a better understanding of how to access the summary information data, let's first take a look at how information is organized inside an SS file.</P>
+<P>Put simply, an SS file is &quot;a file system in a file.&quot; From using DOS, most PC programmers have a firm grasp of what directories and files are. In OLE nomenclature, <I>storages</I> and <I>streams </I>are the terms used in place of <I>directories</I> and <I>files</I>. In an MS-DOS volume, there is a root directory. The analogous structure in an SS file is the root storage. We manipulate SS storages and streams using their respective interfaces and, in turn, the member functions of those interfaces. Figure 3 draws parallels between SS interfaces and the equivalent DOS functions. But what exactly is an <I>interface</I>? To understand this, we must dig a bit deeper into OLE and briefly discuss the Component Object Model.</P>
+<P>FIGURE 3:<I>A comparison of OLE Structured Storage functions and the DOS file functions.</I></P>
+<PRE>
+                   <B>Equivalent
+IStorage function  DOS Int 21h function         Description</B>
+
+CreateStream       5Bh--Create new file.        Create a new stream.
+
+OpenStream         3Dh--Open file with handle.  Open an existing stream.
+
+CreateStorage      39h--Create directory.       Create a new storage.
+
+OpenStorage        3Bh--Change current          Open an existing storage.
+                   directory.
+
+EnumElements       4Eh--Find first file.        Enumerate streams in a
+                   4Fh--Find next file.         storage.
+
+RenameElement      56h--Rename file.            Rename stream.
+
+DestroyElement     41h--Delete file.            Delete stream.
+</PRE>
+<H3><A name="A1">The Component Object Model</A></H3>
+<P>The Component Object Model is at the heart of OLE and defines a standard way for objects to communicate with each other. It introduces the concept of an <I>interface</I>, which is simply a collection of related functions that serve a common purpose. Any object that implements at least one OLE interface--IUnknown--is referred to as a Windows Object (referred to hereafter simply as an <I>object</I>). An object can communicate with another object by first obtaining a pointer to an interface that's implemented by the target object.</P>
+<P>As Figure 4 shows, an interface is just a table of pointers to functions. Therefore, by using pointer offsets into the interface table, a client object can obtain the runtime address of the functions of the server object. Manipulating pointer offsets, however, is a cumbersome method of obtaining the address of a target object's member functions. Fortunately, the structure of a COM interface is identical to that of a C++ v-table.</P>
+<P>C++ v-tables are used to determine the address of a function at runtime, in a process known as <I>late binding</I>. If we are interested only in talking to a target object and are not implementing any interfaces of our own, we never need to instantiate an interface object. Therefore, it is appropriate to define the interface classes as <I>abstract</I> classes, composed only of pure virtual functions. An abstract class is never meant to be instantiated; it simply serves as a common ancestor for derived classes.</P>
+<P>Most books on OLE programming typically use C/C++ as the language of choice. However, there is no reason why C++ is the only language that can be used to create OLE applications. Any language that supports the notion of pointers can be used to write OLE applications (this excludes p-code languages such as Visual Basic, which can only be used to control other OLE applications). Fortunately, the Object Pascal compiler in Delphi generates v-tables that are identical to those generated by C++ compilers. Thus, Delphi can easily be used to write OLE applications, and the focus of our article will be on using Object Pascal to access OLE interfaces, although this material is quite easily transferable to C++.</P>
+<P>There is a problem with using Delphi to create OLE applications. Keep in mind that OLE is simply a binary specification created by Microsoft to define the behavior of Windows Objects. Since C++ is the most widely used object-oriented language, the OLE binary specification is defined in the OLE 2.01 SDK in the form of C++ header files. In this regard, I have both good news and bad news to report. The good news is that Borland has ported and combined many OLE 2.01 SDK C++ header files into two Turbo Pascal Unit files: OLE2.PAS and DISPATCH.PAS. The bad news is that Borland made some mistakes during the port. The first patch to Delphi 1.0 released by Borland did a pretty good job of fixing some of these errors, but others still remain.</P>
+<H3><A name="A2">IUnknown: The Key to OLE</A></H3>
+<P>I earlier defined a Windows Object as an object that implements, at the very least, the IUnknown interface. The member functions of this, the most basic of OLE interfaces, are shown in Figure 4.</P>
+<P>An object must be able to count the number of references that other objects have to it so that it can unload itself from memory once the number of references drops to zero. This is the role of the AddRef and Release functions.</P>
+<P>The only other member function of IUnknown is QueryInterface. This function allows you to query an object to see whether it supports any other interfaces. For example, if you want to see whether an object implemented an IPersistStorage interface (which lets the server object save its data in the client object's data file), you can use the following function to query the other object for an IPersistStorage interface:</P>
+<PRE>
+    function GetIPersistStorage(pUnknown:
+    IUnknown): IPersistStorage;
+    var
+      hr: HResult;
+      pPersistStorage: Pointer;
+    begin
+      hr := pUnknown.QueryInterface(IID_IPersistStorage, pPersistStorage);
+      if SUCCEEDEDHR(hr) then
+        Result := IPersistStorage(pPersistStorage)
+      else
+        Result := nil;
+    end;
+</PRE>
+<P>The variable hr is of the type HResult, which is a 32-bit value used by every OLE function for its return value. You can check to see whether the function succeeded by using the Delphi-defined function SUCCEEDEDHR (hr), which returns TRUE if no errors were encountered. If it's successful, QueryInterface returns a pointer to the IPersistStorage interface in the pPersistStorage parameter as a generic pointer, which must be type-casted into an IPersistStorage pointer. By using this general technique, you can obtain a pointer to any interface implemented by a given object.</P>
+<P>The IID_IPersistStorage parameter in the QueryInterface call identifies the interface being referred to. So that all of the objects and interfaces present on a user's system can be uniquely identified, Microsoft assigns unique 128-bit values known as Globally Unique Identifiers (GUIDs) to them. The fundamental OLE interfaces such as IUnknown and IPersistStorage all have predefined GUID-type values called Interface Identifiers (IIDs), and they are defined in either the OLE2.PAS or the DISPATCH.PAS files.</P>
+<P>So, with a pointer to an IUnknown interface, you can get access to any other interface using the QueryInterface function. But how do you get the initial pointer to the IUnknown interface? Furthermore, how do you access an object that hasn't been created yet? This is where two key OLE API functions, CoCreateInstance and CLSIDFromProgID, and the system Registry file REG.DAT come into the picture.</P>
+<P>The system Registry file REG.DAT stores all of the information about the objects present on your computer. In particular, instead of using cryptic 128-bit GUID values, you can use a more human-readable representation of the object, known as a ProgID. For instance, the ProgID for the Microsoft Word 6.0 Word Basic object is simply &quot;Word.Basic&quot;. The following code segment shows how to obtain the pointer to the IUnknown interface for the Word Basic object:</P>
+<PRE>
+    type
+      aclsID: CLSID;
+      pUnk: IUnknown;
+    begin
+      if SUCCEEDEDHR(CLSIDFromProgID
+        ('Word.Basic', aclsID)) then
+         CoCreateInstance(aclsID, nil,
+         CLXCTX_SERVER, IID_IUnknown, pUnk);
+</PRE>
+<P>The CLSIDFromProgID function looks up &quot;Word.Basic&quot; in REG.DAT and returns its associated CLSID in the aclsID parameter. CoCreateInstance creates an instance of a Word.Basic object and requests an IUnknown interface pointer to be returned in pUnk. The pUnk parameter in CoCreateInstance is defined as an untyped reference in the file OLE2.PAS. Thus, we can pass any variable type, but since pUnk is really a 32-bit pointer (or far pointer in C++ terms), and IUnknown is also a far pointer, we don't have to perform any explicit type-casting in this function.</P>
+<P>The previous example illustrates how to obtain the initial interface pointer to an object. But since the focus of this article is Structured Storage, and SS files aren't objects, how do we obtain the pointer to the file's root IStorage interface? IStorage is a Windows Object implemented in STORAGE.DLL. As you might expect, what we need to do is to bind a filename to an IStorage object, and the API function that allows us to do this is StgOpenStorage.</P>
+<P>Once we obtain a pointer to the IStorage interface, we can navigate the entire SS file using its member functions, which are remarkably similar to DOS functions (see Figure 3). We can obtain the individual IStream interfaces inside each IStorage interface; these allow us to access SS streams, which are analogous to MS-DOS files.</P>
+<P>One additional feature of SS files is their ability to support transactioning. That is, changes to a stream or storage are not actually committed to permanent storage until a commit command is executed. This allows the developer to give the user the ability to undo for free. A thorough discussion of this feature of SS files is beyond the scope of this article; refer to the excellent references listed at the end of this article for further information.</P>
+<H3><A name="A3">A Structured Storage Browser</A></H3>
+<P>To map my background discussion of SS files onto some code, I will walk you through a sample application that allows you to browse SS files. This application was written entirely in Delphi to show that Delphi can be used to write OLE applications as well as C++. One of the key advantages of Delphi is the wealth of prebuilt user interface components that come in the box. Two of these components, TOutline and TDrawGrid, form our user interface. TOutline displays an Explorer-like directory hierarchy that maps onto the storage hierarchy of the SS file. We use a TDrawGrid to allow the user to browse through the contents of a given stream in the SS file without actually having to load the stream into memory.</P>
+<P>The OLE libraries must be initialized before we can use them. Figure 5 shows the standard entry and exit library calls required for any OLE application. Because an OLE application relies on the correct dynamic link libraries being present on the user's system, it makes an enormous amount of sense to check the version numbers of the libraries before starting.</P>
+<P>FIGURE 5: Here are the standard Delphi entry and exit library calls required for any OLE application.</P>
+<PRE>
+     Initialization Code
+
+     procedure TMainForm.FormCreate(Sender: TObject);
+     var
+       dwVer, hr: HResult;
+     begin
+       m_fOleInitialized := false;
+       dwVer := CoBuildVersion;
+
+       if rmm &lt;&gt; HIWORD(Longint(dwVer)) then
+         ShowMessage('Invalid OLE library version');
+       else begin
+         if FAILEDHR(CoInitialize(nil)) then
+           ShowMessage('Failed OLE library initialization');
+         else
+           m_fOleInitialized := true;
+         end;
+     end;
+
+    Termination Code
+
+    procedure TMainForm.FormDestroy(Sender: TObject);
+    begin
+      if m_fOleInitialized then
+        OleUninitialize;
+      ...
+    end;
+</PRE>
+<P>For the OLE 2.01 libraries, rmm is defined as 23, and it must be defined as a constant in your application, since it is not defined in either OLE2.PAS or DISPATCH.PAS. I use a member variable m_fOleInitialized to flag whether the OLE libraries have been successfully initialized or not. For basic SS file access, the only OLE libraries needed are COMPOBJ.DLL and STORAGE.DLL. Once the libraries are initialized, we can break down the operations performed by the browser into three categories: (1) opening an SS file, (2) opening a stream in an SS file, and (3) browsing a stream in an SS file.</P>
+<P>Once the libraries are initialized, we allow the user to browse around the file system using Delphi's TOpenDialog common dialog. Once the user has selected a file, we must use the StgIsStorage API call to ensure that what the user is trying to open is an SS file. If it is, we proceed to read in the directory structure of the SS file (Figure 6).</P>
+<P>FIGURE 6: This code reads the directory structure of a Structured Storage file.</P>
+<PRE>
+   procedure TMainForm.OpenItemClick(Sender: TObject);
+   var
+     pszFilename, pszName: PChar;
+     sc: SCODE;
+     snbExclude: PStr;
+     hr: HResult;
+     dummyExclude: IStorage;
+     pIStorage: ^IStorage;
+     pMyStatStg: TMyStatStg;
+     dummyULI: Comp;
+   begin
+     if OpenDialog.Execute then begin
+
+       { Try opening a structured storage document.
+         Filename parsing is done in OpenDialog. }
+       try
+         pszFilename := StrAlloc(Length(OpenDialog.Filename)
+   + 1);  { + 1 for NULL }
+
+         StrPCopy(pszFilename, OpenDialog.Filename);
+         sc := GetSCode(StgIsStorageFile(pszFilename));
+         if sc = STG_E_FILENOTFOUND then
+           ShowMessage(OpenDialog.Filename + ' was not found.')
+         else if sc = S_FALSE then
+           ShowMessage(OpenDialog.Filename + ' is not a
+           valid OLE2 Structured Storage file.')
+         else if sc = S_OK then begin
+
+           { Now actually open the file, and obtain a
+             pointer to IRootStorage }
+           FreeIStorageList;
+           snbExclude := nil;
+           pIRootStorage := nil;
+
+           if SUCCEEDEDHR(StgOpenStorage(pszFilename, nil,
+           STGM_DIRECT or
+             STGM_READWRITE or STGM_SHARE_EXCLUSIVE,
+             snbExclude, Longint(nil),
+             IStorage(pIRootStorage))) then begin
+
+             { Create Root of TOutline. This *ALWAYS* has an
+               ItemIndex of 0 }
+             Outline1.AddChild(0, 'Root Storage: ' + StrPas(pszFilename));
+
+             { Code to create a list of open storages so
+               that I can open them when I need to view
+               their contents later }
+             pszName := StrAlloc(100);
+             StrCopy(pszName, 'Root Storage: ');
+             StrCat(pszName, pszFilename);
+             dummyULI := 0;
+             pMyStatStg := TMyStatStg.Create(pszName,
+             pIRootStorage, 0, dummyULI);
+             m_lstIStorage.Add(pMyStatStg);
+             ViewStorage(1, pIRootStorage);
+             { call recursive outline filler }
+           end;
+         end;
+       finally
+         StrDispose(pszFilename);
+       end;
+     end;
+</PRE>
+<P>The directory structure is hierarchical, just like that of DOS. Therefore, we can easily traverse the directory data structure using a recursive routine. Here is an algorithm for traversing a directory tree:</P>
+<PRE>
+    PROCEDURE ViewStorage(storage)
+    WHILE there are more elements in the
+    current storage DO
+      create a human-readable
+       representation of current element
+        add it to the outline control
+        IF the current element is a
+        storage THEN
+          CALL ViewStorage(this storage)
+    END
+</PRE>
+<P>OLE allows a program to step through the elements of an interface by using the OLE- defined <I>enumerator</I> interface. An OLE enumerator implements Next, Skip, Reset, and Clone functions. Once we have an IStorage interface, we obtain a pointer to an IEnumStatStg enumerator by calling the EnumElements member function of IStorage, which returns an interface pointer to an instance of an IEnumStatStg enumerator. Using the Next member function of the interface to step through the individual elements returned by the enumerator, we obtain a &quot;directory&quot; of that storage.</P>
+<P>The Next function of the IEnumStatStg interface returns a TStatStg structure that identifies whether the element is a storage or a stream and contains particulars about each storage type (such as the size of the stream and when it was created and last modified). Using the information contained in this structure, we construct a human-readable representation of the data and store it in the Outline1 control. We also save the information contained in the TStatStg structure in a record of type TMyStatStg that retains the pointer to the currently opened storage. We save this record in a Delphi TList structure represented by m_lstIStorage (Figure 7).</P>
+<P>FIGURE 7: This code traverses the directory tree of a Structured Storage file.</P>
+<PRE>
+    procedure TMainForm.ViewStorage(inID: Integer; lpStorage: IStorage);
+    var
+      lpEnum: IEnumStatStg;
+      ss: TStatStg;
+      ulCount, ldwType: Longint;
+      sc: SCODE;
+      pSubStg: IStorage;
+      subID: Integer;
+      sType: String[12];
+      hr: HResult;
+      snbExclude: PStr;
+      pMyStatStg: TMyStatStg;
+    begin
+      snbExclude := nil;
+      pSubStg := nil;
+      if FAILEDHR(lpStorage.EnumElements(0, nil, 0, lpEnum))
+      then
+        ShowMessage('Could not get a Storage Enumerator at
+        level: ' + IntToStr(inID))
+      else begin
+        sc := S_OK;
+        while sc = S_OK do begin
+          sc := GetSCode(lpEnum.Next(1, ss, ulCount));
+          if (sc &lt;&gt; S_OK) and (sc&lt;&gt; S_FALSE) then begin
+            ShowMessage('IEnumStatStg returned an error!
+            SCODE = ' + IntToStr(Longint(sc)));
+            Exit;
+          end
+          else
+            ldwType := Longint(ss.dwType);
+            case ldwType of
+              STGTY_STREAM: sType := 'Stream';
+              STGTY_STORAGE: sType := 'Storage';
+              STGTY_LOCKBYTES: sType := 'LockBytes';
+              STGTY_PROPERTY: sType := 'Property';
+              else sType := '**Unknown**';
+           end;
+
+         { Add this record to the Outline Control. Note that
+           ss.cbSize (the size of the stream object) is a 64
+           bit integer. }
+       if sc = S_OK then begin
+
+         { Add this TStatStg record to the outline
+           control. We need to use a helper function:
+           GetLowPart to bust up the ss.cbSize 64 bit
+           integer. }
+
+         subID := Outline1.AddChild(inID,
+         StrPas(ss.pwcsName) + ', Type: ' +
+           sType + ', Size: ' +
+           IntToStr(GetLowPart(ss.cbSize)));
+         if ldwType = STGTY_STORAGE then begin
+
+           { We're in a Storage- Recursively traverse the
+             storage by calling ourself }
+           hr := lpStorage.OpenStorage(ss.pwcsName, nil,
+           STGM_READ or
+             STGM_SHARE_EXCLUSIVE, nil, Longint(nil),
+             pSubStg);
+           if SUCCEEDEDHR(hr) then begin
+             pMyStatStg := TMyStatStg.Create(ss.pwcsName,
+             pSubStg, ss.dwType, ss.cbSize);
+             m_lstIStorage.Add(pMyStatStg);
+             ViewStorage(subID, pSubStg);   { call ourself }
+           end
+           else
+             ShowMessage('Failed substorage open! hr = ' +
+             IntToStr(Longint(hr)));
+         end
+         else begin
+
+           { This wasn't a storage, so we write the
+             current lpStorage into the table }
+           pMyStatStg := TMyStatStg.Create(ss.pwcsName,
+           lpStorage, ss.dwType, ss.cbSize);
+           m_lstIStorage.Add(pMyStatStg);
+          end;
+        end;
+      end;
+      lpEnum.Release;
+      lpEnum := nil;
+    end;
+</PRE>
+<P>A user who wants to view a particular stream of an SS file can do so by double-clicking on the appropriate line of Outline1. Because the structure of m_lstIStorage mirrors that of the Outline1, we can simply use the offset returned by the SelectedItem property of Outline1 to look up the appropriate record in m_lstStorage. Once we have the pointer to the storage and the name of the stream that the user selected, we can use the OpenStream IStorage member function to open a stream for the user to view (see Figure 8).</P>
+<P>FIGURE 8: This code opens a stream in a storage.</P>
+<PRE>
+    procedure TMainForm.Outline1DblClick(Sender: TObject);
+    var
+      pszName: PChar;
+      pIStorage: IStorage;
+      pIStream: IStream;
+      pMyStatStg: TMyStatStg;
+      aOffset, dummyLargeint: Comp;
+    begin
+      if Outline1.SelectedItem &gt; 0 then begin
+        pMyStatStg := TMyStatStg(m_lstIStorage.Items
+        [Outline1.SelectedItem-1]);
+        StatusBar.Caption := 'Selected Item: ' +
+        StrPas(pMyStatStg.pszName);
+        { Now try and open the stream for this node, but
+          first close existing stream }
+        if m_pStream &lt;&gt; nil then
+          m_pStream.Release;
+
+        if pMyStatStg.dwType = Longint(STGTY_STREAM) then
+        begin
+          pIStorage := pMyStatStg.pIStorage;
+          pszName := pMyStatStg.pszName;
+
+          { If there was already a stream open, release it
+            first }
+
+        if SUCCEEDEDHR(pIStorage.OpenStream(pszName, nil,
+        STGM_READ
+
+          or STGM_SHARE_EXCLUSIVE, 0, pIStream)) then begin
+
+          { Setup the DrawGrid to Display this Stream }
+          m_dwStreamSize := GetLowPart(pMyStatStg.cbSize);
+          { set the stream size variable }
+          m_pStream := pIStream;
+          { save the interface pointer }
+          Drawgrid1.RowCount := m_dwStreamSize div 16;
+          { set the extent of the DrawGrid }
+          Drawgrid1.Visible := True;
+
+          { Seek to beginning of file }
+          aOffset := 0;
+          m_pStream.Seek(aOffset, Longint(STREAM_SEEK_SET),
+          dummyLargeint);
+        end;
+      end
+      else
+        DrawGrid1.Visible := False;
+        { Hide Grid if not a Stream Object }
+      end;
+    end;
+</PRE>
+<P>DrawGrid1 is a Delphi TDrawGrid owner-drawn grid control with a single column. It is particularly useful for our browser because TDrawGrid returns the Row number as a signed 32-bit integer. This means that it can hold potentially 2 billion rows, which translates into being able to view 4316 or 64 billion byte streams. Because the TDrawGrid component displays grid cells on demand rather than storing the data it displays, the stream need not be loaded into memory. Instead, we use the Seek and Read member functions of IStream to draw the appropriate rows of DrawGrid1 when its DrawCell event fires. Figure 9 shows the implementation of the DrawCell event handler, which draws 16 bytes at a time across DrawGrid1.</P>
+<P>FIGURE 9: This is the implementation of the owner-drawn grid, which draws 16 bytes at a time across DrawGrid1.</P>
+<PRE>
+    procedure TMainForm.DrawGrid1DrawCell(Sender: TObject; Col,
+    Row: Longint;
+      Rect: TRect; State: TGridDrawState);
+    var
+      TheText: string[16];
+      i: Integer;
+      byteArray: Array[0..15] of Byte;
+      lBytesRead: Longint;
+      aOffset, dummyLargeint: ULargeint;
+    begin
+      begin
+
+          { Calculate byte offset into stream and seek to that
+            byte position }
+          aOffset := Row shl 4;
+          if SUCCEEDEDHR(m_pStream.Seek(aOffset,
+          Longint(STREAM_SEEK_SET), dummyLargeint)) then
+            begin
+            if SUCCEEDEDHR(m_pStream.Read(@byteArray, 16,
+            lBytesRead)) then begin
+
+              { xxxxxxxx: xx xx xx xx xx xx xx xx xx xx xx xx
+                xx xx xx xx  abcdefghijklmnopq }
+              TheText := IntToHex(Row shl 4, 6) + ':' ;
+              SetBkColor(DrawGrid1.Canvas.Handle,
+              GetSysColor(COLOR_WINDOW));
+              DrawGrid1.Canvas.TextOut(Rect.Left + 2 *
+              m_iCharWidth, Rect.Top, TheText);
+
+              for i := 0 to lBytesRead - 1 do begin
+                TheText := IntToHex(byteArray[i], 2);
+                DrawGrid1.Canvas.TextOut(Rect.Left + 10 *
+                m_iCharWidth + m_iCharWidth * i * 3
+                  , Rect.Top, TheText);
+              end;
+
+              { Format output string as printable characters or
+                '.' if not printable }
+              TheText := '';
+              for i := 0 to lBytesRead - 1 do
+                if IsCharAlphaNumeric(Char(byteArray[i])) then
+                  TheText := TheText + Char(byteArray[i])
+                else
+                  TheText := TheText + '.';
+
+              DrawGrid1.Canvas.TextOut(Rect.Left + 60 *
+              m_iCharWidth, Rect.Top, TheText);
+            end;
+          end;
+        end;
+      end;
+</PRE>
+<H3><A name="A4">Required Workarounds</A></H3>
+<P>Delphi has a native 64-bit data type called Comp. Since structured storage uses 64-bit integer offsets into streams, we can conveniently use Comp to maintain the stream offsets. But Delphi type-conversion functions such as IntToStr do not understand the Comp data type. Therefore, we need to extract the low-order long integer from the Comp data type, which is what the following helper function does:</P>
+<PRE>
+    { Function to extract the Low
+    Longint from a Comp Variable }
+    function TMainForm.GetLowPart(X:
+    Comp): Longint;
+
+    begin
+      Move(X, Result, 4);
+    end;
+</PRE>
+<H3><A name="A5">Conclusion</A></H3>
+<P>I hope this discussion has shown OLE's Structured Storage implementation to be a powerful file-management API that you can use in your applications. A rich set of file management functions are exposed in the IStorage and IStream objects implemented by STORAGE.DLL. These features allow developers to combine an application's data files into a single data file, which in turn allows users of their application to maintain data in a single file.</P>
+<P>You can download all the files in this column from PC Magazine Online. See the sidebar &quot;Guide to Our Utilities&quot; for instructions.</P>
+<H3><A name="A6">Further Reading</A></H3>
+
+<PRE>
+    *  Bryan Waters' <I>Mastering OLE2</I> (Sybex, 1995) is a
+       very well-written introduction to OLE. It provides a concise
+       overview of the technology.
+
+    *  Kraig Brockschmidt's <I>Inside OLE,</I> Second Edition
+       (Microsoft Press, 1995) offers a very detailed treatment of
+       OLE and  includes a lot of useful reference material. N
+</PRE>
+<P></font><br>
+	<hr>
+		</FONT>
+		<CENTER>
+		<FONT size = 1>&#169; 1997 John Lam. All rights reserved.<BR><BR></FONT>
+		<A href="#TOP"><IMG src="images/top.gif" border=0 alt="Back to top"></A><BR>
+		<BR><FONT FACE="ARIAL,HELVETICA" SIZE="1">
+		<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="5">
+		<TR>
+				<TD ALIGN="right" VALIGN="middle"><a href="/ie/" target="_top"><img src="/images/ie_animated.gif" width="88" height="31" border="0" alt="Microsoft Internet Explorer"></a></TD>
+				<TD ALIGN="center" VALIGN="middle"><IMG SRC="images/bar.gif" width="3" height="43"></TD>
+				<TD ALIGN="left" VALIGN="middle"><a href="/backoffice/designed/logo.htm" target="_top"><IMG SRC="/images/msbo_iis.gif" width="100" height="31" border="0" alt="Microsoft Windows NT Server with Internet Information Server"></a></TD>
+		</TR>
+		</TABLE>
+		</FONT></CENTER><BR>
+	</TD>	
+</TR>
+</TABLE>
+
+</table>
+</body>
+</html>

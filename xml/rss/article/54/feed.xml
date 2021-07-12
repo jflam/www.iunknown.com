@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: RubyCLR update</title>
+    <link>http://www.iunknown.com/articles/2006/01/11/rubyclr-update</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>RubyCLR update</title>
+      <description>&lt;p&gt;I&amp;#8217;ve been spending a surprising amount of time working on my Ruby &lt;span class="caps"&gt;CLR&lt;/span&gt; bridge. Ben sleeps on/around me for about 3 hours in the evening to give Carolyn 3 hours of uninterrupted sleep, and I&amp;#8217;ve been using that time very productively to add features.&lt;/p&gt;
+
+
+	&lt;p&gt;The older version of the bridge that I had working was a grotesque hack &amp;#8211; it was essentially a bunch of experiments cobbled together in a Frankenstein-esque contraption. Anyone who has a copy of that code is respectfully asked to destroy it once I ship any of these newer bits.&lt;/p&gt;
+
+
+	&lt;p&gt;One of the big things that I&amp;#8217;ve been working on is getting a seamless array experience. I marshal data types between the &lt;span class="caps"&gt;CLR&lt;/span&gt; and Ruby by value where possible, and by reference in all other cases. So value types like floating point numbers and integers are marshaled by value (aka copied and converted) across the runtime boundaries. So code like this just works:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+static array&amp;lt;int&amp;gt;^ StaticGetOneDimensionalArray() {
+  return gcnew array&amp;lt;int&amp;gt; { 0, 1, 2, 3 };
+}
+
+a = MarshalerTests.StaticGetOneDimensionalArray
+assert_equal 0, a[0]
+assert_equal 4, a.Length
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;As you can see, I marshal by reference the array from the C++ function. But all of the elements of the array are marshaled by value, which lets me treat them as if they were native Ruby numbers.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;ve also done a ton of performance work in this release. If you&amp;#8217;re calling a method that has overloads, I take a slower path where I have to lookup at runtime the correct method based on the parameters that you&amp;#8217;re passing. However, if the method doesn&amp;#8217;t have any overloads, I generate a different shim that doesn&amp;#8217;t do any runtime lookups &amp;#8211; it just pushes parameters onto the call stack and invokes the method. The array code that you see above calls &lt;code&gt;Array.Get&lt;/code&gt; which is &lt;strong&gt;not&lt;/strong&gt; overloaded (unlike &lt;code&gt;Array.GetValue&lt;/code&gt; which is) which results in extremely fast &lt;span class="caps"&gt;CLR&lt;/span&gt; array element access from Ruby.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m punting on some hard problems like generics for the time being. I have to add support for events before I ship this release; if Ben cooperates that should be by the end of this week.&lt;/p&gt;</description>
+      <pubDate>Wed, 11 Jan 2006 13:30:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:ded88ee59c088fd26675a2321bdeaa3c</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/01/11/rubyclr-update</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"RubyCLR update" by Pillangószív</title>
+      <description>&lt;p&gt;Wow, its funny:)&lt;/p&gt;</description>
+      <pubDate>Sun, 24 Sep 2006 04:04:30 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:a9650e52-5067-48cf-a481-8a42b2c84dd0</guid>
+      <link>http://www.iunknown.com/articles/2006/01/11/rubyclr-update#comment-1008</link>
+    </item>
+    <item>
+      <title>"RubyCLR update" by Christian Mogensen</title>
+      <description>&lt;p&gt;RubyCLR - you rock! &lt;/p&gt;
+
+&lt;p&gt;...&lt;/p&gt;
+
+&lt;p&gt;You know - you could parlay this into a steady stream of baby-sitters from a grateful CLR community :-)&lt;/p&gt;</description>
+      <pubDate>Thu, 12 Jan 2006 04:19:32 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/11/rubyclr-update#comment-293</link>
+    </item>
+  </channel>
+</rss>

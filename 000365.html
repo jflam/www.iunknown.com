@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: I am intrigued by ObjectSpaces</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000364.html" title="What's new in the Whidbey Frameworks?" />
+
+<link rel="next" href="http://www.iunknown.com/000366.html" title="Top 5 Favorite Features in Whidbey" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000365.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/109"
+    dc:title="I am intrigued by ObjectSpaces"
+    dc:identifier="http://www.iunknown.com/000365.html"
+    dc:subject="Blog"
+    dc:description="Andy Hopper, who I&apos;ve talked to many times about code generation, seems to be enamored with ObjectSpaces. Andy claims (and I have no reason to disbelieve him) that it eliminates the need to code-gen object-relational mapping layers. This is very..."
+    dc:creator="John"
+    dc:date="2003-10-28T15:12:51-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000364.html">&laquo; What's new in the Whidbey Frameworks?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000366.html">Top 5 Favorite Features in Whidbey &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">October 28, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">I am intrigued by ObjectSpaces</h3>
+
+<p>Andy Hopper, who I've talked to many times about code generation, seems to be <a href="http://hoppersoft.com/Andy/PermaLink.aspx?guid=08a97ed0-415c-4413-b149-b63abcedd21f">enamored with ObjectSpaces</a>. Andy claims (and I have no reason to disbelieve him) that it eliminates the need to code-gen object-relational mapping layers. This is very interesting to me, since it removes some of the low-hanging fruit from <a href="http://www.iunknown.com/000153.html">code generation motivation</a>.</p>
+
+<p>It's time for me to dig into ObjectSpaces. I've been spending most of my Whidbey time on MSBuild, but now it's time to check out something new. More on this soon.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at October 28, 2003 03:12 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=365" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="365" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000365.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>ObjectSpaces is the MS datagrid of O/R mapping.</p>
+
+<p>Crude and feature limited.</p>
+
+<p>Still a lot of people will end up using it, not realizing how much they miss.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.thona-consulting.com">Thomas Tomiczek</a> at October 28, 2003 05:08 PM</span>
+</div>
+<div class="comments-body">
+<p>OK, Thomas I'll bite :) What features are missing in ObjectSpaces that you would like to see? What's there that makes it suck?</p>
+
+<p>From my limited exposure, I can see how it can simplify my code generation scripts somwehat. But I still like using code gen to create the other artifacts that I will need (SQL database schema, sprocs, entity class declarations etc.)<br />
+</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October 29, 2003 12:54 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm afraid I don't consider Thomas to be an impartial observer, here. He has a commercial product known as EntityBroker, so I expect him to tell you in his own inimitable way that any O/R mapping tool other than his sucks.<br />
+Does ObjectSpaces have limitations? Yep. It doesn't create your data objects - you instead need to write them yourself or write a framework that does create them, and it doesn't natively support creating the database schema. It's not as fast as a codegenned O/R layer (they anticipate it to be roughly 40% slower). There are other issues I can see, but this comment's getting too long as it is.<br />
+I saw some extremely interesting things at the PDC that make OS more attractive. On Longhorn (yes, unfortunately only Longhorn), you will be able to use the classes in the System.Search namespace to create OPath queries from plain text requests. Imagine a doctor typing "Show me all of the encounters I had with John Lam over the last year."<br />
+I see an opportunity for a company to build a tool to fill in the gaps.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at October 31, 2003 07:45 AM</span>
+</div>
+<div class="comments-body">
+<p>Thomas: You might consider to stop posting anything otherwise then positive. I seem to be just as interested as you in code-gen/or-mapping sollutions but you tend to pass the negative vibe around the web. C'mon you should know better then dishing other peoples work.</p>
+
+<p>I'd love to hear your comments on ObjectsSpaces John.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://weblogs.asp.net/PGielens/">Paul Gielens</a> at November  1, 2003 09:05 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

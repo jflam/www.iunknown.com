@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Fun with const_missing and method_missing</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Fun with const_missing and method_missing" by jlam</title>
+      <description>&lt;p&gt;The &lt;code&gt;const_missing&lt;/code&gt; and &lt;code&gt;method_missing&lt;/code&gt; methods are really important if you want to dynamically extend the Ruby language. They let you dynamically create classes and dynamically add methods to those classes.&lt;/p&gt;
+
+
+	&lt;p&gt;Consider this set of unit tests:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class MethodMissingTests &amp;lt; Test::Unit::TestCase
+  def setup
+    @obj = System.new
+  end
+
+  def test_method_proxy_caching
+    assert_equal "joe", @obj.joe
+    assert_equal "bob", @obj.bob
+    assert_equal "joe", @obj.joe
+    assert_equal "kim", @obj.kim
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;There&amp;#8217;s a lot of magic going on in this code since there isn&amp;#8217;t a type called &lt;code&gt;System&lt;/code&gt;. When the line of code &lt;code&gt;@obj = System.new&lt;/code&gt; runs, it calls &lt;code&gt;Module.const_missing&lt;/code&gt;. You can easily override its default implementation:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class Module
+  def const_missing(name)
+    const_set(name, Class.new(DynamicProxy))
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;To understand why this triggers a &lt;code&gt;const_missing&lt;/code&gt; call, you need to realize that a constant such as &lt;code&gt;System&lt;/code&gt; is really just an alias for a class &lt;em&gt;object&lt;/em&gt;. In my &lt;code&gt;const_missing&lt;/code&gt; method, I instantiate a new &lt;em&gt;anonymous&lt;/em&gt; class object that derives from another class called &lt;code&gt;DynamicProxy&lt;/code&gt; (more on him later), and bind the missing constant symbol to this new, anonymous class object (now it&amp;#8217;s not anonymous anymore!).&lt;/p&gt;
+
+
+	&lt;p&gt;Let&amp;#8217;s look at &lt;code&gt;DynamicProxy&lt;/code&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class DynamicProxy
+  def method_missing(name)
+    self.class.class_eval do
+      define_method(name) { name.to_s }
+    end
+    self.method(name).call
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The class object that I created in &lt;code&gt;const_missing&lt;/code&gt; will inherit the &lt;code&gt;DynamicProxy&lt;/code&gt; &lt;code&gt;method_missing&lt;/code&gt; implementation, as will all instances of that class object (in other words all objects created via a &lt;code&gt;System.new&lt;/code&gt; call).&lt;/p&gt;
+
+
+	&lt;p&gt;If someone attempts to reference a method that doesn&amp;#8217;t exist (e.g. System.new.bob), our &lt;code&gt;method_missing&lt;/code&gt; method will get called. The interesting piece of magic code is in the &lt;code&gt;self.class.class_eval&lt;/code&gt; block. Here, I define the method that was missing with a default implementation that simply returns the name of the missing method as a string. Obviously, I could define whatever I want in the body of the define_method call!&lt;/p&gt;
+
+
+	&lt;p&gt;This is the central piece of magic in my Ruby &lt;-&gt; &lt;span class="caps"&gt;CLR&lt;/span&gt; bridge. There are some important details left out of this example for clarity, but this captures the essence of the idea. Most everything else is just plumbing.&lt;/p&gt;
+
+</description>
+      <pubDate>Wed, 09 Nov 2005 07:00:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/09/fun-with-const_missing-and-method_missing"&gt;Fun with const_missing and method_missing&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/09/fun-with-const_missing-and-method_missing"&gt;Fun with const_missing and method_missing&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

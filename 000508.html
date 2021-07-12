@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: AspectJ makes me want to write Java code again</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000507.html" title="Idea convergence" />
+
+<link rel="next" href="http://www.iunknown.com/000509.html" title="Just when I thought I could sleep" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000508.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/252"
+    dc:title="AspectJ makes me want to write Java code again"
+    dc:identifier="http://www.iunknown.com/000508.html"
+    dc:subject="Blog"
+    dc:description="Gregor Kiczales is a master at teaching. He gave the final keynote at Middleware 2004, and oh what a keynote it was. Anyone who teaches for a living should study how Gregor delivers a lecture. He motivates AOP in a..."
+    dc:creator="John"
+    dc:date="2004-10-24T11:04:31-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000507.html">&laquo; Idea convergence</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000509.html">Just when I thought I could sleep &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">October 24, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">AspectJ makes me want to write Java code again</h3>
+
+<p><a href="http://www.cs.ubc.ca/~gregor/">Gregor Kiczales</a> is a <em>master</em> at teaching. He gave the final keynote at <a href="http://www.eecg.toronto.edu/middleware2004/">Middleware 2004</a>, and oh what a keynote it was. Anyone who teaches for a living should study how Gregor delivers a lecture. He motivates <span class="caps">AOP</span> in a way that nobody else can. He motivates <span class="caps">AOP</span> better than Don Box can motivate <span class="caps">COM. </span>And that's saying a lot.</p>
+
+<p>In the past, I had largely derided <span class="caps">AOP</span> as "programming by side effect". Recently, however, I'm not that sure anymore. <a href="http://eclipse.org/aspectj/">AspectJ</a> does such an excellent job at capturing cross-cutting concerns that I defy anyone to propose a better solution to <em>those</em> problems than <span class="caps">AOP. </span>It's true that it introduces a certain degree of ambiguity into the model - but the really nice thing about <span class="caps">AOP</span> is that it makes it really easy to <em>remove</em> the ambiguity after I've introduced it. That alone is worth the price of admission - the ability to quickly experiment with an existing code base. The AspectJ integration into the Eclipse <span class="caps">IDE</span> looks excellent <span class="caps">BTW.</span></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at October 24, 2004 11:04 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=508" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="508" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000508.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I was hoping this entry's title was, "AspectJ makes me want to release CLAW" ;)</p>
+
+<p>Whatever happened to this tool? Sounded like a cool idea...</p>
+
+<p>Regards,</p>
+
+<p>Jason</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.jasonbock.net">Jason Bock</a> at October 24, 2004 11:30 AM</span>
+</div>
+<div class="comments-body">
+<p>It's all about time. CLAW has only ever run on one computer and it's in semi-retirement right now. I've wanted to put something together for a long time, but I haven't had the cycles. Working at a training startup company (ObjectSharp) pretty well soaks up all of my spare cycles these days.</p>
+
+<p>After the AspectJ talk, however, I think I'm going to spend some time talking with the Phoenix folks at Microsoft - that's the infrastructure that I'd love to use to build something like dynamic aspects (although I'm not at all convinced that dynamic aspects are all that useful).</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October 24, 2004 04:17 PM</span>
+</div>
+<div class="comments-body">
+<p>Understood. There's never enough time to get everything done that you want to :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.jasonbock.net">Jason Bock</a> at October 24, 2004 05:05 PM</span>
+</div>
+<div class="comments-body">
+<p>It would be great if his presentation was available with audio. Does anyone know a good complete presentation that introduces Aspect Oriented Programming? There are some people I would love to show it to and I don't want to have to create my own.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.technospin.org">Dennis Grinberg</a> at October 25, 2004 11:12 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>A VERY interesting post! I referenced it here:<br />
+www.jnsk.se/weblog/posts/aopnetupdate.htm</p>
+
+<p>Best Regards,<br />
+Jimmy<br />
+www.jnsk.se/weblog/<br />
+###</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.jnsk.se/weblog/">Jimmy Nilsson</a> at October 25, 2004 04:03 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="508" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

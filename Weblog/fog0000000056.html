@@ -1,0 +1,149 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/56 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Beware of Heisenberg effects</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">Beware of Heisenberg effects</div>
+        <div class="entryDate">2002-01-10</div>
+        <p><DIV align=left>When you run things in a JIT system under a debugger, you aren't always looking at what you think you're looking at.</DIV>
+<P>Let's consider a simple piece of code:</P>
+<P><CODE>static int Add( int x, int y ) <BR>{ <BR>&nbsp; return x + y; <BR>} <BR><BR>static int Main(string[] args) <BR>{ <BR>&nbsp; return Add( 3,&nbsp;4 ); <BR>}</CODE></P>
+<P>If you enabled optimizations in a Debug configuration build in VS.NET compiled and ran the program in a debugger, you can examine the generated x86 code. This is what you would see at the call site:</P>
+<P><CODE>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; Add( 3, 4 ); <BR>00000000 push ebp <BR>00000001 mov ebp,esp <BR>00000003 push eax <BR>00000004 push esi <BR>00000005 mov dword ptr [ebp-4],ecx <BR>00000008 mov edx,4 <BR>0000000d mov ecx,3 <BR>00000012 call dword ptr ds:[008F510Ch] <BR>00000018 mov esi,eax <BR>0000001a mov eax,esi <BR>0000001c pop esi <BR>0000001d mov esp,ebp <BR>0000001f pop ebp <BR>00000020 ret </CODE></P>
+<P><CODE></CODE>Furthermore, if you step into the call instruction, this is what you would see at the other end:</P>
+<P><CODE>00000000 push ebp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;setup stack frame<BR>00000001 mov ebp,esp <BR>00000003 sub esp,8 <BR>00000006 push edi <BR>00000007 push esi <BR>00000008 mov edi,ecx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;x and y are in<BR>0000000a mov esi,edx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;ecx and edx<BR>0000000c lea eax,[edi+esi]&nbsp; ;add the numbers<BR>0000000f pop esi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;clean up stack frame<BR>00000010 pop edi <BR>00000011 mov esp,ebp <BR>00000013 pop ebp <BR>00000014 ret</CODE></P>
+<P>Now, this hardly looks like optimized code now, does it? But we compiled using the /optimize switch, didn't we?</P>
+<P>As it turns out, we <EM>did</EM> compile using the /optimize switch. This causes the C# compiler to generate optimized CIL instructions. However, because we were running the code under the VS.NET debugger, <EM>which is aware of the CLR</EM>, the VS.NET debugger tells the CLR to turn off JIT optimizations [1].</P>
+<P>If you ran your code outside of VS.NET, it would actually run using a different x86 instruction sequence. If you run it inside of VS.NET, you run using the instruction sequence shown above. Hence the Heisenberg effect: the act of observing the system causes the system to change.</P>
+<P>Fortunately for us, we have a way around this. What we need to do is start the code outside of the scope of the VS.NET debugger, and then "break into" the code to see the generated x86 code. We can do this by taking advantage of the Just-In-Time debugging features of Windows. To do so, we need to insert a call to the Win32 DebugBreak() API in our code.</P>
+<P>Here's the stub that defines the signature of DebugBreak() for P/Invoke:</P>
+<P><CODE>[ DllImport( "kernel32.dll" ) ] <BR>static extern void DebugBreak();</CODE></P>
+<P>This is our modified Main() method:</P>
+<P><CODE>static int Main(string[] args) <BR>{ <BR>&nbsp; DebugBreak(); <BR>&nbsp; return Add( 3, 4 ); <BR>}</CODE></P>
+<P>If you run the application from the command line, you should see the JIT debugging dialog appear. </P>
+<P>Click on Debug, and select "New Instance of Microsoft Development Environment" from the Just-In-Time Debugging dialog. </P>
+<P>In the Attach to Process dialog, make sure that the "Common Language Runtime" switch is NOT checked:</P>
+<DIV align=left>You will see that you are sitting in the _DbgBreakPoint@0: method. Step over the ret instruction in this method. You should now be at the tail end of the P/Invoke thunk that called the DebugBreak() API. The instructions should resemble:</DIV>
+<P><CODE>003FA09F mov byte ptr [ebx+4],1 <BR>003FA0A3 cmp dword ptr ds:[793A7A54h],0 <BR>003FA0AA jne 003FA0C4 <BR>003FA0AC lea esp,[esi-18h] <BR>003FA0AF mov dword ptr [ebx+8],edi <BR>003FA0B2 add esp,8 <BR>003FA0B5 pop edi <BR>003FA0B6 pop esi <BR>003FA0B7 pop ebx <BR>003FA0B8 pop ebp <BR>003FA0B9 add esp,0Ch <BR>003FA0BC ret</CODE></P>
+<P>Step over this all of the instructions in this sequence until you hit the ret instruction. When you step over that instruction, your debugger will now be positioned at the call to Add( 3, 4 ). This is what you should see:</P>
+<P><CODE>02E1005E mov eax,7 <BR>02E10063 ret</CODE></P>
+<P>You'll notice that the JIT compiler was smart enough to completely eliminate the call to the Add() method and replace it with the result of the constant calculation, 7. </P>
+<P>As an exercise left to the reader, modify your Main method so that it looks like:</P>
+<P><CODE>static void Main(string[] args) <BR>{&nbsp;<BR>&nbsp; Add( 3, 4 ); <BR>}</CODE></P>
+<P>Examine the optimized x86 code using the techniques in this entry. Did you get what you expected?</P>
+<P>[1] If you're interested in writing a debugger, you can tell the CLR to turn off JIT optimizations by calling ICorDebugModule::EnableJITDebugging(), and passing false in the bAllowJitOpts parameter.</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/fog0000000056.html');"><script type="text/javascript">postCount('Weblog/fog0000000056.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

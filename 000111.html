@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: CppUnit revisited</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000110.html" title="Generating build reports" />
+
+<link rel="next" href="http://www.iunknown.com/000112.html" title="Stateful vs. stateless tests" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000110.html">&laquo; Generating build reports</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000112.html">Stateful vs. stateless tests &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 21, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">CppUnit revisited</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I spent some time last night and this morning thinking through some test cases that I'm implementing in <A href="http://sourceforge.net/projects/cppunit">CppUnit</A>. This is all part of my plan to integrate <A href="http://nant.sourceforge.net/">NAnt</A> with CppUnit tests.</P><br />
+<P>Since <A href="Weblog/HellofromAOSD2002.html">CLAW</A> is a COM object, I needed some tests to verify that it was functioning correctly as a COM object. I needed to execute a suite of tests in a predefined order <EM>against the same COM object</EM>. This gives rise to the concept of stateful vs. stateless test fixtures in CppUnit.</P><br />
+<P>If you follow the excellent CppUnit cookbook, you will wind up with a stateless fixture. Towards the end of the cookbook, the authors encourage you to use a number of macros that are defined in the cppunit\extensions\HelperMacros.h header file. They recommend that you registering a number of tests with a test suite can using:</P><CODE>CPPUNIT_TEST_SUITE( StatelessComTest );<BR>&nbsp; CPPUNIT_TEST( testCreateInstance );<BR>&nbsp; CPPUNIT_TEST( testInitialize );<BR>&nbsp; CPPUNIT_TEST( testShutDown );<BR>CPPUNIT_TEST_SUITE_END();<BR></CODE><br />
+<P>However, the problem with this approach is that it will construct separate StatelessComTest objects for each one of the three tests being run: testCreateInstance, testInitialize, testShutDown. This effectively prevents you from sharing the same COM object instance across all three tests. </P><br />
+<P>The macros shown above construct a method that resembles:</P><CODE><br />
+<P>static Test *suite() <BR>{<BR>&nbsp; TestSuite *testSuite = new TestSuite();<BR>&nbsp; testSuite-&gt;addTest( new TestCaller&lt; StatelessComTest &gt;( "testCreateInstance", testCreateInstance ) );<BR>&nbsp; ...<BR>}</P></CODE><br />
+<P>Each call to TestSuite::addTest() adds a separate object to the suite. This is not acceptable if&nbsp;you want to invokve a number of methods on the same COM object; you'll need to keep it hanging around.</P><br />
+<P>To solve this problem, you need to implement an instance method called suite() as opposed to the static method shown above:</P><CODE><br />
+<P>Test *suite()<BR>{<BR>&nbsp; TestSuite *testSuite = new TestSuite( "StatefulComTest" );<BR>&nbsp; testSuite-&gt;addTest( new TestCaller&lt; StatefulComTest &gt;( "testCreateInstance", testCreateInstance, *this ) );<BR>&nbsp; testSuite-&gt;addTest( new TestCaller&lt; StatefulComTest &gt;( "testInitialize", testInitialize, *this ) );<BR>&nbsp; testSuite-&gt;addTest( new TestCaller&lt; StatefulComTest &gt;( "testShutDown", testShutDown, *this ) )<BR>&nbsp; return testSuite;<BR>}</P></CODE><br />
+<P>In this method, notice that *this is passed as the last parameter to TestCaller's constructor. This ensures that the <EM>same</EM> StatefulComTest object is called for all three tests.</P><br />
+<P>The next question that naturally arises is where to construct the instance of the COM object that will be shared. The correct solution is in the constructor of the StatefulComTest object. You might be tempted to use the setUp()&nbsp; and tearDown() methods, but you must remember that these methods are called before and after each test in your test suite, regardless of whether the tests are run on the same object or not!</P><br />
+<P>If you're interested in looking at some sample code that illustrates these points, <A href="Files/COMTest.h">click here</A> to view the C++ header file for the tests.</P><br />
+<P><STRONG>Update</STRONG>: You can't really use the constructor /destructor to setup and tear down the COM object either since you'd be tempted to throw exceptions from there. Unfortunately, CppUnit (1.8.0 is the build that I'm using) does not catch any thrown exceptions from TestFixture constructors, so they leak. </P><br />
+<P>I'm currently investigating how to work around this. I suspect that each test must be stateful, and maintaining state across tests is just <EM>not the way to do things</EM> using CppUnit.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 21, 2002 02:00 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="111" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000111.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

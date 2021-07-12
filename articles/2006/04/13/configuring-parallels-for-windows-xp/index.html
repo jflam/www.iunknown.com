@@ -1,0 +1,652 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Configuring Parallels for Windows XP</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/LessIsBetter" />
+  <script src="/javascripts/cookies.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1156231406" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/application.css?1164503575" media="all" rel="Stylesheet" type="text/css" />
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Less is better</a></span></h1>
+    <h2>John Lam on software</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <!--
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+  rdf:about=""
+  trackback:ping="http://www.iunknown.com/articles/trackback/113"
+  dc:title="Configuring Parallels for Windows XP"
+  dc:identifier="http://www.iunknown.com/articles/read/113"
+  dc:description="I drive my computer using my keyboard. The major disadvantage of Macs to me is that they are missing 4 critical keys: Page Up/Down, Start and End. This makes navigating around when I&amp;#8217;m running Windows under Paral"
+  dc:creator="jlam"
+  dc:date="2006-08-21T15:55:41-07:00" />
+</rdf:RDF>
+-->
+
+<div class="atomentry" id="article-113">
+  <h2 class="title">
+    Configuring Parallels for Windows XP 
+    <span class="comment_count">16</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-04-13T10:03:00-07:00"><span class="typo_date" title="Thu, 13 Apr 2006 17:03:00 GMT">Thu, 13 Apr 2006 17:03:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I drive my computer using my keyboard. The major disadvantage of Macs to me is that they are missing 4 critical keys: Page Up/Down, Start and End. This makes navigating around when I&#8217;m running Windows under <a href="http://www.parallels.com">Parallels</a> a royal pain.</p>
+
+
+	<p>What&#8217;s worse though is the default behavior of how Parallel&#8217;s keyboard driver maps the Mac Command keys to Windows; they&#8217;re mapped to the Windows key by default. Now, the position of the Command key is identical to where the <span class="caps">ALT</span> key is in most Windows keyboards so this was a major source of pain. A secondary source of pain is the fact that there is no Delete key as well, but there is a superflous Enter key where the Delete key normally lives on a Windows keyboard. Here&#8217;s a magic registry hack that I cooked up this morning that will solve this problem. Just paste this code into a .reg file and run:</p>
+
+
+<pre><code>
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,53,e0,1c,e0,38,00,5b,e0,\
+  00,00,00,00
+</code></pre>
+
+	<p>This will map the Command keys back to the <span class="caps">ALT</span> key, and the Enter key to the Delete key. Now I can undo the <a href="http://www.iunknown.com/articles/2006/04/12/configuring-os-x">DoubleCommands</a> hack that I blogged about yesterday. Which means that my Mac feels more Mac-like and my Windows feels more Windows-like. Now if only I could hack those missing keys into the keyboard &#8230;</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/04/13/configuring-parallels-for-windows-xp#comments">16 comments</a>,
+      <a href="/articles/2006/04/13/configuring-parallels-for-windows-xp" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/113/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/113/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/04/13/configuring-parallels-for-windows-xp">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/04/13/configuring-parallels-for-windows-xp;title=Configuring Parallels for Windows XP">reddit</a>
+    </li>
+  </ul>
+</div>
+
+
+
+  <h5><a name="comments">Comments</a></h5>
+  <p><a href="#commentform">Leave a response</a></p>
+
+  <div id="comments_div">
+    <ol id="comments" class="comments">
+  	<li class="comment" id="comment-437">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.peterkrantz.com">Peter Krantz</a></cite>
+		<abbr title="2006-04-24T05:23:13-07:00"><span class="typo_date" title="Mon, 24 Apr 2006 12:23:13 GMT">Mon, 24 Apr 2006 12:23:13 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Whoa! I got a MPB a couple of weeks ago and have been struggling with the same issues. This will help a lot. Thank you. </p>
+
+<p>I still wonder why Apple don't provide a delete key. There is plenty of space on the MPB to fit on in. Having spent a couple of years getting accustomed to rapid editing of code with a delete key makes me feel somewhat frustrated. I guess it will take some time to unlearn.</p>
+
+<p>(Note to all mac fanatics who claim that there is a delete key by pressing fn-backspace: It is not the same thing!)</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-438">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.iunknown.com">John Lam</a></cite>
+		<abbr title="2006-04-24T09:41:31-07:00"><span class="typo_date" title="Mon, 24 Apr 2006 16:41:31 GMT">Mon, 24 Apr 2006 16:41:31 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>I'm glad it helped. I'm hoping that the Parallels keyboard driver will be configurable to fix these kinds of issues. But overall, I'm very happy about how well I've adapted to running Windows on a Mac keyboard. I've had to remap a number of default keys for other applications that I use as well, so my Mac host is definitely customized with respect to keyboard layouts as well.</p>
+
+<p>Of course the real answer would be to add a few more keys to the MacBook Pro keyboard, but that won't help me until I upgrade again in a couple of years :(</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-442">
+	  <div class="author">
+	    
+	    <cite><a href="http://null">Jack</a></cite>
+		<abbr title="2006-04-29T19:07:28-07:00"><span class="typo_date" title="Sun, 30 Apr 2006 02:07:28 GMT">Sun, 30 Apr 2006 02:07:28 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Great work. I would prefer to map the other Enter key (one in the same row as the space bar) to Delete key. Any idea what its existing scancode is? It cannot be the same as the Enter key which you have mapped to Delete - otherwise you would have been left with two Delete keys and no Enter!</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-443">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.iunknown.com">John Lam</a></cite>
+		<abbr title="2006-04-29T19:34:13-07:00"><span class="typo_date" title="Sun, 30 Apr 2006 02:34:13 GMT">Sun, 30 Apr 2006 02:34:13 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Jack - the registry hack does map the Enter key that's on the same row as the space bar to Delete. I'm not crazy enough to map the real enter key to delete! :) </p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-444">
+	  <div class="author">
+	    
+	    <cite><a href="http://null">Jack</a></cite>
+		<abbr title="2006-04-30T08:54:43-07:00"><span class="typo_date" title="Sun, 30 Apr 2006 15:54:43 GMT">Sun, 30 Apr 2006 15:54:43 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>You may have misunderstood my post. I was asking if you knew the scancode for the other enter key. My other comment was just me thinking aloud; I was not suggesting that you are crazy.</p>
+
+<p>By the way the scancode for the two Enter keys are E0<em>1C and 00</em>1C.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-460">
+	  <div class="author">
+	    
+	    <cite>Matt Baron</cite>
+		<abbr title="2006-05-09T10:57:11-07:00"><span class="typo_date" title="Tue, 09 May 2006 17:57:11 GMT">Tue, 09 May 2006 17:57:11 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>My apple keyboard has dedicated home, end, page up, and page down keys that work fine under parallels.  On my macbook pro, I can press function (fn) plus any of the directional keys to achieve the same effect.  This also works fine under parallels.</p>
+
+<p>My apple keyboard also has a dedicated delete key which can be achieved on the macbook pro keyboard by pressing fn+delete.</p>
+
+<p>Am I missing something?</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-466">
+	  <div class="author">
+	    
+	    <cite>Matt Baron</cite>
+		<abbr title="2006-05-10T14:10:32-07:00"><span class="typo_date" title="Wed, 10 May 2006 21:10:32 GMT">Wed, 10 May 2006 21:10:32 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>As an aside...</p>
+
+<p>My old titanium Powerbook used to note the function shortcuts on the keys.  I'm not sure why they decided to leave the notes off of the MBP and aluminum PBs, but I suspect it has something to do with the backlit keyboard.</p>
+
+<p>Matt</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-531">
+	  <div class="author">
+	    
+	    <cite>Sam Yates</cite>
+		<abbr title="2006-06-17T00:08:40-07:00"><span class="typo_date" title="Sat, 17 Jun 2006 07:08:40 GMT">Sat, 17 Jun 2006 07:08:40 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Uh, the MBP does actually have the page up/down and home/end labels on the keyboard.</p>
+
+<p>The Enter key hack is definitely a logical one given it's extraneous nature.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-542">
+	  <div class="author">
+	    
+	    <cite><a href="http://none">jeff</a></cite>
+		<abbr title="2006-06-21T19:52:37-07:00"><span class="typo_date" title="Thu, 22 Jun 2006 02:52:37 GMT">Thu, 22 Jun 2006 02:52:37 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>i tried the reg hack but it won't import. it says something about "the file is not a registry file, you can only import binary files from within the registry editor." so i did that, then it says my file (fix.reg, which IS a reg file according to windows) is not a registry file.</p>
+
+<p>any idea what i am doing wrong? </p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-570">
+	  <div class="author">
+	    
+	    <cite>Erki Esken</cite>
+		<abbr title="2006-07-09T06:03:16-07:00"><span class="typo_date" title="Sun, 09 Jul 2006 13:03:16 GMT">Sun, 09 Jul 2006 13:03:16 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>The easiest way to remap keys under Windows is SharpKeys utility (<a href="http://www.randyrants.com/2006/07/sharpkeys_211.html">http://www.randyrants.com/2006/07/sharpkeys_211.html</a>). Just run, add new mapping, type a key and what it should map to and save. Done.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-573">
+	  <div class="author">
+	    
+	    <cite>Benoit</cite>
+		<abbr title="2006-07-10T15:40:28-07:00"><span class="typo_date" title="Mon, 10 Jul 2006 22:40:28 GMT">Mon, 10 Jul 2006 22:40:28 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>The reg file needs a header line to work. The following syntax is correct :</p>
+
+<p>Windows Registry Editor Version 5.00</p>
+
+<p>[HKEY<em>LOCAL</em>MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,53,e0,1c,e0,38,00,5b,e0,00,00,00,00</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-839">
+	  <div class="author">
+	    
+	    <cite>kungfumaniac</cite>
+		<abbr title="2006-08-31T01:55:46-07:00"><span class="typo_date" title="Thu, 31 Aug 2006 08:55:46 GMT">Thu, 31 Aug 2006 08:55:46 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Scroll lock!  I desperately need scroll lock!</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-1246">
+	  <div class="author">
+	    
+	    <cite>Tony Li</cite>
+		<abbr title="2006-11-09T10:04:24-08:00"><span class="typo_date" title="Thu, 09 Nov 2006 18:04:24 GMT">Thu, 09 Nov 2006 18:04:24 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Tried this with build 1970 of Parallels.  It doesn't work - anyone else have this problem?</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-1270">
+	  <div class="author">
+	    
+	    <cite>Andrew Hinton</cite>
+		<abbr title="2006-11-26T05:25:46-08:00"><span class="typo_date" title="Sun, 26 Nov 2006 13:25:46 GMT">Sun, 26 Nov 2006 13:25:46 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>I'm trying to register Aaron online and can't get my keyboard to find an @ so I can put in my email address. Windows XP on an Intel MacBook.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-1282">
+	  <div class="author">
+	    
+	    <cite>Mike Creighton</cite>
+		<abbr title="2006-11-26T15:43:48-08:00"><span class="typo_date" title="Sun, 26 Nov 2006 23:43:48 GMT">Sun, 26 Nov 2006 23:43:48 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>I'm not sure if you guys have run across this application called KeyTweak ( <a href="http://webpages.charter.net/krumsick/">http://webpages.charter.net/krumsick/</a> ) which gives you a GUI for mapping the various keys of the keyboard to alternative keys. It does this by creating registry tweaks for you and allows you to save / restore remappings.</p>
+
+<p>This worked like a charm where the manual registry tweak didn't seem to take effect on the latest version of Parallels.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-1637">
+	  <div class="author">
+	    
+	    <cite>Chuck Esterbrook</cite>
+		<abbr title="2007-02-22T23:18:20-08:00"><span class="typo_date" title="Fri, 23 Feb 2007 07:18:20 GMT">Fri, 23 Feb 2007 07:18:20 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>I have a MacBook Pro and cannot use Home/End under Parallels, either 1970 or the newer 3170. If I press fn-left (which acts like "home" in Mac apps), I just get "left", and likewise for fn-right. If I hook up a PC keyboard and press the Home and End dedicated keys, I also get Left and Right behavior instead of Home and End! But they work fine in Mac apps.</p>
+
+<p>The Ctrl+Home and Ctrl+End combos work as expected.</p>
+
+<p>It's killing me. I've been troubleshooting for hours with no results. I contacted Parallels tech support and also posted to their forums with no response.</p>
+
+<p>Any ideas?</p>
+	  </div>
+	</li>
+	</ol>
+
+  </div>
+
+<form action="/articles/comment/113" class="comments" id="commentform" method="post" onsubmit="new Ajax.Updater('comments_div', '/articles/comment/113', {asynchronous:true, evalScripts:true, onComplete:function(request){commentComplete()}, onLoading:function(request){commentLoading()}, parameters:Form.serialize(this)}); return false;">
+
+<div id="preview" style="display:none"></div>
+
+<fieldset>
+  <legend>Comments</legend>
+  <p>
+    <label>Name:<br /> 
+      <input id="comment_author" name="comment[author]" size="30" type="text" />
+      <small>(<a href="#" onclick="new Effect.toggle('extra_fields', 'blind', {duration: .3}); return false;">leave url/email &#187;</a>)</small>
+    </label>
+  </p>
+  
+  <div id="extra_fields" style="display:none;">  
+	  <p>
+	    <label>Email: <br />
+	      <input id="comment_email" name="comment[email]" size="30" type="text" />
+	    </label>
+	  </p>
+	  <p>
+	    <label>Url:<br />
+	      <input id="comment_url" name="comment[url]" size="30" type="text" />
+	    </label>
+	  </p>
+  </div>
+    
+  <p>
+    <label>
+      Comments:
+      
+      <small><a href="http://daringfireball.net/projects/markdown/">Markdown enabled</a></small>
+      <br />
+      <textarea cols="40" id="comment_body" name="comment[body]" rows="20"></textarea>
+    </label>
+  </p>
+  
+  <p>
+    <input type="button" value="Preview" onclick="new Ajax.Updater('preview','/articles/comment_preview',{asynchronous:true,evalScripts:true,parameters:Form.serialize('commentform'),onComplete:function(request){Element.show('preview')}});return false;" />      
+    <input name="commit" type="submit" value="Submit" />
+    <img alt="Spinner" id="spinner" src="/images/theme/spinner.gif?1164503579" style="display:none" />
+  </p>
+</fieldset>
+</form>
+
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- search -->
+      <div id="search" class="search">
+	<form action="/articles/search" id="sform" method="get">
+	  <p><input type="text" id="q" name="q" value="" /></p>
+	</form>
+	
+	<div id="loading" class="loading" style="display:none;">Searching...</div>
+	<div id="results" class="results"></div>
+  <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('loading')}, onLoading:function(request){Element.show('loading')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script>
+</div>
+
+
+      <!-- sidebar components -->
+      
+      
+<div class="sidebar-node">
+  <h3>John Lam</h3>
+<a href="/pages/about_me"><img src="http://static.flickr.com/90/222479189_d4e19a202c_t.jpg" width="67" height="100" alt="Self portrait" /></a>
+
+<p>I am a Program Manager on the Common Language Runtime team at Microsoft. I write .NET and Ruby code on a Mac. I'm the creator of <a href="http://www.rubyclr.com">RubyCLR</a>, a high performance bridge between Ruby and .NET. <a href="/pages/about_me">More ...</a>
+
+<table>
+<tr>
+  <td>email:</td>
+  <td>jlam@iunknown.com</td>
+</tr>
+<tr>
+  <td>phone:</td>
+  <td>425 698 9332</td>
+</tr>
+<tr>
+  <td>msn:</td>
+  <td>drjflam@hotmail.com</td>
+</tr>
+<tr>
+  <td>gtalk:</td>
+  <td>drjflam@gmail.com</td>
+</tr>
+</table>
+<br>
+<h3>Syndicate</h3>
+
+<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="/images/rss.png"/></a>&nbsp;
+<a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+<br>
+<form style="padding:3px;text-align:left;" action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Subscribe by email:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=180551" name="url"/><input type="hidden" value="Less is better" name="title"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a></p></form>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+    <div id="delicious">
+    <h3><a href="http://del.icio.us/drjflam">del.icio.us/drjflam</a></h3>
+            <ul>
+      
+      <li>
+        <a href="http://www.people.iup.edu/pnwm/comparison.gif" title="Fun comparison of fictional starships from different SF shows.">Starship size comparison chart</a>
+              </li>
+      
+      <li>
+        <a href="http://www.teach12.com/" title="Bill Gates listens to the lectures from this company - available as downloads as well.">The Teaching Company</a>
+              </li>
+      
+      <li>
+        <a href="http://www.speedtest.net/" title="Found this via StumbleUpon">Speedtest.net - The Global Broadband Speed Test</a>
+              </li>
+      
+      <li>
+        <a href="http://wvs.topleftpixel.com/flash/cntower_timelapse.swf" title="Move your mouse around this picture and see it change.">Downtown Toronto Photo</a>
+              </li>
+      
+      <li>
+        <a href="ftp://gatekeeper.dec.com/pub/DEC/WRL/research-reports/WRL-TR-95.7.pdf" title="">Shared Memory Consistency Models</a>
+              </li>
+      
+      <li>
+        <a href="http://discuss.develop.com/archives/wa.exe?A2=ind0203B&amp;L=DOTNET&amp;P=R375" title="An excellent discussion on the motivation for and implementation of the CLR memory model.">Vance Morrison on CLR Memory Model</a>
+              </li>
+      
+      <li>
+        <a href="http://slideshare.net/" title="A YouTube like service for sharing slides from talks.">SlideShare</a>
+              </li>
+      
+      <li>
+        <a href="http://research.microsoft.com/manuvir/papers/instruction_level_tracing_VEE06.pdf" title="This is MSR's Nirvana framework for dynamically injecting tracing code into x86 binaries at runtime. It lets them travel forwards and backwards in execution flow ('time travel debugging').">Framework for Instruction-level Tracing and Analysis of Program Executions</a>
+              </li>
+      
+      <li>
+        <a href="http://www.macgeekery.com/hacks/software/video/how_to_view_tivo_recordings_on_your_mac_or_ipod" title="Looking forward to setting this up ...">How to View TiVo Recordings on Your Mac or iPod</a>
+              </li>
+      
+      <li>
+        <a href="http://uneasysilence.com/archive/2006/12/8602/" title="Wow - this is really nice seamless integration - Windows apps appearing to run as 'top-level' windows on Mac OS X desktop.">Parallels running IE7 &amp; Firefox on Mac OS X desktop!</a>
+              </li>
+      
+      <li>
+        <a href="http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2006T13" title="Google recently released their collection of 1-grams (single word frequency) to 5-grams (5 word frequency) as a 24GB compressed gzip'd file.">Google's collection of 1-5 grams</a>
+              </li>
+          </ul>
+      </div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>My Photos</h3>
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge_new.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">what is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge_new.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2007/2">February 2007</a>
+      <em>(3)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/1">January 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/12">December 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/11">November 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/10">October 2006</a>
+      <em>(8)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/9">September 2006</a>
+      <em>(12)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/8">August 2006</a>
+      <em>(39)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/7">July 2006</a>
+      <em>(29)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/6">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/5">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/4">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/3">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/2">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/1">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(6)</em>
+    </li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Tags</h3>
+<p style="overflow:hidden">
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/barcampearthtoronto">BarCampEarthToronto</a></span>
+<span style="font-size:129.87012987013%"><a href="/articles/tag/dynamiclanguages">DynamicLanguages</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/ironpython">IronPython</a></span>
+<span style="font-size:103.896103896104%"><a href="/articles/tag/life">Life</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/mac">Mac</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/marketing">Marketing</a></span>
+<span style="font-size:77.9220779220779%"><a href="/articles/tag/microsoft">Microsoft</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/parenting">Parenting</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/photography">Photography</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/platforms">Platforms</a></span>
+<span style="font-size:200%"><a href="/articles/tag/props">Props</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/python">Python</a></span>
+<span style="font-size:200%"><a href="/articles/tag/ruby">Ruby</a></span>
+<span style="font-size:200%"><a href="/articles/tag/rubyclr">RubyCLR</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/rubyconf">RubyConf</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/secondlife">SecondLife</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/simplicity">simplicity</a></span>
+<span style="font-size:200%"><a href="/articles/tag/thoughts">Thoughts</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/vim">Vim</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/workspaces">workspaces</a></span>
+</p>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(20)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(58)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(148)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+  
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">Less is better</a></p>
+    <ul>
+      <li>powered by <a href="http://typosphere.org">typo</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

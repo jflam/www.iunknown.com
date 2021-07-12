@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: ATLAS Bridges Rock</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/148/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/05/23/atlas-bridges-rock" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:42-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:064c3f4e58de30ee5b6b9134c47a6e87</id>
+    <published>2006-05-23T22:44:00-07:00</published>
+    <updated>2006-08-21T15:55:42-07:00</updated>
+    <title type="html">ATLAS Bridges Rock</title>
+    <link href="http://www.iunknown.com/articles/2006/05/23/atlas-bridges-rock" rel="alternate" type="text/html"/>
+    <category term="links" scheme="http://www.iunknown.com/articles/category/links" label="Props"/>
+    <summary type="html">&lt;p&gt;&lt;a href="http://atlas.asp.net"&gt;&lt;span class="caps"&gt;ATLAS&lt;/span&gt;&lt;/a&gt; is the relative newcomer to the &lt;span class="caps"&gt;AJAX&lt;/span&gt; scene. I haven&amp;#8217;t spent much time looking at the client side pieces, but I have taken a good look at the server side pieces.&lt;/p&gt;
+
+
+	&lt;p&gt;The one feature that really stands out is the &lt;span class="caps"&gt;XML&lt;/span&gt; to &lt;span class="caps"&gt;JSON&lt;/span&gt; marshalers that ship in the box. &lt;span class="caps"&gt;ATLAS&lt;/span&gt; introduces a nice (well, as nice as you can get with &lt;span class="caps"&gt;XML&lt;/span&gt;) syntax for declaratively describing the mapping between a Web Service (REST and &lt;span class="caps"&gt;SOAP&lt;/span&gt; are both supported among others) and your &lt;span class="caps"&gt;JSON&lt;/span&gt; schema.&lt;/p&gt;
+
+
+	&lt;p&gt;At the bottom of this blog is a simple example that I hacked up last night that shows mapping an Amazon Web Service to &lt;span class="caps"&gt;JSON&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;The &lt;code&gt;transform&lt;/code&gt; element describes the XPath mapping that shreds the &lt;span class="caps"&gt;XML&lt;/span&gt; document into &lt;span class="caps"&gt;JSON&lt;/span&gt;. It returns an array of objects that each contain a &lt;code&gt;url&lt;/code&gt; property that points to the album cover art for the Artist passed in the &lt;code&gt;Artist&lt;/code&gt; parameter.&lt;/p&gt;
+
+
+	&lt;p&gt;The reason why I love this feature is that it&amp;#8217;s just so natural to marshal data to browsers as &lt;a href="http://www.json.org"&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;&lt;/a&gt;. It also nicely works around the &amp;#8216;I can only talk to the origin server&amp;#8217; security restriction imposed by most browsers on XmlHttpRequest calls, since your origin server now acts as a proxy (or a bridge) to the web service that you want to call.&lt;/p&gt;
+
+
+	&lt;p&gt;You can even cache results on your origin server if you add a &lt;code&gt;cache&lt;/code&gt; directive to your bridge. Kudos to the &lt;span class="caps"&gt;ATLAS&lt;/span&gt; team for making this just work.&lt;/p&gt;
+
+
+&lt;code&gt;&lt;pre&gt;
+&amp;lt;bridge namespace="Test" className="Amazon" &amp;gt;
+  &amp;lt;proxy type="Microsoft.Web.Services.BridgeRestProxy" 
+         serviceUrl="http://webservices.amazon.com/onca/xml" /&amp;gt;
+
+  &amp;lt;method name="getAlbums"&amp;gt;
+    &amp;lt;input&amp;gt;
+      &amp;lt;parameter name="Service" value="AWSECommerceService" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="Version" value="2005-03-23" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="Operation" value="ItemSearch" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="SubscriptionId" value="your key goes here" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="SearchIndex" value="Music" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="Condition" value="All" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="ResponseGroup" value="Images" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="Artist" /&amp;gt;
+    &amp;lt;/input&amp;gt;
+    &amp;lt;transforms&amp;gt;
+      &amp;lt;transform type="Microsoft.Web.Services.XPathBridgeTransformer"&amp;gt;
+        &amp;lt;data&amp;gt;
+          &amp;lt;attribute name="selector" value="//a:Item" /&amp;gt;
+          &amp;lt;dictionary name="namespaceMapping"&amp;gt;
+            &amp;lt;item name="a" value="http://webservices.amazon.com/AWSECommerceService/2005-03-23" /&amp;gt;
+          &amp;lt;/dictionary&amp;gt;
+          &amp;lt;dictionary name="selectedNodes"&amp;gt;
+            &amp;lt;item name="url" value="a:SmallImage/a:URL" /&amp;gt;
+          &amp;lt;/dictionary&amp;gt;
+        &amp;lt;/data&amp;gt;
+      &amp;lt;/transform&amp;gt;
+    &amp;lt;/transforms&amp;gt;
+  &amp;lt;/method&amp;gt;
+&amp;lt;/bridge&amp;gt;
+&lt;/pre&gt;&lt;/code&gt;</summary>
+    <content type="html">&lt;p&gt;&lt;a href="http://atlas.asp.net"&gt;&lt;span class="caps"&gt;ATLAS&lt;/span&gt;&lt;/a&gt; is the relative newcomer to the &lt;span class="caps"&gt;AJAX&lt;/span&gt; scene. I haven&amp;#8217;t spent much time looking at the client side pieces, but I have taken a good look at the server side pieces.&lt;/p&gt;
+
+
+	&lt;p&gt;The one feature that really stands out is the &lt;span class="caps"&gt;XML&lt;/span&gt; to &lt;span class="caps"&gt;JSON&lt;/span&gt; marshalers that ship in the box. &lt;span class="caps"&gt;ATLAS&lt;/span&gt; introduces a nice (well, as nice as you can get with &lt;span class="caps"&gt;XML&lt;/span&gt;) syntax for declaratively describing the mapping between a Web Service (REST and &lt;span class="caps"&gt;SOAP&lt;/span&gt; are both supported among others) and your &lt;span class="caps"&gt;JSON&lt;/span&gt; schema.&lt;/p&gt;
+
+
+	&lt;p&gt;At the bottom of this blog is a simple example that I hacked up last night that shows mapping an Amazon Web Service to &lt;span class="caps"&gt;JSON&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;The &lt;code&gt;transform&lt;/code&gt; element describes the XPath mapping that shreds the &lt;span class="caps"&gt;XML&lt;/span&gt; document into &lt;span class="caps"&gt;JSON&lt;/span&gt;. It returns an array of objects that each contain a &lt;code&gt;url&lt;/code&gt; property that points to the album cover art for the Artist passed in the &lt;code&gt;Artist&lt;/code&gt; parameter.&lt;/p&gt;
+
+
+	&lt;p&gt;The reason why I love this feature is that it&amp;#8217;s just so natural to marshal data to browsers as &lt;a href="http://www.json.org"&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;&lt;/a&gt;. It also nicely works around the &amp;#8216;I can only talk to the origin server&amp;#8217; security restriction imposed by most browsers on XmlHttpRequest calls, since your origin server now acts as a proxy (or a bridge) to the web service that you want to call.&lt;/p&gt;
+
+
+	&lt;p&gt;You can even cache results on your origin server if you add a &lt;code&gt;cache&lt;/code&gt; directive to your bridge. Kudos to the &lt;span class="caps"&gt;ATLAS&lt;/span&gt; team for making this just work.&lt;/p&gt;
+
+
+&lt;code&gt;&lt;pre&gt;
+&amp;lt;bridge namespace="Test" className="Amazon" &amp;gt;
+  &amp;lt;proxy type="Microsoft.Web.Services.BridgeRestProxy" 
+         serviceUrl="http://webservices.amazon.com/onca/xml" /&amp;gt;
+
+  &amp;lt;method name="getAlbums"&amp;gt;
+    &amp;lt;input&amp;gt;
+      &amp;lt;parameter name="Service" value="AWSECommerceService" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="Version" value="2005-03-23" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="Operation" value="ItemSearch" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="SubscriptionId" value="your key goes here" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="SearchIndex" value="Music" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="Condition" value="All" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="ResponseGroup" value="Images" serverOnly="true" /&amp;gt;
+      &amp;lt;parameter name="Artist" /&amp;gt;
+    &amp;lt;/input&amp;gt;
+    &amp;lt;transforms&amp;gt;
+      &amp;lt;transform type="Microsoft.Web.Services.XPathBridgeTransformer"&amp;gt;
+        &amp;lt;data&amp;gt;
+          &amp;lt;attribute name="selector" value="//a:Item" /&amp;gt;
+          &amp;lt;dictionary name="namespaceMapping"&amp;gt;
+            &amp;lt;item name="a" value="http://webservices.amazon.com/AWSECommerceService/2005-03-23" /&amp;gt;
+          &amp;lt;/dictionary&amp;gt;
+          &amp;lt;dictionary name="selectedNodes"&amp;gt;
+            &amp;lt;item name="url" value="a:SmallImage/a:URL" /&amp;gt;
+          &amp;lt;/dictionary&amp;gt;
+        &amp;lt;/data&amp;gt;
+      &amp;lt;/transform&amp;gt;
+    &amp;lt;/transforms&amp;gt;
+  &amp;lt;/method&amp;gt;
+&amp;lt;/bridge&amp;gt;
+&lt;/pre&gt;&lt;/code&gt;</content>
+  </entry>
+</feed>

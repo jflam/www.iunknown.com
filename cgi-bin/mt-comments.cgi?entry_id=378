@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Algorithm complexity and modern CPU's</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Algorithm complexity and modern CPU's</div>
+
+
+<div class="comments-body">
+<p>Well... Accessing any memory address is still O(1), i.e. pretty much constant. You know exactly how many clock cycles it'll take (worst case) for your memory access to be completed.</p>
+
+<p>What has changed is that newer processors are able to improve on the average access time by using caching.</p>
+
+<p>But the point of the article still stands: let those who are so inclined create our storage structures - if they use a common interface, we can easily choose the one who has the best performance characteristics for the job.<br />
+</p>
+<span class="comments-post">Posted by <a href="mailto&#58;kmc&#64;innomate&#46;com">Kraen Munck</a> at November 28, 2003 09:18 PM</span>
+</div>
+<div class="comments-body">
+<p>actually, the logic transistor count on P4 & Itanium2 is ~20M, Opteron is in the same range but that includes the logic for the integrated north bridge.<br />
+one needs to exercise caution on transistor counts for logic and cache, cache transistors can be place with ~6X greater density than logic, hence if a cpu has 20M logic and 120M cache, then about the die areas for logic and cache are about equal.<br />
+however, i do wish system & software designers would wake up to reality.<br />
+the vast majority of memory in many applications today are either in disk cache or otherwise buffering data that in the past resided on disk, or basically has predictable access patterns such that residing off cpu in dram memory is no big deal.<br />
+however, a good chunk of code, that has small block random access, where one word must be read to determine the next word, ie, not prefetchable.<br />
+this should probably be implemented in sram.<br />
+so a modern system might have 64-512M sram and a multi-GB dram bank.<br />
+this is somewhat like the original Cray<br />
+</p>
+<span class="comments-post">Posted by <a href="mailto&#58;jchang6&#64;yahoo&#46;com">joe chang</a> at December  5, 2003 05:06 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

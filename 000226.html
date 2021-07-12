@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Microsoft vs. Open Source</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000225.html" title="Dual monitors yet again" />
+
+<link rel="next" href="http://www.iunknown.com/000227.html" title="Test First Development Pitfalls" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000225.html">&laquo; Dual monitors yet again</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000227.html">Test First Development Pitfalls &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">March 02, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Microsoft vs. Open Source</h3>
+
+<p><P>I saw that Dare Obasanjo <A href="http://www.kuro5hin.org/story/2003/3/1/6633/32605">commented</A> on Robert Scoble's <A href="http://radio.weblogs.com/0001011/2003/03/01.html#a2380">open letter to Bill</A>, and I felt compelled to add some comments of my own to the discussion.</P><br />
+<P>One book that has strongly influenced my thinking over the past few years is Clayton Christensen's "The Innovator's Dilemma". The following figure represents a Christensen-like analysis of Windows vs. Linux:</P><SPAN><br />
+<DIV align=left><IMG height=374 alt=[Image] hspace=4 src="Images/graph.png" width=423 border=0 cd:pos="0"> </DIV><br />
+<P align=left>The key point about this figure is that the rate of innovation in Linux is greater than the rate of increase of the lower limit of user expectations. Therefore it is inevitable that the Linux curve and the lower limit of user expectations curve intersect. This is what Christensen calls a "disruptive technology".</P><br />
+<P align=left>In the case of server applications, Linux has clearly exceeded the lower limit of user expectations, which explains why Linux is commoditizing the market for low-end server applications. In the case of desktop applications, the OpenOffice / Linux combination hasn't quite reached the lower limit of user expectations, which explains the relatively shallow penetration of Linux into those markets. </P><br />
+<P align=left>However, if you accept that the rate of OpenOffice / Linux innovation will outstrip the rate of increase in the lower limit of user expectations, it becomes inevitable that Linux will begin to hit Microsoft close to home: in the desktop and the office productivity markets.</P><br />
+<P align=left>Unfortunately for Microsoft, many of the recent features that have been added to Windows / Office have primarily benefited the high-end (read: Enterprise) user. In many ways, I feel that the current package that Microsoft offers outstrips the upper limit of&nbsp; user expectations. </P><br />
+<P align=left>So, what can Microsoft do about this problem? Increase the lower limit of user expectations. Drive the pace of innovation (and user expectations) so that the slope of the lower limit of user expectations line is parallel to, or steeper than the line that defines the rate of Linux innovation. I suspect that this was what Dave Stutz meant when he told Microsoft to keep innovating and to stop looking over their collective shoulders. </P><br />
+<P align=left>Another (albeit radical) possibility would have Microsoft give away the base services that comprise Windows, and sell value-added technologies that layer on top of that base. This would get Microsoft a lot closer to the oft-desired subscription-based business model, while blunting the effect of Linux on the desktop marketplace. However, this approach would cannibalize Microsoft OEM "computer tax" revenues, which means that it would likely only be employed if:</P><br />
+<OL><br />
+<LI><br />
+<DIV align=left>Linux rapidly grabs desktop market share (the we-don't-have-a-choice scenario) or</DIV><br />
+<LI><br />
+<DIV align=left>Microsoft comes up with a package of services that are truly compelling and which would convince subscribers to sign up (the increase-lower-limit-of-expectations scenario)</DIV></LI></OL><br />
+<P align=left>How this ultimately plays out is anyone's guess. But it means that we're in for some exciting times over the next few years.</P></SPAN></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at March  2, 2003 02:37 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="226" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000226.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>John,<br />
+How are you?  A Fortune magazine article reports:<br />
+"[Microsoft] product development groups shower [Bill Gates] with meticulously researched 'opportunity maps' showing the competitive landscape for a certain software market."<br />
+These maps, of course, are foundational to Microsoft's efforts to come up with a package of services that are truly compelling and which would convince subscribers to sign up (the increase-lower-limit-of-expectations scenario).<br />
+What does a company look like that is optimized to develop opportunity maps?<br />
+As it happens, not long ago my business plan for an such a company was circulated internally at Microsoft.  I subsequently received the following e-mail from Randy Hinrichs, Manager of Microsoft Research's Learning Sciences<br />
+and Technology Group:<br />
+"Frank, you are a good man. Have you thought about joining this team? Your only alternative, of course, is venture capital. But their usual models require getting rid of the 'originator' within the first eighteen months. With Netscape it took a little longer, but you get the idea."<br />
+The business plan is online, at www.opportunityservices.com/businessplan.html.<br />
+Also, the Microsoft-specific lead-in can be seen at www.opportunityservices.com/indexms.html<br />
+Let me know if you have any questions, comments, etc.<br />
+Enjoy,<br />
+Frank Ruscica<br />
+Founder<br />
+The Opportunity Services Group :: Have Fun to Get Ready<br />
+www.opportunityservices.com<br />
+http://www.opportunityservices.com/indexms.html</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.opportunityservices.com">Frank Ruscica</a> at March 11, 2003 09:07 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

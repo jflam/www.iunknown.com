@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: STL Custom Iterators</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000078.html" title="IL Corner: the ldtoken instruction" />
+
+<link rel="next" href="http://www.iunknown.com/000080.html" title="I was on TV!" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000078.html">&laquo; IL Corner: the ldtoken instruction</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000080.html">I was on TV! &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">March 07, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">STL Custom Iterators</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I'm currently massively refactoring (well, rewriting is probably closer to the truth) my unmanaged metadata API. The rewrite is largely due to focusing too much on micro-level issues in my previous metadata API and not spending enough (any?) attention to macro-level issues. </P><br />
+<P>Most of the code that I have written focuses on low-level grungy details: manipulating the CIL stream, cracking method signatures, creating local variable signatures etc. My new code base does some really nice things with resolving TypeRef tokens, creating TypeRef tokens and other macro-level issues that I had previously hard-coded into my runtime aspect weaver to work around deficiencies in my metadata API.</P><br />
+<P>In the new code I'm writing, I'm trying to mirror the managed System.Reflection API's wherever possible. However, one area that I don't want to mirror is the use of object arrays in System.Reflection. For example, when you call Type.GetMethods(), it returns a MethodInfo[]. Instead, since my library is a C++ library, I want to build custom iterators to enable access to a metadata element's children.</P><br />
+<P>The first thing that I did was look in Nicolai Josuttis' <EM><A href="http://www.amazon.com/exec/obidos/ASIN/0201379260/qid=1015519148/sr=8-1/iunknowncom-20"><EM>The Standard C++ Library, a Tutorial and Reference</EM></A></EM>, the standard text on STL. Unfortunately, there was little coverage on building custom iterators.</P><br />
+<P>Next, I did some Google searches and came up with a couple of articles:</P><br />
+<OL><br />
+<LI>Samir Bajaj's <EM><A href="http://msdn.microsoft.com/msdnmag/issues/01/04/STL/STL.asp"><EM>Taking Advantage of STL Algorithms by Implementing a Custom Iterator</EM></A></EM> from the April 2001 issue of MSDN Magazine.<br />
+<LI>Christopher Baus and Thomas Becker's <EM><A href="http://www.oonumerics.org/tmpw00/becker.html"><EM>Custom Iterators for the STL</EM></A></EM> article on the oonumerics.org web site.</LI></OL><br />
+<P>The first article provides some code to munch on, the second article provides the insights. Concrete to abstract. That's the best way to learn.</P><br />
+<P>A brief diversion: at the bottom of the Baus and Becker paper is a reference to <A href="http://www.stlport.org/resources/StepanovUSA.html">an interview with A. Stepanov of STL fame</A>. This is a truly great interview which reveals how much insight Stepanov brings to computer science and generic programming in particular. I learned that STL was the result of a bacterial infection in this interview! Well worth the read.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at March  7, 2002 11:09 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="79" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000079.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

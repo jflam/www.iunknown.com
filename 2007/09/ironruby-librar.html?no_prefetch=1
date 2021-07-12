@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+    <meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+    <meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" />
+	<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.iunknown.com/rss.xml" />
+
+
+	<title>John Lam on Software: IronRuby Libraries</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/09/company-meeting.html?no_prefetch=1" title="Company Meeting Day" />
+	<link rel="next" href="http://www.iunknown.com/2007/10/we-need-more-he.html?no_prefetch=1" title="We need more help and we're willing to pay for it!" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/09/ironruby-librar.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/21497135"
+    dc:title="IronRuby Libraries"
+    dc:identifier="http://www.iunknown.com/2007/09/ironruby-librar.html"
+    dc:description="The IronRuby libraries are divided into two groups: built-ins and the standard libraries. We will distribute both sets of libraries in the standard IronRuby distribution. The distinction is whether a library must be required prior to use. The code is..."
+    dc:creator="John Lam"
+    dc:date="2007-09-10T18:38:32-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/09/company-meeting.html">&laquo; Company Meeting Day</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/10/we-need-more-he.html">We need more help and we're willing to pay for it! &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">September 10, 2007</h2>
+
+
+<div class="entry" id="entry-38719719">
+			<h3 class="entry-header">IronRuby Libraries</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p>The <a href="http://www.ironruby.net">IronRuby</a> libraries are divided into two groups: built-ins and the standard libraries. We will distribute both sets of libraries in the standard IronRuby distribution. The distinction is whether a library must be required prior to use.</p> <p>The code is organized in two separate directories under trunk\src:</p> <p><a href="http://www.iunknown.com/WindowsLiveWriter/src.png"><img style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="174" alt="src" src="http://www.iunknown.com/WindowsLiveWriter/src_thumb.png" width="363" border="0"></a></p> <p>The built-in libraries are compiled alongside the rest of the compiler into the Ruby.dll assembly (this will be renamed in the future to IronRuby.dll). The standard libraries are compiled into IronRuby.Libraries.dll for the time being. These libraries may be refactored into some additional assemblies in the future, but for the time being we'll likely go down the path of extending the assembly-level RubyLibraryAttribute to identify the Ruby libraries implemented within an assembly. All Ruby libraries must contain this attribute. Kernel#require will inspect these attributes when it goes to try and find a library by name.</p> <p>Let's walk through some simple library code to better understand what's going on:</p> <p><a href="http://www.iunknown.com/WindowsLiveWriter/Ruby%20-%20Microsoft%20Visual%20Studio.png"><img id="id" style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="316" alt="Ruby - Microsoft Visual Studio" src="http://www.iunknown.com/WindowsLiveWriter/Ruby%20-%20Microsoft%20Visual%20Studio_thumb.png" width="494" border="0"></a> </p> <p>This defines a module called Sample which will be loaded implicitly when we require the IronRuby.Libraries assembly. In the future, we will be able to require Sample directly. We can run this code via rbx.exe:</p> <p><a href="http://www.iunknown.com/WindowsLiveWriter/Administrator%20Visual%20Studio%202005%20Command%20Prompt%20-%20rbx%20(2).png"><img id="id" style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" height="190" alt="Administrator Visual Studio 2005 Command Prompt - rbx (2)" src="http://www.iunknown.com/WindowsLiveWriter/Administrator%20Visual%20Studio%202005%20Command%20Prompt%20-%20rbx%20(2)_thumb.png" width="496" border="0"></a> </p> <p>There's something interesting in the implementation of the Hello method. As you know, all Ruby methods must return a value, yet we've defined Hello as a method that returns void. If you look at the output of the console, you'll see that it returns nil, as expected. So how did this magic work? </p> <p>Let's take a tour via the debugger. Much of the magic happens in <a href="http://ironruby.rubyforge.org/svn/trunk/src/ironruby/Runtime/RubyActionBinder.cs">RubyActionBinder.cs</a>. Set a breakpoint on MakeRuleForInvokeMember&lt;T&gt; and execute the require from the screenshot above (you'll need to step over the execution of the require method itself). When you execute Sample.hello, you'll hit the breakpoint.</p> <p>First, notice that the type of T is DynamicSiteTarget&lt;object, object&gt;. This method is responsible for generating a rule from the available information: the name of the method, the type of the receiver, the execution context, and some information about the parameters.</p> <p>What's a rule? A rule is (currently) a conditional statement. There are two parts, a Test and a Target. The Test guards the Target, and if true will execute the Target. Rules are used by the DLR to generate Dynamic Sites, which is our mechanism for caching the results of our method lookups.</p> <p>Here's some pseudo-code for the rule produced by MakeRuleForInvokeMember&lt;T&gt;:</p> <div style="font-size: 11pt; background: black; color: white; font-family: consolas"> <p style="margin: 0px"><span style="color: #ff8000">if</span> (<span style="color: #ff8000">typeof</span>(target) == Sample &amp;&amp; !HasVersionChanged(target))</p> <p style="margin: 0px">&nbsp; <span style="color: #ff8000">return</span> target.hello();</p></div> <style type="text/css">.csharpcode, .csharpcode pre
+{
+    font-size: small;
+    color: black;
+    font-family: consolas, "Courier New", courier, monospace;
+    background-color: #ffffff;
+    /*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+    background-color: #f4f4f4;
+    width: 100%;
+    margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }
+</style>  <p>Rules contain DLR expression trees. These expression trees are converted into executable CIL by the DLR. This is what the generated IL looks like after decompiling back to C# using Reflector:</p> <div style="font-size: 11pt; background: black; color: white; font-family: consolas"> <p style="margin: 0px"><span style="color: #ff8000">public</span> <span style="color: #ff8000">static</span> <span style="color: #ff8000">object</span> Handle2(<span style="color: #ff8000">object</span>[] objArray1,</p> <p style="margin: 0px">&nbsp; FastDynamicSite&lt;<span style="color: #ff8000">object</span>, <span style="color: #ff8000">object</span>&gt; site1, <span style="color: #ff8000">object</span> obj1)</p> <p style="margin: 0px">{</p> <p style="margin: 0px">&nbsp; <span style="color: #ff8000">if</span> ((obj1 == ((RubyModule) objArray1[0])) </p> <p style="margin: 0px">&nbsp;&nbsp;&nbsp;&nbsp; &amp;&amp; (((RubyModule) objArray1[1]).Version == 0x815))</p> <p style="margin: 0px">&nbsp; {</p> <p style="margin: 0px">&nbsp;&nbsp;&nbsp; Sample.Hello((RubyModule) obj1);</p> <p style="margin: 0px">&nbsp;&nbsp;&nbsp; <span style="color: #ff8000">return</span> <span style="color: #ff8000">null</span>;</p> <p style="margin: 0px">&nbsp; }</p> <p style="margin: 0px">&nbsp; <span style="color: #ff8000">return</span> site1.UpdateBindingAndInvoke(obj1);</p> <p style="margin: 0px">}</p></div> <p>Notice that we return null from the site since the method binder knows that we are invoking a void method, so we generate the correct return statement.</p> <p>If you want to see the dynamic site yourself, you can run IronRuby in debug mode using these command line switches:</p> <p>rbx.exe -X:SaveAssemblies -X:StaticMethods -D app.rb</p> <p>app.rb is a file that contains the code that we're running. IronRuby will generate a file called snippets1.dll in the same directory as app.rb. Open it up using <a href="http://www.aisto.com/roeder/dotnet/">Reflector</a>, and you'll see the dynamic site that we generate for calling Sample#hello:</p> <p><a href="http://www.iunknown.com/WindowsLiveWriter/Lutz%20Roeders%20.NET%20Reflector.png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" height="449" alt="Lutz Roeders .NET Reflector" src="http://www.iunknown.com/WindowsLiveWriter/Lutz%20Roeders%20.NET%20Reflector_thumb.png" width="504" border="0"></a> </p> <p><a href="http://www.iunknown.com/WindowsLiveWriter/Lutz%20Roeders%20.NET%20Reflector%20(3).png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" height="514" alt="Lutz Roeders .NET Reflector (3)" src="http://www.iunknown.com/WindowsLiveWriter/Lutz%20Roeders%20.NET%20Reflector%20(3)_thumb.png" width="499" border="0"></a> </p> <p>Quite a lot of the code in the RubyActionBinder is targeted for refactoring, so this isn't what it's going to look like in the long run. However, it's a good start and it generates correct, fast code today.</p> <p>In a future post, I'll walk you through more complex samples where we accept parameters, dispatch to blocks, throw exceptions etc. Hope this helps you understand some of what we're doing for method dispatch to C# library code today.</p>
+
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http://www.iunknown.com/2007/09/ironruby-librar.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 06:38 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/09/ironruby-librar.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/21497135</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		<div class="comments-content">
+			<!-- comment list -->
+	<a id="c82417727"></a>
+	<div class="comment" id="comment-82417727">
+		<div class="comment-content">
+			<p>I have a question for you...where can I find the settings in order to make my VS to look like screenshot 2 :) ... nice article though</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blogs.telerik.com/blogs/silverlight_team" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=82417727">Kiril</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-82417727">September 11, 2007 at 11:59 PM</a>
+		</p>
+	</div>
+	<a id="c82452779"></a>
+	<div class="comment" id="comment-82452779">
+		<div class="comment-content">
+			<p>@Kiril: here's the link: <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html" rel="nofollow">http://www.iunknown.com/2007/06/vibrant_ink_vis.html</a></p>
+
+<p>Beware that if all you want is the coloring that you'll need to check the appropriate options in VS when importing my settings file.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=82452779">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-82452779">September 12, 2007 at 08:50 AM</a>
+		</p>
+	</div>
+	<a id="c82575105"></a>
+	<div class="comment" id="comment-82575105">
+		<div class="comment-content">
+			<p>This is probably a stupid question, but how do you force VS to not place the "{" on a new line?  It looks like the IronRuby and IronPython format the code with the "{" at the end of the previous line, but VS keeps moving it to a new line for me.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blowmage.com/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=82575105">Mike Moore</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-82575105">September 13, 2007 at 09:15 AM</a>
+		</p>
+	</div>
+	<a id="c82579227"></a>
+	<div class="comment" id="comment-82579227">
+		<div class="comment-content">
+			<p>@Mike: </p>
+
+<p>In Tools/Options/Text Editor/C#/Formatting/New Lines</p>
+
+<p>uncheck place open brace on new line for ... check boxes.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=82579227">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-82579227">September 13, 2007 at 09:48 AM</a>
+		</p>
+	</div>
+	<a id="c82632601"></a>
+	<div class="comment" id="comment-82632601">
+		<div class="comment-content">
+			<p>See?  I told you it was a stupid question.  If only I could set that on a project by project basis...</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blowmage.com/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=82632601">Mike Moore</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-82632601">September 13, 2007 at 04:30 PM</a>
+		</p>
+	</div>
+	<a id="c82955425"></a>
+	<div class="comment" id="comment-82955425">
+		<div class="comment-content">
+			<p>Nice one. Thanks, John.</p>
+
+<p>Have a great special day.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.yashlabs.com/wp" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=82955425">Josh</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-82955425">September 16, 2007 at 11:16 AM</a>
+		</p>
+	</div>
+	<a id="c84195326"></a>
+	<div class="comment" id="comment-84195326">
+		<div class="comment-content">
+			<p>silly question but is the DLR & IronRuby tied to silverlight? will IronRuby work with all aspects of .net?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Chris |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-84195326">September 26, 2007 at 05:01 PM</a>
+		</p>
+	</div>
+	<a id="c84204834"></a>
+	<div class="comment" id="comment-84204834">
+		<div class="comment-content">
+			<p>@Chris: Nope DLR + Ruby is not tied at all to Silverlight. It will run anywhere the CLR (and CLI compliant runtimes like Mono) can run.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=84204834">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-84204834">September 26, 2007 at 06:55 PM</a>
+		</p>
+	</div>
+	<a id="c84327836"></a>
+	<div class="comment" id="comment-84327836">
+		<div class="comment-content">
+			<p>I tried following the screencast so I can check out IronRuby, but when I try to build it in console with rake compile, I get "Could not find RubyGem pathname2 (>= 0.0.0)"<br />
+when I try to do it in VS I click on "Rebuild Solution" and nothing happens. It literally just sits there like I never clicked anything. Any ideas?</p>
+
+<p><br />
+~Jeremy</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Jeremy Woertink |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-84327836">September 27, 2007 at 05:34 PM</a>
+		</p>
+	</div>
+	<a id="c84337300"></a>
+	<div class="comment" id="comment-84337300">
+		<div class="comment-content">
+			<p>@Jeremy:</p>
+
+<p>If you update from svn, you should get the new Rakefile that will automatically install the pathname2 gem. If that doesn't work you can manually install via "gem install pathname2"</p>
+
+<p>Regarding VS, you'll need to change the build configuration to Debug. I removed ExternalDebug and ExternalRelease from the latest source drops and you likely have an older .suo lying around that defaults to ExternalDebug.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=84337300">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-84337300">September 27, 2007 at 07:28 PM</a>
+		</p>
+	</div>
+	<a id="c84353608"></a>
+	<div class="comment" id="comment-84353608">
+		<div class="comment-content">
+			<p>could you increase the padding to code a bit so that it is farther away from border? <br />
+</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			winterheat |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-84353608">September 27, 2007 at 11:58 PM</a>
+		</p>
+	</div>
+	<a id="c85223936"></a>
+	<div class="comment" id="comment-85223936">
+		<div class="comment-content">
+			<p>Hi John,</p>
+
+<p>Just curious to know about the code conversion. </p>
+
+<p>Currently we have few tools that converts the Vb.Net codes to C# and Vice Versa.</p>
+
+<p>In future will it be possible to convert the IronRuby Codes to C# and Vice Versa...?</p>
+
+<p>Just Curious thats all.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.softmind.biz" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=85223936">SoftMind</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85223936">October 05, 2007 at 05:37 AM</a>
+		</p>
+	</div>
+	<a id="c85338658"></a>
+	<div class="comment" id="comment-85338658">
+		<div class="comment-content">
+			<p>@SoftMind:</p>
+
+<p>You can do this sort-of today by decompiling IronRuby to C# via Reflector. However, the generated code is not pretty at all and does not reflect the way you would want to code the same algorithm in C#. </p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=85338658">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85338658">October 05, 2007 at 03:30 PM</a>
+		</p>
+	</div>
+
+
+		</div>
+		
+	</div>
+
+	<!-- comment form -->
+	<script type="text/javascript" src="/.shared/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="38719719" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=38719719">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=38719719">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/p/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html#comment-89529294">John Lam</a> on <a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html">LOLCODE! on DLR</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html#comment-89416882">Robert</a> on <a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html">LOLCODE! on DLR</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html#comment-89395412">Tyler Jensen</a> on <a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html">LOLCODE! on DLR</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html#comment-89362032">Omer van Kloeten</a> on <a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html">LOLCODE! on DLR</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html#comment-89272396">John Lam</a> on <a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html#comment-89178326">SoftMind</a> on <a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html#comment-89165608">ChrisNTR</a> on <a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/a-first-look-at.html#comment-88985366">Mark Holton</a> on <a href="http://www.iunknown.com/2007/07/a-first-look-at.html">A first look at IronRuby</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html#comment-88924522">Sandro M.</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88902978">Dan V.</a> on <a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a></li>
+			
+		</ul>
+	</div>
+</div>
+	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html">LOLCODE! on DLR</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/welcome-mike-st.html">Welcome Mike Stall to the DLR team!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/outlook-2007-se.html">Outlook 2007 search busted? Here's the fix</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/popfly-goes-int.html">Popfly goes into public beta!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/ironruby-is-now.html">IronRuby is now an Open Source project!</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/index.html">November 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/index.html">October 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/index.html">September 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/08/index.html">August 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/index.html">July 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/index.html">June 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/05/index.html">May 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/04/index.html">April 2007</a></li>
+				
+			
+		</div>
+	</div>
+
+<div class="module-categories module">
+	<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Categories</a></h2>
+	<div class="module-content">
+		<ul class="module-list">
+						<li class="module-list-item"><a href="http://www.iunknown.com/current_affairs/index.html">Current Affairs</a></li>
+			
+		</ul>
+	</div>
+</div>
+<div class="module-calendar module">
+	<h2 class="module-header">November 2007</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				</tr>
+							<tr>
+					<td>4</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">5</a></td>
+				
+							
+					<td>6</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/ironruby-talks.html">7</a></td>
+				
+							
+					<td>8</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html">9</a></td>
+				
+							
+					<td>10</td>
+				</tr>
+							<tr>
+					<td>11</td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				</tr>
+							<tr>
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				</tr>
+							<tr>
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		Powered by <a href="http://www.typepad.com/t/app/track?poweredby-2419952" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+</body>
+</html>

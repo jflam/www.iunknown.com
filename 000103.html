@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: NAnt, Build Numbers and Visual SourceSafe</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000102.html" title="New books" />
+
+<link rel="next" href="http://www.iunknown.com/000104.html" title="Revised VersionTask" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000102.html">&laquo; New books</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000104.html">Revised VersionTask &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 17, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">NAnt, Build Numbers and Visual SourceSafe</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I've been spending some quality time with <A href="http://nant.sourceforge.net/">NAnt</A> over the past couple of days. I'm putting together a comprehensive set of build scripts that I'll be using to build CLAW. The first set(s) of problems that I decided to tackle are related to the build process, build numbers, and <A href="http://msdn.microsoft.com/ssafe/">Visual SourceSafe</A> integration.</P><br />
+<P>I've spent quite a bit of time reading various bits and pieces of documentation about N/Ant. What drives me crazy about all of the documentation that I've read is that none of them pay any serious attention to version control and build numbers. These two issues are critical in any software development process, particularly once you into situations where many different builds of your software can be found "in the wild".</P><br />
+<P>I have two very simple requirements for my NAnt script:</P><br />
+<OL><br />
+<LI>For my daily build scenarios, I want to have the script auto-generate a new build number, get the latest source code files from VSS, compile everything, check the compilation artifiacts (DLL's, EXE's, PDB's) back into VSS, and label everything using that build number.<br />
+<LI>For debugging scenarios, I want to be able to re-build any version of my code. This involes getting the source code files that correspond to Version X, and compile everything. </LI></OL><br />
+<P>The first thing that I had to do was implement a new NAnt task that will auto-generate build numbers at runtime. The build number is the third octet in a typical 64-bit FILEVERSION version number: major.minor.build_number.revsion_number.</P><br />
+<P>My VersionTask implementation can use one of two algorithms to generate build numbers. The first algorithm simply increments the build number field of a FILEVERSION version number that can be found in the build.number file that resides in the same directory as the NAnt build file. </P><br />
+<P>The second algorithm calculates a 4 digit build number. The first two digits are the number of months since the start of the project, and the last two digits are the current day. This is identical to the build number algorithm used by the .NET Frameworks team. </P><br />
+<P>If you're interested in looking at my alpha code for my VersionTask implementation, you can <A href="Files/VersionTask.cs">download it</A>. Note that I revised this code since this message. See <A href="Weblog/RevisedNAntVersionTask.html">the updated entry</A> in my weblog.</P><br />
+<P>I also wanted to stamp the FILEVERSION of my file using the auto-generated build number. To make this happen, I need to inject the build number into an AssemblyInfo.cs file that would resemble:</P><CODE><br />
+<P>using System.Reflection;<BR>using System.Runtime.CompilerServices;</P><br />
+<P>[ assembly: AssemblyFileVersion( "@version@" ) ]</P></CODE><br />
+<P>Note that I'm using an AssemblyFileVersion attribute to stamp the FILEVERSION resource in the generated assembly. Also notice that the version ID is encoded as "@version@". To make this happen, I needed to implement <A href="http://jakarta.apache.org/ant/manual/CoreTasks/filter.html">Ant's filtering capabilities</A>.</P><br />
+<P>The way I structured my build file, I checked the above file into VSS as AssemblyInfo.txt. Next, I defined a filter for the version number:</P><CODE><br />
+<P>&lt;filter token="version" value="${sys.version}"/&gt;</P></CODE><br />
+<P>Then, I used my modified CopyTask to generate the AssemblyInfo.cs file:</P><CODE><br />
+<P>&lt;copy file="${src}\AssemblyInfo.txt" tofile="${src}\AssemblyInfo.cs" filtered="true"/&gt;</P></CODE><br />
+<P>Note that the filtered attribute is set to true. In this case, I read the entire file into memory, and use Regex.Replace to replace all occurrances of the @version@ token with the version ID property.</P><br />
+<P>If you're interested in taking a peek at the code that I wrote to make this all possible in NAnt, you can download the bits <A href="Files/JohnModifiedNAnt.zip">from here</A>. I'll be testing these bits for a while first before submitting them to the good folks on the NAnt dev team for inclusion in the real distribution. Special thanks go out to <A href="http://nant.sourceforge.net/authors.html">Scott Hernandez</A>, who patiently answered a number of dumb NAnt questions that I sent him.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 17, 2002 10:29 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="103" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000103.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>John - What is the status of this? Has it been included in NANT yet? Thx</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://openseal.org">Riley</a> at June 18, 2003 11:37 AM</span>
+</div>
+<div class="comments-body">
+<p>This is excellent stuff. Just what I was looking for. The only problem is that integrating the new source files with Nant is not so trivial. I notice that the Project.cs file is considerably different to the one that ships with Nant. Do you have any suggestions as I think that the Nant world is not going to move as fast as you did.</p>
+
+<p>Many thanks</p>
+
+<p>Andrew</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;polomint82&#64;hotmail&#46;com">Andrew</a> at July 23, 2003 12:08 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

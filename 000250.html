@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Moving to Movable Type</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000249.html" title="Lame error of the day" />
+
+<link rel="next" href="http://www.iunknown.com/000251.html" title=".NET Pet Shop" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000249.html">&laquo; Lame error of the day</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000251.html">.NET Pet Shop &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">May 19, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Moving to Movable Type</h3>
+
+<p><P>Late last night, I finished doing an experimental [internal] port of my site over to Movable Type. I'd like to thank <A href="http://www.cantoni.org/">Brian Cantoni</A> <A href="http://www.cantoni.org/2003/01/03.html#converting_from_citydesk_to_movable_type">for his CityScript code frag</A> that helped to bootstrap the process. Watch out for the fact that the status is set to Draft and not Publish; had I actually <EM>read</EM> Brian's entry I would have realized this :)&nbsp;Mea culpa.</P><br />
+<P>I've been very happy using CityDesk for the past year and a half. However, I'm at the stage where I really want the <A href="http://www.movabletype.org/trackback/">TrackBack</A> and <A href="http://www.pocketsoap.com/weblog/stories/2003/01/0018.html">PingBack</A> features offered by a more mature (read: more than a big pile of static HTML and images) blogging infrastructure. A secondary goal is to regain control over my comments; I'd really like to see Google associate my comments with my URL.</P><br />
+<P>There are two things that I still have to do:</P><br />
+<OL><br />
+<LI>Move my <A href="http://www.haloscan.com">Haloscan</A> comments over to Movable Type. I don't really see an easy way of pulling this one off. Suggestions would be welcome.<br />
+<LI>Remap existing URL's to Movable Type's archive URL's. This is the higher priority of the two items since I don't want to break other external links to my site. Since the site is currently running on a friend's Free BSD box, I suspect I'll just have to write the .htaccess file that remaps the URL's. <A href="http://www.gyford.com/phil/writing/2003/03/09/changing_movable.php">This article</A> seems to have just enough information to help bootstrap that process.</LI></OL><br />
+<P>Hopefully I can get most of the move done by the end of this week.</P><br />
+<P>I spend about 50% of my time working on my laptop (which implies disconnected access at some random coffee shop in the Greater Toronto Area), so really need to have an offline blog editor. I took a quick peek at <A href="http://wbloggar.com/">w.bloggar</A> last night, and it looks quite promising.</P><br />
+<P>&nbsp;</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at May 19, 2003 10:09 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="250" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000250.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Hi, <br />
+I'm the w.bloggar developer.<br />
+You'll enjoy the next (4.0) version even more, it will come with a better offline posts control and a full interface support to MovableType.<br />
+Before you ask, I have no release date yet but stay tuned on my site.<br />
+regards from Brazil,<br />
+Marcelo</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://wbloggar.com/">Marcelo Cabral</a> at May 20, 2003 10:55 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for dropping by! I'm _really_ looking forward to full offline posting to MT. That's the last cool feature that I miss from CityDesk.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May 20, 2003 11:59 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

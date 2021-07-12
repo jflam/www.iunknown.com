@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Multi-module assemblies</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Multi-module assemblies</div>
+
+
+<div class="comments-body">
+<p>I have one big issue since one week.<br />
+ is .netmodule will have manifest ?<br />
+I was developed 2 .net modules and combines <br />
+these .netmodules to the dll.<br />
+At any time if I check, the .netmodule is having manifest.<br />
+according to microsoft .netmodule don't have manifest.<br />
+only assembly will have manifest.<br />
+If I see manifest, I didn't find any difference <br />
+between .netmodule and assembly <br />
+anybody can give the explanation.<br />
+Please contact me at rosireddyr@ctd.hcltech.com<br />
+thanks<br />
+Rosi</p>
+<span class="comments-post">Posted by <a href="mailto&#58;rosireddyr&#64;ctd&#46;hcltech&#46;com">Rosireddyr</a> at February 20, 2003 04:14 AM</span>
+</div>
+<div class="comments-body">
+<p>is there a way to see from a compiled module or assembly if the code was vb.net code or C# or another langage ?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.happytocode.com">Jonx</a> at May  9, 2003 06:07 AM</span>
+</div>
+<div class="comments-body">
+<p>If the module was written using VB.NET, there is inevitably a reference to the Microsoft.VisualBasic assembly present. I'm not sure if this is true 100% of the time, but it is in all the VB.NET assemblies that I've ever looked at.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May  9, 2003 08:28 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>I am new .NET learner. In your URL I see how files are linked to modules and assemblies. You say that it exports only the first type ( in spite of different namespaces it gets same typedef token).. So how do I ensure the both types are exported to the run time separately?  <br />
+Also I really need to understand the hierarchical link between process, app domain, and assembly.<br />
+Can you give me some example?</p>
+
+<p>Best Regards<br />
+Vishwa<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com/000073.html">Vishwa Rao</a> at January 23, 2004 12:59 PM</span>
+</div>
+<div class="comments-body">
+<p>I am new .NET learner. In your URL I see how files are linked to modules and assemblies. You say that it exports only the first type ( in spite of different namespaces it gets same typedef token).. So how do I ensure the both types are exported to the run time separately? <br />
+Also I really need to understand the hierarchical link between process, app domain, and assembly.<br />
+Can you give me some example?</p>
+
+<p>Best Regards<br />
+Vishwa</p>
+
+<p><br />
+</p>
+<span class="comments-post">Posted by <a href="mailto&#58;vhrao&#64;houston&#46;rr&#46;com">Vishwa Rao</a> at January 23, 2004 01:06 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

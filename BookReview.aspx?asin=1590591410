@@ -1,0 +1,178 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Maximizing .Net Performance
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=1590591410" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8xNTkwNTkxNDEwLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPE1heGltaXppbmcgLk5ldCBQZXJmb3JtYW5jZTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8TmljayBXaWVuaG9sdDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDQ0Ljk5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkMjkuNjk7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQuNTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Nzs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8xNTkwNTkxNDEwL3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47PqkE1xvA00kGNBnsecZadhi8odkl" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/1590591410.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Maximizing .Net Performance</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Nick Wienholt</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$44.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$29.69</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">7</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/1590591410/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">.NET Framework Tour from a Performance Perspective</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-11-14</span>
+                    </div>
+                    <span>There are no other books on .NET Performance so, when this one fell in my hands, it put a smile on my face (sad, I know). When I got to the end, I was not disappointed. Around 250 well-written pages over 15 chapters and, as you'd expect, you can delve into it in random order, making it a good reference book. Even so, I read it cover to cover. The first two chapters lay the ground; the last chapter provides generic advice on troubleshooting and the 12 chapters in-between focus on specific .NET areas: a framework tour from a performance perspective. Naturally, a subject of this nature assumes the reader has some .NET experience and targets the Intermediate/Advanced level.
+<br />
+<br />Don't expect material on GUI (Windows.Forms), Database (ADO.NET) and Web (ASP.NET); rather a discussion on elements that every application is built on (Type design/implementation, Strings/Text/RegEx, Collections, Language Specifics, GC & Object Lifetime, Exceptions, Security, Threading, IO/Serialisation, PInvoke, CLR). I challenge you to find a chapter that does not teach you at least one thing you were unaware of before. We have to sum it up with the great technical phrase: "It is all great stuff".
+<br />
+<br />There are no axioms presented, and readers expecting a "cookbook" will be disappointed. Every claim is backed up with a reference to a testcase and even then, only after we have delved under the covers to see *why* something is slow or *how* a change makes something faster. By taking this approach, the reader should be able to repeat the investigation/tests for newer/other versions of the framework. So, having just mentioned how there is a cross-reference to specific testcases, I have hinted at what is one of the best contributions of this book: A .NET Benchmark Test Harness. This is described in the appendix of the book and the code/binaries can be obtained from the publisher's site.</span>
+                  
+                    <div class="CustomerReviewSummary">Excellent choice for improving performance in your .NET apps</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-07-06</span>
+                    </div>
+                    <span>I just received this book last week and I have been thoroughly impressed by its readability and the abundance of useful tips and techniques contained within it. It presents everything from an overview of white and black box testing methods to improving cross domain apps that utilize remoting. While it is a bit light in some areas, it brings up the major performance degrading issues that most developers will encounter at some point or another. It is an excellent book for the intermediate .NET programmer; Apress once again delivers an excellent book.</span>
+                  
+                    <div class="CustomerReviewSummary">Very Helpful</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-04-14</span>
+                    </div>
+                    <span>Definitely got a lot out of this book. Lots of great examples and concepts that we put to use right away. Highly recommended for intermediate developers working with .NET.</span>
+                  
+                    <div class="CustomerReviewSummary">Different approach - Weak in some areas</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>9</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-03-23</span>
+                    </div>
+                    <span>My guess is that the reviews written before mine may come from friends of the author.   (OK - this is the internet, so I can write an opinion that may or may not be true).  The book has some good points but doesn't warrant 5 stars - maybe 3 or 4.<p>For one, the book refers to examples that are on the apress.com site in compiled code.  Very few tables were actually inserted in the book to prove the author's point.  Therefore, to really understand what the author is getting at you need to be on a computer able to click through different examples.<p>I also felt that in some places the introductory information was a bit verbose and sometimes included information that was not relevant to the particular performance improvements being pointed out.  I'd have rather the author cut down on some of the .Net overview stuff and put in some more charts.<p>There were also some things missing that I would have liked to see.  For example, XML is slow and there was no discussion on that.  Also, some information on tuning the parameters in the machine.config would have been helpful - which affects the loading and of assemblies, for one.  But, there wasn't any detailed discussion on this information.<p>The book takes varying concepts such as remoting, exceptions, and threading and looks at them in a very granular way.  It is an interesting approach and the data (partially in the book partially from running the code) is very useful. I haven't seen any other book approach performance in this way, and the book stands out in that regard.  However, if the reader is looking for a set bulleted of do's and don'ts - this is not the book for them.</span>
+                  
+                    <div class="CustomerReviewSummary">This book is amazing</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>5</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-11-18</span>
+                    </div>
+                    <span>If Applied .Net Programming is my old testiment of programming, this book is my new testiment.  It is full of so many good tips on performance.  We have a project going that has 400+ classes and this book helped us out so much in getting better performance out of the app.  The benchmark testing framework the author shows is worth the price itself!!!</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596003471'>
+                      Programming .NET Components
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 38 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0735619484'>
+                      Test-Driven Development in Microsoft  .NET (Microsoft Professional)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.5 based on 11 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1590590724'>
+                      Performance Tuning and Optimizing ASP.NET Applications
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 10 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1590591364'>
+                      Applied .Net Attributes
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 4 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1590592883'>
+                      Developing Application Frameworks in .NET
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 3 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

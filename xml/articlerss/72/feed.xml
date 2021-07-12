@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Covariance in the CLR</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Covariance in the CLR": comment by Omer van Kloeten</title>
+      <description>&lt;p&gt;The way methods are overloaded is the same in C# as it is in classic C.
+It's pretty logical, given that you can't, either implicitly or explicitly request a certain return type.
+Let's take an example of class A and class B, both of which have a method named Foo. Class B inherits class A. Let's take another two classes - RetP and RetD when RetD derives from RetP.
+Return type covariance means that if class A's Foo returns RetP, class B's Foo could return RetD and not be required to return RetP. This, in contrast to your statement that return type covariance could be about string and int. I have a post about it here, if you like:
+http://weblogs.asp.net/okloeten/archive/2004/04/24/119580.aspx&lt;/p&gt;</description>
+      <pubDate>Fri, 24 Feb 2006 06:34:20 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-155</guid>
+      <link>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-155</link>
+    </item>
+    <item>
+      <title>"Covariance in the CLR": comment by Rob Loach</title>
+      <description>&lt;p&gt;You've made a lot of progress on this bridge, John.  Way to go!&lt;/p&gt;</description>
+      <pubDate>Sun, 19 Feb 2006 22:56:18 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-134</guid>
+      <link>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-134</link>
+    </item>
+    <item>
+      <title>"Covariance in the CLR": comment by John Lam</title>
+      <description>&lt;p&gt;Jamie, thanks for that pointer. Do you have an example handy for where these conversion operators are used in the libraries?&lt;/p&gt;</description>
+      <pubDate>Sun, 19 Feb 2006 15:55:39 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-133</guid>
+      <link>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-133</link>
+    </item>
+    <item>
+      <title>"Covariance in the CLR": comment by Jamie Cansdale</title>
+      <description>&lt;p&gt;There is one exception that has caught me out before:&lt;/p&gt;
+
+&lt;p&gt;"There is one exception to this rule. For the special names op&lt;em&gt;Implicit and op&lt;/em&gt;Explicit described in clause 9.3.3 methods may be provided that differ only by their return type. These are marked specially and may be ignored by compilers that don???t support operator overloading."&lt;/p&gt;
+
+&lt;p&gt;http://dotnet.di.unipi.it/EcmaSpec/PartitionI/cont9.html&lt;/p&gt;</description>
+      <pubDate>Sat, 18 Feb 2006 06:40:13 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-132</guid>
+      <link>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-132</link>
+    </item>
+    <item>
+      <title>"Covariance in the CLR": comment by Justin</title>
+      <description>&lt;p&gt;This also pops up in the DateTime.Subtract() method. It can return either a TimeSpan or DateTime object. It always was annoying because IntelliSense would break after you typed Subtract().&lt;/p&gt;</description>
+      <pubDate>Fri, 17 Feb 2006 18:15:42 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-130</guid>
+      <link>http://www.iunknown.com/articles/2006/02/17/covariance-in-the-clr#comment-130</link>
+    </item>
+    <item>
+      <title>"Covariance in the CLR" by jlam</title>
+      <description>&lt;p&gt;While writing my first real Ruby app using my bridge, I came across my first real honest-go-goodness nasty bug. Most of the other bugs have been nice and deterministic &amp;#8211; something I just did caused the bridge to blow up. This one was just plain nasty, and of course it was based on an invalid assumption. It manifested itself as a corrupted call stack and dumped me rather unceramoniously into the debugger.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the invalid assumption: I thought that there wasn&amp;#8217;t return-value &lt;a href="http://en.wikipedia.org/wiki/Parameter_covariance"&gt;covariance&lt;/a&gt; in C# (the &lt;span class="caps"&gt;CLR&lt;/span&gt; supports return-value covariance, but I thought this was a safe assumption since I figured most folks wouldn&amp;#8217;t be writing code using &lt;code&gt;ilasm&lt;/code&gt;).&lt;/p&gt;
+
+
+	&lt;p&gt;For example, you cannot have these two methods in the same type:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;int Method()&lt;/code&gt; and &lt;code&gt;string Method()&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;However, if they can be distinguished based on their parameter lists, then it&amp;#8217;s OK:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;int Method(int)&lt;/code&gt; and &lt;code&gt;string Method(string)&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;I had made the assumption in my overload shim that all overloads would return the same type. Oops. I ran into this bug when I was calling &lt;code&gt;ToolStripItemCollection.Add&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;What&amp;#8217;s worse, the &lt;span class="caps"&gt;MSDN&lt;/span&gt; docs essentially imply that all of the return values are the same since the return values of the methods aren&amp;#8217;t shown in the overloads list. I only noticed this when I pulled out Reflector to look at the methods myself.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m really happy that this was the root cause of the stack corruption bug. I was worried that there was something flaky about the interactions between the garbage collectors on both sides of the marshaling boundary &amp;#8230;&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 17 Feb 2006 15:47:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/17/covariance-in-the-clr"&gt;Covariance in the CLR&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/17/covariance-in-the-clr"&gt;Covariance in the CLR&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Practical Eye for the .NET Guy</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Practical Eye for the .NET Guy</div>
+
+
+<div class="comments-body">
+<p>Cool.  Subscribed..</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://radio.weblogs.com/0124037">Phil</a> at October 21, 2003 06:25 PM</span>
+</div>
+<div class="comments-body">
+<p>Instead of an email, would it not be nice to have it go out as an RSS feed?</p>
+
+<p>P.S.  Subscribed!</p>
+<span class="comments-post">Posted by <a href="mailto&#58;daviddwilliams&#64;earthlink&#46;net">Davod</a> at October 21, 2003 07:36 PM</span>
+</div>
+<div class="comments-body">
+<p>The .pdf doesn't render correctly in OS X 10.3's preview tool.  All the fonts are messed up and look like boxes.  I'm sure you'll fix the problem if you update your powerbook but I'd thought I'd let you know.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;gerry_shaw&#64;yahoo&#46;com">Gerry Shaw</a> at October 22, 2003 12:47 AM</span>
+</div>
+<div class="comments-body">
+<p>You simply _have_ to write something to take a csproj file and create a task.  There is _no way_ I want to go and edit a build task when someone adds a source file to their project.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;r&#46;childress&#64;comcast&#46;net">Rick Childress</a> at October 22, 2003 10:02 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the heads-up, Gerry. Another friend of mine who has a Mac seems to have the same problem. But my TiBook renders it fine. I'll have to look around and see if I can figure out what's causing it. It might be something funny that Ghostscript is doing, which might force me to go back to using Acrobat ...</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October 22, 2003 10:38 AM</span>
+</div>
+<div class="comments-body">
+<p>Rick, can you wait a week? I promise that I'll demonstrate a solution then!</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October 22, 2003 10:39 AM</span>
+</div>
+<div class="comments-body">
+<p>I'm hooked. John, I was wondering if I could use the picture at the end as my wallpaper.  I really like your photos,especially this one.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;rcotton&#64;mindspring&#46;com">Ronald Cotton</a> at October 22, 2003 11:16 AM</span>
+</div>
+<div class="comments-body">
+<p>Nice article!!</p>
+
+<p>It's interesting you mentoned PLC programmers.  My new job has me working with PLC programmers.  It's an interesting world!!</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.stronglytyped.com">Richard Caetano</a> at October 22, 2003 12:41 PM</span>
+</div>
+<div class="comments-body">
+<p>Great job John!</p>
+
+<p>Just so you know, it doesn't display correctly in Acrobat for Pocket PC.</p>
+<span class="comments-post">Posted by Chad Thomas at October 22, 2003 04:40 PM</span>
+</div>
+<div class="comments-body">
+<p>Nice article !</p>
+
+<p>Also liked your idea of presenting info in landscape 4:3 layout. Been wondering myself lately ... all such pages/articles/newsletters should have a print layout option seprately ... i like informIT.com in this respect ... MSDN articles that run into sections should have a similar option on the main page giving you an option to print the entire article with its subsections in print layout (along with code snippets if possible/relevant) ... the option that is there on MSDN right now lets you print ... but only the current page ... should be more like informIT ...</p>
+
+<p>John: I tried getting the same layout for mypages using distiller but am still not able to ... which tool are you using for formatting and presenting it that way ... even the acrobat toolbar doesn't appear in IE when i open your newsletter (which is a good thing according to me) ... Request: You could probably present a primer on that too ... about hwo to optimise the size/layout of the presented information ...</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.imfinity.com">Nishith Prabhakar</a> at October 23, 2003 03:29 AM</span>
+</div>
+<div class="comments-body">
+<p>Wow! It's great!!!</p>
+
+<p>You've describe, how to build release and debug versions at the same time, but I believe, that in real build script it is almost impossible to do the things that way. The reason for this is that a person writing the build script usually wants to use dependencies rather than direct forced calls. And you surely can't force dependent target execution. Thus, in complicated build scripts it is almost impossible to build different configurations of a product without duplication.</p>
+
+<p>Sigh...</p>
+<span class="comments-post">Posted by <a href="mailto&#58;ivan-tarasov&#64;yandex&#46;ru">Ivan Tarasov</a> at October 27, 2003 01:35 PM</span>
+</div>
+<div class="comments-body">
+<p>Perhaps it's a font embedding issue.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;kfarmer&#64;thuban&#46;org">Keith Farmer</a> at October 29, 2003 12:14 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi could someone please give me a link to an ASP.NET build example preferable using C#.<br />
+</p>
+<span class="comments-post">Posted by <a href="mailto&#58;thesawyer&#64;hotmail&#46;com">the Sawyer</a> at February  5, 2004 03:00 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

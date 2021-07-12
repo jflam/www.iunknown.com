@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Fun with CodeDom</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000501.html" title="Some interesting reading" />
+
+<link rel="next" href="http://www.iunknown.com/000503.html" title="C# Snippets -&gt; WSDL" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000502.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/246"
+    dc:title="Fun with CodeDom"
+    dc:identifier="http://www.iunknown.com/000502.html"
+    dc:subject="Blog"
+    dc:description="I decided to write a simplified version of Jeff Keys&apos; most excellent Snippet Compiler to facilitate some experiments that I&apos;ve been working on today. I absolutely love how easy it is to compile in-memory assemblies using System.CodeDom and friends: private..."
+    dc:creator="John"
+    dc:date="2004-10-19T00:23:02-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000501.html">&laquo; Some interesting reading</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000503.html">C# Snippets -> WSDL &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">October 19, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Fun with CodeDom</h3>
+
+<p>I decided to write a simplified version of Jeff Keys' most excellent <a href="http://www.sliver.com/dotnet/SnippetCompiler/">Snippet Compiler</a> to facilitate some experiments that I've been working on today. I absolutely love how easy it is to compile in-memory assemblies using <code>System.CodeDom</code> and friends:</p>
+
+<pre><code>
+private CompilerResults Compile()
+{
+  CodeDomProvider provider = new CSharpCodeProvider();
+  ICodeCompiler compiler = provider.CreateCompiler();
+  CompilerParameters parameters = new CompilerParameters();
+  parameters.WarningLevel = 4;
+  parameters.GenerateInMemory = true;
+  parameters.GenerateExecutable = false;
+  parameters.ReferencedAssemblies.Add(&quot;System.Web.Services.dll&quot;);
+  parameters.ReferencedAssemblies.Add(&quot;System.Xml.dll&quot;);
+  parameters.ReferencedAssemblies.Add(&quot;System.dll&quot;);
+  return compiler.CompileAssemblyFromSource(parameters, textBoxSource.Text);
+}
+</code></pre>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at October 19, 2004 12:23 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=502" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="502" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000502.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Oh! wow!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://msmvps.com/gbvb">Girish</a> at October 19, 2004 04:27 AM</span>
+</div>
+<div class="comments-body">
+<p>Don't get me wrong, it's a fantastic bunch of classes but it feels like these classes wrap the console compiler (csc.exe) instead of the actual compiler implementation that csc.exe uses (hence CompilerResults.Output being a StringCollection that is equivalent to the output of csc.exe).</p>
+
+<p>I think it would have been a little bit nicer if we had access to Microsoft.CSharp.CSharpCompiler (csc.exe's internal compiler implementation) instead of Microsoft.VisualStudio.CSharpCompilerConsole (csc.exe).</p>
+
+<p>Also maybe that would solve the problem of it generating temporary files where you are restricted to read-only media.</p>
+
+<p>I don't think I explained that very well. Alcohol, don't you hate it. :/</p>
+
+<p>Disclaimer: The class names depicted in this posting are entirely fictional and bare no resemblence to those of the Microsoft(r) .NET(r) Framework.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;richardp&#64;eurosoft-uk&#46;com">Richard Poole</a> at October 20, 2004 12:09 PM</span>
+</div>
+<div class="comments-body">
+<p>I just spied csc.exe flying by using procexp - yuck. I agree - it would be much better if they exposed the compiler directly. However, I hear that folks who build compilers rely on process recycling to kill extraneous state at the end of the compilation :(</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October 21, 2004 03:47 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="502" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

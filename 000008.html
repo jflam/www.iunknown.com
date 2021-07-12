@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Pedagogy and developer training</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000007.html" title="Prototyping and Refactoring" />
+
+<link rel="next" href="http://www.iunknown.com/000009.html" title="Rocky" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000007.html">&laquo; Prototyping and Refactoring</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000009.html">Rocky &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 08, 2001</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Pedagogy and developer training</h3>
+
+<p><P>I've spent the last four+ years of my life training software developers at two different training organizations: <A href="http://www.develop.com">DevelopMentor</A> and <A href="http://www.wintellect.com">Wintellect</A>. I've also spoken at far more developer conferences than I can remember. In my <A href="About/fog0000000009.html">other life</A>, I ran very successful undergraduate tutorials in <A href="http://www.chem.utoronto.ca/coursenotes/CHM240/RAB.webfolder/">introductory Organic Chemistry</A>. I would like to think that I have learned something from all that experience. </P><br />
+<P>I recently added an introductory slide to my classes which stresses why we are doing what we are doing in the classes. It reminds us of how much we retain based on the teaching method:</P><br />
+<OL><br />
+<LI><br />
+<DIV>14% of what you hear </DIV><br />
+<LI><br />
+<DIV>22% of what you see </DIV><br />
+<LI><br />
+<DIV>30% of what you do </DIV><br />
+<LI><br />
+<DIV>42% of what you hear, see and do </DIV><br />
+<LI><br />
+<DIV>72% if the material resonates with your frame of reference</DIV><br />
+<LI><br />
+<DIV>92% of what you teach others </DIV></LI></OL><br />
+<P><EM>At best</EM>, we can hope to achieve 42% in a class where there are labs and lectures: the traditional five-day training class. It is highly unlikely that we can get to the 72% plateau because there isn't enough time for the students to build systems so that they can create their own frame of reference. The 92% plateau is even further out of reach since we don't have the ability to let the students teach others within a controlled environment. So what can we do about this sorry state of affairs?</P><br />
+<P>Update (2/9/02): Here's an old Oriental Proverb that says a similar thing:</P><br />
+<P align=center><EM>"I listen and forget;<BR>I read and understand;<BR>I see and remember;<BR>I do and learn."</EM></P><br />
+<P>I recently read <A href="http://philip.greenspun.com/">Philip Greenspun</A> and <A href="http://www-swiss.ai.mit.edu/~hal/">Hal Abelson's</A> <A href="http://philip.greenspun.com/teaching/teaching-software-engineering">excellent paper</A> on lessons learned from teaching software engineering to <A href="http://www.mit.edu">MIT</A> undergraduates. Anyone who is interested in the process of teaching others (particularly about software engineering) really must read this paper. The core take-home lessons from this paper are:</P><br />
+<UL><br />
+<LI><br />
+<DIV>Build the class around problem sets to reinforce core knowledge</DIV><br />
+<LI><br />
+<DIV>Have the class break up into teams to build a project that runs the entire length of the class</DIV><br />
+<LI><br />
+<DIV>Invite alumni to supervise a twice-weekly lab</DIV></LI></UL><br />
+<P>These three elements nail points 4-6 above. The course also lasts an MIT semester (13 weeks).&nbsp; </P><br />
+<P>There are problems with this approach, however. Arguably the most difficult to deal with is that the developers who wish to engage in such a program must live within commuting distance of the training center. This is due to the 13 week duration of the class. Second, since the developers who would participate in such a class have other responsibilities, it would be unlikely that the class could meet for more than 1 mandatory and 1 optional night per week. Third, the instructor for the class must live within commuting distance of the training center - for the very same reasons.</P><br />
+<P>I believe that this is what we must strive for in professional software developer education. However, this would require that training companies break with the revenue model for offering developer education - the 5 day class. Will it be an effective means of teaching? Of this I have no doubt. Will this be successful? I don't know. </P><br />
+<P>Please <A href="mailto:jlam@iunknown.com">let me know</A> what you think about this approach to teaching. If I hear back from enough of you, perhaps we could change the way folks think about professional software education.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December  8, 2001 12:17 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="8" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000008.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="8" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

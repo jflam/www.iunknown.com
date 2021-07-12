@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Poor customer service at Expedia.com</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Poor customer service at Expedia.com</div>
+
+
+<div class="comments-body">
+<p>Expedia customer support is the worst possible.  My story is too long to recant at this time (or too painful).  The short story is they left me on hold for at least 30 minutes.  Promised to call me back with alternative options to a "4" Star Hotel that was somewhere between 2 and 3.  Never called back.  When I called again to be reconnected to the "supervisor" that was to call me back.  The customer support person told me she had to check with her supervisor first, then put me on hold and left me there until I hung up 30 minutes later.</p>
+
+<p>I will write a letter.... I expect no response.  The only worse customer support I have experienced is MCI!</p>
+<span class="comments-post">Posted by <a href="mailto&#58;jonb&#64;nc&#46;rr&#46;com"></a> at February 24, 2004 02:04 AM</span>
+</div>
+<div class="comments-body">
+<p>I would like to report on the rude,  unprofessional service that I experienced at the Hotel Escalante in Naples, Florida.  My wife had several hundred dollars stolen from her wallet in a locked room and the management of this hotel has been most inconsiderate from the minute the burglary was reported. I highly recommend that anyone consider other hotels in that area.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;dschleppi&#64;earthlink&#46;net">dean schleppi</a> at April 29, 2004 09:00 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

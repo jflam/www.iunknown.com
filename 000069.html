@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: MC++ and CIL</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000068.html" title="AOP demo code" />
+
+<link rel="next" href="http://www.iunknown.com/000070.html" title="Inside the CLR" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000068.html">&laquo; AOP demo code</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000070.html">Inside the CLR &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 23, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">MC++ and CIL</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I just had an epiphany today while walking down Bloor Street in <A href="http://www.toronto.com">Toronto</A>: <EM>you can use CIL to learn C++ (and MC++)</EM>. My epiphany came after reading some of the items in <A href="http://www.gotw.ca/">Herb Sutter's</A> <A href="http://www.amazon.com/exec/obidos/ASIN/0201615622/qid=1014557298/sr=8-1/ref=sr_8_71_1/104-7823647-9515158">Exceptional C++</A> (the chapter on Exception Safety Issues and techniques is absolutely essential reading) this afternoon.</P><br />
+<P>Let's face it, C++ compilers do an awful lot of work behind your back. Especially when templates are involved. This is why it takes a shelf full of books (that you have read ;) written by really, really smart people like <A href="http://www.aristeia.com/">Scott Meyers</A>, <A href="http://www.gotw.ca">Herb Sutter</A>,&nbsp;and <A href="http://www.moderncppdesign.com/">Andrei Alexandrescu</A> to explain to you how you can shoot yourself (or avoid shooting yourself) in the foot.</P><br />
+<P>So what do poor schmucks like myself, who have been programming in uh <EM><A href="http://www.ecma.ch/ecma1/STAND/ecma-334.htm"><EM>more</EM></A> <A href="http://www.w3.org/TR/xslt">trendy</A> <A href="http://www.ecma.ch/ecma1/STAND/ECMA-262.HTM">languages</A> </EM>the past few years, do? Well, for one thing, you carve out a large chunk of time and you read the recent C++ canon:</P><br />
+<OL><br />
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201310155/qid=1014557106/sr=8-1/ref=sr_8_71_1/104-7823647-9515158">Effective C++</A> CD by Scott Meyers<br />
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201749629/qid=1014557129/sr=1-1/ref=sr_1_1/104-7823647-9515158">Effective STL</A> by Scott Meyers<br />
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201379260/qid=1014159000/sr=8-1/ref=sr_8_83_1/104-7823647-9515158">The Standard C++ Library</A> by Nicolai Josuttis<br />
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201615622/qid=1014557149/sr=1-1/ref=sr_1_1/104-7823647-9515158">Exceptional C++</A> and <A href="http://www.amazon.com/exec/obidos/ASIN/020170434X/qid=1014557298/sr=8-2/ref=sr_8_71_2/104-7823647-9515158">More Exceptional C++</A> by Herb Sutter<br />
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201704315/qid%3D1014557168/ref%3Dsr%5F11%5F0%5F1/104-7823647-9515158">Modern C++</A> by Andrei Alexandrescu<br />
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201183951/qid%3D1014557190/ref%3Dsr%5F11%5F0%5F1/104-7823647-9515158">Standard C++ IOStreams and Locales</A> by Angelika Langer and Klaus Kreft</LI></OL><br />
+<P>Consider Item 6 from Exceptional C++ on Temporary Objects&nbsp;(It was based on <A href="http://www.gotw.ca/gotw/002.htm">Guru of the Week (GOTW) column #2</A>). Here is the code frag from the book:</P><br />
+<P><CODE>string FindAddr( list&lt;Employee&gt; emps, string name )<BR>{<BR>&nbsp; for( list&lt;Employee&gt;::iterator i = emps.begin();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i != emps.end();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i++ )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; if( *i == name )<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return i-&gt;addr;<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }<BR>&nbsp; return "";<BR>}</CODE></P><br />
+<P>There are some obvious and non-obvious temporary objects that are created in this example. Now, most developers that I know would not look at the x86 code that was generated by the compiler for this rather innocuous looking function. However, what if you looked at the considerably more readable CIL?</P><br />
+<P>The first place to look is at the code that is generated for calls to the FindAddr method:</P><br />
+<P><CODE>string UseFindAddr()<BR>{<BR>&nbsp;&nbsp;list&lt; Employee &gt; emp;<BR>&nbsp;&nbsp;emp.push_back( Employee( "john", "canada" ) );<BR>&nbsp; return FindAddr( emp, "john" );<BR>}</CODE></P><br />
+<P>If you look at the generated CIL using ILDASM, you will be <EM>shocked </EM>by the number of custom modifiers that are generated by the MC++ compiler. The following listing shows a heavily edited disassembly that shows just the bare essentials of the return FindAddr( emp. "john" ) line of code.[1]</P><br />
+<P><CODE>L_0066: ldloca.s V_11<BR>L_0068: stloc.1 <BR>L_0069: ldloc.1 <BR>L_006a: ldsflda ?A0xe390182c.unnamed-global-3<BR><STRONG>L_006f: call (basic_string).__ctor</STRONG><BR>L_0074: stloc.s V_5<BR>.try {<BR>&nbsp; L_0076: ldloca.s V_10<BR>&nbsp; L_0078: stloc.s V_4<BR>&nbsp; L_007a: ldloc.s V_4<BR>&nbsp; L_007c: ldloca.s V_15<BR><STRONG>&nbsp; L_007e: call std.list&lt;Employee&gt;.__ctor</STRONG><BR>&nbsp; L_0083: stloc.3 <BR>&nbsp; L_0084: leave.s L_0092<BR>}<BR>.fault {<BR>&nbsp; L_0086: ldsfld (basic string allocator)<BR>&nbsp; L_008b: ldloc.1 <BR>&nbsp; L_008c: call __CxxCallUnwindDtor<BR>&nbsp; L_0091: endfinally <BR>}<BR>L_0092: ldarg.0 <BR>L_0093: ldloc.3 <BR>L_0094: ldloc.s V_5<BR>L_0096: call FindAddr( )<BR>L_009b: pop <BR>L_009c: ldloc.0 <BR>L_009d: ldc.i4.1 <BR>L_009e: or <BR>L_009f: stloc.0 <BR>L_00a0: leave.s L_00af</CODE></P><br />
+<P>In this block of code, you can clearly see the calls to the constructor of the basic_string class and the copy constructor of the list&lt; Emplyee &gt; class. Thus, two temporaries objects are created prior to the call to the FindAddr method.</P><br />
+<P>Next, let's turn our attention to the implementation of the FindAddr() method. I won't repeat the disassembly here because of its length (and the fact that the interesting bits are scattered throughout the code). Interested readers can&nbsp;see the <A href="Files/findaddr_disassembly.txt">dissasembly of FindAddr here</A>.&nbsp;However, I want to point out the two interesting lines of code:</P><br />
+<P><CODE>return i-&gt;addr;</CODE></P><br />
+<P>and </P><br />
+<P><CODE>return "";</CODE></P><br />
+<P>Both of these lines result in the generation of a temporary object that is returned to the caller, as you can clearly see by the two calls to the basic_string class's constructor.</P><br />
+<P>What's even more interesting is what happens when you compile the same code using Release compiler settings. As <A href="Files/findaddr_release_disassembly.txt">the disassembly of the release code shows</A>, the calls to the basic_string class's constructors have been optimized out of the code.</P><br />
+<P>What this points out very clearly is that you should never ever be tempted to return references to temporary objects, i.e. by changing the method signature to:</P><br />
+<P><CODE><STRONG>string&amp;</STRONG> FindAddr( list<EMPLOYEE> emps, string name )</CODE></P><br />
+<P>This is clearly very dangerous (what happens to the "" string after the it goes out of scope?) and a pointless optimization since compilers can optimize away the creation of the temporary objects.</P><br />
+<P>[1] I created this disassembly using a combination of <A href="http://www.amazon.com/exec/obidos/ASIN/0735615470/qid=1014559445/sr=8-1/ref=sr_8_3_1/104-7823647-9515158">Serge Lidin's</A> ILDASM and <A href="http://www.aisto.com/roeder/">Lutz Roeder's</A> <A href="http://www.aisto.com/roeder/dotnet/">Reflector</A>&nbsp;and Notepad. I heavily edited some of the generated names, and replaced them with&nbsp;abbreviated names in parenthesis. I did this to improve&nbsp;readability. If you want to see the original disassembly, <A href="Files/findaddr_call_disassembly.txt">click here</A>. Clearly, <EM>somebody</EM> must create a better disassembler with various options that let you simplify the generated output.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 23, 2002 05:37 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="69" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000069.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="69" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Foundation for Object / Relational Databases: The Third Manifesto
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0201309785" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjAxMzA5Nzg1LjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEZvdW5kYXRpb24gZm9yIE9iamVjdCAvIFJlbGF0aW9uYWwgRGF0YWJhc2VzOiBUaGUgVGhpcmQgTWFuaWZlc3RvOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxDLiBKLiBEYXRlLCBIdWdoIERhcndlbjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDQ0Ljk1Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkMzkuNzY7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDMuMDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8NDs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wMjAxMzA5Nzg1L3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47PqacaOB0vOpgr8YiO2YdTHYXzHb2" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0201309785.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Foundation for Object / Relational Databases: The Third Manifesto</span>
+        <div class="ItemDetail">By
+          <span id="Authors">C. J. Date, Hugh Darwen</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$44.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$39.76</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">3.0</span>
+          based on
+          <span id="TotalReviews">4</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0201309785/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Disappointed academics argue for a new database utopia</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>8</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-06-15</span>
+                    </div>
+                    <span>It really is a manifesto.  The authors tell us how database software has strayed from the one true theory and how everything would be so much better if databases were designed with theoretical elegance as the highest priority.  Since this unlikely to happen any time soon, the book isn't of immediate practical use, but if you're interested in software design and aren't turned off by highly opinionated writing, it's a thought-provoking read.  They give formal, mathematical definitions of their theory, but also explain the same thing in prose, so database programmers should be able to understand their arguments even if they skip the mathematics as I did.<p>The purpose of a political document is persuasion, and although they make some good points I wasn't convinced.  All of their arguments are based on theoretical elegance.  What's really needed is an extended example showing how a practical database would be more easily modelled using their theory.  I was left wondering whether a "theoretically correct" database would actually be easier to build and maintain than the ad-hoc systems we have today - many a theoretically elegant language turns out to be too difficult to use in practice.<p>Also, the authors dismiss some opposing arguments without really understanding their benefits.  For example, Appendix B describes how to make a relational view based on a table of object values, which seems like a nice way of having your cake and eating it too (since you can have encapsulation and inheritance).  But after bringing it up they dismiss with "what purpose would be served?"  I was left wishing it were an online discussion so I could argue back.</span>
+                  
+                    <div class="CustomerReviewSummary">Help me on this one</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>2</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>5</span>
+                      /
+                      <span>18</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2000-05-17</span>
+                    </div>
+                    <span>The Third Manifesto spends most of its time ranting about the authors' disapointments with industry-leading products like Oracle 8.0i and Informix. In the first chapter, they present example of a nested table  object, a standard OORDBMS feature, then excoriate the capability as not  being 'relational'. They take unctuous umbrage at anyone who would dare to  violate their view of the relational model. Beyond this, I could not follow  the logic of their arguments against these types of constructions, because  they do not use the scientific method.<p>I would have liked a more  mathematical or scientific description of their arguments. For instance,  they expend alot of words on the object movement, but they do not make  their topic any clearer with definitions and words. Despite  using  quasi-mathematical arguments, this is not a work that would stand up to  rigorous academic defence. None of the terms are defined. There is no  presentation of theorems or lemma, as in Donald's Knuth's books.  <p>This  is one of those books the reader has to 'get'. As a systems architect and  database designer, I am getting a bit tired hearing about null field  discussions and the lack of proper relations in SQL. I guess this group  would say that the systems we design are not valid. If you need to hear the  arguments of DB2 and relational bigots, then this book may be usefull to  you. Otherwize, there are many other text books to read to improve and  develop your design skills.</span>
+                  
+                    <div class="CustomerReviewSummary">occasional gems in an incomplete work of standard pomposity</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>13</span>
+                      /
+                      <span>38</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>1999-09-18</span>
+                    </div>
+                    <span>While Date's elementary database text is an ageless classic and his first series of collected RDBMS writings is rich in original material, the current volume is a profound disappointment. Date and his cohort, Darwen  (who tries too hard), derive material from a litany of sources, yet the  litany is rather more remarkable for some of its patent omissions than for  its completeness. Once again, Date has steered clear of security  considerations, and--where he dares to address them--he continues to  confuse the most basic terminology, sounding, as it were, like Fernandez  and Wood reanimated on tetrodotoxin and living in some bizarre  Winogradesque world of datasets and clusters. I wouldn't complain about  this ignorance were it not for the overwhelming and inescapable pomposity  that cloys nearly every paragraph. I truly wish Date would stop  characterizing everyone who fails to embrace his parochial cosmology as a  latter-day Hitler, or stop trying to build a career out of hackeneyed  digressions about flawed SQL implementations of trivalent logic, etc., a la  some Sandhu beating his head against the wall studying the same  polyinstantiated three-tuple m-relation for fifteen years. A possibly  tangential point, but one worth noting: the reader gets the impression that  Date has not designed--let alone coded--an end-to-end DBMS application with  graphical support, data distribution considerations, etc., for more than  twenty years. As someone who can both theorize and build systems, I prefer  to read authors whose gratuitous deprecation of others' work is backed by  palpable (read as "operational") achievements.</span>
+                  
+                    <div class="CustomerReviewSummary">A serious, rigorous book about what a RDBMS should be.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>23</span>
+                      /
+                      <span>25</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>1999-03-04</span>
+                    </div>
+                    <span>Mr. Data and Mr. Darwen have much to say in this book. The question is will community of "database" people read it, assimilate it, and get to sufficient mass to discuss the merits of the concepts described in  this book? And, if that does happen, will it be too late to implement any  of the concepts in a real DBMS?<p>There is no question that there is a  rather heated debate about the "virtues" of the relational  database model vs. the object database model. Both sides throw rocks at  each other: The "object-landers" say the RDBMS is too slow, and  has too much "impedance", and besides "you people are  fighting a rear guard action"! And the "relation landers"  say the ODBMS is too data dependent, chases pointers all over the place,  and is just a "CODASYL" DBMS with a pretty face! Meanwhile, the  vendor's of both types of DBMS adopt and implement features from the other  camps product.<p>What is refreshing about this book is that it attempts to  get away from the "rock throwing" and get to some new and deeper  understanding of what an RDBMS could and should be. And, it does not  apologize for advocating the relational model.<p> This book is not casual.  It is rigorous, and the reader should have a good foundation of database  theory to get the most out of it.<p> I came away with three main themes  after reading this book:<p>§ Support the relational model, and define what  an "object' is and where it fits into the relational model.  "Object" = Domain = Data Type. Enough said.<p>§ Define a more  "relational" query language - let's call it "D".  (Why  not "D++" to really get em going? Sorry, we are being rigorous  now!) Mr. Darwen and Mr. Date never were big SQL fans. So, they give us a  new language that they claim is better and is backward compatible with SQL.  Again - enough said.<p>§ The API to a database is just as important as the  DBMS' core engine - but they are different things. This is something that I  never questioned as DBA or as "code jockey". The claim from  supporters of the ODBMS is that one of the problems with the RDBMS is that  the database language is soooo different from the programming language.  And, they are right! People that support the RDBMS (I'm one of them) spend  a lot of energy trying to defend the RDBMS on this issue. This book makes  the point that it's not the RDBMS' fault. There is nothing wrong with the  conceptual model of the database. It is the Application Programming  Language (API) that is the problem. But, as Date & Darwen emphasize  here - these are logically different things. We should not "dumb  down" the database access to support the model and architecture of the  programming language.<p>Steve Wilson sawilson3@ems.att.com</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321197844'>
+                      An Introduction to Database Systems, Eighth Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 8 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201708507'>
+                      What Not How: The Business Rules Approach to Application Development
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.0 based on 10 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1558608559'>
+                      Temporal Data & the Relational Model
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 3 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201612941'>
+                      The Database Relational Model: A Retrospective Review and Analysis : A Historical Account and Assessment of E. F. Codd's Contribution to the Field of Database Technology
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 5 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201485559'>
+                      Practical Issues in Database Management: A Reference for the Thinking Practitioner
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 14 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

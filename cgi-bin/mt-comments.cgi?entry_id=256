@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Upgrading Windows 2000 Domain to Windows Server 2003</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Upgrading Windows 2000 Domain to Windows Server 2003</div>
+
+
+<div class="comments-body">
+<p>Oh, jesus. You are incredible. Almost the same environment (win2000 domain with 2 DCs and about 400 workstations) and I've spent the last two weeks trying to find the reason why my new 2003 server could not be upgraded to a DC. Your tip saved my ass. Be well my friend.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;nautilus&#64;freemail&#46;gr">ntl</a> at June  4, 2003 04:41 AM</span>
+</div>
+<div class="comments-body">
+<p>Thank you, thank you, thank you.  Was starting to be convinced that it was impossible to add a 2003 server to our SBS 2000 environment.  Went through all the adprep/inetorgperson stuff for win2k / exchange2k but was severely hung up here with no help to be found from MS or anyone else -- except here.  Sure this situ will be common as more folks migrate to 2k3, thanks again for the assist.</p>
+<span class="comments-post">Posted by avgadmin at July 16, 2003 07:52 PM</span>
+</div>
+<div class="comments-body">
+<p>I have a similar problem.  I have a W2003 AD setup and I want to add a W2000 server as a DC.  Whenever I try a dcpromo I get the error:</p>
+
+<p><br />
+Active Directory Installation Failed</p>
+
+<p>An ldap read of operational attributes from the server SERVERNAME.DOMAIN.CO.UK failed.</p>
+
+<p>"An error occcured while installing the directory service. For more information see the event log"</p>
+
+<p>**The 'SERVERNAME' is the name of the server currently hosting the AD, running W2003.</p>
+
+<p><br />
+There is nothing in the event log.  I have tried the 'Trust computer for delegation' and yet when the dcpromo fails the check box is unchecked again on the 2003 AD server.  </p>
+
+<p>I have been told on a discussion board that it is not possible to run a 2000 DC in a 2003 Domain, howwever I don't believe this.  Any advice or help would be appreciated</p>
+
+<p>Cheers</p>
+
+<p>e-mail dell8oy@homtail.com</p>
+<span class="comments-post">Posted by <a href="mailto&#58;dell8oy&#64;hotmail&#46;com">dell8oy</a> at August 11, 2003 06:48 AM</span>
+</div>
+<div class="comments-body">
+<p>Thank you x 10. Saved me a great deal of grief at around 2:30AM. one of my 2K DC was on its last legs and needed replacing uregently. I got stuck in dcpromo - until I saw your mail.</p>
+
+<p>Live Long and Prosper</p>
+<span class="comments-post">Posted by <a href="mailto&#58;bigcrabs&#64;hotmail&#46;com">BigCrabs</a> at August 13, 2003 07:33 PM</span>
+</div>
+<div class="comments-body">
+<p>kudos to ya!!!</p>
+
+<p>i was stuck at the same point trying to promote a 2003 into a prepared 2000 domain.</p>
+
+<p>may you have lots of good karma!!!</p>
+<span class="comments-post">Posted by <a href="mailto&#58;ioki&#64;bigfoot&#46;com">ioki</a> at September  2, 2003 12:02 PM</span>
+</div>
+<div class="comments-body">
+<p>I second the good karma!!  Solved my issue.<br />
+mega thanks!</p>
+<span class="comments-post">Posted by <a href="mailto&#58;mike&#64;slaget&#46;net">M.B.</a> at September  7, 2003 11:40 PM</span>
+</div>
+<div class="comments-body">
+<p>This fixed a major problem here.</p>
+
+<p>No Server 2003 involved, but it's currently 2:30am, and we had a problem about two hours ago promoting a 2000 server into our 2000 domain.  </p>
+
+<p>THANK YOU!</p>
+<span class="comments-post">Posted by <a href="mailto&#58;johnsont&#64;rfiusa&#46;com">Tony</a> at September 13, 2003 03:37 AM</span>
+</div>
+<div class="comments-body">
+<p>Hello,<br />
+I need information about how can I run the ADPrepr in the SBS 2000</p>
+
+<p>When run the ADPrerp, is posble that lose information?  </p>
+
+<p>Thank you,</p>
+
+<p>Carlos Reich</p>
+<span class="comments-post">Posted by <a href="mailto&#58;creich&#64;jej&#46;cl">Carlos Reich</a> at September 19, 2003 07:18 PM</span>
+</div>
+<div class="comments-body">
+<p>You are a life saver</p>
+<span class="comments-post">Posted by charles at October 15, 2003 04:34 PM</span>
+</div>
+<div class="comments-body">
+<p>I like to smell my own farts, thanks for the info!!  Good Day!</p>
+<span class="comments-post">Posted by SpongeBob at November 19, 2003 09:48 AM</span>
+</div>
+<div class="comments-body">
+<p>You're the best!</p>
+<span class="comments-post">Posted by Stef at January  2, 2004 02:04 PM</span>
+</div>
+<div class="comments-body">
+<p>I still don't know if I can sefely run Adprep on my SBS2K and install a second DC runing win 2003. Is there some issue with Exchange 2000 running on the same box?<br />
+Someone said you have to run some AD 'fix' on the SBS2K box after running Adprep.<br />
+I have installed a number of DC's running Win2K3 in Win2K forest without any problems! (honest!!)</p>
+<span class="comments-post">Posted by <a href="mailto&#58;Ishtiaq&#64;datacom-net&#46;co&#46;uk">Ishtiaq</a> at January 19, 2004 07:48 PM</span>
+</div>
+<div class="comments-body">
+<p>http://support.microsoft.com/default.aspx?scid=kb;en-us;232070</p>
+<span class="comments-post">Posted by <a href="mailto&#58;lcoon&#64;yahoo&#46;com">Leroy</a> at February 19, 2004 04:23 PM</span>
+</div>
+<div class="comments-body">
+<p>A big THANK YOU for this post!</p>
+<span class="comments-post">Posted by djordje at February 23, 2004 07:09 AM</span>
+</div>
+<div class="comments-body">
+<p>Thank you so very much, I had the same problem.  Unfortunately I couldn't delegate trust the to to-be DC (Even as Domain/Enterprise Admin).  Fortunately, I checked out kb 23070 and fixed the issue in default domain controller policy and it worked!  dcpromo just finished.  THANKS!</p>
+<span class="comments-post">Posted by Andrew at March  4, 2004 01:46 PM</span>
+</div>
+<div class="comments-body">
+<p>I have a single domain network in which I am going to be replacing our Windows 2000 server DC with a Windows 2003 Server DC, the problem is my boss configured the new 2003 Server as a DC on a completely new domain.  We are not going to be using the 2000 machine once this is completed but we want to retain the original domain name on the 2003 server.  What do I need to do to enable the 2003 Server to be the DC on the existing domain?</p>
+<span class="comments-post">Posted by <a href="mailto&#58;greg&#64;coverstar&#46;com">Greg</a> at March  9, 2004 01:11 PM</span>
+</div>
+<div class="comments-body">
+<p>Dude!!! I can't put into words my thanks!! We literally searched for four hours using Microsoft's support site, Google et al to find out why we were getting errors when trying to make a 2003 server a DC in a 2000 domain. Needless to say we found nothingf at either place. We were seriously going to go deep into the bowels of the machine when I stumbled upona  link to this tip. First we verified we were having the same problems by trying to trust the 2003 machine for delegation. Once that failed I knew we were on the right track. After making the changes you posted, voila!! we now have a 2003 DC in a 2000 domain.<br />
+Many, many thanks!<br />
+You should demand Microsoft put a link to your tip here (their KB article 232070 title is a little misleading).<br />
+Thanks aagin. I now have your site set as a favorite!!</p>
+<span class="comments-post">Posted by <a href="mailto&#58;tcrooch&#64;comcast&#46;net">Tony</a> at April 21, 2004 08:30 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1035 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	
+	<meta name="description" content="This is the biggest release of RubyCLR yet. You can download it here. Here’s a brief summary of RubyCLR as of this drop: Reference .NET assemblies by assembly name or by filename Create and manipulate .NET reference and value types..." />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared-typepad/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: Third Drop of RubyCLR</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2006/03/why-ruby-for-ne.html?no_prefetch=1" title="Why Ruby? (for .NET folks)" />
+	<link rel="next" href="http://www.iunknown.com/2006/03/when-i-was-a-bo.html?no_prefetch=1" title="When I was a boy I used a pencil and paper" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2006/03/third-drop-of-r.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/25820352"
+    dc:title="Third Drop of RubyCLR"
+    dc:identifier="http://www.iunknown.com/2006/03/third-drop-of-r.html"
+    dc:description="This is the biggest release of RubyCLR yet. You can download it here. Here’s a brief summary of RubyCLR as of this drop: Reference .NET assemblies by assembly name or by filename Create and manipulate .NET reference and value types..."
+    dc:creator="John Lam"
+    dc:date="2006-03-16T20:27:00-08:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2006/03/why-ruby-for-ne.html">&laquo; Why Ruby? (for .NET folks)</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2006/03/when-i-was-a-bo.html">When I was a boy I used a pencil and paper &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">March 16, 2006</h2>
+
+
+<div class="entry" id="entry-45159290">
+			<h3 class="entry-header">Third Drop of RubyCLR</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p>This is the biggest release of RubyCLR yet. You can <a href="http://www.iunknown.com/images/RubyCLR.zip">download it here</a>. Here&#8217;s a brief summary of RubyCLR as of this drop:</p>
+
+
+	<ul>
+	<li>Reference .NET assemblies by assembly name or by filename </li>
+		<li>Create and manipulate .NET reference and value types</li>
+		<li>Automatically marshal .NET reference and value types to / from Ruby</li>
+		<li>Dynamic generation of interop code using <span class="caps">CIL</span> instructions</li>
+		<li>Create and manipulate generic .NET reference types</li>
+		<li>Discover and consume .NET interfaces on a .NET object</li>
+		<li>Implement .NET event handlers using Ruby blocks</li>
+		<li>Map .NET member names to Ruby names (e.g. WordCount becomes word_count)</li>
+		<li>Mix in Ruby Enumerable support for .NET IEnumerable types</li>
+		<li>Dynamically access .NET <span class="caps">XML</span> documentation from irb (requires text/format &#8211; to
+  make it work uncomment require in rubyclr.rb)</li>
+	</ul>
+
+
+	<p>There are several sample applications to show you what&#8217;s possible:</p>
+
+
+	<ul>
+	<li><strong>GoogleCalc</strong> lets you access Google&#8217;s calculator from a rich client application</li>
+		<li><strong>RssReader</strong> is a Windows Forms 2.0 <span class="caps">RSS</span> reader</li>
+		<li><strong>Math</strong> is a Windows Presentation Foundation (aka Avalon) application that <a href="http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon">renders math equations</a> using a domain specific language</li>
+	</ul>
+
+
+	<p>The source code has been massively reorganized from the last drop. If you&#8217;re using <a href="http://www.activestate.com/komodo/">Komodo</a> you&#8217;ll find Komodo project files in this drop to make it easier to navigate the non C++ source code.</p>
+
+
+	<p>I&#8217;m going to be pretty busy for the next three weeks <a href="http://www.objectsharp.com">doing work to pay the bills around here</a>, so work is going to slow down quite a bit on the bridge. I hope this release is of sufficient quality to sustain y&#8217;all for the next month or so. Let me know by email (jlam at this domain) if you have any reproducible showstopper bugs and I&#8217;ll see what I can do to get a patch out the door.</p>
+
+
+	<p>Enjoy!</p>
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2006%2F03%2Fthird-drop-of-r.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 08:27 PM in <a href="http://www.iunknown.com/import/">import</a> </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2006/03/third-drop-of-r.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e5501623fe8833</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2006/03/third-drop-of-r.html">Third Drop of RubyCLR</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list -->	<a id="c100053034"></a>
+	<div class="comment comment-odd" id="comment-100053034">
+		<div class="comment-content" id="comment-100053034-content">
+			
+			<span id="comment-100053034-content"><p>Thank you! :-)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Eirik |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053034">March 17, 2006 at 03:36 AM</a>
+		</p>
+	</div>	<a id="c100053036"></a>
+	<div class="comment comment-even" id="comment-100053036">
+		<div class="comment-content" id="comment-100053036-content">
+			
+			<span id="comment-100053036-content"><p>This looks very interesting. I haven't followed the development up to this point so forgive me if this is an ignorant question... does RubyCLR only work in VS '05?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.enspiredsoftware.com" href="http://blog.enspiredsoftware.com">Jason Cartwright</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053036">March 17, 2006 at 12:45 PM</a>
+		</p>
+	</div>	<a id="c100053038"></a>
+	<div class="comment comment-odd" id="comment-100053038">
+		<div class="comment-content" id="comment-100053038-content">
+			
+			<span id="comment-100053038-content"><p>Sweet! I am real excited to dig into this.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Justin |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053038">March 17, 2006 at 12:48 PM</a>
+		</p>
+	</div>	<a id="c100053040"></a>
+	<div class="comment comment-even" id="comment-100053040">
+		<div class="comment-content" id="comment-100053040-content">
+			
+			<span id="comment-100053040-content"><p>Jason - it only works with .NET 2.0 - there are no dependencies on Visual Studio itself.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053040">March 17, 2006 at 01:17 PM</a>
+		</p>
+	</div>	<a id="c100053042"></a>
+	<div class="comment comment-odd" id="comment-100053042">
+		<div class="comment-content" id="comment-100053042-content">
+			
+			<span id="comment-100053042-content"><p>John,</p>
+
+<p>Did you see this:</p>
+
+<p><a href="http://www.plas.fit.qut.edu.au/rubynet/" rel="nofollow">http://www.plas.fit.qut.edu.au/rubynet/</a></p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Jason Bock |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053042">March 20, 2006 at 10:15 AM</a>
+		</p>
+	</div>	<a id="c100053044"></a>
+	<div class="comment comment-even" id="comment-100053044">
+		<div class="comment-content" id="comment-100053044-content">
+			
+			<span id="comment-100053044-content"><p>Yes I have - I've chatted with both John Gough and Wayne Kelly at OOPSLA. There are some really hairy technical challenges that they have to overcome so that's likely why you haven't seen anything out of them quite yet. But they're smart guys- I'm looking forward to seeing what comes out of their group.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053044">March 20, 2006 at 01:52 PM</a>
+		</p>
+	</div>	<a id="c100053046"></a>
+	<div class="comment comment-odd" id="comment-100053046">
+		<div class="comment-content" id="comment-100053046-content">
+			
+			<span id="comment-100053046-content"><p>Are you familiar with the Ruby/.Net bridge from <a href="http://www.saltypickle.com/rubydotnet" rel="nofollow">http://www.saltypickle.com/rubydotnet</a>  ?</p>
+
+<p>I've used it some in the past for stubs and generators for component/integration testing with good success (not without issues though).</p>
+
+<p>I'll be checking out your RubyCLR soon...</p>
+
+<p>regards.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Edwin King |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053046">March 28, 2006 at 12:16 PM</a>
+		</p>
+	</div>	<a id="c100053048"></a>
+	<div class="comment comment-even" id="comment-100053048">
+		<div class="comment-content" id="comment-100053048-content">
+			
+			<span id="comment-100053048-content"><p>Ah, a bit of history. </p>
+
+<p>The saltypickle bridge was OK, but not particularly interesting due to their socket implementation which resulted in awful performance. Thomas Sondergaard's rubydotnet bridge was *far* superior, and was a major source of inspiration for the first version of my bridge (which was never publicly released). </p>
+
+<p>RubyCLR is much, much faster than either of these bridges (Thomas used Reflection to invoke, and RubyCLR uses dynamically generated CIL shims). There are also a lot of additional features in RubyCLR which makes it far more natural to use (such as mapping method names like GetCount to get_count).</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053048">March 28, 2006 at 11:23 PM</a>
+		</p>
+	</div>	<a id="c100053050"></a>
+	<div class="comment comment-odd" id="comment-100053050">
+		<div class="comment-content" id="comment-100053050-content">
+			
+			<span id="comment-100053050-content"><p>I'm impressed with your work, good job!<br />
+Just one note, I ran the testsuite, and got one failure:<br />
+test_say_hello(RubyMethodTests) [./tests_rbdynamicmethod.rb:73]:     expected but was         .                         </p>
+
+<p>That is, in my locale, decimal point is different than in your tests. Not a big deal though.</p>
+
+<p>Still waiting for a proper project page to follow though =)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			scoopr |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053050">March 30, 2006 at 03:14 AM</a>
+		</p>
+	</div>	<a id="c100053052"></a>
+	<div class="comment comment-even" id="comment-100053052">
+		<div class="comment-content" id="comment-100053052-content">
+			
+			<span id="comment-100053052-content"><p>Thanks for the bug report. I'm happy to see that the CLR is localizing strings correctly. Now I just have to figure out how to localize that string in Ruby :)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053052">March 30, 2006 at 11:06 AM</a>
+		</p>
+	</div>	<a id="c100053054"></a>
+	<div class="comment comment-odd" id="comment-100053054">
+		<div class="comment-content" id="comment-100053054-content">
+			
+			<span id="comment-100053054-content"><p>Hi</p>
+
+<p>Is there someway possible to interact with Tao's opengl or CsGL in RubyCLR, I have tried to import the libs but it doesn't work. Is it because they are built for .net 1.x?<br />
+I tested another bridge, which is for .net 1.x but it didn't work to import the libs there either.<br />
+What I need is to use OpenGL with .net forms (in ruby using rubyclr, for my examwork)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://null" href="http://null">gudski</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053054">April 04, 2006 at 09:44 AM</a>
+		</p>
+	</div>	<a id="c100053056"></a>
+	<div class="comment comment-even" id="comment-100053056">
+		<div class="comment-content" id="comment-100053056-content">
+			
+			<span id="comment-100053056-content"><p>I didn't know anything about CsGL before your post. I downloaded it and did a quick import of the wrapper lib and that worked. But since I don't know anything about CsGL I'll have to take a look at the samples to see if I can get it up and running.</p>
+
+<p>Cool examwork project :)</p>
+
+<p>Feel free to contact me direct via jlam at this domain about your project. This could make for yet another cool demo for the next release of the bridge.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053056">April 04, 2006 at 08:17 PM</a>
+		</p>
+	</div>	<a id="c100053058"></a>
+	<div class="comment comment-odd" id="comment-100053058">
+		<div class="comment-content" id="comment-100053058-content">
+			
+			<span id="comment-100053058-content"><p>I took a closer look at one of the samples (MesaBounce.cs) and it appears that you have to derive a new class from CsGL.Basecode.Model and override some virtual methods (like Draw). Unfortunately, RubyCLR does not support deriving new Ruby classes from CLR base classes. Is there some other way of implementing the OpenGL code so that you don't have to derive from a library base class?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053058">April 04, 2006 at 10:47 PM</a>
+		</p>
+	</div>	<a id="c100053060"></a>
+	<div class="comment comment-even" id="comment-100053060">
+		<div class="comment-content" id="comment-100053060-content">
+			
+			<span id="comment-100053060-content"><p>hi,<br />
+I am not able to download RubyCLR.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			anubhav_kuhad@yahoo.com |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053060">October 10, 2006 at 04:01 AM</a>
+		</p>
+	</div>	<a id="c100053062"></a>
+	<div class="comment comment-odd" id="comment-100053062">
+		<div class="comment-content" id="comment-100053062-content">
+			
+			<span id="comment-100053062-content"><p>Broken link...</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			John |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053062">October 20, 2006 at 08:14 AM</a>
+		</p>
+	</div>	<a id="c100053064"></a>
+	<div class="comment comment-even" id="comment-100053064">
+		<div class="comment-content" id="comment-100053064-content">
+			
+			<span id="comment-100053064-content"><p>Me too:(</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.nyolckincs.hu/" href="http://www.nyolckincs.hu/">csikung (chi kung, qigong)</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053064">November 20, 2006 at 03:00 PM</a>
+		</p>
+	</div>	<a id="c100053066"></a>
+	<div class="comment comment-odd" id="comment-100053066">
+		<div class="comment-content" id="comment-100053066-content">
+			
+			<span id="comment-100053066-content"><p>Thanks for the bugreport. Fucking spammers:(</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.nyolckincs.hu/" href="http://www.nyolckincs.hu/">csikung</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053066">December 06, 2006 at 02:53 AM</a>
+		</p>
+	</div>	<a id="c100053068"></a>
+	<div class="comment comment-even" id="comment-100053068">
+		<div class="comment-content" id="comment-100053068-content">
+			
+			<span id="comment-100053068-content"><p>yeah link ain't work;/</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://praca.owi.pl" href="http://praca.owi.pl">praca</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053068">December 08, 2006 at 01:48 AM</a>
+		</p>
+	</div>	<a id="c100053070"></a>
+	<div class="comment comment-odd" id="comment-100053070">
+		<div class="comment-content" id="comment-100053070-content">
+			
+			<span id="comment-100053070-content"><p>This release is great</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.fan2sport.com" href="http://www.fan2sport.com">Christophe</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053070">March 05, 2007 at 03:11 AM</a>
+		</p>
+	</div>	<a id="c100053072"></a>
+	<div class="comment comment-even" id="comment-100053072">
+		<div class="comment-content" id="comment-100053072-content">
+			
+			<span id="comment-100053072-content"><p>Thanks for very interesting article and release. Greetings</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.pkseo.pl" href="http://www.pkseo.pl">PK</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053072">March 07, 2007 at 07:36 AM</a>
+		</p>
+	</div>	<a id="c100053074"></a>
+	<div class="comment comment-odd" id="comment-100053074">
+		<div class="comment-content" id="comment-100053074-content">
+			
+			<span id="comment-100053074-content"><p>Thanks for very interesting article and release. Greetings</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.pkseo.pl" href="http://www.pkseo.pl">PK</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053074">March 07, 2007 at 07:36 AM</a>
+		</p>
+	</div>	<a id="c100053078"></a>
+	<div class="comment comment-even" id="comment-100053078">
+		<div class="comment-content" id="comment-100053078-content">
+			
+			<span id="comment-100053078-content"><p></p>
+
+<p>I'm impressed with your work, good job! Just one note, I ran the testsuite, and got one failure: testsayhello(RubyMethodTests) [./tests_rbdynamicmethod.rb:73]:  expected but was .</p>
+
+<p>That is, in my locale, decimal point is different than in your tests. Not a big deal though.</p>
+
+<p>Still waiting for a proper project page to follow though =)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://katalog2.gsm-mania.org" href="http://katalog2.gsm-mania.org">scoopr</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053078">April 07, 2007 at 02:19 PM</a>
+		</p>
+	</div>	<a id="c100053080"></a>
+	<div class="comment comment-odd" id="comment-100053080">
+		<div class="comment-content" id="comment-100053080-content">
+			
+			<span id="comment-100053080-content"><p>It requires at a minimum .NET 2.0</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://htp://www.iunknown.com" href="http://htp://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053080">April 15, 2007 at 02:40 PM</a>
+		</p>
+	</div>	<a id="c100053082"></a>
+	<div class="comment comment-even" id="comment-100053082">
+		<div class="comment-content" id="comment-100053082-content">
+			
+			<span id="comment-100053082-content"><p>Thanks for help,thats the answer of all my questions</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://celebreport.info" href="http://celebreport.info">celebrity</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053082">April 30, 2007 at 01:02 AM</a>
+		</p>
+	</div>	<a id="c100053084"></a>
+	<div class="comment comment-odd" id="comment-100053084">
+		<div class="comment-content" id="comment-100053084-content">
+			
+			<span id="comment-100053084-content"><p>Thanks for help,thats the answer of all my questions</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://celebreport.info" href="http://celebreport.info">celebrity</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053084">April 30, 2007 at 01:03 AM</a>
+		</p>
+	</div>	<a id="c100053086"></a>
+	<div class="comment comment-even" id="comment-100053086">
+		<div class="comment-content" id="comment-100053086-content">
+			
+			<span id="comment-100053086-content"><p>Thanks for help,thats the answer of all my questions</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://celebreport.info" href="http://celebreport.info">celebrity</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053086">April 30, 2007 at 01:04 AM</a>
+		</p>
+	</div>	<a id="c100053088"></a>
+	<div class="comment comment-odd" id="comment-100053088">
+		<div class="comment-content" id="comment-100053088-content">
+			
+			<span id="comment-100053088-content"><p>Thanks for help,thats the answer of all my questions</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://celebreport.info" href="http://celebreport.info">celebrity</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053088">April 30, 2007 at 01:05 AM</a>
+		</p>
+	</div>	<a id="c100053090"></a>
+	<div class="comment comment-even" id="comment-100053090">
+		<div class="comment-content" id="comment-100053090-content">
+			
+			<span id="comment-100053090-content"><p>Thanks for help,thats the answer of all my questions</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://celebreport.info" href="http://celebreport.info">celebrity</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053090">April 30, 2007 at 01:05 AM</a>
+		</p>
+	</div>	<a id="c100053092"></a>
+	<div class="comment comment-odd" id="comment-100053092">
+		<div class="comment-content" id="comment-100053092-content">
+			
+			<span id="comment-100053092-content"><p>Thanks for help,thats the answer of all my questions</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://celebreport.info" href="http://celebreport.info">celebrity</a> |
+			<a href="http://www.iunknown.com/2006/03/third-drop-of-r.html#comment-100053092">April 30, 2007 at 01:05 AM</a>
+		</p>
+	</div>
+
+		</div>
+        
+	</div>
+    
+    	<!-- comment form -->
+<!-- comment-form-atp.tt -->
+
+	
+<div id="atp-comments">
+    
+        <div id="comment-preview" class="hiddenBox">
+	<h3 id="header-verify-comment" class="comments-header hiddenBox">Verify your Comment</h3>
+    <h3 id="header-preview-comment" class="comments-header hiddenBox">Previewing your Comment</h3>
+	<div class="comments-content">
+		<div class="comment">
+			<div id="comment-preview-content" class="comment-content">
+			</div>
+			<p class="comment-footer">
+				Posted by: 
+				<span id="comment-preview-author"></span>&nbsp;|&nbsp;<span id="comment-preview-datetime"></span>
+			</p>
+		</div>
+	</div>
+</div>
+<div id="comment-preview-confirmation" class="hiddenBox yellowBox">
+    <p>This is only a preview. Your comment has not yet been posted.</p>
+   	<form id="comment-preview-form"
+   		method="post"
+   		onsubmit="atpComments.interceptPost(commentFormNum); return false;">
+		<input type="submit" name="post" id="comment-confirm-post" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;"/>		    
+		<input type="submit" name="edit" id="comment-edit" value="&nbsp;&nbsp;Edit&nbsp;&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 2); return false;"/>
+        <span id="previewFormSpinner" class="hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+	</form>
+</div>
+<div id="comment-error" class="hiddenBox redBox">	    
+   Your comment could not be posted. Error type: <span id="comment-error-msg"></span> 
+</div>	
+<div id="comment-complete" class="hiddenBox yellowGreenBox">
+    Your comment has been posted. <a href="javascript:void 0;" onclick="window.location.hash='#comment-form';window.location.reload(false)">Post another comment</a>
+</div>	
+<div id="comment-captcha" class="hiddenBox yellowBox">	
+    <div id="captchaText">
+	    <p id="captchaFailMsg" class="captchaErrorText hiddenBox">The letters and numbers you entered did not match the image. Please try again.</p>	    	        
+	    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.</p>
+	    <p><span id="comment-captcha-viewalt">Having trouble reading this image? <a href="#comment-captcha" onClick="atpComments.generateCaptcha(commentFormNum);">View an alternate.</a></span></p>
+    </div>
+    <p class=""><img id="captchaImg" /></p>		
+    <form id="comment-captcha-form" 
+		  method="post"
+		  onsubmit="atpComments.submitWithCaptcha(commentFormNum); return false;">
+		<input type="hidden" name="captcha_chal" id="comment-captcha-chal" value="" />
+        <p>
+	        <input id="comment-captcha-text" name="captcha_text" size="10" />
+        </p>
+        <p>
+            <input type="submit" name="continue" id="captcha-continue" value="&nbsp;Continue&nbsp;" />
+            <span id="captchaFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+        </p>
+    </form>
+</div>
+
+    
+	<div id="primary-comment-form" class="comment-form">
+    	<form id="comment-form" action="http://www.typepad.com/services/comments"
+    		method="post">
+    		<input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e5501623fe8833" />
+                <input type="hidden" name="token" value="1233804806-84926789ac0a23ea9bfeee524e6457e380f22ccb:Wf2i8OskThSSs0FI" />
+    		<div class="comments-open">
+    			<h2 class="comments-open-header" id="comment-title">Post a comment</h2>
+    			<div id="comments-open-content" class="comments-open-content">
+    				
+				
+    									
+    					<p id="comments-open-login" style="display: none;">
+    													If you have a TypeKey or TypePad account, please
+    							<a href="https://www.typekey.com/t/typekey/login?v=1.0&t=a622925c4afec19df4a1bf7d80d40dec2cdb58c4&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2006%2F03%2Fthird-drop-of-r.html">Sign In</a>
+    						
+    					</p>
+					
+    					<p id="comments-open-logout" style="display: none;">
+    						You are currently signed in as
+    						<span id="commenter-name">(nobody)</span>.
+    						<a href="http://www.iunknown.com/.services/sitelogout?to=https%3A%2F%2Fwww.typekey.com%2Ft%2Ftypekey%2F%3F__mode%3Dlogout%26_return%3Dhttp%253A%252F%252Fwww.iunknown.com%252F2006%252F03%252Fthird-drop-of-r.html">Sign Out</a>
+    					</p>
+    				
+                    	<div id="comments-open-text" style="display:none;">
+        					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="atpComments.maxTextArea(this, 64000);"></textarea>
+            				
+            				<p class="comments-open-subtext">
+            				    (URLs automatically linked.)
+            				</p>			
+            				                    					
+        				</div>
+    				    <div id="comments-open-data" style="display:none;">
+                            <p>Your Information</p>
+                            <p>
+                                (Name and email address are required. Email address will not be displayed with the comment.)
+                            
+                            </p>
+    						<p>
+    							<input id="comment-author" at:default="Name" name="author" size="30" value="Name" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-author" id="comment-author-error" class="comment-error hiddenBox">Name is required to post a comment</label>
+    						</p>
+    						<p>
+    							<input id="comment-email" at:default="Email Address" name="email" size="30" value="Email Address" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-email" id="comment-email-error" class="comment-error hiddenBox">Please enter a valid email address</label>
+    						</p>
+    						<p>
+    							<input id="comment-url" at:default="Web Site URL" name="url" size="30" value="Web Site URL" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-url" id="comment-url-error" class="comment-error hiddenBox">Invalid URL</label>
+    						</p>
+    					</div>
+    			</div>
+                <div id="comments-open-footer" class="comments-open-footer" style="display:none;">
+    				<input type="submit" name="post" id="comment-post-button" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;" disabled="true" />
+    				<input type="submit" name="preview" id="comment-preview-button" value="&nbsp;Preview&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 1); return false;" disabled="true" />
+    				<span id="commentEntryFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+    			</div>
+    		</div>
+    	</form>
+        <noscript>
+            
+			<div id="comments-open-noscript" class="comments-open-noscript">
+		        <form action="http://www.typepad.com/services/comments" method="post">
+		            <input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e5501623fe8833" />
+                            <input type="hidden" name="token" value="1233804806-25ba5517a442a6cdd6dedc5f0fec5aa2416f1b50:JZ3u09nNOw149yIr" />
+		            Name:<br /><input type="text" name="author" size="30" /><br />
+		            Email address:<br /><input type="text" name="email" size="30" /><br />
+		            URL:<br /><input type="text" name="url" size="30" /><br /><br />
+		            Comment:<br /><textarea name="text" cols="40" rows="4"></textarea><br />
+		            
+		            <input type="submit" name="submit" value="Submit" />
+		        </form>
+			</div>
+			
+		</noscript>
+	</div>
+</div>
+
+
+
+    
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silverl.html#comment-6a00d834fc885d53ef0105370dee9e970b">Jimmy Schementi</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silverl.html">Dynamic Silverlight Part 1: Hello, World!</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silve-1.html#comment-6a00d834fc885d53ef011168480d24970c">Jimmy Schementi</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silve-1.html">Dynamic Silverlight Part 2: Managed JScript and flickr</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silverl.html#comment-6a00d834fc885d53ef01053708b2b7970b">NO LIGHT IN SIGHT</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silverl.html">Dynamic Silverlight Part 1: Hello, World!</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/outlook-zen.html#comment-146374028">piper k</a> on <a href="http://www.iunknown.com/2007/07/outlook-zen.html">Outlook Zen</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html#comment-146328394">kalarev</a> on <a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html#comment-144810710">John Lam</a> on <a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html#comment-144735070">Alex</a> on <a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2006/10/experimental-ru.html#comment-144586036">shilpa</a> on <a href="http://www.iunknown.com/2006/10/experimental-ru.html">Experimental RubyCLR gem</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html#comment-144182514">Brig Lamoreaux</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html#comment-144059420">John Lam</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+			
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">MVP Summit Ruby Meetup</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/index.html">January 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/index.html">April 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">January 2009</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/01/hello-2009.html">1</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">2</a></td>
+				
+							
+					<td>3</td>
+				</tr>
+							<tr>
+					<td>4</td>
+				
+							
+					<td>5</td>
+				
+							
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				</tr>
+							<tr>
+					<td>11</td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				</tr>
+							<tr>
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				</tr>
+							<tr>
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+
+<script type="text/javascript">
+var captchaImgAttempts = 0;
+var allowAnonComments = '0';
+var registrationRequired = 0;
+var registrationOptional = 1;
+var emailRequired = 1;
+var jsonURL = "/.services/json-rpc";
+
+var captchaSrc = "/.services/captcha?code_encrypted=";
+var alertCommentCannotBeBlank = "You can not leave an empty comment. Please enter some text in the Comment field.";
+var alertEditingExpired = "Sorry, you're no longer allowed to edit this comment. You may have taken too much time before submitting your edit or someone may have already replied to it.";
+
+var alertAuthorCannotBeBlank = "Name must not be blank.";
+var alertEmailCannotBeBlank = "Email Address must not be blank.";
+var alertAuthorAndEmailCannotBeBlank = "Name and email address are both required!";
+var alertEmailIsInvalid = "The Email Address you entered is invalid. Please enter a valid email address.";
+var alertUnauthorizedAction = "The comments on this post are closed.";
+var msgPostReplyTo = "Reply to ";  
+var msgInReplyTo = "In reply to ";
+var msgPostAComment = "Post a comment ";
+var atpCommentsPath = "/.shared/js/atpcomments_yui.js?v=2";
+var hasChanged = 0;
+var hostName = "www.iunknown.com";
+var tp_comment_token = "1233804807-756a3dff200806b491a8c4991ae5f2a3c1ed71ed:4AjrQYwmsaZJBg1P";
+
+var isPage = 0;
+var blog_xid = "6a00d834fc885d53ef00d83531ed5d69e2";
+var xid = "";
+var injectCode = '<div id=\"comment-preview\" class=\"hiddenBox\">\n\t<h3 id=\"header-verify-comment\" class=\"comments-header hiddenBox\">Verify your Comment<\/h3>\n    <h3 id=\"header-preview-comment\" class=\"comments-header hiddenBox\">Previewing your Comment<\/h3>\n\t<div class=\"comments-content\">\n\t\t<div class=\"comment\">\n\t\t\t<div id=\"comment-preview-content\" class=\"comment-content\">\n\t\t\t<\/div>\n\t\t\t<p class=\"comment-footer\">\n\t\t\t\tPosted by: \n\t\t\t\t<span id=\"comment-preview-author\"><\/span>&nbsp;|&nbsp;<span id=\"comment-preview-datetime\"><\/span>\n\t\t\t<\/p>\n\t\t<\/div>\n\t<\/div>\n<\/div>\n<div id=\"comment-preview-confirmation\" class=\"hiddenBox yellowBox\">\n    <p>This is only a preview. Your comment has not yet been posted.<\/p>\n   \t<form id=\"comment-preview-form\"\n   \t\tmethod=\"post\"\n   \t\tonsubmit=\"atpComments.interceptPost(commentFormNum); return false;\">\n\t\t<input type=\"submit\" name=\"post\" id=\"comment-confirm-post\" value=\"&nbsp;Post&nbsp;\" onclick=\"atpComments.interceptPost(commentFormNum); return false;\"/>\t\t    \n\t\t<input type=\"submit\" name=\"edit\" id=\"comment-edit\" value=\"&nbsp;&nbsp;Edit&nbsp;&nbsp;\" onclick=\"atpComments.previewOnly(commentFormNum, 2); return false;\"/>\n        <span id=\"previewFormSpinner\" class=\"hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n\t<\/form>\n<\/div>\n<div id=\"comment-error\" class=\"hiddenBox redBox\">\t    \n   Your comment could not be posted. Error type: <span id=\"comment-error-msg\"><\/span> \n<\/div>\t\n<div id=\"comment-complete\" class=\"hiddenBox yellowGreenBox\">\n    Your comment has been posted. <a href=\"javascript:void 0;\" onclick=\"window.location.hash=\'#comment-form\';window.location.reload(false)\">Post another comment<\/a>\n<\/div>\t\n<div id=\"comment-captcha\" class=\"hiddenBox yellowBox\">\t\n    <div id=\"captchaText\">\n\t    <p id=\"captchaFailMsg\" class=\"captchaErrorText hiddenBox\">The letters and numbers you entered did not match the image. Please try again.<\/p>\t    \t        \n\t    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.<\/p>\n\t    <p><span id=\"comment-captcha-viewalt\">Having trouble reading this image? <a href=\"#comment-captcha\" onClick=\"atpComments.generateCaptcha(commentFormNum);\">View an alternate.<\/a><\/span><\/p>\n    <\/div>\n    <p class=\"\"><img id=\"captchaImg\" /><\/p>\t\t\n    <form id=\"comment-captcha-form\" \n\t\t  method=\"post\"\n\t\t  onsubmit=\"atpComments.submitWithCaptcha(commentFormNum); return false;\">\n\t\t<input type=\"hidden\" name=\"captcha_chal\" id=\"comment-captcha-chal\" value=\"\" />\n        <p>\n\t        <input id=\"comment-captcha-text\" name=\"captcha_text\" size=\"10\" />\n        <\/p>\n        <p>\n            <input type=\"submit\" name=\"continue\" id=\"captcha-continue\" value=\"&nbsp;Continue&nbsp;\" />\n            <span id=\"captchaFormSpinner\" class=\"commentSpinner hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n        <\/p>\n    <\/form>\n<\/div>\n'; 
+var commentFormNum;
+var entryPermalink = "http://www.iunknown.com/2006/03/third-drop-of-r.html";
+var inlineReply = document.createElement("div");
+var commentFooterLinks;
+var commentHeader;
+var commentReplyXID;
+var commentReplyAuthor;
+var commentReplyComplete;
+var inlineReplyLoaded = 0;
+</script>
+<script type="text/javascript" src="/.shared/js/yui/yuiloader-beta-min.js"></script>
+<script type="text/javascript" src="/.shared/js/atpcomments.js?v=2"></script>
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

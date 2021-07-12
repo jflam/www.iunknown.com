@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Interfaces and RubyCLR</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Interfaces and RubyCLR": comment by John Lam</title>
+      <description>&lt;p&gt;Mark's got it right. Especially since I believe you can have method name collisions across multiple interfaces.&lt;/p&gt;
+
+&lt;p&gt;As for why not overloading the Kernel methods - there are two reasons. First, I'm not sure about possible conflicts with behavior, so the safest thing to do was to create new methods. Also, I felt that names like "is" and "as" would feel more natural to .NET developers. &lt;/p&gt;
+
+&lt;p&gt;That said, I'm not against overloading the Kernel methods and aliasing the method names, but I'll need to think some more about that.&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 13:12:13 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr#comment-168</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr#comment-168</link>
+    </item>
+    <item>
+      <title>"Interfaces and RubyCLR": comment by Mark</title>
+      <description>&lt;p&gt;Justin, I might venture to explain the need for "as".  In the CLR, you can implement an interface "explicitly", which means the methods are only available when the object is cast to the interface. Otherwise, the methods are "private".  So, the type can only act like a duck if you've asked it to.  This is one of those impedance mismatches between Ruby and the CLR.&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 12:56:07 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr#comment-167</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr#comment-167</link>
+    </item>
+    <item>
+      <title>"Interfaces and RubyCLR": comment by Justin</title>
+      <description>&lt;p&gt;I wonder if there is a reason to have an as operator in Ruby. I've only used that operator in C# to give me access to methods on a subclass (for example, when using typed data sets). Why would you need that in Ruby? You get that access for free. I guesss I can see that you might want it when calling a .NET method that expects an object of a certain type, but wouldn't that be better handled in the bridge?&lt;/p&gt;
+
+&lt;p&gt;Also, I wonder why you didn't overload kind&lt;em&gt;of? and is&lt;/em&gt;a? from Kernel instead of creating the is? method?&lt;/p&gt;
+
+&lt;p&gt;Regardless, cool work. I'm sure these are things you've thought about already and have good reasons for doing the way you did!&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 11:40:39 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr#comment-164</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr#comment-164</link>
+    </item>
+    <item>
+      <title>"Interfaces and RubyCLR" by jlam</title>
+      <description>&lt;p&gt;&lt;a href="http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces"&gt;My earlier implementation of interfaces&lt;/a&gt; for RubyCLR was incomplete. I didn&amp;#8217;t have code to let you test whether an object implemented the interface requested. There are a couple of approaches that you can use to solve this problem: via reflection at runtime and via a shim method that &amp;#8220;knows&amp;#8221; about all of the interfaces that an object implements.&lt;/p&gt;
+
+
+	&lt;p&gt;I chose the second option: implementing two new methods &lt;code&gt;is&lt;/code&gt; and &lt;code&gt;as&lt;/code&gt;. The goal is to eventually provide the same semantics as the C# &lt;a href="http://msdn.microsoft.com/library/en-us/csref/html/vclrfispg.asp"&gt;is&lt;/a&gt; and &lt;a href="http://msdn.microsoft.com/library/en-us/csref/html/vclrfas.asp"&gt;as&lt;/a&gt; operators. You can use the &lt;code&gt;is&lt;/code&gt; method to test whether an object implements an interface, and you can use the &lt;code&gt;as &lt;/code&gt; operator to return a reference to that interface.&lt;/p&gt;
+
+
+	&lt;p&gt;I use Reflection to enumerate all of the interfaces of a class and bake in all of those interface references by recording the &lt;a href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemruntimetypehandleclasstopic.asp"&gt;RuntimeTypeHandle&lt;/a&gt; for each one of the interfaces. This approach gives me superior performance  since I avoid using Reflection on all but the first call to the &lt;code&gt;is&lt;/code&gt; or &lt;code&gt;as&lt;/code&gt; methods of a type.&lt;/p&gt;
+
+
+	&lt;p&gt;The ultimate goal is that &lt;code&gt;is&lt;/code&gt; and &lt;code&gt;as&lt;/code&gt; will match the semantics of &lt;code&gt;is&lt;/code&gt; and &lt;code&gt;as&lt;/code&gt; in C#. Currently I&amp;#8217;m missing support for the boxing and unboxing scenarios as well as the super-type scenario.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the unit test for the &lt;code&gt;is&lt;/code&gt; method:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_is
+  m = System::Data::DataSet.new
+  assert m.is?(System::Data::DataSet)
+  assert m.is?(IComponent)
+  assert m.is?(IDisposable)
+  assert m.is?(IServiceProvider)
+  assert m.is?(IListSource)
+  assert m.is?(System::Xml::Serialization::IXmlSerializable)
+  assert m.is?(ISupportInitializeNotification)
+  assert m.is?(ISupportInitialize)
+  assert m.is?(System::Runtime::Serialization::ISerializable)
+  assert !m.is?(System::Data::IColumnMapping)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;and a simpler test for the &lt;code&gt;as&lt;/code&gt; method:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_as
+  a = ArrayList.new
+  a.add(1)
+  e = a.as(IEnumerable).get_enumerator.as(IEnumerator)
+  assert e.move_next
+  assert 1, e.current
+  assert !e.move_next
+  assert_equal nil, a.as(IComponent)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Mon, 27 Feb 2006 20:14:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/27/interfaces-and-rubyclr"&gt;Interfaces and RubyCLR&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/27/interfaces-and-rubyclr"&gt;Interfaces and RubyCLR&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

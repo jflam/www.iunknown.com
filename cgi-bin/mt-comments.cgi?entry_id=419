@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Security is hard</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Security is hard</div>
+
+
+<div class="comments-body">
+<p>Although I agree with Ian in that I wouldn't add an application server layer solely on security grounds, if an application server is present it should enforce security in order to contribute to "defence in depth", as Robert says. That way, when your web server admin and DBA both have a bad day, the app server might just save you.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://blogs.geekdojo.net/pdbartlett">Paul Bartlett</a> at February 26, 2004 04:29 AM</span>
+</div>
+<div class="comments-body">
+<p>Ian and I have been having discussions about this in private, but it seems that it needs to become public now.  His post talks about SQL Server, but I deal with Oracle for my current project.  So much of Oracle forces you to stored open information, including client tools, on the server.  There are ways around this, of course, on the same box, but there can be limitations to what to what you are allowed to do.</p>
+
+<p>As Sam has stated, and I will state more clearly, it also depends on your business needs.  If you are required to use multiple boxes (because of distributed access, as Ian points out), then you take advantage of what's also available.  That was the meaning of my post, and apparently it is taken to mean something completely different.</p>
+
+<p>Yes, security is hard, and it does pay to make it simple.  I am a firm believer in NOT doing "security by obscurity".  John, and Ian, all I ask is you read the full context rather than pick and choose.  I will make it more clear shortly, though.</p>
+
+<p>Thanks.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://weblogs.asp.net/rhurlbut">Robert Hurlbut</a> at February 26, 2004 08:26 AM</span>
+</div>
+<div class="comments-body">
+<p>The fundamental problem is this: if I can lure your application server to do anything that the web server can do it doesn't really matter. I'll post a more detailed set of thoughts about this later on today.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 26, 2004 10:30 AM</span>
+</div>
+<div class="comments-body">
+<p>John, I appreciate your further thoughts on this.  Also, if you would, please address your current thoughts on Partial Trust ASP.NET pages as I also have that in mind as write secure sandboxed applications.  Thanks, Robert</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://weblogs.asp.net/rhurlbut">Robert Hurlbut</a> at February 26, 2004 12:04 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the feedback, John.  Security is tough - I agree.  Unfortunately, it's even harder to talk on it for 6+ hours and interpret every question from a large group 100% correctly, while hitting every audience from the very beginners to the advanced developers :)</p>
+
+<p>I agree there is no easy fix for security or a rogue administrator - but I disagree that there is nothing you can do to keep the data secret.  I remember this question clearly, so let me repeat my logic so I can understand where I went wrong.</p>
+
+<p>Administrators can not obtain a user's account information.  They can only reset it.  My suggestion was to load a user profile - then encrypt the data w/ that profile using the DPAPI + user store.  (You can have the system prompt you for the profile information, to prevent that from being stored on the system)</p>
+
+<p>While this is not a silver bullet - it does protect you in a few ways.  It prevents the admin from seeing the data.  If he/she deletes the profile they can't decrypt the data (yes, the data is lost at that point, but it hasn't been compromised).</p>
+
+<p>I'd love to learn from you what is missing in my logic.</p>
+
+<p>Side note: I do make a point to differentiate answers for which I am positive from those where I'm brainstorming, but I will take your feedback to heart that I need to make that distinction more clear.  Thanks again and look forward to the response.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.paul.bz/">Paul Murphy</a> at February 26, 2004 10:59 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for writing in, Paul. I think you have excellent speaking skills. However, it is also OK to admit when you don't know the answer. I suspect that I've been doing the speaking in front of large crowds thing for longer than you and I get stumped as well. It's just NOT OK to present information as the answer if you're not 100% sure.</p>
+
+<p>For details on this issue, see my later post on this - http://www.iunknown.com/000423.html.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 27, 2004 07:53 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks John - I do try to admit when I don't know, but I honestly thought I had a good idea there! :)  I totally agree - there is ALWAYS a way around, but to tell a developer there is nothing he/she can do to help keep the data secret is not the right approach.  Taking protective measures will help in 99% of the cases - for the remaining 1% where a rogue admin installs some type of spying software or snoops data before it gets sent encrypted, of course - they can see it.  I just don't think we should throw our hands up and say, ah.. oh well we can't make it 100% so lets not do anything at all.  I'm sure you see my point - and I totally see yours.  Thanks again for the suggestions, we'll have to meet up next time I'm in Toronto (or you're in Redmond)!  Paul</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.paul.bz/">Paul Murphy</a> at February 27, 2004 12:11 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

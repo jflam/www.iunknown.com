@@ -1,0 +1,1161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: October 2003 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2003_09.html" title="September 2003" />
+
+<link rel="next" href="http://www.iunknown.com/2003_11.html" title="November 2003" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2003_09.html">&laquo; September 2003</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2003_11.html">November 2003 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000368"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/112"
+    dc:title="NX: No execute coming in Win XP SP2"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000368"
+    dc:subject="Blog"
+    dc:description="Scoble just posted a link to the Developer&apos;s View of Windows XP SP2. It&apos;s worth reading the section on the new memory protection features in SP2, specifically the No-Execute (NX) flag. It requires hardware support from the CPU, specifically the..."
+    dc:creator="John"
+    dc:date="2003-10-31T14:42:56-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 31, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000368"></a>
+<h3 class="title">NX: No execute coming in Win XP SP2</h3>
+
+<p><a href="http://radio.weblogs.com/0001011/2003/10/31.html#a5248">Scoble</a> just posted a link to the <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnwxp/html/securityinxpsp2.asp">Developer's View of Windows <span class="caps">XP SP2</span></a>. It's worth reading the section on the new memory protection features in <span class="caps">SP2,</span> specifically the No-Execute (NX) flag. It requires hardware support from the <span class="caps">CPU,</span> specifically the ability to set a no-execute flag on each virtual page. This would effectively make it impossible to execute code that was injected via a buffer overrun attack on a data page. Currently the only <span class="caps">CPU</span>'s that implement this feature are <span class="caps">AMD</span>'s K8 and Intel Itanium processors, but "it is expected that future 32 and 64-bit processors will provide execution protection. Microsoft is preparing for and encouraging this trend by supporting execution protection in its flagship Windows operating systems."</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000368.html">02:42 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=368" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=368" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000367"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/111"
+    dc:title="Diff between v1.1 and v1.2 of Frameworks"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000367"
+    dc:subject="Blog"
+    dc:description="I just uploaded the output of my AssemblyDiff tool This zip file contains a diff of all of the types in the System*.dll assemblies between V1.l and V1.2 (Whidbey) frameworks (note that mscorlib is omitted). I hope this helps get..."
+    dc:creator="John"
+    dc:date="2003-10-30T00:23:17-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 30, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000367"></a>
+<h3 class="title">Diff between v1.1 and v1.2 of Frameworks</h3>
+
+<p>I just uploaded the output of my <a href="http://www.iunknown.com/000364.html">AssemblyDiff tool</a></p>
+
+<p>This <a href="http://www.iunknown.com/Files/diff.zip">zip file</a> contains a diff of all of the types in the System*.dll assemblies between V1.l and <span class="caps">V1.2 </span>(Whidbey) frameworks (note that mscorlib is omitted). I hope this helps get folks up to speed on the differences between the framework versions.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000367.html">12:23 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=367" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=367" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000366"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/110"
+    dc:title="Top 5 Favorite Features in Whidbey"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000366"
+    dc:subject="Blog"
+    dc:description="So far, and in no particular order, these are my top five favorite features in VS.NET Whidbey: Refactoring support in C#, especially ExtractMethod() Word-wrap for both comments and code MSBuild file format for .proj files Intellisense support for generics WebBrowser..."
+    dc:creator="John"
+    dc:date="2003-10-28T15:17:13-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 28, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000366"></a>
+<h3 class="title">Top 5 Favorite Features in Whidbey</h3>
+
+<p>So far, and in no particular order, these are my top five favorite features in <span class="caps">VS.NET </span>Whidbey:</p>
+
+
+<ol>
+<li>Refactoring support in C#, especially ExtractMethod()</li>
+<li>Word-wrap for both comments and code</li>
+<li>MSBuild file format for .proj files</li>
+<li>Intellisense support for generics</li>
+<li>WebBrowser control built-in; no more <span class="caps">PIA</span> hell.</li>
+</ol>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000366.html">03:17 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=366" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=366" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000365"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/109"
+    dc:title="I am intrigued by ObjectSpaces"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000365"
+    dc:subject="Blog"
+    dc:description="Andy Hopper, who I&apos;ve talked to many times about code generation, seems to be enamored with ObjectSpaces. Andy claims (and I have no reason to disbelieve him) that it eliminates the need to code-gen object-relational mapping layers. This is very..."
+    dc:creator="John"
+    dc:date="2003-10-28T15:12:51-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000365"></a>
+<h3 class="title">I am intrigued by ObjectSpaces</h3>
+
+<p>Andy Hopper, who I've talked to many times about code generation, seems to be <a href="http://hoppersoft.com/Andy/PermaLink.aspx?guid=08a97ed0-415c-4413-b149-b63abcedd21f">enamored with ObjectSpaces</a>. Andy claims (and I have no reason to disbelieve him) that it eliminates the need to code-gen object-relational mapping layers. This is very interesting to me, since it removes some of the low-hanging fruit from <a href="http://www.iunknown.com/000153.html">code generation motivation</a>.</p>
+
+<p>It's time for me to dig into ObjectSpaces. I've been spending most of my Whidbey time on MSBuild, but now it's time to check out something new. More on this soon.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000365.html">03:12 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=365" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=365" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000364"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/108"
+    dc:title="What&apos;s new in the Whidbey Frameworks?"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000364"
+    dc:subject="Blog"
+    dc:description="I spent yesterday writing a small utility that will diff two different sets of assemblies. So, if you&apos;re at the PDC, you can calculate the diff between V1.1 and V1.2 of the Frameworks. This can very rapidly give you a..."
+    dc:creator="John"
+    dc:date="2003-10-28T15:05:25-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000364"></a>
+<h3 class="title">What's new in the Whidbey Frameworks?</h3>
+
+<p>I spent yesterday writing a small utility that will diff two different sets of assemblies. So, if you're at the <span class="caps">PDC,</span> you can calculate the diff between <span class="caps">V1.1</span> and <span class="caps">V1.2</span> of the Frameworks. This can very rapidly give you a heads up about what has been added / removed / changed in the frameworks. </p>
+
+<p>This is a rather different utility than most that you've likely run across. It is a utility that is implemented as a set of MSBuild tasks. There are two custom tasks that I implemented. The first will take a set of assemblies and dump the names of all of their types to a flat text file. The second will shell out to diff.exe (a <span class="caps">GNU</span>Win32 tool) to calculate the actual difference file.</p>
+
+<p>To run the utility, you need to:</p>
+
+
+<ol>
+<li>Download and <a href="http://www.iunknown.com/Files/AssemblyDiff.zip">unzip the files</a></li>
+<li>Download and install the <a href="http://gnuwin32.sourceforge.net/packages/diffutils.htm"><span class="caps">GNU</span>Win32 diffutils</a> if you don't have them installed already.</li>
+<li>Navigate to the <code>AssemblyDiff\Test</code> directory</li>
+<li>Run <code>moveit.cmd</code>, which will copy <code>core.dll</code> and <code>tasks.dll</code> to your <span class="caps">V1.2 </span>Frameworks directory (<code>\Windows\Microsoft.Net\Frameworks\V1.2.30703\</code> on my computer).</li>
+<li>Type <code>msbuild</code> on the command prompt.</li>
+<li>Examine the generated <code>diff.txt</code> file in the directory.</li>
+</ol>
+
+<p>I am also writing a special edition of <a href="http://www.iunknown.com/000358.html">Practical Eye for the .NET Guy</a> that will cover MSBuild in detail. Make sure that you register now for this newsletter! Folks that register will receive advance notice of this special issue before I post an announcement on my blog.</p>
+
+<p>In the meantime, enjoy the utility. Feedback and comments are more than welcome!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000364.html">03:05 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=364" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=364" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000363"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/107"
+    dc:title="First chapter of Brent&apos;s book"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000363"
+    dc:subject="Blog"
+    dc:description="The first chapter of Brent&apos;s book is now up on MSDN...."
+    dc:creator="John"
+    dc:date="2003-10-28T14:46:29-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000363"></a>
+<h3 class="title">First chapter of Brent's book</h3>
+
+<p>The first chapter of <a href="http://msdn.microsoft.com/longhorn/understanding/books/default.aspx?pull=/library/en-us/dnintlong/html/longhornintrotoc.asp">Brent's book</a> is now up on <span class="caps">MSDN. </span></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000363.html">02:46 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=363" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=363" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000362"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/106"
+    dc:title="Brent Rector rocks!"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000362"
+    dc:subject="Blog"
+    dc:description="Hopefully all of you who are attending the PDC are now holding a copy of Brent Rector&apos;s Developers&apos; Guide to Longhorn in your hands. Brent was kind enough to send me a soft copy of his book, so I got..."
+    dc:creator="John"
+    dc:date="2003-10-27T15:48:14-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 27, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000362"></a>
+<h3 class="title">Brent Rector rocks!</h3>
+
+<p>Hopefully all of you who are attending the <span class="caps">PDC</span> are now holding a copy of <a href="http://www.wiseowl.com">Brent Rector's</a> Developers' Guide to Longhorn in your hands. Brent was kind enough to send me a soft copy of his book, so I got to read some fun stuff from our old Essential <span class="caps">COM</span> days back at DevelopMentor that didn't make it past the editors (they just don't get it, do they, Brent?) </p>
+
+<p>This is an <em>excellent</em> book. Brent delivers a very clear and organized introduction to the vast <span class="caps">API</span> space of Longhorn. There's detailed coverage of <span class="caps">XAML, MS</span>Build, WinFS, data binding, Indigo. Hopefully <span class="caps">MS </span>Press will fast-track this book so that folks who couldn't make it to the <span class="caps">PDC</span> can get up to speed quickly on Longhorn.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000362.html">03:48 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=362" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=362" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000361"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/105"
+    dc:title="Practical Eye for the .NET Guy and the PDC"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000361"
+    dc:subject="Blog"
+    dc:description="Thanks to everyone who&apos;s downloaded (and hopefully read :) the first issue of Practical Eye for the .NET Guy. A big thanks to everyone who wrote in and linked to the newsletter. The response has been overwhelming - 3,000+ downloads..."
+    dc:creator="John"
+    dc:date="2003-10-26T10:42:07-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 26, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000361"></a>
+<h3 class="title">Practical Eye for the .NET Guy and the PDC</h3>
+
+<p>Thanks to everyone who's downloaded (and hopefully read :) the <a href="http://www.iunknown.com/Files/Practical_Eye_Issue1.pdf">first issue of Practical Eye for the .NET Guy</a>. A big thanks to everyone who wrote in and linked to the newsletter. The response has been overwhelming - 3,000+ downloads and counting!</p>
+
+<p>I'm hard at work on the second issue of Practical Eye. I'd really like to ship it sometime during the <span class="caps">PDC,</span> but I also really want to make sure it's a solid issue. Right now it's 50-50 whether I ship it next week. Note that I do plan on keeping this as a monthly newsletter, but the announcements at the <span class="caps">PDC</span> make me want to write about stuff sooner rather than later.</p>
+
+<p>If you're going to be at the <span class="caps">PDC, I </span><em>highly</em> recommend that you attend <a href="http://mymsevents.com/MyMSEvents/search.aspx?s=1&amp;keywords=&amp;keywordtype=3&amp;track=103&amp;speaker=46136&amp;timeslot=0&amp;catFast+Tracks=0&amp;future=0&amp;submit=Search+Now%21">Alex Kipman's session on MSBuild</a>. Alex's talk will give you a heads-up on what's coming in the next issue of the newsletter. Hint, hint ... :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000361.html">10:42 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=361" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=361" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000360"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/104"
+    dc:title="Some hints for y&apos;all at the PDC"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000360"
+    dc:subject="Blog"
+    dc:description="I am so bummed that I can&apos;t be there with y&apos;all this year. My new family has to come first, so I&apos;m staying at home this week. I&apos;m living vicariously through your blog entries, so keep them coming! Here&apos;s a..."
+    dc:creator="John"
+    dc:date="2003-10-26T10:24:40-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000360"></a>
+<h3 class="title">Some hints for y'all at the PDC</h3>
+
+<p>I am <em>so</em> bummed that I can't be there with y'all this year. My new family has to come first, so I'm staying at home this week. I'm living vicariously through your blog entries, so keep them coming! Here's a few tips for the software that you'll be receiving in your goodie bags today/tomorrow:</p>
+
+<p>First, make sure that you have a copy of VMWare / Virtual PC installed. You should have a fresh copy of WinXP / Win2K3 setup already as a baseline image. You should install the Whidbey bits onto that <span class="caps">VM. </span>If you're using VMWare, you should change the VM preferences so that <span class="caps">CTRL</span>-ALT-SHIFT is the VMWare hotkey (it defaults to <span class="caps">CTRL</span>-ALT). This is particularly useful since the VMWare hotkey sequence is also part of the key sequence&Acirc;&nbsp;that brings up online help in <span class="caps">VS.NET </span>(e.g. <span class="caps">CTRL</span>-ALT-F2 for the Index). You'll be <em>much</em> more productive once you have that up and running. Also remember that to login you'll need to type <span class="caps">CTRL</span>-ALT-SHIFT-INSERT to send a <span class="caps">CTRL</span>-ALT-DEL to VMWare.</p>
+
+<p>Next, if you're planning on installing the Longhorn build, you'll be generally better off installing it onto a separate partition on the fastest computer (and fastest video card) that you have. I'd highly recommend a minimum of 64MB <span class="caps">VRAM</span> on your video card. This is also generally the biggest baddest video card that you can get on a laptop these days. You'll be even better off just buying another <span class="caps">HDD</span> for your laptop and swapping it in and out to run <span class="caps">LH. </span>There are also widespread reports of LH running on Virtual <span class="caps">PC,</span> but you won't get the full experience if you run it in a <span class="caps">VM.</span></p>
+
+<p>Finally, you'll probably be wondering what has changed between version 1.1 and 1.2 of the frameworks. I'll be posting a little app here tomorrow that will show you the differences. It's written using 1.2, so you'll need to have those bits installed to run it.</p>
+
+<p>Enjoy yourselves!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000360.html">10:24 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=360" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=360" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000359"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/103"
+    dc:title="Extreme Programming with Ant"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000359"
+    dc:subject="Books"
+    dc:description=" This is a book with a story to tell, and it does a great job telling it. It introduces Ant and a whole suite of open-source tools: XDoclet, JUnit, JContract, Jalopy among others. It follows the story of a..."
+    dc:creator="John"
+    dc:date="2003-10-21T16:27:14-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 21, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000359"></a>
+<h3 class="title">Extreme Programming with Ant</h3>
+
+<p><iframe marginwidth="0" marginheight="0" width="120" height="150" scrolling="no" frameborder="0" src="http://rcm.amazon.com/e/cm?o=1&amp;l=as1&amp;f=ifr&amp;t=iunknowncom-20&amp;p=6&amp;asins=0672325624&amp;lt1=_blank"><MAP NAME="boxmap-p6"><AREA SHAPE="RECT" COORDS="1, 140, 83, 150" HREF="http://rcm.amazon.com/e/cm/privacy-policy.html?o=1" ><AREA COORDS="0,0,10000,10000" HREF="http://www.amazon.com/exec/obidos/redirect-home/iunknowncom-20" ></MAP><img src="http://rcm-images.amazon.com/images/G/01/rcm/120x150.gif" width="120" height="150" border="0" usemap="#boxmap-p6" alt="Shop at Amazon.com"></iframe></p>
+
+<p>This is a book with a story to tell, and it does a great job telling it. It introduces Ant and a whole suite of open-source tools: XDoclet, JUnit, JContract, Jalopy among others. It follows the story of a fictional company called Networks Byte Design and its team of developers as they incrementally build their own software assembly line. Each section of the book introduces the problem in the form of a story, and then proceeds to explain how to solve it using the tools that are introduced in that section. Highly recommended for anyone who is interested in software assembly lines in general, and not just for those who are implementing them in Java.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000359.html">04:27 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=359" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=359" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000358"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/102"
+    dc:title="Practical Eye for the .NET Guy"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000358"
+    dc:subject="Blog"
+    dc:description=" I&apos;m happy to announce the publication of the first issue of my newsletter, Practical Eye for the .NET Guy. The newsletter will cover practical issues that every .NET developer is bound to run across. In the inaugural issue of..."
+    dc:creator="John"
+    dc:date="2003-10-21T16:08:46-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000358"></a>
+<h3 class="title">Practical Eye for the .NET Guy</h3>
+
+<p><img src="Files/Practical_Eye_Logo.gif" alt="" /> </p>
+
+<p>I'm happy to announce the publication of the first issue of my newsletter, <a href="http://www.iunknown.com/Files/Practical_Eye_Issue1.pdf">Practical Eye for the .NET Guy</a>. The newsletter will cover practical issues that every .NET developer is bound to run across. </p>
+
+<p>In the inaugural issue of Practical Eye for the .NET Guy, find out why a week with a group of Programmable Logic Controller developers changed the way I think about the importance of build scripts in your software. You will also find a Practical Developers' Guide to NAnt, which will get you writing your first NAnt build scripts within 30 minutes or your money back!</p>
+
+<p>You can subscribe to Practical Eye for the .NET Guy using the sidebar on my weblog at <a href="http://www.iunknown.com">http://www.iunknown.com</a>. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000358.html">04:08 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=358" onclick="OpenComments(this.href); return false">Comments (13)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=358" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000357"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/101"
+    dc:title="Accelerating Acrobat Reader"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000357"
+    dc:subject="Blog"
+    dc:description="Sanjay has one of the best blogs out there. Definitely one of the highest signal-to-noise ratio blogs that there is. His recent entry on making Acrobat Reader 6.0 load faster was no exception. Make sure you follow the steps on..."
+    dc:creator="John"
+    dc:date="2003-10-21T11:51:08-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000357"></a>
+<h3 class="title">Accelerating Acrobat Reader</h3>
+
+<p><a href="http://sastools.com/b2/">Sanjay</a> has one of the best blogs out there. Definitely one of the highest signal-to-noise ratio blogs that there is.</p>
+
+<p>His recent entry on <a href="http://sastools.com/b2/post/79394202">making Acrobat Reader 6.0 load faster</a> was no exception. Make sure you follow the steps on his blog. The load time for Acrobat on my <span class="caps">T23</span> is essentially instantaneous after I followed Sanjay's instructions for disabling most of the Acrobat Reader plug-ins.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000357.html">11:51 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=357" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=357" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000356"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/100"
+    dc:title="In defense of PDF ..."
+    dc:identifier="http://www.iunknown.com/2003_10.html#000356"
+    dc:subject="Blog"
+    dc:description="Wow. I sure touched a nerve with my previous post on what I think blog entries should be. In reality, what I wanted to do was throw out the idea of using PDF as a way of controlling the format..."
+    dc:creator="John"
+    dc:date="2003-10-21T11:36:58-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000356"></a>
+<h3 class="title">In defense of PDF ...</h3>
+
+<p>Wow. I sure touched a nerve with my previous post on <a href="http://www.iunknown.com/000352.html">what I think blog entries should be</a>. In reality, what I wanted to do was throw out the idea of using <span class="caps">PDF</span> as a way of controlling the format for longer blog pieces.</p>
+
+<p>Jon Flanders, an old friend from my time at <a href="http://www.develop.com">DevelopMentor</a>, sent in a link to a Jakob Nielson article on <a href="http://www.useit.com/alertbox/20010610.html">avoiding <span class="caps">PDF</span> for on-screen reading</a>. It's an interesting piece, and reflects much of the frustration that folks have with the current state of <span class="caps">PDF</span> on web sites today.</p>
+
+<p>I'm about to launch a newsletter later today that will be distributed in <span class="caps">PDF</span> form. Here are my reasons why I chose <span class="caps">PDF</span> as the medium:</p>
+
+
+<ol>
+<li>I like to read my content one page at a time, much like I would in a traditional book or magazine. </li>
+<li>I want to include some formatting in my newsletter to help increase the readability of my content. </li>
+<li>I want the entire article to be available without additional roundtrips to the server. I hate articles that force me to read pages one at a time, but require a roundtrip to the server to retrieve the next page (almost all of the professional news/review sites are like this). </li>
+<li>I want the content to be available offline for folks who want to read that way. I find that I tend to carve out reading time when my laptop is not connected to a network somewhere.</li>
+<li>I want folks to be able to meet the above requirements and still be able to forward my newsletter around as an email attachment. This can only be accomplished if all of the content resides in a single file.</li>
+</ol>
+
+<p>To me, <span class="caps">PDF</span> is the only medium that meets all of these requirements. And as long as I format my content so that it can be easily read on-screen (respecting the <a href="http://www.iunknown.com/000343.html">4:3 layout</a> of most monitors and using a double-column layout) I think I won't upset too many people. You'll find out later on this afternoon, I promise. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000356.html">11:36 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=356" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=356" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000354"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/98"
+    dc:title="Java Development with Ant"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000354"
+    dc:subject="Books"
+    dc:description=" Steve Loughran and Erik Hatcher wrote what I consider to be the definitive guide to Ant. This is a book that is designed to be definitive, and is full of technical details about writing effective Ant scripts. The authors..."
+    dc:creator="John"
+    dc:date="2003-10-19T16:17:22-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 19, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000354"></a>
+<h3 class="title">Java Development with Ant</h3>
+
+<p><iframe marginwidth="0" marginheight="0" width="120" height="240" scrolling="no" frameborder="0" src="http://rcm.amazon.com/e/cm?o=1&amp;l=as1&amp;f=ifr&amp;t=iunknowncom-20&amp;p=8&amp;asins=1930110588&amp;IS2=1&amp;lt1=_blank"><MAP NAME="boxmap-p8"><AREA SHAPE="RECT" COORDS="14, 200, 103, 207" HREF="http://rcm.amazon.com/e/cm/privacy-policy.html?o=1" ><AREA COORDS="0,0,10000,10000" HREF="http://www.amazon.com/exec/obidos/redirect-home/iunknowncom-20" ></MAP><img src="http://rcm-images.amazon.com/images/G/01/rcm/120x240.gif" width="120" height="240" border="0" usemap="#boxmap-p8" alt="Shop at Amazon.com"></iframe>    </p>
+
+<p><a href="http://www.iseran.com/Steve/">Steve Loughran</a> and Erik Hatcher wrote what I consider to be the definitive guide to Ant. This is a book that is designed to be definitive, and is full of technical details about writing effective Ant scripts. The authors spend a fair amount of time discussing deployment issues as well. Most other books treat Ant as a build tool, which it is, but automating the deployment process is arguably just as important as building your application. There are also a number of excellent stories in this book about the authors' real-world experience in using Ant in production environments. Highly recommended.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000354.html">04:17 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=354" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=354" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000353"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/97"
+    dc:title="Presenting to Win: The Art of Telling Your Story"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000353"
+    dc:subject="Books"
+    dc:description=" It is very hard to tell a good story. If you tell a good story, both you and your audience win. If you tell a bad story, you have just wasted everybody&apos;s time. This book is by far the..."
+    dc:creator="John"
+    dc:date="2003-10-19T15:38:16-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000353"></a>
+<h3 class="title">Presenting to Win: The Art of Telling Your Story</h3>
+
+<p><iframe marginwidth="0" marginheight="0" width="120" height="240" scrolling="no" frameborder="0" src="http://rcm.amazon.com/e/cm?o=1&amp;l=as1&amp;f=ifr&amp;t=iunknowncom-20&amp;p=8&amp;asins=0130464139&amp;IS2=1&amp;lt1=_blank"><MAP NAME="boxmap-p8"><AREA SHAPE="RECT" COORDS="14, 200, 103, 207" HREF="http://rcm.amazon.com/e/cm/privacy-policy.html?o=1" ><AREA COORDS="0,0,10000,10000" HREF="http://www.amazon.com/exec/obidos/redirect-home/iunknowncom-20" ></MAP><img src="http://rcm-images.amazon.com/images/G/01/rcm/120x240.gif" width="120" height="240" border="0" usemap="#boxmap-p8" alt="Shop at Amazon.com"></iframe></p>
+
+<p>It is very hard to tell a good story. If you tell a good story, both you and your audience win. If you tell a bad story, you have just wasted everybody's time. This book is by far the best book that I have ever read on how to tell a story (a.k.a. make an effective presentation). It focuses on how to tell a story to an audience. Specifically, how to motivate your audience (what's in it for them?), how to capture their attention, how to organize your ideas, and how to structure your presentation materials (both text and graphics). </p>
+
+<p>If you give presentations, you <em>need</em> this book. It has totally changed the way I approach writing presentations.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000353.html">03:38 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=353" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=353" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000352"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/96"
+    dc:title="What should blog entries be?"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000352"
+    dc:subject="Blog"
+    dc:description="<![CDATA[I've written some fairly long (1000+ word) pieces on my blog. I've seen other folks long pieces on their blogs as well (cbrumme's blog is the best example of this).&Acirc;&nbsp;I'm now convinced that blogs are horrible for long entries. Entries...]]>"
+    dc:creator="John"
+    dc:date="2003-10-17T18:27:16-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 17, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000352"></a>
+<h3 class="title">What should blog entries be?</h3>
+
+<p>I've written <a href="http://www.iunknown.com/000153.html">some</a> <a href="http://www.iunknown.com/000078.html">fairly</a> <a href="http://www.iunknown.com/000062.html">long</a> (1000+ word) pieces on my blog. I've seen other folks long pieces on their blogs as well (<a href="http://blogs.gotdotnet.com/cbrumme/">cbrumme's blog</a> is the best example of this).&Acirc;&nbsp;I'm now convinced that blogs are <em>horrible</em> for long entries. Entries should be one or two paragraphs long with some links. That's it. Longer essay-style pieces belong in a different medium. </p>
+
+<p>My vote is for <span class="caps">PDF</span> docs that are formatted for on-screen reading. This means acknowledging that folks hate scrolling and that 99.99% of the population have their monitor setup in landscape mode. Comments?</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000352.html">06:27 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=352" onclick="OpenComments(this.href); return false">Comments (10)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=352" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000351"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/95"
+    dc:title="Quote of the day"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000351"
+    dc:subject="Blog"
+    dc:description="&quot;A complex system that does not work is invariably found to have evolved from a simpler system that worked just fine.&quot; - Murphy&apos;s Law of Computing..."
+    dc:creator="John"
+    dc:date="2003-10-16T14:52:39-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 16, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000351"></a>
+<h3 class="title">Quote of the day</h3>
+
+<p>"A complex system that does not work is invariably found to have evolved from a simpler system that worked just fine." -- Murphy's Law of Computing</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000351.html">02:52 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=351" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=351" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000350"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/94"
+    dc:title="Acronis MigrateEasy 6.0 rocks!"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000350"
+    dc:subject="Blog"
+    dc:description="Thanks a ton to Sanjay who wrote a comment regarding my VMWare 4.0 pain. He suggested that I use Ghost to copy my existing partition to a new VMWare virtual disk that is sized larger than my original. Unfortunately, my..."
+    dc:creator="John"
+    dc:date="2003-10-15T12:21:57-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 15, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000350"></a>
+<h3 class="title">Acronis MigrateEasy 6.0 rocks!</h3>
+
+<p>Thanks a ton to <a href="http://sastools.com/b2/">Sanjay</a> who wrote a comment regarding my VMWare 4.0 pain. He suggested that I use Ghost to copy my existing partition to a new VMWare virtual disk that is sized larger than my original. Unfortunately, my existing copy of Ghost (2001) won't run on <span class="caps">XP,</span> so I took a look around the web. I recalled that <a href="http://hurcane.homelinux.net/mt-archives/000005.html">hurcane</a> wrote a glowing review of <a href="http://www.acronis.com/products/migrateeasy/">Acronis MigrateEasy 6.0</a> so I bought a copy. In less than 15 minutes, I migrated my 4GB partition over to a new VMWare 20GB partition. It's a totally wizard-driven install and the defaults work perfectly. What an awesome piece of software!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000350.html">12:21 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=350" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=350" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000349"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/93"
+    dc:title="Feeling some VMWare 4.0 pain"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000349"
+    dc:subject="Blog"
+    dc:description="Some time ago, I prepared a Win XP &quot;baseline image&quot; for VMWare 4.0 Workstation. I was under the impression that VMWare 4.0 disks started small and grew as you used them. This is true. But an ugly problem rears its..."
+    dc:creator="John"
+    dc:date="2003-10-15T00:10:02-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000349"></a>
+<h3 class="title">Feeling some VMWare 4.0 pain</h3>
+
+<p>Some time ago, I prepared a Win <span class="caps">XP </span>"baseline image" for VMWare 4.0 Workstation. I was under the impression that VMWare 4.0 disks started small and grew as you used them. This is true. But an ugly problem rears its head if you accepted the defaults when you created a new <span class="caps">VM </span>- the disk is set to a 4GB size limit <span class="caps">AND YOU CANNOT CHANGE THIS AFTER THE FACT</span>! &Acirc;&nbsp;</p>
+
+<p>So the moral of the story is to set a ridiculously large disk size when creating a new <span class="caps">VM </span>(128GB for <span class="caps">IDE</span> drives) so you can never run out of disk space (although you are obviously limited by the size of your physical <span class="caps">HDD</span>). </p>
+
+<p>I am so not looking forward to creating yet another Win XP baseline image.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000349.html">12:10 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=349" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=349" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000348"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/92"
+    dc:title="A sobering look at CS research"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000348"
+    dc:subject="Blog"
+    dc:description="Rob Pike at Bell Labs in a paper called Systems Software Research is Irrelevant. [via Todd Proebsting]...."
+    dc:creator="John"
+    dc:date="2003-10-14T22:45:50-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 14, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000348"></a>
+<h3 class="title">A sobering look at CS research</h3>
+
+<p>Rob Pike at Bell Labs in a paper called <a href="http://www.cs.bell-labs.com/who/rob/utah2000.pdf">Systems Software Research is Irrelevant</a>. [via <a href="http://research.microsoft.com/~toddpro/">Todd Proebsting</a>].</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000348.html">10:45 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=348" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=348" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000347"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/91"
+    dc:title="Two and a half weeks"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000347"
+    dc:subject="Blog"
+    dc:description="Wow. I can&apos;t believe that it&apos;s been two and a half weeks since Matthew arrived. Here are a few observations from a new dad: He&apos;s really alert for a few minutes at a time. I&apos;ve seen him studying my glasses..."
+    dc:creator="John"
+    dc:date="2003-10-11T15:35:55-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 11, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000347"></a>
+<h3 class="title">Two and a half weeks</h3>
+
+<p>Wow. I can't believe that it's been two and a half weeks since Matthew arrived. Here are a few observations from a new dad:</p>
+
+
+<ol>
+<li>He's really alert for a few minutes at a time. I've seen him studying my glasses when I've been holding him up near my face.</li>
+<li>Baby Bjorn rules! A friend gave us her <a href="http://www.amazon.com/exec/obidos/tg/detail/-/B000058DM5/qid=1065889646/sr=8-2/ref=sr_8_2/002-2094339-4356868?v=glance&amp;s=baby&amp;n=507846">Baby Bjorn baby carrier</a> (thanks, Nat!) and I've been using it a lot recently. It settles him down very quickly, and it lets me get a lot of household stuff done as well.</li>
+<li>Baby congestion really sucks. We've had to use saline + snot sucker a few times to clear things up. Having him sleep in his car seat also helps as well.</li>
+<li>When your son is breastfeeding son, it's hard to feel particularly useful. I've dealt with this problem by assuming the domestic duties + hunter / gatherer role. I regularly go out and restock various supplies that baby and parents need to continue to function. </li>
+</ol>
+
+<p>Thanks again to everyone who wrote in. Quite a lot of the tips came in very useful in the first few weeks. I kid you not when I say that we got over 20 pages of advice from readers of my blog! You guys (and gals) rule!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000347.html">03:35 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=347" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=347" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000346"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/90"
+    dc:title="VB.NET and NAnt gotcha"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000346"
+    dc:subject="Blog"
+    dc:description="Today, I wanted to add some VB.NET code to an existing solution where all of the other projects were written using C#. I had a working NAnt build script for this solution, so I thought it would be a piece..."
+    dc:creator="John"
+    dc:date="2003-10-09T22:32:59-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 09, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000346"></a>
+<h3 class="title">VB.NET and NAnt gotcha</h3>
+
+<p>Today, I wanted to add some <span class="caps">VB.NET</span> code to an existing solution where all of the other projects were written using C#. I had a working NAnt build script for this solution, so I thought it would be a piece of cake to add a target to my build script to build my <span class="caps">VB.NET</span> assembly. Boy was I wrong. An hour later, I figured out the answer.</p>
+
+<p><span class="caps">VB.NET</span> does a couple of things to make your life easier. First, it imports a number of commonly used namespaces on a project-wide basis. On my computer, <span class="caps">VB.NET</span> automatically imports the following namespaces: <code>Microsoft.VisualBasic</code>, <code>System</code>, <code>System.Collections</code>, <code>System.Data</code>, <code>System.Diagnostics</code>. Second, it assigns a "root namespace" to all types defined in the assembly. The "root namespace" defaults to the name of the project. You can see these settings under Project|Properties in Visual Studio .Net. The interesting tabs are Common Properties|General and Common Properties|Improts.</p>
+
+<p>While these are nice features which save you time, it can really make a mess of your NAnt build scripts which don't have the same set of default imports. Fortunately, the <code>vbc</code> task in NAnt defines attributes that you can use to define these settings. The first is the <code>imports</code> attribute where you can add the appropriate default namespace imports, as shown below:</p>
+
+<p>&lt;vbc ... imports="Microsoft.VisualBasic, System"/&gt;</p>
+
+<p>The second is the <code>rootnamespace</code> attribute where you can define the default namespace for the project, as shown below:</p>
+
+<p>&lt;vbc ... rootnamespace="MySolution.MyProject"/&gt;</p>
+
+<p>I hope this saves someone else out there some time.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000346.html">10:32 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=346" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=346" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000345"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/89"
+    dc:title="Stefan Bodewig on understanding open source licenses"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000345"
+    dc:subject="Blog"
+    dc:description="The NAnt community is contemplating changing the license of NAnt to a less restrictive license (it&apos;s currently GPL). As part of some of the discussions on the mailing list, Stevan Bodewig (a long-time Ant contributor and member of the Apache..."
+    dc:creator="John"
+    dc:date="2003-10-09T10:33:32-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000345"></a>
+<h3 class="title">Stefan Bodewig on understanding open source licenses</h3>
+
+<p>The NAnt community is contemplating changing the license of NAnt to a less restrictive license (it's currently <span class="caps">GPL</span>). As part of some of the discussions on the mailing list, <a href="http://jakarta.apache.org/~bodewig/">Stevan Bodewig</a> (a long-time Ant contributor and member of the Apache Software Foundation) chimed in with his analysis of the differences between the major licensing models: <span class="caps">MIT, BSD, ASL,</span> and <span class="caps">GPL. </span>Enjoy.</p>
+
+<blockquote>Trying to chime in with a bit of experience from seeing project migrate to the <span class="caps">ASF.</span>
+
+<p>On Wed, 8 Oct 2003, Gert Driesen <gert.driesen@pandora.be> wrote:<br />
+&gt; From: "Clayton Harbour" <claytonharbour@sporadicism.com></p>
+
+<p>&gt;&gt; On another note you mentioned license changes, I have always been <br />
+&gt;&gt; curious how that works/ is accomplished?</p>
+
+<p>If you want to be really really save: Get all people who have ever contributed anything to your code to agree on changing the license with the next release.</p>
+
+<p>You cannot change the license for your older releases, they've already been out.  And the people who have contributed code still hold the copyright to it (even under US law <span class="caps">AFAIU</span>).</p>
+
+<p>Doing it with the next release also gives people who prefer the old license the opportunity to have a stable forking point.  They can pick up the code from before the license change and create a new project from there.</p>
+
+<p>&gt; I did have a quick look at the licensing stuff, and to me it seems <br />
+&gt; like a <span class="caps">BSD</span>-style license is the most open license ...</p>
+
+<p>I feel I should put a big disclaimer in before I proceed.  I'm a member of the Apache Software Foundation.  I am biased.  I'll try to be fair when comparing the licenses, but may very well fail to do so.</p>
+
+<p>All major open source licenses have their pros and cons.  The (L)GPL on the one side and the BSDish licenses on the other simply have a different focus.</p>
+
+<p>Behind the (L)GPL is the philosophy of Free Software as defined by the <span class="caps">FSF.  </span>It is a philosophy and a political manifesto that you can agree with or not.  The <span class="caps">GPL</span> has been crafted to enforce this vision.</p>
+
+<p>The <span class="caps">GPL</span> as well as BSDish licenses give their users the right to get the code for free and to modify it.  The <span class="caps">GPL</span> takes away the user's right to distribute the modified software under different licensing terms, and it does so because it wouldn't be "Free Software" anymore otherwise.</p>
+
+<p>If you have any problem with big companies making money with your software without giving anything back to you - the BSDish licenses are not for you.</p>
+
+<p>As for "most open", I'd say the <span class="caps">MIT</span> license<sup class="footnote"><a href="http://www.iunknown.com/000345.html#fn1">1</a></sup> probably is the winner here.  It basically says "do with this what you want, don't blame me".</p>
+
+<p>The <span class="caps">BSD</span> license<sup class="footnote"><a href="http://www.iunknown.com/000345.html#fn2">2</a></sup> adds one thing "don't advertize with my name, at least not without asking for permission".</p>
+
+<p>And the Apache Software License<sup class="footnote"><a href="http://www.iunknown.com/000345.html#fn3">3</a></sup> adds brand protection on top of this.  "Don't call your derived project like mine".</p>
+
+<p>Note that this brand protection is the part that makes the <span class="caps">FSF</span> claim the Apache Software License was incompatible with the <span class="caps">GPL </span>(i.e. a GPLed software must not include Apache licensed code).</p>
+
+<p>Footnotes: <br />
+<sup class="footnote"><a href="http://www.iunknown.com/000345.html#fn1">1</a></sup>  http://www.opensource.org/licenses/mit-license.php</p>
+
+<p>[2]  http://www.opensource.org/licenses/bsd-license.php</p>
+
+<p>[3]  http://www.opensource.org/licenses/apachepl.php</p>
+
+<p>The rest is my personal opinion, don't read on if you don't want to see that 8-)</p>
+
+<p>I for one don't agree with the <span class="caps">FSF</span>'s vision, I feed my children from money I get for writing commercial software and I don't feel bad about it.</p>
+
+<p>I enjoy writing software and giving it away for free as well - and if I contribute to a open source project that uses a BSDish license I get the additional benefit that I may use my own code (plus improvements made by others) for the commercial software I write.</p>
+
+<p>If a big company comes and takes my code, modifies it and redistributes it as a commercial product, this is no problem for me.<br />
+I don't believe in "free software", I believe in improved software and that the commercial company will realize that it is in their better interest to contribute their changes back instead of merging my changes with theirs over and over again over time.</p>
+
+Stefan<br />
+</blockquote>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000345.html">10:33 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=345" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=345" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000344"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/88"
+    dc:title="pslist and pskill to the rescue!"
+    dc:identifier="http://www.iunknown.com/2003_10.html#000344"
+    dc:subject="Blog"
+    dc:description="Occasionally, explorer.exe locks up hard on my desktop that&apos;s running Win XP Pro. This makes it hard to do virtually anything that uses a GUI, including using task manager to shut down the offending process. However, I ALWAYS have a..."
+    dc:creator="John"
+    dc:date="2003-10-02T17:26:19-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">October 02, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000344"></a>
+<h3 class="title">pslist and pskill to the rescue!</h3>
+
+<p>Occasionally, explorer.exe locks up hard on my desktop that's running Win <span class="caps">XP </span>Pro. This makes it hard to do virtually anything that uses a <span class="caps">GUI,</span> including using task manager to shut down the offending process. However, <span class="caps">I ALWAYS</span> have a console window up, which uses a completely different <span class="caps">UI. </span>Therefore, it is immune to lockups caused by a badly behaving explorer.exe process. </p>
+
+<p>If this happens to you, there are two utilities from <a href="http://www.sysinternals.com">SysInternals</a> that come to the rescue: pslist and pskill. pslist lets you view a list of all running processes on your system, and pskill lets you kill a selected process. pskill even lets you kill named processes, so you can type "pskill explorer", and it will kill all named instances. These utilities also run just fine on a non-admin account :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000344.html">05:26 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=344" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=344" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_10.html#000343"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/87"
+    dc:title="The magic ratio 4:3 "
+    dc:identifier="http://www.iunknown.com/2003_10.html#000343"
+    dc:subject="Blog"
+    dc:description="I&apos;ve been thinking about writing a newsletter for quite some time now. There is one thing that has really frustrated me about everybody else&apos;s newsletters (and web sites - this one included). They are designed based on the assumption that..."
+    dc:creator="John"
+    dc:date="2003-10-02T17:20:33-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000343"></a>
+<h3 class="title">The magic ratio 4:3 </h3>
+
+<p>I've been thinking about writing a newsletter for quite some time now. There is one thing that has really frustrated me about everybody else's newsletters (and web sites - this one included). They are designed based on the <em>assumption</em> that you have a portrait monitor (e.g. 3:4). Now, almost nobody has a monitor oriented this way, which explains why many web sites look rather goofy when viewed maximized on a 4:3 monitor. Most news sites, like the <a href="http://www.nytimes.com">New York Times</a> look like they were designed to be printed out, not viewed on a monitor.</p>
+
+<p>I'm publicly vowing now that any newsletter I produce will be designed so that folks can easily view the document on a monitor, as well as preserving the option to print it out.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000343.html">05:20 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=343" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=343" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

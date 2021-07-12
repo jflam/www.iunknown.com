@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Ruby.NET is out in Beta form</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/171/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/06/20/ruby-net-is-out-in-beta-form" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:43-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:dc83d92115afa85cb7d65a4fa9ac0ded</id>
+    <published>2006-06-20T02:54:00-07:00</published>
+    <updated>2006-08-21T15:55:43-07:00</updated>
+    <title type="html">Ruby.NET is out in Beta form</title>
+    <link href="http://www.iunknown.com/articles/2006/06/20/ruby-net-is-out-in-beta-form" rel="alternate" type="text/html"/>
+    <category term="links" scheme="http://www.iunknown.com/articles/category/links" label="Props"/>
+    <summary type="html">&lt;p&gt;Today&amp;#8217;s a good day of you&amp;#8217;re a .NET developer and want to use Ruby. Wayne Kelly of the Queensland University of Technology has announced the first public beta of their native &lt;a href="http://plas.fit.qut.edu.au/Ruby.NET/"&gt;Ruby .NET compiler&lt;/a&gt; that generates verifiable &lt;span class="caps"&gt;CIL&lt;/span&gt;!&lt;/p&gt;
+
+
+	&lt;p&gt;I just ran their unit tests here. No attempt to interop with .NET libraries appears to be enabled in this release, but it definitely compiles a non-trivial chunk of the Ruby language. Here&amp;#8217;s a sample:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class IterTest
+  def initialize(e); @body = e; end
+
+  def each0(&amp;#38;block); @body.each(&amp;#38;block); end
+  def each1(&amp;#38;block); @body.each {|*x| block.call(*x) } end
+  def each2(&amp;#38;block); @body.each {|*x| block.call(x) } end
+  def each3(&amp;#38;block); @body.each {|x| block.call(*x) } end
+  def each4(&amp;#38;block); @body.each {|x| block.call(x) } end
+  def each5; @body.each {|*x| yield(*x) } end
+  def each6; @body.each {|*x| yield(x) } end
+  def each7; @body.each {|x| yield(*x) } end
+  def each8; @body.each {|x| yield(x) } end
+
+  def f(a)
+    a
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;</summary>
+    <content type="html">&lt;p&gt;Today&amp;#8217;s a good day of you&amp;#8217;re a .NET developer and want to use Ruby. Wayne Kelly of the Queensland University of Technology has announced the first public beta of their native &lt;a href="http://plas.fit.qut.edu.au/Ruby.NET/"&gt;Ruby .NET compiler&lt;/a&gt; that generates verifiable &lt;span class="caps"&gt;CIL&lt;/span&gt;!&lt;/p&gt;
+
+
+	&lt;p&gt;I just ran their unit tests here. No attempt to interop with .NET libraries appears to be enabled in this release, but it definitely compiles a non-trivial chunk of the Ruby language. Here&amp;#8217;s a sample:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class IterTest
+  def initialize(e); @body = e; end
+
+  def each0(&amp;#38;block); @body.each(&amp;#38;block); end
+  def each1(&amp;#38;block); @body.each {|*x| block.call(*x) } end
+  def each2(&amp;#38;block); @body.each {|*x| block.call(x) } end
+  def each3(&amp;#38;block); @body.each {|x| block.call(*x) } end
+  def each4(&amp;#38;block); @body.each {|x| block.call(x) } end
+  def each5; @body.each {|*x| yield(*x) } end
+  def each6; @body.each {|*x| yield(x) } end
+  def each7; @body.each {|x| yield(*x) } end
+  def each8; @body.each {|x| yield(x) } end
+
+  def f(a)
+    a
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Richard Hein</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-21T21:31:57-07:00</published>
+    <updated>2006-08-21T19:05:17-07:00</updated>
+    <title type="html">Comment on Ruby.NET is out in Beta form by Richard Hein</title>
+    <link href="http://www.iunknown.com/articles/2006/06/20/ruby-net-is-out-in-beta-form#comment-543" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Wow!  That's great news!  I'd love to give  it a try.&lt;/p&gt;</content>
+  </entry>
+</feed>

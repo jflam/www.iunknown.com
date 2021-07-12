@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Hello, World using DynamicMethods</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Hello, World using DynamicMethods" by jlam</title>
+      <description>&lt;p&gt;My &lt;a href="http://www.iunknown.com/articles/2005/10/26/building-bridges"&gt;Ruby bridge&lt;/a&gt; makes extensive use of the new &lt;code&gt;DynamicMethod&lt;/code&gt; API in .NET 2.0. Here&amp;#8217;s a simple example that I showed in my talk at &lt;a href="http://www.iunknown.com/articles/2005/12/02/ruby-and-winfx-in-kitchener"&gt;CTTDNUG&lt;/a&gt;, that demonstrates how you can write &amp;#8220;Hello, World&amp;#8221; out to the console when someone clicks on a button on a Windows Forms app:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+private void Form1_Load(object sender, EventArgs e) {
+  Type[] parameters = new Type[] { typeof(object), typeof(EventArgs) };
+  Module module = Assembly.GetExecutingAssembly().GetModules()[0];
+  DynamicMethod method = new DynamicMethod(String.Empty, typeof(void), 
+                             parameters, module);
+
+  ILGenerator g = method.GetILGenerator();
+  Type console = typeof(System.Console);
+  Type[] p = new Type[] { typeof(string) };
+  MethodInfo writeLine = console.GetMethod("WriteLine", p);
+
+  g.Emit(OpCodes.Ldstr, "Hello, World");
+  g.Emit(OpCodes.Call, writeLine);
+  g.Emit(OpCodes.Ret);
+
+  button1.Click += (EventHandler)method.CreateDelegate(typeof(EventHandler));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Fri, 02 Dec 2005 10:17:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/02/hello-world-using-dynamicmethods"&gt;Hello, World using DynamicMethods&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/02/hello-world-using-dynamicmethods"&gt;Hello, World using DynamicMethods&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Some more TiBook observations</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Some more TiBook observations</div>
+
+
+<div class="comments-body">
+<p>To run the menus via the keyboard, go to the System Preferences, choose Keyboard, go to the "Full Keyboard Access" tab, and check "Turn on full keyboard access." Then you have your choice of control key combinations; either function keys or alpha.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;dewaynec at cox dot net">Dewayne Christensen</a> at December 31, 2002 10:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks Dewayne! Do you know how I can assign a custom function key from these settings? I want (ctrl) F11 to bring up the menu, but I can't reassign the key using the dialog, even though the instructions in the dialog claim that I can do this.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  1, 2003 12:14 PM</span>
+</div>
+<div class="comments-body">
+<p>Hopefully a couple of notes to help with your switch!<br />
+Jaguar's boot time is much better than previous versions of Mac OS X, but it's still a little slow (add in a notebook HDD that's generally slower than desktop varieties and it doesn't make things better). Just do what I do...never shutdown! I hardly ever actually shutdown my machine. It sleeps a lot; I log out occasionally, but why do I really need to shut it down?<br />
+I've had mixed success with Entourage X and Exchange as well. As long as you're running Exchange 5.5 SP3+ and have full IMAP support enabled, it should work. I just ended up switching to Apple's Mail program and it works just great with our Exchange environment. Now if Apple can only crack the code to let iCal talk to my Exchange calendar, life will be great!<br />
+I've never really had a problem with Mac OS X's font smoothing since I hate seeing anti-aliased fonts below 12pt.<br />
+As for monitor gammas, most Mac folks stick to the standard gamma. Remember, it's PCs that are wrong  Apps like Photoshop let you preview images with either gamma setting.<br />
+iPhoto is great; SMB support works great except that I can't get the Finder to remember my passwords since all of our corporate shares are hidden (they end with the dollar sign).<br />
+Have a great time with your TiBook...Apple should be providing us with some interesting developments for 2003!</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://homepage.mac.com/cgervais/blog">Chris Gervais</a> at January  1, 2003 03:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks, Chris! I never shutdown my T23 either, and surprisingly I'm now finding that OS X reboots faster than it did before.<br />
+Thanks for sharing your knowledge. Your comments have really helped in my transition.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  2, 2003 11:23 AM</span>
+</div>
+<div class="comments-body">
+<p>I just tried setting the menu key to Ctl+F11 and it worked fine here. I'm still running 10.2; haven't put on the 10.2.3 update yet. I just chose "Custom Keys" from the drop down, highlighted the "menu" field, pressed F11, quit prefs and it worked, so I don't know what to tell you.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;dewaynec at cox dot net">Dewayne Christensen</a> at January  2, 2003 08:01 PM</span>
+</div>
+<div class="comments-body">
+<p>Just loaded 10.2.3, and Ctl+F11 still works here.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;dewaynec at cox dot net">Dewayne Christensen</a> at January  2, 2003 11:10 PM</span>
+</div>
+<div class="comments-body">
+<p>It was my fault  Silly me, I'm STILL getting used to having to press the fn key on my TiBook to get the F11 key.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  2, 2003 11:38 PM</span>
+</div>
+<div class="comments-body">
+<p>What I see is that you are using microsoft stuff all over the place. Try to imagine your apple computer without beeing able to use any MS technologie on it. Would you still be that happy with ? So, if the differences comes from the MS side, what does justify the move ?</p>
+<span class="comments-post">Posted by <a href="mailto&#58;knipjo&#64;hotmail&#46;com">Jonx</a> at January 20, 2003 07:48 AM</span>
+</div>
+<div class="comments-body">
+<p>I don't categorize technology as "MS" and "non-MS". I find that it doesn't make sense to accept or reject software simply because it comes from any particular vendor. If the software happens to fit the bill, then I use it. e.g. why use anything other than Photoshop for imaging?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January 21, 2003 06:04 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,<br />
+Just got my new TBook and I'm in love. I just got the same problems as you with Entourage. It's so bad not being able to use it. Would you please inform me in the future if you find a way of making it work with exchange server?<br />
+Thanks Pal,</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.dieselmarketing.com">Martin Gauthier</a> at February 11, 2003 01:33 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

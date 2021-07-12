@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Leaky abstractions and macro languages</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000476.html" title="Guess Who's Back?" />
+
+<link rel="next" href="http://www.iunknown.com/000478.html" title="NAnt target inheritance" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000477.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/221"
+    dc:title="Leaky abstractions and macro languages"
+    dc:identifier="http://www.iunknown.com/000477.html"
+    dc:subject="Blog"
+    dc:description="I&apos;ve been working rather extensively with TeX/LaTeX/ConTeXt over the past couple of weeks. For the uninitiated, this is an extremely powerful desktop typesetting system that&apos;s been under development for over 25 years. Donald Knuth implemented the core TeX (pronounced &quot;tech&quot;)..."
+    dc:creator="John"
+    dc:date="2004-09-12T15:26:47-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000476.html">&laquo; Guess Who's Back?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000478.html">NAnt target inheritance &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">September 12, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Leaky abstractions and macro languages</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>I've been working rather extensively with TeX/LaTeX/ConTeXt over the past couple of weeks. For the uninitiated, this is an extremely powerful desktop typesetting system that's been under development for over 25 years. Donald Knuth implemented the core TeX (pronounced "tech") system that defines low-level typesetting commands and algorithms. Leslie Lamport implemented LaTeX, which is a set of macros that layer on top of TeX, and Hans Hagen implemented ConTeXt, which is a competing set of macros that layer on top of TeX.</p>
+
+<p>I chose to work initially in LaTeX to avoid the complexities of dealing directly with TeX. In other words, I chose an abstraction over the core technology. In this way, I feel very much like a VB programmer who chose to use an abstraction (VB) that layers on top of the core technology (Win32) as opposed to say a C/C++ programmer who chose to speak directly to the underlying <span class="caps">API.</span></p>
+
+<p>There are certainly pros and cons to this approach. I was able to get a document produced very rapidly using LaTeX. However, my "hello, world" documents had very little relation to the documents that I really wanted to produce - a set of courseware for my company, <a href="http://www.objectsharp.com">ObjectSharp</a>. My requirements didn't fit into the abstractions defined by a couple of standard set of macro packages that I experimented with: the ubiquitous <code>book</code> class and the more powerful <code>memoir</code> class.  </p>
+
+<p>So I decided to look further. After a bit of digging in the TeX distribution that I used, <a href="http://www.miktex.org">MikTeX</a>, I discovered <a href="http://www.pragma-ade.com/">ConTeXt</a>. The sample documents (see the manuals) created under ConTeXt were beautiful - far better than most of the other macro packages that I had seen. So I decided to give ConTeXt a try even though I had already adapted my publishing system to generate LaTeX macros.</p>
+
+<p>At first everything worked quite nicely. Then I wanted to do something simple that I had avoided while working with LaTeX: switch fonts. Fonts are something that neither LaTeX nor ConTeXt do a good job at defining an abstraction for. This led to two very pain-filled days where I attempted to wrestle with the TeX font system. The documentation is sparse, and at times misleading. There are many steps that must be followed precisely otherwise nothing works. </p>
+
+<p>After many attempts and late nights, I finally have the magic incantation that allowed me to import arbitrary PostScript and TrueType fonts that I wanted to use to define the typefaces for my documents. But I still have no idea what I'm doing.</p>
+
+<p>The abstraction that LaTeX and ConTeXt try to present to you is <a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">leaky, like all non-trivial abstractions</a>. I don't have the time required to study the underlying technology (TeX) that they attempt to abstract - I need to get my publishing system working so that I can go back to my real job - creating content. And I'll take all sorts of shortcuts to try and get me there faster.</p>
+
+<p>My experience with TeX/LaTeX/ConTeXt has given me far more appreciation for the typical day of a VB programmer. They need to understand just enough of the technology to get their jobs done - which in the end involve modeling some sort of business process, and very little with the technology itself. </p>
+
+<p>My job at ObjectSharp is to reflect on my experiences learning a different technology and discover <em>why</em> certain elements caused me pain. When explaining .NET to students, I need to explain how the abstraction that they work with models the underlying technology. I need to explain to them how to figure out what's going on when something doesn't work as they expected it to. I need to tell them where to look for more information when they need to do something a little off the beaten path. </p>
+
+<p>That's the story that I would have loved to have heard about ConTeXt and TeX: how they relate to each other, a look at how TeX works, and details about the abstraction that ConTeXt layers over TeX. I would have loved to learn how to debug my scripts - instead of changing a parameter, recompiling and looking at the results. I would have loved to have some detailed documentation (or at least enough understanding to be able to make sense of the source code for the macros that weren't documented). </p>
+
+<p>One observation that I do take away from my experience is just how difficult it is to create a uniform <span class="caps">API</span> that responds predictably. ConTeXt is far better than LaTeX in this regard: it was developed as a single macro package and is far more uniform in its design than LaTeX.</p>
+
+<p>It also has an awful lot of documentation that ships with the standard distribution. While the quantity and presentation of the documentation is impressive, the story that it presents is awful. It's little more than a laundry list of features without anything to explain how the features tie together, or how those features are implemented on top of TeX. Furthermore, they don't provide source code for the manuals, which makes it very difficult to copy-paste-and-tweak the examples.</p>
+
+<p>But overall, I'm very impressed with what I can do with this technology. Hopefully our students will as well.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at September 12, 2004 03:26 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=477" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="477" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000477.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I've been recently taking a look at the new Publicon app from Wolfram Research (the guys who make Mathematica). It looks like it gives you all the power of TeX and LaTex without many of the formatting headaches (at least on my first pass). </p>
+
+<p>You may want to check it out too:<br />
+http://www.wolfram.com/products/publicon/</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://sastools.com/b2/">Sanjay</a> at September 12, 2004 09:49 PM</span>
+</div>
+<div class="comments-body">
+<p>That's why APIs should be usability tested just like applications.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.codinghorror.com/blog/">Jeff Atwood</a> at September 13, 2004 02:30 AM</span>
+</div>
+<div class="comments-body">
+<p>I took a quick glance at their webpage; What these guys need is an interaction designer. Lot of talk about how you can create professionally-looking documents with ConTeXt, but virtually no cue on *how*. Most of their documentation read like your average Microsoft whitepaper.<br />
+On the positive side though, the "This Way" magazine seems to be published with source code.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;roland&#64;ii&#46;uib&#46;no">Roland Kaufmann</a> at September 13, 2004 03:42 PM</span>
+</div>
+<div class="comments-body">
+<p>Roland: what's worse than the missing "how" (which is what I need right now) it's missing the "why". I also ran into a nasty dead-end using ConTeXt today and reverted to my existing LaTeX publishing system. One step forward, two steps back ... :(</p>
+
+<p>Sanjay: thanks for pointing out Publicon. It looks promising ...</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at September 13, 2004 10:32 PM</span>
+</div>
+<div class="comments-body">
+<p> You can also check some relevant pages in the field of... </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;johndoe7722&#64;come&#46;to"></a> at December  1, 2004 11:45 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="477" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

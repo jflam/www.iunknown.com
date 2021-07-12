@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Third Drop of RubyCLR</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/94/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:41-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:444f75168d28cb678a1d6a6d056161fa</id>
+    <published>2006-03-16T20:27:00-08:00</published>
+    <updated>2006-08-21T15:55:41-07:00</updated>
+    <title type="html">Third Drop of RubyCLR</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;This is the biggest release of RubyCLR yet. You can &lt;a href="http://www.iunknown.com/images/RubyCLR.zip"&gt;download it here&lt;/a&gt;. Here&amp;#8217;s a brief summary of RubyCLR as of this drop:&lt;/p&gt;
+
+
+	&lt;ul&gt;
+	&lt;li&gt;Reference .NET assemblies by assembly name or by filename &lt;/li&gt;
+		&lt;li&gt;Create and manipulate .NET reference and value types&lt;/li&gt;
+		&lt;li&gt;Automatically marshal .NET reference and value types to / from Ruby&lt;/li&gt;
+		&lt;li&gt;Dynamic generation of interop code using &lt;span class="caps"&gt;CIL&lt;/span&gt; instructions&lt;/li&gt;
+		&lt;li&gt;Create and manipulate generic .NET reference types&lt;/li&gt;
+		&lt;li&gt;Discover and consume .NET interfaces on a .NET object&lt;/li&gt;
+		&lt;li&gt;Implement .NET event handlers using Ruby blocks&lt;/li&gt;
+		&lt;li&gt;Map .NET member names to Ruby names (e.g. WordCount becomes word_count)&lt;/li&gt;
+		&lt;li&gt;Mix in Ruby Enumerable support for .NET IEnumerable types&lt;/li&gt;
+		&lt;li&gt;Dynamically access .NET &lt;span class="caps"&gt;XML&lt;/span&gt; documentation from irb (requires text/format &amp;#8211; to
+  make it work uncomment require in rubyclr.rb)&lt;/li&gt;
+	&lt;/ul&gt;
+
+
+	&lt;p&gt;There are several sample applications to show you what&amp;#8217;s possible:&lt;/p&gt;
+
+
+	&lt;ul&gt;
+	&lt;li&gt;&lt;strong&gt;GoogleCalc&lt;/strong&gt; lets you access Google&amp;#8217;s calculator from a rich client application&lt;/li&gt;
+		&lt;li&gt;&lt;strong&gt;RssReader&lt;/strong&gt; is a Windows Forms 2.0 &lt;span class="caps"&gt;RSS&lt;/span&gt; reader&lt;/li&gt;
+		&lt;li&gt;&lt;strong&gt;Math&lt;/strong&gt; is a Windows Presentation Foundation (aka Avalon) application that &lt;a href="http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon"&gt;renders math equations&lt;/a&gt; using a domain specific language&lt;/li&gt;
+	&lt;/ul&gt;
+
+
+	&lt;p&gt;The source code has been massively reorganized from the last drop. If you&amp;#8217;re using &lt;a href="http://www.activestate.com/komodo/"&gt;Komodo&lt;/a&gt; you&amp;#8217;ll find Komodo project files in this drop to make it easier to navigate the non C++ source code.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m going to be pretty busy for the next three weeks &lt;a href="http://www.objectsharp.com"&gt;doing work to pay the bills around here&lt;/a&gt;, so work is going to slow down quite a bit on the bridge. I hope this release is of sufficient quality to sustain y&amp;#8217;all for the next month or so. Let me know by email (jlam at this domain) if you have any reproducible showstopper bugs and I&amp;#8217;ll see what I can do to get a patch out the door.&lt;/p&gt;
+
+
+	&lt;p&gt;Enjoy!&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;This is the biggest release of RubyCLR yet. You can &lt;a href="http://www.iunknown.com/images/RubyCLR.zip"&gt;download it here&lt;/a&gt;. Here&amp;#8217;s a brief summary of RubyCLR as of this drop:&lt;/p&gt;
+
+
+	&lt;ul&gt;
+	&lt;li&gt;Reference .NET assemblies by assembly name or by filename &lt;/li&gt;
+		&lt;li&gt;Create and manipulate .NET reference and value types&lt;/li&gt;
+		&lt;li&gt;Automatically marshal .NET reference and value types to / from Ruby&lt;/li&gt;
+		&lt;li&gt;Dynamic generation of interop code using &lt;span class="caps"&gt;CIL&lt;/span&gt; instructions&lt;/li&gt;
+		&lt;li&gt;Create and manipulate generic .NET reference types&lt;/li&gt;
+		&lt;li&gt;Discover and consume .NET interfaces on a .NET object&lt;/li&gt;
+		&lt;li&gt;Implement .NET event handlers using Ruby blocks&lt;/li&gt;
+		&lt;li&gt;Map .NET member names to Ruby names (e.g. WordCount becomes word_count)&lt;/li&gt;
+		&lt;li&gt;Mix in Ruby Enumerable support for .NET IEnumerable types&lt;/li&gt;
+		&lt;li&gt;Dynamically access .NET &lt;span class="caps"&gt;XML&lt;/span&gt; documentation from irb (requires text/format &amp;#8211; to
+  make it work uncomment require in rubyclr.rb)&lt;/li&gt;
+	&lt;/ul&gt;
+
+
+	&lt;p&gt;There are several sample applications to show you what&amp;#8217;s possible:&lt;/p&gt;
+
+
+	&lt;ul&gt;
+	&lt;li&gt;&lt;strong&gt;GoogleCalc&lt;/strong&gt; lets you access Google&amp;#8217;s calculator from a rich client application&lt;/li&gt;
+		&lt;li&gt;&lt;strong&gt;RssReader&lt;/strong&gt; is a Windows Forms 2.0 &lt;span class="caps"&gt;RSS&lt;/span&gt; reader&lt;/li&gt;
+		&lt;li&gt;&lt;strong&gt;Math&lt;/strong&gt; is a Windows Presentation Foundation (aka Avalon) application that &lt;a href="http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon"&gt;renders math equations&lt;/a&gt; using a domain specific language&lt;/li&gt;
+	&lt;/ul&gt;
+
+
+	&lt;p&gt;The source code has been massively reorganized from the last drop. If you&amp;#8217;re using &lt;a href="http://www.activestate.com/komodo/"&gt;Komodo&lt;/a&gt; you&amp;#8217;ll find Komodo project files in this drop to make it easier to navigate the non C++ source code.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m going to be pretty busy for the next three weeks &lt;a href="http://www.objectsharp.com"&gt;doing work to pay the bills around here&lt;/a&gt;, so work is going to slow down quite a bit on the bridge. I hope this release is of sufficient quality to sustain y&amp;#8217;all for the next month or so. Let me know by email (jlam at this domain) if you have any reproducible showstopper bugs and I&amp;#8217;ll see what I can do to get a patch out the door.&lt;/p&gt;
+
+
+	&lt;p&gt;Enjoy!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>praca</name>
+    </author>
+    <id>urn:uuid:f0c5be66-10c9-466b-8a02-c80b8024be6c</id>
+    <published>2006-12-08T01:48:15-08:00</published>
+    <updated>2006-12-11T10:47:42-08:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by praca</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-1344" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;yeah link ain't work;/&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>csikung</name>
+    </author>
+    <id>urn:uuid:fcb56bff-89a0-458f-af98-4a1e32fb42eb</id>
+    <published>2006-12-06T02:53:06-08:00</published>
+    <updated>2006-12-11T10:47:45-08:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by csikung</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-1336" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thanks for the bugreport. Fucking spammers:(&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>csikung (chi kung, qigong)</name>
+    </author>
+    <id>urn:uuid:dd6dc710-a269-4a43-a802-72821d979eaa</id>
+    <published>2006-11-20T15:00:12-08:00</published>
+    <updated>2006-12-06T03:39:09-08:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by csikung (chi kung, qigong)</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-1259" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Me too:(&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John</name>
+    </author>
+    <id>urn:uuid:a13e1554-74e0-486f-8484-7713537c2e61</id>
+    <published>2006-10-20T08:14:24-07:00</published>
+    <updated>2006-10-22T07:41:05-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by John</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-1146" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Broken link...&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>anubhav_kuhad@yahoo.com</name>
+    </author>
+    <id>urn:uuid:bda4f728-586d-4505-baa4-589d022bd6ef</id>
+    <published>2006-10-10T04:01:57-07:00</published>
+    <updated>2006-10-10T19:04:05-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by anubhav_kuhad@yahoo.com</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-1126" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;hi,
+I am not able to download RubyCLR.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-04-04T22:47:07-07:00</published>
+    <updated>2006-08-21T19:08:05-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-421" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I took a closer look at one of the samples (MesaBounce.cs) and it appears that you have to derive a new class from CsGL.Basecode.Model and override some virtual methods (like Draw). Unfortunately, RubyCLR does not support deriving new Ruby classes from CLR base classes. Is there some other way of implementing the OpenGL code so that you don't have to derive from a library base class?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-04-04T20:17:45-07:00</published>
+    <updated>2006-08-21T19:08:27-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-420" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I didn't know anything about CsGL before your post. I downloaded it and did a quick import of the wrapper lib and that worked. But since I don't know anything about CsGL I'll have to take a look at the samples to see if I can get it up and running.&lt;/p&gt;
+
+&lt;p&gt;Cool examwork project :)&lt;/p&gt;
+
+&lt;p&gt;Feel free to contact me direct via jlam at this domain about your project. This could make for yet another cool demo for the next release of the bridge.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>gudski</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-04-04T09:44:09-07:00</published>
+    <updated>2006-08-21T19:08:26-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by gudski</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-419" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hi&lt;/p&gt;
+
+&lt;p&gt;Is there someway possible to interact with Tao's opengl or CsGL in RubyCLR, I have tried to import the libs but it doesn't work. Is it because they are built for .net 1.x?
+I tested another bridge, which is for .net 1.x but it didn't work to import the libs there either.
+What I need is to use OpenGL with .net forms (in ruby using rubyclr, for my examwork)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-30T11:06:41-08:00</published>
+    <updated>2006-08-21T19:08:24-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-417" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thanks for the bug report. I'm happy to see that the CLR is localizing strings correctly. Now I just have to figure out how to localize that string in Ruby :)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>scoopr</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-30T03:14:19-08:00</published>
+    <updated>2006-08-21T19:08:23-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by scoopr</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-416" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I'm impressed with your work, good job!
+Just one note, I ran the testsuite, and got one failure:
+test&lt;em&gt;say&lt;/em&gt;hello(RubyMethodTests) [./tests_rbdynamicmethod.rb:73]:    &amp;lt;"Hello, World, int = 1, float = 3.14159"&gt; expected but was         &amp;lt;"Hello, World, int = 1, float = 3,14159"&gt;.                         &lt;/p&gt;
+
+&lt;p&gt;That is, in my locale, decimal point is different than in your tests. Not a big deal though.&lt;/p&gt;
+
+&lt;p&gt;Still waiting for a proper project page to follow though =)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-28T23:23:14-08:00</published>
+    <updated>2006-08-21T19:08:20-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-413" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Ah, a bit of history. &lt;/p&gt;
+
+&lt;p&gt;The saltypickle bridge was OK, but not particularly interesting due to their socket implementation which resulted in awful performance. Thomas Sondergaard's rubydotnet bridge was &lt;em&gt;far&lt;/em&gt; superior, and was a major source of inspiration for the first version of my bridge (which was never publicly released). &lt;/p&gt;
+
+&lt;p&gt;RubyCLR is much, much faster than either of these bridges (Thomas used Reflection to invoke, and RubyCLR uses dynamically generated CIL shims). There are also a lot of additional features in RubyCLR which makes it far more natural to use (such as mapping method names like GetCount to get_count).&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Edwin King</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-28T12:16:18-08:00</published>
+    <updated>2006-08-21T19:08:30-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by Edwin King</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-412" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Are you familiar with the Ruby/.Net bridge from &lt;a href="http://www.saltypickle.com/rubydotnet"&gt;http://www.saltypickle.com/rubydotnet&lt;/a&gt;  ?&lt;/p&gt;
+
+&lt;p&gt;I've used it some in the past for stubs and generators for component/integration testing with good success (not without issues though).&lt;/p&gt;
+
+&lt;p&gt;I'll be checking out your RubyCLR soon...&lt;/p&gt;
+
+&lt;p&gt;regards.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-20T13:52:55-08:00</published>
+    <updated>2006-08-21T19:08:26-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-408" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Yes I have - I've chatted with both John Gough and Wayne Kelly at OOPSLA. There are some really hairy technical challenges that they have to overcome so that's likely why you haven't seen anything out of them quite yet. But they're smart guys- I'm looking forward to seeing what comes out of their group.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Jason Bock</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-20T10:15:45-08:00</published>
+    <updated>2006-08-21T19:08:25-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by Jason Bock</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-407" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;John,&lt;/p&gt;
+
+&lt;p&gt;Did you see this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.plas.fit.qut.edu.au/rubynet/"&gt;http://www.plas.fit.qut.edu.au/rubynet/&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-17T13:17:30-08:00</published>
+    <updated>2006-08-21T19:08:24-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-406" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Jason - it only works with .NET 2.0 - there are no dependencies on Visual Studio itself. &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Justin</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-17T12:48:13-08:00</published>
+    <updated>2006-08-21T19:08:23-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by Justin</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-405" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Sweet! I am real excited to dig into this.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Jason Cartwright</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-17T12:45:00-08:00</published>
+    <updated>2006-08-21T19:08:22-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by Jason Cartwright</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-404" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;This looks very interesting. I haven't followed the development up to this point so forgive me if this is an ignorant question... does RubyCLR only work in VS '05?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Eirik</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-03-17T03:36:02-08:00</published>
+    <updated>2006-08-21T19:08:21-07:00</updated>
+    <title type="html">Comment on Third Drop of RubyCLR by Eirik</title>
+    <link href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr#comment-403" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thank you! :-) &lt;/p&gt;</content>
+  </entry>
+</feed>

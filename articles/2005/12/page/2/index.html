@@ -1,0 +1,942 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/LessIsBetter" />
+  <script src="/javascripts/cookies.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1156231406" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/application.css?1164503575" media="all" rel="Stylesheet" type="text/css" />
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Less is better</a></span></h1>
+    <h2>John Lam on software</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <div class="atomentry" id="article-37">
+  <h2 class="title">
+    <a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod">Second drop of RbDynamicMethod</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-10T01:56:00-08:00"><span class="typo_date" title="Sat, 10 Dec 2005 09:56:00 GMT">Sat, 10 Dec 2005 09:56:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">another drop</a> of my <code>RbDynamicMethod</code> library. Lots of things have changed since the <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">first drop</a>:</p>
+
+
+	<ul>
+	<li>It now handles generic type references correctly (although it does <strong>not</strong> handle generic method references yet). </li>
+		<li>There are a lot more tests in this drop, and major improvements in error reporting. </li>
+		<li>The syntax is a bit cleaner than before, with liberal uses of Ruby symbols where appropriate.</li>
+	</ul>
+
+
+	<p>Once again, comments and feedback are encouraged.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod#comments">no comments</a>,
+      <a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/37/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/37/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/10/second-drop-of-rbdynamicmethod">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/10/second-drop-of-rbdynamicmethod;title=Second drop of RbDynamicMethod">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-36">
+  <h2 class="title">
+    <a href="/articles/2005/12/09/generics-and-rbdynamicmethod">Generics and RbDynamicMethod</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-09T16:23:00-08:00"><span class="typo_date" title="Sat, 10 Dec 2005 00:23:00 GMT">Sat, 10 Dec 2005 00:23:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I added some features today to <code>RbDynamicMethod</code> to support the use of generics on <span class="caps">CLR 2</span>.0. To get a handle on the problem that I solved, let&#8217;s look at a simple C# example:</p>
+
+
+<pre><code>
+List&lt;String&gt; list = new List&lt;String&gt;();
+list.Add("one");
+list.Add("two");
+return String.Format("{0}, {1}", list[0], list[1]);
+</code></pre>
+
+	<p>Here&#8217;s the same code created using the .NET <code>DynamicMethod</code> API:</p>
+
+
+<pre><code>
+DynamicMethod m = new DynamicMethod(String.Empty, 
+  typeof(void), null, 
+  Assembly.GetExecutingAssembly().GetModules()[0]);
+
+ILGenerator g = m.GetILGenerator();
+Type listType = Type.GetType("System.Collections.Generic.List`1[System.String]");
+
+ConstructorInfo ci = listType.GetConstructor(new Type[] { });
+MethodInfo add = listType.GetMethod("Add", new Type[] {typeof(string)});
+MethodInfo get_Item = listType.GetMethod("get_Item", new Type[] {typeof(Int32)});
+
+Type console = Type.GetType("System.Console");
+MethodInfo writeLine = console.GetMethod("WriteLine", 
+  new Type[] {typeof(string), typeof(object), typeof(object)});
+
+LocalBuilder list = g.DeclareLocal(listType);
+
+g.Emit(OpCodes.Newobj, ci);
+g.Emit(OpCodes.Stloc_S, list);
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldstr, "one");
+g.Emit(OpCodes.Callvirt, add);
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldstr, "two");
+g.Emit(OpCodes.Callvirt, add);
+
+g.Emit(OpCodes.Ldstr, "{0}, {1}");
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldc_I4_0);
+g.Emit(OpCodes.Callvirt, get_Item);
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldc_I4_1);
+g.Emit(OpCodes.Callvirt, get_Item);
+
+g.Emit(OpCodes.Call, writeLine);
+g.Emit(OpCodes.Ret);
+
+CallVoidMethod d = (CallVoidMethod)m.CreateDelegate(typeof(CallVoidMethod));
+</code></pre>
+
+	<p>You&#8217;ll notice the non-trivial amount of book-keeping code that uses the <code>Reflection</code> API to lookup constructors, types, and methods. By comparison, the <span class="caps">CIL</span> generation code looks pretty clean, except for the annoying, repetitive &#8220;g.Emit(Opcodes.&#8221; text before each instruction.</p>
+
+
+	<p>Now, look at the same example written using <code>RbDynamicMethod</code>:</p>
+
+
+<pre><code>
+create_ruby_module_function(RbDynamicMethod, 'create_list_string') do
+  include   'System.Collections.Generic'
+  declare   'List&lt;String&gt;', :list
+  newobj    'List&lt;String&gt;()'
+  stloc_s   :list
+  ldloc_s   :list
+  ldstr     'one'
+  callvirt  'List&lt;String&gt;::Add(String)'
+  ldloc_s   :list
+  ldstr     'two'
+  callvirt  'List&lt;String&gt;::Add(String)'
+  ldstr     '{0}, {1}'
+  ldloc_s   :list
+  ldc_i4_0
+  callvirt  'List&lt;String&gt;::get_Item(Int32)'
+  ldloc_s   :list
+  ldc_i4_1
+  callvirt  'List&lt;String&gt;::get_Item(Int32)'
+  call      'static String::Format(String,Object,Object)'
+  call      'static Marshal::ToRubyString(String)'
+  ret
+end
+</code></pre>
+
+	<p>A few things have changed since <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">the first drop of the code</a> First, notice that the delimiter between a type name and a method name has changed from a . to a ::. Second, I&#8217;ve extended the type syntax to support generic types. Third, I now use Ruby symbols to represent variable and label names. Symbols are <a href="http://encyclopedia.thefreedictionary.com/String+intern+pool">interned strings</a> and can be recognized by their &#8217;:&#8217; prefix.</p>
+
+
+	<p>If you call <code>Assembly.GetType(String)</code> to find a generic type, you&#8217;ll immediately be struck by the rather obtuse syntax:</p>
+
+
+	<p><code>System.Collections.Generic.List`1[System.String]</code></p>
+
+
+	<p>Imagine typing that every time you wanted to reference a method on that type. Ugh. So I extended my code to search through namespaces that are in scope for that type, which yields the much more humane syntax:</p>
+
+
+	<p><code>List&lt;String&gt;</code></p>
+
+
+	<p>I&#8217;m going to write a few more test cases for this code tonight, but I think that this code is fairly feature complete now. Hopefully I&#8217;ll get another drop out tonight for folks who are interested in following along.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/09/generics-and-rbdynamicmethod#comments">no comments</a>,
+      <a href="/articles/2005/12/09/generics-and-rbdynamicmethod" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/36/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/36/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/09/generics-and-rbdynamicmethod">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/09/generics-and-rbdynamicmethod;title=Generics and RbDynamicMethod">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-35">
+  <h2 class="title">
+    <a href="/articles/2005/12/09/humane-interfaces">Humane interfaces</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-09T15:12:00-08:00"><span class="typo_date" title="Fri, 09 Dec 2005 23:12:00 GMT">Fri, 09 Dec 2005 23:12:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>After talking to some folks yesterday, I realized that there are a lot of people who likely drive by this blog, take a look at my <code>RbDynamicMethod</code> project and wonder if I&#8217;m out of my mind. Surely John can&#8217;t be advocating that we all go out and write <span class="caps">CIL</span> code using Ruby!</p>
+
+
+	<p>I&#8217;m really happy to see that at least <a href="http://www.dotnetjunkies.com/WebLog/anoras/archive/2005/12/07/134193.aspx">Anders Noras</a> gets the core idea behind why I&#8217;m creating <code>RbDynamicMethod</code> in the first place: I want to put a more <a href="http://martinfowler.com/bliki/HumaneInterface.html">humane interface</a> on top of the <code>DynamicMethod</code> API that was introduced in .NET 2.0. <code>RbDynamicMethod</code> will make it much easier for me to define the <span class="caps">CIL</span> shims that must be generated on the fly when some Ruby code wants to call some <span class="caps">CLR</span> code (and vice-versa).</p>
+
+
+	<p>I found after writing my first bridge entirely in managed C++ that it was just too difficult to see the <span class="caps">CIL</span> through all the code that was required to create it. And when the complexity of the shims went up (to deal with generic method overloading for example), I knew that it was time to hit the reset button.</p>
+
+
+	<p>I&#8217;m writing my first bits of <span class="caps">CIL</span> test code to interact with generic types in the <span class="caps">CLR</span> today. It&#8217;s forcing me to change things slightly in <code>RbDynamicMethod</code>, and I&#8217;ll post the results of those experiments shortly.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/09/humane-interfaces#comments">no comments</a>,
+      <a href="/articles/2005/12/09/humane-interfaces" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/35/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/35/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/09/humane-interfaces">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/09/humane-interfaces;title=Humane interfaces">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-34">
+  <h2 class="title">
+    <a href="/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes">Adding CIL instance methods to Ruby classes</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-07T15:26:00-08:00"><span class="typo_date" title="Wed, 07 Dec 2005 23:26:00 GMT">Wed, 07 Dec 2005 23:26:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I did a pretty major refactoring against the code that I <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">shipped last night</a> and streamlined the way data types were marshaled between Ruby and the <span class="caps">CLR</span>. Here&#8217;s a more concrete example of an <code>add</code> method implemented entirely in <span class="caps">CIL</span> that is attached to a Ruby <code>Calc</code> class:</p>
+
+
+<pre><code>
+class MarshalParametersToRubyTests &lt; Test::Unit::TestCase
+  include RbDynamicMethod
+
+  class Calc
+  end
+
+  def test_add
+    create_ruby_instance_method(Calc, 'add') do
+      declare  'Int32', 'x'
+      declare  'Int32', 'y'
+      ldarg_1
+      ldind_i4
+      call     'static Marshal.ToInt32(UInt32)'
+      stloc_s  'x'
+      ldarg_1
+      ldc_i4_4
+      add
+      ldind_i4
+      call     'static Marshal.ToInt32(UInt32)'
+      stloc_s  'y'
+      ldloc_s  'x'
+      ldloc_s  'y'
+      add
+      call     'static Marshal.ToRubyFixnum(Int32)'
+      ret
+    end
+    assert_equal 7, Calc.new.add(3, 4)
+  end
+end
+</code></pre>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes#comments">2 comments</a>,
+      <a href="/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/34/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/34/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes;title=Adding CIL instance methods to Ruby classes">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-33">
+  <h2 class="title">
+    <a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod">First Drop of RbDynamicMethod</a> 
+    <span class="comment_count">4</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-06T23:39:00-08:00"><span class="typo_date" title="Wed, 07 Dec 2005 07:39:00 GMT">Wed, 07 Dec 2005 07:39:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">a drop</a> of my <code>RbDynamicMethod</code> library. You&#8217;ll need to have some version of Visual C++ 2005 installed to compile it. I&#8217;ve supplied a <code>Rakefile</code>, so the build is pretty painless provided that you have <code>cl.exe</code> somewhere on your path.</p>
+
+
+	<p>All of the C++ code can be found in <code>RbDynamicMethod.h</code>. All of the Ruby code can be found in <code>Tests\ruby_dynamic_method.rb</code>. The documentation is in <code>Tests\tests.rb</code> :)</p>
+
+
+	<p>My most recent addition is a <code>create_safe_ruby_method</code> wrapper. It creates a method that is callable from Ruby, but wraps the entire user-defined block in an exception handler that traps nearly all<sup><a href="#fn1">1</a></sup> <span class="caps">CLR</span> exceptions and maps them to a Ruby <code>RuntimeError</code> exception.</p>
+
+
+	<p>Here&#8217;s a normal <code>create_ruby_method</code> from the unit tests. The weird <code>ldc_i4_4</code> instruction is required since this is a Ruby varargs method that has a <code>VALUE (int, VALUE*, VALUE)</code> signature, and I need to return a <code>Qnil</code> (integer value 4) from this method.</p>
+
+
+<pre><code>
+create_ruby_method('convert_clr_exception') do
+  try
+    ldstr    'error'
+    newobj   'Exception.ctor(String)'
+    throw_ex
+  catch_ex   'Exception'
+    call     'static ExceptionHelper.RaiseRubyException(Exception)'
+  end_try
+  ldc_i4_4
+  ret
+end
+</code></pre>
+
+	<p>Here&#8217;s the same method via <code>create_safe_ruby_method</code>, also from the unit tests:</p>
+
+
+<pre><code>
+create_safe_ruby_method('catch_clr_exception') do
+  ldstr    'error'
+  newobj   'Exception.ctor(String)'
+  throw_ex
+end
+</code></pre>
+
+	<p>Comments and suggestions would be greatly appreciated.</p>
+
+
+	<p>[1] My code catches exceptions that derive only from <code>Exception</code> whereas it&#8217;s possible to throw exceptions that derive from <code>Object</code>.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod#comments">4 comments</a>,
+      <a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/33/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/33/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/06/first-drop-of-rbdynamicmethod">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/06/first-drop-of-rbdynamicmethod;title=First Drop of RbDynamicMethod">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-32">
+  <h2 class="title">
+    <a href="/articles/2005/12/06/local-variable-declarations">Local variable declarations</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-06T00:06:00-08:00"><span class="typo_date" title="Tue, 06 Dec 2005 08:06:00 GMT">Tue, 06 Dec 2005 08:06:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I added unit tests to my Ruby <span class="caps">CIL DSL</span>, and did a refactoring pass tonight. I now handle named local variable declarations. I&#8217;m probably going to auto-include both the <code>System</code> and <code>RbDynamicMethod</code> namespaces by default to get rid of the <code>include</code> noise in the method.</p>
+
+
+<pre><code>
+def test_declare_local_name_reference
+  create_ruby_method('declare_local_name_reference') do
+    include   'System, RbDynamicMethod'
+    declare   'Int32', 'count'
+    ldc_i4    42
+    stloc     'count'
+    ldloc     'count'
+    call      'static Marshal.Int32ToFixnum(Int32)'
+    ret
+  end
+
+  assert_equal 42, declare_local_name_reference
+end
+</code></pre>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/06/local-variable-declarations#comments">no comments</a>,
+      <a href="/articles/2005/12/06/local-variable-declarations" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/32/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/32/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/06/local-variable-declarations">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/06/local-variable-declarations;title=Local variable declarations">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-31">
+  <h2 class="title">
+    <a href="/articles/2005/12/05/refining-the-ruby-cil-dsl">Refining the Ruby CIL DSL</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-05T17:41:00-08:00"><span class="typo_date" title="Tue, 06 Dec 2005 01:41:00 GMT">Tue, 06 Dec 2005 01:41:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>A bit more hacking today, and I&#8217;ve got a pretty complete implementation of my Ruby <span class="caps">CIL DSL</span>. Highlights include the new <code>include</code> directive for namespaces. Except for some corner cases, I handle all of <span class="caps">CIL</span> right now.</p>
+
+
+<pre><code>
+require 'RbDynamicMethod'
+
+RbDynamicMethod::create_ruby_method('say_hello') do
+  include  'System, System.Collections'
+  ldstr    'Hello, World, int = {0}, double = {1}'
+  ldc_i4   42
+  box      'Int32'
+  ldc_r8   3.141592654
+  box      'Double'
+  call     'static Console.WriteLine(String,Object,Object)'
+  br_s     'end_of_method'
+  ldstr    'Goodbye, World'
+  call     'static Console.WriteLine(String)'
+  label    'end_of_method'
+  ldc_i4_4
+  ret
+end
+
+RbDynamicMethod::say_hello
+</code></pre>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/05/refining-the-ruby-cil-dsl#comments">no comments</a>,
+      <a href="/articles/2005/12/05/refining-the-ruby-cil-dsl" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/31/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/31/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/05/refining-the-ruby-cil-dsl">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/05/refining-the-ruby-cil-dsl;title=Refining the Ruby CIL DSL">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-30">
+  <h2 class="title">
+    <a href="/articles/2005/12/05/private-module-context-in-ruby">Private module context in Ruby</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-05T11:07:00-08:00"><span class="typo_date" title="Mon, 05 Dec 2005 19:07:00 GMT">Mon, 05 Dec 2005 19:07:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here&#8217;s a <em>beautiful</em> little code frag that Robert Klemme posted to <code>ruby-talk</code> this morning. It solved an important problem that I had with my <a href="http://www.iunknown.com/articles/2005/12/04/why-ruby-rocks-for-dsls"><span class="caps">CIL DSL</span></a> that I posted last night. I didn&#8217;t really understand the alternative block syntax until I saw it used in this context:</p>
+
+
+<pre><code>
+module Bob
+  def method_missing(name, *params)
+    puts "missing: #{name}" 
+  end
+  def self.create(name, &#38;b)
+    obj = Object.new
+    obj.extend Bob
+    obj.instance_eval(&#38;b)
+    puts name
+  end
+end
+
+Bob::create('hi') do
+  ldstr
+  ldc_i4_0
+end
+</code></pre>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/05/private-module-context-in-ruby#comments">no comments</a>,
+      <a href="/articles/2005/12/05/private-module-context-in-ruby" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/30/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/30/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/05/private-module-context-in-ruby">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/05/private-module-context-in-ruby;title=Private module context in Ruby">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-29">
+  <h2 class="title">
+    <a href="/articles/2005/12/04/why-ruby-rocks-for-dsls">Why Ruby rocks for DSLs</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-04T23:52:00-08:00"><span class="typo_date" title="Mon, 05 Dec 2005 07:52:00 GMT">Mon, 05 Dec 2005 07:52:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I just did a quick hack tonight to test out some ideas for generating a <span class="caps">CLR</span> <code>DynamicMethod</code> from Ruby. Here&#8217;s what I was able to accomplish:</p>
+
+
+<pre><code>
+include ILGenerator
+
+create_ruby_method('say_hello') do
+  ldstr    'Hello, World'
+  call     'static System.Console.WriteLine(System.String)'
+  ldc_i4_4
+  ret
+end
+
+say_hello
+</code></pre>
+
+	<p>Is that syntax lovely or what?</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/04/why-ruby-rocks-for-dsls#comments">no comments</a>,
+      <a href="/articles/2005/12/04/why-ruby-rocks-for-dsls" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/29/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/29/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/04/why-ruby-rocks-for-dsls">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/04/why-ruby-rocks-for-dsls;title=Why Ruby rocks for DSLs">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-28">
+  <h2 class="title">
+    <a href="/articles/2005/12/04/beyond-java">Beyond Java</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-04T08:43:00-08:00"><span class="typo_date" title="Sun, 04 Dec 2005 16:43:00 GMT">Sun, 04 Dec 2005 16:43:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p><a href="http://www.amazon.com/exec/obidos/ASIN/0596100949/ref=nosim/iunknowncom-20"><img src="http://images.amazon.com/images/P/0596100949.01._AA240_SCLZZZZZZZ_.jpg" alt="" /></a></p>
+
+
+	<p>I just finished reading Bruce Tate&#8217;s <a href="http://www.amazon.com/exec/obidos/ASIN/0596100949/ref=nosim/iunknowncom-20">Beyond Java</a> today. Yes, this book does read a lot like a <a href="http://pluralsight.com/blogs/dbox/archive/2005/11/10/16416.aspx">Ruby brochure</a>. However, if you&#8217;re coming from a statically typed background, you will definitely learn a lot about what makes dynamically typed languages powerful.</p>
+
+
+	<p>Bruce spends quite a lot of time trying to capture <em>why</em> dynamically typed languages are more productive than statically typed languages. It&#8217;s very difficult to explain this to other developers, and I feel this is the real value of his book. He gives reasonable explanations (everything is an object model simplfies APIs, and rapid feedback loops improve productivity), and includes lots of anecdotal evidence written by prominent members of the Java community.</p>
+
+
+	<p>It&#8217;s well worth your time and dollar investment to read this book. Yes, it is light on technical details, but that&#8217;s also a feature; you can give it to your manager to read :)</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/04/beyond-java#comments">no comments</a>,
+      <a href="/articles/2005/12/04/beyond-java" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/28/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/28/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/04/beyond-java">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/04/beyond-java;title=Beyond Java">reddit</a>
+    </li>
+  </ul>
+</div>
+
+
+<p class="pagination">Older posts: <a href="/articles/2005/12/page/1">1</a> 2 <a href="/articles/2005/12/page/3">3</a> </p>
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- search -->
+      <div id="search" class="search">
+	<form action="/articles/search" id="sform" method="get">
+	  <p><input type="text" id="q" name="q" value="" /></p>
+	</form>
+	
+	<div id="loading" class="loading" style="display:none;">Searching...</div>
+	<div id="results" class="results"></div>
+  <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('loading')}, onLoading:function(request){Element.show('loading')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script>
+</div>
+
+
+      <!-- sidebar components -->
+      
+      
+<div class="sidebar-node">
+  <h3>John Lam</h3>
+<a href="/pages/about_me"><img src="http://static.flickr.com/90/222479189_d4e19a202c_t.jpg" width="67" height="100" alt="Self portrait" /></a>
+
+<p>I am a Program Manager on the Common Language Runtime team at Microsoft. I write .NET and Ruby code on a Mac. I'm the creator of <a href="http://www.rubyclr.com">RubyCLR</a>, a high performance bridge between Ruby and .NET. <a href="/pages/about_me">More ...</a>
+
+<table>
+<tr>
+  <td>email:</td>
+  <td>jlam@iunknown.com</td>
+</tr>
+<tr>
+  <td>phone:</td>
+  <td>425 698 9332</td>
+</tr>
+<tr>
+  <td>msn:</td>
+  <td>drjflam@hotmail.com</td>
+</tr>
+<tr>
+  <td>gtalk:</td>
+  <td>drjflam@gmail.com</td>
+</tr>
+</table>
+<br>
+<h3>Syndicate</h3>
+
+<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="/images/rss.png"/></a>&nbsp;
+<a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+<br>
+<form style="padding:3px;text-align:left;" action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Subscribe by email:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=180551" name="url"/><input type="hidden" value="Less is better" name="title"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a></p></form>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+    <div id="delicious">
+    <h3><a href="http://del.icio.us/drjflam">del.icio.us/drjflam</a></h3>
+            <ul>
+      
+      <li>
+        <a href="http://www.people.iup.edu/pnwm/comparison.gif" title="Fun comparison of fictional starships from different SF shows.">Starship size comparison chart</a>
+              </li>
+      
+      <li>
+        <a href="http://www.teach12.com/" title="Bill Gates listens to the lectures from this company - available as downloads as well.">The Teaching Company</a>
+              </li>
+      
+      <li>
+        <a href="http://www.speedtest.net/" title="Found this via StumbleUpon">Speedtest.net - The Global Broadband Speed Test</a>
+              </li>
+      
+      <li>
+        <a href="http://wvs.topleftpixel.com/flash/cntower_timelapse.swf" title="Move your mouse around this picture and see it change.">Downtown Toronto Photo</a>
+              </li>
+      
+      <li>
+        <a href="ftp://gatekeeper.dec.com/pub/DEC/WRL/research-reports/WRL-TR-95.7.pdf" title="">Shared Memory Consistency Models</a>
+              </li>
+      
+      <li>
+        <a href="http://discuss.develop.com/archives/wa.exe?A2=ind0203B&amp;L=DOTNET&amp;P=R375" title="An excellent discussion on the motivation for and implementation of the CLR memory model.">Vance Morrison on CLR Memory Model</a>
+              </li>
+      
+      <li>
+        <a href="http://slideshare.net/" title="A YouTube like service for sharing slides from talks.">SlideShare</a>
+              </li>
+      
+      <li>
+        <a href="http://research.microsoft.com/manuvir/papers/instruction_level_tracing_VEE06.pdf" title="This is MSR's Nirvana framework for dynamically injecting tracing code into x86 binaries at runtime. It lets them travel forwards and backwards in execution flow ('time travel debugging').">Framework for Instruction-level Tracing and Analysis of Program Executions</a>
+              </li>
+      
+      <li>
+        <a href="http://www.macgeekery.com/hacks/software/video/how_to_view_tivo_recordings_on_your_mac_or_ipod" title="Looking forward to setting this up ...">How to View TiVo Recordings on Your Mac or iPod</a>
+              </li>
+      
+      <li>
+        <a href="http://uneasysilence.com/archive/2006/12/8602/" title="Wow - this is really nice seamless integration - Windows apps appearing to run as 'top-level' windows on Mac OS X desktop.">Parallels running IE7 &amp; Firefox on Mac OS X desktop!</a>
+              </li>
+      
+      <li>
+        <a href="http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2006T13" title="Google recently released their collection of 1-grams (single word frequency) to 5-grams (5 word frequency) as a 24GB compressed gzip'd file.">Google's collection of 1-5 grams</a>
+              </li>
+          </ul>
+      </div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>My Photos</h3>
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge_new.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">what is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge_new.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2007/3">March 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/2">February 2007</a>
+      <em>(3)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/1">January 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/12">December 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/11">November 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/10">October 2006</a>
+      <em>(8)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/9">September 2006</a>
+      <em>(12)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/8">August 2006</a>
+      <em>(39)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/7">July 2006</a>
+      <em>(29)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/6">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/5">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/4">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/3">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/2">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/1">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(6)</em>
+    </li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Tags</h3>
+<p style="overflow:hidden">
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/barcampearthtoronto">BarCampEarthToronto</a></span>
+<span style="font-size:128.205128205128%"><a href="/articles/tag/dynamiclanguages">DynamicLanguages</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/ironpython">IronPython</a></span>
+<span style="font-size:128.205128205128%"><a href="/articles/tag/life">Life</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/mac">Mac</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/marketing">Marketing</a></span>
+<span style="font-size:76.9230769230769%"><a href="/articles/tag/microsoft">Microsoft</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/parenting">Parenting</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/photography">Photography</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/platforms">Platforms</a></span>
+<span style="font-size:200%"><a href="/articles/tag/props">Props</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/python">Python</a></span>
+<span style="font-size:200%"><a href="/articles/tag/ruby">Ruby</a></span>
+<span style="font-size:200%"><a href="/articles/tag/rubyclr">RubyCLR</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/rubyconf">RubyConf</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/secondlife">SecondLife</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/simplicity">simplicity</a></span>
+<span style="font-size:200%"><a href="/articles/tag/thoughts">Thoughts</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/vim">Vim</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/workspaces">workspaces</a></span>
+</p>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(20)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(58)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(149)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+  
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">Less is better</a></p>
+    <ul>
+      <li>powered by <a href="http://typosphere.org">typo</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

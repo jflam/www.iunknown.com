@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Third drop of RbDynamicMethod</title>
+    <link>http://www.iunknown.com/articles/2005/12/13/third-drop-of-rbdynamicmethod</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Third drop of RbDynamicMethod</title>
+      <description>&lt;p&gt;Here&amp;#8217;s &lt;a href="/images/RbDynamicMethod.zip"&gt;another drop&lt;/a&gt; of &lt;code&gt;RbDynamicMethod&lt;/code&gt;. New to this release is a custom implementation of &lt;code&gt;Type.GetMethod&lt;/code&gt; that correctly finds overloaded generic methods. The .NET implementation of this method does not support resolving generic methods, so I wound up rolling my own. If you&amp;#8217;re interested in its implementation you should check out &lt;code&gt;FindGenericMethodTemplate&lt;/code&gt; in the sources.&lt;/p&gt;
+
+
+	&lt;p&gt;This is what using &lt;code&gt;RbDynamicMethod&lt;/code&gt; to call a generic method looks like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+create_ruby_module_function(RbDynamicMethod, 'call_generic_min_method') do
+  include   'RbDynamicMethodTests'
+  ldc_i4_3
+  ldc_i4_2
+  call      'static GenericMethodTests::Min&amp;lt;Int32&amp;gt;(Int32, Int32)'
+  call      'static Marshal::ToRubyNumber(Int32)'
+  ret
+end
+assert_equal 2, call_generic_min_method
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;This should be the last drop of this library for the next little while since I think it&amp;#8217;s good enough to begin building my new Ruby to &lt;span class="caps"&gt;CLR&lt;/span&gt; bridge on top of it.&lt;/p&gt;</description>
+      <pubDate>Tue, 13 Dec 2005 00:23:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:fc64dec12a72bc7498e4464a0a731261</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2005/12/13/third-drop-of-rbdynamicmethod</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"Third drop of RbDynamicMethod" by John Lam</title>
+      <description>&lt;p&gt;Yes - Windows forms programming is a supported scenario in the bridge. I've got some samples written for my older bridge that drive both Windows Forms as well as Avalon from Ruby.&lt;/p&gt;</description>
+      <pubDate>Wed, 14 Dec 2005 22:38:43 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2005/12/13/third-drop-of-rbdynamicmethod#comment-270</link>
+    </item>
+    <item>
+      <title>"Third drop of RbDynamicMethod" by Justin</title>
+      <description>&lt;p&gt;I have to admit I'm not as able to follow the IL side of this project, but I'm really excited about the possibility of driving .NET from Ruby. I've done a &lt;em&gt;lot&lt;/em&gt; of .NET programming (windows forms) and ever since I started using Ruby I've wanted to drive them from Ruby. I hope your project finally provides that ability!&lt;/p&gt;</description>
+      <pubDate>Tue, 13 Dec 2005 16:04:43 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2005/12/13/third-drop-of-rbdynamicmethod#comment-268</link>
+    </item>
+  </channel>
+</rss>

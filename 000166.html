@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Maximum file length limitation in Windows copy command?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000165.html" title="Securing the aspnet_wp.exe worker process" />
+
+<link rel="next" href="http://www.iunknown.com/000167.html" title="How to uninstall Windows Messenger" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000165.html">&laquo; Securing the aspnet_wp.exe worker process</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000167.html">How to uninstall Windows Messenger &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">November 23, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Maximum file length limitation in Windows copy command?</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>Does anyone know if there's a maximum file length limitation using the copy command in Windows XP?</P><br />
+<P>I was copying around the VS.NET 2003 Beta bits around between different computers on my network last night, and I noticed that the file was consistently corrupted when using the Windows XP copy command. Furthermore, if I used the /V switch to verify the copy, it consistently failed every time.</P><br />
+<P>I tried ruling out lots of stuff (I had just installed a new 100Mbps switch for my home network), which included swapping out the cables, the switches, copying between different computers to rule out network card driver issues, etc.</P><br />
+<P>In desperation, I turned to my good friend, robocopy. When copying the file using robocopy, it worked just fine, and passed the verification pass. </P><br />
+<P>What gives? This file is about 900MB in length. Is there a bug in the XP copy command? It's reproducible across several machines on my home network.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at November 23, 2002 11:25 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="166" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000166.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>If you drop into the console using command.exe (instead of cmd.exe) it will give the shortname of the files, maybe try copying it around like this ?</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.kilic.net/">Serdar Kilic</a> at November 23, 2002 07:14 PM</span>
+</div>
+<div class="comments-body">
+<p>Did you try using XCopy instead, I've found with larger files it works better, as it pages good sized chunks into RAM.<br />
+I've never had file-size be an issue, length of name/path + readonly duplicates at the destination have errored out a few recent transfers.<br />
+Try using another method.  I know this is reasonably inefficent, setup a WebDAV share in IIS, and then connect/copy via WebDAV in Explorer on the client machine.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;jkaczor&#64;acoupleanerds&#46;com">Jason Kaczor</a> at November 23, 2002 07:52 PM</span>
+</div>
+<div class="comments-body">
+<p>I haven't tried XCopy yet ... it would be an interesting experiment.<br />
+It's definitely reproducible across several computers. I'll see if Win2K has this issue as well.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at November 24, 2002 09:00 PM</span>
+</div>
+<div class="comments-body">
+<p>It's a text vs binary thing.  COPY defaults to text copies. Therefore it stops when it comes to a ^Z (EOF) marker.   XCOPY is always binary.  You need to say <br />
+  COPY /B from.foo to.foo<br />
+to copy the file as binary.</p>
+<span class="comments-post">Posted by: Christian Mogensen at December 11, 2002 04:16 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

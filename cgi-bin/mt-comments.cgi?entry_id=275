@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on From AOP to Code Generation</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: From AOP to Code Generation</div>
+
+
+<div class="comments-body">
+<p>>I learned an awful lot about how to do cool >things to impress my friends, like dynamically >injecting IL code into running assemblies.</p>
+
+<p>That sounds really great. Could you share with us a bit of that code? It would be nice.<br />
+Thanks a lot.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.jlsa.cjb.net">Jose Luis Sampayo</a> at June 12, 2003 01:18 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>"one of being able to build technology-neutral abstractions. You create a domain language that models a particular problem domain, and you write code generators that target specific implementation technologies"</p>
+
+<p>Have you seen OMG's Model-Driven Architecture (MDA) work?  http://www.omg.org/mda</p>
+
+<p>MDA defines Platform Independent Models (PIMs) and Platform Specific Models (PSMs).  The idea is that the business analyst can model the business process as a PIM.  A technology wonk defines patterns that transform the PIM into a PSM.  An application architect customizes the PSM to handle specializations that aren't in the pattern.  The technology wonk also defines patterns that transform the PSM into working code.  A developer then customizes the code as necessary, such as making it conform to your company's standard look and feel. </p>
+
+<p>In the case of our OptimalJ tool, we give you a bunch of patterns.  You can add your own as well if you wish.  Patterns are a good place to capture boiler plate code.  </p>
+
+<p>  KC </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.compuware.com/products/devpartner">Ken Cowan</a> at June 13, 2003 10:05 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the heads-up on the MDA stuff, Ken! It was on my list of things to do, but I had initially dismissed it as "yet another UML modelling tool". I'm going to look into it on a lot more detail this weekend as I plan on curling up with at least one MDA book :)</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at June 13, 2003 02:07 PM</span>
+</div>
+<div class="comments-body">
+<p>Ahh, an issue close to my heart:</p>
+
+<p>Craig: >><br />
+a whole app in zero lines of code being the ultimate experience. Obviously I’m exaggerating, but I think the phenomenon of seeking to do things with fewer and fewer lines of code is a real one&lt;&lt;</p>
+
+<p>Although I didn't get on the AOP bandwagon, I do have strong feelings about code generation.  I hate it!  Our motto at Couloir is: If you know enough to generate code, you know enough NOT to.  In fact, at Couloir, we have managed to create significant applications without ANY source code.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.couloir-software.com">Gunnar Skogsholm</a> at June 14, 2003 04:24 PM</span>
+</div>
+<div class="comments-body">
+<p>But then how do you debug that code, Gunnar?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at July  1, 2003 10:58 AM</span>
+</div>
+<div class="comments-body">
+<p>> Inventing domain languages from scratch is a hard <br />
+> problem. But my personal goal is to make it easier<br />
+> for you to make this happen in your own projects <br />
+> by cataloging patterns that appear in certain <br />
+> problem domains. Iâ€™m currently hard at work <br />
+> building a code-generated version of Pet Shop 3.0.<br />
+> Creating a code generated implementation is the <br />
+> easy part; finding patterns that stand up to <br />
+> scrutiny is another matter entirely... Stay tuned <br />
+> for more details!<br />
+I'm very interested in your case study.  Have you already finished (a part of) the generated version?</p>
+
+<p>Best regards,<br />
+Pieter Van Gorp.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.pietervangorp.com/">Pieter Van Gorp</a> at January  8, 2004 07:15 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>Sorry for a very late comment, but...<br />
+:-)</p>
+
+<p>Anyway, here it is:<br />
+http://www.jnsk.se/weblog/posts/aop.htm</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.jnsk.se/weblog/">Jimmy Nilsson</a> at February  5, 2004 04:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>Sorry for a very late comment, but...<br />
+:-)</p>
+
+<p>Anyway, here it is:<br />
+http://www.jnsk.se/weblog/posts/aop.htm</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.jnsk.se/weblog/">Jimmy Nilsson</a> at February  5, 2004 04:44 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

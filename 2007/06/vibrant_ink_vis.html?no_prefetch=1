@@ -1,0 +1,925 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	<meta name="keywords" content="textmate, vim, visual studio" />
+	<meta name="description" content="I'm a big fan of the Vibrant Ink theme for Textmate. I spent some time last year porting the color scheme to both vim and Visual Studio - that's what you can see in the screenshot. I'm releasing my _vimrc..." />
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css?v=4" type="text/css" media="screen" />
+	<link rel="stylesheet" href="http://static.typepad.com/.shared:v25.4:typepad:en_us/themes/common/print.css" type="text/css" media="print" />
+	<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	<script type="text/javascript">
+		var TPApp = {};
+		TPApp.app_uri = "http://www.typepad.com/";
+	</script>
+	<script type="text/javascript" src="http://static.typepad.com/.shared:v25.4:typepad:en_us/js/yui/yahoo-dom-event.js"></script>
+	<script type="text/javascript" src="http://static.typepad.com/.shared:v25.4:typepad:en_us/js/app/thumbnail-gallery-min.js"></script>
+
+	<title>John Lam on Software: Vibrant Ink, Visual Studio and Vim settings</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/06/vmware_fusion_r.html?no_prefetch=1" title="VMWare Fusion Rocks" />
+	<link rel="next" href="http://www.iunknown.com/2007/06/foo_camp_can_in.html?no_prefetch=1" title="Foo Camp can influence you before you go" />
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/06/vibrant_ink_vis.html"
+    trackback:ping="http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e00980413c8833"
+    dc:title="Vibrant Ink, Visual Studio and Vim settings"
+    dc:identifier="http://www.iunknown.com/2007/06/vibrant_ink_vis.html"
+    dc:description="I&#39;m a big fan of the Vibrant Ink theme for Textmate. I spent some time last year porting the color scheme to both vim and Visual Studio - that&#39;s what you can see in the screenshot. I&#39;m releasing my _vimrc..."
+    dc:creator="John Lam"
+    dc:date="2007-06-15T09:51:12-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/06/vmware_fusion_r.html">&laquo; VMWare Fusion Rocks</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/06/foo_camp_can_in.html">Foo Camp can influence you before you go &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">June 15, 2007</h2>
+
+
+<div class="entry-author-john_lam entry-type-post entry" id="entry-35369270">
+			<h3 class="entry-header">Vibrant Ink, Visual Studio and Vim settings</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a href="http://www.flickr.com/photos/john_lam/552776709/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1435/552776709_85626b7961.jpg" width="500" height="386" alt="VS and Vim Settings" /></a></p>
+
+<p>I'm a big fan of the <a href="http://encytemedia.com/blog/articles/2006/01/03/textmate-vibrant-ink-theme-and-prototype-bundle">Vibrant Ink</a> theme for <a href="http://macromates.com/">Textmate</a>. I spent some time last year porting the color scheme to both <a href="http://www.vim.org/">vim</a> and <a href="http://msdn2.microsoft.com/en-us/vstudio/default.aspx">Visual Studio</a> - that's what you can see in the screenshot. I'm releasing <a href="http://www.iunknown.com/files/jflam.zip">my _vimrc and vssettings files</a> if you want to experiment with this stuff in your local configuration.</p>
+
+<p>I also use <a href="http://www.viemu.com/">ViEmu</a> in Visual Studio so that I can use the same keybindings everywhere. This is especially important if you're doing Windows development on a Macbook Pro since there are missing keys - and the key chords that you have to use daily on a MBP to achieve equivalent functionality to a standard PC keyboard are annoying at best, or will lead to RSI at worst.</p>
+
+<p>You may notice an inconsistency between my vim and VS settings. I was a two-space indent guy before coming to the company, but everyone else around here has a thing for four-space (not tab- yay!) ident, so I caved.</p>
+
+<p><em>Update:</em> I'm an even bigger fan of Fusion now, since the crazy race condition problem for grabbing a wireless network connection here on corpnet seems to be gone. This problem manifests itself when I suspend my MBP by closing its lid. When I open the lid, both the Mac OS and Windows machines try to grab their own wireless connection on corpnet (I cannot use NAT). Under Parallels, this would result in my laptop getting booted off corpnet (maybe 50% of the time) until I shut down Parallels, waited until my host OS got a connection to corpnet, and then restarted Parallels. This wasted a ton of time, and resulted in me walking around a lot with the lid open ...</p>
+
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F06%2Fvibrant_ink_vis.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 09:51 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/06/vibrant_ink_vis.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/textmate" rel="tag">textmate</a>, <a href="http://technorati.com/tag/vim" rel="tag">vim</a>, <a href="http://technorati.com/tag/visual%2Bstudio" rel="tag">visual studio</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e00980413c8833</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list --><a id="c72836874"></a>
+<div class="comment comment-odd" id="comment-72836874">
+	<div class="comment-content" id="comment-72836874-content">
+		<span id="comment-72836874-content"><p>Have you seen vividchalk for vim?<br />
+<a href="http://vim.sourceforge.net/scripts/script.php?script_id=1891" rel="nofollow">http://vim.sourceforge.net/scripts/script.php?script_id=1891</a></p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://codeprairie.net/blogs/chrisortman" href="http://codeprairie.net/blogs/chrisortman">Chris Ortman</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=72836874#comment-6a00d834fc885d53ef00e009804cb08833">June 15, 2007 at 10:32 AM</a>
+	</p>
+</div><a id="c72836990"></a>
+<div class="comment comment-even" id="comment-72836990">
+	<div class="comment-content" id="comment-72836990-content">
+		<span id="comment-72836990-content"><p>Thanks for sharing John!  What XP theme do you use?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.sax.net/live" href="http://www.sax.net/live">Mike Sax</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=72836990#comment-6a00d834fc885d53ef00e009804d078833">June 15, 2007 at 10:34 AM</a>
+	</p>
+</div><a id="c72840146"></a>
+<div class="comment comment-odd" id="comment-72840146">
+	<div class="comment-content" id="comment-72840146-content">
+		<span id="comment-72840146-content"><p>That&#39;s a pretty nice style, John. I find it a bit &quot;too vibrant&quot; for me, but pretty good still :)</p>
+
+<p>I had heard about VIMEmu but for some reason I had not bothered to try it... maybe I will soon!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.winterdom.com/weblog/" href="http://www.winterdom.com/weblog/">Tomas Restrepo</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=72840146#comment-6a00d834fc885d53ef00e008c5fa308834">June 15, 2007 at 11:08 AM</a>
+	</p>
+</div><a id="c72840214"></a>
+<div class="comment comment-even" id="comment-72840214">
+	<div class="comment-content" id="comment-72840214-content">
+		<span id="comment-72840214-content"><p>Thanks!  Got it up and working on my version of Visual Studio - This is great!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://joshuamcharles.com" href="http://joshuamcharles.com">Josh Charles</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=72840214#comment-6a00d834fc885d53ef00e008c5fa3c8834">June 15, 2007 at 11:09 AM</a>
+	</p>
+</div><a id="c72938838"></a>
+<div class="comment comment-odd" id="comment-72938838">
+	<div class="comment-content" id="comment-72938838-content">
+		<span id="comment-72938838-content"><p>Thanks John, much appreciated.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.developernotes.com" href="http://www.developernotes.com">Nick Parker</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=72938838#comment-6a00d834fc885d53ef00e009812fae8833">June 16, 2007 at 08:48 PM</a>
+	</p>
+</div><a id="c72939730"></a>
+<div class="comment comment-even" id="comment-72939730">
+	<div class="comment-content" id="comment-72939730-content">
+		<span id="comment-72939730-content"><p>So sweet - thanks! The contrast seems a bit too high, but having a VibrantInk look-alike in Visual Studio is great!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.almostserio.us/" href="http://www.almostserio.us/">Kevin Williams</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=72939730#comment-6a00d834fc885d53ef00e0098130d08833">June 16, 2007 at 09:12 PM</a>
+	</p>
+</div><a id="c72970872"></a>
+<div class="comment comment-odd" id="comment-72970872">
+	<div class="comment-content" id="comment-72970872-content">
+		<span id="comment-72970872-content"><p>@Mike Sax,</p>
+
+<p>If not mistaken, that&#39;s the Zune theme.  You can download it from go.microsoft.com/fwlink/?LinkID=75078</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://xmlhacker.com/" href="http://xmlhacker.com/">M. David Peterson</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=72970872#comment-6a00d834fc885d53ef00e0098163d08833">June 17, 2007 at 11:52 AM</a>
+	</p>
+</div><a id="c73904552"></a>
+<div class="comment comment-even" id="comment-73904552">
+	<div class="comment-content" id="comment-73904552-content">
+		<span id="comment-73904552-content"><p>Hello John,</p>
+
+<p>I created a .vim colorscheme based on your initial work:</p>
+
+<p><a href="http://blog.jozilla.net/2006/10/5/vibrantink-theme-for-vim" rel="nofollow">http://blog.jozilla.net/2006/10/5/vibrantink-theme-for-vim</a></p>
+
+<p><a href="http://www.vim.org/scripts/script.php?script_id=1794" rel="nofollow">http://www.vim.org/scripts/script.php?script_id=1794</a></p>
+
+<p>Maybe it&#39;s good to team up and integrate both our work into one colorscheme?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://jozilla.net/" href="http://jozilla.net/">Jo Vermeulen</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=73904552#comment-6a00d834fc885d53ef00e008cc68958834">June 25, 2007 at 06:13 AM</a>
+	</p>
+</div><a id="c77042098"></a>
+<div class="comment comment-odd" id="comment-77042098">
+	<div class="comment-content" id="comment-77042098-content">
+		<span id="comment-77042098-content"><p>I am a little late to comment, but what is it about Vibrant Ink that is appealing?</p>
+
+<p>Is it aesthetics alone or does it help with reading and understanding the code in some way?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Mark Kruger |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=77042098#comment-6a00d834fc885d53ef00e0099945138833">July 24, 2007 at 09:36 AM</a>
+	</p>
+</div><a id="c78249144"></a>
+<div class="comment comment-even" id="comment-78249144">
+	<div class="comment-content" id="comment-78249144-content">
+		<span id="comment-78249144-content"><p>Great work John, looks even better when you set the font to: &quot;Lucida Sans Typewriter&quot;</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://danintouch.blogspot.com" href="http://danintouch.blogspot.com">Dan</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=78249144#comment-6a00d834fc885d53ef00e393352a3c8834">August 02, 2007 at 07:39 PM</a>
+	</p>
+</div><a id="c88924522"></a>
+<div class="comment comment-odd" id="comment-88924522">
+	<div class="comment-content" id="comment-88924522-content">
+		<span id="comment-88924522-content"><p>John, thank you very much for your fantastic job. I have just announced your theme on my blog! Good work!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.sandromark78.it" href="http://www.sandromark78.it">Sandro M.</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=88924522#comment-6a00d834fc885d53ef00e54f8f4b118834">November 06, 2007 at 09:11 AM</a>
+	</p>
+</div><a id="c137529587"></a>
+<div class="comment comment-even" id="comment-137529587">
+	<div class="comment-content" id="comment-137529587-content">
+		<span id="comment-137529587-content"><p>Thank you very much.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Mike |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=137529587#comment-6a00d834fc885d53ef010535d5d711970c">November 03, 2008 at 12:14 PM</a>
+	</p>
+</div><a id="c139015006"></a>
+<div class="comment comment-odd" id="comment-139015006">
+	<div class="comment-content" id="comment-139015006-content">
+		<span id="comment-139015006-content"><p>What&#39;s your windows skin? and which software do u use?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://360.yahoo.com/afshin_z" href="http://360.yahoo.com/afshin_z">Afshin Zavar</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=139015006#comment-6a00d834fc885d53ef010535f31d7e970c">November 13, 2008 at 09:41 AM</a>
+	</p>
+</div><a id="c6a00d834fc885d53ef0111685d4ac6970c"></a>
+<div class="comment comment-even" id="comment-6a00d834fc885d53ef0111685d4ac6970c">
+	<div class="comment-content" id="comment-6a00d834fc885d53ef0111685d4ac6970c-content">
+		<span id="comment-6a00d834fc885d53ef0111685d4ac6970c-content"><p>I noticed you mentioned the diff between spaces and tabs.  I&#39;ve always used tabs but recently move to a company using spaces (2).  Seems more personal preference, or Unix vs Windows?</p>
+
+<p>What&#39;s your pros/cons of using either/or?  </p>
+
+<p>I can&#39;t seem to hit the right google search phrase today.  Thanks.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		PHenry |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef0111685d4ac6970c#comment-6a00d834fc885d53ef0111685d4ac6970c">February 12, 2009 at 07:54 AM</a>
+	</p>
+</div><a id="c6a00d834fc885d53ef0111689567ed970c"></a>
+<div class="comment comment-odd" id="comment-6a00d834fc885d53ef0111689567ed970c">
+	<div class="comment-content" id="comment-6a00d834fc885d53ef0111689567ed970c-content">
+		<span id="comment-6a00d834fc885d53ef0111689567ed970c-content"><p>Very nice - but I can&#39;t get NAntAddin to appear when I&#39;ve got these setting imported.  Anyone else have that issue?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		DJ |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef0111689567ed970c#comment-6a00d834fc885d53ef0111689567ed970c">February 24, 2009 at 10:57 AM</a>
+	</p>
+</div><a id="c6a00d834fc885d53ef011168cd9674970c"></a>
+<div class="comment comment-even" id="comment-6a00d834fc885d53ef011168cd9674970c">
+	<div class="comment-content" id="comment-6a00d834fc885d53ef011168cd9674970c-content">
+		<span id="comment-6a00d834fc885d53ef011168cd9674970c-content"><p>Cool Theme. Thanks a lot for sharing !!!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Ram |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef011168cd9674970c#comment-6a00d834fc885d53ef011168cd9674970c">March 09, 2009 at 03:53 AM</a>
+	</p>
+</div><a id="c6a00d834fc885d53ef01127943175728a4"></a>
+<div class="comment comment-odd" id="comment-6a00d834fc885d53ef01127943175728a4">
+	<div class="comment-content" id="comment-6a00d834fc885d53ef01127943175728a4-content">
+		<span id="comment-6a00d834fc885d53ef01127943175728a4-content"><p>If you use TAB instead of space, it allows the user to set how to represent that indentation.</p>
+
+<p>Say you like the 2 char indent and I like 4.  If we both keep TABs, then the source is the same, just our individual IDE&#39;s know how to draw them to our liking.</p>
+
+<p>If we each replace tab with spaces, every time I reformat source you created, the entire source appears to have changed.</p>
+
+<p>Why does anyone use spaces?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Aaron S. |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef01127943175728a4#comment-6a00d834fc885d53ef01127943175728a4">March 09, 2009 at 09:07 AM</a>
+	</p>
+</div><a id="c6a00d834fc885d53ef01156fc5c3a0970c"></a>
+<div class="comment comment-even" id="comment-6a00d834fc885d53ef01156fc5c3a0970c">
+	<div class="comment-content" id="comment-6a00d834fc885d53ef01156fc5c3a0970c-content">
+		<span id="comment-6a00d834fc885d53ef01156fc5c3a0970c-content"><p>This is excellent theme than anyone else.</p>
+
+<p>but Ctrl+F, Search box is not working. Dialog Box is not displying.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://msdotnetsupport.blogspot.com" href="http://msdotnetsupport.blogspot.com">Dutt</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef01156fc5c3a0970c#comment-6a00d834fc885d53ef01156fc5c3a0970c">June 03, 2009 at 03:38 AM</a>
+	</p>
+</div><a id="c6a00d834fc885d53ef0120a4f38075970b"></a>
+<div class="comment comment-odd" id="comment-6a00d834fc885d53ef0120a4f38075970b">
+	<div class="comment-content" id="comment-6a00d834fc885d53ef0120a4f38075970b-content">
+		<span id="comment-6a00d834fc885d53ef0120a4f38075970b-content"><p>Thanks a lot, I love this theme!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://profile.typepad.com/6p0120a4f38042970b" href="http://profile.typepad.com/6p0120a4f38042970b">B</a> |
+		<a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef0120a4f38075970b#comment-6a00d834fc885d53ef0120a4f38075970b">August 14, 2009 at 12:52 AM</a>
+	</p>
+</div>
+
+		</div>
+        
+	</div>
+    	<!-- comment-form-atp -->
+
+	
+<div id="atp-comments">
+    
+        <div id="comment-preview" class="hiddenBox">
+	<h3 id="header-verify-comment" class="comments-header hiddenBox">Verify your Comment</h3>
+    <h3 id="header-preview-comment" class="comments-header hiddenBox">Previewing your Comment</h3>
+	<div class="comments-content">
+		<div class="comment">
+			<div id="comment-preview-content" class="comment-content">
+			</div>
+			<p class="comment-footer">
+				Posted by: 
+				<span id="comment-preview-author"></span>&nbsp;|&nbsp;<span id="comment-preview-datetime"></span>
+			</p>
+		</div>
+	</div>
+</div>
+<div id="comment-preview-confirmation" class="hiddenBox yellowBox">
+    <p>This is only a preview. Your comment has not yet been posted.</p>
+   	<form id="comment-preview-form"
+   		method="post"
+   		onsubmit="atpComments.interceptPost(commentFormNum); return false;">
+		<input type="submit" name="post" id="comment-confirm-post" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;"/>		    
+		<input type="submit" name="edit" id="comment-edit" value="&nbsp;&nbsp;Edit&nbsp;&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 2); return false;"/>
+        <span id="previewFormSpinner" class="hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+	</form>
+</div>
+<div id="comment-error" class="hiddenBox redBox">	    
+   Your comment could not be posted. Error type: <span id="comment-error-msg"></span> 
+</div>	
+<div id="comment-complete" class="hiddenBox redBox">
+    Your comment has been saved. Comments are moderated and will not appear until approved by the author. <a href="javascript:void 0;" onclick="window.location.hash='#comment-form';window.location.reload(false)">Post another comment</a>
+</div>	
+<div id="comment-captcha" class="hiddenBox yellowBox">	
+    <div id="captchaText">
+	    <p id="captchaFailMsg" class="captchaErrorText hiddenBox">The letters and numbers you entered did not match the image. Please try again.</p>	    	        
+	    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.</p>
+	    <p><span id="comment-captcha-viewalt">Having trouble reading this image? <a href="#comment-captcha" onClick="atpComments.generateCaptcha(commentFormNum);">View an alternate.</a></span></p>
+    </div>
+    <p class=""><img id="captchaImg" /></p>		
+    <form id="comment-captcha-form" 
+		  method="post"
+		  onsubmit="atpComments.submitWithCaptcha(commentFormNum); return false;">
+		<input type="hidden" name="captcha_chal" id="comment-captcha-chal" value="" />
+        <p>
+	        <input id="comment-captcha-text" name="captcha_text" size="10" />
+        </p>
+        <p>
+            <input type="submit" name="continue" id="captcha-continue" value="&nbsp;Continue&nbsp;" />
+            <span id="captchaFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+        </p>
+    </form>
+</div>
+
+    
+	<div id="primary-comment-form" class="comment-form">
+    	<form id="comment-form" action="http://www.iunknown.com/.services/comments"
+    		method="post">
+    		<input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e00980413c8833" />
+                <input type="hidden" name="token" value="1267504089-fba73214b7afc1666401a81f4134eb74b083443a:TzDtk7meiCZaq0Cy" />
+    		<div class="comments-open">
+    			<h2 class="comments-open-header" id="comment-title">Post a comment</h2>
+    			<div id="comments-open-content" class="comments-open-content">
+    									
+    				    <p class="comments-open-moderated">
+    						Comments are moderated, and will not appear until the author has approved them.
+    					</p>
+    				
+				
+    									
+    					<div id="comments-open-login" style="display: none;">
+                  <div class="login-list">
+                      
+                      <span class="first">Comment below or sign in with</span> <span class="typepad"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=d480f05c24ef35146588dc7ee3eb499902817d66&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2007%2F06%2Fvibrant_ink_vis.html&_portal=typepad">TypePad</a></span> <span class="facebook"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=d480f05c24ef35146588dc7ee3eb499902817d66&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2007%2F06%2Fvibrant_ink_vis.html&_portal=typepad&service=facebook">Facebook</a></span> <span class="twitter"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=d480f05c24ef35146588dc7ee3eb499902817d66&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2007%2F06%2Fvibrant_ink_vis.html&_portal=typepad&service=twitter">Twitter</a></span> <span>and <a href="https://www.typekey.com/t/typekey/login?v=1.0&t=d480f05c24ef35146588dc7ee3eb499902817d66&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2007%2F06%2Fvibrant_ink_vis.html&_portal=typepad&service=openid">more...</a></span>
+                      
+                  </div>
+                  <div class="clr"></div>
+    					</div>
+    					<div id="comments-open-logout" style="display: none;">
+    						You are currently signed in as
+    						<span id="commenter-name">(nobody)</span>.
+    						<a href="http://www.iunknown.com/.services/sitelogout?to=https%3A%2F%2Fwww.typekey.com%2Ft%2Ftypekey%2F%3F__mode%3Dlogout%26_return%3Dhttp%253A%252F%252Fwww.iunknown.com%252F2007%252F06%252Fvibrant_ink_vis.html">Sign Out</a>
+    					</div>
+    				
+                    	<div id="comments-open-text" style="display:none;">
+        					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="atpComments.maxTextArea(this, 64000);"></textarea>
+            				
+            				<p class="comments-open-subtext">
+            				    (URLs automatically linked.)
+            				</p>			
+            				                    					
+        				</div>
+    				    <div id="comments-open-data" style="display:none;">
+                            <p>Your Information</p>
+                            <p>
+                                (Name and email address are required. Email address will not be displayed with the comment.)
+                            
+                            </p>
+    						<p>
+    							<input id="comment-author" at:default="Name" name="author" size="30" value="Name" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-author" id="comment-author-error" class="comment-error hiddenBox">Name is required to post a comment</label>
+    						</p>
+    						<p>
+    							<input id="comment-email" at:default="Email Address" name="email" size="30" value="Email Address" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-email" id="comment-email-error" class="comment-error hiddenBox">Please enter a valid email address</label>
+    						</p>
+    						<p>
+    							<input id="comment-url" at:default="Web Site URL" name="url" size="30" value="Web Site URL" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-url" id="comment-url-error" class="comment-error hiddenBox">Invalid URL</label>
+    						</p>
+    					</div>
+    			</div>
+                <div id="comments-open-footer" class="comments-open-footer" style="display:none;">
+    				<input type="submit" name="post" id="comment-post-button" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;" disabled="true" />
+    				<input type="submit" name="preview" id="comment-preview-button" value="&nbsp;Preview&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 1); return false;" disabled="true" />
+    				<span id="commentEntryFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+    			</div>
+    		</div>
+    	</form>
+        <noscript>
+            
+			<div id="comments-open-noscript" class="comments-open-noscript">
+		        <form action="http://www.iunknown.com/.services/comments" method="post">
+		            <input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e00980413c8833" />
+                            <input type="hidden" name="token" value="1267504089-426f55d5536fb57efd56c3d7241513d7f27b7926:5aZ4k9zcZ3q7B3fQ" />
+		            Name:<br /><input type="text" name="author" size="30" /><br />
+		            Email address:<br /><input type="text" name="email" size="30" /><br />
+		            URL:<br /><input type="text" name="url" size="30" /><br /><br />
+		            Comment:<br /><textarea name="text" cols="40" rows="4"></textarea><br />
+		            
+		            <input type="submit" name="submit" value="Submit" />
+		        </form>
+			</div>
+			
+		</noscript>
+	</div>
+</div>
+
+
+
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0120a8c6e809970b#comment-6a00d834fc885d53ef0120a8c6e809970b">John Lam</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef012877aa0739970c#comment-6a00d834fc885d53ef012877aa0739970c">Dave</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2008/03/dynamic-silve-2.html?cid=6a00d834fc885d53ef0120a8684b57970b#comment-6a00d834fc885d53ef0120a8684b57970b">sikat ang pinoy</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silve-2.html">Dynamic Silverlight Part 3: Integrating Silverlight with ASP.NET MVC</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0120a85c2e83970b#comment-6a00d834fc885d53ef0120a85c2e83970b">John Lam</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0128775b4671970c#comment-6a00d834fc885d53ef0128775b4671970c">Stefan Dobrev</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0128772f4662970c#comment-6a00d834fc885d53ef0128772f4662970c">Bret Ferrier (runxc1)</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef0120a82bff6c970b#comment-6a00d834fc885d53ef0120a82bff6c970b">Bret Ferrier (runxc1)</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html?cid=6a00d834fc885d53ef01287708e5c1970c#comment-6a00d834fc885d53ef01287708e5c1970c">Tim</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html?cid=6a00d834fc885d53ef012876f06991970c#comment-6a00d834fc885d53ef012876f06991970c">FutureTurnip</a> on <a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef012876c77c12970c#comment-6a00d834fc885d53ef012876c77c12970c">Phil</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/05/dynamic-languages-at-teched-2009.html">Dynamic Languages at TechEd 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/12/index.html">December 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/11/index.html">November 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/05/index.html">May 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/index.html">January 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">December 2009</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				
+							
+					<td>4</td>
+				
+							
+					<td>5</td>
+				</tr>
+							<tr>
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">10</a></td>
+				
+							
+					<td>11</td>
+				
+							
+					<td>12</td>
+				</tr>
+							<tr>
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				
+							
+					<td>19</td>
+				</tr>
+							<tr>
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				
+							
+					<td>26</td>
+				</tr>
+							<tr>
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+<div class="module-custom_html module">
+    <div class="module-content">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+    </div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+		</div>
+	</div>
+	
+
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+
+<script src="http://cdn.media6degrees.com/static/ty2093.js" type="text/javascript"></script></body>
+</html>
+
+<script type="text/javascript">
+var captchaImgAttempts = 0;
+var allowAnonComments = '0';
+var registrationRequired = 0;
+var registrationOptional = 1;
+var emailRequired = 1;
+var useAvatars = 0;
+
+var showSignInMessaging = 0;
+var jsonURL = "/.services/json-rpc";
+
+var captchaSrc = "/.services/captcha?code_encrypted=";
+var alertCommentCannotBeBlank = "You can not leave an empty comment. Please enter some text in the Comment field.";
+var alertEditingExpired = "Sorry, you're no longer allowed to edit this comment. You may have taken too much time before submitting your edit or someone may have already replied to it.";
+
+var alertAuthorCannotBeBlank = "Name must not be blank.";
+var alertEmailCannotBeBlank = "Email Address must not be blank.";
+var alertAuthorAndEmailCannotBeBlank = "Name and email address are both required!";
+var alertEmailIsInvalid = "The Email Address you entered is invalid. Please enter a valid email address.";
+var alertUnauthorizedAction = "The comments on this post are closed.";
+var msgPostReplyTo = "Reply to ";  
+var msgInReplyTo = "In reply to ";
+var msgPostAComment = "Post a comment ";
+var atpCommentsPath = "/.shared/js/atpcomments_yui.js?v=4";
+var hasChanged = 0;
+var hostName = ".iunknown.com";
+var tp_comment_token = "1267504090-01d85b06dc99ad90d6b480c299ba5db2be519c92:iUZSVpn9g2ZJu5Tk";
+
+var isPage = 0;
+var blog_xid = "6a00d834fc885d53ef00d83531ed5d69e2";
+var xid = "";
+var injectCode = '<div id=\"comment-preview\" class=\"hiddenBox\">\n\t<h3 id=\"header-verify-comment\" class=\"comments-header hiddenBox\">Verify your Comment<\/h3>\n    <h3 id=\"header-preview-comment\" class=\"comments-header hiddenBox\">Previewing your Comment<\/h3>\n\t<div class=\"comments-content\">\n\t\t<div class=\"comment\">\n\t\t\t<div id=\"comment-preview-content\" class=\"comment-content\">\n\t\t\t<\/div>\n\t\t\t<p class=\"comment-footer\">\n\t\t\t\tPosted by: \n\t\t\t\t<span id=\"comment-preview-author\"><\/span>&nbsp;|&nbsp;<span id=\"comment-preview-datetime\"><\/span>\n\t\t\t<\/p>\n\t\t<\/div>\n\t<\/div>\n<\/div>\n<div id=\"comment-preview-confirmation\" class=\"hiddenBox yellowBox\">\n    <p>This is only a preview. Your comment has not yet been posted.<\/p>\n   \t<form id=\"comment-preview-form\"\n   \t\tmethod=\"post\"\n   \t\tonsubmit=\"atpComments.interceptPost(commentFormNum); return false;\">\n\t\t<input type=\"submit\" name=\"post\" id=\"comment-confirm-post\" value=\"&nbsp;Post&nbsp;\" onclick=\"atpComments.interceptPost(commentFormNum); return false;\"/>\t\t    \n\t\t<input type=\"submit\" name=\"edit\" id=\"comment-edit\" value=\"&nbsp;&nbsp;Edit&nbsp;&nbsp;\" onclick=\"atpComments.previewOnly(commentFormNum, 2); return false;\"/>\n        <span id=\"previewFormSpinner\" class=\"hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n\t<\/form>\n<\/div>\n<div id=\"comment-error\" class=\"hiddenBox redBox\">\t    \n   Your comment could not be posted. Error type: <span id=\"comment-error-msg\"><\/span> \n<\/div>\t\n<div id=\"comment-complete\" class=\"hiddenBox redBox\">\n    Your comment has been saved. Comments are moderated and will not appear until approved by the author. <a href=\"javascript:void 0;\" onclick=\"window.location.hash=\'#comment-form\';window.location.reload(false)\">Post another comment<\/a>\n<\/div>\t\n<div id=\"comment-captcha\" class=\"hiddenBox yellowBox\">\t\n    <div id=\"captchaText\">\n\t    <p id=\"captchaFailMsg\" class=\"captchaErrorText hiddenBox\">The letters and numbers you entered did not match the image. Please try again.<\/p>\t    \t        \n\t    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.<\/p>\n\t    <p><span id=\"comment-captcha-viewalt\">Having trouble reading this image? <a href=\"#comment-captcha\" onClick=\"atpComments.generateCaptcha(commentFormNum);\">View an alternate.<\/a><\/span><\/p>\n    <\/div>\n    <p class=\"\"><img id=\"captchaImg\" /><\/p>\t\t\n    <form id=\"comment-captcha-form\" \n\t\t  method=\"post\"\n\t\t  onsubmit=\"atpComments.submitWithCaptcha(commentFormNum); return false;\">\n\t\t<input type=\"hidden\" name=\"captcha_chal\" id=\"comment-captcha-chal\" value=\"\" />\n        <p>\n\t        <input id=\"comment-captcha-text\" name=\"captcha_text\" size=\"10\" />\n        <\/p>\n        <p>\n            <input type=\"submit\" name=\"continue\" id=\"captcha-continue\" value=\"&nbsp;Continue&nbsp;\" />\n            <span id=\"captchaFormSpinner\" class=\"commentSpinner hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n        <\/p>\n    <\/form>\n<\/div>\n'; 
+var commentFormNum;
+var entryPermalink = "http://www.iunknown.com/2007/06/vibrant_ink_vis.html";
+var inlineReply = document.createElement("div");
+var commentFooterLinks;
+var commentHeader;
+var commentReplyXID;
+var commentReplyAuthor;
+var commentReplyComplete;
+var inlineReplyLoaded = 0;
+
+function xidToCommentPermalink (entryUrl, xid) {
+    return entryUrl + "?cid=" + xid + "#comment-" + xid;
+}
+
+</script>
+<script type="text/javascript" src="/.shared/js/yui/yuiloader-beta-min.js"></script>
+<script type="text/javascript" src="/.shared/js/atpcomments.js?v=3"></script>
+
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

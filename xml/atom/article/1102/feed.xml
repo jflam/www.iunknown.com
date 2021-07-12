@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: One way to look at the world</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/1102/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/10/07/one-way-to-look-at-the-world" rel="alternate" type="text/html"/>
+  <updated>2006-10-07T11:39:47-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:ade5f628-de29-4ead-be12-1673139291bc</id>
+    <published>2006-10-07T11:36:00-07:00</published>
+    <updated>2006-10-07T11:39:47-07:00</updated>
+    <title type="html">One way to look at the world</title>
+    <link href="http://www.iunknown.com/articles/2006/10/07/one-way-to-look-at-the-world" rel="alternate" type="text/html"/>
+    <category term="DynamicLanguages" scheme="http://www.iunknown.com/articles/tag/dynamiclanguages"/>
+    <summary type="html">&lt;p&gt;I wonder if static typing advocates really look at the world this way (or if they do that they find this picture funny, I know I do):&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://www.iunknown.com/files/larson-oct-1987.gif" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Found via Steve Yegge&amp;#8217;s &lt;a href="http://steve-yegge.blogspot.com/2006/10/egomania-itself.html"&gt;excellent follow-up&lt;/a&gt; to his now classic &lt;a href="http://steve-yegge.blogspot.com/2006/09/good-agile-bad-agile_27.html"&gt;Bad Agile&lt;/a&gt; blog post.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I wonder if static typing advocates really look at the world this way (or if they do that they find this picture funny, I know I do):&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://www.iunknown.com/files/larson-oct-1987.gif" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Found via Steve Yegge&amp;#8217;s &lt;a href="http://steve-yegge.blogspot.com/2006/10/egomania-itself.html"&gt;excellent follow-up&lt;/a&gt; to his now classic &lt;a href="http://steve-yegge.blogspot.com/2006/09/good-agile-bad-agile_27.html"&gt;Bad Agile&lt;/a&gt; blog post.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Bertrand</name>
+    </author>
+    <id>urn:uuid:ad8effb1-ba03-4f04-b291-aa5539d84f66</id>
+    <published>2006-10-10T10:03:43-07:00</published>
+    <updated>2006-10-10T19:04:05-07:00</updated>
+    <title type="html">Comment on One way to look at the world by Bertrand</title>
+    <link href="http://www.iunknown.com/articles/2006/10/07/one-way-to-look-at-the-world#comment-1128" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I meant it for type checking. Perf is a strange beast and all the Joels of the world should be careful about definitive assertions about perf, perfectly agreed. I value the eval and missing method features, as well as the ability to build an object field by field and extend it as needed, these are to me the essence of dynamic languages.
+My point is that those can be orthogonal to type safety. I really think that the benefits of type safety (which come from most methods being built to accept objects that have at least some expected behavior, which you can call a type, and anything else is an error) can be brought to dynamic languages without perverting them, and that the essence of dynamic languages can be brought to type-safe languages (which you can see a beginning for in C#3.0 for example).
+Another point is that type safety, although ideally enforced during compile-time, can also be enforced at runtime if no compile time exists. We're doing that in Atlas for JavaScript, only in debug mode (so that in release you keep perf reasonable). It makes debugging a lot less painful and removes the pain of having to write the most repetitive unit tests: the only unit tests you need to write are the ones that ensure the semantics of your objects, not the ones that do the job of the compiler. And it's declared through annotations.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Rob</name>
+    </author>
+    <id>urn:uuid:74d5aeb0-4acd-45b3-aaf3-18410b50ebb9</id>
+    <published>2006-10-08T09:38:18-07:00</published>
+    <updated>2006-10-08T14:03:20-07:00</updated>
+    <title type="html">Comment on One way to look at the world by Rob</title>
+    <link href="http://www.iunknown.com/articles/2006/10/07/one-way-to-look-at-the-world#comment-1114" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I think the key (as Tomas mentions) is the "non-inferencing" modifier he uses.  Staticly typed languages with powerful type inference are nearly as unlabeled as dynamic languages with the added bonus of at least some compile-time checking.&lt;/p&gt;
+
+&lt;p&gt;I'm still very new to dynamic languages in general (if you don't count javascript web programming stuff), so I know I'm not making a fair comparison, it's just that when I think of strongly staticly typed I think of SML and how if my programs compiled, they basically worked, whereas when I think of dynamic I think of javascript and how I'd get goofy results because internally something was doing a string compare instead of a numeric one.&lt;/p&gt;
+
+&lt;p&gt;By the same token, I love the method_missing and metaprogramming stuff in Ruby, so I guess I'm damned either way.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:5418fae3-298a-4e11-ad29-9578a5e3003f</id>
+    <published>2006-10-08T06:46:28-07:00</published>
+    <updated>2006-10-08T14:03:20-07:00</updated>
+    <title type="html">Comment on One way to look at the world by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/10/07/one-way-to-look-at-the-world#comment-1113" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;But a language like Ruby is a type-safe dynamic language (otherwise known as a strong-dynamic typed language). I think what you mean is that we get some measure of type-safety at compile time vs. run-time (perhaps via optional type annotations like what Python's considering doing?) &lt;/p&gt;
+
+&lt;p&gt;Now if this is the case, do you want this for the compile time type checking ability, or for performance? If the latter, the folks in the Smalltalk world have already discovered that optional type annotations are actually ignored in their quest to get higher performance - see Avi Bryant's writeup of the Strongtalk VM here: &lt;a href="http://smallthought.com/avi/" rel="nofollow"&gt;http://smallthought.com/avi/&lt;/a&gt;?p=16.&lt;/p&gt;
+
+&lt;p&gt;In the case of the former, if people program 'static style' then I think this will help catch the same class of bugs that we catch in C# today. However, if people program 'dynamic style' with liberal use of eval and method_missing, then many of the benefits of optional type annotations would be lost.&lt;/p&gt;
+
+&lt;p&gt;Or is there some third scenario that you're looking for? &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Bertrand</name>
+    </author>
+    <id>urn:uuid:d178ea74-23e0-4670-bf68-ee1c229c811c</id>
+    <published>2006-10-07T22:35:31-07:00</published>
+    <updated>2006-10-08T14:03:22-07:00</updated>
+    <title type="html">Comment on One way to look at the world by Bertrand</title>
+    <link href="http://www.iunknown.com/articles/2006/10/07/one-way-to-look-at-the-world#comment-1110" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;:) Good one, like about everything in the Far Side and the comparison with statically typed languages feels eerily right. On the other hand, "hi, can you quack, please? Good, you're a duck then." can also seem quite absurd.
+Seriously, I love dynamic languages, but I also love type safety. How about a type-safe dynamic language?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Tomas</name>
+    </author>
+    <id>urn:uuid:a935a45e-b5a9-4f0c-8ca3-961c61bb9a1f</id>
+    <published>2006-10-07T18:52:04-07:00</published>
+    <updated>2006-10-08T14:03:21-07:00</updated>
+    <title type="html">Comment on One way to look at the world by Tomas</title>
+    <link href="http://www.iunknown.com/articles/2006/10/07/one-way-to-look-at-the-world#comment-1108" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;LOL, Good one!
+(anyway, statically typed languages supporting type inferrence don't need the signs ;-))&lt;/p&gt;</content>
+  </entry>
+</feed>

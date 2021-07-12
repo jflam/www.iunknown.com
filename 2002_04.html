@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: April 2002 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2002_03.html" title="March 2002" />
+
+<link rel="next" href="http://www.iunknown.com/2002_05.html" title="May 2002" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2002_03.html">&laquo; March 2002</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2002_05.html">May 2002 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">April 27, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000093"></a>
+<h3 class="title">Complications arising from weaving system methods</h3>
+
+<p><P>I'm flying home from AOSD 2002, happy and rested, as I write this entry. </P><br />
+<P>I <A href="Weblog/HellofromAOSD2002.html">presented&nbsp;CLAW</A>, one of two dynamic aspect weaving systems demonstrated&nbsp;at AOSD 2002. The other system, called <A href="http://www.inf.ethz.ch/department/IS/iks/project_home_pages/prose/">PROSE</A> (PROgrammable extenSions of sErvices), was presented by Andrei Popovici, Thomas Grass, and Gustavo Alonso in their short paper titled "Dynamic Weaving for Aspect-Oriented Programming". Their paper was very interesting; they presented a mechanism for dynamic runtime weaving of aspects in the JVM using the Java Virtual Machine Debugging Interfaces (<A href="http://java.sun.com/products/jdk/1.2/docs/guide/jvmdi/jvmdi.html">JVMDI</A>).[1] Their system, like CLAW, lets you weave aspects into arbitrary code at runtime. This includes system code.</P><br />
+<P>Just a few minutes ago, I did some more extensive testing of CLAW; I'm using it to understand the internals of code access security. I just ran across an interesting problem while doing some pretty liberal weaves.[2]&nbsp;Specifically, my aspect code blew up the runtime when the System.AppDomain.SetupDomain() method was executed. Apparently, at this very early stage in the initialization of the runtime, methods such as System.Console.WriteLine() cannot be called. </P><br />
+<P>This raises an interesting complication: if your aspect uses code that depends on the runtime being in a particular state, you <EM>will</EM> run into problems if it weaves methods that are executed before the runtime reaches the required state. Unfortunately, these types of problems are very difficult to diagnose (aside from dialog boxes that display helpful messages such as "_CorExeMain failed").</P><br />
+<P>I believe that all byte-code / CIL weavers will suffer from this problem. That includes dynamic runtime weavers such as PROSE and CLAW, as well as link-time weavers such as <A href="http://www.research.ibm.com/hyperspace/HyperJ/HyperJ.htm">Hyper/J</A>. I will likely introduce some restrictions into CLAW that will prevent it from weaving methods that are called early during an AppDomain's initialization sequence. Just what methods must be excluded will be the subject of some future investigations. This will help avoid the weaving problem during initialization of the runtime. </P><br />
+<P>The more general problem of weaving code that depends on the application being in some particular state, however, is an open topic of investigation.</P><br />
+<P>[1] They do much the same type of runtime aspect weaving as CLAW does, although they can only do it while running the JVM in debug mode. This means that all JIT optimizations are disabled, which restricts its utility in production systems.</P><br />
+<P>[2] I was weaving a trace aspect into a Hello World program&nbsp;using a System.* pointcut. Please don't try this at home. This was done by a professional programmer in an airplane 39,000 feet over the Atlantic Ocean.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000093.html">08:05 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=93" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">April 26, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000092"></a>
+<h3 class="title">Hello from AOSD 2002</h3>
+
+<p><P>I've been dark for the past week or so because I'm over at the University of Twente in Enschede, Netherlands. I'm attending the first ever Aspect Oriented Software Development conference. I've learned a tremendous amount from lots of really smart folks over here this week about what AOSD is, and (more importantly IMHO) what it isn't. </P><br />
+<P>This was my first academic computer science conference. In some ways it was markedly different from the industry conferences that I usually attend. For example, unlike Tech-Ed 2002 in New Orleans, there were no marketing keynotes to kick off the conference. </P><br />
+<P>Even without the marketing keynote, there was a very perceptible buzz about this conference.&nbsp;The last time I felt this kind of buzz was at Microsoft's Professional Developers Conference in 2000, where .NET was launched.&nbsp;These are heady times for researchers working in the field, and for&nbsp;those early adopters who have begun to use AspectJ and Hyper/J. I can only hope that this translates into heady times for folks outside of the current community who will use this technology in their work.</P><br />
+<P>I also successfully demonstrated CLAW, my runtime aspect weaver.[1] Lots of different folks saw CLAW in action: industry researchers, industry practioners, graduate students and professors.&nbsp;There were three demonstrations:</P><br />
+<OL><br />
+<LI><br />
+<DIV>Weaving a C# Hello, World application with an aspect written in C#</DIV></LI><br />
+<LI><br />
+<DIV>Weaving a C# Hello, World application with an aspect written in VB.NET</DIV></LI><br />
+<LI><br />
+<DIV>Weaving all of the public methods of System.Xml.XmlDocument with a tracing aspect written in C#.</DIV></LI></OL><br />
+<P>Based on the informal feedback that I got during breaks in the conference program, it was quite well received. The future is looking quite bright for CLAW!</P><br />
+<P>I'm posting a copy of my power point presentation and the demos that I presented at the conference. The demos provide a flavor of the current syntax used by CLAW. Unfortunately, until I get a security story put together for CLAW, I won't be releasing any bits. Sorry.</P><A href="Files/demos.zip"><br />
+<P>Link to Power Point presentation and demos (zipped, 238kb).</A></P><br />
+<P>[1] CLAW = Cross Language Aspect Weaver, a term coined by Guenter Kneissel from the University of Bonn.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000092.html">12:20 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=92" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">April 19, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000091"></a>
+<h3 class="title">Re-JITing methods</h3>
+
+<p><P>One of the subtle changes introduced by SP1 was forcing System.Xml.dll to be ngen'ed. In the original RTM bits, System.Xml.dll was not ngen'ed. You should therefore see some performance improvements on startup time using SP1 over RTM.</P><br />
+<P>I discovered this behavior while getting my demos ready for my talk next week at the AOSD 2002 conference. If you call ICorProfilerInfo::SetFunctionReJIT() on an assembly that has been ngen'ed, it will fail the call with a CORPROF_E_NOT_REJITABLE_METHODS error. To correct this, you must generate a re-jittable assembly using the ngen /prof switch (I'm not really sure what this does, but I will find out later). If you use ngen /show, you will get a list of all of the ngen'ed assemblies on your computer.</P><br />
+<P>However, if you just run ngen /prof on System.xml.dll again, you will find two ngen'ed assemblies in the Fusion cache. On my computer it failed to find the one with profiling support enabled. To fix this, I wound up deleting both ngen'ed assemblies and recompiling System.xml.dll with the /prof switch.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000091.html">06:32 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=91" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">April 12, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000090"></a>
+<h3 class="title">Fun with NAnt</h3>
+
+<p><P>I decided to take some time out on my flight home from Tech-Ed in New Orleans to work on the build system for my Cross-Language Aspect Weaver (CLAW).[1] After watching lots of discussion about the merits of a one-step build, deploy and test script, I decided to bite the bullet and start taking a closer look at the NAnt (.NET Ant) build tool </P><br />
+<P>NAnt is a very powerful build tool. It maps XML elements in a build script to <EM>tasks</EM>. Tasks perform various operations that are essential to any build process, such as running compilers, copying and deleting files, running unit tests, and even sending email to team members informing them of the status of that build.</P><br />
+<P>NAnt is more-or-less a port of the Java Ant build tool. However, it is adapted to specifically meet the needs of CLR developers. For example, where the Ant tool has a task for running the javac compiler, NAnt has a task for running the csc compiler. There are also small, arbitrary, differences in standard tasks such as the echo task; the message attribute is mandatory in NAnt and optional in Ant.</P><br />
+<P>Here's a simple NAnt build script:</P><br />
+<P><CODE>&lt;project name="Hello NAnt" default="debug"&gt;<BR>&nbsp; &lt;target name="debug"&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;echo message="DEBUG build"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;csc target="exe" output="HelloWorld.exe" debug="true"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;sources&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;includes name="HelloWorld.cs"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/sources&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/csc&gt;<BR>&nbsp; &lt;/target&gt;<BR>&lt;/project&gt;</CODE></P><br />
+<P>The script&nbsp;performs the equivalent of typing:</P><br />
+<P><CODE>csc /target:exe /debug+ HelloWorld.cs</CODE></P><br />
+<P>on the command line.</P><br />
+<P>To invoke this script, you only have to type nant on the command line. NAnt will automatically search for the first file (in alphabetical order) in the current directory that contains a .build extension.</P><br />
+<P>Now, what if you wanted to create multiple targets? Here's a simple script that will do either a debug or a release build. </P><br />
+<P><CODE>&lt;project name="Hello Nant" default="debug"&gt;</P><br />
+<P>&nbsp; &lt;target name="release"&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;echo message="RELEASE build"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;csc target="exe" output="HelloWorld.exe" debug="false"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;sources&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;includes name="HelloWorld.cs"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/sources&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/csc&gt;&nbsp;&nbsp;&nbsp; <BR>&nbsp; &lt;/target&gt;<BR>&nbsp; <BR>&nbsp; &lt;target name="debug"&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;echo message="DEBUG build"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;csc target="exe" output="HelloWorld.exe" debug="true"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;sources&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;includes name="HelloWorld.cs"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/sources&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/csc&gt;<BR>&nbsp; &lt;/target&gt;</P><br />
+<P>&lt;/project&gt;</CODE></P><br />
+<P>Note that there two different output targets in this build script. To select the appropriate target, you need to indicate the target on the nant command line; nant release generates a release build, and nant debug generates a debug build.</P><br />
+<P>In this build script, you'll find that both the release and debug builds build to the same directory. Unfortunately, this means that you can't switch between a debug and a release build without deleting the output file first, otherwise you're risking the build not happening because the target is up to date. One possible solution to this problem is to have separate debug and release directories, much like what Visual C++ and C# do. In a future entry in this log, I'll outline what I've come up with to solve this problem.</P><br />
+<P>[1] I decided to code-name my AOP project CLAW. <A href="http://www.cs.uni-bonn.de/~gk/">Guenter Kniesel</A> came up with this clever acronym to describe&nbsp;my upcoming talk at the Aspect Oriented Software Development conference.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000090.html">02:50 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=90" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">April 11, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000089"></a>
+<h3 class="title">Hello from Tech-Ed</h3>
+
+<p><P>I'm posting this entry from the wireless network at Tech-Ed in New Orleans. It is so cool to be able to access the web from either my laptop or my Jornada 568 (thanks, Mardi!) from virtually everywhere inside the convention center.</P><br />
+<P>I finished my work for Microsoft on Tuesday afternoon, and have been spending the rest of my time hanging out with and catching up with friends. I've learned lots of cool new stuff (not much of it via sessions, which I rarely go to, but through lots of informal chats, meetings and dinners in and around the conference).</P><br />
+<P>Lots of fun stuff has happened this week. I saw the Band on the Runtime perform again at Tipatina's on Wednesday night. I experienced the dark side of being a conference tech chair (keeping everyone happy). I spent a wonderful evening hanging out a friend and in the process learned lots of stuff about both the CLR and VMS file systems. I heard lots of great music at the House of Blues and at the Tech Ed attendee party. I received a new pair of boxer shorts courtesy of Don's fashion line. I saw a wickedly cool product tracing product&nbsp;from <A href="http://www.mutek.com/">Mutek</A>. I bought a copy of <A href="http://www.dotnetremoting.cc/DotNetCentric/">Ingo's</A> book. There's so much more to tell ... but that will have to wait until I get home.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000089.html">07:12 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=89" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

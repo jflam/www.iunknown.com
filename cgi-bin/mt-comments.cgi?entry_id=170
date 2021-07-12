@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Enterprise Services!</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Enterprise Services!</div>
+
+
+<div class="comments-body">
+<p>great book indeed!<br />
+At my last job I was involved with a system built on Transactional COM+.  The problem was nobody new how to use it...they just relied on kamakazi sytle coding.  Transactional COM+ (the book) helped me greatly ... the transaction stream information was very helpful!<br />
+http://www.stronglytyped.com/weblog/TransactionalCOM+Building.html</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.stronglytyped.com">Richard Caetano</a> at December  3, 2002 11:38 AM</span>
+</div>
+<div class="comments-body">
+<p>What changed your mind, John? I agree that COM+ seems unnecessary unless you need distributed transactions (which most never do).</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.sellsbrothers.com">Chris Sells</a> at December  4, 2002 10:51 AM</span>
+</div>
+<div class="comments-body">
+<p>I like declarative transactions. This way, I can build components that can vote on the outcome of a transaction without resorting to a design pattern that requires passing SqlConnection objects as parameters. <br />
+Now if they would only hurry up and fix the issue with single RM transactions using 2PC, we'd be set!</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December  6, 2002 10:37 AM</span>
+</div>
+<div class="comments-body">
+<p>Thnx for the pointers John</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://weblog.brokenwire.net">P.Gielens</a> at December  8, 2002 08:01 AM</span>
+</div>
+<div class="comments-body">
+<p>At last you agreed guys! And we working in far snow deserts can now work efficiently without choosing sides. Until this point of agreement was reached I felt like I had to rewrite my code every second day </p>
+<span class="comments-post">Posted by <a href="mailto&#58;vagif&#64;online&#46;no">Vagif Abilov</a> at December 11, 2002 09:04 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

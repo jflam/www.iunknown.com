@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Maximum file length limitation in Windows copy command?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Maximum file length limitation in Windows copy command?</div>
+
+
+<div class="comments-body">
+<p>If you drop into the console using command.exe (instead of cmd.exe) it will give the shortname of the files, maybe try copying it around like this ?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.kilic.net/">Serdar Kilic</a> at November 23, 2002 07:14 PM</span>
+</div>
+<div class="comments-body">
+<p>Did you try using XCopy instead, I've found with larger files it works better, as it pages good sized chunks into RAM.<br />
+I've never had file-size be an issue, length of name/path + readonly duplicates at the destination have errored out a few recent transfers.<br />
+Try using another method.  I know this is reasonably inefficent, setup a WebDAV share in IIS, and then connect/copy via WebDAV in Explorer on the client machine.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;jkaczor&#64;acoupleanerds&#46;com">Jason Kaczor</a> at November 23, 2002 07:52 PM</span>
+</div>
+<div class="comments-body">
+<p>I haven't tried XCopy yet ... it would be an interesting experiment.<br />
+It's definitely reproducible across several computers. I'll see if Win2K has this issue as well.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at November 24, 2002 09:00 PM</span>
+</div>
+<div class="comments-body">
+<p>It's a text vs binary thing.  COPY defaults to text copies. Therefore it stops when it comes to a ^Z (EOF) marker.   XCOPY is always binary.  You need to say <br />
+  COPY /B from.foo to.foo<br />
+to copy the file as binary.</p>
+<span class="comments-post">Posted by Christian Mogensen at December 11, 2002 04:16 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

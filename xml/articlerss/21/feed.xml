@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Indigo and Ruby: great together (well sort of)</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Indigo and Ruby: great together (well sort of)": comment by Matt</title>
+      <description>&lt;p&gt;Are you going to make your Ruby  CLR  bridge available for download at any point?&lt;/p&gt;</description>
+      <pubDate>Thu, 01 Dec 2005 04:47:03 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/11/25/indigo-and-ruby-great-together-well-sort-of#comment-44</guid>
+      <link>http://www.iunknown.com/articles/2005/11/25/indigo-and-ruby-great-together-well-sort-of#comment-44</link>
+    </item>
+    <item>
+      <title>"Indigo and Ruby: great together (well sort of)" by jlam</title>
+      <description>&lt;p&gt;If you look at the code that I wrote to &lt;a href="/images/flickr.cs"&gt;call flickr using Indigo&lt;/a&gt;, you&amp;#8217;ll notice that the flickr &lt;span class="caps"&gt;API&lt;/span&gt; call accepts a string and returns a string. This makes it trivial for me to interop with Ruby:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+require 'RubyShim'
+require 'builder'
+require 'builder/xmlmarkup'
+require 'rexml/document'
+
+reference_file 'flickrlib.dll'
+
+include FlickrLib
+include Builder
+include REXML
+
+f = Flickr.new('83293ff34e3ab3d9935018480190319f')
+puts f.Call('&amp;lt;method&amp;gt;flickr.people.findByEmail&amp;lt;/method&amp;gt;
+             &amp;lt;find_email&amp;gt;jlam@iunknown.com&amp;lt;/find_email&amp;gt;')
+
+# or if you prefer
+xml = Builder::XmlMarkup.new
+xml.method     "flickr.people.findByEmail" 
+xml.find_email "jlam@iunknown.com" 
+
+d = Document.new(f.Call(xml.target!))
+puts d.elements['//username'].text
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I&amp;#8217;m not all that happy with sending mal-formed &lt;span class="caps"&gt;XML&lt;/span&gt; as an in-parameter, but it was a quick and easy hack to get it up and running.&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 25 Nov 2005 16:15:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/25/indigo-and-ruby-great-together-well-sort-of"&gt;Indigo and Ruby: great together (well sort of)&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/25/indigo-and-ruby-great-together-well-sort-of"&gt;Indigo and Ruby: great together (well sort of)&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

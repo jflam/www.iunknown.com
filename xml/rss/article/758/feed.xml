@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Visual Basic and Ruby: Happy Together?</title>
+    <link>http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Visual Basic and Ruby: Happy Together?</title>
+      <description>&lt;p&gt;Tim Ng, who works on the Visual Basic compiler team, has spent some time digging into RubyCLR and has &lt;a href="http://blogs.msdn.com/timng/archive/2006/08/19/708049.aspx"&gt;some nice things to say about it&lt;/a&gt;. That post is really nice because he shows how to explicitly call Ruby methods from VB.&lt;/p&gt;
+
+
+	&lt;p&gt;Tim is interested in a scenario that frankly I haven&amp;#8217;t spent much time thinking about &amp;#8211; and that is hosting Ruby inside of a Visual Basic (or any other .NET language for that matter). Most of the effort that I&amp;#8217;ve put into making Ruby objects callable from &lt;span class="caps"&gt;CLR&lt;/span&gt; objects has been focused on data binding scenarios, but &lt;a href="http://blogs.msdn.com/timng/archive/2006/08/19/708760.aspx"&gt;Tim wants more :)&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Most of his requests on that list are very reasonable. The only real problem is making all methods of a Ruby object available to be called from VB. The challenge there is that &lt;em&gt;you can add methods to a Ruby object or class at any time&lt;/em&gt;. I create the moral equivalent of a &lt;a href="http://msdn2.microsoft.com/en-us/library/8bwh56xe.aspx"&gt;Runtime Callable Wrapper&lt;/a&gt; class, but like any other .NET class, it&amp;#8217;s static. Now I don&amp;#8217;t really know how RCWs are really implemented, so if someone can help me understand how to build a &lt;span class="caps"&gt;CLR&lt;/span&gt; object that does the equivalent of &lt;code&gt;method_missing&lt;/code&gt; in Ruby, that will help me get this feature out the door faster.&lt;/p&gt;</description>
+      <pubDate>Tue, 22 Aug 2006 09:58:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:216b600e-7f69-41d6-a4a3-95b99c5063f8</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together</link>
+      <category>Thoughts</category>
+      <category>Ruby</category>
+      <category>RubyCLR</category>
+      <category>VB</category>
+    </item>
+    <item>
+      <title>"Visual Basic and Ruby: Happy Together?" by John Lam</title>
+      <description>&lt;p&gt;Hi Jamie,&lt;/p&gt;
+
+&lt;p&gt;This does look promising ... I'll have to do some experiments with IExpando and VB to see how they work together. But this looks like it just &lt;em&gt;might&lt;/em&gt; do the trick, providing that VB uses it (and I see no reason why they wouldn't).&lt;/p&gt;
+
+&lt;p&gt;Added to my list of things to do post-rewrite of reflection goo :)&lt;/p&gt;
+
+&lt;p&gt;Thanks!
+-John&lt;/p&gt;</description>
+      <pubDate>Wed, 23 Aug 2006 08:37:48 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:c1f583c6-fcab-4a81-9824-c7e169e209c0</guid>
+      <link>http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together#comment-769</link>
+    </item>
+    <item>
+      <title>"Visual Basic and Ruby: Happy Together?" by John Lam</title>
+      <description>&lt;p&gt;Hi El, &lt;/p&gt;
+
+&lt;p&gt;Thanks for putting together that post! The problem with statically compiling the interop code is the fact that the Ruby code can change at any time - it's not necessarily bound to a source file as in your example - someone at runtime can change the behavior of an object. The highly dynamic nature of Ruby makes it difficult to do this kind of stuff (not impossible - just difficult) so I used the interfaces hack to "lock down" the behavior of a Ruby object.&lt;/p&gt;
+
+&lt;p&gt;-John&lt;/p&gt;</description>
+      <pubDate>Wed, 23 Aug 2006 08:34:05 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:b7165769-faa3-4b1e-8442-09b80574c8b3</guid>
+      <link>http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together#comment-767</link>
+    </item>
+    <item>
+      <title>"Visual Basic and Ruby: Happy Together?" by Jamie Cansdale</title>
+      <description>&lt;p&gt;Hi John,&lt;/p&gt;
+
+&lt;p&gt;I've always been curious about the IExpando interface (but never found a use for it). Might this be useful here?&lt;/p&gt;
+
+&lt;p&gt;From the documentation at:
+&lt;a href="http://msdn2.microsoft.com/en-us/library/8023ct8s.aspx" rel="nofollow"&gt;http://msdn2.microsoft.com/en-us/library/8023ct8s.aspx&lt;/a&gt;&lt;/p&gt;
+
+
+
+&lt;p&gt;IDispatchEx&lt;/p&gt;
+
+If the class implements IDispatchEx, the RCW implements IExpando. The IDispatchEx interface is an extension of the IDispatch interface that, unlike IDispatch, enables enumeration, addition, deletion, and case-sensitive calling of members.
+
+&lt;p&gt;I've quite possibly got the wrong end of the stick. ;)&lt;/p&gt;
+
+&lt;p&gt;Thanks, Jamie.&lt;/p&gt;</description>
+      <pubDate>Tue, 22 Aug 2006 16:11:20 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:67b222fa-8004-453b-9bf6-5de749578176</guid>
+      <link>http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together#comment-764</link>
+    </item>
+    <item>
+      <title>"Visual Basic and Ruby: Happy Together?" by El Draper</title>
+      <description>&lt;p&gt;Hey, interesting stuff, I've written up my own experiences with RubyCLR, specifically using Ruby and C# together, at &lt;a href="http://www.crazycool.co.uk/blog/2006/08/22/RubySharp" rel="nofollow"&gt;http://www.crazycool.co.uk/blog/2006/08/22/RubySharp&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I too would like to see some of the more complex bridging features appear in RubyCLR, and would be happy to contribute code or testing if you'd like the help :-)&lt;/p&gt;
+
+&lt;p&gt;Keep up the great work!&lt;/p&gt;
+
+&lt;p&gt;Cheers,
+-= El =-&lt;/p&gt;</description>
+      <pubDate>Tue, 22 Aug 2006 14:44:29 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:db7deb1f-3029-4a9d-84ff-f1da1ea15627</guid>
+      <link>http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together#comment-762</link>
+    </item>
+  </channel>
+</rss>

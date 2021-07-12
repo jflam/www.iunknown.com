@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on My TiBook is here!</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: My TiBook is here!</div>
+
+
+<div class="comments-body">
+<p>To solve your ClearType blues, you might want to check out TinkerTool:<br />
+http://www.bresink.de/osx/TinkerTool2.html<br />
+Also, you'll want to make sure you have "font smoothing" turned on for LCD</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.furrygoat.com">Steve Makofsky</a> at December 31, 2002 03:06 PM</span>
+</div>
+<div class="comments-body">
+<p>Congrats on the new TiBook.<br />
+I don't know what Apple is doing with new machines now, but they used to ship machines without the developer tools installed.  If you register with the developer program (free) you can always get the latest tools from developer.apple.com, along with beta builds of the Java VM, other libraries, etc...<br />
+And, yes, the first account created has admin privileges.<br />
+I'm pretty disappointed with Windows Media Player for MacOS.  Playback is jerky, and codecs are missing.  I'm hoping that either MS or Apple does something about that.<br />
+	You may want to consider installing some OS X native versions of software.  Chimera is a nice, native feeling browser.  OmniGroup has some really nice OS X software, including OmniGraffle, my current fav drawing app.  Fire is a nice, multi-protocol IM client.  <br />
+	And  even though OS X ships with Emacs, I'm still partial to BBEdit.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://eric.weblogs.com/">Eric Hancock</a> at December 31, 2002 03:39 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks, Eric. I downloaded the dev tools, and hopefully will write Hello, World sometime today (once I figure out how to get the !@#!@# CD burner to work).</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  1, 2003 12:14 PM</span>
+</div>
+<div class="comments-body">
+<p>If you haven't already purchased a bag, check out the Apple-branded TiBook bag from Brenthaven. I've a huge fan of Brenthavens in general, and this one works great for the TiBook: upright configuration, fits like a glove, great shoulder-straps, plenty of extra space, and not too bulky overall.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.razorsoft.net/weblog">Peter Drayton</a> at January  6, 2003 08:08 PM</span>
+</div>
+<div class="comments-body">
+<p>It's interesting that you should mention this - my Brenthaven bag arrived this afternoon  So far, I'm loving the bag. I did some experiments and I found that I could fit my T23 and my TiBook in the bag if need be. This is definitely not the case with my old TUMI bag that has served me so well over the years.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  6, 2003 09:44 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!-- Published by Fog Creek Software CityDesk MDTDIFAZJDUWLZRN/2256BF10/228 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>IUnknown.com - October 2002 Weblog Archives</title>
+<link rel="stylesheet" href="../iunknown.css">
+<script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+<script language="javascript">
+  function HaloScan2(id) { 
+    location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+  }
+</script>
+</head>
+<BODY>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <p><span class="entryTitle">October 2002 Archives</span></p>
+         
+          <div class="entryTitle">When less is more</div>
+          <div class="entryDate">2002-10-31</div>
+          <p><P>My flight to Orlando, FL earlier this week took me through NYC and inspired an epiphany; this entry describes that epiphany.</P>
+<P>Over the past week or so, I've been spending a lot of time thinking<EM> </EM>about code generation. <A href="http://www.frogware.com">Michael Lenaghan</A>, who has been one of my most important mentors since we met in 1995, recently got me thinking about code generation. <A href="http://www.sellsbrothers.com">Chris Sells</A>, who actually <EM>created </EM>a <A href="http://www.develop.com/genx">code generation product</A>, was unable to convince me of the importance of code generation. Why did one of my friends succeed where the other failed?</P>
+<P>It has everything to do with how they motivated the need for code generation. Chris' motivation was that code generation was capable of capturing knowledge for the purpose of <EM>reusing</EM> it in different contexts. Michael's motivation was that code generation was capable of building abstractions that were not possible using traditional techniques.&nbsp;The problem with Chris' motivation was that this wasn't a problem that I encountered in my day-to-day work. I <EM>rarely</EM> had&nbsp;code that I needed to reuse in different contexts. However,&nbsp;I <EM>often&nbsp;</EM>run into the scenario that Michael described: there are simply limits to my ability to understand problems using traditional programming techniques. I needed to use a more powerful tool.</P>
+<P>These two motivational approaches remind me of how OOP is often motivated. Some folks motivate OOP as a code reuse technology, others motivate OOP as a mechanism for building abstractions. I think that today, most OOP practitioners would agree that it is really about building abstractions that let you visualize the problem more clearly. Not many people would claim today that they have seen significant code reuse opportunities arising out of their use of OOP.</P>
+<P>Today, I strongly believe that code generation is <EM>not</EM> a code reuse technology. Instead, it is a very powerful tool that lets you think about software from a higher level of abstraction. But how does it let you think "at a higher level of abstraction"? This is the contribution that airplanes bring to the story.</P>
+<P>We had fairly clear skies over NYC, so the descent into the NYC region allowed me to think about the parallels that lie between altitude and abstraction. From a fairly high altitude, I was able to see the high-level structures of the city. I could see the Hudson river, I could make out Long Island in the distance, I could see the outline of Manhattan, but I could see little else.</P>
+<P>As we descended, I noticed that there was a change in the amount of order that I saw. Structures that were previously very ordered when viewed at a higher altitude became less ordered upon closer inspection. Also, I noticed that order that previously wasn't observable became apparent, and then disappeared into apparent randomness as we drew closer. </P>
+<P>An important question is: why did order "appear" and then "disappear"? This observation stems from a well-studied concept in psychology: the 7 +/- 2 rule. Simply put, it is the amount of information that can be stored in your short term memory. The disappearance of "order" corresponds to hitting the limit imposed by 7 +/- 2; the elements in the scene become too complex to process using your short term memory.</P>
+<P>The same principles are at work when you look at software. When methods get too long, or attempt to do too many things, you lose the ability to understand their operation. When classes get too complex, again you lose the ability to comprehend their implementation. Patterns, OOP,&nbsp;and structured programming are all techniques that we use to create the abstractions that we use in our programs.</P>
+<P>But is it enough? As most of you reading this have experienced, there are limits to what you can do with Patterns, OOP, and structured programming. You find that there are features that cut across your well-designed class hierarchies and object graphs. These are the warts in your program that spring to life innocently enough, but then spread as your program becomes increasingly more complex. It is these warts that make it hard for you to <EM>comprehend</EM> your software. It is these warts that make it hard for you to <EM>extend </EM>your software's functionality.</P>
+<P>So is code generation the answer to all problems? Of course not. However, it is a tool that works exceedingly well in certain scenarios. One scenario that I have a lot of experience in is building metadata parsers. This is a specific&nbsp;instance of the more general class of problems that arise when building parsers and translators.</P>
+<P>How does my code generator work? There are two different parts: the "mini language" and the code generator. The mini language defines the solution to the problem (in my case a parser that parses metadata tables). The code generator is the glue that converts my mini language into C# source code.</P>
+<P>I chose not to build my own code generator (which, as a long-time C++ programmer, required supression of my natural instincts). Instead, I used an obscure, open-source code generator called GSLgen. GSLgen is not a particularly great code generator, but it had one important characteristic: <EM>it was good enough</EM>. GSLgen is a surprisingly powerful blend of a primitive scripting language with a rudimentary XML parser. You define your mini language using XML (to avoid having to write a parser) and you implement your code generator using their mini-scripting language / XML parser.</P>
+<P>During my code generation experiments, I was able to condense approximately 8000 lines of hand-written C# code into about 600 lines of a custom XML language that was in turn fed to about 500 lines of scripting code that generated a functionally equivalent parser. While I was writing this software, I was continuously amazed by the subtle semantics that kept popping up while I was defining my custom XML language. This led to an iterative development process where I would see a new abstraction, modify my language, tweak my code generator, and then test the results of the change using <EM>traditional tools </EM>(in my case Visual Studio .NET).</P>
+<P>Why did I do all of this? Because it turned me into a vastly better developer. Code generation let me see the problem space from a <EM>much </EM>higher level of abstraction than I had seen before. Not only was my code-generated metadata parser functionally equivalent to my original hand-written parser, it had fewer bugs, it was faster, and most important of all, I developed it quicker than my original parser.</P>
+<P>Is code generation without its own warts? Of course not. Writing code generators and defining mini-languages is <EM>hard</EM>. It requires someone who has the ability to think very abstractly about problems, and who has the patience to see it through. Particularly at the beginning when one is not sure whether the long-term results are worth all of the short-term pain.</P>
+<P>Personally, I'm very excited about the prospects of using code generation in the software that I create. It is a new and extremely powerful tool in my toolbox. Hopefully this article will inspire you to think about adding code generation to your toolbox. But don't just believe me, <A href="http://www.paulgraham.com/lib/paulgraham/pgtalk-rev2.pdf">read this article next</A>.</P></p>
+          <p><a href="../Weblog/Whenlessismore.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to When less is more" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Whenlessismore.html');"><script type="text/javascript">postCount('Weblog/Whenlessismore.html');</script></a></p>
+         
+          <div class="entryTitle">Fun time at Win-Dev</div>
+          <div class="entryDate">2002-10-22</div>
+          <p><P>I had a fun time at Win-Dev last week. As always, the attendees were really great, and asked lots of insightful questions at my presentations.</P>
+<P>This year's Win-Dev was supposed to be the coming out party for <A href="../Weblog/HellofromAOSD2002.html">CLAW</A>. However, most of my cycles recently have been taken up working on a new commercial software venture (it also explains my low frequency post rate on this weblog). Therefore, I was forced to show a much earlier version of CLAW than the one that is currently sitting in bits and pieces on my hard drive. </P>
+<P>The challenge at Win-Dev was to get that old version of CLAW working well enough to run on a machine other than my laptop. The reason for this was that, unknown to the attendees, there was going to be a hands-on lab where they would write their own aspects using CLAW. On Thursday night, I enlisted the help of <A href="http://www.dotnetremoting.cc/DotNetCentric/">Ingo Rammer</A> and <A href="http://radio.weblogs.com/0105852/">Sam Gentile</A>. We stayed up pretty late in my hotel room complaining about various things that we hated in the CLR before we finally got around to getting the code up and running on another machine. </P>
+<P>Thankfully, Sam volunteered his laptop for the evisceration that is known as installing CLAW. After about 30 minutes or so of "doh! I need to do ..." I managed to get an install script up and running that would install CLAW on his laptop. I then proceeded to kick them out of my room and then stayed up for a few more hours working on the actual labs.</P>
+<P>Normally, I take pride in my ability to figure out problems on the fly. However, when we got to the room where we were going to run the labs, we were stymied by network configuration issues. We never did get any of the labs distributed to the student boxes. I instead demo'd all of the labs for the students on my machine. Hopefully they weren't horribly disappointed by this. My apologies go out to all who attended. </P>
+<P>As promised, I'm making my Win-Dev slide decks available to those who want them. Here are the decks:</P>
+<UL>
+<LI><A href="../Files/Intro_to_AOP.ppt">Introduction to Aspect-Oriented Programming</A></LI>
+<LI><A href="../Files/CLAW_Implementation.ppt">CLAW Implementation</A> </LI>
+<LI><A href="../Files/WebForms_Internals.ppt">Web Forms Internals</A></LI></UL>
+<P>&nbsp;</P></p>
+          <p><a href="../Weblog/FuntimeatWin-Dev.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Fun time at Win-Dev" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/FuntimeatWin-Dev.html');"><script type="text/javascript">postCount('Weblog/FuntimeatWin-Dev.html');</script></a></p>
+         
+          <div class="entryTitle">Happy Canadian Thanksgiving</div>
+          <div class="entryDate">2002-10-14</div>
+          <p><P>It's turkey time up here in Canada this weekend, and it also happens to coincide with some of the most beautiful fall colours in Southern Ontario. Yesterday, we went to Thanksgiving dinner at Carolyn's grandparents and I had a chance to&nbsp;<A href="http://www.pbase.com/jlam/fall_colours">take a few photographs</A>.</P>
+<P>I'm gearing up for the fall conference season right now. Just two stops on the calendar: <A href="http://butrain.com/windev/">Win-Dev</A> in Boston this week, and <A href="http://events.pentontech.com/visual_studio/">VSConnections</A> in Orlando at the end of the month. Should be a great opportunity to visit with friends and to meet some new people.</P></p>
+          <p><a href="../Weblog/HappyCanadianThanksgiving.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Happy Canadian Thanksgiving" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/HappyCanadianThanksgiving.html');"><script type="text/javascript">postCount('Weblog/HappyCanadianThanksgiving.html');</script></a></p>
+        
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="January2003.html">January 2003</A><br>
+         
+           <A href="December2002.html">December 2002</A><br>
+         
+           <A href="November2002.html">November 2002</A><br>
+         
+           <A href="October2002.html">October 2002</A><br>
+         
+           <A href="September2002.html">September 2002</A><br>
+         
+           <A href="August2002.html">August 2002</A><br>
+         
+           <A href="July2002.html">July 2002</A><br>
+         
+           <A href="June2002.html">June 2002</A><br>
+         
+           <A href="May2002.html">May 2002</A><br>
+         
+           <A href="April2002.html">April 2002</A><br>
+         
+           <A href="fog0000000116.html">March 2002</A><br>
+         
+           <A href="fog0000000091.html">February 2002</A><br>
+         
+           <A href="fog0000000046.html">January 2002</A><br>
+         
+           <A href="fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</BODY>
+</HTML>

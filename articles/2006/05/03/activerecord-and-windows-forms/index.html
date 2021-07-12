@@ -1,0 +1,644 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>ActiveRecord and Windows Forms</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/LessIsBetter" />
+  <script src="/javascripts/cookies.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1156231406" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/application.css?1164503575" media="all" rel="Stylesheet" type="text/css" />
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Less is better</a></span></h1>
+    <h2>John Lam on software</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <!--
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+  rdf:about=""
+  trackback:ping="http://www.iunknown.com/articles/trackback/124"
+  dc:title="ActiveRecord and Windows Forms"
+  dc:identifier="http://www.iunknown.com/articles/read/124"
+  dc:description="This is a really exciting development in RubyCLR. I&amp;#8217;ve taken the first steps in integrating Rails&amp;#8217; most excellent ActiveRecord object-relational mapping layer with Windows Forms data b"
+  dc:creator="jlam"
+  dc:date="2006-08-21T15:55:42-07:00" />
+</rdf:RDF>
+-->
+
+<div class="atomentry" id="article-124">
+  <h2 class="title">
+    ActiveRecord and Windows Forms 
+    <span class="comment_count">14</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-05-03T20:26:00-07:00"><span class="typo_date" title="Thu, 04 May 2006 03:26:00 GMT">Thu, 04 May 2006 03:26:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>This is a really exciting development in RubyCLR. I&#8217;ve taken the first steps in integrating Rails&#8217; most excellent <a href="http://rubyforge.org/projects/activerecord">ActiveRecord</a> object-relational mapping layer with Windows Forms data binding.</p>
+
+
+	<p>Here&#8217;s a screenshot of the result:</p>
+
+
+	<p><img src="http://static.flickr.com/55/140020351_6a1828085b_o.png" alt="" /></p>
+
+
+	<p>And here&#8217;s the code:</p>
+
+
+<pre><code>
+require 'winforms'
+
+include ActiveRecord
+
+Base.establish_connection(:adapter =&gt; 'sqlserver',
+                          :host =&gt; '.\SQLEXPRESS',
+                          :database =&gt; 'rubyclr_tests')
+
+class Person &lt; Base
+end
+
+class MainForm
+  def initialize
+    form      = Form.new
+    form.Text = 'ActiveRecord and Windows Forms'
+
+    grid             = DataGridView.new
+    grid.dock        = DockStyle::Fill
+    grid.data_source = Person.find_all
+    form.controls.add(grid)
+
+    @form = form
+  end
+end
+
+WinFormsApp.run(MainForm)
+</code></pre>
+
+	<p>There&#8217;s a lot of heavy lifting going on behind the scenes. The call to <code>Person.find_all</code> returns a Ruby Array object which I marshal to the <span class="caps">CLR</span>. However, my Ruby Array object isn&#8217;t any ordinary Ruby Array object. RubyCLR can <a href="http://www.iunknown.com/articles/2006/04/18/rubyclr-now-lets-you-implement-clr-interfaces-in-ruby">implement <span class="caps">CLR</span> interfaces in Ruby</a>, so my Array object also happens to implement <code>IBindingList</code>.</p>
+
+
+	<p>The Array contains <code>Person</code> objects, which all derive from <code>ActiveRecord::Base</code>. RubyCLR knows how to marshal <code>ActiveRecord::Base</code> objects so that I transparently create a <span class="caps">CLR</span> &#8216;anonymous&#8217; type that exposes all of the Ruby ActiveRecord fields as <span class="caps">CLR</span> properties. I marshal by reference, so that changes in the <code>ActiveRecord</code> object will be propagated via <code>IBindingList</code> notifications to the <code>DataGridView</code> control.</p>
+
+
+	<p>This is an extremely important scenario to cover since a primary goal of RubyCLR is to enable the creation of rich client business applications. This is a major step towards enabling this scenario.</p>
+
+
+	<p>I just checked in the code for this feature <a href="http://rubyforge.org/projects/rubyclr">into the rubyclr trunk</a>. So you can play with it if you want. Keep in mind that this is all prototype code, but at least this sample works and all of the existing unit tests still pass (182 tests, 365 assertions).</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      
+      <a href="/articles/2006/05/03/activerecord-and-windows-forms" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/124/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/124/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/05/03/activerecord-and-windows-forms">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/05/03/activerecord-and-windows-forms;title=ActiveRecord and Windows Forms">reddit</a>
+    </li>
+  </ul>
+</div>
+
+
+
+  <h5><a name="comments">Comments</a></h5>
+  <p><a href="#commentform">Leave a response</a></p>
+
+  <div id="comments_div">
+    <ol id="comments" class="comments">
+  	<li class="comment" id="comment-446">
+	  <div class="author">
+	    
+	    <cite><a href="http://substantiality.net">Sam</a></cite>
+		<abbr title="2006-05-04T00:28:25-07:00"><span class="typo_date" title="Thu, 04 May 2006 07:28:25 GMT">Thu, 04 May 2006 07:28:25 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Now that is cool!</p>
+
+<p>I wonder if you might be able to give me a tip on creating a DataTable from a Ruby Array though. It's easy enough to create a row, fill it, and add it to the DataTable, but the performance on about 1.2 million calls (create_row, add 5 fields, add the row, so 7 calls and about 167,000 rows) is a little dissapointing.</p>
+
+<p>I mean it's great considering all the magic that's going on, but it probably takes around 90 seconds, so that means I'm spending almost half my process time doing interop as far as I can tell. Do you think there might be a quicker way? Maybe an alternative to passing a DataTable to an SqlBulkCopy object?</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-447">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.iunknown.com">John Lam</a></cite>
+		<abbr title="2006-05-04T00:33:20-07:00"><span class="typo_date" title="Thu, 04 May 2006 07:33:20 GMT">Thu, 04 May 2006 07:33:20 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Hmmm ... the perf of the bridge should be much better than what you're observing. That said, I haven't really done much perf tuning recently. </p>
+
+<p>Let me do some experiments tomorrow to see if I can pinpoint where the bottleneck is.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-448">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.peterkrantz.com">Peter Krantz</a></cite>
+		<abbr title="2006-05-04T06:51:48-07:00"><span class="typo_date" title="Thu, 04 May 2006 13:51:48 GMT">Thu, 04 May 2006 13:51:48 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Whoa! This is great stuff. Providing the foundation for Ruby in the CLR can help adoption rate of dynamically types languages in the corporate world.</p>
+
+<p>When will you be picked up by Microsoft like that IronPython guy?</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-449">
+	  <div class="author">
+	    
+	    <cite><a href="http://null">MJ</a></cite>
+		<abbr title="2006-05-04T09:29:14-07:00"><span class="typo_date" title="Thu, 04 May 2006 16:29:14 GMT">Thu, 04 May 2006 16:29:14 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>You Rock!!!</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-450">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.dotnetguru2.org/tbarrere">Thibaut Barrere</a></cite>
+		<abbr title="2006-05-04T10:41:27-07:00"><span class="typo_date" title="Thu, 04 May 2006 17:41:27 GMT">Thu, 04 May 2006 17:41:27 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>This is just <em>amazing</em> :)</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-451">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.dotnetguru2.org/tbarrere">Thibaut Barrere</a></cite>
+		<abbr title="2006-05-04T10:42:18-07:00"><span class="typo_date" title="Thu, 04 May 2006 17:42:18 GMT">Thu, 04 May 2006 17:42:18 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>This is just <em>amazing</em> :)</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-452">
+	  <div class="author">
+	    
+	    <cite>Pete DeLaurentis</cite>
+		<abbr title="2006-05-04T15:47:04-07:00"><span class="typo_date" title="Thu, 04 May 2006 22:47:04 GMT">Thu, 04 May 2006 22:47:04 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Hi John,</p>
+
+<p>This is really amazing stuff.  I've recently fallen in love with Ruby, and am looking for a way to do Ruby client programming on Windows and Mac.</p>
+
+<p>How's the performance of RubyCLR code as opposed to C# code?  Even if you just have a general sense, that would be useful.  Is there a big difference is speed, or does it seem to be in the ballpark?</p>
+
+<p>Also, I'd love to learn more about how RubyCLR works.  Is there anything on the site you can point me toward?  If not, no worries, I can go source code browsing.</p>
+
+<p>Thanks for doing something so cool!  I'm looking forward to trying this out on some future projects.</p>
+
+<p>-Pete</p>
+
+<p>Lead Software Engineer
+NextEngine, Inc.
+<a href="http://www.nextengine.com">www.nextengine.com</a></p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-453">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.iunknown.com">John Lam</a></cite>
+		<abbr title="2006-05-04T17:10:58-07:00"><span class="typo_date" title="Fri, 05 May 2006 00:10:58 GMT">Fri, 05 May 2006 00:10:58 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Pete - Ruby is quite a bit slower than C# code. It's within an order of magnitude when doing equivalent things. That said, however, Ruby really isn't all that suitable for high-performance computing - that's not really it's forte. However, you could do some interesting metaprogramming that results in <em>generating</em> really high performance code. I fully support inlining CIL, C#, VB.NET and even JScript.NET code.</p>
+
+<p>I like to think of C# as the "Ruby assembly language" :)</p>
+
+<p>As for implementation details - just read different entries on this blog - I've been at this for a while ... I really need to write an 'overview' article on how it really works, but bottom line is that the marshaling shims that I use to interop with the CLR are all generated on the fly as CLR DynamicMethods. So the interop layer is always compiled x86 code at runtime. </p>
+
+<p>If you want to learn about Ruby metaprogramming, check out the source code for RubyCLR itself. Most of the interesting parts are written in Ruby- the C++ is really there to interop with the bare metal of the CLR.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-458">
+	  <div class="author">
+	    
+	    <cite><a href="http://bloggingabout.net/blogs/mischa">Mischa Kroon</a></cite>
+		<abbr title="2006-05-08T05:20:27-07:00"><span class="typo_date" title="Mon, 08 May 2006 12:20:27 GMT">Mon, 08 May 2006 12:20:27 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>This is some really cool stuff :)</p>
+
+<p>Also since your using a bridge the processing of the ruby language parts are still done by the Ruby interpreter right ?</p>
+
+<p>Would it also be possible to use Og ?</p>
+
+<p>Or is that just a matter of testing it out myself ?</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-459">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.iunknown.com">John Lam</a></cite>
+		<abbr title="2006-05-08T07:43:50-07:00"><span class="typo_date" title="Mon, 08 May 2006 14:43:50 GMT">Mon, 08 May 2006 14:43:50 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>It's something that you should definitely try out. I haven't put any effort into name collisions etc. with respect to multiple metaprogramming libraries interacting with each other. I have ideas about how to make this more robust, but haven't had the cycles to really try them out yet. That said, bug reports in this area are always welcome :)</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-474">
+	  <div class="author">
+	    
+	    <cite>RMX</cite>
+		<abbr title="2006-05-12T16:35:38-07:00"><span class="typo_date" title="Fri, 12 May 2006 23:35:38 GMT">Fri, 12 May 2006 23:35:38 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>John Lam wrote: "That said, however, Ruby really isn't all that suitable for high-performance computing - that's not really it's forte."</p>
+
+<p>I disagree.  In high performance computing no matter what language you're using - even the best of them - (C, C++, Fortran, even ASM) - and certainly for the weaker ones (Java, etc) - you'll be spending 80%+ of your CPU time in high-performance vector or matrix libraries.  Whether the relatively small amounts of glue logic to string those together is in Ruby or C doesn't really matter at that point.  Ruby has a good and growing numerical library (NArray) that makes it competitive with anything else that uses similar libraries.  Eventually you'll want these matrix libraries to use hand-tuned algorithms that make use of the parallelization specific to your CPUs (i.e. the multiple integer and floating point units and SIMD features of most modern chips - and featuers like OpenMP that'll distribute a single loop over multiple CPUs) - but I'm guessing that these'll be callable from the CLR or built into it where any language including RubyCLR.</p>
+
+<p>I think Ara Howard(?)'s examples on the ruby boards are good examples of this where his extentions to NArray are used to do pretty impressive high-performance computing tasks.</p>
+
+<p>Re-reading what you wrote, I guess I agree with you that Ruby is not what anyone will ever write the high-performance computing libraries in (but neither is C# until someone writes a loop-parallizing-C# compiler like they have for fortran) - but I don't think that means it's inappropriate for high-performance computing -- just that you need to use the right libraries.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-475">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.iunknown.com">John Lam</a></cite>
+		<abbr title="2006-05-12T20:29:10-07:00"><span class="typo_date" title="Sat, 13 May 2006 03:29:10 GMT">Sat, 13 May 2006 03:29:10 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>I guess I didn't really define 'high performance computing' very well. It's not just numerical tasks, it can be things like parsing a very large file efficiently. Having a language where I can absolutely control how memory is laid out to avoid unnecessary copying is critical to making that stuff run fast. We're not going to be writing that code in Ruby or C# - well <em>maybe</em> C#, but I'd definitely prefer C++/CLI for that kind of work.</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-495">
+	  <div class="author">
+	    
+	    <cite>gozh2002</cite>
+		<abbr title="2006-05-21T22:03:26-07:00"><span class="typo_date" title="Mon, 22 May 2006 05:03:26 GMT">Mon, 22 May 2006 05:03:26 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>I am interested if you are going to make it open-source, because I only see a dll for the ruby interpreter</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-496">
+	  <div class="author">
+	    
+	    <cite>gozh2002</cite>
+		<abbr title="2006-05-21T22:07:21-07:00"><span class="typo_date" title="Mon, 22 May 2006 05:07:21 GMT">Mon, 22 May 2006 05:07:21 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>sorry, please delete the last comment. there is a source code written in C++.</p>
+	  </div>
+	</li>
+	</ol>
+
+  </div>
+
+
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- search -->
+      <div id="search" class="search">
+	<form action="/articles/search" id="sform" method="get">
+	  <p><input type="text" id="q" name="q" value="" /></p>
+	</form>
+	
+	<div id="loading" class="loading" style="display:none;">Searching...</div>
+	<div id="results" class="results"></div>
+  <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('loading')}, onLoading:function(request){Element.show('loading')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script>
+</div>
+
+
+      <!-- sidebar components -->
+      
+      
+<div class="sidebar-node">
+  <h3>John Lam</h3>
+<a href="/pages/about_me"><img src="http://static.flickr.com/90/222479189_d4e19a202c_t.jpg" width="67" height="100" alt="Self portrait" /></a>
+
+<p>I am a Program Manager on the Common Language Runtime team at Microsoft. I write .NET and Ruby code on a Mac. I'm the creator of <a href="http://www.rubyclr.com">RubyCLR</a>, a high performance bridge between Ruby and .NET. <a href="/pages/about_me">More ...</a>
+
+<table>
+<tr>
+  <td>email:</td>
+  <td>jlam@iunknown.com</td>
+</tr>
+<tr>
+  <td>phone:</td>
+  <td>425 698 9332</td>
+</tr>
+<tr>
+  <td>msn:</td>
+  <td>drjflam@hotmail.com</td>
+</tr>
+<tr>
+  <td>gtalk:</td>
+  <td>drjflam@gmail.com</td>
+</tr>
+</table>
+<br>
+<h3>Syndicate</h3>
+
+<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="/images/rss.png"/></a>&nbsp;
+<a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+<br>
+<form style="padding:3px;text-align:left;" action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Subscribe by email:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=180551" name="url"/><input type="hidden" value="Less is better" name="title"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a></p></form>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+    <div id="delicious">
+    <h3><a href="http://del.icio.us/drjflam">del.icio.us/drjflam</a></h3>
+            <ul>
+      
+      <li>
+        <a href="http://www.washingtonpost.com/wp-dyn/content/article/2007/04/04/AR2007040401721.html?referrer=digg" title="The story about Joshua Bell performing as a busker in Washington DC - $32.17 for 43 minutes worth of work. A very well written article about the importance of context in beauty (my conclusion - not necessarily the article's).">Pearls Before Breakfast - washingtonpost.com</a>
+              </li>
+      
+      <li>
+        <a href="http://bargiel.home.pl/iGTD/" title="A Getting Things Done organizer for the Mac as a desktop application">iGTD</a>
+              </li>
+      
+      <li>
+        <a href="http://blogs.smugmug.com/onethumb/files/ETech-SmugMug-Amazon-2007.pdf" title="">Don MacAskill on how S3 saved SmugMug 692K last year</a>
+              </li>
+      
+      <li>
+        <a href="http://www.people.iup.edu/pnwm/comparison.gif" title="Fun comparison of fictional starships from different SF shows.">Starship size comparison chart</a>
+              </li>
+      
+      <li>
+        <a href="http://www.teach12.com/" title="Bill Gates listens to the lectures from this company - available as downloads as well.">The Teaching Company</a>
+              </li>
+      
+      <li>
+        <a href="http://www.speedtest.net/" title="Found this via StumbleUpon">Speedtest.net - The Global Broadband Speed Test</a>
+              </li>
+      
+      <li>
+        <a href="http://wvs.topleftpixel.com/flash/cntower_timelapse.swf" title="Move your mouse around this picture and see it change.">Downtown Toronto Photo</a>
+              </li>
+      
+      <li>
+        <a href="ftp://gatekeeper.dec.com/pub/DEC/WRL/research-reports/WRL-TR-95.7.pdf" title="">Shared Memory Consistency Models</a>
+              </li>
+      
+      <li>
+        <a href="http://discuss.develop.com/archives/wa.exe?A2=ind0203B&amp;L=DOTNET&amp;P=R375" title="An excellent discussion on the motivation for and implementation of the CLR memory model.">Vance Morrison on CLR Memory Model</a>
+              </li>
+      
+      <li>
+        <a href="http://slideshare.net/" title="A YouTube like service for sharing slides from talks.">SlideShare</a>
+              </li>
+      
+      <li>
+        <a href="http://research.microsoft.com/manuvir/papers/instruction_level_tracing_VEE06.pdf" title="This is MSR's Nirvana framework for dynamically injecting tracing code into x86 binaries at runtime. It lets them travel forwards and backwards in execution flow ('time travel debugging').">Framework for Instruction-level Tracing and Analysis of Program Executions</a>
+              </li>
+          </ul>
+      </div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>My Photos</h3>
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge_new.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">what is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge_new.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2007/4">April 2007</a>
+      <em>(1)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/3">March 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/2">February 2007</a>
+      <em>(3)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/1">January 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/12">December 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/11">November 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/10">October 2006</a>
+      <em>(8)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/9">September 2006</a>
+      <em>(12)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/8">August 2006</a>
+      <em>(39)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/7">July 2006</a>
+      <em>(29)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/6">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/5">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/4">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/3">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/2">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/1">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(6)</em>
+    </li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Tags</h3>
+<p style="overflow:hidden">
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/barcampearthtoronto">BarCampEarthToronto</a></span>
+<span style="font-size:126.582278481013%"><a href="/articles/tag/dynamiclanguages">DynamicLanguages</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/ironpython">IronPython</a></span>
+<span style="font-size:126.582278481013%"><a href="/articles/tag/life">Life</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/mac">Mac</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/marketing">Marketing</a></span>
+<span style="font-size:101.26582278481%"><a href="/articles/tag/microsoft">Microsoft</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/parenting">Parenting</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/photography">Photography</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/platforms">Platforms</a></span>
+<span style="font-size:200%"><a href="/articles/tag/props">Props</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/python">Python</a></span>
+<span style="font-size:200%"><a href="/articles/tag/ruby">Ruby</a></span>
+<span style="font-size:200%"><a href="/articles/tag/rubyclr">RubyCLR</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/rubyconf">RubyConf</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/secondlife">SecondLife</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/simplicity">simplicity</a></span>
+<span style="font-size:200%"><a href="/articles/tag/thoughts">Thoughts</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/vim">Vim</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/workspaces">workspaces</a></span>
+</p>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(20)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(58)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(150)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+  
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">Less is better</a></p>
+    <ul>
+      <li>powered by <a href="http://typosphere.org">typo</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

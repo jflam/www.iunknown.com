@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on RubyCLR Interfaces</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"RubyCLR Interfaces": comment by John Lam</title>
+      <description>&lt;p&gt;Yes - by the time I get to Beta 1, this thing will be hosted somewhere, likely rubyforge. I just finished a major refactoring of the code layout in anticipation of the move. The plan is to do one more ZIP-style release, and then host Beta 1 on rubyforge.&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 11:32:48 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces#comment-149</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces#comment-149</link>
+    </item>
+    <item>
+      <title>"RubyCLR Interfaces": comment by Thibaut</title>
+      <description>&lt;p&gt;thanks for the explanation, it's crystal clear now.&lt;/p&gt;
+
+&lt;p&gt;I'm pretty sure this thing will become "real" before everyone is upgraded :)&lt;/p&gt;
+
+&lt;p&gt;do you plan on hosting the project somewhere ? (rubyforge, sourceforge?)&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 11:22:34 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces#comment-148</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces#comment-148</link>
+    </item>
+    <item>
+      <title>"RubyCLR Interfaces": comment by John Lam</title>
+      <description>&lt;p&gt;I use a new feature of CLR 2.0 called DynamicMethods to generate shims to connect Ruby objects to CLR objects. This feature doesn't exist in 1.1. I could have done some other hackery to make it happen,  but it was so much cleaner to do it in 2.0.&lt;/p&gt;
+
+&lt;p&gt;Besides, by the time this thing becomes "real", wouldn't everyone have upgraded already? :)&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 11:13:24 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces#comment-147</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces#comment-147</link>
+    </item>
+    <item>
+      <title>"RubyCLR Interfaces": comment by Thibaut Barr&amp;egrave;re</title>
+      <description>&lt;p&gt;Hi John&lt;/p&gt;
+
+&lt;p&gt;I haven't taken the time to dive into the bridge source to find this answer myself, but what is the reason to require the framework 2.0 instead of 1.1 ?&lt;/p&gt;
+
+&lt;p&gt;keep up with the good work&lt;/p&gt;
+
+&lt;p&gt;Thibaut&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 10:53:30 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces#comment-146</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces#comment-146</link>
+    </item>
+    <item>
+      <title>"RubyCLR Interfaces" by jlam</title>
+      <description>&lt;p&gt;A notable feature that was missing from the &lt;a href="http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr"&gt;second drop of RubyCLR&lt;/a&gt; was support for interfaces. Also, I was missing support for integrating .NET Reflection with Ruby Reflection.&lt;/p&gt;
+
+
+	&lt;p&gt;I spent some time yesterday adding these features to RubyCLR. This is what I wound up with:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+  def test_enumerator
+    a = ArrayList.new
+    a.Add(1)
+    a.Add(2)
+    a.Add(3)
+    enum = a.get_interface('System.Collections.IEnumerable')
+    e    = enum.GetEnumerator.get_interface('System.Collections.IEnumerator')
+    assert e.MoveNext
+    assert 1, e.Current
+    assert e.MoveNext
+    assert 2, e.Current
+    assert e.MoveNext
+    assert 3, e.Current
+    assert !e.MoveNext
+  end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;As you could imagine, I&amp;#8217;m going to add explicit support for an &lt;code&gt;each&lt;/code&gt; method on enumerable objects.&lt;/p&gt;
+
+
+	&lt;p&gt;Implementing &lt;code&gt;get_interface&lt;/code&gt; turned out to be easier than expected:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+  def get_interface(name)
+    klass = self.class
+    create_safe_ruby_instance_method(klass, 'get_interface') do
+      ldstr        name.to_s
+      ld_this      klass
+      call         'static Marshal::ToRubyObjectAsInterface(String, Object)'
+      ret
+    end
+    get_interface(name)
+  end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The C+&lt;ins&gt; &lt;code&gt;ToRubyObjectAsInterface&lt;/code&gt; simply thunks to some existing code in the C&lt;/ins&gt;+ part of the RubyCLR runtime.&lt;/p&gt;
+
+</description>
+      <pubDate>Thu, 23 Feb 2006 08:40:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/23/rubyclr-interfaces"&gt;RubyCLR Interfaces&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/23/rubyclr-interfaces"&gt;RubyCLR Interfaces&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

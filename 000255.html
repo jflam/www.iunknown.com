@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Dynamic language angst</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000254.html" title="Book FAQ" />
+
+<link rel="next" href="http://www.iunknown.com/000256.html" title="Upgrading Windows 2000 Domain to Windows Server 2003" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000254.html">&laquo; Book FAQ</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000256.html">Upgrading Windows 2000 Domain to Windows Server 2003 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">May 22, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Dynamic language angst</h3>
+
+<p><P>I wonder if it's just me, or whether the community that I frequent has this on its collective consciousness, but I've been spending quite a bit of time wondering about the benefits of dynamically typed languages. </P><br />
+<P><A href="http://www.intertwingly.net/blog/1425.html">Sam Ruby</A> pointed me to <A href="http://www.swig.org/">SWIG</A>, which is a toolkit for building interfaces between C++ and various dynamically typed languages such as Python and Ruby.</P><br />
+<P><A href="http://pinetree-tech.com/weblog/archives/2003/05/22/ruby_vs_python.shtml">Justin Rudd</A> is wondering which is better: Ruby or Python? And he also offers up some opinions of his own.</P><br />
+<P><A href="http://www.neward.net/ted/weblog/index.jsp?date=20030522#1053617115876">Ted Neward</A> participated in a panel discussion at the Rocky Mountain Software Symposium with Dave Thomas of Pragmatic&nbsp;Programmer / Programming Ruby fame, and offers a good analysis of the difference between loose coupling, loose binding and loose typing.</P><br />
+<P>Personally, I spent some time at the bookstore the other day looking over <A href="http://www.hetland.org/">Magnus Lie Hetland's</A> <A href="http://www.amazon.com/exec/obidos/ASIN/1590590066/iunknowncom-20/">Practical Python</A> book. I really like the way the book is laid out, especially the way he offers up first and second implementations of the ten sample applications that he uses to round out his book.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at May 22, 2003 07:53 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="255" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000255.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Please do not mistake static/dynamic typing for strong/weak typing. Ruby is actually a strong dynamic typed language.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;chime&#64;mu&#46;dk">Michael Arnoldus</a> at May 23, 2003 05:50 AM</span>
+</div>
+<div class="comments-body">
+<p>For a good Python book, you might also want to check out Steve Holden's _Python Web Programming_ (see http://pydish.holdenweb.com/pwp/).  Do note, though, that my opinion may be somewhat biased, as I was one of Steve's technical editors for that one.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://dotnetweblogs.com/Jtobler/">John Tobler</a> at May 29, 2003 06:37 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: First drop of RubyCLR</title>
+    <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>First drop of RubyCLR</title>
+      <description>&lt;p&gt;Here&amp;#8217;s the &lt;a href="http://www.iunknown.com/images/RbDynamicMethod.zip"&gt;first drop of RubyCLR&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;I think this version is usable for folks who are interested in playing around with the current state of the bits. It supports constructor and method overloading, static and instance methods, properties, indexers, static and instance fields, events, multi-dimensional arrays, primitive (ints, floats, bools) value-type marshaling, and reference-type marshaling. Look at the &lt;code&gt;tests2.rb&lt;/code&gt; unit test file to see the evidence.&lt;/p&gt;
+
+
+	&lt;p&gt;Notable are the things that this release does &lt;strong&gt;not&lt;/strong&gt; support. There is no support for generics, nor is there support for marshaling user-defined value types like &lt;code&gt;Point&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;There&amp;#8217;s a rakefile in this project too if you want to compile the bits. I&amp;#8217;ve included a compiled &lt;span class="caps"&gt;DLL&lt;/span&gt; for folks who don&amp;#8217;t have &lt;span class="caps"&gt;MS C&lt;/span&gt;++ 14.0 installed on their computer.&lt;/p&gt;
+
+
+	&lt;p&gt;This release requires the &lt;span class="caps"&gt;RTM&lt;/span&gt; version of .NET 2.0.&lt;/p&gt;
+
+
+	&lt;p&gt;I haven&amp;#8217;t tried to build anything using these bits yet outside of the unit tests, but I wanted to provide a drop for the curious.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m &lt;strong&gt;really&lt;/strong&gt; interested in getting feedback about the implementation of the bridge. If folks have the time and could do a code review of either the C++ or Ruby code (or both!) I would greatly appreciate it.&lt;/p&gt;
+
+
+	&lt;p&gt;Bug reports in the form of a unit test that can repro the bug would also be greatly appreciated.&lt;/p&gt;
+
+
+	&lt;p&gt;The state of error messages in this release is more-or-less non-existent. I plan on fixing this once I tackle the next two hard problems: marshaling user defined value types and handling generics.&lt;/p&gt;</description>
+      <pubDate>Thu, 12 Jan 2006 17:46:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:d65ebc894d06bf4b740d2a70fd3f9fc5</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by John Lam</title>
+      <description>&lt;p&gt;Thanks, Philipp. Hopefully I'll get a value type drop out soon; it's proving to be a slightly tougher problem than it looked the first time I hacked out an implementation.&lt;/p&gt;</description>
+      <pubDate>Thu, 09 Feb 2006 21:11:37 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-328</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by Philipp Schumann</title>
+      <description>&lt;p&gt;This is fantastic!
+I just downloaded the drop.
+As soon as I get the chance to play around with this I will probably blog about my experiences. I expect a lot of buzz around this bridge in the future.&lt;/p&gt;</description>
+      <pubDate>Wed, 08 Feb 2006 14:36:08 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-323</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by John Lam</title>
+      <description>&lt;p&gt;I'm glad it's working out for you, Mark!&lt;/p&gt;
+
+&lt;p&gt;Please feel free to share your code- I'd be interested in seeing how you added that feature to my codebase. You can reach me more directly via jlam at iunknown.com&lt;/p&gt;</description>
+      <pubDate>Mon, 06 Feb 2006 00:41:59 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-322</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by Mark</title>
+      <description>&lt;p&gt;I realized that for my immediate purposes, I really only need support for Nullable&amp;lt;T&amp;gt; where T is one of the primitives you already support.  So, I hacked your code to special case Nullable for those types.  It now basically gives the same semantics to Nullable as boxing.  You get nil if it's "null", otherwise, you get the value.  It works great!  Now I can mine my datafiles with ease.  I'm happy to share the changes if you like.&lt;/p&gt;
+
+&lt;p&gt;It's quite cool because I am using DynamicMethod in my C# library to dynamically generate record parsers for my data files.&lt;/p&gt;</description>
+      <pubDate>Fri, 03 Feb 2006 17:43:05 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-321</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by John Lam</title>
+      <description>&lt;p&gt;I'm glad you're using it, Mark! &lt;/p&gt;
+
+&lt;p&gt;I have some crude UDF value type marshaling working in a private build right now, but I haven't had any cycles to work on it the past couple of weeks since I was giving birth to a new ASP.NET 2.0 class ... &lt;/p&gt;
+
+&lt;p&gt;After some recovery time this weekend, I'll be back at work hacking on this next week. &lt;/p&gt;
+
+&lt;p&gt;Hang in there - more code soon!&lt;/p&gt;</description>
+      <pubDate>Thu, 02 Feb 2006 23:42:08 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-320</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by Mark</title>
+      <description>&lt;p&gt;Yup, it was EventHandler&amp;lt;T&amp;gt;.  Works great.  Can't wait for generics support and user-defined ValueType marshaling.&lt;/p&gt;</description>
+      <pubDate>Thu, 02 Feb 2006 18:13:07 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-319</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by Mark</title>
+      <description>&lt;p&gt;When you say there is no support for generics, does that mean that you just can't create an instance of a generic type or call a generic method? or that generic types aren't handled at all (as return values, etc)&lt;/p&gt;
+
+&lt;p&gt;Any chance you could help me interpret this error?
+(eval):45:in &lt;code&gt;ProcessStdf': (eval):45:in&lt;/code&gt;ProcessStdf': compile error (SyntaxError)
+(eval):45: unterminated string meets end of file
+        from (eval):171:in &lt;code&gt;send'
+        from (eval):171:in&lt;/code&gt;method_missing'
+        from parse.rb:14&lt;/p&gt;
+
+&lt;p&gt;I'm hooking it up to a data file parsing library of mine.  I use generic EventHandlers, could that be the cause?&lt;/p&gt;
+
+&lt;p&gt;I really love this thing.  Could be very useful for me.  Let me know if you want me to test new drops in the "real world"  I've got several applications for it.&lt;/p&gt;</description>
+      <pubDate>Thu, 02 Feb 2006 15:27:15 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-318</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by Justin</title>
+      <description>&lt;p&gt;Reposting unit test in hope it won't format it weirdly again ...&lt;/p&gt;
+
+&lt;pre&gt;
+class FormsTest &lt;/pre&gt;</description>
+      <pubDate>Tue, 17 Jan 2006 13:45:23 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-302</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by Justin</title>
+      <description>&lt;p&gt;John,&lt;/p&gt;
+
+&lt;p&gt;I got unit tests you shipped to pass, but when I tried to display a message box using Windows Forms, I got an error. It looks like there is a hard-coded set of assemblies that this drop will deal with - is that true? &lt;/p&gt;
+
+&lt;p&gt;Anyways, here is a unit test showing the problem:&lt;/p&gt;
+
+&lt;p&gt;class FormsTest &amp;lt; Test::Unit::TestCase
+ def test&lt;em&gt;message&lt;/em&gt;box
+  include System::Windows::Forms
+  m = System.Windows.Forms.MessageBox.Show("Hello, world!")
+ end
+end&lt;/p&gt;</description>
+      <pubDate>Tue, 17 Jan 2006 13:43:29 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-301</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by John Lam</title>
+      <description>&lt;p&gt;It's called RbDynamicMethod.dll and it's in the /Tests directory.&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Jan 2006 13:11:15 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-300</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by null</title>
+      <description>&lt;p&gt;I don't see the DLL - where is it in the zip?&lt;/p&gt;</description>
+      <pubDate>Mon, 16 Jan 2006 10:30:32 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-299</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by Scott Hanselman</title>
+      <description>&lt;p&gt;This rocks, you're a total Ruby Stud. Keep it coming!&lt;/p&gt;</description>
+      <pubDate>Sun, 15 Jan 2006 01:51:46 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-297</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by John Lam</title>
+      <description>&lt;p&gt;Not in the immediate future. The problem is that I use Managed C++ extensively in this bridge, and there's no equivalent for Mono. I guess you could use P/Invoke for most things using C#, but that would be painful ... perhaps someone could volunteer to port the C++ part of the bridge (which is currently larger than I would like it to be ~900 lines or so) to C#?&lt;/p&gt;</description>
+      <pubDate>Fri, 13 Jan 2006 18:39:42 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-296</link>
+    </item>
+    <item>
+      <title>"First drop of RubyCLR" by andre</title>
+      <description>&lt;p&gt;any chance to make it work with mono on linux?&lt;/p&gt;</description>
+      <pubDate>Fri, 13 Jan 2006 17:33:32 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comment-295</link>
+    </item>
+  </channel>
+</rss>

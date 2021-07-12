@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Visual Studio .NET vs. Frontier</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000003.html" title="My old plan" />
+
+<link rel="next" href="http://www.iunknown.com/000005.html" title="Intellectual property and MSIL" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000003.html">&laquo; My old plan</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000005.html">Intellectual property and MSIL &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 05, 2001</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Visual Studio .NET vs. Frontier</h3>
+
+<p><P dir=ltr style="MARGIN-RIGHT: 0px">As promised, here's a response to one of <A href="http://scriptingnews.userland.com/backissues/2001/12/03#helpPayTheBills"><FONT color=#808080>Dave Winer's offensive postings</FONT></A>.<br />
+<P dir=ltr><EM>"Microsoft sent an offer to get $800 off Visual Studio .NET so I can build powerful Web services applications using SOAP. Now be forewarned, a commercial message follows. Why would you pay Microsoft all that money, when you could buy a year's subscription to </EM><A href="http://frontier.userland.com/"><EM><FONT color=#808080>Frontier</FONT></EM></A><EM>, and get XML-RPC support along with SOAP, for a mere $899 per year, and when the subscription expires, you can keep using it. (It also has a full content management system baked in, and it's a 13 year codebase so it probably runs with a little more stability than Microsoft's new codebase.)"</EM> </P><br />
+<P dir=ltr>Seeing stuff like this makes me mad. Dave, you write a content management system.</P><br />
+<P dir=ltr>And not a particularly good one [1]. <A href="http://msdn.microsoft.com/vstudio/"><FONT color=#808080>Visual Studio .NET</FONT></A> (in case you didn't know) is a general-purpose set of developer tools. And given what you get vs. the price you pay, probably the best deal going in software. Comparing Frontier to Visual Studio .NET makes about as much sense as comparing <A href="http://www3.corel.com/cgi-bin/gx.cgi/AppLogic+FTContentServer?pagename=Corel/Product/Details&amp;id=CC1MSNDMYJC"><FONT color=#808080>Corel PerfectOffice</FONT></A> to Visual Studio .NET. </P><br />
+<P dir=ltr>Also, there's nothing in the license agreement in Visual Studio .NET that prohibits you from continuing to use it a year, two years or a thousand years from now. Just like nothing stops folks from continuing to use Visual Studio 6 today, years after its release. </P><br />
+<P dir=ltr>What utter nonsense. </P><br />
+<P dir=ltr>[1] Joel had to write a daemon <A href="http://www.joelonsoftware.com/articles/fog0000000008.html"><FONT color=#808080>"which watches Manila and restarts it when it crashes (about once every two days)."</FONT></A> </P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December  5, 2001 03:00 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="4" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000004.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

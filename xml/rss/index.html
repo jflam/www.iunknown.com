@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better</description>
+    <item>
+      <title>Method overloading and class inheritance</title>
+      <description>&lt;p&gt;I need some feedback on a design problem in RubyCLR.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the problem in a nutshell: Ruby doesn&amp;#8217;t support method overloading. RubyCLR fakes it out by generating a shim that lets you call the union of all overloaded methods defined by the current class and all ancestor classes.&lt;/p&gt;
+
+
+	&lt;p&gt;Now, the biggest feature that I&amp;#8217;m adding to this next drop of the bridge is class-based inheritance of shims. I want to define a shim on the class that it was defined by (via &lt;code&gt;MemberInfo.DeclaringType&lt;/code&gt; property). The goal of this is to let folks (who want to) replace the definition of the method where it was defined, and to let all derived classes automatically inherit that method definition. This, of course, doesn&amp;#8217;t work if that method is ever overloaded in derived classes.&lt;/p&gt;
+
+
+	&lt;p&gt;For the next drop, I&amp;#8217;m going to take a hybrid approach: define the shim on the declaring Ruby class object if that method is never overloaded in derived classes. If it is overloaded in derived classes, I&amp;#8217;m going to define the shim on the Ruby class that triggered the &lt;code&gt;const_missing&lt;/code&gt; event.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;d &lt;strong&gt;really&lt;/strong&gt; like some second opinions about this, as this is largely stream of consciousness thinking right now. I&amp;#8217;m worried about breaking things in lots of other corner cases that I haven&amp;#8217;t considered yet.&lt;/p&gt;
+
+
+	&lt;p&gt;Do I really need to go to a full-blown method name mangling approach to implement this feature correctly?&lt;/p&gt;</description>
+      <pubDate>Mon, 06 Mar 2006 11:15:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/06/method-overloading-and-class-inheritance</guid>
+      <link>http://www.iunknown.com/articles/2006/03/06/method-overloading-and-class-inheritance</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/86</trackback:ping>
+    </item>
+    <item>
+      <title>Dull cubicles or dull people?</title>
+      <description>&lt;p&gt;Kathy Sierra posted about &lt;a href="http://headrush.typepad.com/creating_passionate_users/2006/02/brain_death_by_.html#comments"&gt;how cubicles can cause brain damage&lt;/a&gt;. Folks, we&amp;#8217;re mixing up cause and effect.&lt;/p&gt;
+
+
+	&lt;p&gt;Nobody likes cubicles. That&amp;#8217;s fine. But simply changing your organization to have beautiful offices with doors that look out over panoramic vistas will &lt;strong&gt;not&lt;/strong&gt; let you create wonderful products &lt;em&gt;if you keep the same people&lt;/em&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;It&amp;#8217;s the people in your organization that make it dull and lifeless. Let&amp;#8217;s face it, the typical graduate student office is about as institutional and ugly as any cube farm, yet remarkable work gets done every day there. Why? It&amp;#8217;s the people.&lt;/p&gt;
+
+
+	&lt;p&gt;Look around you. Would you rather have a door to keep the bozos out, or would you rather get rid of the bozos?&lt;/p&gt;</description>
+      <pubDate>Mon, 06 Mar 2006 10:35:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/06/dull-cubicles-or-dull-people</guid>
+      <link>http://www.iunknown.com/articles/2006/03/06/dull-cubicles-or-dull-people</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/85</trackback:ping>
+    </item>
+    <item>
+      <title>Converging on a correct design</title>
+      <description>&lt;p&gt;Special cases in code that are workarounds for a seemingly innocuous problem are almost always a symptom of something wrong in your design.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s an example from some work that I&amp;#8217;ve been doing for the past couple of days: identifying layering violations in &lt;a href="http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr"&gt;RubyCLR&lt;/a&gt;. This work led me to look at how I was caching &lt;code&gt;Type&lt;/code&gt; objects in the bridge.&lt;/p&gt;
+
+
+	&lt;p&gt;I currently hold onto a reference to a &lt;span class="caps"&gt;CLR &lt;/span&gt;&lt;code&gt;Type&lt;/code&gt; object in each Ruby shadow class object that I create. So you could think of the Ruby type system as a cache for all &lt;code&gt;Type&lt;/code&gt; objects that are currently in use by your program.&lt;/p&gt;
+
+
+	&lt;p&gt;The problem is this: I cache &lt;code&gt;Type&lt;/code&gt; objects elsewhere as well, particularly in the lower levels of the bridge that use my &lt;a href="http://www.iunknown.com/articles/2005/12/13/third-drop-of-rbdynamicmethod"&gt;RbDynamicMethod&lt;/a&gt; library. Now, it just doesn&amp;#8217;t &lt;em&gt;feel&lt;/em&gt; right to have duplicate caches, so I set about redesigning my Reflection engine to use a unified cache.&lt;/p&gt;
+
+
+	&lt;p&gt;While looking at the C++ code that I had to refactor, I decided to postpone this work to work on something more important: leveraging inheritance in my Ruby shadow class objects. Right now, if you had a &lt;code&gt;System.Windows.Forms.TextBox&lt;/code&gt; and a &lt;code&gt;System.Windows.Forms.Button&lt;/code&gt; you will have duplicate accessor &lt;code&gt;Name&lt;/code&gt; accessor methods; my shadow classes were completely ignorant of inheritance in the &lt;span class="caps"&gt;CLR&lt;/span&gt; class libraries. The correct solution is to attach the &lt;code&gt;Name&lt;/code&gt; accessor method shim to the class where it was defined: the common &lt;code&gt;System.Windows.Forms.Control&lt;/code&gt; class.&lt;/p&gt;
+
+
+	&lt;p&gt;Postponing the work seemed like the right thing &amp;#8211; after all, I was just being inefficient, right?&lt;/p&gt;
+
+
+	&lt;p&gt;So I started to implement ruby shadow class inheritance. But then I ran smack into a what was now a clear layering violation: the reference to the &lt;code&gt;Type&lt;/code&gt; object that I was holding in my shadow class objects. There was even (surprise!) some special case code to treat &lt;code&gt;Type&lt;/code&gt; objects differently.&lt;/p&gt;
+
+
+	&lt;p&gt;I need to move that reference out of the Ruby shadow class object and into the unified &lt;code&gt;Type&lt;/code&gt; cache that I wanted to implement earlier, but postponed!&lt;/p&gt;
+
+
+	&lt;p&gt;So the moral of the story is this: several seemingly unrelated problems were all symptoms of the same incorrect design. I&amp;#8217;m continually amazed at how refactoring code almost always leads me to a (more) correct design.&lt;/p&gt;
+
+
+	&lt;p&gt;As an aside, this is also why programming languages that let you write fewer lines of code are almost always superior: it&amp;#8217;s just easier to &lt;em&gt;see&lt;/em&gt; the incorrect design when you&amp;#8217;re staring at fewer lines of code to begin with. And they also have the side-effect of making it much easier to do complex refactoring because there&amp;#8217;s less language-related bookkeeping to do &amp;#8230;. hmmm I wonder what languages I&amp;#8217;m comparing here? :)&lt;/p&gt;</description>
+      <pubDate>Fri, 03 Mar 2006 11:06:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/03/converging-on-a-correct-design</guid>
+      <link>http://www.iunknown.com/articles/2006/03/03/converging-on-a-correct-design</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/84</trackback:ping>
+    </item>
+    <item>
+      <title>Generics stabilizing</title>
+      <description>&lt;p&gt;RubyCLR now supports multi-type generic types such as &lt;code&gt;Dictionary&amp;lt;T, U&amp;gt;&lt;/code&gt;. I also changed the nasty &lt;code&gt;cons&lt;/code&gt; method to the infinitely cleaner &lt;code&gt;of&lt;/code&gt; method. Here&amp;#8217;s some tests to show the progress:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_create_two_parameter_generic_type
+  dict = Dictionary.of(Int32, Int32).new
+  dict.add(1, 1)
+  dict.add(2, 2)
+  assert_equal 1, dict[1]
+  assert_equal 2, dict[2]
+end
+
+def test_dictionary_with_string_key
+  dict = Dictionary.of(System::String, Int32).new
+  dict['John'] = 42
+  dict['Ruby'] = 2
+  assert_equal 42, dict['John']
+  assert_equal 2, dict['Ruby']
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The one thing that I&amp;#8217;m not happy with right now is being forced to fully qualify the &lt;code&gt;System::String&lt;/code&gt; type. I might add some code to special-case that type name in the &lt;code&gt;of&lt;/code&gt; method and alias to the &lt;span class="caps"&gt;CLR &lt;/span&gt;&lt;code&gt;String&lt;/code&gt; type from the Ruby &lt;code&gt;String&lt;/code&gt; type.&lt;/p&gt;
+
+
+	&lt;p&gt;You might be wondering how I implement the generic types. I generate a Ruby shadow class that has a mangled name. For example, &lt;code&gt;Dictionary.of(Int32,Int32)&lt;/code&gt;, maps to a Ruby class called &lt;code&gt;Dictionary_generic_Int32_Int32&lt;/code&gt;, which is generated the first time &lt;code&gt;of&lt;/code&gt; is called. On all subsequent calls, I just look up the Ruby shadow class name. This is also how I handle arrays (you can really think of arrays as a special case of generics).&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 23:34:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/generics-stabilizing</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/generics-stabilizing</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/83</trackback:ping>
+    </item>
+    <item>
+      <title>Generics in RubyCLR</title>
+      <description>&lt;p&gt;I got a crude implementation of generics up and running in RubyCLR today. It does what these tests say it does, and nothing more :)&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class GenericsTests &amp;lt; TestCase
+  include System::Collections::Generic
+
+  def test_make_generic_type
+    c = List.cons(Int32)
+    assert_equal 'System::Collections::Generic::List_generic_Int32', c.name
+    assert_equal 'System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]', c.clr_type.full_name
+  end
+
+  def test_create_generic_type
+    list = List.cons(Int32).new
+    assert_equal 'List`1', list.clr_type.name
+  end
+
+  def test_call_generic_type
+    list = List.cons(Int32).new
+    list.add(42)
+    assert_equal 42, list[0]
+  end
+
+  def test_type_conversion_error
+    assert_raises TypeError do
+      list = List.cons(Int32).new
+      list.add('42')
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;As for feedback, I&amp;#8217;m not all that happy with the name &lt;code&gt;cons&lt;/code&gt; for the method that creates a generic type. Suggestions would be welcome (but they have to be easy to type, since I&amp;#8217;m competing with &lt;code&gt;List&amp;lt;Int32&amp;gt;&lt;/code&gt; :)&lt;/p&gt;
+
+
+	&lt;p&gt;I also ran some crude performance benchmarks for adding 1M integers to each data structure:&lt;/p&gt;
+
+
+	&lt;ul&gt;
+	&lt;li&gt;&lt;code&gt;ArrayList&lt;/code&gt;   = 1.15s&lt;/li&gt;
+		&lt;li&gt;&lt;code&gt;List&amp;lt;Int32&amp;gt;&lt;/code&gt; = 1.00s&lt;/li&gt;
+		&lt;li&gt;Ruby &lt;code&gt;Array&lt;/code&gt;  = 0.66s&lt;/li&gt;
+	&lt;/ul&gt;
+
+
+	&lt;p&gt;I just wanted to get some order of magnitude estimates of performance. So far I&amp;#8217;m quite happy with the performance of the bridge. 1M method calls / second is nothing to sneeze at.&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 17:21:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/generics-in-rubyclr</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/82</trackback:ping>
+    </item>
+    <item>
+      <title>IDEs and complexity</title>
+      <description>&lt;p&gt;&lt;a href="http://patricklogan.blogspot.com/2006/02/this-is-enterprise-stuff-look-out.html"&gt;Worth repeating&lt;/a&gt;:&lt;/p&gt;
+
+
+	&lt;blockquote&gt;
+		&lt;p&gt;Intellisense and code generation is an isolated developer trick for hiding real complexity and risk.&lt;/p&gt;
+	&lt;/blockquote&gt;
+
+
+	&lt;p&gt;Patrick Logan does a great job of capturing why I don&amp;#8217;t like the complexity of today&amp;#8217;s IDEs.&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Feb 2006 13:22:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/ides-and-complexity</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/ides-and-complexity</link>
+      <category>Props</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/81</trackback:ping>
+    </item>
+    <item>
+      <title>RubyCLR and auto_dispose</title>
+      <description>&lt;p&gt;In the &lt;a href="http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr"&gt;second drop of RubyCLR&lt;/a&gt;, I had a broken implementation of &lt;code&gt;auto_dispose&lt;/code&gt;, which automatically calls an object&amp;#8217;s &lt;a href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfSystemIDisposableClassDisposeTopic.asp"&gt;Dispose&lt;/a&gt; method for you. Fortunately, Gunter Szolderits noticed this problem, and sent me a really lovely implementation that allows for parallel assignment. That means that instead of writing this:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+auto_dispose(D.new) do |dc|
+  auto_dispose(AD.new) do |adc|
+    adc.good_method
+  end
+  dc.good_method
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;you can now write this:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+auto_dispose(D.new, AD.new) do |dc, adc|
+  adc.good_method
+  dc.good_method
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Using the new &lt;a href="http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr"&gt;interfaces&lt;/a&gt; implementation, the implementation of &lt;code&gt;auto_dispose&lt;/code&gt; now looks like this:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def auto_dispose(*objs)
+  yield(*objs) if block_given?
+ensure
+  objs.each do |obj|
+    if obj != nil 
+      disposable = obj.as IDisposable
+      disposable.dispose if disposable != nil
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Now, is that pretty or what? And I mean both the usage and the implementation!&lt;/p&gt;</description>
+      <pubDate>Mon, 27 Feb 2006 20:39:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/rubyclr-and-auto_dispose</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/80</trackback:ping>
+    </item>
+    <item>
+      <title>Interfaces and RubyCLR</title>
+      <description>&lt;p&gt;&lt;a href="http://www.iunknown.com/articles/2006/02/23/rubyclr-interfaces"&gt;My earlier implementation of interfaces&lt;/a&gt; for RubyCLR was incomplete. I didn&amp;#8217;t have code to let you test whether an object implemented the interface requested. There are a couple of approaches that you can use to solve this problem: via reflection at runtime and via a shim method that &amp;#8220;knows&amp;#8221; about all of the interfaces that an object implements.&lt;/p&gt;
+
+
+	&lt;p&gt;I chose the second option: implementing two new methods &lt;code&gt;is&lt;/code&gt; and &lt;code&gt;as&lt;/code&gt;. The goal is to eventually provide the same semantics as the C# &lt;a href="http://msdn.microsoft.com/library/en-us/csref/html/vclrfispg.asp"&gt;is&lt;/a&gt; and &lt;a href="http://msdn.microsoft.com/library/en-us/csref/html/vclrfas.asp"&gt;as&lt;/a&gt; operators. You can use the &lt;code&gt;is&lt;/code&gt; method to test whether an object implements an interface, and you can use the &lt;code&gt;as &lt;/code&gt; operator to return a reference to that interface.&lt;/p&gt;
+
+
+	&lt;p&gt;I use Reflection to enumerate all of the interfaces of a class and bake in all of those interface references by recording the &lt;a href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemruntimetypehandleclasstopic.asp"&gt;RuntimeTypeHandle&lt;/a&gt; for each one of the interfaces. This approach gives me superior performance  since I avoid using Reflection on all but the first call to the &lt;code&gt;is&lt;/code&gt; or &lt;code&gt;as&lt;/code&gt; methods of a type.&lt;/p&gt;
+
+
+	&lt;p&gt;The ultimate goal is that &lt;code&gt;is&lt;/code&gt; and &lt;code&gt;as&lt;/code&gt; will match the semantics of &lt;code&gt;is&lt;/code&gt; and &lt;code&gt;as&lt;/code&gt; in C#. Currently I&amp;#8217;m missing support for the boxing and unboxing scenarios as well as the super-type scenario.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the unit test for the &lt;code&gt;is&lt;/code&gt; method:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_is
+  m = System::Data::DataSet.new
+  assert m.is?(System::Data::DataSet)
+  assert m.is?(IComponent)
+  assert m.is?(IDisposable)
+  assert m.is?(IServiceProvider)
+  assert m.is?(IListSource)
+  assert m.is?(System::Xml::Serialization::IXmlSerializable)
+  assert m.is?(ISupportInitializeNotification)
+  assert m.is?(ISupportInitialize)
+  assert m.is?(System::Runtime::Serialization::ISerializable)
+  assert !m.is?(System::Data::IColumnMapping)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;and a simpler test for the &lt;code&gt;as&lt;/code&gt; method:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_as
+  a = ArrayList.new
+  a.add(1)
+  e = a.as(IEnumerable).get_enumerator.as(IEnumerator)
+  assert e.move_next
+  assert 1, e.current
+  assert !e.move_next
+  assert_equal nil, a.as(IComponent)
+end
+&lt;/code&gt;&lt;/pre&gt;</description>
+      <pubDate>Mon, 27 Feb 2006 20:14:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr</guid>
+      <link>http://www.iunknown.com/articles/2006/02/27/interfaces-and-rubyclr</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/79</trackback:ping>
+    </item>
+    <item>
+      <title>Native Ruby array data binding</title>
+      <description>&lt;p&gt;I spent some time today hacking out an experimental implementation of native Ruby array data binding. It works by using a &lt;span class="caps"&gt;CLR&lt;/span&gt; helper class called &lt;code&gt;DataBinder&lt;/code&gt; that implements &lt;code&gt;IList&lt;/code&gt;, and calls back to Ruby using delegates to retrieve the data. This gives the following usage model:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+names = ['John', 'Paul', 'George', Ringo']
+list_box.data_source = names.make_bindable
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;To make this work, I inject a &lt;code&gt;make_bindable&lt;/code&gt; method into the &lt;code&gt;Array&lt;/code&gt; class:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def make_bindable
+  binder = DataBinder.new
+  binder.get_data do |sender, args|
+    args.current_object = self[args.index]
+  end
+  binder.get_count do |sender, args|
+    args.count = self.length
+  end
+  binder
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Thoughts? Does this feel good?&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 23:42:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/native-ruby-array-data-binding</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/native-ruby-array-data-binding</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/78</trackback:ping>
+    </item>
+    <item>
+      <title>RubyCLR is all about choice</title>
+      <description>&lt;p&gt;Look at what I got working this morning:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_enumerator
+  a = ArrayList.new
+  a.Add(1)
+  a.Add(2)
+  a.Add(3)
+  e = a.get_interface(IEnumerable).GetEnumerator.get_interface(IEnumerator)
+  assert e.MoveNext
+  assert 1, e.Current
+  assert e.MoveNext
+  assert 2, e.Current
+  assert e.MoveNext
+  assert 3, e.Current
+  assert !e.MoveNext
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;vs.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_enumerator
+  a = ArrayList.new
+  a.add(1)
+  a.add(2)
+  a.add(3)
+  e = a.get_interface(IEnumerable).get_enumerator.get_interface(IEnumerator)
+  assert e.move_next
+  assert 1, e.current
+  assert e.move_next
+  assert 2, e.current
+  assert e.move_next
+  assert 3, e.current
+  assert !e.move_next
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;By the way, both work in the same app.&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 11:17:00 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice</link>
+      <category>Thoughts</category>
+      <trackback:ping>http://www.iunknown.com/articles/trackback/77</trackback:ping>
+    </item>
+  </channel>
+</rss>

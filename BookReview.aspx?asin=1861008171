@@ -1,0 +1,166 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Dissecting a C# Application: Inside SharpDevelop
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=1861008171" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8xODYxMDA4MTcxLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPERpc3NlY3RpbmcgYSBDIyBBcHBsaWNhdGlvbjogSW5zaWRlIFNoYXJwRGV2ZWxvcDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Q2hyaXN0aWFuIEhvbG0sIE1pa2UgS3J1Z2VyLCBCZXJuaGFyZCBTcHVpZGE7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQ1OS45OTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Ti9BOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwzLjA7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQ7Pj47Pjs7Pjt0PEA8aHR0cDovL3d3dy5hbWF6b24uY29tL2V4ZWMvb2JpZG9zL0FTSU4vMTg2MTAwODE3MS9yZWY9bm9zaW0vaXVua25vd25jb20tMjA7Pjs7Pjt0PDtsPGk8MD47aTwxPjs+O2w8dDxAPEJvb2sgRGVzY3JpcHRpb247Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPExlYXJuIGFkdmFuY2VkIC5ORVQgcHJvZ3JhbW1pbmcgdGVjaG5pcXVlcyBieSBnZXR0aW5nIGFuIGluc2lkZXJzJyBsb29rIGF0IGEgY29tcGxldGUgYXBwbGljYXRpb24hICBcPFBcPlNoYXJwRGV2ZWxvcCBpcyBhIGNvbXBsZXRlIEludGVncmF0ZWQgRGV2ZWxvcG1lbnQgRW52aXJvbm1lbnQsIHdyaXR0ZW4gaW4gQyMuIEl0IGluY2x1ZGVzIGFsbCB0aGUgYWR2YW5jZWQgZmVhdHVyZXMgdGhhdCBwcm9ncmFtbWVycyBleHBlY3QgZnJvbSBhIG1vZGVybiBJREUgYW5kLCBvZiBjb3Vyc2UsIGltcGxlbWVudGluZyB0aGVzZSBmZWF0dXJlcyBoYXMgcmVxdWlyZWQgc29tZSBhZHZhbmNlZCBwcm9ncmFtbWluZyB0ZWNobmlxdWVzLiAgXDxQXD5UaGUgZGV2ZWxvcGVycyB3aG8gY3JlYXRlZCBTaGFycERldmVsb3AgZ2l2ZSB5b3UgYW4gaW5zaWRlIHRyYWNrIG9uIGFwcGxpY2F0aW9uIGRldmVsb3BtZW50IHdpdGggYSBndWlkZWQgdG91ciBvZiB0aGUgc291cmNlY29kZSBmb3IgU2hhcnBEZXZlbG9wLiBUaGV5IHdpbGwgc2hvdyB5b3UgdGhlIG1vc3QgaW1wb3J0YW50IGNvZGUgZmVhdHVyZXMgYW5kIGV4cGxhaW4gaG93IHlvdSBjYW4gdXNlIHRoZXNlIHRlY2huaXF1ZXMgaW4geW91ciBvd24gcHJvamVjdHMuIFlvdSB3aWxsIGdhaW4gdmFsdWFibGUgZXhwZXJpZW5jZSBvZiBidWlsZGluZyBhbiBhcHBsaWNhdGlvbiBvbiB0aGlzIHNjYWxlLCBsZWFybmluZyBmcm9tIHRoZSBkZWNpc2lvbnMsIG1pc3Rha2VzLCBwcm9ibGVtcyBhbmQgc29sdXRpb25zIHRoYXQgbGVhZCB0byB0aGUgY3VycmVudCB2ZXJzaW9uIG9uIFNoYXJwRGV2ZWxvcC4gIFw8UFw+VGhlIFNoYXJwRGV2ZWxvcCB0ZWFtIHdpbGwgc2hvdyB5b3UgaG93IHRvOiAgXDxQXD4gQnVpbGQgYSBoaWdobHkgbW9kdWxhciBhcHBsaWNhdGlvblw8QlJcPiAgUHJvdmlkZSBhIGZsZXhpYmxlLCBleHRlbmRhYmxlLCBjdXN0b21pemFibGUgdXNlciBpbnRlcmZhY2VcPEJSXD4gIE1hbmFnZSB0aGUgZWZmb3J0cyBvZiB0cmFuc2xhdG9ycyBmb3IgZWZmY2llbnQgaW50ZXJuYXRpb25hbGl6YXRpb25cPEJSXD4gIFJlcHJlc2VudCBhbmQgbWFuaXB1bGF0ZSB0ZXh0IGVmZmljaWVudGx5XDxCUlw+ICBDb2RlIHNlYXJjaCBhbmQgcmVwbGFjZSBmdW5jdGlvbmFsaXR5XDxCUlw+ICBDb25zdHJ1Y3QgcmV1c2FibGUgY29udHJvbHNcPEJSXD4gIEltcGxlbWVudCBhIHBhcnNlciB0byBwcm92aWRlIHN5bnRheCBoaWdobGlnaHRpbmdhdXRvLWNvbXBsZXRpb24gYXMgdXNlcnMgdHlwZVw8QlJcPiAgVXNlIHJlZmxlY3Rpb24gdG8gYWNjZXNzIGluZm9ybWF0aW9uIGFib3V0IC5ORVQgY2xhc3Nlc1w8QlJcPiAgQ3JlYXRlIGEgV2luZG93cyBGb3JtcyBkZXNpZ25lclw8QlJcPiAgR2VuZXJhdGUgY29kZSBwcm9ncmFtbWF0aWNhbGx5ICBcPFBcPkFsbCBvZiB0aGVzZSB0ZWNobmlxdWVzIGFyZSBzaG93biBpbiB0aGUgY29udGV4dCBvZiB0aGUgc291cmNlIG9mIHRoZSBTaGFycERldmVsb3AgYXBwbGljYXRpb24gLSBhIHJlYWwgcGllY2Ugb2Ygc29mdHdhcmUgdGhhdCB5b3UgY2FuIGRvd25sb2FkIGFuZCB1c2VyIHlvdXJzZWxmLiBUaGlzIG1lYW5zIHRoYXQgdGhlcmUgYXJlIG5vICd0b3knIGV4YW1wbGVzIG9yIHRoZW9yeSB0aGF0IHdpbGwgbm90IHdvcmsgaW4gcHJhY3RpY2UgLSBqdXN0IHNvbGlkLCByZWFsLXdvcmxkIGNvZGUgYW5kIGZyYW5rIGRpc2N1c3Npb25zIG9mIGhvdyBpdCB3YXMgY3JlYXRlZC47Pj47Pjs7Pjs+Pjs+Pjs+Pjs+U9QeoTQtUhryxUgn1339oJCEW2Y=" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/1861008171.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Dissecting a C# Application: Inside SharpDevelop</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Christian Holm, Mike Kruger, Bernhard Spuida</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$59.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">N/A</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">3.0</span>
+          based on
+          <span id="TotalReviews">4</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/1861008171/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              <table id="EditorialReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Book Description:</DIV>
+                <span id="Label1">Learn advanced .NET programming techniques by getting an insiders' look at a complete application!  <P>SharpDevelop is a complete Integrated Development Environment, written in C#. It includes all the advanced features that programmers expect from a modern IDE and, of course, implementing these features has required some advanced programming techniques.  <P>The developers who created SharpDevelop give you an inside track on application development with a guided tour of the sourcecode for SharpDevelop. They will show you the most important code features and explain how you can use these techniques in your own projects. You will gain valuable experience of building an application on this scale, learning from the decisions, mistakes, problems and solutions that lead to the current version on SharpDevelop.  <P>The SharpDevelop team will show you how to:  <P> Build a highly modular application<BR>  Provide a flexible, extendable, customizable user interface<BR>  Manage the efforts of translators for effcient internationalization<BR>  Represent and manipulate text efficiently<BR>  Code search and replace functionality<BR>  Construct reusable controls<BR>  Implement a parser to provide syntax highlightingauto-completion as users type<BR>  Use reflection to access information about .NET classes<BR>  Create a Windows Forms designer<BR>  Generate code programmatically  <P>All of these techniques are shown in the context of the source of the SharpDevelop application - a real piece of software that you can download and user yourself. This means that there are no 'toy' examples or theory that will not work in practice - just solid, real-world code and frank discussions of how it was created.</span>
+              
+</td></tr></table>
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Unique and very helpful</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-05-15</span>
+                    </div>
+                    <span>I found this book to be very good -- excellent. I own about 20 C# books, and I have been programming in C# for about a year. At this level of experience, I found the book easy to read and full of great ideas and suggestions. With all the source code available (for the entire app), it is easy to get a clear picture of any details that are not covered in the book. <P>But the things that are covered in the book are very meaningful and very useful.<P>This book is full of excellent practical advice about architecture, design, project management and coding style.<P>There are some unique things covered in this book that are not in any of my other C# books.<P>I highly recommend this book!</span>
+                  
+                    <div class="CustomerReviewSummary">an extremely difficult book from which to learn</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>2</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-03-24</span>
+                    </div>
+                    <span>I agree with much of what has been written about this title: the SharpDevelop team is a highly motivated, highly skilled group of developers, but this book doesn't do much to add "highly skilled teachers and writers" to the list. Yes, the book description doesn't say anything about design, but they need to show much more design work to make this book useful to the reader taking his first look at the SharpDevelop code base. All in all, I have to say this is an extremely difficult book from which to learn.<P>Let's look at the first item, "Build a highly modular application". Sounds useful enough. Sounds advanced enough. But, before you know it, the authors blow past the analysis of the Add-In Tree and get deep into implementation. If you didn't get it, stop reading and go back, because you'll be lost if you advance without understanding the Add-In Tree.<P>Maybe I'm just too dense. Maybe it just needs more time to marinate in my brain before I can understand what I've read. This book had so much potential, but it simply doesn't deliver. At least, not on the first read.</span>
+                  
+                    <div class="CustomerReviewSummary">Could have been..</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-03-14</span>
+                    </div>
+                    <span>..so much more. This book had the potential to be so much more, but it just comes up a bit short. It feels at times like the authors were rushing through it, when they could have stopped and explained things better. Sometimes code just doesn't speak well for itself, and more conceptual explanations are needed. You should download the #D source code, or most of the book will not make any sense. There are still great concepts to gleen from this book like the brilliant use of attributes, xml, reflection, components and services. But, it was just tough to follow at times. I often found myself rereading pages and flipping back and forth to make sure I was following the explanations correctly. I give them three stars because the book was organized, they are first time authors, they worked very hard, and I love SharpDevelop!! I wish them all the best and would love to see a sequel to this book with an extra 200 pages or so of more in depth explanations, diagrams, etc.</span>
+                  
+                    <div class="CustomerReviewSummary">Incomplete dissection</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>2</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-03-03</span>
+                    </div>
+                    <span>This book isn't big enough to cover the full dissection of the SharpDevelop application. As a result, the code snippets are confusing. Also, the authors write too much on XML Config files, and tell the reader to look at the source code for how the config files are used.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=186100592X'>
+                      Data-Centric .NET Programming with C#
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.7 based on 6 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=186100737X'>
+                      Developing C# Windows Software: A Windows Forms Tutorial
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 2 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1861007663'>
+                      Professional Windows GUI Programming Using C#
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.7 based on 3 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1861006098'>
+                      Beginning C# Databases
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.6 based on 8 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1590592883'>
+                      Developing Application Frameworks in .NET
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 2 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

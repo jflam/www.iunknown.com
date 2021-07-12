@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Hello Movable Type!</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000257.html" title="Exchange Server Full-text indexing rocks" />
+
+<link rel="next" href="http://www.iunknown.com/000259.html" title="MT-Textile" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000258.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/2"
+    dc:title="Hello Movable Type!"
+    dc:identifier="http://www.iunknown.com/000258.html"
+    dc:subject=""
+    dc:description="After more pain than I thought that I would go through, I finally finished converting my old CityDesk site over to Movable Type. The pain was largely due to two fairly major problems that I encountered along the way. The..."
+    dc:creator="John"
+    dc:date="2003-05-27T22:40:37-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000257.html">&laquo; Exchange Server Full-text indexing rocks</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000259.html">MT-Textile &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">May 27, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Hello Movable Type!</h3>
+
+<p><p>After more pain than I thought that I would go through, I finally finished converting my old <a href="http://www.fogcreek.com/CityDesk/">CityDesk</a> site over to <a href="http://www.movabletype.org">Movable Type</a>. The pain was largely due to two fairly major problems that I encountered along the way. <br />
+<p>The first problem was due to the way that Movable Type wanted to maintain my entry archives. I used the individual entry archive option, which results in the generation of archive entries like "000001.html". However, I wanted to make sure that I didn't break any external links to my existing archive entries which had names like "http://www.iunknown.com/Archives/fog0000000030.html". To map between the two, I used an Apache .htaccess file to map the old URL's to the new URL's.<br />
+<p>While I only have 257 entries in my weblog, I really didn't want to create my .htaccess file by hand. To solve this problem, I needed to write some code that would let me export the existing URL's for my archive entries from CityDesk. I wrote earlier about <a href="http://www.cantoni.org/2003/01/03.html#converting_from_citydesk_to_movable_type">Brian Cantoni's</a> excellent script for exporting entries. I had to modify Brian's script somewhat (for example, I export my entries by ascending date/time since I wanted my weblog entry to be "000001.html" and not "000257.html"). Also, I needed to generate XML in my export script since I would run over that script using a C# app that I wrote to solve nasty problem #2. Here's the CityDesk script that generates an export file called entries.xml:<br />
+<p><pre><br />
+&lt;?xml version="1.0" encoding="windows-1252"?><br />
+{$ setDateTimeFormat "English" "MM/dd/yyyy" "hh:mm:ss tt"$}<br />
+<entries><br />
+{$foreach x in (folder "Weblog") SortAscendBy .filedDate$} <br />
+&lt;entry><br />
+  author>John&lt;/author><br />
+  &lt;title>&lt;![CDATA[{$x.headline$}]]>&lt;/title><br />
+  &lt;date>{$x.fileddate$} {$x.filedtime$}&lt;/date><br />
+  &lt;status>Publish&lt;/status><br />
+  &lt;link>{$x.link$}&lt;/link><br />
+  &lt;body>&lt;![CDATA[{$x.body$}]]>&lt;/body><br />
+&lt;/entry><br />
+{$ next $}<br />
+&lt;/entries><br />
+</pre><br />
+<p>The second problem had to do with my comments. For my old site, all of my comments were managed by <a href="http://www.haloscan.com">Haloscan</a>, who for over a year provided me with comments on my web site. Unfortunately, they don't currently offer an export option to dump all of my existing comments out as an RSS file; I had to write some code to screen-scrape their existing site. Fortunately for me, <i>most</i> of their comment pages are valid XHTML, so I was able to do the requisite screen-scraping using XPath. Unfortunately, they don't correctly escape "&" and a few other characters so some of my comment pages didn't migrate automatically over. I still need to manually migrate those comments over to MT.<br />
+<p>If you're interested in the code that I wrote to manage my migration, you can <a href="http://www.iunknown.com/Files/Class1.cs">download it here</a>.<br />
+<p>One final note: I posted this entry using <a href="http://www.wbloggar.com">w.bloggar</a>, which is quite a nice offline editor. One thing that would really improve w.bloggar would be to use Microsoft's DHTML editing component as the editor within w.bloggar, much like what CityDesk does already.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at May 27, 2003 10:40 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=258" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="258" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000258.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Test comment</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May 27, 2003 11:19 PM</span>
+</div>
+<div class="comments-body">
+<p>So, congrats. When are you going to put full content into your RSS feed so we don't have to visit the site to read every post? :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://dotnetguy.techieswithcats.com/">Brad Wilson, The .NET Guy</a> at May 27, 2003 11:31 PM</span>
+</div>
+<div class="comments-body">
+<p>Done! Thanks for reminding me to do that.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May 27, 2003 11:38 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

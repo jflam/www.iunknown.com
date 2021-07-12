@@ -1,0 +1,155 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/74 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Alignment Cost: Processor Effects</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">Alignment Cost: Processor Effects</div>
+        <div class="entryDate">2002-01-23</div>
+        <p><P>After publishing my <A href="fog0000000073.html">previous entry</A> on the cost of loop alignment for Pentium III-M processors, I decided to look at what the results would be for different architectures. Since I did all of my experiments using a model system that consisted of a bunch of inline assembler compiled using Visual C++, I could run the benchmark application unmodified on all of the different computers that I have lying around my house. <A href="../Files/Results.xls">This spreadsheet</A> summarizes all of the results for the following processors:</P>
+<OL>
+<LI>166MHz Pentium&nbsp;MMX 
+<LI>150MHz Pentium Pro 
+<LI>400MHz Celeron 
+<LI>600MHz Celeron 
+<LI>1130MHz Pentium III-M 
+<LI>1200MHz Athlon 
+<LI>1600MHz Pentium 4</LI></OL>
+<P>All of the Intel P6 architecture processors (processors 2-5 on my list) share the following characteristics:</P>
+<OL>
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary 
+<LI>A one cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched 
+<LI>A one cycle penalty for the <EM>second </EM>additional 16-byte paragraph that needs to be fetched</LI></OL>
+<P>The Intel P5 architecture processor (processor 1 on my list) has the following characteristics:</P>
+<OL>
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary 
+<LI>A half-cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched 
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL>
+<P>The Athlon architecture processor (processor 6 on my list) has the following characteristics:</P>
+<OL>
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary 
+<LI>A one cycle penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched 
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL>
+<P>The Intel P7 architecture processor (processor 7 on my list) has the following characteristics:</P>
+<OL>
+<LI>No penalty if the target of a branch instruction is not aligned on a 16-byte boundary 
+<LI>No penalty for the <EM>first</EM> additional 16-byte paragraph that needs to be fetched 
+<LI>No penalty for the <EM>second</EM> additional 16-byte paragraph that needs to be fetched</LI></OL>
+<P>Clearly, all of the P6 architecture processors could benefit greatly from compiler optimizations that minimize the number of 16-byte paragraphs that a loop resides in. The P7 architecture processors are not sensitive to 16-byte alignment effects due to its new <A href="http://developer.intel.com/technology/itj/q12001/articles/art_2.htm">NetBurst architecture</A>. All of the instructions in our loops are executed directly from the Pentium 4's Trace Cache. The P5 and Athlon processors are somewhat less sensitive to 16-byte alignment effects since the 1 cycle penalty is paid on only the first additional 16 byte paragraph that is fetched from memory.</P>
+<P>To run the benchmark software on your computer, <A href="../Files/AlignmentCost2.zip">click here</A> to download the source code. Note that you must do a debug build, otherwise you will mess up the code alignment of the inline assembly instructions.</P>
+<P>Currently, the JIT in the CLR does not seem to optimize for the number of 16 byte paragraphs that a loop resides in. I have seen examples of non-debug JIT'ed x86 code that straddle a 16 byte paragraph boundary unnecessarily. This would be a very useful JIT optimization in future versions of the CLR since the P6 architecture processors are clearly the mainstream processors of today.</P>
+<P>I should also point out that these are <EM>extremely </EM>contrived benchmarks. I am measuring very simple model systems in an effort to understand exactly how the CPU executes specific instruction sequences. The simple counter loop that I was using in these systems executes in two cycles. The padded counter loop executes in six cycles.&nbsp;A one cycle penalty is very large (50%, 18% respectively) in these systems. Your mileage will definitely vary in real-world systems.</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/fog0000000074.html');"><script type="text/javascript">postCount('Weblog/fog0000000074.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

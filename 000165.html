@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Securing the aspnet_wp.exe worker process</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000164.html" title="Is OneNote a potential web logging tool?" />
+
+<link rel="next" href="http://www.iunknown.com/000166.html" title="Maximum file length limitation in Windows copy command?" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000164.html">&laquo; Is OneNote a potential web logging tool?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000166.html">Maximum file length limitation in Windows copy command? &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">November 21, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Securing the aspnet_wp.exe worker process</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I emailed some folks I know at MS regarding my problems with setting up aspnet_wp.exe to run using my domain credentials. Erik Olson, who is a Security PM on the CLR team emailed back a wonderfully detailed explanation of the problem and possible solutions. </P><br />
+<P>To recap the original problems:</P><br />
+<OL><br />
+<LI>I didn't want to grant my domain account the SeDebugPrivilege since that lets a rogue application use the debug API to extract data from other applications running on my computer.<br />
+<LI>I didn't like the fact that my domain credentials were stored unencrypted in the machine.config file. The machine.config file must be readable by any account that wishes to run CLR applications.</LI></OL><br />
+<P>In version 1.1 of the frameworks, aspnet_isapi.dll can read process model credentials from a secured registry key. To quote Erik's email:</P><br />
+<P>"The V1.1 release supports configuring DPAPI encrypted credentials in a registry key, which isn't the most manageable thing in the world but has reasonable security characteristics. In particular, the processModel section is read by the ISAPI running as System, so the ACL on that key can just allow Admin/System. The other sections with creds (identity, sessionState) need to also allow read access for the process identity itself. "</P><br />
+<P>Another interesting thing that Erik pointed out to me was the fact that there has been a hotfix back-ported to support ASP.NET V1.0.&nbsp;It will be part of the next Service Pack and is documented at: <A href="http://support.microsoft.com/default.aspx?scid=kb;en-us;329250">http://support.microsoft.com/default.aspx?scid=kb;en-us;329250</A></P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at November 21, 2002 01:33 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="165" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000165.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>excellent...</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www25.brinkster.com/rchildress">Rick</a> at November 23, 2002 04:29 PM</span>
+</div>
+<div class="comments-body">
+<p>I was unaware that I had aspnet_wp.exe on my machine.  I found out when I went into my user accounts to change my password and saw the ASP.NET Machine Account.  I am therefore concerned about why it is there and what it is used for.  Please enlighten me on this subject.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dmprime&#64;zigs&#46;net">Dragon Master Prime</a> at June  8, 2003 07:39 PM</span>
+</div>
+<div class="comments-body">
+<p>The ASP.NET machine account is special, restricted privilege account that is created by the .NET Frameworks to host ASP.NET applications. If you are not using ASP.NET on your computer, you can safely disable this account.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at June  8, 2003 10:44 PM</span>
+</div>
+<div class="comments-body">
+<p>I just stumbled across two accounts that I was unaware were on my computer. One is "ASP.NET Machine A" I am concerned about how this may have gotten there to begin with. What it does, and if I need to worry about some kind of a security risk as a result. I wonder also, what would happen if I were to simpley delete the account. Does anyone have any information they can give me? Perhaps a link to some reference material even? I don't know if I can find this site again, or remember to come back here to look for a response, so probable to email me is the only way I would get it.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;alive4u3&#64;yahoo&#46;com">Jake</a> at September 19, 2003 10:44 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

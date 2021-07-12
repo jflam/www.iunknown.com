@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Algorithm complexity and modern CPU's</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000377.html" title="PDC presentations" />
+
+<link rel="next" href="http://www.iunknown.com/000379.html" title="Target (and project) composition in MSBuild" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000378.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/122"
+    dc:title="Algorithm complexity and modern CPU&apos;s"
+    dc:identifier="http://www.iunknown.com/000378.html"
+    dc:subject="Blog"
+    dc:description="Remember your college introduction to data structures and algorithms course? Remember how you spent some time calculating the complexity cost of various algorithms based on big-O notation? There was one very important assumption that was made whenever you made those..."
+    dc:creator="John"
+    dc:date="2003-11-24T10:45:26-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000377.html">&laquo; PDC presentations</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000379.html">Target (and project) composition in MSBuild &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">November 24, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Algorithm complexity and modern CPU's</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>Remember your college introduction to data structures and algorithms course? Remember how you spent some time calculating the complexity cost of various algorithms based on big-O notation? There was one very important assumption that was made whenever you made those calculations: <strong>that the cost of accessing any address in memory was constant</strong>.</p>
+
+<p>With today's multi-tiered <span class="caps">CPU</span> cache architectures, it has become increasingly obvious (to those who care) that that assumption is no longer valid. A full cache miss on a modern 3GHz+ P4 will mean that you will waste ~1000 operations while waiting for the data to show up at the <span class="caps">CPU. </span></p>
+
+<p><a href="http://blogs.gotdotnet.com/jangr/">Jan Gray</a> <a href="http://www.fpgacpu.org/index.html#021110">wrote an excellent essay</a> that attacks a data structure that is responsible for lousy performance characteristics on modern <span class="caps">CPU</span>'s: the venerable linked list. In this essay, you'll see some of Jan's prognostications on the future of <span class="caps">CPU</span> architectures. My favorite quote from this piece is "This scenario is so bad and so common that the microprocessor vendors use 80% of their transistor budgets for on-chip caches -- Intel as glorified <span class="caps">SRAM</span> vendor.".</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at November 24, 2003 10:45 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=378" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="378" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000378.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Well... Accessing any memory address is still O(1), i.e. pretty much constant. You know exactly how many clock cycles it'll take (worst case) for your memory access to be completed.</p>
+
+<p>What has changed is that newer processors are able to improve on the average access time by using caching.</p>
+
+<p>But the point of the article still stands: let those who are so inclined create our storage structures - if they use a common interface, we can easily choose the one who has the best performance characteristics for the job.<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;kmc&#64;innomate&#46;com">Kraen Munck</a> at November 28, 2003 09:18 PM</span>
+</div>
+<div class="comments-body">
+<p>actually, the logic transistor count on P4 & Itanium2 is ~20M, Opteron is in the same range but that includes the logic for the integrated north bridge.<br />
+one needs to exercise caution on transistor counts for logic and cache, cache transistors can be place with ~6X greater density than logic, hence if a cpu has 20M logic and 120M cache, then about the die areas for logic and cache are about equal.<br />
+however, i do wish system & software designers would wake up to reality.<br />
+the vast majority of memory in many applications today are either in disk cache or otherwise buffering data that in the past resided on disk, or basically has predictable access patterns such that residing off cpu in dram memory is no big deal.<br />
+however, a good chunk of code, that has small block random access, where one word must be read to determine the next word, ie, not prefetchable.<br />
+this should probably be implemented in sram.<br />
+so a modern system might have 64-512M sram and a multi-GB dram bank.<br />
+this is somewhat like the original Cray<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;jchang6&#64;yahoo&#46;com">joe chang</a> at December  5, 2003 05:06 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

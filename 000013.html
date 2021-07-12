@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: CppUnit</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000012.html" title="How to improve the perf of VS.NET" />
+
+<link rel="next" href="http://www.iunknown.com/000014.html" title="More CppUnit Fun" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000012.html">&laquo; How to improve the perf of VS.NET</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000014.html">More CppUnit Fun &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 11, 2001</h2>
+
+<div class="blogbody">
+
+<h3 class="title">CppUnit</h3>
+
+<p><P>I've been aware of <A href="http://www.xprogramming.com/">Extreme Programming</A> (XP) for quite some time now. Unfortunately, due to the <A href="Weblog/fog0000000019.html">type of work</A> that I've been doing for the past few years, I've never had the occasion to use it on real production code.</P><br />
+<P>One of the things that fascinates me the most about XP is its emphasis on <A href="http://www.xprogramming.com/xpmag/expUnitTestsat100.htm">automated unit testing</A>. I spent quite a bit of time experimenting with it in Java about a year ago, after first seeing references to it in Martin Fowler's most excellent book: <A href="http://www.refactoring.com">Refactoring</A>. I just spent a bit of time over at <A href="http://www.c2.com/cgi/wiki?WelcomeVisitors">Wiki</A> reading <A href="http://c2.com/cgi/wiki?CodeUnitTestFirst">Code Unit Test First</A>. I particularly love the analogy <A href="http://c2.com/cgi/wiki?RobCrawford">Rob Crawford</A> wrote:</P><br />
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px"><br />
+<P><EM>"It struck me last night while painting a wall: <A href="http://c2.com/cgi/wiki?CodeUnitTestFirst"><EM>CodeUnitTestFirst</EM></A></EM><EM> is the programming equivalent of using masking tape and drop cloths. On the surface it doesn't look like you're making "progress", but the safety it gives you lets you work faster and safer."</EM></P></BLOCKQUOTE><br />
+<P>But I'm programming exclusively in C++ these days. So, after some helpful suggestions from the folks on the <A href="http://discuss.develop.com/dotnet.html">DOTNET</A> list, I turned to <A href="http://cppunit.sourceforge.net/">CppUnit</A>, which is essentially a port of <A href="http://www.junit.org/">JUnit</A> over to C++. All I wanted to do was to create a "Hello, World" application using CppUnit. But guess what? The docs suck, and I battled with bizarro compiler switch settings for about half an hour before finally getting the thing to build successfully. <A href="Articles/fog0000000025.html">This article</A> is a summary of what you need to do to get your first "Hello, World" CppUnit unit testing application up and running.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December 11, 2001 11:11 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="13" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000013.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

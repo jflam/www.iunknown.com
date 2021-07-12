@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: NAnt target inheritance</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000477.html" title="Leaky abstractions and macro languages" />
+
+<link rel="next" href="http://www.iunknown.com/000479.html" title="Paul Graham " />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000478.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/222"
+    dc:title="NAnt target inheritance"
+    dc:identifier="http://www.iunknown.com/000478.html"
+    dc:subject="Blog"
+    dc:description="The engine that controls my new publishing system is a set of NAnt scripts. My primary reason for creating my publishing system was to ensure accuracy in the technical content that I produce. I have always felt that it was..."
+    dc:creator="John"
+    dc:date="2004-09-15T19:48:24-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000477.html">&laquo; Leaky abstractions and macro languages</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000479.html">Paul Graham  &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">September 15, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">NAnt target inheritance</h3>
+
+<p>The engine that controls my new publishing system is a set of NAnt scripts. My primary reason for creating my publishing system was to ensure accuracy in the technical content that I produce. I have always felt that it was unforgivable to have code that doesn&#8217;t compile and run in a technical publication. My recent experience with LaTeX and numerous errors in its published documentation only reinforces my belief that users are incredibly frustrated when they need to learn a new concept <strong>and</strong> correct careless syntax errors.</p>
+
+<p>I set a very high bar for simplicity and extensibility of my build scripts. Ideally, you would create a new directory and code within that directory would be auto-magically compiled, unit tested and deployed based on a set of predefined rules. This is the simplicity angle. However, not all code fits into a standard template of &#8220;compile this stuff into a <span class="caps">DLL</span> assembly that references all of the standard <code>System.*</code> assemblies&#8221;. This is the extensibility angle.</p>
+
+<p>I would gain simplicity through default targets such as <code>Compile</code>, which simply compiles all <code>*.cs</code> files in a directory into a library assembly that references the standard <code>System.*</code> assemblies. I would gain extensibility through custom targets such as <code>CustomCompile</code>, which would be supplied in a custom <code>.build</code> file in the directory. In effect, I would allow users to <em>override</em> the behavior of the default target through custom targets. But wait, how do you override a target in NAnt?</p>
+
+<p>The answer is: you can&#8217;t. But you can fake it and get almost the same semantics. NAnt 0.85 adds custom functions and expressions. You can test for the existence of a target, and invoke it if it exists. In effect, you would write:</p>
+
+<pre>
+&lt;if test=&#148;${target::exists(&#145;CustomCompile&#146;)}&#148;&gt;
+  &lt;call target=&#148;CustomCompile&#148;/&gt;
+&lt;/if&gt;
+&lt;ifnot test=&#148;${target::exists(&#145;CustomCompile)}&#148;&gt;
+  &lt;csc target=&quot;library&quot; output=&quot;output.dll&quot;&gt;
+    &lt;references&gt;
+      &lt;include name=&quot;${nant.settings.currentframework.frameworkdirectory}/system.*.dll&quot;/&gt;
+      &lt;exclude name=&quot;${nant.settings.currentframework.frameworkdirectory}/system.enterpriseservices.thunk.dll&quot;/&gt;
+    &lt;/references&gt;
+    &lt;sources&gt;
+      &lt;include name=&#148;*.cs&quot;/&gt;
+    &lt;/sources&gt;
+  &lt;/csc&gt;
+&lt;/ifnot&gt;
+</pre><p>If you&#8217;re lucky enough to be using MSBuild (I&#8217;m not), Alex Kipman &amp; co. natively expose the ability to override targets.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at September 15, 2004 07:48 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=478" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="478" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000478.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="478" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

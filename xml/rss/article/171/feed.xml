@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Ruby.NET is out in Beta form</title>
+    <link>http://www.iunknown.com/articles/2006/06/20/ruby-net-is-out-in-beta-form</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Ruby.NET is out in Beta form</title>
+      <description>&lt;p&gt;Today&amp;#8217;s a good day of you&amp;#8217;re a .NET developer and want to use Ruby. Wayne Kelly of the Queensland University of Technology has announced the first public beta of their native &lt;a href="http://plas.fit.qut.edu.au/Ruby.NET/"&gt;Ruby .NET compiler&lt;/a&gt; that generates verifiable &lt;span class="caps"&gt;CIL&lt;/span&gt;!&lt;/p&gt;
+
+
+	&lt;p&gt;I just ran their unit tests here. No attempt to interop with .NET libraries appears to be enabled in this release, but it definitely compiles a non-trivial chunk of the Ruby language. Here&amp;#8217;s a sample:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class IterTest
+  def initialize(e); @body = e; end
+
+  def each0(&amp;#38;block); @body.each(&amp;#38;block); end
+  def each1(&amp;#38;block); @body.each {|*x| block.call(*x) } end
+  def each2(&amp;#38;block); @body.each {|*x| block.call(x) } end
+  def each3(&amp;#38;block); @body.each {|x| block.call(*x) } end
+  def each4(&amp;#38;block); @body.each {|x| block.call(x) } end
+  def each5; @body.each {|*x| yield(*x) } end
+  def each6; @body.each {|*x| yield(x) } end
+  def each7; @body.each {|x| yield(*x) } end
+  def each8; @body.each {|x| yield(x) } end
+
+  def f(a)
+    a
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;</description>
+      <pubDate>Tue, 20 Jun 2006 02:54:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:dc83d92115afa85cb7d65a4fa9ac0ded</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/06/20/ruby-net-is-out-in-beta-form</link>
+      <category>Props</category>
+    </item>
+    <item>
+      <title>"Ruby.NET is out in Beta form" by Richard Hein</title>
+      <description>&lt;p&gt;Wow!  That's great news!  I'd love to give  it a try.&lt;/p&gt;</description>
+      <pubDate>Wed, 21 Jun 2006 21:31:57 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/06/20/ruby-net-is-out-in-beta-form#comment-543</link>
+    </item>
+  </channel>
+</rss>

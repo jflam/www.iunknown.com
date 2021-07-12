@@ -1,0 +1,907 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+
+<title>
+  What is this Merlin thing in IronRuby?&nbsp;|&nbsp;John Lam on Software</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="http://iunknown.com/wp-content/themes/headlines/style.css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/LessIsBetter" />
+<link rel="pingback" href="http://iunknown.com/xmlrpc.php" />
+   
+<!--[if IE 6]>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/pngfix.js"></script>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/menu.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie6.css" />
+<![endif]-->	
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie7.css" />
+<![endif]-->
+   
+<link rel="alternate" type="application/rss+xml" title="John Lam on Software &raquo; What is this Merlin thing in IronRuby? Comments Feed" href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/feed" />
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/jquery/jquery.js?ver=1.3.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/superfish.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/woo_tabs.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/cufon-yui.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/Liberation.font.js?ver=2.9.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://iunknown.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://iunknown.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='John Lam on Software' href='http://iunknown.com' />
+<link rel='start' title='Motorola DROID Review' href='http://iunknown.com/2009/12/motorola-droid-review.html' />
+<link rel='prev' title='IronRuby on Rubyforge!' href='http://iunknown.com/2007/08/ironruby-on-rubyforge.html' />
+<link rel='next' title='New IronRuby build instructions' href='http://iunknown.com/2007/09/new-ironruby-build-instructions.html' />
+<meta name="generator" content="WordPress 2.9.2" />
+<link rel='canonical' href='http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html' />
+<meta name="generator" content="Headlines 2.4.1" />
+<meta name="generator" content="Woo Framework Version 2.5.3" />
+<script type="text/javascript">Cufon.replace("h2, h3, h4, h5, h6, .title, .cufon");</script>
+<style type="text/css">.widget h3 { line-height:22px; }</style>
+<link href="http://iunknown.com/wp-content/themes/headlines/styles/color.css" rel="stylesheet" type="text/css" />
+<link href="http://iunknown.com/wp-content/themes/headlines/custom.css" rel="stylesheet" type="text/css" />
+<!-- Woo Styling -->
+<style type="text/css">
+#logo img { display:none; }
+#logo .site-title, #logo .site-description { display:block; } 
+</style>
+
+<!--[if lte IE 7]>
+<script type="text/javascript">
+jQuery(function() {
+	var zIndexNumber = 1000;
+	jQuery('div').each(function() {
+		jQuery(this).css('zIndex', zIndexNumber);
+		zIndexNumber -= 1;
+	});
+});
+</script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="container">
+       
+	<div id="top">
+    
+		
+        <div id="header" class="col-full">
+       
+            <div id="logo">
+               
+                                
+                                    <span class="site-title"><a href="http://iunknown.com">John Lam on Software</a></span>
+                                
+                    <span class="site-description">Working for The Man in Redmond</span>
+                
+            </div><!-- /#logo -->
+               
+			            <div id="twitter-top">
+            	<div class="logo">
+                    <a href="http://www.twitter.com/john_lam" title="Follow on Twitter"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-twitter.png" alt="Twitter" /></a>                
+                </div>
+                <div class="tweet">
+	                <ul id="twitter_update_list"><li></li></ul>
+                </div>
+            </div><!-- /#topad -->
+			                       
+        </div><!-- /#header -->
+        
+        <div id="navigation">
+        
+			<div id="page-nav">
+    <div class="col-full">
+        <ul id="nav" class="fl">
+        
+            <li><a href="http://iunknown.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-home.png" class="ico-home" alt="Home" /></a></li>
+			        
+            <li class="page_item page-item-2"><a href="http://iunknown.com/about" title="About">About</a></li>
+            
+			            
+            
+        </ul><!-- /#nav1 -->
+        
+        <ul class="rss fr">
+                        <li><a href="http://feeds.feedburner.com/LessIsBetter">Posts</a></li>
+        </ul><!-- /.rss -->
+    </div><!-- /.col-full -->
+</div><!-- /#page-nav -->
+                        
+            <div id="cat-nav">
+                <div class="col-full">
+                    <ul id="secnav" class="fl">
+                    
+					                    
+						      
+                        <li>
+                            <a href="http://iunknown.com/category/ironruby">IronRuby</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/microsoft">Microsoft</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/misc_geek">Misc Geek</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/personal">Personal</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/rubyclr">RubyCLR</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/uncategorized">Uncategorized</a>
+                            
+                                                    </li>        
+                                                
+					                        
+                    </ul><!-- /#nav2 -->
+                    
+                                        <div id="search" class="fr">
+                        <form method="get" id="searchform" action="http://iunknown.com">
+                            <input type="text" class="field" name="s" id="s"  value="Enter keywords..." onfocus="if (this.value == 'Enter keywords...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter keywords...';}" />
+                            <input class="submit btn" type="image" src="http://iunknown.com/wp-content/themes/headlines/images/ico-search.png" value="Go" />
+                        </form>
+                    </div><!-- /#search -->
+                                    </div><!-- /.col-full -->
+            </div><!-- /#cat-nav -->
+            
+        </div><!-- /#navigation -->
+    
+    </div><!--/#top-->       
+    <div id="content" class="col-full">
+		<div id="main" class="col-left">
+		           
+                                    
+                <div class="box">
+                    <div class="post">
+    
+						                           
+                        <h1 class="title">What is this Merlin thing in IronRuby?</h1>
+                        
+                        <p class="post-meta">
+							<img src="http://iunknown.com/wp-content/themes/headlines/images/ico-time.png" alt="" />01. Sep, 2007                            <span class="comments"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-comment.png" alt="" /><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html#comments" title="Comment on What is this Merlin thing in IronRuby?">9 Comments</a></span>
+                        </p>
+
+																	
+                        <div class="entry">
+							<p><a href="http://www.flickr.com/photos/john_lam/1297810307/" title="Photo Sharing"><img width="500" height="331" src="http://farm2.static.flickr.com/1263/1297810307_802344dc1d.jpg" alt="Playing in the Sand" /></a>
+</p>
+<p>One of our challenges in the <a href="http://www.rubyforge.org/projects/ironruby">IronRuby</a> project is reconciling two different source code layouts &#8211; the external subversion layout and our internal Team Foundation Server layout. We have quite a different environment internally, complete with customized shells etc. I&#8217;m the guy responsible for the transformation script that lays things out for you guys to hack on without having to take dependencies on our internal environment &#8211; so bugs here are all my fault.</p>
+<p>The guts of the transformation script can be found in the Rakefile for those who are curious.</p>
+<p>Since this is the first big test of this system, there are some issues that folks have found. For the time being, you should be able to build from the command line via the rakefile (rake compile). Note that you must run from the same directory as the rakefile &#8211; there is a bug in the rakefile for generating resources.</p>
+<p>I still have to put together a .sln file for external folks, and remove some of the key signing residue from our .csproj files.
+</p>
+<p>Oh yes, Merlin is the original code-name for our team, which was originally IronPython but has now expanded to include the Dynamic Language Runtime and IronRuby.</p>
+                        </div>
+                        <div class="fix"></div>
+
+                                                <div id="share">
+							<div class="banner">Share</div>
+                            <a href="http://twitter.com/home/?status=What is this Merlin thing in IronRuby? : http://tinyurl.com/yax4mge"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-twitter.png" alt="Twitter" /></a>
+<a href="http://digg.com/submit?phase=2&amp;url=http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-digg.png" alt="Digg" /></a>                            
+<a href="http://del.icio.us/post?url=http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html&amp;title=What is this Merlin thing in IronRuby?"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-delicious.png" alt="Delicious" /></a>                            
+<a href="http://www.stumbleupon.com/submit?url=http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html&amp;title=What+is+this+Merlin+thing+in+IronRuby%3F"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-stumbleupon.png" alt="Stumbleupon" /></a>                            
+<a href="http://technorati.com/cosmos/search.html?url=http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-technorati.png" alt="Technorati" /></a>                            
+<a href="http://www.facebook.com/sharer.php?u=http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html&amp;t=What is this Merlin thing in IronRuby?"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-facebook.png" alt="Facebook" /></a>
+<a href="mailto:EMAIL ADDRESS?body=http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-mail.png" alt="Email" /></a>                           
+                        </div>
+                                                                        
+                    </div><!-- /.post -->
+                    
+                    <div class="post-bottom">
+                        <div class="fl"><span class="cat"><a href="http://iunknown.com/category/uncategorized" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></span></div>
+                        <div class="fr"></div> 
+                        <div class="fix"></div>                       
+                    </div>
+                    
+                </div><!-- /.box -->
+
+                <div class="more_entries">
+					<div class="fl"><a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html" rel="prev">IronRuby on Rubyforge!</a></div>
+					<div class="fr"><a href="http://iunknown.com/2007/09/new-ironruby-build-instructions.html" rel="next">New IronRuby build instructions</a></div>
+                    <div class="fix"></div>                       
+				</div>               
+                
+				
+    
+
+<!-- You can start editing here. -->
+
+<div id="comments">
+
+
+	
+        <h3>9 Responses to &#8220;What is this Merlin thing in IronRuby?&#8221;</h3>
+    
+        <ol class="commentlist">
+    
+                             
+	<li class="comment even thread-even depth-1" id="li-comment-439">
+    
+    	<a name="comment-439"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/8aec21323e118581af6ca1d4e2a3c338?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rubydoes.net' rel='external nofollow' class='url url'>Aaron Junod</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-439" title="Direct link to this comment">02. Sep, 2007 at 6:19 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-439">
+                
+                    <p>For the impatient, I posted a temporary sln file here.  Thanks again for the hard work, I don&#8217;t think I could be any more siked for IronRuby..<br />
+<a href="http://rubydoes.net/2007/09/02/building-and-modifying-ironrubys-second-drop/" rel="nofollow">http://rubydoes.net/2007/09/02/building-and-modifying-ironrubys-second-drop/</a></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-440">
+    
+    	<a name="comment-440"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/75d620852fc7691a0a3a86c336055e7d?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://profile.typekey.com/rbazinet/' rel='external nofollow' class='url url'>Rob Bazinet</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-440" title="Direct link to this comment">02. Sep, 2007 at 9:39 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-440">
+                
+                    <p>@Aaron, the link is bad.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-441">
+    
+    	<a name="comment-441"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/8de583685d3e68f79917ec82253185d8?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blog.paulbetts.org' rel='external nofollow' class='url url'>Paul Betts</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-441" title="Direct link to this comment">02. Sep, 2007 at 10:04 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-441">
+                
+                    <p>Your Rake file is very Windows-path specific &#8211; you should try to use File.join instead of + &#8216;\somedir&#8217;, that way on non-Windows it does the right thing. Also, you should parameterize the C# compiler, Mono calls it MCS, not CSC &#8211; it&#8217;s little things, but I think people might perceive it as anti-crossplatform</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-442">
+    
+    	<a name="comment-442"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/8aec21323e118581af6ca1d4e2a3c338?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rubydoes.net' rel='external nofollow' class='url url'>Aaron Junod</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-442" title="Direct link to this comment">02. Sep, 2007 at 12:50 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-442">
+                
+                    <p>Link is working now.. may have been godaddy .htaccess caching.. If not hit the root of <a href="http://rubydoes.net" rel="nofollow">http://rubydoes.net</a> , it&#8217;ll be the top post.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-443">
+    
+    	<a name="comment-443"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/94ae671ef90095e505878932d9901418?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://ashishwave.wordpress.com' rel='external nofollow' class='url url'>Ashish Ranjan</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-443" title="Direct link to this comment">02. Sep, 2007 at 10:34 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-443">
+                
+                    <p>Hi,<br />
+installed .NET runtime and ruby one click installer(to run rake) , when i try to build through rake compile it gives error<br />
+C:\layouts>rake compile<br />
+(in C:/layouts)<br />
+rake aborted!<br />
+can&#8217;t convert nil into String<br />
+C:/layouts/rakefile:21:in `+&#8217;<br />
+(See full trace by running task with &#8211;trace)<br />
+&#8212;&#8212;<br />
+Then i run it as: rake compile &#8211;trace to get extended error msgs:<br />
+C:\layouts>rake compile  &#8211;trace<br />
+(in C:/layouts)<br />
+rake aborted!<br />
+can&#8217;t convert nil into String<br />
+C:/layouts/rakefile:21:in `+&#8217;<br />
+C:/layouts/rakefile:21<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.2/lib/rake.rb:1855:in `load&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.2/lib/rake.rb:1855:in `load_rakefile&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.2/lib/rake.rb:1929:in `run&#8217;<br />
+c:/ruby/lib/ruby/gems/1.8/gems/rake-0.7.2/bin/rake:7<br />
+c:/ruby/bin/rake.bat:20:in `load&#8217;<br />
+c:/ruby/bin/rake.bat:20</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-444">
+    
+    	<a name="comment-444"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/b7b34fda26b7ea99b8b4d42497193220?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Seo Sanghyeon</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-444" title="Direct link to this comment">02. Sep, 2007 at 10:38 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-444">
+                
+                    <p>@Ashish, run it inside SDK command prompt.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-447">
+    
+    	<a name="comment-447"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.anothr.com/feeds/track/108841' rel='external nofollow' class='url url'>anothr user</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-447" title="Direct link to this comment">03. Sep, 2007 at 8:34 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-447">
+                
+                    <p><strong>Anothr feed track -John Lam on Software</strong></p>
+<p>One new subscriber from Anothr Alerts</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-445">
+    
+    	<a name="comment-445"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/d41185fd9a5d79396fd4c6220aa8bd09?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.paymentswatch.com' rel='external nofollow' class='url url'>John Januszczak</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-445" title="Direct link to this comment">06. Sep, 2007 at 10:38 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-445">
+                
+                    <p>John, I debated leaving this comment on Flickr instead of here, so if this is the wrong place for this, please accept my apologies&#8230;I wanted to mention what an excellent photograph this is! I also have a D70, but until a few weeks ago it has been gathering dust in a drawer for the last couple years. I am now learning how to use the camera and take good photographs in earnest and this shot is really textbook material &#8211; the pail is not in the bull&#8217;s eye, law of thirds (beach, water, sky) with a slight emphasis on the big sky &#8211; I think it evokes something of the experience of actually being there.<br />
+In fairness to the technology aspect of this post(!), I actually saw you speak at the Toronto Visual Basic Users Group way back in the early days of .NET.  I remember you being a dynamic speaker with lots of passion for the technology &#8211; I am really happy that things seem to have evolved nicely for you.  I have downloaded your IronRuby and I am looking forward to playing around with it.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-446">
+    
+    	<a name="comment-446"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/09/what-is-this-merlin-thing-in-ironruby.html/comment-page-1#comment-446" title="Direct link to this comment">07. Sep, 2007 at 9:54 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-446">
+                
+                    <p>@John:<br />
+I&#8217;m glad that you liked the shot! The trick was that I didn&#8217;t want to actually lie in the wet sand so I had to shoot without looking through the viewfinder! I set the manual focus point to the rightmost element and used the lens distance meter to know that I had locked onto the pail. I nailed it with the first shot so I was happy <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+        
+        </ol>    
+    
+        <div class="navigation">
+            <div class="fl"></div>
+            <div class="fr"></div>
+            <div class="fix"></div>
+        </div><!-- /.navigation -->
+
+			
+		
+
+</div> <!-- /#comments_wrap -->
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+	
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2007/09/what-is-this-merlin-thing-in-ironruby.html#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div><!-- /.cancel-comment-reply -->
+
+		    
+		<form action="http://iunknown.com/wp-comments-post.php" method="post" id="commentform" onsubmit="if (url.value == 'Website (optional)') {url.value = '';}">
+
+	    <div class="left">
+
+		
+			<p>
+                <input type="text" name="author" class="txt" id="commentauthor" tabindex="1" value="Name (required)" onfocus="if (this.value == 'Name (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="email" class="txt" id="email" tabindex="2" value="Email (required)" onfocus="if (this.value == 'Email (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="url" class="txt" id="url" tabindex="3" value="Website (optional)" onfocus="if (this.value == 'Website (optional)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Website (optional)';}" />
+			</p>
+
+		        
+        </div>
+
+		<div class="right">
+        
+		<!--<p><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </p>-->
+
+		<p><textarea name="comment" id="comment" rows="10" cols="50" tabindex="4"></textarea></p>
+
+		<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+		<input type="hidden" name="comment_post_ID" value="57" />
+		
+		<input type='hidden' name='comment_post_ID' value='57' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+				
+        </div>
+        
+		</form><!-- /#commentform -->
+
+	
+	<div class="fix"></div>
+
+</div><!-- /#respond -->
+
+                                                    
+			  
+        
+		</div><!-- /#main -->
+
+        <div id="sidebar" class="col-right">
+
+	<!-- Widgetized Sidebar -->	
+	<div id="text-3" class="widget widget_text"><h3>Subscribe!</h3>			<div class="textwidget"><p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+		</div>		
+    
+	<!-- TABS STARTS --> 
+		<div id="tabs">
+		
+		<ul class="wooTabs tabs">
+			<li><a href="#pop">Popular</a></li>
+			<li><a href="#feat">Latest</a></li>
+            <li><a href="#comm">Comments</a></li>
+			<li><a href="#tagcloud">Tags</a></li>
+		</ul>	
+		
+		<div class="fix"></div>
+		
+		<div class="inside">
+		 <div id="pop">
+			<ul>
+					<li>
+			                
+            <a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html" title="A first look at IronRuby">A first look at IronRuby</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/08/funtwo-unmasked.html" title="funtwo unmasked">funtwo unmasked</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html" title="Dynamic Languages, Microsoft, and me">Dynamic Languages, Microsoft, and me</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2008/03/dynamic-silverlight-part-1-hello-world.html" title="Dynamic Silverlight Part 1: Hello, World!">Dynamic Silverlight Part 1: Hello, World!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html" title="IronRuby on Rubyforge!">IronRuby on Rubyforge!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+                    
+			</ul>
+           </div>
+           
+         <div id="feat"> 
+	        <ul>
+			<li>
+		<a title="Permalink to  Motorola DROID Review" href="http://iunknown.com/2009/12/motorola-droid-review.html" rel="bookmark">Motorola DROID Review</a>
+	<span class="meta">10. Dec, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Passing the torch" href="http://iunknown.com/2009/11/passing-the-torch.html" rel="bookmark">Passing the torch</a>
+	<span class="meta">17. Nov, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Dynamic Languages at TechEd 2009" href="http://iunknown.com/2009/05/dynamic-languages-at-teched-2009.html" rel="bookmark">Dynamic Languages at TechEd 2009</a>
+	<span class="meta">18. May, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Disable that annoying beep on Thinkpads when resuming from Sleep" href="http://iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html" rel="bookmark">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+	<span class="meta">02. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Hello, 2009" href="http://iunknown.com/2009/01/hello-2009.html" rel="bookmark">Hello, 2009</a>
+	<span class="meta">01. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+		
+                    
+			</ul>
+          </div>
+          <div id="comm">  
+			<ul>
+			<li>
+    <img alt='' src='http://www.gravatar.com/avatar/d1e701feeafaf4228572298aea23d13f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2007/07/outlook-zen.html#comment-2224" title="on  Outlook Zen">
+		Frank S: I've been using Jello 5 for the last few years.  J...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/634e0589ae0ec312596b20e8c95474ae?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2119" title="on  Passing the torch">
+		Mattias: Now we are really curious... the announcement is d...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/52bf71ded85623e0f7f976192399621f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2016" title="on  Passing the torch">
+		Dave Bettin: New dynamic language?...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/0ad20a1e4b560f1c2771903112cc4fa9?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2008/03/dynamic-silverlight-part-3-integrating-silverlight-with-asp-net-mvc.html#comment-174" title="on  Dynamic Silverlight Part 3: Integrating Silverlight with ASP.NET MVC">
+		sikat ang pinoy: Creating silverlight on asp.net mvc are now easy. ...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-31" title="on  Passing the torch">
+		John Lam: Hang in there ... will happen later this month! So...
+    </a>
+    <div style="clear:both"></div>
+</li>
+                    
+			</ul>
+	      </div>
+			<div id="tagcloud">
+			    			</div>
+		
+	</div><!-- INSIDE END -->
+	
+	</div><!-- TABS END -->
+	
+	<div class="fix" style="height:25px !important;"></div>
+	
+	  
+	<!-- TABS END -->    
+    
+	<!-- Widgetized Sidebar -->	
+	<div id="archives-3" class="widget widget_archive"><h3>Archives</h3>		<select name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> <option value="">Select Month</option> 	<option value='http://iunknown.com/2009/12'> December 2009 </option>
+	<option value='http://iunknown.com/2009/11'> November 2009 </option>
+	<option value='http://iunknown.com/2009/05'> May 2009 </option>
+	<option value='http://iunknown.com/2009/01'> January 2009 </option>
+	<option value='http://iunknown.com/2008/10'> October 2008 </option>
+	<option value='http://iunknown.com/2008/09'> September 2008 </option>
+	<option value='http://iunknown.com/2008/08'> August 2008 </option>
+	<option value='http://iunknown.com/2008/07'> July 2008 </option>
+	<option value='http://iunknown.com/2008/06'> June 2008 </option>
+	<option value='http://iunknown.com/2008/05'> May 2008 </option>
+	<option value='http://iunknown.com/2008/04'> April 2008 </option>
+	<option value='http://iunknown.com/2008/03'> March 2008 </option>
+	<option value='http://iunknown.com/2008/02'> February 2008 </option>
+	<option value='http://iunknown.com/2008/01'> January 2008 </option>
+	<option value='http://iunknown.com/2007/12'> December 2007 </option>
+	<option value='http://iunknown.com/2007/11'> November 2007 </option>
+	<option value='http://iunknown.com/2007/10'> October 2007 </option>
+	<option value='http://iunknown.com/2007/09'> September 2007 </option>
+	<option value='http://iunknown.com/2007/08'> August 2007 </option>
+	<option value='http://iunknown.com/2007/07'> July 2007 </option>
+	<option value='http://iunknown.com/2007/06'> June 2007 </option>
+	<option value='http://iunknown.com/2007/05'> May 2007 </option>
+	<option value='http://iunknown.com/2007/04'> April 2007 </option>
+	<option value='http://iunknown.com/2007/03'> March 2007 </option>
+	<option value='http://iunknown.com/2007/02'> February 2007 </option>
+	<option value='http://iunknown.com/2007/01'> January 2007 </option>
+	<option value='http://iunknown.com/2006/12'> December 2006 </option>
+	<option value='http://iunknown.com/2006/11'> November 2006 </option>
+	<option value='http://iunknown.com/2006/10'> October 2006 </option>
+	<option value='http://iunknown.com/2006/09'> September 2006 </option>
+	<option value='http://iunknown.com/2006/08'> August 2006 </option>
+	<option value='http://iunknown.com/2006/07'> July 2006 </option>
+	<option value='http://iunknown.com/2006/06'> June 2006 </option>
+	<option value='http://iunknown.com/2006/05'> May 2006 </option>
+	<option value='http://iunknown.com/2006/04'> April 2006 </option>
+	<option value='http://iunknown.com/2006/03'> March 2006 </option>
+	<option value='http://iunknown.com/2006/02'> February 2006 </option>
+	<option value='http://iunknown.com/2006/01'> January 2006 </option>
+	<option value='http://iunknown.com/2005/12'> December 2005 </option>
+	<option value='http://iunknown.com/2005/11'> November 2005 </option>
+	<option value='http://iunknown.com/2005/10'> October 2005 </option>
+ </select>
+</div><div id="twitter-1" class="widget widget_twitter"><h3><a href="http://twitter.com/john_lam" class="twitter_title_link">Tweets</a></h3><ul class="twitter"><li class="twitter-item"> <a href="http://twitter.com/shanselman" class="twitter-user">@shanselman</a> what does the csv editor do that excel doesn't? </li><li class="twitter-item"> Great idea: private philanthropy + federal government teaming up to fund education $1B now available in the I3 fund: <a href="http://bit.ly/9DPlMM" class="twitter-link">http://bit.ly/9DPlMM</a> </li><li class="twitter-item"> Great deck by Mary Meeker of Morgan Stanley on Internet Trends-data on disparity between old and new media: <a href="http://scr.bi/agHctt" class="twitter-link">http://scr.bi/agHctt</a> </li><li class="twitter-item"> RT <a href="http://twitter.com/chasejarvis" class="twitter-user">@chasejarvis</a>: insane footage at 100mph and 1000fps!  <a href="http://bit.ly/ddFjM5" class="twitter-link">http://bit.ly/ddFjM5</a> </li><li class="twitter-item"> 4 yo: mom, babies come out of your butt. 6 yo replies: no, babies come out of Virginia. </li><li class="twitter-item"> <a href="http://twitter.com/khurram" class="twitter-user">@khurram</a> word on the street (well, really a cafeteria conversation from yesterday) is 'soon'. </li><li class="twitter-item"> Matthew is really loving learning how to type using Typing Instructor: <a href="http://amzn.to/c5JXe9" class="twitter-link">http://amzn.to/c5JXe9</a> Recommended. </li><li class="twitter-item"> Ken Griffey Jr. calls it a career: <a href="http://bit.ly/cIkmjC" class="twitter-link">http://bit.ly/cIkmjC</a>  Probably my favorite player ever. </li><li class="twitter-item"> RT <a href="http://twitter.com/timoreilly" class="twitter-user">@timoreilly</a>: The internet is killing car culture <a href="http://bit.ly/aWCsoi" class="twitter-link">http://bit.ly/aWCsoi</a> Wow! % of 16-19 yr olds w driver's licenses in sharp decline! v ... </li><li class="twitter-item"> Hard ride. And of course the sun just came out now that I'm home! </li></ul></div>
+<div id="flickr" class="widget">
+	<h3 class="widget_title">Photos on <span>Flick<span>r</span></span></h3>
+	<div class="wrap">
+		<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=18&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=23649168@N00"></script>        
+		<div class="fix"></div>
+	</div>
+</div>
+
+		
+             
+	
+</div><!-- /#sidebar -->
+    </div><!-- /#content -->
+		
+    <!-- Footer Widget Area Starts -->
+	<div id="footer-widgets">
+		<div class="container col-full">
+            <div class="block">
+                		           
+            </div>
+            <div class="block">
+                		           
+            </div>
+            <div class="block last">
+                		           
+            </div>
+   			<div class="fix"></div>
+		</div>    
+    </div>
+    <!-- Footer Widget Area Ends -->
+
+	<div id="footer">
+		<div class="col-full">
+            <div id="copyright" class="col-left">
+                <p>&copy; 2010 John Lam on Software. All Rights Reserved.</p>
+            </div>
+            
+            <div id="credit" class="col-right">
+                <p>Powered by <a href="http://www.wordpress.org">Wordpress</a>. Designed by <a href="http://www.woothemes.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/woothemes.png" width="87" height="21" alt="Woo Themes" /></a></p>
+            </div>
+		</div>
+	</div>
+	<!-- footer Ends -->
+	
+</div><!-- /#container -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&amp;count=1"></script>
+</body>
+</html>

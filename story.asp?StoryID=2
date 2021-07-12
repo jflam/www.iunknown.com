@@ -1,0 +1,397 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<Title>Current Story</Title>
+
+<HEAD>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="Visual Notepad 1.0">
+<TITLE>COM is good for you. Have you thought about COM today?</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF"
+text="#000000" topmargin="0" leftmargin="0">
+
+<STYLE>
+
+	.textRed	{ color:red; font-weight:bold }
+	.textBlack	{ color:black; font-weight:bold }
+	.dropDown	{ position:relative;top:10;left:10;cursor:'hand' }
+
+	H1		{ font:'14pt Arial' }
+	H2		{ font:'14pt Arial';border-bottom:1px outset green }
+	H3		{ font:'12pt Arial';font-weight:bold;cursor:'hand' }
+	H4		{ font:'8pt Arial';font-weight:normal;font-style:italic }
+	H5		{ font: '10pt Arial' }
+
+</STYLE>
+
+<SCRIPT>
+	function ChangeDisplay( element )
+	{
+		if( element.style.display == "" ) {
+			element.style.display = "none";
+		} else {
+			element.style.display = "";
+		}
+		window.event.cancelBubble = true;
+	}
+
+	function Dummy()
+	{
+		return True;
+	}
+
+	function IsIE( browsertype )
+	{
+		return True;
+
+		if( browsertype.Browser == "IE" ) {
+			if( browserType.Version >= 4 ) {
+				return True;
+			}
+		}
+		return False;
+	}
+</SCRIPT>
+
+<SCRIPT language=vbscript>
+	Sub NewBuildTOC()
+
+		dim anchorTags
+		dim objTOC
+		dim doc
+
+		set anchorTags = parent.frames( "MainFrame" ).document.anchors
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><HEAD></HEAD><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white>"
+		doc.write "<STYLE>H4 { font:'8pt Arial';font-weight:normal;font-style:italic }</STYLE><H4>"
+		doc.write "<BR><BR><BR><B>Contents</U></B><BR><HR>"
+
+		for i = 0 to anchorTags.length - 1
+			doc.write "<A href='#" & anchorTags( i ).name & "' target='MainFrame'>"
+			doc.write anchorTags( i ).innerText & "</A><BR>"
+		next
+
+		doc.write "<HR>"
+		doc.write "</H4></BODY></HTML>"
+		doc.close()
+
+	End Sub
+
+	Sub ClearTOC()
+
+		dim doc
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white></BODY></HTML>"
+		doc.close()
+
+	End Sub
+</SCRIPT>
+
+<P>
+	<FONT face="VERDANA, ARIAL, HELVETICA">
+	<IMG src="images/onepixel.gif" vspace="30" hspace="10" width="1" height="1"></IMG>
+	<IMG src="/images/iunknownlogo.gif"></IMG>
+	<IMG src="images/onepixel.gif" hspace="81" width="1" height="1"></IMG>
+	</FONT>
+</P>
+
+<TABLE border="0">
+<TR>
+    <TD width="10" valign=TOP>&nbsp
+	</TD>
+    <TD width="480">
+		<FONT face="VERDANA, ARIAL, HELVETICA">
+
+	<font size="3"><b>Sneak Preview! Excerpts from the forthcoming Delphi Developer's Guide                                                                                                                                                                                     </b></font><br>
+	<font size="1">By </font><a href="author.asp?AuthorID=1">
+	<font size="1"> John                                               Lam                                               </font></a>
+	<font size="1"><br>Last updated on 
+		Wednesday, July 09, 1997
+	 at 10:41:48 PM<br><br></font>
+	<font size="2"><FONT SIZE=2><P>The Component Object Model or COM is one of the most important operating system developments to emerge from Microsoft. COM is partly a specification for building applications, and partly an implementation in the form of a standard API. By learning COM, your applications will be poised to take advantage of both a well thought-out component based software architecture, and <I>every significant new operating system extension that is being created by Microsoft.</P>
+</I><P>An increasing amount of code within the Windows operating system is being implemented using COM. The Windows 95 and Windows NT 4.0 shell is implemented as a set of COM components. The Messaging API or MAPI is now implemented as a set of COM components. The OLE DB database libraries are implemented as a set of COM components. The DirectX multimedia and gaming extensions are implemented as a set of COM components. The ActiveX Internet extensions are implemented as a set of COM components. In short, you cannot continue to ignore COM. If you do, you’ll be at risk of losing touch with the operating system that you’re developing applications for: Windows.</P>
+<P>This chapter will take a two-pronged approach at introducing COM to you. The first major section will take you on a tour of programming problems, and how COM provides solutions to these problems. It should be read from beginning to end, as it will gradually introduce COM concepts within the context of solutions to different programming problems. The second major section will show how Delphi 3 solves a number of COM programming problems. It will introduce Delphi 3 features within the context of solutions to different problems posed by programming in COM. At the end of this chapter, you will understand why the best tool on the market for creating COM based applications is Delphi 3.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A0">Component Software, Delphi and COM</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>In this section, I’ll be talking about how COM and Delphi both work together to help you create software components. We’ll take a look at some of the problems that are solved by software components, contrast the COM and Delphi VCL approaches to these problems, and hopefully clear up some general misconceptions regarding the terminology associated with COM. Experienced COM programmers may want to skip over this section and proceed to where we’ll be discussing approaches toward learning COM.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><A name="A1"><P>The Holy Grail: Software Components</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>Programming is not unlike other disciplines in life: they each have their own Holy Grails. From the four-minute mile in track to the synthesis of Vitamin B12 in organic chemistry to component-based software in programming, these are lofty yet attainable goals. While many approaches have been tried, with some being more successful than others, the goal itself is almost always very clearly defined. In this chapter, we will be taking a close look at the goal that concerns us the most: the creation of universal software components.</P>
+<P>So just what is a universal software component? Ideally, it would allow software developers to create applications by assembling these components using an arbitrary programming language. The component should itself appear to be a black box to the user of that component: just plug and play. This quality would enable developers to rapidly assemble software applications from pre-fabricated building blocks, which in theory would reduce the overall cost of software applications.</P>
+<P>The ‘black box’ quality of a universal software component can be manifest in several different ways. (1) The application developer should not care what programming language that was used to create those components, and the component developer should not care what programming language would be using them. (2) These components should be readily reusable as stand-alone components, or as components built up as a composite of several other components. (3) These components should plug right in and appear to be part of the host operating system. (4) These components should be able to evolve in step with and not break any client code that uses different versions of these components. (5) The user of these components should not have to write different code to access components that execute in different places.</P>
+<P>Sound like a tall order? It is. Many other attempts have been made in the past to create a usable component software architecture. The problems, however, are not merely architectural. It matters little that the <I>best</I> technology wins, it is far more important that a usable component software architecture be widely adopted. Thus, it stands to reason that the component software architecture that has the greatest chance of achieving commercial success in the marketplace is the one that is tied to the most popular operating system in the marketplace. In this chapter, we’ll be taking an in-depth look at the component software architecture at the heart of Microsoft Windows: the Component Object Model or simply, COM.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><A name="A2"><P>Delphi Components and the VCL</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>But wait, you say ‘I’m a Delphi developer. Why should I care about COM for component-based software development when I have the VCL?’ This is a very good point. COM does not compete against the VCL. If you believe that only Delphi developers will use your software component, then continue to build it as a VCL component. If, however, you want to extend your software component’s reach beyond Delphi, then it is time to consider using COM.</P>
+<P>Here’s another point to consider: Delphi, like any other tool, has its strengths and weaknesses. What if, tomorrow, somebody comes along with a new software development tool that is as revolutionary compared to Delphi as Delphi was to the tools that preceded it? Then, you’d be faced with a very difficult decision: Do you make the jump to the new tool, but face having to port all of your existing code? Or do you continue to program in Delphi and stare enviously at the other side of the fence where the grass is oh-so-green?</P>
+<P>If you have built your software components using COM and Delphi, then your code is already portable. You simply switch to the new tool (which more than likely is COM-compliant), and all of your Delphi code moves along with you! If you have built an extensive library of graphical VCL components, Delphi 3’s new ActiveX control feature will allow you to automatically convert your VCL components into ActiveX controls (which are really just fancy COM components). Your existing code investment is now safe.</P>
+<P>So just what exactly <I>is </I>COM and <I>when should I be using it</I>? We’re going to be spending some time in this chapter going over just this question. I’m going to attempt to answer this and many other questions as we go through the material.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A3">COM Components and ActiveX</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>Just so that there isn’t any confusion regarding what the terms COM, OLE and ActiveX really mean, I’m going to briefly go over the somewhat finer distinctions between these terms.</P>
+<P>COM serves as the foundation of both the OLE and ActiveX technologies. Less glamorous than its better-known cousins, it acts as the plumbing that makes OLE and ActiveX possible. This is a very important point: All of the OLE and ActiveX services are built using the infrastructure provided by COM. By understanding COM, you’ll have a far better understanding of what makes OLE and ActiveX possible.</P>
+<P>The term OLE used to mean ‘Object Linking and Embedding’, but has been misused to describe virtually all things built using COM. More recently, however, its meaning has been re-focused by Microsoft to describe just what it originally did: the technology that makes compound documents possible (e.g. in-place editing of a Paradox database within a Word document). </P>
+<P>The ActiveX term is used to describe the technologies that relate to software components that can run over the Internet. ActiveX controls are the most widely encountered variant of these software components. There are also other technologies under the ActiveX banner that warrant closer attention: ActiveX Data Objects (ADO) and ActiveX Document Object technologies are quickly emerging as the software components that will help advance the cause of a web-browser centric operating system.</P>
+<P>If some of these points seem a bit confusing at this point, don’t worry too much about it now. By the time we’re done with this chapter, you’ll have the requisite knowledge to start reading about all of these other pieces of technology from a whole new perspective.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A4">How NOT to learn COM</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>Have you been frustrated by the literature that has been published about COM? Does it appear to be a huge impenetrable mass of documentation? If you’re like me, then you probably learn through the association of a solution to a particular problem. You learn by doing.</P>
+<P>Unfortunately, much of the literature about COM fails to talk about the problems that COM solves. Most of it is structured like ‘There’s this COM interface called IUnknown that you really have to know about …’. There’s very little documentation on <I>why</I> the IUnknown interface was created. What problems are solved by the IUnknown interface?</P>
+<P>In this section I’ll present the approach that I’ll be taking throughout the rest of this chapter to introduce you to COM. Believe me, it’s not as difficult as the documentation written about COM would make it appear.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A5">A brief anecdote…</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>While I was a graduate student, I had an opportunity to teach a second-year introductory Organic Chemistry course. Based on this experience, I can draw a number of interesting parallels between the teaching of organic chemistry and the teaching of COM programming. The most striking similarity between these fields is the vast body of information that each field encompasses, and the way in which that information is presented to newcomers.</P>
+<P>Organic chemistry is typically presented to the student as an ordered collection of facts. Most of those facts are presented to the student as logical groupings, thereby giving the student a semblance of order in their learning of the new subject material. Unfortunately, the sheer volume of material usually overwhelms the poor student to the point where he loses track of the principles that underlie what he is learning. In his struggle to assimilate the tremendous volume of facts, he fails to realize that the underlying principles are what bring order to that large collection of facts. Without a thorough understanding of those principles, it is very likely that he will have a poor understanding of how to apply those facts when he is required to do so.</P>
+<P>COM is also presented to the student as an ordered collection of facts. Try and remember some of the material that you may have read about COM. Sentences like ‘All COM components are reference counted’ or ‘IUnknown is the root of all COM interfaces’, or ‘COM components exhibit local / remote transparency’, or ‘COM components solve the component versioning problem’ probably come to mind. These and many other facts are usually presented to the student as positive aspects of COM. They are, in effect, presented as the <I>solutions</I> that COM provides. But what are the <I>problems</I> that COM solves<I>?</P>
+</I><P>This is the approach that I’m going to take throughout the rest of this chapter. I feel that by introducing the problems before explaining how COM provides the solution, you’ll get a far deeper understanding of when to apply a particular problem. Hopefully, by examining the problems that COM solves, you’ll be able to recognize those same problems in your own applications and be in a position to apply the appropriate COM solution.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A6">How the rest of this chapter is organized</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>The next section is entitled ‘Programming Problems and COM Solutions’, and it is divided into a number of sections. Within each section, I will introduce the problems that are solved by COM, and then take time to show you how COM provides <I>a</I> solution to those problems. Keep in mind that by no means does COM solve <I>all</I> of your programming problems, it just solves a particular class of general programming problems.</P>
+<P>COM programming itself introduces a number of problems that are specific to COM programming. These are tedious and error-prone tasks that await even the most experienced COM developer. Delphi elegantly solves a number of these COM programming problems, and we’ll be exploring these solutions in the section entitled ‘COM Programming Problems and Delphi Solutions’.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A7">Programming Problems and COM Solutions</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>In this section I’m going to take a problems-based approach to introduce you to COM programming. Veteran COM programmers may be tempted to skip this section, but I really believe that the unique way in which I’m presenting this material will have a significant amount of value for you.</P>
+<P>I’m going to introduce you to a set of programming problems that you most likely have already faced at some point in the past. Then I’m going to show you how COM provides a solution to those programming problems.</P>
+<P>Throughout this section, I’m going to introduce as little of COM to you as possible within each problem. As I progress through the set of problems that are solved by COM, I will gradually unravel the complete picture of COM while trying to keep you focused on the problems that COM solves. I’ll defer much of the details of the implementation of COM components and clients until the section where I discuss how Delphi solves COM programming problems.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A8">Code reuse</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>Code reuse is an ages-old problem in programming. Since programmers are fundamentally lazy creatures, we would like to be able to reuse as much code from previous projects as possible. To this end, a number of operating system and programming language features have evolved to help make code reuse easier and more reliable for developers.</P>
+<P>Windows supports extremely efficient code reuse in the form of dynamic link libraries. The code within a DLL is available to any Win32 process that wishes to link to it. By maintaining a reference count on all DLLs, Windows ensures that only one copy of a DLL is ever present in physical memory. In other words, physical memory is committed only when a DLL is referenced for the first time. All subsequent references to that DLL from the current or other Win32 processes result only in the DLL’s reference count being incremented. Through the magic of page table mapping, Windows can make those physical memory code pages appear within the logical address space of any number of Win32 processes, thereby conserving physical memory.</P>
+<P>Code reuse within DLLs was a great boon for developers using traditional programming languages such as C or Pascal. While they did introduce their own set of problems, DLLs did allow developers to create stand-alone libraries of code that could be shared among many applications, or different versions of a single application.</P>
+<P>Within a DLL, a developer could make functions available to client applications by exporting those functions by name or ordinal number. Those functions would be exported using a standard calling convention (</FONT><FONT FACE="Courier New" SIZE=4>stdcall</FONT><FONT SIZE=2> in Win32) that would be known to users of that DLL. To make those functions available to other software developers, all the library developer had to do was make the header files (or .dcu units for Delphi) available. The benefits of this approach are obvious. A single DLL can service many clients, thereby conserving memory and creating a natural point of control for all of those clients.</P>
+<P>For example, the Win32 API is implemented entirely as DLL-based exported functions. Thus, as Microsoft continuously upgrades particular components of the operating system (comctl32.dll is a great example of this), those new operating system features are immediately available to all Windows applications. To make the Win32 API accessible to application developers, Microsoft ships the Win32 SDK, which is just a collection of documentation and header files that allow software developers to make use of the functions contained within the Windows system DLL’s.</P>
+<P>While Windows makes it easy to share code contained with DLL’s, it is not possible to share code that resides inside executable files. Calling code inside another Win32 process from within your application is not possible without resorting to methods such as using Windows messages to trigger code inside the other Win32 process. As we will see, COM provides an elegant solution to this problem.</P>
+<P>Not wanting to be left out, the compiler writers began adding code reuse features to their programming languages. One of the reasons why object oriented programming (OOP) was created was to address the need for better support for code reuse from within programming languages. While code reuse within an application written using a single programming language became markedly easier, the creation of reusable components of code that could be shared using the Windows DLL mechanism became much more difficult.</P>
+<P>To understand why the new OOP features make code sharing more difficult, we have to take a closer look at OOP itself. At the heart of OOP is the notion of a class. Classes are the primary vehicle for encapsulation, and class inheritance is the primary means for code reuse.</P>
+<P>Within each class is a private namespace. In other words, two classes can have identically named functions. To resolve the potential name collision problem, the linker must generate unique names for all member functions of all classes. Unfortunately, the lack of a standard algorithm for generating these unique names creates a problem when we are trying share classes from a DLL. If we can solve this name generation problem, we go a long way toward solving the code reuse problem.</P></DIR>
+</DIR>
+
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+</FONT><FONT SIZE=2><LI>To make OOP possible in the Windows world, compiler developers had to create unique names for each member function of a class in a process called, appropriately, ‘name mangling’. These mangled names contain all of the information required to uniquely identify a class’s member function within the DLL’s class namespace. You can think of this information much in the same way that a filename path uniquely identifies a file within your file system’s namespace. Thus, for a member function Bar of some class called TFoo, the exported function name for Bar could be TFoo\Bar.<BR>
+<BR>
+The problem with name mangling is that there is no universal standard. The name mangling conventions for C++ must be different than those for Delphi since C++ supports the notion of function overloading. In C++, there can be many functions with the same name that differ only by the function’s parameter list. Thus, the C++ name-mangling algorithm must also include information about the parameter types. The incompatibilities do not end there, however. The different C++ compiler vendors have not agreed on a universal name mangling convention, which means that a C++ class written by one vendor’s compiler cannot be used by code generated by another vendor’s compiler!</LI></UL>
+</DIR>
+</DIR>
+</UL>
+<DIR>
+<DIR>
+
+</FONT><FONT SIZE=2><P>So, how can COM solve the code reuse problem? It solves the problem in two ways. The first is by defining a standard way to represent code in memory, and the second is by defining a standard way to uniquely identify class member functions.</P>
+<P>By defining a standard way to represent code in memory, a COM component can be accessed or created by any tool that can generate code that is compatible with COM’s standard. This standard defines the binary layout of a COM component, and does not tie COM to any particular programming language. It guarantees that a COM component can be accessed from any COM-compliant programming language. It also makes it possible to make calls on a COM component that resides in another Win32 process. This is how COM allows code to be shared from both DLL’s and EXE’s. </P>
+<P>By also defining a <I>binary </I>standard for resolving names, as opposed to the current text-based mechanism for resolving names, COM guarantees that a COM component can be called from any programming language. This standard also eliminates the possibility of name collisions, because the binary identifiers used in the name resolution process are guaranteed to be unique across all time and space. You no longer have to worry about coming up with unique names for your classes, which is a significant problem in a large multi-programmer project</P>
+<P>At this point, it would be premature to explain all of the details regarding <I>how</I> COM solves the code reuse problem. In discussing the next several points (language independence, implementation location, memory allocation and object lifetime management), I will slowly unravel how COM solves the code reuse problem by solving each of these other related problems. For the time being, take this at face value: COM <I>does</I> solve the code reuse problem.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A9">Language independence</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>Part of the code reuse problem is the requirement that COM components must be portable across many different programming languages. This may sound like a tall order, particularly when we consider that we have different <I>types</I> of programming languages. In general, we can think of programming languages as falling into one of two general categories: those that support the notion of pointers and explicit memory allocation, and those that don’t.</P>
+<P>Delphi and its Object Pascal language clearly fall into the first category, much like C and C++. As we will soon see, the ability to support pointers is an essential requirement for creating and manipulating COM components. In particular, the ability to easily create tables of pointers to member functions of a class is the key to making the creation of COM components simple and straightforward. </P>
+<P>But what about programming languages that don’t support the notion of pointers and explicit memory allocation? These languages are clearly a very important category, including such notables as Visual Basic, Java and Visual Smalltalk. Are developers using these languages going to be left out in the cold? As it turns out, COM supports them too!</P>
+<P>Now that I’ve made the bold statement that COM supports <I>all</I> programming languages, let’s take a closer look at just <I>how</I> COM can pull off this feat. The key to COM’s language independence is that there is a standard mechanism to communicate with COM components. This standard mechanism is called a COM <I>interface</I>.</P>
+<P>You communicate with a COM component using a COM interface, which is a grouping of related functions. This grouping of related functions is organized as a table of pointers to those functions, a data structure that I’ll call a <I>function table</I>. There is a separate function table for each COM interface. You call a COM interface member function by using its offset into that interface’s function table. </P>
+<P>The role of the function table can be made clearer using a simple example. Imagine that we have a simple COM interface called </FONT><FONT FACE="Courier New" SIZE=4>ISimple</FONT><FONT SIZE=2>. It contains three member functions called One, Two and Three. The function table would contain the 32-bit addresses for those functions, in the order in which they were declared. Therefore, if you wanted to call function One, you would call it by dereferencing the function pointer for the first entry in the function table. If you wanted to call function Two, you would call it by dereferencing the function pointer for the second entry in the function table. For function Three … I’m sure you get the point!</P>
+<P>The presence of a function table implies a shared responsibility between the caller and the COM component. The COM component is responsible for creating and maintaining the function table, and the caller is responsible for calling a function using the correct offset into the function table. When the caller obtains a reference to the function table, it must know what kind of interface that it is getting a reference to. The definition of that interface is what provides the caller with the function table mappings.</P>
+<P>This shared responsibility is very similar to that foisted upon you by the Win32 API. Callers of Win32 API functions rely on the Win32 SDK headers to tell them the names of the functions, what DLL’s those functions are located in, and what type of parameters each function takes. Analogously, COM interface definitions tell the caller the names, the function table offsets, and the parameter types for each interface member function.</P>
+<P>Now that you understand what the role of the function table is, I’m sure you’re thinking ‘how do I use one of these things?’ A COM interface is simply a pointer to that interface’s function table. So, whether you’re calling functions using it, or passing it as a parameter, you’re really just manipulating a pointer to that interface’s function table.</P>
+<P>To recap, we now know that a COM interface is simply a pointer to a function table. That function table is itself a table of pointers to functions. Calling a particular member function of a COM interface simply involves calling that function using the correct offset into the function table for that interface. Sounds great. But what about that second category of programming languages … those that don’t support pointers and explicit memory allocation? Are they left out in the cold?</P>
+<P>Programming languages such as Visual Basic or Java, which fall into the second category, can also participate in the COM party. While programmers using those languages cannot explicitly allocate memory or manipulate pointers, the developers that created those programming languages certainly can and do. Providing that the language developers understand how to manipulate COM interfaces in general, they can and have added support for COM to their programming languages.</P>
+<P>What makes it easier for some of these programming language developers to add COM support to their languages is a special COM interface called </FONT><FONT FACE="Courier New" SIZE=4>IDispatch</FONT><FONT SIZE=2>. It allows a caller to refer to a function using its name rather than that function’s offset in a function table. This process is known as <I>dynamic invocation</I>. It makes it particularly easy for interpreted languages to allow transparent access to a COM component’s member functions. For example, you could envision code such as:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>SomeObject.ShowMessageDialog( ‘Hello World!’ )</P>
+</FONT><FONT SIZE=2><P>It could be translated by the programming language into a call on function </FONT><FONT FACE="Courier New" SIZE=4>ShowMessageDialog</FONT><FONT SIZE=2>, passing a reference to the ‘Hello World’ string.</P>
+<P>If the dynamic invocation method is to be truly universal, it must also use a universal set of data types. This is necessary because different languages use different binary representations for their primitive data types. The binary layout of a Visual Basic string is different than the binary layout of a Java string, for example. What is needed is a standard set of data types that all of these programming languages can use as a reference. The data type used in COM’s dynamic invocation mechanism is known as a variant.</P>
+<P>The variant type is a 16-byte packet of data that can assume a number of different types. You can think of it as a Delphi variant record, or a C union. The definition below shows the different types a variant can assume:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>TVarData = record</P>
+<P>   VType: Word;</P>
+<P>   Reserved1, Reserved2, Reserved3: Word;</P>
+<P>   case Integer of</P>
+<P>     varSmallint: (VSmallint: Smallint);</P>
+<P>&nbsp;</P>
+<P>     varInteger:  (VInteger: Integer);</P>
+<P>     varSingle:   (VSingle: Single);</P>
+<P>     varDouble:   (VDouble: Double);</P>
+<P>     varCurrency: (VCurrency: Currency);</P>
+<P>     varDate:     (VDate: Double);</P>
+<P>     varOleStr:   (VOleStr: PWideChar);</P>
+<P>     varDispatch: (VDispatch: Pointer);</P>
+<P>     varError:    (VError: Integer);</P>
+<P>     varBoolean:  (VBoolean: WordBool);</P>
+<P>     varUnknown:  (VUnknown: Pointer);</P>
+<P>     varByte:     (VByte: Byte);</P>
+<P>     varString:   (VString: Pointer);</P>
+<P>     varArray:    (VArray: PVarArray);</P>
+<P>&nbsp;</P>
+<P>     varByRef:    (VPointer: Pointer);</P>
+<P> end;</P>
+</FONT><FONT SIZE=2><P>The variant type is also self-describing, so you will always ask a variant what type it is.</P>
+<P>Variants also have the advantage of being a fixed size. Therefore, when variants are passed as parameters for dynamically invoked functions, they can be passed as simple arrays. However, there is a performance penalty that must be paid for converting data types to and from variants, and allocating the memory for the variant array from the global heap. Passing parameters on the call stack is far more efficient in both time and space.</P>
+<P>The technology that allows you to call a COM component’s member function by name was important enough to warrant its own name. It is known as Automation (formerly OLE Automation). Automation was created primarily as a means for Visual Basic to be able to manipulate and talk to COM components. As a published specification, it now means that most programming languages today now have the ability to talk to COM components.</P>
+<P>To summarize this section, you have now seen that COM uses the notion of interfaces to allow developers that program in different programming languages to access the same COM component. Interfaces represent a language-independent binary standard. Using regular COM interfaces, a programming language that can manipulate pointers can directly access a COM interface’s member functions through its function table. Using the </FONT><FONT FACE="Courier New" SIZE=4>IDispatch</FONT><FONT SIZE=2> interface, a COM component’s member functions can be accessed by name from programming languages that does not allow pointers. As you can see, this represents the best of all worlds, a universality that allows programmers using most, if not all languages to access the rich functionality of COM.</P>
+<P>The question that I have not answered yet, however, is how you obtain a reference to one of these COM interfaces. This will be accessed in the next section where we explore how we find and instantiate a COM component.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A10">Implementation location</A></P><DIR>
+<DIR>
+
+</B></FONT><I><FONT SIZE=2><P>Implementation location</I> sounds rather ominous doesn’t it? But when you think about it, all it really means is ‘how do I find the container of the code that I want to get at?’ This is a problem that has always plagued software developers. In the COM world, that container can be either an EXE or a DLL. In the Windows world, that container can only be a DLL. Let’s first take a look at the problem from the perspective of DLL’s.</P>
+<P>Before Windows can load the DLL that you want, it has to be able to locate it. Windows currently relies on the fully qualified path to a DLL to identify it within the file system namespace. Sometimes you want your DLL to be in an arbitrary directory on your computer. Sometimes it makes sense for it to be in the Windows system directory. However, the only way that Windows can load that DLL is if it resided somewhere along your system path.</P>
+<P>Unfortunately, the system path is a finite resource. If there isn’t enough room in the system path string to add the path to the directory where your DLL resides, Windows cannot find the DLL that you’re looking for. This is a particularly serious problem when you’re building components using Delphi; all of your components must reside in the same directory or you run the risk of running out of path space.</P>
+<P>An additional drawback is performance. Ideally you would like to have Windows find and load the code that your application needs right away. However, using the system path to find your DLL requires asking the file system to look in a bunch of directories to find your code. The reality of this is that the file system is not particularly good at doing this quickly.</P>
+<P>The problem becomes even more difficult if you want to connect to code that runs on <I>another computer</I>. If you wish to do this, you’ll have to learn all of the arcane details of Remote Procedure Calls (RPC). Unfortunately, RPC is a completely different programming model than one that you would use to find a piece of code on <I>your</I> computer. Wouldn’t it be great if there were a single method that you could reliably use to find code regardless of where it may reside?</P>
+<P>As you may guess, COM provides a unified way to connect any piece of code, regardless of its location. However, what you first need is a way to uniquely identify the particular COM component that contains the code that you would like to connect to.</P>
+<P>COM introduces the concept of a Globally Unique Identifier, or GUID (pronounced goo-id, or gwid if you prefer) to identify COM entities. A GUID is a 128-bit number that is guaranteed to be unique across time and space. To generate a GUID, you call the COM API function CoCreateGuid, which generates a GUID for you using a complex algorithm that makes use of your network card’s Ethernet address, your system clock and a number of other highly variable system states.</P>
+<P>There are several different classes of GUIDs, including Interface Identifiers (IIDs), Class Identifiers (CLSIDs), among others. An important point to remember is that these identifiers are really GUIDs. There are no special numerical ranges that have been pre-assigned for any of these types of GUIDs. They have been assigned different types to allow your compiler to enforce type safety (e.g. to prevent you from passing a CLSID to a function that expects an IID).</P>
+<P>A CLSID is a type of GUID that is used to uniquely identify a particular COM component. To create an instance of a particular COM component, you can call the COM API function </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2>, which has the following function signature:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>function CoCreateInstanceEx(const clsid: TCLSID;  unkOuter: IUnknown; dwClsCtx: Longint; ServerInfo: PCoServerInfo; dwCount: Longint; rgmqResults: PMultiQIArray): HResult; stdcall;</P>
+</FONT><FONT SIZE=2><P>By passing in the CLSID for the COM component that you would like to create, </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> will create the COM component for you.</P>
+<P>So how does </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> map a CLSID to the DLL that contains the COM component in question? The answer lies in the Windows registry. All COM components must be register their CLSID and their location with the Windows registry. </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> looks up the COM component’s CLSID in the registry and retrieves the full path to the DLL that contains the COM component you’re looking for. This path is stored in a sub key called InprocServer32 that is found under the object’s CLSID key.</P>
+<P>[[ Perhaps a screen shot of Regedit that shows a sample key would be useful here ]]</P>
+<P>Note that I up until now, I have been talking exclusively about COM components that reside in DLL’s. In the Code Reuse section, I alluded to the fact that you can connect to a COM component in another Win32 process. You can do so by simply specifying </FONT><FONT FACE="Courier New" SIZE=4>CLSCTX_LOCALSERVER</FONT><FONT SIZE=2> in the </FONT><FONT FACE="Courier New" SIZE=4>dwClsCtx</FONT><FONT SIZE=2> parameter of </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2>. </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> looks in the registry as usual, but looks for a path to a Windows EXE file in the LocalServer32 sub key of the COM server’s CLSID key.</P>
+<P>The </FONT><FONT FACE="Courier New" SIZE=4>ServerInfo</FONT><FONT SIZE=2> structure is one of the other parameters that you can pass to </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2>. This structure allows you to identify the computer that you want to create the COM component. The combination of the CLSID and the ServerInfo structure will allow you to identify and obtain a reference to any COM component on any computer on the network.</P>
+<P>I’m going to defer discussion of how the COM component is actually created to the next section. Suffice to say for the time being that once </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> has found the DLL or EXE that contains a particular COM component that all of its work is now done. Trust me, all will become much clearer in the next section.</P>
+<P>The final piece of the puzzle is obtaining a reference to a particular COM interface. As I hinted above, its Interface Identifier or IID identifies a COM interface. Also recall that a COM interface is merely a pointer to the function table for that COM interface. To request a particular COM interface, you’ll need to pass along a reference to its IID and a reference to a pointer that will ultimately hold the pointer to that interface’s function table.</P>
+<P>The </FONT><FONT FACE="Courier New" SIZE=4>PMultiQIArray</FONT><FONT SIZE=2> structure is what makes it possible to obtain a number of COM interface references. Its structure is defined as follows:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>  PMultiQI = ^TMultiQI;</P>
+<P>  TMultiQI = record</P>
+<P>    IID: PIID;</P>
+<P>    Itf: IUnknown;</P>
+<P>    hr: HRESULT;</P>
+<P>  end;</P>
+<P>&nbsp;</P>
+<P>  PMultiQIArray = ^TMultiQIArray;</P>
+<P>  TMultiQIArray = array[0..65535] of TMultiQI;</P>
+</FONT><FONT FACE="Courier New" SIZE=4><P>PMultiQIArray</FONT><FONT SIZE=2> is simply an array of </FONT><FONT FACE="Courier New" SIZE=4>TMultiQI</FONT><FONT SIZE=2> records. By filling in a </FONT><FONT FACE="Courier New" SIZE=4>TMultiQI</FONT><FONT SIZE=2> record with an IID and an interface reference, </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> will return to you a reference to the interface that you requested in the </FONT><FONT FACE="Courier New" SIZE=4>Itf</FONT><FONT SIZE=2> data member. Since the </FONT><FONT FACE="Courier New" SIZE=4>PMultiQI</FONT><FONT SIZE=2> data structure is an array, it implies that you can pass more than one IID and interface reference pair. As we will see later, the reason that it is an array is because a single COM component can implement multiple interfaces.</P>
+<P>You may have noticed that there was a third data member in the </FONT><FONT FACE="Courier New" SIZE=4>TMultiQI</FONT><FONT SIZE=2> record. Simply called an </FONT><FONT FACE="Courier New" SIZE=4>HRESULT</FONT><FONT SIZE=2>, it represents a standard COM return value type that indicates success and failure. Always try and return an appropriate </FONT><FONT FACE="Courier New" SIZE=4>HRESULT</FONT><FONT SIZE=2> value from all of your COM functions. You will find that Microsoft has already defined a large number of sensible error codes for you already.</P></DIR>
+</DIR>
+
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+</FONT><FONT SIZE=2><LI>Delphi has defined most of the HRESULT values for you already. They all begin with the letter E and an underscore (e.g. E_NOINTERFACE). Take a look at the Windows.pas file in your Delphi 3\Source\RTL\Win directory. </LI></UL>
+</DIR>
+</DIR>
+</UL>
+<DIR>
+<DIR>
+
+</FONT><FONT SIZE=2><P>To summarize what we have learned up to now, we know that we can communicate with any COM component through a COM interface. We know that we can get a reference to a COM component’s interface by calling </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2>. We also know that </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> solves the implementation location problem for us by letting us to find the implementation of any COM component using its CLSID and the identity of the computer on which it is located. Now we’re getting somewhere! We no longer have to worry about system paths, or having to modify autoexec.bat files any longer!</P>
+<P>Now that we know how we can get a reference to a COM interface, we can turn our attention to a number of still-unanswered questions. First, how does the code within </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> actually create our COM component? Second, how do we write the code for our own COM component? We will encounter the answer to the first question in the following section, and the answer to the second question in the Object Lifetime Management section.</P></DIR>
+</DIR>
+
+</FONT><B><FONT SIZE=3><P><A name="A11">Memory allocation</A></P><DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2><P>There are two general problems with memory allocation that most programmers will have to face at some point in time. The first problem occurs when we are creating objects: How much memory do we need to allocate for this object, and who owns that memory? The second problem involves ownership of blocks of heap-allocated memory that are passed around as parameters: Is the caller or the callee responsible for freeing the memory? We will examine each one of these problems in turn and show COM provides a workable solution to both of these difficult problems.</P>
+<P>Let’s first consider the problem with ownership of the memory of the COM component. Why is this a problem? Let’s first consider what we have to know before we can create a simple object in Delphi.</P>
+<P>The first thing that Delphi must figure out is how much memory to allocate. This implies that we need to know the exact size of the object. This is not much of a problem in Delphi since before you can use an object, you must have the class definition handy. The class definition must either be in the same unit, or be referenced by a </FONT><FONT FACE="Courier New" SIZE=4>uses</FONT><FONT SIZE=2> clause within the unit.</P>
+<P>For Delphi to be able to calculate the size of the object, it must add up the total number of bytes required by the private, public, protected and published data members in the class. But have you stopped to think about whether this is a <I>good</I> thing? If you change the implementation of your class, you are likely to be adding or removing private data members, thereby changing the size of an instance of your class. Once you have done this, all of the code that uses your class must be recompiled. While this is not a big deal for classes that are contained entirely within a single application, it becomes a <I>huge</I> problem when you have published libraries of code that have many clients that depend on it. You don’t want to force a recompilation of all of those client applications every time you change the implementation of one of your objects!</P>
+<P>The need to know the size of an object that you are creating effectively weakens the encapsulation of that class. It is no longer a black box to the outside world. In object oriented programming, the way you can separate the creation of an object from its implementation is through some form of a <I>factory pattern</I>.</P></DIR>
+</DIR>
+
+
+<UL><DIR>
+<DIR>
+
+
+<UL>
+</FONT><FONT SIZE=2><LI>If you haven’t read about patterns and object oriented programming, you really owe it to yourself to read up on this extremely valuable topic. One of the important aspects of object patterns is establishing a common vocabulary that developers can use to communicate thoughts and ideas. Where appropriate, I will describe certain aspects of COM as being representative of this pattern or that pattern. When you have an opportunity to read up on patterns, you can use the names that I associate with those patterns to gain a deeper insight into why COM was implemented the way in which it was. [[ See a list of references somewhere in this book, or perhaps here? ]]</LI></UL>
+</DIR>
+</DIR>
+</UL>
+<DIR>
+<DIR>
+
+</FONT><FONT SIZE=2><P>A COM component’s class factory is responsible for creating it. There is a separate class factory for each CLSID. Since all knowledge of the size of the COM component is contained inside of the class factory, and the class factory is responsible for allocating the memory for the COM component, the caller effectively needs to know absolutely nothing about the details of the COM component’s creation!</P>
+<P>As you would expect, the way you communicate with a COM component’s class factory is through a COM interface. The </FONT><FONT FACE="Courier New" SIZE=4>IClassFactory</FONT><FONT SIZE=2> COM interface is defined as follows:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>IClassFactory = interface(IUnknown)</P>
+<P>    ['{00000001-0000-0000-C000-000000000046}']</P>
+<P>    function CreateInstance(const unkOuter: IUnknown; const iid: TIID; out obj): HResult; stdcall;</P>
+<P>    function LockServer(fLock: BOOL): HResult; stdcall;</P>
+<P>  end;</P>
+</FONT><FONT SIZE=2><P>By repeatedly calling the </FONT><FONT FACE="Courier New" SIZE=4>CreateInstance</FONT><FONT SIZE=2> member function of the </FONT><FONT FACE="Courier New" SIZE=4>IClassFactory</FONT><FONT SIZE=2> interface, you can create as many instances of a particular COM component as you wish. You can see that the </FONT><FONT FACE="Courier New" SIZE=4>CreateInstance</FONT><FONT SIZE=2> function takes a reference to an interface identifier, and returns a pointer to that interface in the obj out parameter.</P>
+<P>Using what we have just learned here, I can fill in the blanks in our earlier discussion of how a COM component is created using the </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> function. Remember how we learned that </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> discovers the path to the DLL or EXE that contains a particular COM component by looking up that COM component’s CLSID in the registry? Well, once it has determined what file the COM component is actually located in, it must then proceed to create an instance of that COM component. </P>
+<P>Not surprisingly, before it creates the COM component, it requests for and receives a reference to that COM component’s class factory’s </FONT><FONT FACE="Courier New" SIZE=4>IClassFactory</FONT><FONT SIZE=2> interface. Using the class factory reference, it calls its </FONT><FONT FACE="Courier New" SIZE=4>CreateInstance</FONT><FONT SIZE=2> member function to create an instance of the COM component. The final piece of the puzzle fits into place when we consider how </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> obtains a pointer to a COM component’s </FONT><FONT FACE="Courier New" SIZE=4>IClassFactory</FONT><FONT SIZE=2> interface from the DLL or EXE.</P>
+<P>All COM components and their associated class factories are housed inside COM servers. A COM server, as alluded to earlier, can be either an EXE or a DLL. In the case of a DLL based server, </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> calls an exported function called </FONT><FONT FACE="Courier New" SIZE=4>DllGetClassObject</FONT><FONT SIZE=2>. This function is prototyped as follows:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>function DllGetClassObject(const CLSID, IID: TGUID; var Obj): HResult; stdcall;</P>
+</FONT><FONT SIZE=2><P>As you can see, </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx </FONT><FONT SIZE=2>passes this function the CLSID of the COM component that it wants to receive, and the IID of the class factory interface (also known as an <I>activation interface</I>) that it wants to retrieve. In the case of an EXE based server, the startup code of that server registers all of its class factories with the COM libraries by using the COM API function </FONT><FONT FACE="Courier New" SIZE=4>CoRegisterClassObject</FONT><FONT SIZE=2>. In this case </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> looks up the CLSID of the COM component that it wants to create from the table of registered class factories in the COM libraries. In either case, the way you call </FONT><FONT FACE="Courier New" SIZE=4>CoCreateInstanceEx</FONT><FONT SIZE=2> is exactly the same.</P>
+<P>Let’s now take a look at the problem associated with passing around blocks of shared memory. It usually manifests itself when you are passing around pointers to objects as function parameters. A simple example will help illustrate this point.</P>
+<P>Consider that you have an exported procedure within a DLL called </FONT><FONT FACE="Courier New" SIZE=4>PrintData</FONT><FONT SIZE=2>. However, you want to be able to call this procedure asynchronously and continue execution within your application. Also, in the interests of efficiency, you don’t want to have to make a copy of all of the data that is passed in. Let’s say that the procedure is prototyped as follows:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>procedure PrintData( Data: PByte ): Boolean; stdcall;</P>
+</FONT><FONT SIZE=2><P>However, what happens to the data that was passed to </FONT><FONT FACE="Courier New" SIZE=4>PrintData</FONT><FONT SIZE=2>?</P>
+<P>The code in the DLL must have its own memory allocator, since it can’t be sure that the code calling it will be written in Delphi. The code that created the block of memory that was passed to the </FONT><FONT FACE="Courier New" SIZE=4>PrintData</FONT><FONT SIZE=2> function also must have its own memory allocator. A memory allocator cannot free memory that it did not allocate. The ideal solution would be to have a neutral third party allocate and free the data being passed between functions.</P>
+<P>COM acts as the neutral third party to solve the memory allocation problem. It provides memory allocation services through a COM interface called </FONT><FONT FACE="Courier New" SIZE=4>IMalloc</FONT><FONT SIZE=2>. </FONT><FONT FACE="Courier New" SIZE=4>IMalloc</FONT><FONT SIZE=2> is defined as follows:</P>
+</FONT><FONT FACE="Courier New" SIZE=2><P>IMalloc = interface(IUnknown)</P>
+<P>    ['{00000002-0000-0000-C000-000000000046}']</P>
+<P>    function Alloc(cb: Longint): Pointer; stdcall;</P>
+<P>    function Realloc(pv: Pointer; cb: Longint): Pointer; stdcall;</P>
+<P>    procedure Free(pv: Pointer); stdcall;</P>
+<P>    function GetSize(pv: Pointer): Longint; stdcall;</P>
+<P>    function DidAlloc(pv: Pointer): Integer; stdcall;</P>
+<P>    procedure HeapMinimize; stdcall;</P>
+<P>  end;</P>
+</FONT><FONT SIZE=2><P>You can obtain a reference to the </FONT><FONT FACE="Courier New" SIZE=4>IMalloc</FONT><FONT SIZE=2> interface by calling the COM API function </FONT><FONT FACE="Courier New" SIZE=4>CoGetMalloc</FONT><FONT SIZE=2>. If you allocate memory blocks using the </FONT><FONT FACE="Courier New" SIZE=4>Alloc</FONT><FONT SIZE=2> member function of </FONT><FONT FACE="Courier New" SIZE=4>IMalloc</FONT><FONT SIZE=2>, you can be assured that those memory blocks can be freed by any other code that has a reference to an IMalloc interface.</P>
+<P>At this point, we now understand the details behind the creation of a COM component, and how COM acts as a neutral third party to assist in passing blocks of memory around. We understand why COM components have to be created this way: to solve the problems of code reuse, language independence, and memory allocation. The next area that we have to consider is the details involved in writing our own COM components. One of the first things that we have to worry about when writing our own COM components is how to manage the lifetime of that object.</P></DIR>
+</DIR></font><br>
+	<hr>
+		</FONT>
+		<CENTER>
+		<FONT size = 1>&#169; 1997 John Lam. All rights reserved.<BR><BR></FONT>
+		<A href="#TOP"><IMG src="images/top.gif" border=0 alt="Back to top"></A><BR>
+		<BR><FONT FACE="ARIAL,HELVETICA" SIZE="1">
+		<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="5">
+		<TR>
+				<TD ALIGN="right" VALIGN="middle"><a href="/ie/" target="_top"><img src="/images/ie_animated.gif" width="88" height="31" border="0" alt="Microsoft Internet Explorer"></a></TD>
+				<TD ALIGN="center" VALIGN="middle"><IMG SRC="images/bar.gif" width="3" height="43"></TD>
+				<TD ALIGN="left" VALIGN="middle"><a href="/backoffice/designed/logo.htm" target="_top"><IMG SRC="/images/msbo_iis.gif" width="100" height="31" border="0" alt="Microsoft Windows NT Server with Internet Information Server"></a></TD>
+		</TR>
+		</TABLE>
+		</FONT></CENTER><BR>
+	</TD>	
+</TR>
+</TABLE>
+
+</table>
+</body>
+</html>

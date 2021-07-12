@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Dynamic SQL vs. sproc performance</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Dynamic SQL vs. sproc performance</div>
+
+
+<div class="comments-body">
+<p>You could probably count the academic institutions that even acknowledge mssql exists on one hand (Oracle or MySQL on %nix, man. Who needs a GUI anyway?).</p>
+<span class="comments-post">Posted by <a href="mailto&#58;r&#46;childress&#64;comcast&#46;net">Rick Childress</a> at December 22, 2003 11:15 PM</span>
+</div>
+<div class="comments-body">
+<p>The argument against dynamic SQL isn't so much the performance issues (though many argue that performance is better, understandable given the faint distinction between compiled and JIT code) as the security implications.</p>
+
+<p>If your database allows dynamic SQL, then that means that permissions have to be granted for select, delete, update, and insert to the SQL user. That opens up a whole lot of privilege to the web user and allows for SQL injection attacks if the server-side validation isn't strict enough.</p>
+
+<p>Stored procedures, on the other hand, require only execute stored procedure permission for the SQL user and thus limit the user to running only those stored procedures already defined in the database. SQL injection attacks can also be thwarted much easier on the stored procedure side because data scrubbing is generally performed there for database integrity (plus there's more type safety available).</p>
+
+<p>Another reason to use stored procedures is that they can be scheduled and batched at the database level. That's a great feature since few of the server-side scripting languages (ColdFusion is the only one that I know of) have schedulers to run pages automatically.</p>
+
+<p>There are problems with stored procedures, however. You need someone that knows T-SQL well enough to write all the ones that you'll need. It's harder to make the DBAs understand your requirements for dynamically constructing your queries than if you did them yourself. T-SQL isn't as robust a language as most of the server-side scripting ones and it doesn't have access to a lot of the page context stuff, so you end up doing a lot of preprocessing and sending of information to the stored procedure&mdash;further increasing its complexity.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.bbrown.info/blogs/bblog/">Bill Brown</a> at December 24, 2003 12:33 PM</span>
+</div>
+<div class="comments-body">
+<p>I forgot one other value in using stored procedures. They encapsulate the data model so that you don't need to rebuild your dynamic queries if you choose to switch server-side languages. At my work, we use ColdFusion extensively but its days are numbered since we're moving to ASP.NET eventually. Since both languages have facilities to call stored procedures, we only have to change the calls, we don't have to rewrite the queries themselves. Such huge platform changes don't happen often, but such encapsulation is nice when it does happen.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.bbrown.info/blogs/bblog/">Bill Brown</a> at January  2, 2004 10:39 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

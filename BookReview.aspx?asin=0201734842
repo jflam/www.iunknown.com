@@ -1,0 +1,174 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: C++ Templates: The Complete Guide
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0201734842" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjAxNzM0ODQyLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEMrKyBUZW1wbGF0ZXM6IFRoZSBDb21wbGV0ZSBHdWlkZTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8RGF2aWQgVmFuZGV2b29yZGUsIE5pY29sYWkgTS4gSm9zdXR0aXM7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQ1OS45OTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDUwLjQ1Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw0Ljc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDEzOz4+Oz47Oz47dDxAPGh0dHA6Ly93d3cuYW1hem9uLmNvbS9leGVjL29iaWRvcy9BU0lOLzAyMDE3MzQ4NDIvcmVmPW5vc2ltL2l1bmtub3duY29tLTIwOz47Oz47dDxwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Oz47bDxpPDA+O2k8MT47PjtsPHQ8QDxcZTs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8XGU7Pj47Pjs7Pjs+Pjs+Pjs+Pjs+4RxIMrSU6BddOMumbAiE8DHL02w=" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0201734842.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">C++ Templates: The Complete Guide</span>
+        <div class="ItemDetail">By
+          <span id="Authors">David Vandevoorde, Nicolai M. Josuttis</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$59.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$50.45</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.7</span>
+          based on
+          <span id="TotalReviews">13</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0201734842/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">THE book on C++ templates</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>9</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-08-16</span>
+                    </div>
+                    <span>This book joins the (short) list of standard C++ references like Stroustrup's "C++ Programming Language", Josuttis' STL book, and Meyers' "Effective C++". Very well designed, it allows you to go through the important issues quickly in one chapter and also provides an in-depth chapter for the lawyers. All this is followed by chapters devoted to detailed discussion of what are rapidly becoming the standard tools of template programming: traits, policy classes, and metaprogramming. The last part "Advanced Applications" describes several template elements/utilities: tuples, functors, smart pointers. I would also recommend Alexandrescu's "Modern C++ Design" which goes into programming with template policy classes in great detail.<P>The only gripe I have against this book is a very very minor one: the authors for some inexplicable reason decided to write "T const* p" instead of "const T* p" in function prototypes. Both are correct and both mean the same thing but nobody uses the first convention whose major fault is that it's too close to "T *const p" - a different thing entirely. Plus the second convention is such an ingrained idiom that fighting it is pure nonsense which makes the book initially hard to read. Example: what does "char const* const& a" mean? (p. 17) On top of that the reader cannot simply substitute one convention for the other, as the 25,000 C++ books already in print are still going to *be* there plus the x billion lines of legacy C++ code is not leaving any decade soon! So one has to keep *both* conventions in mind in order to read the text. It's really not much of a big deal but I wonder: what were they thinking?</span>
+                  
+                    <div class="CustomerReviewSummary">A Valuable Resouce for Generic Programming in C++</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>10</span>
+                      /
+                      <span>11</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-12-03</span>
+                    </div>
+                    <span>This book covers the C++ template mechanism in depth, and, possibly more importantly, in readable prose.<P>I particularly liked the clarifications regarding overload resolution when function templates are involved and the discussion of various metaprogramming and traits techniques (such as SFINAE - "Substitution Failure Is Not An Error").<P>I also learned a few things that I didn't know about at all. For example, I didn't realize that template template parameters could have default values and that base class names can hide template parameters.<P>This book is a necessary resource for those writing generic libraries as some of today's techniques require a full understanding of the template mechanism. It is definitely going on my bookshelf with the rest of my favorite C and C++ books, and I highly recommend it to anyone interested in the C++ field.<P>(Note also, unlike Hyman Rosen, I actually *like* the syntax of C++ and as far as I'm concerned, angle brackets are as good a choice as anything else.)</span>
+                  
+                    <div class="CustomerReviewSummary">A Good Book</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-07-08</span>
+                    </div>
+                    <span>The book is extremely well organized and explained.<BR>But there is a but and is not about the book. Is about<BR>who's going to follow it and learn something from it. <BR>I am suffocated by Spaghetti Oriented Code for the <BR>last 15 years or so.</span>
+                  
+                    <div class="CustomerReviewSummary">A great guide for template writers</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-06-22</span>
+                    </div>
+                    <span>This book is a great guide for C++ developers interested in writing generic (C++ templates) code.<P>It is definitely NOT FOR BEGINNERS. Readers should already have some experience in C++ development. An experience using template libraries such as STL, ATL, WTL, collectioin classes in MFC or other will be very helpful.<P>The book contains a concize guide on C++ template basics in the first part with a detailed reference guide in the following parts.<P>I have found on the authors' website that the book is also available in Russian and Polish languages.</span>
+                  
+                    <div class="CustomerReviewSummary">Book is good but</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>2</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>17</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-02-15</span>
+                    </div>
+                    <span>This book is great & gives you the insight of "C++ templates" but for beginners even advanced C++ programmer who want to start templates please DO NOT buy this book at first sight...go for STL Programming by Herbert Schildt. This book assumes you already KNOW templates VERY WELL.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201704315'>
+                      Modern C++ Design: Generic Programming and Design Patterns Applied
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 48 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201379260'>
+                      The C++ Standard Library : A Tutorial and Reference
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.8 based on 64 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201749629'>
+                      Effective STL: 50 Specific Ways to Improve Your Use of the Standard Template Library
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 25 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201615622'>
+                      Exceptional C++: 47 Engineering Puzzles, Programming Problems, and Solutions
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 24 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321113586'>
+                      C++ Coding Standards : 101 Rules, Guidelines, and Best Practices (C++ in Depth Series)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 0 based on 0 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

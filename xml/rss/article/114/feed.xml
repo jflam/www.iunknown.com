@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: RubyCLR progress on implementing CLR interfaces</title>
+    <link>http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>RubyCLR progress on implementing CLR interfaces</title>
+      <description>&lt;p&gt;A major new feature of RubyCLR is implementing &lt;span class="caps"&gt;CLR&lt;/span&gt; interfaces using Ruby. This will provide most of the goodness of the &amp;#8216;how do I call Ruby code from my .NET code?&amp;#8217; scenario without having to derive a Ruby class from a .NET class (a much harder problem).&lt;/p&gt;
+
+
+	&lt;p&gt;A key driver for this scenario is supporting data binding without having to hand-write &lt;span class="caps"&gt;CLR&lt;/span&gt; wrapper classes for those interfaces (right now I only support calling Ruby code via delegates). This support is there in the current drop, but will be completely rewritten in Ruby in the next drop.&lt;/p&gt;
+
+
+	&lt;p&gt;However, I ran into numerous blocking issues over the past week. True, I was distracted setting up my new MacBook Pro, but I resumed work mid-week on RubyCLR and fought issues in both Ruby and Reflection.Emit (I&amp;#8217;m pretty sure I found a bug in ILGenerator). I&amp;#8217;ve got workarounds for all of those issues, so I&amp;#8217;m pretty sure I can get something up and running tomorrow.&lt;/p&gt;
+
+
+	&lt;p&gt;More news soon.&lt;/p&gt;</description>
+      <pubDate>Mon, 17 Apr 2006 00:19:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:4e95369fa3ad8073856e2267f788d8f5</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"RubyCLR progress on implementing CLR interfaces" by mrak</title>
+      <description>&lt;p&gt;So basically it is ruby code within c# code within ruby code ;-)&lt;/p&gt;</description>
+      <pubDate>Mon, 17 Apr 2006 15:55:52 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces#comment-433</link>
+    </item>
+    <item>
+      <title>"RubyCLR progress on implementing CLR interfaces" by John Lam</title>
+      <description>&lt;p&gt;RubyCLR bridges the Ruby interpreter and the CLR. So when you call Ruby code, it's executing within the context of the Ruby interpreter (which acts as a host for the CLR).&lt;/p&gt;</description>
+      <pubDate>Mon, 17 Apr 2006 13:47:04 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces#comment-432</link>
+    </item>
+    <item>
+      <title>"RubyCLR progress on implementing CLR interfaces" by mrak</title>
+      <description>&lt;p&gt;Pardon my ignorance but I've just discovered your RubyCLR project and I was wondering how do you evaluate ruby code within .net code? Do you have your own interpreter or do you call external ruby interpeter?&lt;/p&gt;</description>
+      <pubDate>Mon, 17 Apr 2006 07:27:58 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/04/17/rubyclr-progress-on-implementing-clr-interfaces#comment-431</link>
+    </item>
+  </channel>
+</rss>

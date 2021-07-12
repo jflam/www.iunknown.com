@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2006/02/07/how-to-report-a-bug-ala-subversion">How to report a bug (a'la Subversion)</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 07 Feb 2006 20:38:00 GMT">Tue, 07 Feb 2006 20:38:00 GMT</span></p>
+<p>Here&#8217;s an <em>excellent</em> description on <a href="http://subversion.tigris.org/bugs.html">how to report a bug</a>. It will make you laugh, it will make you cry, it will even teach you how to report a <a href="http://subversion.tigris.org/">Subversion</a> bug.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/07/how-to-report-a-bug-ala-subversion#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/07/hardware-changes">Hardware changes</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 07 Feb 2006 14:09:00 GMT">Tue, 07 Feb 2006 14:09:00 GMT</span></p>
+<p>I&#8217;ve had it with <span class="caps">HDD</span> failures on workstations. I didn&#8217;t suffer much in the way of data loss, it&#8217;s just the freaking inconvenience of it that drives me crazy.</p>
+
+
+	<p>I just finished building a new workstation that runs on an <a href="http://www.techreport.com/reviews/2005q2/opteron-x75/index.x?pg=1">Opteron 175</a> processor. I thought I&#8217;d collect my observations on this process here for folks who may want to build something on this platform in the future.</p>
+
+
+	<p>First off, I didn&#8217;t want <a href="http://en.wikipedia.org/wiki/Scalable_Link_Interface">SLI</a>, so I didn&#8217;t want to pay for it. I elected to purchase an nForce4 chipset <a href="http://www.asus.com/products4.aspx?l1=3&#38;l2=15&#38;l3=171&#38;model=455&#38;modelmenu=1">ASUS <span class="caps">A8N E</span></a> motherboard instead of one of the nForce4 <span class="caps">SLI</span> chipset motherboards. That was a minor mistake. This motherboard cannot boot from an external <span class="caps">USB</span> drive (which is a pain), nor does it have any Firewire ports (long story short, my 3G iPod doesn&#8217;t sync to <span class="caps">USB 2 </span>- only Firewire for some bizarre reason). I didn&#8217;t figure this out of course until I had the entire computer assembled, and by that time I&#8217;d be dammed if I was going to rip it apart to replace the motherboard! Bottom line: don&#8217;t skimp on the mobo (or at least read and memorize the specs before you buy!)</p>
+
+
+	<p>I&#8217;m now running <span class="caps">RAID 0</span>+1 across 4&#215;250GB 7200rpm disks. I hope that the chances of <span class="caps">HDD</span> failure causing downtime on that system are a thing of the past. My primary server runs a <span class="caps">RAID5</span> array with 4&#215;160GB disks, so I&#8217;ve always had redundancy there (but I haven&#8217;t suffered a failure on those drives yet either). But I&#8217;ll now have performance and redundancy with <span class="caps">RAID 0</span>+1 on the workstation.</p>
+
+
+	<p>A warning for folks who are running nForce <span class="caps">RAID</span> and want to install Vista &#8211; it won&#8217;t work. Apparently the February <span class="caps">CTP</span> will fix this issue. I might drop Vista onto a vmware image just to see how it works &#8211; it&#8217;s been a while since I&#8217;ve looked at that OS. I&#8217;d love to see it run native though :)</p>
+
+
+	<p>I&#8217;m amazed by how responsive this system is &#8211; it feels more responsive than the Pentium <span class="caps">D820</span> that it replaced. I was doing a lot of multitasking when I was rebuilding my image, and it just felt like there was always more cycles available.</p>
+
+
+	<p>The Opteron 175 ran really cool during the things I was doing (SpamBayes training, installing <span class="caps">VS 2005</span>, lots of downloading simultaneously). The <span class="caps">CPU</span> utilization was consistently > 80%, yet the <span class="caps">CPU</span> temperature monitor never went above 42C the entire time.</p>
+
+
+	<p>It&#8217;s quiet too: I&#8217;m housing everything in a <a href="http://www.antec.com/us/productDetails.php?ProdID=15139">Sonata II</a> case, and even 4&#215;7200 rpm disks under my feet don&#8217;t seem to make much of a racket at all &#8211; it&#8217;s only a bit louder than the Shuttle <span class="caps">SB31P</span> that it&#8217;s replacing.</p>
+
+
+	<p>Bottom line: I&#8217;m happy with how quickly things came together from my favorite hardware suppliers: <span class="caps">ASUS </span>+ Antec.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/07/hardware-changes#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/04/matthew-just-read-we-share-everything-out-loud-today">Matthew just read We Share Everything out loud today</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Sat, 04 Feb 2006 20:54:45 GMT">Sat, 04 Feb 2006 20:54:45 GMT</span></p>
+<p>For posterity: Matthew just read to me <a href="http://www.amazon.com/gp/product/0590896016/ref=nosim/102-2212109-8521749?camp=2025&#38;dev-t=D26XECQVNV6NDQ&#38;link%5Fcode=xm2&#38;n=283155">We Share Everything</a> out loud today &#8211; the whole book, end to end. I&#8217;m amazed: he&#8217;s 28 months old.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/personal" rel="category tag">Life</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/04/matthew-just-read-we-share-everything-out-loud-today#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/04/xen-to-be-the-new-kernel-of-os-x">Xen to be the new kernel of OS X?</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Sat, 04 Feb 2006 15:52:00 GMT">Sat, 04 Feb 2006 15:52:00 GMT</span></p>
+<p>I saw <a href="http://forum.onmac.net/showthread.php?t=5">this post</a> from Colin, the guy who runs the <a href="http://www.winxponmac.com">winxponmac.com</a> contest site. Apparently, he talked to one of the guys from <a href="http://xensource.com/">XenSource</a>, and this was the most interesting parts of the conversation:</p>
+
+
+	<blockquote>
+		<p>Currently, Apple uses the Mach Kernel to interface with the hardware. However, &#8220;Mach&#8221; is essentially outdated and causes a lot of the bottlenecks with programs having to create a lot more processes than necessary to get the job done. The guy from Xen told me they have been talking a great deal with the Apple guys about replacing Mach with Xen. This is a really big deal! This would be consistent with reports that Apple has filed patents related to Virtualization.</p>
+	</blockquote>
+
+
+	<p>Read the rest of the post for more details (and links). Xen is an open-source virtualization monitor a&#8217;la VMWare and <span class="caps">VPC</span>. It apparently is <a href="http://www.cl.cam.ac.uk/Research/SRG/netos/xen/performance.html">much more efficient</a> than either VMWare or <span class="caps">VPC</span> when the guest OS has been modified to run on Xen. However, with the advent of the new Intel Vanderpool virtualization technology, the guest OS can run <em>unmodified</em> at Ring 1 privilege. Now, it&#8217;s likely that both VMWare and <span class="caps">VPC</span> will exploit this new hardware feature, but it would rock if we could have built-in virtualization in the host OS.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/04/xen-to-be-the-new-kernel-of-os-x#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/02/02/amazon-plogs-as-marketing">Amazon plogs as marketing</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 02 Feb 2006 17:24:00 GMT">Thu, 02 Feb 2006 17:24:00 GMT</span></p>
+<p>Yes, that&#8217;s plogs. Check out what I saw this morning on Amazon. I&#8217;m amazed by how smart of an idea this is.</p>
+
+
+	<p><img src="http://static.flickr.com/22/94578381_8b6056d9e7_o.jpg" alt="" /></p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/02/02/amazon-plogs-as-marketing#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/18/windows-forms-and-value-types">Windows Forms and Value Types</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 18 Jan 2006 16:03:00 GMT">Wed, 18 Jan 2006 16:03:00 GMT</span></p>
+<p>Justin in <a href="http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comments">my comments</a> reported not being able to create a simple <code>MessageBox.Show('Hello, World')</code> app. There were two things missing in Justin&#8217;s app: explicitly loading the <code>System.Windows.Forms</code> assembly, along with a bit of confusion about Ruby namespaces and scoping.</p>
+
+
+	<p>Here&#8217;s a version of Justin&#8217;s code that <em>should</em> work:</p>
+
+
+<pre><code>
+require 'rubyclr'
+include RubyClr
+
+RubyClr::reference 'System.Windows.Forms'
+
+include System
+include System::Windows::Forms
+
+MessageBox.Show('Hello, World')
+</code></pre>
+
+	<p>It displays the message box and then promptly crashes. Why? Because <code>MessageBox.Show</code> returns a <code>DialogResult</code>, which is a user-defined value type. I&#8217;m not marshaling user-defined value types yet, but it&#8217;s a very high priority for the next release of the bridge.</p>
+
+
+	<p>In other news, I&#8217;ve done some pretty major refactoring of the C++ code in my current internal builds &#8211; I was very unhappy with some of the code that I had in my first drop (hint: grep for &#8216;enema&#8217; in the source). I&#8217;ve also got support for virtual call optimization in the current internal build.</p>
+
+
+	<p>I&#8217;m pretty busy writing <a href="http://www.objectsharp.com">ObjectSharp&#8217;s</a> ASP.NET 2.0 Best Practices course the next couple of weeks, so I&#8217;m anticipating a new release of the bridge towards the end of <em>next</em> week. At the very least expect to see user defined value type marshaling working by then.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/18/windows-forms-and-value-types#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/18/timesnapper-saves-my-butt">TimeSnapper and Personal Life Recorders</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 18 Jan 2006 15:10:00 GMT">Wed, 18 Jan 2006 15:10:00 GMT</span></p>
+<p>This year is the 3rd year that I&#8217;m a judge for the <a href="http://www.sdmagazine.com/jolts/">Jolt Software Awards</a>. A couple of nights ago, I thought that I had submitted my votes for the first round of voting to select the finalists. As it turns out, somewhere along the way my votes got lost (I blame my general sleep-deprived stupor these days).</p>
+
+
+	<p>Fortunately for me, I was running <a href="http://www.timesnapper.com/">TimeSnapper</a> at the time. This incredibly useful utility takes a snapshot of your desktop every 5 seconds and records the result as a <span class="caps">PNG</span> image. So it was a simple matter to replay my day around the time I was entering my votes to see exactly what I voted for.</p>
+
+
+	<p>This morning I was chatting with my mother in law during our morning baby / toddler shift and I told her the story of <a href="http://en.wikipedia.org/wiki/Vannevar_Bush">Vannevar Bush&#8217;s</a> description of a <a href="http://en.wikipedia.org/wiki/Memex">Memex</a> which was his vision of a life recorder. A modern implementation of Vannevar Bush&#8217;s ideas is <a href="http://en.wikipedia.org/wiki/Gordon_Bell">Gordon Bell&#8217;s</a> <a href="http://research.microsoft.com/barc/mediapresence/MyLifeBits.aspx">MyLifeBits</a> project.</p>
+
+
+	<p>A fairly full day&#8217;s worth of work for me is about 350MB worth of screenshots. That means that it would take about 100GB to store a year&#8217;s worth of screenshots, which translates into about $40 Canadian dollars today. Now until this data is searchable, I doubt that it will be tremendously useful, but I find it fascinating that it costs so little to digitize an entire year&#8217;s worth of my computer activity.</p>
+
+
+	<p>If you could synchronize those screenshots with a keystroke logger and a network activity monitor, you could quickly make a quick-and-dirty searchable archive. Hmmmm &#8230;.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/18/timesnapper-saves-my-butt#comments">11 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/12/first-drop-of-rubyclr">First drop of RubyCLR</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 12 Jan 2006 22:46:00 GMT">Thu, 12 Jan 2006 22:46:00 GMT</span></p>
+<p>Here&#8217;s the <a href="http://www.iunknown.com/images/RbDynamicMethod.zip">first drop of RubyCLR</a>.</p>
+
+
+	<p>I think this version is usable for folks who are interested in playing around with the current state of the bits. It supports constructor and method overloading, static and instance methods, properties, indexers, static and instance fields, events, multi-dimensional arrays, primitive (ints, floats, bools) value-type marshaling, and reference-type marshaling. Look at the <code>tests2.rb</code> unit test file to see the evidence.</p>
+
+
+	<p>Notable are the things that this release does <strong>not</strong> support. There is no support for generics, nor is there support for marshaling user-defined value types like <code>Point</code>.</p>
+
+
+	<p>There&#8217;s a rakefile in this project too if you want to compile the bits. I&#8217;ve included a compiled <span class="caps">DLL</span> for folks who don&#8217;t have <span class="caps">MS C</span>++ 14.0 installed on their computer.</p>
+
+
+	<p>This release requires the <span class="caps">RTM</span> version of .NET 2.0.</p>
+
+
+	<p>I haven&#8217;t tried to build anything using these bits yet outside of the unit tests, but I wanted to provide a drop for the curious.</p>
+
+
+	<p>I&#8217;m <strong>really</strong> interested in getting feedback about the implementation of the bridge. If folks have the time and could do a code review of either the C++ or Ruby code (or both!) I would greatly appreciate it.</p>
+
+
+	<p>Bug reports in the form of a unit test that can repro the bug would also be greatly appreciated.</p>
+
+
+	<p>The state of error messages in this release is more-or-less non-existent. I plan on fixing this once I tackle the next two hard problems: marshaling user defined value types and handling generics.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/12/first-drop-of-rubyclr#comments">14 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/12/events-and-rubyclr">Events and RubyCLR</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 12 Jan 2006 15:20:00 GMT">Thu, 12 Jan 2006 15:20:00 GMT</span></p>
+<p>I got events up and running last night. It was a bit harder than I anticipated, and there&#8217;s still a bit of work that needs to be done around marshaling, but this unit test now passes:</p>
+
+
+<pre><code>
+public ref class CallbackTests {
+public:
+  event EventHandler^ Event;
+
+  void CallMeBack() {
+    Event(nullptr, EventArgs::Empty);
+  }
+};
+
+class EventTests &lt; Test::Unit::TestCase
+  def test_simple_event
+    c = System::CallbackTests.new
+    c.Event do |sender, args|
+      assert_equal 1, 1
+    end
+    c.CallMeBack
+  end
+end
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/12/events-and-rubyclr#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/11/rubyclr-update">RubyCLR update</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 11 Jan 2006 18:30:00 GMT">Wed, 11 Jan 2006 18:30:00 GMT</span></p>
+<p>I&#8217;ve been spending a surprising amount of time working on my Ruby <span class="caps">CLR</span> bridge. Ben sleeps on/around me for about 3 hours in the evening to give Carolyn 3 hours of uninterrupted sleep, and I&#8217;ve been using that time very productively to add features.</p>
+
+
+	<p>The older version of the bridge that I had working was a grotesque hack &#8211; it was essentially a bunch of experiments cobbled together in a Frankenstein-esque contraption. Anyone who has a copy of that code is respectfully asked to destroy it once I ship any of these newer bits.</p>
+
+
+	<p>One of the big things that I&#8217;ve been working on is getting a seamless array experience. I marshal data types between the <span class="caps">CLR</span> and Ruby by value where possible, and by reference in all other cases. So value types like floating point numbers and integers are marshaled by value (aka copied and converted) across the runtime boundaries. So code like this just works:</p>
+
+
+<pre><code>
+static array&lt;int&gt;^ StaticGetOneDimensionalArray() {
+  return gcnew array&lt;int&gt; { 0, 1, 2, 3 };
+}
+
+a = MarshalerTests.StaticGetOneDimensionalArray
+assert_equal 0, a[0]
+assert_equal 4, a.Length
+</code></pre>
+
+	<p>As you can see, I marshal by reference the array from the C++ function. But all of the elements of the array are marshaled by value, which lets me treat them as if they were native Ruby numbers.</p>
+
+
+	<p>I&#8217;ve also done a ton of performance work in this release. If you&#8217;re calling a method that has overloads, I take a slower path where I have to lookup at runtime the correct method based on the parameters that you&#8217;re passing. However, if the method doesn&#8217;t have any overloads, I generate a different shim that doesn&#8217;t do any runtime lookups &#8211; it just pushes parameters onto the call stack and invokes the method. The array code that you see above calls <code>Array.Get</code> which is <strong>not</strong> overloaded (unlike <code>Array.GetValue</code> which is) which results in extremely fast <span class="caps">CLR</span> array element access from Ruby.</p>
+
+
+	<p>I&#8217;m punting on some hard problems like generics for the time being. I have to add support for events before I ship this release; if Ben cooperates that should be by the end of this week.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/11/rubyclr-update#comments">1 comment</a></p> 
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> <a href="/articles/page/2">2</a> <a href="/articles/page/3">3</a> 4 <a href="/articles/page/5">5</a> <a href="/articles/page/6">6</a>  ... <a href="/articles/page/10">10</a></p>
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/100461042/"><img alt="Windows Forms 2.0 on RubyCLR" src="http://static.flickr.com/32/100461042_bc3667dced_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102310404/"><img alt="Ruby RSS Reader" src="http://static.flickr.com/36/102310404_c16b55d745_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/94578381/"><img alt="amazon" src="http://static.flickr.com/22/94578381_8b6056d9e7_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102769655/"><img alt="Google Calculator using RubyCLR" src="http://static.flickr.com/27/102769655_160658c51e_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03/page/4">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02/page/4">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01/page/4">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12/page/4">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11/page/4">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10/page/4">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

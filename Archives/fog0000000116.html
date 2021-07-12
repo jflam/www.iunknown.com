@@ -1,0 +1,386 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/116 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Fog Creek CityDesk 1.0.1">
+<title>IUnknown.com - March 2002 Weblog Archives</title>
+<link rel="stylesheet" href="../global.css">
+<script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+<script language="javascript">
+  function HaloScan2(id) { 
+    location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+  }
+</script>
+</head>
+<BODY>
+
+<table border="0" width="800" class="heading">
+  <tr>
+    <td width="100%" class="heading"><A href="../index.html">IUnknown.com</a></td>
+  </tr>
+</table>
+<table border="0" width="800" class="subheading">
+  <tr>
+    <td width="100%" class="subheading">    &nbsp; John Lam's weblog on software development</td>
+  </tr>
+</table>
+
+<table width="800" border="0" cellpadding="7" cellspacing="0">
+<tr>
+<td class="left_panel" valign="top" align="right">
+<p><a href="/rss.xml">rss feed</a></p>
+<p>about</p>
+
+<A href="../About/Aboutme.html">About me</a><br>
+
+<A href="../About/fog0000000006.html">About this site</a><br>
+
+<A href="../About/fog0000000010.html">My plan</a><br>
+
+<A href="../About/fog0000000009.html">My other life</a><br>
+
+<A href="../About/fog0000000008.html">My products</a><br>
+
+<A href="../About/fog0000000013.html">My publications</a><br>
+
+<p>aop</p>
+
+<A href="../AOP/fog0000000115.html">My Runtime Aspect Weaver</a><br>
+
+<A href="../AOP/fog0000000114.html">What is AOP?</a><br>
+
+<p>book</p>
+
+<A href="../CLRInternals/fog0000000043.html">About Inside the CLR</a><br>
+
+<p>articles</p>
+
+<A href="../Articles/Booksuggestions.html">Book suggestions</a><br>
+
+<A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</a><br>
+
+<A href="../Articles/fog0000000065.html">x86 Resources</a><br>
+
+<A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</a><br>
+
+<A href="../Articles/fog0000000034.html">Entertainment PC's</a><br>
+
+<A href="../Articles/fog0000000025.html">Hello CppUnit</a><br>
+
+<p>archives</p>
+
+<A href="March2003.html">March 2003</a><br>
+
+<A href="February2003.html">February 2003</a><br>
+
+<A href="January2003.html">January 2003</a><br>
+
+<A href="December2002.html">December 2002</a><br>
+
+<A href="November2002.html">November 2002</a><br>
+
+<A href="October2002.html">October 2002</a><br>
+
+<A href="September2002.html">September 2002</a><br>
+
+<A href="August2002.html">August 2002</a><br>
+
+<A href="July2002.html">July 2002</a><br>
+
+<A href="June2002.html">June 2002</a><br>
+
+<A href="May2002.html">May 2002</a><br>
+
+<A href="April2002.html">April 2002</a><br>
+
+<A href="fog0000000116.html">March 2002</a><br>
+
+<A href="fog0000000091.html">February 2002</a><br>
+
+<A href="fog0000000046.html">January 2002</a><br>
+
+<A href="fog0000000030.html">December 2001</a><br>
+
+<a href="http://www.haloscan.com/"><img width="88" height="31" src="http://www.haloscan.com/halolink.gif" border="0" alt="Weblog Commenting by HaloScan.com" /></a> 
+</td>
+<td class="main_panel">
+<p><span class="article_heading">March 2002 Archives</span></p>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/pragmaunmanaged.html">#pragma unmanaged</A>
+  </span><BR>
+  30 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I decided to take a closer look at the #pragma managed and #pragma unmanaged directives in Managed C++. These directives are very important to managed C++ developers; they let you instruct the compiler to emit native code for all code that follows a #pragma unmanaged directive. </P>
+<P>There's another reason why you want to use these directives: the VS.NET debugger. Earlier, I reported that the VS.NET debugger <A href="../Weblog/fog0000000089.html">cannot debug managed C++ code that uses pointers</A>. However, if use the #pragma unmanaged directive to force the compiler to generate native instructions for the code that uses pointers, you'll find that the debugger will automatically switch back into native mode when debugging that code!</P>
+<P>Unfortunately, I'm in another deadline crunch, so not much more to report on these pragmas right now. I've got a bunch of partially compiled notes that I'll convert later into some more internals info on IJW.</P></P>
+    <a href="javascript:HaloScan2('Weblog/pragmaunmanaged.html');"><script type="text/javascript">postCount('Weblog/pragmaunmanaged.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/CharlesPetzoldandCode.html">Charles Petzold and Code</A>
+  </span><BR>
+  29 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I love going to the Microsoft company store. After the end of my class this week, I went (for the second time) to the company store to pick up a few additional items. One item that caught my eye is a book that I've been putting off reading for quite some time (it was originally published in 1999). That book is called Code.</P>
+<P>I'm writing this on a plane to Vancouver, BC. I just finished reading the first 40 pages of Charles' book. I am <EM>so </EM>impressed by this book. It explains the origin of computer code from first principles. The beginning of the book is motivated by the desire of two best friends to communicate with each other after their parents have told them to go to bed. Based on this simple premise, he goes on to explain the origin of binary communications beginning with Morse Code. </P>
+<P>The chapter on Morse Code brought back memories of something that I learned long ago in an Encyclopedia Brown book. That something was the frequency table of the English language, which is&nbsp;often used to crack simple substitution ciphers such as Ceasar's cipher.&nbsp;Morse Code more-or-less follows the frequency table. The most commonly used letters are encoded using the fewest number of bits (E and T). The next most commonly used letters are encoded using two bits, (I, A, N, and M). This process is repeated for the remainder of the letters of the alphabet. While this sequence is somewhat different from the frequency table that I remembered from childhood, it was close enough.</P>
+<P>The chapter on Braille was even more familiar to me. Braille is based on a 6-bit encoding scheme, which allows a maximum of 64 possible codes. Since only 26 of this codes are required for encoding the letters of the alphabet, the remainder of the codes are used to encode common words (and,&nbsp;but, the) and common two-letter combinations (ch, th, ed). This was so familiar because I had independently invented a similar scheme almost 20 years ago.</P>
+<P>During&nbsp;high school, my part-time job was writing software for various companies. In those days, I wrote all of my software using 6502 assembly language for the Commodore series of computers (I owned or had in my possession a PET 2001, 4032. 8032, Super PET, Vic-20, Commodore 64, and Commodore 128 at various points in time). One application that I wrote was a replacement for the spell checker of a popular word processor called WordPro 64. </P>
+<P>The original spell checker for WordPro 64 was written by Jim Butterfield, one of the original gurus of the Commodore world. While Jim was certainly an inspiration to all of us in those days, Jim's code in this case, uh, sucked. It was unbelievably slow (I can't remember exactly how long it took to spell check a document, but the times were somewhere in the neighborhood of ten minutes). Also, one of the ways that spell checkers competed with each other in those days was based on the number of words in the dictionary; Jim's dictionary was pitifully small.</P>
+<P>So what I needed to do was invent an encoding scheme that would allow me to pack more words onto a floppy disk. In those days the 1541 disk drive was the only disk drive available for the Commodore 64, and it stored a whopping 170K of data.[1] As it turns out, my encoding scheme was also 6 bits per character. I used the remaning 38 slots to encode a number of two letter abbreviations, and all of the common prefixes and suffixes for words. Using this scheme, I was able to average somewhere in the neighborhood of 2.5 bytes per word, which let us ship a 60,000+ word dictionary with the product. I am astonished by how similar my scheme was to the Grade 2 Braille scheme that Charles describes in his book.</P>
+<P>I can't wait to get back to reading Charles' book. I was fortunate enough to meet Charles at various speaker events throughout the <A href="http://www.winsummit.com">WinSummit conference</A> last year. I can't wait until we cross paths again so that I can tell Charles in person just how much I enjoyed his book. Great job!</P>
+<P>[1] I find it amusing that my HP Jornada 568 comes with 64MB of RAM, and that I just added a 256MB compact flash card to it.</P></P>
+    <a href="javascript:HaloScan2('Weblog/CharlesPetzoldandCode.html');"><script type="text/javascript">postCount('Weblog/CharlesPetzoldandCode.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/ResourcesformySVCClass.html">Resources for my SVC Class</A>
+  </span><BR>
+  29 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I recommended a few resources for my Programming ASP.NET class students during the week that we spent together. I'm gathering them here for anyone else who's interested in them as well.</P>
+<P>The DOTNET community gathers at the DOTNET list: <A href="http://discuss.develop.com/dotnet.html">http://discuss.develop.com/dotnet.html</A>. If you search the archives of this list, you will most likely find the answers to the question that you were about to ask. Some questions to avoid asking:</P>
+<UL>
+<LI>Is non-deterministic finalization a good thing? 
+<LI>What is better: VB.NET or C#? 
+<LI>What is better: Java or the CLR? 
+<LI>Where should I put my curly braces in C# programs?</LI></UL>
+<P>Here's the one book that I recommend for ASP.NET (and it's not in bookstores yet). The reason why I don't recommend others is that I don't read them. Everything that I teach in my Programming ASP.NET class is based on my own experiments with the framework. The reason why I recommend Jeff's book is that he's the co-author of the original version of my class.</P>
+<UL>
+<LI>Jeff Prosise, <A href="http://www.amazon.com/exec/obidos/ASIN/0735613761/iunknowncom-20">Programming Microsoft.NET Applications</A></LI></UL>
+<P>Here's several excellent books that I recommend for the Common Language Runtime:</P>
+<UL>
+<LI>Jeffrey Richter, <A href="http://www.amazon.com/exec/obidos/ASIN/0735614229/iunknowncom-20">Applied Microsoft .NET Framework</A> 
+<LI>Don Box, <A href="http://www.amazon.com/exec/obidos/ASIN/0201734117/iunknowncom-20">Essential .NET Volume 1: The Common Language Runtime</A> 
+<LI>Serge Lidin, <A href="http://www.amazon.com/exec/obidos/ASIN/0735615470/iunknowncom-20">Inside Microsoft .NET IL Assembler</A> 
+<LI>John Gough, <A href="http://www.amazon.com/exec/obidos/ASIN/0130622966/iunknowncom-20">Compiling for the .NET Common Language Runtime</A></LI></UL>
+<P>Here's some C# resources. The reason why this is a brief list is that I honestly don't read C# books either. There's not enough complexity in this language to warrant reading a book on the language itself. All of your questions can be answered by judicious reading of the C# language spec.</P>
+<UL>
+<LI>Stan Lippman,&nbsp;<A href="http://www.amazon.com/exec/obidos/ASIN/0201729555/iunknowncom-20">C# Primer: A Practical Approach</A>&nbsp;(Addison-Wesley) 
+<LI>Scott Wiltamuth and Anders Heijlsberg, <A href="ms-help://MS.VSCC/MS.MSDNVS/csspec/html/CSharpSpecStart.htm">C# Language Specification</A></LI></UL>
+<P>Here's some other interesting books on miscellaneous topics:</P>
+<UL>
+<LI>Bruce Schneier, <A href="http://www.amazon.com/exec/obidos/ASIN/0471253111/iunknowncom-20">Secrets and Lies</A> (a great non-technical introduction to security) 
+<LI>Bruce Schneier, <A href="http://www.amazon.com/exec/obidos/ASIN/0471117099/iunknowncom-20">Applied Cryptography 2nd Ed</A>. (a great technical introduction to cryptography) 
+<LI>Martin Fowler, <A href="http://www.amazon.com/exec/obidos/ASIN/0201485672/iunknowncom-20">Refactoring: Improving the design of existing code</A>&nbsp;(a must-read for anyone developing object-oriented software) 
+<LI>Keith Brown, <A href="http://www.amazon.com/exec/obidos/ASIN/0201604426/iunknowncom-20">Programming Windows Security</A> (a must-read for anyone writing server applications, including ASP / ASP.NET devs)</LI></UL>
+<P>Here's some web logs where you can find frequently updated commentary on CLR programming topics:</P>
+<UL>
+<LI><A href="http://www.dotnetremoting.cc">Ingo Rammer</A>: covers the FCL remoting stack and other things that interest him 
+<LI><A href="http://www.razorsoft.net/weblog">Peter Drayton</A>: a fellow CLR explorer</LI></UL></P>
+    <a href="javascript:HaloScan2('Weblog/ResourcesformySVCClass.html');"><script type="text/javascript">postCount('Weblog/ResourcesformySVCClass.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/Rotorrocks.html">Rotor rocks!</A>
+  </span><BR>
+  28 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just downloaded the <A href="http://msdn.microsoft.com/net/sscli">SSCLI</A> (Shared Source Common Language Infrastructure) distribution yesterday during a break in my Programming ASP.NET class at Microsoft SVC. Between that and finally getting a hold of Serge Lidin's most excellent <A href="http://www.amazon.com/exec/obidos/ASIN/0735615470/qid=1017334848/sr=8-1/ref=sr_8_67_1/002-0093396-4962403">Inside Microsoft .NET IL Assembler book</A>, I now have the means to solve a problem that has caused me no end of grief in Microsoft's commercial implementation of the CLR. </P>
+<P>I have always wanted a callable interface to Fusion. That's the system DLL that handles all assembly resolution requests. Given an AssemblyRef token, Fusion will return back to the caller a path to the assembly that best matches that AssemblyRef token. It applies versioning policies (application, publisher, administrator), it attempts to download the assembly if it is referenced by a codebase attribute, it searches the Global Assembly Cache and the private application bin path using an algorithm that is nicely described on page zzz in Serge's book.</P>
+<P>Once I get a chance to take a closer look at the sources, I'll be able to figure out whether I can:</P>
+<OL>
+<LI>Hack my way into the CLR's implementation (the preferrable route) 
+<LI>Create my own private build of Fusion for use by my unmanaged metadata library</LI></OL>
+<P>I'd like to commend Microsoft on their efforts in this area. While I have been fortunate enough to be able to look at the source code for various bits and pieces of COM in my past life, I have never had a fully functional *build* environment. I can now create debug builds of SSCLI and step through code in a debugger. This makes for&nbsp;the ultimate educational experience. Thank you!</P></P>
+    <a href="javascript:HaloScan2('Weblog/Rotorrocks.html');"><script type="text/javascript">postCount('Weblog/Rotorrocks.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/Workingforaliving.html">Working for a living</A>
+  </span><BR>
+  27 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I'm actually working for a living this week! I'm teaching my 5-day Programming ASP.NET class to a packed room at Microsoft's Silicon Valley Campus. It's been a pretty tough economy for those of us in the training business, but it certainly looks like things are picking up again.</P>
+<P>I love coming to Silicon Valley. There's an invisible buzz of energy that permeates the area. It wouldn't at all be obvious to a casual visitor; the area looks like a giant suburb / industrial park. As you drive around, however, pay careful attention to the signs that adorn the buildings, and you'll see the names of virtually every technology company that you've ever heard of. Even Microsoft.[1]</P>
+<P>After teaching for a full day, I'm totally burnt out. I have so much respect for folks who can teach a full day and go back to their hotel rooms and crank out code. As for me, I'm thankful to be able to stumble into a local restaurant, maybe visit a bookstore or Fry's, and collapse in a heap in my hotel room. I generally try to visit friends in the area as well, but this week I'm so fried that I'm probably not going to get around to doing that. </P>
+<P>I also accepted the job of tech chair for the C++ and C# tracks at the DevConnections conference in Orlando, to be held October 27-30 this year. I'm putting together an awesome lineup of speakers for this conference. The C++ track could be the strongest lineup at a MS-centric C++ conference in years. There's so much going on in the C++ community. It's a shame that other, more trendy, languages have taken the spotlight away from C++. My goal is to try and reverse this unfortunate trend.</P>
+<P>[1] I always wondered what it was like to be a Microsoftie living and working in the land that hates Microsoft. I jokingly posed this question to my students, asking if they needed to pretend at parties that they worked at a less inflammatory company like Sun ;) Their response was telling: lots of those same folks that hated Microsoft two years ago are now applying for jobs ... this area is definitely feeling some hard times!</P></P>
+    <a href="javascript:HaloScan2('Weblog/Workingforaliving.html');"><script type="text/javascript">postCount('Weblog/Workingforaliving.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/Thesorrystateoftechnicali.html">The sorry state of technical information</A>
+  </span><BR>
+  21 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Warning: this is a mild rant.</P>
+<P>Preamble: I'm writing this piece mostly as a direct result of spending lots of not-so-quality time with another runtime environment that begins with "J". I don't mean to point out any specific technology vendor in this rant: this applies to all technology vendors. Some are just more guilty than others ;)</P>
+<P>I make my living (that is the work that pays my bills) by educating the software development community. Mostly this comes in the form of writing books and articles and speaking <A href="http://www.wintellect.com">in classrooms</A> and conferences. I spend lots of time suffering with poor documentation and writing lots of test code to figure out how a certain technology <EM>really</EM> works. In turn, I take that experience and distill it to its essence it when I teach a class or write an article. </P>
+<P>Through extensive experience, I've found that lectures do a very poor job of transferring knowledge about <EM>how</EM> to do a task. I have found that overall, students rarely complete the labs in class perfectly the first time, even if common mistakes are pointed out in the lectures. Apparently, a fair amount of learning occurs as the information travels through your fingertips and into the software that you're creating.</P>
+<P>This takes me to the point of this rant: how technical information is laid out in vendor documentation. It is the exception rather than the rule where you find task-oriented documentation. When I learn a new technology, I typically like to read the <EM>why</EM> first. I want to understand <EM>why </EM>different components were designed the way they were and why they interact with each other in the ways that they do. The crucial step, however, is to translate that information through my fingertips; I need to understand <EM>how</EM> to create those components and what steps that I need to take to take to make that happen. It is here that vendor documentation usually falls flat on its face.</P>
+<P>Vendor documentation rarely shows you how to complete common tasks. A notable exception to this observation are the <A href="http://samples.gotdotnet.com/quickstart/howto/">Quickstart tutorials</A> in the .NET Framework SDK. These are sets of short articles which quickly show how you can do common tasks, such as opening and reading a file from the filesystem. However, outside of this single data point, I have yet to see this in other vendor documentation (and in my defense if it exists, it sure as heck isn't obvious - a link to these articles should be prominently displayed on the first page of the documentation). This really needs to be improved. </P>
+<P>Book publishers should sit up and take notice of this failing as well. Today's bloat-books that purport to answer the "How do I ..." questions utterly fail in this regard as well. These books are mostly warmed-over versions of the vendor documentation and do not provide answers to a simple question like "How do I create a web service using vendor X's technology?" </P>
+<P>I feel that there are two broad categories of books: the "How do I ..." and the "Why ... " books. Software developers rarely have the time to read from cover-to-cover a "How do I ..." book. On the other hand, they should make the time to read from cover-to-cover "Why ..." books, since this directly affects their fundamental understanding of the technology that they use every day. For folks (not me) who want to write&nbsp;"How do I ..." books, your aim&nbsp;should be to get your reader to the point where they have code that they can test and tweak to their heart's content <EM>as quickly as possible</EM>. </P>
+<P>However, I feel that books fail to communicate "How do I ..." information adequately. There is simply too much friction in books (when was the last time that you cracked open the CD or downloaded the sample code for a book?). I have an answer that I believe works, though, and more will be revealed in the coming weeks and months on this web log. </P></P>
+    <a href="javascript:HaloScan2('Weblog/Thesorrystateoftechnicali.html');"><script type="text/javascript">postCount('Weblog/Thesorrystateoftechnicali.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000124.html">Virtual Directories and Visual Studio .NET</A>
+  </span><BR>
+  20 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I'm updating the labs for my Programming ASP.NET class that I'm delivering to a bunch of Microsoft developers at their Silicon Valley campus next week. One of the interesting issues that I ran into before (and just re-discovered) is a funny dependency on directory names exhibited by Visual Studio .NET. </P>
+<P>The lab series in the course is designed in such a way that I dynamically remap a virtual directory on IIS to a physical directory that contains <EM>all</EM> of the labs. This way there's a simple naming convention for all of the labs: http://localhost/labs/&lt;lab name&gt;. This lets me control global settings for all of the labs using a web.config file that lives in the /labs directory. This is extremely useful in cases where developers must run the labs on a different environment than you're used to.</P>
+<P>But here's the kicker: the virtual directory name and the physical directory name must match exactly if you want to use Visual Studio .NET to create new projects within that virtual directory. If they don't you'll get really confusing and unhelpful error messages. This is strictly a Visual Studio .NET issue; the virtual directory mapping works fine even if the two directory names are different. So watch out for this issue if you use this kind of naming convention for your own ASP.NET development. </P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000124.html');"><script type="text/javascript">postCount('Weblog/fog0000000124.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000123.html">Updates</A>
+  </span><BR>
+  18 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I wasn't able to update my web log last week since I was away working on yet another secret project. Can't quite comment on what it is yet (for at least another couple of weeks) but I promise that it is life-changing (well, at least to me ;).</P>
+<P>I see that <A href="http://www.dotnetremoting.cc/DotNetCentric/WebLog/fog0000000062.asp">Ingo</A> has started delving into the mysteries of ICorProfilerCallback and friends, and has written some simple CIL injection code. I have some sample code kicking around that does just that, so I'll post it once I've had a chance to clean it up a bit.</P>
+<P>I'm currently involved in a bunch of paying projects for a variety of folks over the next few weeks. Not nearly as much fun as writing aspect weavers, but one has to pay the mortgage somehow ;)</P>
+<P>That said, if anyone is <EM>serious</EM> about funding my CLR runtime aspect weaver work, <A href="mailto:jlam@iunknown.com">we can talk about that</A>. I'd really love to spend all of my time working on AOP.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000123.html');"><script type="text/javascript">postCount('Weblog/fog0000000123.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000121.html">I was on TV!</A>
+  </span><BR>
+  10 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I had a weird experience this morning: I watched myself on TV. Last November, I gave a bunch of talks at Dev Days in Toronto. The talks at Dev Days were videotaped and I watched the finished production videotape this week. Not only were they videotaped, however, they are also being broadcast on really, really&nbsp;late night television up here in Canada! If you surf to <A href="http://www.microsoft.com/canada/msdn/tv/">http://www.microsoft.com/canada/msdn/tv/</A>, you can see the broadcast schedule.</P>
+<P>I'll be on TV on the following dates on YTV (Cable 25 on Rogers Cablesystems in Toronto).</P>
+<UL>
+<LI>March 24, 2002 at 2:00am 
+<LI>April 14, 2002 at 2:00am 
+<LI>May 5, 2002 at 2:00am</LI></UL>
+<P>An update: I got an email from the folks at Microsoft who produce the show, and I heard that the show actually draws 8000 viewers a week&nbsp;based on the Neilson ratings. That's pretty amazing for a show that's on cable at 2am on Sunday mornings!</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000121.html');"><script type="text/javascript">postCount('Weblog/fog0000000121.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000120.html">STL Custom Iterators</A>
+  </span><BR>
+  07 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I'm currently massively refactoring (well, rewriting is probably closer to the truth) my unmanaged metadata API. The rewrite is largely due to focusing too much on micro-level issues in my previous metadata API and not spending enough (any?) attention to macro-level issues. </P>
+<P>Most of the code that I have written focuses on low-level grungy details: manipulating the CIL stream, cracking method signatures, creating local variable signatures etc. My new code base does some really nice things with resolving TypeRef tokens, creating TypeRef tokens and other macro-level issues that I had previously hard-coded into my runtime aspect weaver to work around deficiencies in my metadata API.</P>
+<P>In the new code I'm writing, I'm trying to mirror the managed System.Reflection API's wherever possible. However, one area that I don't want to mirror is the use of object arrays in System.Reflection. For example, when you call Type.GetMethods(), it returns a MethodInfo[]. Instead, since my library is a C++ library, I want to build custom iterators to enable access to a metadata element's children.</P>
+<P>The first thing that I did was look in Nicolai Josuttis' <EM><A href="http://www.amazon.com/exec/obidos/ASIN/0201379260/qid=1015519148/sr=8-1/iunknowncom-20"><EM>The Standard C++ Library, a Tutorial and Reference</EM></A></EM>, the standard text on STL. Unfortunately, there was little coverage on building custom iterators.</P>
+<P>Next, I did some Google searches and came up with a couple of articles:</P>
+<OL>
+<LI>Samir Bajaj's <EM><A href="http://msdn.microsoft.com/msdnmag/issues/01/04/STL/STL.asp"><EM>Taking Advantage of STL Algorithms by Implementing a Custom Iterator</EM></A></EM> from the April 2001 issue of MSDN Magazine. 
+<LI>Christopher Baus and Thomas Becker's <EM><A href="http://www.oonumerics.org/tmpw00/becker.html"><EM>Custom Iterators for the STL</EM></A></EM> article on the oonumerics.org web site.</LI></OL>
+<P>The first article provides some code to munch on, the second article provides the insights. Concrete to abstract. That's the best way to learn.</P>
+<P>A brief diversion: at the bottom of the Baus and Becker paper is a reference to <A href="http://www.stlport.org/resources/StepanovUSA.html">an interview with A. Stepanov of STL fame</A>. This is a truly great interview which reveals how much insight Stepanov brings to computer science and generic programming in particular. I learned that STL was the result of a bacterial infection in this interview! Well worth the read.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000120.html');"><script type="text/javascript">postCount('Weblog/fog0000000120.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000119.html">What is a RuntimeMethodHandle?</A>
+  </span><BR>
+  06 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Some interesting data:</P>
+<P>Notes:</P>
+<P>The EE structures for the Utility type:</P>
+<P>0x003E516B&nbsp; e9 08 c5 ba 02 04 00 00 00 78 16 f9 02 02 00 fe&nbsp; é.Åº.....x.ù...þ<BR>0x003E517B&nbsp; e8 38 14 d6 ff 05 00 00 00 67 20 00 80 03 00 fc&nbsp; è8.Öÿ....g .?..ü<BR>0x003E518B&nbsp; e8 28 14 d6 ff 06 00 00 00 6a 20 00 80 04 00 fa&nbsp; è(.Öÿ....j .?..ú<BR>0x003E519B&nbsp; e9 f8 c4 ba 02 07 00 10 00 98 16 f9 02 05 00 f8&nbsp; éøÄº.....?.ù...ø<BR>0x003E51AB&nbsp; e9 a0 c4 ba 02 08 00 00 00 50 16 f9 02 00 00 08&nbsp; é&nbsp;Äº.....P.ù....</P>
+<P>The EE structures for the AnotherType type:</P>
+<P>0x003E50EB&nbsp; e9 38 c5 ba 02 04 00 00 00 28 16 f9 02 07 00 fe&nbsp; é8Åº.....(.ù...þ<BR>0x003E50FB&nbsp; e8 b8 14 d6 ff 05 00 00 00 63 20 00 80 00 00 08&nbsp; è¸.Öÿ....c .?...</P>
+<P>The EE structures for the System.Object type:</P>
+<P>&nbsp;</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000119.html');"><script type="text/javascript">postCount('Weblog/fog0000000119.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000118.html">IL Corner: the ldtoken instruction</A>
+  </span><BR>
+  06 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>My friend <A href="http://www.wintellect.com/about/instructors.asp?id=3">Jeffrey Richter</A> sent me a really cryptic email several weeks ago. I had MSN messenger'd him a question about how one converts a MethodDef token into a MethodBase object. However, MSN Messenger does not <EM>really</EM> show you someone else's status in real time, so he didn't see my message until later. He replied using Hotmail since I had since logged off for the evening. His message contained a subject of "Does ldtoken do this?"</P>
+<P>Now, when I finally got around to checking my Hotmail account, I didn't really understand what he meant by this. When I ran into Jeffrey at VS Live a few weeks ago, he remembered that message and asked me if it had helped me out. At that time I had no idea what he was referring to. He reminded me&nbsp;about what I had asked him and a light bulb went off in my head.&nbsp;</P>
+<P>When I got home, I took a closer look at the CIL documentation in the Partition III ECMA spec. Wow. That's all I can say. Wow. The ldtoken instruction does <EM>exactly</EM> what I needed. It is a really unusual instruction since what it does is convert a MethodDef, TypeDef, and FieldDef token into a RuntimeMethodHandle, a RuntimeTypeHandle or a RuntimeFieldHandle object, respectively. You can use these handle objects to construct the appropriate System.Reflection objects at runtime.</P>
+<P>Before we go any further, I need to explain why I even care about this instruction. Most of my CLR spelunking relates to solving real problems in my runtime aspect weaver. The problem that was sitting on the back-burner for a while was how to integrate my runtime aspect weaver with the System.Reflection API's. </P>
+<P>When I weave new code at some join-point, one of the pieces of information that I provide the advice method with is the name of the method that was weaved. In the M3 build of my runtime aspect weaver that I showed at VS Live!, I simply passed the name of the method as part of the CallContext object that I create in my dynamic proxy. </P>
+<P>However, I wanted more power than that. What if the advice method wanted to reflect on that method to get more information about the context of the call? In order to enable this, I needed to provide the advice method with a System.Reflection.MethodBase object that represents the original method that was weaved. In my previous implementation of my CallContext object, I actually walked the stack to find the MethodBase object:</P>
+<P><CODE>// Caller is always one past the dynamic interceptor on the call stack<BR>protected MethodBase TargetMethod<BR>{<BR>&nbsp; get<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; StackTrace trace = new StackTrace();<BR>&nbsp;&nbsp;&nbsp; if( trace.FrameCount &lt; 2 )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new Exception( "Not enough stack frames in StackTrace!" );</P>
+<P>&nbsp;&nbsp;&nbsp; StackFrame frame = trace.GetFrame( 2 );<BR>&nbsp;&nbsp;&nbsp; return frame.GetMethod();<BR>&nbsp; }<BR>}</CODE></P>
+<P>Now this is a really crufty hack since I shouldn't need to walk the call stack to get the MethodBase object. After all, I already know the MethodDef token of the method being weaved! So ... what I needed to be able to do was to convert a MethodDef token into a MethodBase object. The key, as it turns out, is the RuntimeMethodHandle object.</P>
+<P>To create a RuntimeMethodHandle object, you need to generate a ldtoken instruction. The ldtoken instruction also contains the token that needs to be encoded, so it is 5 bytes in length. Here's an example from some experiments that I did today:</P>
+<P><CODE>IL_0000:&nbsp; /* D0&nbsp;&nbsp; | (06)000007&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */ ldtoken&nbsp;&nbsp;&nbsp; method instance void Library.AnotherType/* 02000003 */::DoNothing() /* 06000007 */</CODE></P>
+<P>As you can see, the MethodDef token (0x06000007) is part of the ldtoken instruction. This is not a problem for my runtime aspect weaver, since I need to generate the dynamic proxies on the fly, so generating custom ldtoken instructions is very straightforward.</P>
+<P>To obtain a MethodBase object from a RuntimeMethodHandle object, all you need to do is call the static GetMethodFromHandle() method:</P>
+<P><CODE>MethodBase method = MethodBase.GetMethodFromHandle( handle );</CODE></P>
+<P>As you can see, ldtoken is a very powerful instruction. Unfortunately, it isn't really useful for folks other than compiler writers since you need to dynamically emit this instruction at runtime. It would be nice, however, if there were a new method on System.Reflection.Module that would let folks look up MethodBase objects based on a MethodDef token; this would provide valuable integration with the unmanaged metadata API's.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000118.html');"><script type="text/javascript">postCount('Weblog/fog0000000118.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000117.html">Speaking schedule</A>
+  </span><BR>
+  03 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just spent a bunch of time this weekend writing slides for my talks at the <A href="http://butrain.com/windev/">WinDev conference</A> that will be held May 1-3 in New Orleans. I'm giving <A href="http://butrain.com/windev/track1.asp">two talks on ASP.NET security, one talk on Web Forms Internals</A>, and <A href="http://butrain.com/windev/track2.asp">one talk on XSLT programming</A>. One of the things that I'm itching to do is to use my runtime aspect weaver as an intelligent call tracer during my Web Forms Internals talk. </P>
+<P>Tomorrow evening, I'm giving a fun talk on Understanding the CLR to a combined meeting of the <A href="http://www.tvbug.com">Visual Basic</A> and <A href="http://www.tdug.com">Delphi</A> user groups in Toronto. I am so looking forward to this talk: I promise that it will be <EM>very unconventional</EM>.</P>
+<P>The big conference that I'm gearing up for, however, is the <A href="http://trese.cs.utwente.nl/aosd2002/">AOSD conference</A> that will be held April 22-25 at the University of Twente in Enschede, Netherlands. This will be the first time that I <A href="http://trese.cs.utwente.nl/aosd2002/index.php?content=clawclr">demonstrate my runtime aspect weaver</A> in front of an academic audience, full of people who have been thinking about this problem for far longer than I have. I can't wait to get feedback from the real experts in this emerging field.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000117.html');"><script type="text/javascript">postCount('Weblog/fog0000000117.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000113.html">What is AOP?</A>
+  </span><BR>
+  03 Mar, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just spent some time this weekend writing up an article that describes some of the implementation details of <A href="../AOP/fog0000000115.html">my runtime aspect weaver</A>. Hopefully this article will help to answer some of the questions that my technology has raised among readers of my web log and readers of some of my postings on various mailing lists that I subscribe to. </P>
+<P>I'm currently working on an article that tries to answer the question: "What is AOP?". I'll try and post it sometime tomorrow. </P>
+<P>These articles will be updated to reflect my changing understanding of AOP (and it does change as my understanding of this technology deepends). They will also be updated to reflect updates to the implementation of my runtime aspect weaver. Announcements of updates will appear on this web log. Please send all questions and comments <A href="mailto:jlam@iunknown.com">to the usual place</A> (some day I will add some comment / bulletin board features to this web log).</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000113.html');"><script type="text/javascript">postCount('Weblog/fog0000000113.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+
+<div class="copyright">Site contents copyright 2001-2002 by John Lam. No animals were harmed during the production of this site. Some assembly required. Your mileage may vary. Use at your own risk.</div>
+</td>
+<td class="right_panel"></td>
+</tr>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on CLR object lifetime</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"CLR object lifetime" by jlam</title>
+      <description>&lt;p&gt;My Ruby &lt;span class="caps"&gt;CLR&lt;/span&gt; bridge works by creating, on the fly, small &lt;span class="caps"&gt;CIL&lt;/span&gt; shims that invoke the appropriate method(s) on a &lt;span class="caps"&gt;CLR&lt;/span&gt; object. Today I want to talk about how I manage the lifetimes of those &lt;span class="caps"&gt;CIL&lt;/span&gt; shims.&lt;/p&gt;
+
+
+	&lt;p&gt;When you execute some code like &lt;code&gt;a = ArrayList.new&lt;/code&gt; for the first time, I construct a new &lt;code&gt;ArrayList&lt;/code&gt; Ruby class object on the fly. When you execute a method on a class instance such as &lt;code&gt;a.Sort&lt;/code&gt;, I construct a &lt;span class="caps"&gt;CIL&lt;/span&gt; shim that knows how to invoke the &lt;code&gt;Sort&lt;/code&gt; method on the &lt;code&gt;ArrayList&lt;/code&gt; object. That &lt;span class="caps"&gt;CIL&lt;/span&gt; shim is bound to the Ruby class object via a call to &lt;code&gt;rb_define_method&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;The &lt;span class="caps"&gt;CIL&lt;/span&gt; shim is created using the &lt;code&gt;DynamicMethod&lt;/code&gt; API in &lt;span class="caps"&gt;CLR 2&lt;/span&gt;.0. After I finish defining the body of the dynamic method using my &lt;code&gt;RbDynamicMethod&lt;/code&gt; API, I construct a delegate object that represents that method. These delegate objects are eligible for garbage collection, which means that I need to keep a reference to them. Now, when I said that the &lt;span class="caps"&gt;CIL&lt;/span&gt; shim is bound to the Ruby class object, Ruby only knows about the function pointer to the delegate object that represents the &lt;span class="caps"&gt;CIL&lt;/span&gt; shim. That function pointer is only a &lt;em&gt;weak reference&lt;/em&gt; to the delegate, which means that it cannot keep the delegate object from being collected by the &lt;span class="caps"&gt;CLR GC&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;To work around this problem, I&amp;#8217;ve added a &lt;code&gt;List&amp;lt;Delegate&amp;gt;&lt;/code&gt; object to the Ruby class object. Its job is to hold onto references to all of the dynamically created &lt;span class="caps"&gt;CIL&lt;/span&gt; shim delegate objects &lt;em&gt;for that class&lt;/em&gt;. When the Ruby class object is garbage collected by &lt;em&gt;Ruby&amp;#8217;s GC&lt;/em&gt;, my automagical object reference cleanup code will &lt;code&gt;Free&lt;/code&gt; the &lt;code&gt;GCHandle&lt;/code&gt; object that I use to keep a reference to the &lt;code&gt;List&amp;lt;Delegate&amp;gt;&lt;/code&gt; object.&lt;/p&gt;
+
+
+	&lt;p&gt;I actually had a far more complicated and convoluted mechanism for dealing with this problem in my initial implementation of the bridge. I&amp;#8217;m much happier with the simplicity of this approach in V2.&lt;/p&gt;
+
+</description>
+      <pubDate>Sat, 17 Dec 2005 16:55:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/17/clr-object-lifetime"&gt;CLR object lifetime&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/17/clr-object-lifetime"&gt;CLR object lifetime&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

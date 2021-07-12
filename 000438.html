@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment spam and ineffectiveness of ip address filtering</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000437.html" title="Various fun VB.NET observations" />
+
+<link rel="next" href="http://www.iunknown.com/000439.html" title="Constraints and unit testing" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000438.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/182"
+    dc:title="Comment spam and ineffectiveness of ip address filtering"
+    dc:identifier="http://www.iunknown.com/000438.html"
+    dc:subject="Blog"
+    dc:description="I&apos;ve been fighting a battle with the comment spammers for some time now on this blog. Most of you don&apos;t notice the comment spam because I get to it fairly quickly. However, one thing that I&apos;ve realized is that the..."
+    dc:creator="John"
+    dc:date="2004-04-28T10:36:37-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000437.html">&laquo; Various fun VB.NET observations</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000439.html">Constraints and unit testing &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">April 28, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Comment spam and ineffectiveness of ip address filtering</h3>
+
+<p>I've been fighting a battle with the comment spammers for some time now on this blog. Most of you don't notice the comment spam because I get to it fairly quickly. However, one thing that I've realized is that the IP address filtering feature of Movable Type is next to useless, since the same spammer now appears from apparently random IP addresses. I was curious about how this works, and just discovered that <a href="http://www.medasys.com/company/fr/mis/securite/docsecurite/smartspoof-en.pdf">it's due to <span class="caps">ARP</span> cache poisoning</a>. A fascinating read for any of you who are fighting spam on your own blogs.</p>
+
+<p><strong>Update:</strong> From my comments, it does appear that what I'm seeing isn't due to <span class="caps">ARP</span> cache poisoning. Doing some quick reverse <span class="caps">DNS</span> lookups shows that most of the spam is coming from various ISPs (rr.com and aol.com). So either the spammers have a bunch of "zombie" computers that they 0wn, or they're simply logging in through dial-up connections. Since it looks like the spam is entered by hand, I suspect the latter.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at April 28, 2004 10:36 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=438" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="438" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000438.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>John,</p>
+
+<p>Try MT-Blacklist. I've found it works pretty well and when it does let a spam comment through it makes it easy to clean up and make sure that particular url isn't used in a comment again...</p>
+
+<p>http://www.jayallen.org/projects/mt-blacklist/</p>
+
+<p>Len</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.lenholgate.com">Len Holgate</a> at April 28, 2004 10:54 AM</span>
+</div>
+<div class="comments-body">
+<p>I thought ARP cache poisoning only worked on LANs, not on the internet. AFAIK, ARP works only for IP over Ethernet which would be logical since it uses broadcasts and you can't broadcast to the entire Internet. And I doubt the spammer has an ethernet link to your server or you're in trouble...</p>
+
+<p>I may be wrong though, I'm no expert in that field.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.stup.org/blogs/nidhogg/">Nidhogg</a> at April 28, 2004 11:05 AM</span>
+</div>
+<div class="comments-body">
+<p>ARP is indeed an ethernet-level thing. (It's not just ethernet - it's used over a variety of different broadcast style network technologies. But the crucial point is that ARP works within a particular network segment - it doesn't work across routers.)</p>
+
+<p>So even if someone is using ARP cache poisoning, this is only useful for spoofing within the range of addresses on the subnet they're on. This would mean that an blacklist that accepted a subnet mask as well as an address should be effective.</p>
+
+<p>If the addresses don't all appear to be coming from the same subnet they're probably not using ARP cache poisoning. (And it would be an odd thing to do anyway - a spammer will most likely control the physical subnet they are on anyway, so ARP cache poisoning doesn't actually buy you anything...)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.interact-sw.co.uk/iangblog/">Ian Griffiths</a> at April 28, 2004 11:36 AM</span>
+</div>
+<div class="comments-body">
+<p>Aha!  Nidhogg and Ian have fallen directly into your trap John.  It's obvious that 1) they are the comment spammers, 2) they have compromised your internal lan and 3) they are actually using ARP cache poisoning and need to find a way to throw you off their path.</p>
+
+<p>Sneaky...  very sneaky.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.workstate.com/people/joe">Joe Madia</a> at April 29, 2004 03:52 PM</span>
+</div>
+<div class="comments-body">
+<p>"Mr. Lam,</p>
+
+<p>We've determined where the spam is coming from.  It's coming from inside the house...."</p>
+
+<p></p>
+
+<p><br />
+: )</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www25.brinkster.com/rchildress">Rick Childress</a> at May  3, 2004 11:09 AM</span>
+</div>
+<div class="comments-body">
+<p>"A la carte" IP address blacklisting is useless. The spammers do in fact control an army of infected zombie PCs. They'll hit you repeatedly from different IP addresses, all over the world, until one gets through.</p>
+
+<p>Somewhat more effective would be to use realtime DNSBLs (the same blocking lists that mail servers use, like DSBL and SpamHaus). Does Movable Type offer such a feature?</p>
+<span class="comments-post">Posted by: Nate at May  3, 2004 11:23 PM</span>
+</div>
+<div class="comments-body">
+<p>Ahhh ... so that's what Matthew was doing when he was banging away at the keyboard!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May  3, 2004 11:27 PM</span>
+</div>
+<div class="comments-body">
+<p>Unfortunately, MT does not have a realtime DNSBL feature. It's getting to the point where I'm most likely going to roll-my-own blog software so that I can have greater control over implementing comment spam algorithms. I've also been closing off comments on all old postings as well to keep my maintenance to a minimum.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May  3, 2004 11:29 PM</span>
+</div>
+<div class="comments-body">
+<p>Have you ever though about packet tweaking? I heard long time ago it is hard to do, but somehow possible.<br />
+</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://weblogs.asp.net/guercheLE/">Luciano Evaristo Guerche</a> at May  4, 2004 04:14 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

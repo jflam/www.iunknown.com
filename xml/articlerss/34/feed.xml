@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Adding CIL instance methods to Ruby classes</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Adding CIL instance methods to Ruby classes": comment by John Lam</title>
+      <description>&lt;p&gt;Hey Dave &amp;#8211; it&amp;#8217;s good to see you around here again. You&amp;#8217;re more than welcome to extend this thing if you want &amp;#8211; it&amp;#8217;s pretty usable as-is for the real goal of this effort which is a rewrite of my bridge in mostly Ruby.&lt;/p&gt;
+
+
+	&lt;p&gt;Why don&amp;#8217;t you send me a mail with your current coordinates (still doing the basketball thing?) there&amp;#8217;s some stuff I&amp;#8217;d like to chat with you about &amp;#8230;&lt;/p&gt;</description>
+      <pubDate>Wed, 07 Dec 2005 16:46:41 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes#comment-55</guid>
+      <link>http://www.iunknown.com/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes#comment-55</link>
+    </item>
+    <item>
+      <title>"Adding CIL instance methods to Ruby classes": comment by Dave Lee</title>
+      <description>&lt;p&gt;I'm not sure how far you want to push the limits of *_missing magic, but you could probably have a DSL that is string-free and a declaration-free, or close to it.  I'm pretty sure it'd be possible to make your example into:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Generator::Calc.new.add(Int32 x, Int32 y) do
+  ldarg_1
+  ldind_i4
+  call     { static Marshal.ToInt32(UInt32) }
+  stloc_s  x
+  ldarg_1
+  ldc_i4_4
+  add
+  ldind_i4
+  call     { static Marshal.ToInt32(UInt32) }
+  stloc_s  y
+  ldloc_s  x
+  ldloc_s  y
+  add
+  call     { static Marshal.ToRubyFixnum(Int32) }
+  ret
+end
+&lt;/code&gt;&lt;/pre&gt;</description>
+      <pubDate>Wed, 07 Dec 2005 16:27:20 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes#comment-53</guid>
+      <link>http://www.iunknown.com/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes#comment-53</link>
+    </item>
+    <item>
+      <title>"Adding CIL instance methods to Ruby classes" by jlam</title>
+      <description>&lt;p&gt;I did a pretty major refactoring against the code that I &lt;a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod"&gt;shipped last night&lt;/a&gt; and streamlined the way data types were marshaled between Ruby and the &lt;span class="caps"&gt;CLR&lt;/span&gt;. Here&amp;#8217;s a more concrete example of an &lt;code&gt;add&lt;/code&gt; method implemented entirely in &lt;span class="caps"&gt;CIL&lt;/span&gt; that is attached to a Ruby &lt;code&gt;Calc&lt;/code&gt; class:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class MarshalParametersToRubyTests &amp;lt; Test::Unit::TestCase
+  include RbDynamicMethod
+
+  class Calc
+  end
+
+  def test_add
+    create_ruby_instance_method(Calc, 'add') do
+      declare  'Int32', 'x'
+      declare  'Int32', 'y'
+      ldarg_1
+      ldind_i4
+      call     'static Marshal.ToInt32(UInt32)'
+      stloc_s  'x'
+      ldarg_1
+      ldc_i4_4
+      add
+      ldind_i4
+      call     'static Marshal.ToInt32(UInt32)'
+      stloc_s  'y'
+      ldloc_s  'x'
+      ldloc_s  'y'
+      add
+      call     'static Marshal.ToRubyFixnum(Int32)'
+      ret
+    end
+    assert_equal 7, Calc.new.add(3, 4)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Wed, 07 Dec 2005 15:26:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes"&gt;Adding CIL instance methods to Ruby classes&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes"&gt;Adding CIL instance methods to Ruby classes&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

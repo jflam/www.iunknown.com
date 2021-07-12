@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Do Databases Rot the Mind?</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/8/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2005/10/31/do-databases-rot-the-mind" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:39-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:51ff0cec297101112c60429d0ebe0133</id>
+    <published>2005-10-31T07:00:00-08:00</published>
+    <updated>2006-08-21T15:55:39-07:00</updated>
+    <title type="html">Do Databases Rot the Mind?</title>
+    <link href="http://www.iunknown.com/articles/2005/10/31/do-databases-rot-the-mind" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;Do databases rot the mind? Charles Petzold&amp;#8217;s recent &lt;a href="http://www.charlespetzold.com/etc/DoesVisualStudioRotTheMind.html"&gt;post about Visual
+Studio&lt;/a&gt;
+triggered this thought in the back of my mind.&lt;/p&gt;
+
+
+	&lt;p&gt;All too often when confronted with a &amp;#8220;business&amp;#8221; problem I, like many
+other people I know, wind up reaching for my trusty database. Or, in a
+more common scenario, someone hands you an existing schema and says
+&amp;#8220;solve my problem&amp;#8221; using it. The reality, however, is that
+relational databases are a lousy solution to many problems that we
+commonly run across. In a recent e-commerce platform that I created
+there was a 7-way join that had to be executed just to retrieve a list
+of products to display to a customer. We did &lt;span class="caps"&gt;LOTS&lt;/span&gt; of performance
+tuning of that database and our queries to make it go about as fast as
+it could reasonably be expected to go under &lt;span class="caps"&gt;SQL&lt;/span&gt; Server.&lt;/p&gt;
+
+
+	&lt;p&gt;Just this week, I decided to do an experiment. I reimplemented the
+core of our e-commerce platform by loading the entire database into a
+custom in-memory data structure. It took me about 1 hour to write the
+code to load the core tables into my custom data structure, and about
+an additional 15 hours to tune the data structure and refactor the
+code to my liking. Oh yeah, I wrote it using Ruby.&lt;/p&gt;
+
+
+	&lt;p&gt;My app was 201 lines of Ruby code (including liberal use of blank
+lines to enhance readability). For sake of comparison, just one of the
+dynamically generated &lt;span class="caps"&gt;SQL&lt;/span&gt; queries that it replaced was in the order of
+150+ lines of &lt;span class="caps"&gt;SQL&lt;/span&gt;. And that, of course, doesn&amp;#8217;t count all of the lines
+of C# code required to generate, execute, and parse the results of the
+&lt;span class="caps"&gt;SQL&lt;/span&gt; query.&lt;/p&gt;
+
+
+	&lt;p&gt;One more thing: it also ran &lt;strong&gt;100x&lt;/strong&gt; faster.&lt;/p&gt;
+
+
+	&lt;p&gt;A bit of history: the original application that I inherited was on
+the order of 20,000 lines of &lt;span class="caps"&gt;SQL&lt;/span&gt; + C#. This was largely due to an
+enormous amount of duplication of code due to the (ab)use of stored
+procedures to handle queries. My rewrite of that application trimmed
+it down to 4000 lines of &lt;span class="caps"&gt;SQL&lt;/span&gt; + C#. My Ruby application, while not at
+feature parity with the existing application, solved essentially all
+of the &amp;#8220;hard&amp;#8221; problems. I would estimate that it duplicates &amp;gt;80%
+of the functionality of the real application.&lt;/p&gt;
+
+
+	&lt;p&gt;The first version of the code was about 5x faster than the original
+application. I then spent some time looking for optimizations. When
+you only have about 100 lines of code to look through, optimizations
+become pretty obvious. I was able to cache the results of a
+(relatively) expensive O(M+N) algorithm that sat on the
+rate-determining-step of the computation. This netted me a 20x
+speedup. This optimization is simply not possible using &lt;span class="caps"&gt;SQL&lt;/span&gt; Server,
+but is dead-simple when you get to implement your own query engine.&lt;/p&gt;
+
+
+	&lt;p&gt;I &lt;em&gt;love&lt;/em&gt; the symmetry of my results: 1/100th the code and 100x the performance. It&amp;#8217;s also much easier to maintain 200 lines of code than 20,000 lines of code. Testing was also much more straightforward.&lt;/p&gt;
+
+
+	&lt;p&gt;Now the code that I rewrote was tailor-made for this kind of
+rewrite. It was a read-only database that was relatively (&amp;lt; 1GB) small in
+size. If you have such an application lying around &amp;#8211; try rewriting it
+using in-memory data structures. If you&amp;#8217;re a bit more adventurous, try
+using a dynamically typed language to do this (might I suggest
+Ruby?). You just might be surprised by the outcome and come away with
+a new technique in your toolbox by doing so.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Do databases rot the mind? Charles Petzold&amp;#8217;s recent &lt;a href="http://www.charlespetzold.com/etc/DoesVisualStudioRotTheMind.html"&gt;post about Visual
+Studio&lt;/a&gt;
+triggered this thought in the back of my mind.&lt;/p&gt;
+
+
+	&lt;p&gt;All too often when confronted with a &amp;#8220;business&amp;#8221; problem I, like many
+other people I know, wind up reaching for my trusty database. Or, in a
+more common scenario, someone hands you an existing schema and says
+&amp;#8220;solve my problem&amp;#8221; using it. The reality, however, is that
+relational databases are a lousy solution to many problems that we
+commonly run across. In a recent e-commerce platform that I created
+there was a 7-way join that had to be executed just to retrieve a list
+of products to display to a customer. We did &lt;span class="caps"&gt;LOTS&lt;/span&gt; of performance
+tuning of that database and our queries to make it go about as fast as
+it could reasonably be expected to go under &lt;span class="caps"&gt;SQL&lt;/span&gt; Server.&lt;/p&gt;
+
+
+	&lt;p&gt;Just this week, I decided to do an experiment. I reimplemented the
+core of our e-commerce platform by loading the entire database into a
+custom in-memory data structure. It took me about 1 hour to write the
+code to load the core tables into my custom data structure, and about
+an additional 15 hours to tune the data structure and refactor the
+code to my liking. Oh yeah, I wrote it using Ruby.&lt;/p&gt;
+
+
+	&lt;p&gt;My app was 201 lines of Ruby code (including liberal use of blank
+lines to enhance readability). For sake of comparison, just one of the
+dynamically generated &lt;span class="caps"&gt;SQL&lt;/span&gt; queries that it replaced was in the order of
+150+ lines of &lt;span class="caps"&gt;SQL&lt;/span&gt;. And that, of course, doesn&amp;#8217;t count all of the lines
+of C# code required to generate, execute, and parse the results of the
+&lt;span class="caps"&gt;SQL&lt;/span&gt; query.&lt;/p&gt;
+
+
+	&lt;p&gt;One more thing: it also ran &lt;strong&gt;100x&lt;/strong&gt; faster.&lt;/p&gt;
+
+
+	&lt;p&gt;A bit of history: the original application that I inherited was on
+the order of 20,000 lines of &lt;span class="caps"&gt;SQL&lt;/span&gt; + C#. This was largely due to an
+enormous amount of duplication of code due to the (ab)use of stored
+procedures to handle queries. My rewrite of that application trimmed
+it down to 4000 lines of &lt;span class="caps"&gt;SQL&lt;/span&gt; + C#. My Ruby application, while not at
+feature parity with the existing application, solved essentially all
+of the &amp;#8220;hard&amp;#8221; problems. I would estimate that it duplicates &amp;gt;80%
+of the functionality of the real application.&lt;/p&gt;
+
+
+	&lt;p&gt;The first version of the code was about 5x faster than the original
+application. I then spent some time looking for optimizations. When
+you only have about 100 lines of code to look through, optimizations
+become pretty obvious. I was able to cache the results of a
+(relatively) expensive O(M+N) algorithm that sat on the
+rate-determining-step of the computation. This netted me a 20x
+speedup. This optimization is simply not possible using &lt;span class="caps"&gt;SQL&lt;/span&gt; Server,
+but is dead-simple when you get to implement your own query engine.&lt;/p&gt;
+
+
+	&lt;p&gt;I &lt;em&gt;love&lt;/em&gt; the symmetry of my results: 1/100th the code and 100x the performance. It&amp;#8217;s also much easier to maintain 200 lines of code than 20,000 lines of code. Testing was also much more straightforward.&lt;/p&gt;
+
+
+	&lt;p&gt;Now the code that I rewrote was tailor-made for this kind of
+rewrite. It was a read-only database that was relatively (&amp;lt; 1GB) small in
+size. If you have such an application lying around &amp;#8211; try rewriting it
+using in-memory data structures. If you&amp;#8217;re a bit more adventurous, try
+using a dynamically typed language to do this (might I suggest
+Ruby?). You just might be surprised by the outcome and come away with
+a new technique in your toolbox by doing so.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Pościel Wełniana</name>
+    </author>
+    <id>urn:uuid:05b9bb0a-c365-43f7-901d-048c49426567</id>
+    <published>2006-10-22T01:24:57-07:00</published>
+    <updated>2006-10-22T07:41:18-07:00</updated>
+    <title type="html">Comment on Do Databases Rot the Mind? by Pościel Wełniana</title>
+    <link href="http://www.iunknown.com/articles/2005/10/31/do-databases-rot-the-mind#comment-1187" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;buffering data into memory is a well-know trick, but what not always it is possible - especially when operating on very big databases. In such cases the key to success are maximally optimized base queries.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>J. Merrill</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-11-18T14:09:43-08:00</published>
+    <updated>2006-08-21T20:56:00-07:00</updated>
+    <title type="html">Comment on Do Databases Rot the Mind? by J. Merrill</title>
+    <link href="http://www.iunknown.com/articles/2005/10/31/do-databases-rot-the-mind#comment-253" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Have you looked at what they have at kx.com?  (Caveat:  I haven't used it, but they seem to have been working on the "updateable in-memory database" for quite a while, with clients that had both hard requirements and success.)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-11-06T22:01:42-08:00</published>
+    <updated>2006-08-21T20:56:02-07:00</updated>
+    <title type="html">Comment on Do Databases Rot the Mind? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2005/10/31/do-databases-rot-the-mind#comment-246" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Udi, bingo! Use the right tool for the job. The real point of this blog was to demonstrate a case where a "slow" language like Ruby can really help you think better. And when you think better, you can choose better algorithms - hence you can get the benefits of a much smaller code base &lt;em&gt;and&lt;/em&gt; much higher performance.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Udi Dahan - The Software Simplist</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-11-04T17:01:50-08:00</published>
+    <updated>2006-08-21T20:56:02-07:00</updated>
+    <title type="html">Comment on Do Databases Rot the Mind? by Udi Dahan - The Software Simplist</title>
+    <link href="http://www.iunknown.com/articles/2005/10/31/do-databases-rot-the-mind#comment-245" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;While I agree that databases are too quickly pulled out, I think that your example of "read-only" access isn't representative of many apps. However, I agree that we shouldn't necessarily continue solving todays problems with yesterdays solutions, especially without re-examining those solutions.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-10-31T21:07:52-08:00</published>
+    <updated>2006-08-21T20:56:00-07:00</updated>
+    <title type="html">Comment on Do Databases Rot the Mind? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2005/10/31/do-databases-rot-the-mind#comment-243" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;IMDB didn't work because of 2 issues: a) SQL Server was faster and b) it did not support cache coherency. &lt;/p&gt;
+
+&lt;p&gt;Believe me, we tuned the hell out of that schema and query set. Even Bob Beauchemin and Dan Sullivan gave me some sage advice. But that wasn't anywhere near enough. &lt;/p&gt;
+
+&lt;p&gt;And I assert that my deploying a Ruby script is a lot easier than your deploying a sproc :)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Matt</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-10-31T11:21:23-08:00</published>
+    <updated>2006-08-21T20:55:59-07:00</updated>
+    <title type="html">Comment on Do Databases Rot the Mind? by Matt</title>
+    <link href="http://www.iunknown.com/articles/2005/10/31/do-databases-rot-the-mind#comment-242" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I remember from a few years ago, that a upcoming COM+ release had a new feature called -&amp;gt; In Memory Database -&amp;gt; IMDB. 
+It was in the beta but never made it into the final release.
+&lt;a href="http://msdn.microsoft.com/library/default.asp?url"&gt;http://msdn.microsoft.com/library/default.asp?url&lt;/a&gt;=/library/en-us/dncomser/html/whatimdb.asp&lt;/p&gt;
+
+&lt;p&gt;The link above does give some insight as to why it did not make it in, but really in the end I think it was: Why duplicate the functionality of Sql Server? Unfortunately in many applications, bad database design is present (also possibly bad T-SQL, if using Sql server), and it is difficult or impossible to create a more normalized or efficient relational structure to replace the old one. While pulling the data into some custom code can do the trick, I have found that the following often increases the performance of Sql Queries:
+a) Use of temp tables to act as driver tables with less rows, and to cut down your large query into a series of queries with less than five tables in the joins 
+b) Using narrower primary keys 
+c) Changing isolation levels 
+d) etc.&lt;/p&gt;
+
+&lt;p&gt;I am sure that all the above was tried, but also from a deployment standpoint, it is much easiar to deploy a stored procedure, than a piece of code. I am not a big advocate of placing business logic in Sql , but to just do the CRUD operations in a fast and efficient manner, my choice is always T-SQL. &lt;/p&gt;</content>
+  </entry>
+</feed>

@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Sun Tech Days Presentation</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000194.html" title="Has John gone off the deep end?" />
+
+<link rel="next" href="http://www.iunknown.com/000196.html" title="The slippery slope of WORA" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000194.html">&laquo; Has John gone off the deep end?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000196.html">The slippery slope of WORA &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 07, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Sun Tech Days Presentation</h3>
+
+<p><P>I went to <A href="http://www.sun.com/developers/techdays/agenda/toronto.html">the Sun Tech Days presentation in Toronto</A> this morning to hear <A href="http://java.sun.com/people/jag/">James Gosling</A> speak. I had always wanted to see James speak, as I had always respected his contributions to software development through his Java efforts. I was horribly disappointed by what I heard. </P><br />
+<P>Instead of hearing something insightful about the state of Java, we were subjected to a 40 minute rambling talk about nothing in particular. There were examples of Java being used in inconsequential applications - cel phone pets in Japan, automotive computers, and the Java application he was using to show his presentation slides. There was discussion about tangential topics: Moore's Law, <A href="http://www.ntia.doc.gov/otiahome/top/conferenceworkshops/2001_outreach_workshops/three_laws.html">Metcalf's Law</A>, and how many developers were using Java. There was even some tangential Web Services bashing - "the amount of XML/SOAP traffic on your network is below detectable limits", which of course is surprising since the follow-on session was a description of Sun's Web Services strategy. </P><br />
+<P>Gosling's talk was doomed from the start; he didn't have a story that he was trying to tell the audience. Instead, we listened to a number of totally unrelated anecdotes from his professional life. The only connection between those anecdotes was that Java was somehow involved in each one of them. At the end of the presentation, it wasn't clear at all to me why I should be excited by Java. </P><br />
+<P>It's sad that Sun has to capitalize on his reputation in order to get an audience into a room. If this was a typical Gosling presentation, they really should keep him in the research lab and away from the public. The only cool thing about James was that he used a TiBook in his presentation :) </P><br />
+<P>The tag-team Web Services speakers that followed James were even worse. The Web Services title of their talk was a smokescreen for their marketing message: why you need <A href="http://wwws.sun.com/software/sunone/">the Sun ONE developer platform</A>. They talked for a couple of minutes about Web Services, but the rest of the time was spent as an infomercial for various Sun products. They even spent took a timeout to bash Microsoft by claiming that Java was more secure than the CLR since the speaker's mom could download and run Java applets on her computer! </P><br />
+<P>The one redeeming thing about sitting through this presentation was that I had an opportunity to write this blog entry on my TiBook. I wrote it using TextEdit, which surprised me with its on-the-fly spell checking feature. Since TextEdit is a Cocoa application, I'm guessing that the spell check service is a feature provided by OS X that I should be able to integrate into any Cocoa application. I'm also loving the battery life of my TiBook - the power gauge has indicated 3.5 hours remaining for the past 45 minutes or so :) </P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January  7, 2003 03:58 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="195" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000195.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>John,<br />
+Thanks for the report. At least, you didn't get Gosling spend his whole session bashing Microsoft (ala Scott) as he has been doing the last year or so. Several of my Java friends told me that they walked out of his SD East keynote as he spend a majority of it bashing Microsoft and didn't tell them anything about Java or anything hopeful or compelling. Sad to see that one of the smartest people in the business has resorted to these tactics and has nothing compelling to say.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://radio.weblogs.com/0105852/">Sam Gentile</a> at January  7, 2003 03:38 PM</span>
+</div>
+<div class="comments-body">
+<p>I was pretty disappointed in that same way with the 1999 Stanford lecture by Bill Joy ( http://murl.microsoft.com/LectureDetails.asp?454 ). Somehow I had expected a man of Bill's stature to rise above running with the flock.</p>
+<span class="comments-post">Posted by: (can this be anonymous?) at January  8, 2003 10:37 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the pointer to the interesting site - murl.microsoft.com. Lots of really interesting stuff up there. Now to find the time to listen to it all!!!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  8, 2003 12:02 PM</span>
+</div>
+<div class="comments-body">
+<p>What's Crackin! - Just need to go Play Bingo - for my Online Bingo Habit! But I cannot Find a Good Bingo Online website to cover my bingo addiction!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.party-bingo-player.com/">Bingo</a> at October 25, 2004 04:00 AM</span>
+</div>
+<div class="comments-body">
+<p>What's Crackin! - Just need to go Play Bingo - for my Online Bingo Habit! But I cannot Find a Good Bingo Online website to cover my bingo addiction!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.party-bingo-player.com/">Bingo</a> at October 25, 2004 04:01 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="195" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

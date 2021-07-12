@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on How meta can you go?</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"How meta can you go?" by jlam</title>
+      <description>&lt;p&gt;I just figured out what Ruby was doing, because I forgot just how &amp;#8220;meta&amp;#8221; my programming was. Consider this code frag:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def const_missing(symbol)
+  alias_const_missing(symbol) unless symbol == :ArrayList
+
+  obj = create_clr_class_object
+  # remember that the code below is in a string
+  obj.class_eval %{
+    def initialize(*params)
+      create_safe_ruby_instance_method(
+        self.class, 'initialize') do
+        include     'System.Collections'
+        declare     "#{symbol}", :obj
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Look at the last line of code and the &lt;code&gt;declare&lt;/code&gt; statement. Notice how I&amp;#8217;m referencing the &lt;code&gt;symbol&lt;/code&gt; variable that is the input parameter to the &lt;code&gt;const_missing&lt;/code&gt; method declaration on the first line? I have to escape that reference as a string to access that variable. Why? Because that code is embedded in a string (that&amp;#8217;s what the funny &lt;code&gt;%{&lt;/code&gt; means: it&amp;#8217;s a begin string quotation symbol).&lt;/p&gt;
+
+
+	&lt;p&gt;Now this has interesting implications for other string manipulation functions that are inside of the &lt;em&gt;string&lt;/em&gt; that is passed to &lt;code&gt;obj.class_eval&lt;/code&gt;. For example consider this snippet of code.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+sigs          = get_constructor_signatures("#{symbol}")
+switch_labels = (1..sigs.length).collect { |i| ("l" + i.to_s).to_sym }
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I &lt;em&gt;really&lt;/em&gt; wanted to write the string expression as:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;"l#{i}".to_sym&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;But this cannot work since it would try and find an &lt;code&gt;i&lt;/code&gt; variable defined in the enclosing method. So I wound up writing it in the somewhat more verbose way that I did to make it work. I wound up scratching my head about this behavior for quite a while before I realized that, doh! the code was executing &lt;em&gt;inside of a string&lt;/em&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;That&amp;#8217;s how powerful Ruby&amp;#8217;s metaprogramming facilities are: oftentimes you forget that you&amp;#8217;re really programming at a meta level of abstraction instead of at the &amp;#8220;concrete&amp;#8221; level.&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 16 Dec 2005 14:34:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/16/how-meta-can-you-go"&gt;How meta can you go?&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/16/how-meta-can-you-go"&gt;How meta can you go?&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

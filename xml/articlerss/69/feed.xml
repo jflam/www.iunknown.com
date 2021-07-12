@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Windows Forms and RubyCLR: Happy Together</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Windows Forms and RubyCLR: Happy Together": comment by John Lam</title>
+      <description>&lt;p&gt;There's no support for Method objects right now. Part of the problem revolves around blocks acting as closures (which is very useful); since I'm using delegation / containment as the model, I need the right scope for the block. Right now, using blocks feels more natural - although I can certainly see adding support for Method objects in the future.&lt;/p&gt;</description>
+      <pubDate>Thu, 16 Feb 2006 14:03:34 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/16/windows-forms-and-rubyclr-happy-together#comment-126</guid>
+      <link>http://www.iunknown.com/articles/2006/02/16/windows-forms-and-rubyclr-happy-together#comment-126</link>
+    </item>
+    <item>
+      <title>"Windows Forms and RubyCLR: Happy Together": comment by Justin</title>
+      <description>&lt;p&gt;Looks really cool! I especially like the block passed to the delegate. Presumably we'll also be able to give those a proc?&lt;/p&gt;</description>
+      <pubDate>Thu, 16 Feb 2006 12:09:01 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/16/windows-forms-and-rubyclr-happy-together#comment-125</guid>
+      <link>http://www.iunknown.com/articles/2006/02/16/windows-forms-and-rubyclr-happy-together#comment-125</link>
+    </item>
+    <item>
+      <title>"Windows Forms and RubyCLR: Happy Together" by jlam</title>
+      <description>&lt;p&gt;I was going to write something about how I got nested types working last night, and some cool Ruby features that I discovered to make it work (remind me later &amp;#8211; it is a very cool story), but there&amp;#8217;s something much more exciting to report:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;I&amp;#8217;ve built my first trivial Windows Forms 2.0 Application using RubyCLR!&lt;/strong&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/32/100461042_bc3667dced_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Yes, it is the &amp;#8220;Hello, World&amp;#8221; Windows Forms data binding application, but it represents a major step forward in the maturity of RubyCLR. Lots of features had to be added to the product to make this work, and that&amp;#8217;s what&amp;#8217;s been driving most of my development effort recently; I&amp;#8217;m worrying less about the edge cases for now, and focusing on implementing the most important core features to make it usable.&lt;/p&gt;
+
+
+	&lt;p&gt;Now, this application is not intended to represent anything about how one would actually write Windows Forms applications using Ruby &amp;#8211; this application is &lt;strong&gt;very&lt;/strong&gt; un-Ruby-esque. I can imagine lots of ways to improve how it&amp;#8217;s implemented, and I&amp;#8217;m going to spend a few days building an app to see what kinds of idioms I can discover along the way (provided the bridge is stable enough to actually build that app).&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the code:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+require 'rubyclr'
+
+RubyClr::reference 'System.Data'
+RubyClr::reference 'System.Drawing'
+RubyClr::reference 'System.Windows.Forms'
+
+include System
+include System::Data
+include System::Data::SqlClient
+include System::Drawing
+include System::Windows::Forms
+
+class MainForm
+  attr_reader :form, :grid
+
+  CS  = 'server=.\SQLEXPRESS;database=adventureworks;integrated security=sspi'
+  SQL = 'select * from humanresources.employee'
+
+  def create_form(grid)
+    form               = Form.new
+    form.AutoScaleMode = AutoScaleMode::Font
+    form.ClientSize    = Size.new(292, 266)
+    form.Controls.Add(grid)
+    form.Load do |sender, args|
+      adapter = SqlDataAdapter.new(SQL, CS)
+      ds      = DataSet.new
+      adapter.Fill(ds, 'Employee')
+      grid.DataSource = ds
+      grid.DataMember = 'Employee'
+    end
+    form
+  end
+
+  def create_gridview
+    grid = DataGridView.new
+    grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode::AutoSize
+    grid.Dock     = DockStyle::Fill
+    grid.Location = Point.new(0, 0)
+    grid.Size     = Size.new(292, 266)
+    grid.TabIndex = 0
+    grid
+  end
+
+  def initialize
+    @grid = create_gridview
+    @form = create_form(@grid)
+  end
+end
+
+Application.EnableVisualStyles
+Application.SetCompatibleTextRenderingDefault false
+
+main = MainForm.new
+Application.Run(main.form)
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Thu, 16 Feb 2006 10:58:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/16/windows-forms-and-rubyclr-happy-together"&gt;Windows Forms and RubyCLR: Happy Together&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/16/windows-forms-and-rubyclr-happy-together"&gt;Windows Forms and RubyCLR: Happy Together&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

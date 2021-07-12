@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on const_missing in C++</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"const_missing in C++" by jlam</title>
+      <description>&lt;p&gt;I created &lt;a href="http://www.iunknown.com/articles/2005/11/09/fun-with-const_missing-and-method_missing"&gt;yesterday&amp;#8217;s post&lt;/a&gt; about the wonders of &lt;code&gt;const_missing&lt;/code&gt; and &lt;code&gt;method_missing&lt;/code&gt; using pure Ruby code. Today I&amp;#8217;m going to show you how to do exactly the same thing in C++:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+extern "C" {
+  VALUE ModuleConstMissing(int argc, VALUE *args, VALUE self) {
+    VALUE const_name    = args[0];
+    VALUE params[]      = { rb_const_get(rb_cObject, rb_intern("DynamicProxy")) };
+    VALUE dynamic_proxy = rb_class_new_instance(1, params, rb_const_get(rb_cObject, rb_intern("Class")));
+    rb_funcall(self, rb_intern("const_set"), 2, const_name, dynamic_proxy);
+    return dynamic_proxy;
+  }
+
+  __declspec(dllexport) void Init_RubyBridge() {
+    rb_require("c:\\dev\\rubybridge\\rubybridge\\rb_library.rb");
+    rb_define_method(rb_cModule, "const_missing", RUBY_METHOD_FUNC(ModuleConstMissing), -1);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The &lt;code&gt;rb_require&lt;/code&gt; call lets me reference the &lt;code&gt;rb_library.rb&lt;/code&gt; file that contains the definition of the &lt;code&gt;DynamicProxy&lt;/code&gt; class that I showed you in yesterday&amp;#8217;s post.&lt;/p&gt;
+
+
+	&lt;p&gt;The &lt;code&gt;rb_define_method&lt;/code&gt; method lets me override the default implementation of &lt;code&gt;Module.const_missing&lt;/code&gt;. The &lt;code&gt;rb_cModule&lt;/code&gt; constant is a reference to the built-in class &lt;code&gt;Module&lt;/code&gt; that&amp;#8217;s declared in &lt;code&gt;ruby.h&lt;/code&gt;. I use the &lt;code&gt;RUBY_METHOD_FUNC&lt;/code&gt; macro to pass the address of the &lt;code&gt;ModuleConstMissing&lt;/code&gt; function to the Ruby interpreter. The last parameter, -1, is used to tell Ruby to call &lt;code&gt;ModuleConstMissing&lt;/code&gt; using a variable-length parameter list.&lt;/p&gt;
+
+
+	&lt;p&gt;In the &lt;code&gt;ModuleConstMissing&lt;/code&gt; method, I first need a reference to the &lt;code&gt;DynamicProxy&lt;/code&gt; class object. This is done by calling &lt;code&gt;rb_const_get&lt;/code&gt;, and passing the &lt;code&gt;DynamicProxy&lt;/code&gt; symbol. A Ruby symbol is simply an &lt;a href="http://en.wikipedia.org/wiki/Mutable_object"&gt;interned&lt;/a&gt; string. I use the &lt;code&gt;rb_intern&lt;/code&gt; method to intern / retrieve the &lt;code&gt;ID&lt;/code&gt; of the interned string.&lt;/p&gt;
+
+
+	&lt;p&gt;Next, I need to create a new anonymous class object via &lt;code&gt;Class.new&lt;/code&gt;. I can create a new object using the &lt;code&gt;rb_class_new_instance&lt;/code&gt; method. Notice how I pass a reference to the &lt;code&gt;DynamicProxy&lt;/code&gt; class object to &lt;code&gt;Class.new&lt;/code&gt;, which tells Ruby to create a new class that derives from &lt;code&gt;DynamicProxy&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Finally, I assign the newly created class object to the missing constant name that was passed to me from Ruby. The &lt;code&gt;rb_funcall&lt;/code&gt; method lets you call an arbitrary method, and uses the C &lt;code&gt;varargs&lt;/code&gt; calling convention to let you pass an arbitrary number of parameters (2 in this case) to the method.&lt;/p&gt;
+
+
+	&lt;p&gt;These are pretty common usage scenarios for the core Ruby extension APIs that you&amp;#8217;re likely to use. There&amp;#8217;s also &lt;code&gt;rb_eval_string&lt;/code&gt; if you want to execute Ruby code defined inside of a string as well.&lt;/p&gt;
+
+</description>
+      <pubDate>Thu, 10 Nov 2005 07:00:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/11/10/const_missing-in-c"&gt;const_missing in C++&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/11/10/const_missing-in-c"&gt;const_missing in C++&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

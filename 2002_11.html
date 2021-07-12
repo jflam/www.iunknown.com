@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: November 2002 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2002_10.html" title="October 2002" />
+
+<link rel="next" href="http://www.iunknown.com/2002_12.html" title="December 2002" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2002_10.html">&laquo; October 2002</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2002_12.html">December 2002 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">November 29, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000169"></a>
+<h3 class="title">Enterprise Services?</h3>
+
+<p><P>I have been watching from the sidelines the recent discussion on Enterprise Services in .NET. <A href="http://radio.weblogs.com/0108971/2002/11/28.html#a41">Clemens Vasters</A> started it, with <A href="http://www.dotnetremoting.cc/DotNetCentric/2002/11/16.asp">Ingo Rammer</A> and <A href="http://www.winterdom.com/weblog/archives/000180.html">Tomas Restrepo</A> chipping in with additional comments. I've been quite busy lately, so I haven't had a chance to respond yet. My response centers around this question:</P><br />
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px"><br />
+<P>If I'm writing a managed application that has a web-based front end[1], and I don't need <STRONG>distributed transactions</STRONG>, why do I need to care about Enterprise Services?</P></BLOCKQUOTE><br />
+<P>The way I see it, almost all of what was in COM+ (and please, let's just call it COM+ for simplicity) is now duplicated in the frameworks. </P><br />
+<P>Let's first begin with load balancing. I tend to look at load balancing as a technology that improves the robustness of your application with load balancing as a nice side-effect. If you are using HTTP as your transport, there are lots of nice hardware load balancing solutions available, and they scale extraordinarily well. </P><br />
+<P>By using HTTP as your transport, you are most likely going to be using IIS as the gateway to your application. This leads to the next feature that was provided by COM+: thread pooling. If you can assume HTTP as your transport, then your thread pool is effectively IIS.</P><br />
+<P>Now, in a traditional ASP application there was always the question of "where do my application layer components go?" In almost all cases, the answer is that your application layer components physically run on the same computer as IIS. If you decide to run your application layer components on another computer, you run into the (hard) problems involved in load-balancing COM+ components. Besides, I always question why one would want to load-balance a load-balancer unless you can show me data that shows that this is a more effective solution for your application.</P><br />
+<P>In a managed application, your application layer components should reside on the same computer as IIS. This is what you get by default if you use ASP.NET as the gateway into your managed code. ASP.NET has some nice plumbing that (nearly) <A href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">abstracts away</A> the fact that IIS (and Windows for that matter) is the baseline technology. This way you automatically get the benefits of HTTP load balancing and thread pooling. Not bad for doing absolutely no work whatsoever!</P><br />
+<P>Next up is role-based security. In the pre-MTS/COM+ world, folks that built server applications also had to build a separate administration tool that would be used to manage the security requirements of those components. MTS/COM+ eliminated that requirement by providing a standard MMC (Microsoft-Management Console) snap-in that let developers define roles and that let administrators populate those roles with actual user accounts and groups. </P><br />
+<P>The downside of the MTS/COM+ technologies are that they were tightly coupled to the Windows security model. In the managed world, there is also a notion of roles. However, these roles are now decoupled from the underlying OS security model. You now have the flexibility to define roles based on Windows users and groups, or you can map roles to a custom authentication scheme that you can provide. This is significantly more important in building large-scale applications today, since you can no longer assume that clients will run within the same Windows domain or on a domain with appropriate pre-established trust relationships.</P><br />
+<P>Next up is the (controversial) object pooling feature of COM+. In most cases, the object pool was used to overcome a deficiency in the OLE DB database connection pool - you couldn't tune the min and max pool size parameters on a per-application basis. What you could do, however, was define a class of objects where each object which holds onto a single OLE DB connection. You then place that class under the control of the COM+-managed object pool. This way you could use the min and max object pool size parameters in COM+ to tune the database connection pool size.</P><br />
+<P>In the managed world, however, you now have the Min Pool Size and Max Pool Size connection string parameters if you are using the SQL Managed Provider. This eliminates the need for object pooling in the vast majority of the applications that used this feature in the COM+ world. Building your own managed object pool requires you to do some work if you absolutely need to use this feature. There are some nice examples of object pools in the frameworks <A href="http://www.saurik.com/net/exemplar/">for you to examine</A> (see System.Web.HttpApplication and friends in system.web.dll) if you are inclined to build your own.</P><br />
+<P>IMHO the features that I outlined here: thread pooling, database connection pooling, load balancing, role-based security, and object pooling are the typical features used in most COM+ applications. And they all have managed equivalents. But, you ask, what about transactions?</P><br />
+<P>Don't forget that you don't <EM>need</EM> COM+ to do transactional programming against a single resource manager. You can always use that resource manager's native transactional API to obtain the ACID transaction benefits. However, where COM+ really helps out is in the realm of <STRONG>distributed </STRONG>transactions that involve more than one RM; this is where COM+ really shines. That said, however, there are <EM>very few</EM> applications out there that actually use distributed transactions. </P><br />
+<P>So, this begs the question: if I'm writing a managed application that has a web-based front end[1], and I don't need <STRONG>distributed transactions</STRONG>, why do I need to care about Enterprise Services?</P><br />
+<P>[1] That will migrate to a Web Services front end once we evolve out of our current (irrational) infatuation with browser-hosted applications.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000169.html">12:35 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=169" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 28, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000168"></a>
+<h3 class="title">A new look</h3>
+
+<p><P>It's <A href="Weblog/fog0000000011.html">almost been a year</A> since I started writing on my web site again. The time sure has flown by! In anticipation of the one-year anniversary of this web log, I've decided to update its look.&nbsp;</P><br />
+<P>I have hated the <A href="Images/original_design.PNG">look of my web log</A> for quite some time now. So over the past few days I've been tweaking my CityDesk templates until I got a look that I'm sort-of happy with. I slaved over Photoshop for quite some time trying to figure out how to create "gel text" and those way-too-cool OS-X "gel buttons". I'm not entirely happy with the results, so if someone who is better at Photoshop than I am (and it doesn't take much!) could generate better looking gel text and gel buttons for me, I'd be eternally grateful!</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000168.html">11:25 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=168" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 23, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000167"></a>
+<h3 class="title">How to uninstall Windows Messenger</h3>
+
+<p><P>After reading <A href="http://radio.weblogs.com/0106747/2002/11/22.html#a100">Scott Hanselman's entry on MSN Messenger 5.0</A>, I decided to go and install it too ... (I'm having MS beta software withdrawal symptoms - this weekend I've installed VS.NET 2003 Final Beta a few hot fixes and MSN 5.0).</P><br />
+<P>However, the problem that Scott pointed out about having Windows Messenger 4.7 and MSN Messenger 5.0 fighting each other popped up on my machine too. Here's how to uninstall Windows Messenger 4.7 (via Google):</P><br />
+<P>RunDll32 advpack.dll,LaunchINFSection %windir%\INF\msmsgs.inf,BLC.Remove</P><br />
+<P>If you're like me and <A href="Weblog/Ivemadetheswitch....html">running under a non-admin account</A> - make sure you execute this from a command prompt with admin privileges ;)</P><br />
+<P>Enjoy!</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000167.html">12:09 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=167" onclick="OpenComments(this.href); return false">Comments (19)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000166"></a>
+<h3 class="title">Maximum file length limitation in Windows copy command?</h3>
+
+<p><P>Does anyone know if there's a maximum file length limitation using the copy command in Windows XP?</P><br />
+<P>I was copying around the VS.NET 2003 Beta bits around between different computers on my network last night, and I noticed that the file was consistently corrupted when using the Windows XP copy command. Furthermore, if I used the /V switch to verify the copy, it consistently failed every time.</P><br />
+<P>I tried ruling out lots of stuff (I had just installed a new 100Mbps switch for my home network), which included swapping out the cables, the switches, copying between different computers to rule out network card driver issues, etc.</P><br />
+<P>In desperation, I turned to my good friend, robocopy. When copying the file using robocopy, it worked just fine, and passed the verification pass. </P><br />
+<P>What gives? This file is about 900MB in length. Is there a bug in the XP copy command? It's reproducible across several machines on my home network.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000166.html">11:25 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=166" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 21, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000165"></a>
+<h3 class="title">Securing the aspnet_wp.exe worker process</h3>
+
+<p><P>I emailed some folks I know at MS regarding my problems with setting up aspnet_wp.exe to run using my domain credentials. Erik Olson, who is a Security PM on the CLR team emailed back a wonderfully detailed explanation of the problem and possible solutions. </P><br />
+<P>To recap the original problems:</P><br />
+<OL><br />
+<LI>I didn't want to grant my domain account the SeDebugPrivilege since that lets a rogue application use the debug API to extract data from other applications running on my computer.<br />
+<LI>I didn't like the fact that my domain credentials were stored unencrypted in the machine.config file. The machine.config file must be readable by any account that wishes to run CLR applications.</LI></OL><br />
+<P>In version 1.1 of the frameworks, aspnet_isapi.dll can read process model credentials from a secured registry key. To quote Erik's email:</P><br />
+<P>"The V1.1 release supports configuring DPAPI encrypted credentials in a registry key, which isn't the most manageable thing in the world but has reasonable security characteristics. In particular, the processModel section is read by the ISAPI running as System, so the ACL on that key can just allow Admin/System. The other sections with creds (identity, sessionState) need to also allow read access for the process identity itself. "</P><br />
+<P>Another interesting thing that Erik pointed out to me was the fact that there has been a hotfix back-ported to support ASP.NET V1.0.&nbsp;It will be part of the next Service Pack and is documented at: <A href="http://support.microsoft.com/default.aspx?scid=kb;en-us;329250">http://support.microsoft.com/default.aspx?scid=kb;en-us;329250</A></P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000165.html">01:33 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=165" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000164"></a>
+<h3 class="title">Is OneNote a potential web logging tool?</h3>
+
+<p><P>While randomly surfing the web during a break in my class today, I stumbled across this <A href="http://www.microsoft.com/office/onenote/overview.asp">product announcement for OneNote</A>, which is apparently a new addition to Office. This tool is marketed as a note-taking application (with obvious hooks to the Tablet PC), but I'm more intrigued by this tool as a potential knowledge capture / sharing tool.</P><br />
+<P>The scenarios and the docs are a bit vague at the moment, but it would be really cool if it could be customized to become a front-end for a custom web log publishing solution.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000164.html">01:31 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=164" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 20, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000163"></a>
+<h3 class="title">Security and ASP.NET</h3>
+
+<p><P>Wow.</P><br />
+<P>While randomly surfing the web during a break in my class, I found this <EM>incredible</EM> document. It's a giant 608 page PDF document titled <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnnetsec/html/secnetlpMSDN.asp">Building Secure ASP.NET Applications: Authentication, Authorization, and Secure Communication</A>.</P><br />
+<P>While I have hardly read through the entire document yet, I discovered the answer to something that was bugging me during my personal journey towards application development with non-admin privileges. In <A href="Weblog/MakingtheswitchandVisualS.html">an earlier entry in this web log</A>, I described how I had to change the aspnet_wp.exe worker process to run under my domain account. However, I was really disappointed by the fact that I had to store my domain password <EM>in plain text </EM>inside of the machine.config file.</P><br />
+<P>The answer, according to this document, is that I have to start using V1.1 of the frameworks. In the section on page 185 that talks about Process Identity in machine.config, it says:</P><br />
+<P>"In the .NET Framework Version 1.1, ASP.NET provides the ability to encrypt the username and password and store it safely in a registry key."</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000163.html">02:00 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=163" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 19, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000162"></a>
+<h3 class="title">Making the switch and Visual Studio .NET</h3>
+
+<p><P>I'm in&nbsp;the middle of teaching my Programming ASP.NET class out here in snowy Portland, Maine. As part of my experience in running under an account with non-administrative privileges, I have had to figure out how to debug ASP.NET applications while running under a non-administrative account.</P><br />
+<P>I found a lot of very useful information in this excellent article <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dv_vstechart/html/tchDevelopingSoftwareInVisualStudioNETWithNon-AdministrativePrivileges.asp">by Lars Bergstrom that describes how to run Visual Studio .NET with non-administrative privileges</A>. This should be required reading for all Visual Studio .NET devs.</P><br />
+<P>The problem that you run into right away is that, by default, the aspnet_wp.exe worker process runs under the ASPNET account. Since this is a different account on your computer, you need to have the SeDebugPrivilege enabled on your account before you can debug code running in a different security context.</P><br />
+<P>I'm not entirely happy with enabling the SeDebugPrivilege on my domain account, since this potentially opens up a glaring security hole on my computer. Besides, I can't enable this privilege while teaching this class since I can't directly see my domain controller at home.</P><br />
+<P>My compromise solution is to force the aspnet_wp.exe process to run under my domain account. Unfortunately, this solution requires that I store my domain password in plain text in the machine.config file. I can adjust the ACL's on this file so that only admins on my machine can read it, but I'm still not all that comfortable with storing my credentials in plain text on my computer. </P><br />
+<P>I hope that MS will use the Windows DPAPI to store the aspnet_wp.exe process credentials in a future version of ASP.NET. </P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000162.html">11:40 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=162" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 15, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000161"></a>
+<h3 class="title">The Law of Leaky Abstractions</h3>
+
+<p><P>During a break in my <A href="http://www.wintellect.com/seminars/training.aspx?courses=1&amp;id=3">Programming ASP.NET class</A> at Microsoft SVC, Joel Spolsky's&nbsp;most excellent <A href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">Law of Leaky Abstractions</A> essay turned up in my RSS feed aggregator. I quickly read it during the break, and then I had my students read it. </P><br />
+<P>It was a hit. </P><br />
+<P>I was amazed when one of my students identified a "leaky abstraction" in ADO.NET when we discussed it in the afternoon. Joel's label began to stick with both me and my students, and I see it as a powerful educational tool.</P><br />
+<P>I used to speak of "leaky abstractions" when I explained to students why they had to understand their technology at one level of abstraction lower than where they worked every day. ADO programmers needed to understand how their database worked, ASP programmers had to understand how IIS worked, Visual Studio developers needed to understand how the wizard-generated code worked. Unfortunately, I didn't have a catch-phrase like "leaky abstraction" to label things with. Joel's catch-phrase works exceedingly well. Thank-you, Joel!</P><br />
+<P>Leaky abstractions has now joined my two other favorite models for rationalizing why a software technique is useful:</P><br />
+<UL><br />
+<LI>Reducing friction<br />
+<LI>Seven plus or minus two</LI></UL></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000161.html">02:44 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=161" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000160"></a>
+<h3 class="title">I've made the switch ...</h3>
+
+<p><P>I just spent a great 3 days with a bunch of devs at Microsoft's Silicon Valley campus. I was teaching my Programming ASP.NET class to a full house of very enthusiastic students.</P><br />
+<P>During my class, I made a public vow to stop running as a local admin on my machine. I have spent almost a year living in shame after reading <A href="http://www.develop.com/kbrown/">Keith Brown's</A> <A href="http://msdn.microsoft.com/msdnmag/issues/01/11/security/default.aspx">plea for more devs to make the switch</A>. To do the switch properly, though, I needed to be connected to my domain controller, so I had to wait until I got home to make the switch.</P><br />
+<P>I'm now happily running as a normal user on my laptop. I've removed both myself and the Domain Admins group from the Local Administrator group on my laptop. The trick with VS.NET is to make sure that your domain account is a member of the VS Developers and the Debugger Users local groups.</P><br />
+<P>I'm also happy to report that I've mastered the syntax of the runas command, and I regularly type runas /user:machine\administrator cmd whenever I need to open a shell to do some administrator stuff. </P><br />
+<P>So far the only program that exhibited annoying behavior was MusicMatch Jukebox, but thankfully there was an <A href="http://www.frii.com/~michael/mm_and_xp.html">article posted on the web</A> that told me what registry key I needed to change the ACL on to get it up and running again.</P><br />
+<P>I also spent a couple of my free evenings visiting Fry's, where I spent an inordinate amount of time lusting over the <A href="http://www.apple.com/powermac/">dual 1.2GHz G4 PowerMac</A> that was attached to the <A href="http://www.apple.com/displays/acd23/">Apple Cinema HD 23" 1920 x 1080 flat panel display</A> ... who knows ... I might make that <EM><A href="http://www.apple.com/switch"><EM>other</EM> switch</A></EM> sometime soon ;)</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000160.html">02:02 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=160" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 08, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000159"></a>
+<h3 class="title">Thanks to Dave Lee</h3>
+
+<p>I now have Haloscan NOT posting comments in a popup window. <A href="http://www.haloscan.com/comments.php?user=jlam&amp;comment=Weblog/Commentsbackupandrunninga.html">Dave posted a really simple Javascript solution</A> - I haven't done DHTML in sooo long that I forgot, but then again that's an excuse ;)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000159.html">04:22 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=159" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 07, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000158"></a>
+<h3 class="title">Comments back up and running again</h3>
+
+<p><P>Thanks to <A href="http://www.stronglytyped.com/weblog/AddedaCommentsFeature.html">Richard Caetano</A> who sent me a link to <A href="http://www.haloscan.com">Haloscan</A>, I've managed to get comments up and running again on my weblog. Haloscan definitely seem to be doing a much better job at serving up comments than <A href="http://www.enetation.co.uk/">enetation</A>&nbsp;did. We'll see how this works out.</P><br />
+<P>One thing that is annoying about Haloscan is the fact that it relies on using Javascript to generate the popup window. I run <A href="http://www.panicware.com/">Popup Stopper</A> all the time, and I have to disable it to get the comment windows to pop up. It would rock if I could get Haloscan to simply redirect to another page in the browser instead of popping up a window.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000158.html">10:42 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=158" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000157"></a>
+<h3 class="title">Update on when less is more</h3>
+
+<p><P>My recent article on generative programming titled <A href="Weblog/Whenlessismore.html">"When less is more"</A> attracted a <EM>lot </EM>of attention. Since I got email within minutes of posting the article (sorry, no comments on my blog right now[1]) I decided to take a closer look at my server logs.[2]</P><br />
+<P>One of the first posts was on Chris Sells' <A href="http://www.sellsbrothers.com/news/showTopic.aspx?ixTopic=306&amp;ixReplies=3">mini-slashdot page</A>. In his comments, Chris wondered why I missed his extensive writing on the topic. The problem is that I always remembered Gen&lt;X&gt; as "Wizard King" (Chris' original name for the product). Because of that original bias, I was unable to see past it in <EM>any</EM> of Chris' <A href="http://msdn.microsoft.com/msdnmag/issues/01/12/GenProg/default.aspx">subsequent writing</A> on the topic. Chris didn't do me any favors by subtitling the piece "Modern Techniques to Automate Repetitive Programming Tasks". To me, that sounds like a wizard.</P><br />
+<P>Shawn Wildermuth <A href="http://www.oreillynet.com/pub/wlg/2242">wrote about his own epiphany</A> on generative programming. This leads me to question whether Reflection-like services are really useful in any contexts other than writing cool tools like <A href="http://www.aisto.com/roeder/dotnet/">Reflector</A>&nbsp;(recently updated to support the Beta of 1.1) and implementing low-performance serialization services ;)</P><br />
+<P>Joe Gregorio noticed parallels between my article and his article on <A href="http://bitworking.org/stories/2002/02/09/languagecentricSoftwareDevelopment.html">Language-Centric Software Development</A>&nbsp;where he advocates programming closer to the problem domain. Because of that link, I'm now using Joe's most excellent <A href="http://bitworking.org/Aggie.html">Aggie RSS feed aggregator</A>.</P><br />
+<P><A href="http://radio.weblogs.com/0105897/">Andres Aguiar</A> also read my post. What was intriguing about his post was that he said that he has been "doing code-generation tools for over 10 years". As it turns out, Andres is the product manager of <A href="http://www.deklarit.com/hdkoverview.html">DeKlarit</A>, which is a <EM>very </EM>interesting code generator that Mike Iem at MS originally turned me onto earlier this year.</P><br />
+<P>Danno Ferrin accuses me of doing some "<A href="http://www.freeroller.net/page/shemnon/20021101">sneaky AOP talk</A>" ;) I'm not convinced that AOP is the right tool for building higher level abstractions, due to a nasty Pandora's box that it could unlock. Much of my current thinking can be found in <A href="Files/Intro_to_AOP.ppt">this Powerpoint slide deck</A> from my AOP talk at <A href="http://butrain.bu.edu/windev/default.asp">WinDev</A> this year.</P><br />
+<P><A href="http://radio.weblogs.com/0106747/2002/10/31.html">Scott Hanselman</A> points out the fact that code generation is "on the collective consciousness" these days. I would definitely agree. </P><br />
+<P>What Scott also indirectly points out is the danger of self-referential groups. I've spent most of my recent programming career in the Windows/C++ camp. This has caused me to have blinders on that prevented me from seriously looking at technologies that didn't originate from MS or that didn't involve C++. I'm now taking a public vow to change my behavior and keep an open mind to all technologies. And to look at them not from just a purely technical perspective, but from a pragmatic one: does this technology help me do my job better?</P><br />
+<P>[1]&nbsp;I was using <A href="http://www.enetation.co.uk/">enetation</A>, but they were so flaky that I found it was better to have no comments than to have all requests for pages on my server stall because their servers were wedged.</P><br />
+<P>[2] I use an <A href="http://www.analog.cx/">open source log analyzer tool called Analog</A>.&nbsp;It does a good job analyzing referrer logs, and I discovered lots of folks who wrote about my article. </P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000157.html">12:14 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=157" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 06, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000156"></a>
+<h3 class="title">From the fantasy hardware department</h3>
+
+<p>After I realized that I could <A href="Weblog/Inowhaveanexcusetobuythat.html">justify an iMac</A>, I decided to look around at other interesting pieces of hardware. Here's a 3840x2400 (yes, you're reading that right) <A href="http://www.viewsonic.com/products/lcd_vp2290b.htm">LCD panel from Viewsonic</A> that offers 200DPI resolution in a 22.2" package. And it's Mac-compatible too ;)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000156.html">12:25 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=156" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 05, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000155"></a>
+<h3 class="title">I now have an excuse to buy that iMac</h3>
+
+<p>Is it just me, or are other people <A href="http://www.apple.com/imac/">lusting over this computer</A>? Now that <A href="http://msdn.microsoft.com/net/sscli">Rotor</A> is available for Mac OS-X 10.2, I can see that widescreen iMac on my desk already ... ;)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000155.html">11:58 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=155" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">November 01, 2002</h2>
+
+
+<div class="blogbody">
+<a name="000154"></a>
+<h3 class="title">DevConnections</h3>
+
+<p><P>I had a great time at the <A href="http://www.devconnections.com">DevConnections</A> conference in Orlando this week. This was my first experience as a tech chair for a conference and I have to say that it went off with very few problems.[1] I want to thank each and every one of my speakers at the conference for a job well done:</P><br />
+<P><A href="http://www.wintellect.com/about/instructors.aspx?id=11">Jason Clark</A><BR><A href="http://www.razorsoft.net/weblog/">Peter Drayton</A><BR><A href="http://www.wintellect.com/about/instructors.aspx?id=6">Dino Esposito</A><BR><A href="http://www.grimes.demon.co.uk/">Richard Grimes</A><BR><A href="http://www.codeproject.com/scrapbook/semicolon_0.asp">Nick Hodapp</A><BR><A href="http://www.develop.com/dm/bio.asp?Id=38">Simon Horrell</A><BR><A href="http://www.langer.camelot.de/">Angelika Langer</A><BR><A href="http://www.codeproject.com/interview/stanlippman14nov2001.asp">Stan Lippman</A><BR><A href="http://www.clrgeeks.com/tneward/">Ted Neward</A><BR><A href="http://www.dotnetremoting.cc/DotNetCentric/">Ingo Rammer</A><BR><A href="http://www.wintellect.com/about/instructors.aspx?id=2">John Robbins</A></P><br />
+<P>I went through the evals yesterday and the attendees were very happy with the show that you put on.</P><br />
+<P>On the last day, I had an opportunity to sneak off for a day at Disney as well. Jason Clark, his wife Annette, Ingo Rammer and his fiancee Katja spent the day with me at the Magic Kingdom. It's a bit different from the one at Anaheim, as Jason can attest to (he's gone around 20(!) times to DisneyLand in Anaheim). </P><br />
+<P>The conference took place at the beautiful Hyatt Grand Cypress resort in Orlando. I had a chance to <A href="http://www.pbase.com/jlam/vs_connections">take a few photos</A> around the hotel so that you can get a better feel for the place. I'm lobbying heavily to get the conference back there next year in the fall, so start petitioning your managers now ;)</P><br />
+<P>The conference circuit is now over for another year. Now it's time to answer all of those emails that my <A href="Weblog/Whenlessismore.html">code gen posting</A> has generated!</P><br />
+<P>[1] Thankfully the air conditioner broke *after* my conference was done ;)</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000154.html">12:11 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=154" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: December 2003 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2003_11.html" title="November 2003" />
+
+<link rel="next" href="http://www.iunknown.com/2004_01.html" title="January 2004" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2003_11.html">&laquo; November 2003</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2004_01.html">January 2004 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_12.html#000387"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/131"
+    dc:title="Dynamic SQL vs. sproc performance"
+    dc:identifier="http://www.iunknown.com/2003_12.html#000387"
+    dc:subject="Blog"
+    dc:description="Like many age-old arguments in other walks of life (boxers vs. briefs, Coke vs. Pepsi) we developers have the dynamic SQL vs. stored procedure debate. I realize that there has been lots of FUD over this issue, and that there..."
+    dc:creator="John"
+    dc:date="2003-12-22T14:26:30-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">December 22, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000387"></a>
+<h3 class="title">Dynamic SQL vs. sproc performance</h3>
+
+<p>Like many age-old arguments in other walks of life (boxers vs. briefs, Coke vs. Pepsi) we developers have the dynamic <span class="caps">SQL</span> vs. stored procedure debate. I realize that there has been lots of <span class="caps">FUD</span> over this issue, and that there has been a considerable amount of <a href="http://weblogs.asp.net/fbouma/posts/38178.aspx">debate</a> on this <a href="http://weblogs.asp.net/rhoward/posts/38298.aspx">issue</a> recently.</p>
+
+<p>As a guy who dabbles in low-level bit twiddling stuff from time-to-time, the performance claims are quite interesting to me. The new (as of <span class="caps">SQL </span>Server 7.0) cached execution plan optimization in <span class="caps">SQL </span>Server looks to me a lot like <span class="caps">JIT</span> compilation. If this is, in fact, the case it seems to me that the only overhead that would be associated with dynamic <span class="caps">SQL</span> would be:</p>
+
+<p>1. The amount of bandwidth + time it takes to transmit the dynamic <span class="caps">SQL</span> text to the database.<br />
+2. The amount of time it takes to calculate the hash of the dynamic <span class="caps">SQL</span> text to look up the cached execution plan.</p>
+
+<p>I can imagine quite a few scenarios where the above overhead would disappear into the noise of the network roundtrip. </p>
+
+<p>What upsets me are the folks who spout forth anecdotal arguments that claim stored procedures have "much better" performance than dynamic <span class="caps">SQL. </span>Now, I figure that folks in academia must have done studies on these types of claims. It seems that it's all the rage in academia to do performance studies on stuff like <span class="caps">TCP</span>/IP stacks, so why not dynamic <span class="caps">SQL</span> vs. sprocs? Comments?</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000387.html">02:26 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=387" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=387" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_12.html#000386"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/130"
+    dc:title="Quickbooks 2003 from a non-privileged account"
+    dc:identifier="http://www.iunknown.com/2003_12.html#000386"
+    dc:subject="Blog"
+    dc:description="<![CDATA[Warning software usability rant ahead I can't believe that QuickBooks 2003&Acirc;&nbsp;doesn't run from a non-privileged account. Isn't this software supposed to be Windows logo certified? It just crashes if you don't have the correct write privileges enabled on the install...]]>"
+    dc:creator="John"
+    dc:date="2003-12-19T13:24:27-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">December 19, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000386"></a>
+<h3 class="title">Quickbooks 2003 from a non-privileged account</h3>
+
+<p><strong>Warning software usability rant ahead</strong></p>
+
+<p>I can't believe that QuickBooks 2003&Acirc;&nbsp;doesn't run from a non-privileged account. Isn't this software supposed to be Windows logo certified? It just crashes if you don't have the correct write privileges enabled on the install directory when you try and run it from a non-privileged account.</p>
+
+<p>This is pretty ridiculous for a program that ships in 2003, two full years after Windows XP became the default business OS on new computers. It tries to write within the \Program Files\Intuit directory and gets very upset if it can't do that.</p>
+
+<p>The auto-update feature is also totally user-unfriendly. It doesn't tell you that you have to restart QuickBooks prior to installing the update. It also doesn't tell you that you need to restart Windows in order for the updates to "take".</p>
+
+<p>To properly install the software, you must temporarily add yourself to the local administrators group on your computer - you can't just do a runas /user:administrator cmd to open a command prompt to do the install. If you do, the required registry entries will be made under the <span class="caps">HKCU,</span> which is the administrator account, not as you. I'm just hoping that I can get the Internet connectivity stuff working so I can download my bank statements. It simply refuses to do anything on my desktop - a silent failure with no evidence of what went wrong. I'm having slightly better luck on my laptop, but the jury's still out.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000386.html">01:24 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=386" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=386" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_12.html#000385"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/129"
+    dc:title="Wintellect Retreat"
+    dc:identifier="http://www.iunknown.com/2003_12.html#000385"
+    dc:subject="Blog"
+    dc:description="I just got back from our Wintellect retreat in Las Vegas. It was a fun time. With the unfortunate demise of the WinSummit conference, it&apos;s been way too long since all of us have gotten together in the same place..."
+    dc:creator="John"
+    dc:date="2003-12-18T23:20:43-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">December 18, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000385"></a>
+<h3 class="title">Wintellect Retreat</h3>
+
+<p>I just got back from our <a href="http://www.wintellect.com">Wintellect</a> retreat in Las Vegas. It was a fun time. With the unfortunate demise of the <a href="http://www.winsummit.com">WinSummit conference</a>, it's been way too long since all of us have gotten together in the same place at the same time. It was great to see everyone again.</p>
+
+<p>I haven't been to Las Vegas since about 1997, so a lot has changed there since then. We stayed at the <a href="http://www.parkplace.com/Paris/LasVegas/">Paris Hotel</a> which is quite an amazing hotel, complete with a 50-story replica of the Eiffel Tower:</p>
+
+<p><img src="Images/Eiffel-Tower-Las-Vegas.jpg" alt="Eiffel Tower in Las Vegas"/></p>
+
+<p>On Monday afternoon, Jeffrey, Kristin and Aidan Richter, Jeff and Lori Prosise, and myself took a trip over to see the Hoover Dam on the border of Nevada and Arizona. Here's a fun snapshot that I got with Kristin photographing Jeff and Lori at the Nevada-Arizona border while Jeffrey and Aidan stand watch:</p>
+
+<p><img src="Images/Meta-Hoover.jpg" alt="Meta Photography"/></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000385.html">11:20 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=385" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=385" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_12.html#000383"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/127"
+    dc:title="Clever marketing"
+    dc:identifier="http://www.iunknown.com/2003_12.html#000383"
+    dc:subject="Blog"
+    dc:description="I Googled for &quot;Ant Filespec&quot; today and I came across a Java code coverage tool called Clover. They posted an HTML representation of some of the source code for Ant that indicates the lines of code that were covered by..."
+    dc:creator="John"
+    dc:date="2003-12-12T09:44:38-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">December 12, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000383"></a>
+<h3 class="title">Clever marketing</h3>
+
+<p>I Googled for "Ant Filespec" today and I came across a Java code coverage tool called <a href="http://www.thecortex.net/clover/index.html">Clover</a>.  They posted an <span class="caps">HTML</span> representation of some of the source code for Ant that indicates the lines of code that were covered by unit tests. Very cool technique and a very nice tool as well.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000383.html">09:44 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=383" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=383" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_12.html#000382"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/126"
+    dc:title="Jeroen is my hero"
+    dc:identifier="http://www.iunknown.com/2003_12.html#000382"
+    dc:subject="Blog"
+    dc:description="Who says that C# can only be used to write user-mode programs? Jeroen Frijters wrote a C# program that displays an artificial horizon on his new Thinkpad T41p by reverse-engineering the IOCTL that corresponds to the data provided by the..."
+    dc:creator="John"
+    dc:date="2003-12-12T09:07:45-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000382"></a>
+<h3 class="title">Jeroen is my hero</h3>
+
+<p>Who says that C# can only be used to write user-mode programs? <a href="http://weblog.ikvm.net/permalink.aspx/9a5ee106-e493-4b5b-a80d-f52af817c493">Jeroen Frijters wrote a C# program</a> that displays an artificial horizon on his new Thinkpad T41p by reverse-engineering the <span class="caps">IOCTL</span> that corresponds to the data provided by the built-in accelerometer in his T41p. Now, you could argue that Managed C++ was a better tool for the job, but this is an impressive effort nonetheless!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000382.html">09:07 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=382" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=382" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_12.html#000381"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/125"
+    dc:title="Task and Target Composition in MSBuild"
+    dc:identifier="http://www.iunknown.com/2003_12.html#000381"
+    dc:subject="Blog"
+    dc:description="One of the really cool features of any of the popular build systems is the ease with which tasks can be composed. MSBuild takes it to the next level with the ability to consume and emit Items, which decouples tasks..."
+    dc:creator="John"
+    dc:date="2003-12-12T09:00:31-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000381"></a>
+<h3 class="title">Task and Target Composition in MSBuild</h3>
+
+<p>One of the really cool features of any of the popular build systems is the ease with which tasks can be composed. MSBuild takes it to the next level with the ability to consume and emit Items, which decouples tasks further (arguably completely), and by extension, makes it easier to compose their functionality.</p>
+
+<p>I find it particularly interesting that once you start writing more complex MSBuild projects that you wind up composing Targets in addition to composing Tasks. This lets you take advantage of the inter-target dependency engine and lets you switch Targets at run-time by Importing different .targets files.</p>
+
+<p>If you look at the set of *.targets files that ship with <span class="caps">V1.2</span> of the frameworks (CSharp.targets, framework.targets etc.) you find a lot of Targets that have only a single task within them (e.g. BuildProjectReferences, CopyProjectReferences, Compile etc.). It's interesting that most composable targets contain only a single task, however there are more than enough multi-task targets to justify pushing the composition into the targets level.</p>
+
+<p>Are there other folks who are building their own sets of *.targets files, or are most folks using the MS-supplied *.targets files? I'm curious about what other kinds of general-purpose *.targets files people have come up with to serve their own needs.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000381.html">09:00 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=381" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=381" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_12.html#000380"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/124"
+    dc:title="Creator of Tetris works at Microsoft"
+    dc:identifier="http://www.iunknown.com/2003_12.html#000380"
+    dc:subject="Blog"
+    dc:description="I Googled for the creator of Tetris this afternoon to settle a bet about when the game first appeared. I found that Alexey Pajitnov now works at Microsoft&apos;s Game division. I wonder if Chris Sells of Wahoo fame knows about..."
+    dc:creator="John"
+    dc:date="2003-12-04T16:37:12-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">December 04, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000380"></a>
+<h3 class="title">Creator of Tetris works at Microsoft</h3>
+
+<p>I Googled for the creator of Tetris this afternoon to settle a bet about when the game first appeared. I found that <a href="http://www.techtv.com/screensavers/supergeek/jump/0,24331,3337336,00.html">Alexey Pajitnov now works at Microsoft's Game division</a>. I wonder if <a href="http://www.sellsbrothers.com/">Chris Sells</a> of <a href="http://www.sellsbrothers.com/wahoo/">Wahoo</a> fame knows about this ... :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000380.html">04:37 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=380" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=380" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_12.html#000379"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/123"
+    dc:title="Target (and project) composition in MSBuild"
+    dc:identifier="http://www.iunknown.com/2003_12.html#000379"
+    dc:subject="Blog"
+    dc:description="I&apos;ve been working away at getting the next issue of my newsletter out the door. Last night, I finally finished an 11-step walk-through that I&apos;m happy with. One of the steps discusses a novel feature of MSBuild: its ability to..."
+    dc:creator="John"
+    dc:date="2003-12-03T15:32:41-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">December 03, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000379"></a>
+<h3 class="title">Target (and project) composition in MSBuild</h3>
+
+<p>I've been working away at getting the next issue of my newsletter out the door. Last night, I finally finished an 11-step walk-through that I'm happy with. One of the steps discusses a novel feature of MSBuild: its ability to compose targets, and by extension, projects.</p>
+
+<p>There are many cases where you want to call one target from another. Consider a simple example: you have two projects, a library project and a console application project. The console project has a dependency on the library project.  Since you likely want to build your library project independently of your console project, you wind up with two separate project files. </p>
+
+<p>Consider what happens when Visual Studio .NET builds the solution that contains these two projects. First, <span class="caps">VS.NET</span> compiles your library project. Next, it compiles the console project. But to compile it, <span class="caps">VS.NET</span> has to add a reference to your library project's output assembly. Finally it has to copy the library project's output assembly into the directory that contains the console project's output assembly.</p>
+
+<p>This introduces a problem: the console project needs to know what the library project generates. There are two reasons why this is necessary. First, the console project must add the appropriate reference to the library project's output assembly. Second, it must copy the library project's output assembly to the console project's output directory.</p>
+
+<p>Using existing tools, you could simply hard-code the path to the library project's output assembly into your console project. But this introduces coupling between the two project files, which increases the brittleness of your build system, and limits your ability to compose your targets and projects.</p>
+
+<p>To address the composition problem, MSBuild introduces a novel concept called an Item. An Item is a collection of strings. While this in and of itself is not novel ([N]Ant has the concept of a FileSet), the fact that MSBuild tasks have the ability to consume and <em>emit</em> Items is novel. For example, if you call another MSBuild project using the MSBuild task, you have the ability to capture what the Items emitted by that task are. Consider the following code fragment:</p>
+
+<pre><code>
+&lt;Task Name=&quot;MSBuild&quot;
+      Projects=&quot;..\lib\lib.proj&quot;&gt;
+
+  &lt;OutputItem TaskParameter=&quot;TargetOutputs&quot;
+              Type=&quot;ReferencePath&quot;/&gt;
+
+&lt;/Task&gt;
+</code></pre><p>Here, I call another project called <code>lib.proj</code> using the MSBuild task. When the task completes, its <code>TargetOutputs</code> parameter contains a list of all of the outputs created by <code>lib.proj</code>. The <code>OutputItem</code> element assigns the <code>TargetOutputs</code> property to a new Item called <code>ReferencePath</code>, which I will use in the current project file.</p>
+
+<p>This begs the question: how does the MSBuild project know what the output of the <code>lib.proj</code> project is? Let's examine the <code>lib.proj</code> project:</p>
+
+<pre><code>
+&lt;Project DefaultTargets=&quot;Build&quot;&gt;
+
+  &lt;Target Name=&quot;Build&quot;
+          Outputs=&quot;bin\Debug\app.dll&quot;&gt;
+    ...
+  &lt;/Target&gt;
+&lt;/Project&gt;
+</code></pre><p>As you can see, the default target of <code>lib.proj</code> contains an <code>Outputs</code> Item. It is this value that is passed back to the MSBuild task via its <code>TargetOutputs</code> parameter. Note that I have hard-coded a few things in these two hypothetical project files for clarity. In a real project, all of these things are typically parameterized.</p>
+
+<p>For more details on MSBuild and my 11-step walk-through, stay tuned for the next edition of my newsletter, Practical Eye for the .NET Guy.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000379.html">03:32 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=379" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=379" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

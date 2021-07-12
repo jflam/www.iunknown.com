@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Dave Thomas on Code Generation</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Dave Thomas on Code Generation</div>
+
+
+<div class="comments-body">
+<p>I've read for months with only mild interest your comments about AOP and code generation (they've seemed a bit esoteric for a corporate app drone like myself).<br />
+This article has finally opened my eyes to what you've been saying all along. The lightbulb has gone off, and you now have a "believer".<br />
+Keep the info coming.<br />
+Jason</p>
+<span class="comments-post">Posted by <a href="mailto&#58;langston&#64;chime&#46;org">Jason Langston</a> at April 29, 2003 09:53 AM</span>
+</div>
+<div class="comments-body">
+<p>"Once you start working in dynamic languages such as Ruby, code generation takes on a whole new meaning, as you can effectively extend the language at runtime from within..."<br />
+The purpose of code generation is to express a problem using a convenient abstraction that isn't easily supported by your implementation language.  I think this statement is an important endorsement of extensible languages: rather than having to resort to code generation, just extend the language to support the abstraction you need.<br />
+However one must be careful not to abuse the privilege - it seems it would be all too easy to descend into a quagmire of undecipherable gobbledygook.  There is a cost associated with using language features: readability and understandability.  I rarely use operator overloading in C++ for this reason; I find "Concatenate(a,b)" more transparent than "a+b".  <br />
+Two parties must have a common language in order to communicate.  This is why software metaphors can be so powerful (see Code Complete by Steve McConnell) - they provide a shared experience that helps guide us through the design.  I think an important challenge for code generation and extensible languages is how you achieve expressiveness while maintaining clarity.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;ericgparker&#64;hotmail&#46;com">Eric Parker</a> at April 30, 2003 01:59 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod">Second drop of RbDynamicMethod</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Sat, 10 Dec 2005 06:56:00 GMT">Sat, 10 Dec 2005 06:56:00 GMT</span></p>
+<p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">another drop</a> of my <code>RbDynamicMethod</code> library. Lots of things have changed since the <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">first drop</a>:</p>
+
+
+	<ul>
+	<li>It now handles generic type references correctly (although it does <strong>not</strong> handle generic method references yet). </li>
+		<li>There are a lot more tests in this drop, and major improvements in error reporting. </li>
+		<li>The syntax is a bit cleaner than before, with liberal uses of Ruby symbols where appropriate.</li>
+	</ul>
+
+
+	<p>Once again, comments and feedback are encouraged.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/09/generics-and-rbdynamicmethod">Generics and RbDynamicMethod</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 09 Dec 2005 21:23:00 GMT">Fri, 09 Dec 2005 21:23:00 GMT</span></p>
+<p>I added some features today to <code>RbDynamicMethod</code> to support the use of generics on <span class="caps">CLR 2</span>.0. To get a handle on the problem that I solved, let&#8217;s look at a simple C# example:</p>
+
+
+<pre><code>
+List&lt;String&gt; list = new List&lt;String&gt;();
+list.Add("one");
+list.Add("two");
+return String.Format("{0}, {1}", list[0], list[1]);
+</code></pre>
+
+	<p>Here&#8217;s the same code created using the .NET <code>DynamicMethod</code> API:</p>
+
+
+<pre><code>
+DynamicMethod m = new DynamicMethod(String.Empty, 
+  typeof(void), null, 
+  Assembly.GetExecutingAssembly().GetModules()[0]);
+
+ILGenerator g = m.GetILGenerator();
+Type listType = Type.GetType("System.Collections.Generic.List`1[System.String]");
+
+ConstructorInfo ci = listType.GetConstructor(new Type[] { });
+MethodInfo add = listType.GetMethod("Add", new Type[] {typeof(string)});
+MethodInfo get_Item = listType.GetMethod("get_Item", new Type[] {typeof(Int32)});
+
+Type console = Type.GetType("System.Console");
+MethodInfo writeLine = console.GetMethod("WriteLine", 
+  new Type[] {typeof(string), typeof(object), typeof(object)});
+
+LocalBuilder list = g.DeclareLocal(listType);
+
+g.Emit(OpCodes.Newobj, ci);
+g.Emit(OpCodes.Stloc_S, list);
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldstr, "one");
+g.Emit(OpCodes.Callvirt, add);
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldstr, "two");
+g.Emit(OpCodes.Callvirt, add);
+
+g.Emit(OpCodes.Ldstr, "{0}, {1}");
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldc_I4_0);
+g.Emit(OpCodes.Callvirt, get_Item);
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldc_I4_1);
+g.Emit(OpCodes.Callvirt, get_Item);
+
+g.Emit(OpCodes.Call, writeLine);
+g.Emit(OpCodes.Ret);
+
+CallVoidMethod d = (CallVoidMethod)m.CreateDelegate(typeof(CallVoidMethod));
+</code></pre>
+
+	<p>You&#8217;ll notice the non-trivial amount of book-keeping code that uses the <code>Reflection</code> API to lookup constructors, types, and methods. By comparison, the <span class="caps">CIL</span> generation code looks pretty clean, except for the annoying, repetitive &#8220;g.Emit(Opcodes.&#8221; text before each instruction.</p>
+
+
+	<p>Now, look at the same example written using <code>RbDynamicMethod</code>:</p>
+
+
+<pre><code>
+create_ruby_module_function(RbDynamicMethod, 'create_list_string') do
+  include   'System.Collections.Generic'
+  declare   'List&lt;String&gt;', :list
+  newobj    'List&lt;String&gt;()'
+  stloc_s   :list
+  ldloc_s   :list
+  ldstr     'one'
+  callvirt  'List&lt;String&gt;::Add(String)'
+  ldloc_s   :list
+  ldstr     'two'
+  callvirt  'List&lt;String&gt;::Add(String)'
+  ldstr     '{0}, {1}'
+  ldloc_s   :list
+  ldc_i4_0
+  callvirt  'List&lt;String&gt;::get_Item(Int32)'
+  ldloc_s   :list
+  ldc_i4_1
+  callvirt  'List&lt;String&gt;::get_Item(Int32)'
+  call      'static String::Format(String,Object,Object)'
+  call      'static Marshal::ToRubyString(String)'
+  ret
+end
+</code></pre>
+
+	<p>A few things have changed since <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">the first drop of the code</a> First, notice that the delimiter between a type name and a method name has changed from a . to a ::. Second, I&#8217;ve extended the type syntax to support generic types. Third, I now use Ruby symbols to represent variable and label names. Symbols are <a href="http://encyclopedia.thefreedictionary.com/String+intern+pool">interned strings</a> and can be recognized by their &#8217;:&#8217; prefix.</p>
+
+
+	<p>If you call <code>Assembly.GetType(String)</code> to find a generic type, you&#8217;ll immediately be struck by the rather obtuse syntax:</p>
+
+
+	<p><code>System.Collections.Generic.List`1[System.String]</code></p>
+
+
+	<p>Imagine typing that every time you wanted to reference a method on that type. Ugh. So I extended my code to search through namespaces that are in scope for that type, which yields the much more humane syntax:</p>
+
+
+	<p><code>List&lt;String&gt;</code></p>
+
+
+	<p>I&#8217;m going to write a few more test cases for this code tonight, but I think that this code is fairly feature complete now. Hopefully I&#8217;ll get another drop out tonight for folks who are interested in following along.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/09/generics-and-rbdynamicmethod#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/09/humane-interfaces">Humane interfaces</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 09 Dec 2005 20:12:00 GMT">Fri, 09 Dec 2005 20:12:00 GMT</span></p>
+<p>After talking to some folks yesterday, I realized that there are a lot of people who likely drive by this blog, take a look at my <code>RbDynamicMethod</code> project and wonder if I&#8217;m out of my mind. Surely John can&#8217;t be advocating that we all go out and write <span class="caps">CIL</span> code using Ruby!</p>
+
+
+	<p>I&#8217;m really happy to see that at least <a href="http://www.dotnetjunkies.com/WebLog/anoras/archive/2005/12/07/134193.aspx">Anders Noras</a> gets the core idea behind why I&#8217;m creating <code>RbDynamicMethod</code> in the first place: I want to put a more <a href="http://martinfowler.com/bliki/HumaneInterface.html">humane interface</a> on top of the <code>DynamicMethod</code> API that was introduced in .NET 2.0. <code>RbDynamicMethod</code> will make it much easier for me to define the <span class="caps">CIL</span> shims that must be generated on the fly when some Ruby code wants to call some <span class="caps">CLR</span> code (and vice-versa).</p>
+
+
+	<p>I found after writing my first bridge entirely in managed C++ that it was just too difficult to see the <span class="caps">CIL</span> through all the code that was required to create it. And when the complexity of the shims went up (to deal with generic method overloading for example), I knew that it was time to hit the reset button.</p>
+
+
+	<p>I&#8217;m writing my first bits of <span class="caps">CIL</span> test code to interact with generic types in the <span class="caps">CLR</span> today. It&#8217;s forcing me to change things slightly in <code>RbDynamicMethod</code>, and I&#8217;ll post the results of those experiments shortly.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/09/humane-interfaces#comments">no comments</a></p> 
+  </div>
+
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102353551/"><img alt="RSS Reader in Ruby" src="http://static.flickr.com/43/102353551_a14d82507d_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/109809504/"><img alt="Windows Presentation Foundation and RubyCLR" src="http://static.flickr.com/49/109809504_3cb96cef07_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102769655/"><img alt="Google Calculator using RubyCLR" src="http://static.flickr.com/27/102769655_160658c51e_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/110674297/"><img alt="RubyCLR irb session" src="http://static.flickr.com/44/110674297_303908d4cd_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12/09">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

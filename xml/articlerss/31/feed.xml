@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Refining the Ruby CIL DSL</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Refining the Ruby CIL DSL" by jlam</title>
+      <description>&lt;p&gt;A bit more hacking today, and I&amp;#8217;ve got a pretty complete implementation of my Ruby &lt;span class="caps"&gt;CIL DSL&lt;/span&gt;. Highlights include the new &lt;code&gt;include&lt;/code&gt; directive for namespaces. Except for some corner cases, I handle all of &lt;span class="caps"&gt;CIL&lt;/span&gt; right now.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+require 'RbDynamicMethod'
+
+RbDynamicMethod::create_ruby_method('say_hello') do
+  include  'System, System.Collections'
+  ldstr    'Hello, World, int = {0}, double = {1}'
+  ldc_i4   42
+  box      'Int32'
+  ldc_r8   3.141592654
+  box      'Double'
+  call     'static Console.WriteLine(String,Object,Object)'
+  br_s     'end_of_method'
+  ldstr    'Goodbye, World'
+  call     'static Console.WriteLine(String)'
+  label    'end_of_method'
+  ldc_i4_4
+  ret
+end
+
+RbDynamicMethod::say_hello
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Mon, 05 Dec 2005 17:41:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/05/refining-the-ruby-cil-dsl"&gt;Refining the Ruby CIL DSL&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/05/refining-the-ruby-cil-dsl"&gt;Refining the Ruby CIL DSL&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

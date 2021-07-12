@@ -1,0 +1,262 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: PostfixThe Definitive Guide
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0596002122" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wNTk2MDAyMTIyLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFBvc3RmaXhUaGUgRGVmaW5pdGl2ZSBHdWlkZTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8S3lsZSBELiBEZW50Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkMzQuOTU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQzNC45NTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8NC4wOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwxMDs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wNTk2MDAyMTIyL3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47PlElWXkOov17fyxfzTQDaQ4N78hB" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0596002122.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">PostfixThe Definitive Guide</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Kyle D. Dent</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$34.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$34.95</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.0</span>
+          based on
+          <span id="TotalReviews">10</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0596002122/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Good reference guide for PostFix</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2005-04-26</span>
+                    </div>
+                    <span>PostFix is a replacement mail server, MTA, for Unix based systems that 
+<br />formerly used Sendmail or other variants. PostFix was written to be a 
+<br />drop in replacement for Sendmail but with it's own variations on control 
+<br />files.
+<br />
+<br />This book outlines most of the common issues in dealing with setting up 
+<br />PostFix. The author takes the reader through the design concerns outlined 
+<br />by the author of the program, Wietse Venema, who wrote the forward of the 
+<br />book.
+<br />
+<br />Sendmail has been a staple of the mail delivery world but it has a well
+<br />deserved reputation for being hard to setup, administer and understand.  
+<br />The O'Reilly book on Sendmail is at least 3 times as large as this book.  
+<br />There is alot to learn about its' macro language and using M4 to build
+<br />control files. Sendmail is a very hard program for a beginner to
+<br />understand and configure properly.
+<br />
+<br />The author spends the first few chapters discussing how a mail server is 
+<br />supposed to work; how the DNS system interacts with the mail system. There 
+<br />are well laid out block diagrams to show the flow of email through a 
+<br />system. Any SysAdmin who has spent time administering a mail system can 
+<br />probably skip the first few chapters. Those who are new to running a mail 
+<br />server should find the begining chapters enlightening.
+<br />
+<br />PostFix mostly uses easy to read control files that don't require processing. 
+<br />The program can be set up to use the Unix standard mbox delivery format or 
+<br />the newer maildir format. The book explains the pros and cons of the 2 
+<br />storage formats both from the MTA perspective and the pop or imap 
+<br />interface.
+<br />
+<br />Most of the more common configuration tweaks used in securing a Sendmail 
+<br />system also apply to a PostFix installation. They are just easier to set 
+<br />up in PostFix with the examples provided.
+<br />
+<br />The book has a section devoted to setting up secure mail relay using the
+<br />Cyrus SASL libraries. It details setting up the password database via the
+<br />Unix standard or shadow format, SASL, LDAP PAM or MYSQL formats. The 
+<br />author discusses ways to further secure the connection by using TLS 
+<br />connections to ensure passwords are not compromised.
+<br />
+<br />PostFix has some built in anti-spam tools. The book has a chapter devoted 
+<br />to to pros and cons of the various approaches. Examples of "reasonable" 
+<br />and "paranoid" approaches for setting up PostFix are provided. A simpler 
+<br />apporoach than jumping directly into Spam Assassin or other 
+<br />spam pre-processors
+<br />
+<br />Mailing lists are another feature that PostFix can manage. The book has 
+<br />examples of various simple ways of setting up mailing lists short of 
+<br />installing a separate program like MajorDomo. This is a handy feature.
+<br />
+<br />There are Appendixes intended to walk a user through the compiling process 
+<br />which will help users not familiar with using Make. There is a listing of 
+<br />the PostFix parameter commands and what they all mean.
+<br />
+<br />PostFix the Definitive Guide is a well written, easy to read step by step
+<br />instruction book for using the PostFix mail server. Using this book as a
+<br />reference, an experienced SysAdmin should make the transition from
+<br />Sendmail to PostFix without much trouble. For someone new to the world of
+<br />MTA's, the book should answer most of the questions associated with
+<br />getting a PostFix mail server up and running.
+<br />
+<br />This is another O'Reilly book that should be on a SysAdmin's bookshelf.
+<br /></span>
+                  
+                    <div class="CustomerReviewSummary">Not what I was expecting</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>2</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>4</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-12-16</span>
+                    </div>
+                    <span>If you're looking for a comprehensive guide on setting up a Postfix mail server, then this isn't the book for you.  For those that are already familiar with setting up MTAs, the information provided in "The Definitive Guide" is probably enough, but this book only covers a subset of the Postfix configuration parameters and does not provide the step-by-step instructions that many people may be expecting.  </span>
+                  
+                    <div class="CustomerReviewSummary">This is a great book.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>11</span>
+                      /
+                      <span>11</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-08-13</span>
+                    </div>
+                    <span>After over a month of trying to get my first email server up and running using the try a setting, see what happens method,  I finally gave up and bought this book.  Now I'm in business. 
+<br />
+<br />Everywhere I read, people claimed the easiest to configure MTA was postfix, so that is why I began to use it.  True, the documention on the website is helpful and so are the included examples, but if you don't have the concepts down, that is useless.   
+<br />
+<br />Thats where this great book comes in.  This book isn't just a paper copy of the online docs, unlike most other computer books. It explains what stuff is, does, and what it means.  I can read the config file just fine, I just don't know what the settings do.  For example, the online docs showed how to setup masquerading and examples, but never told me what that meant.  From a newbie standpoint, the masquerade meant the same thing as an alias.  Well, those words mean the same thing.  I need the vocabulary from the book to help me understand.  Conanical is a common work in computer land?  Maybe in Silicon Valley but not in NJ. 
+<br />
+<br />A glowing chapter is DNS and e-mail which more than pays for the entire book.  Not only to I understand DNS better, I can setup a backup mail system.  Another great thing is the author shows you an entire setup zone file in one chunk, instead of line by line explanations and never showing you the whole thing put together.  DNS and Bind book anyone?  For shame.
+<br />
+<br />Also, The Hosting Multiple Domains is a fantastic chapter.
+<br />  
+<br />Anyways, if you are lost and feeling like and idiot like I was, get this book.  Thanks Mr. Dent for a fantastic book that is clear and easy to understand.</span>
+                  
+                    <div class="CustomerReviewSummary">Well written, flawed guide to Postfix</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>10</span>
+                      /
+                      <span>10</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-08-09</span>
+                    </div>
+                    <span>After many years bashing my head against sendmail in all it's gory details I had amassed a fair amount of knowledge and documentation on handling the Mail Transfer Agent (MTA) in Linux and Mac OS X. This caused a fair amount of teeth gnashing when I discovered it had gone the way of all flesh in OS X Panther to be replaced with Postfix.
+<br />
+<br />Fortunately, my first needs were simple and I came to realise that Postfix was a much easier system to install and maintain. Now that my needs are more complex, I was glad when this book hit my desk at exactly the same time as I started upgrading the corporate servers from Mac OS 9 to OS X Server.
+<br />
+<br />Postfix: The Definitive Guide seems to fit the bill. It is a well-written and well-constructed guide to mail systems in general and Postfix in particular.
+<br />
+<br />The book starts with a good overview of the underlying technology in Chapters 1 and 2. I can't blame Dent for my slight confusion in the section on addresses and headers - having RFC822 superseded by RFC2822 was just a little too much coincidence for this particular "bear of little brain." He then follows it with a chapter discussing Postfix's architecture, important since Postfix uses a much more modular approach than the sendmail monolith, with each part of the mail handling process a different executable and the single queue turned into five.
+<br />
+<br />Once the background is well covered, Dent then gets onto the nitty-gritty of configuring and administering Postfix. He has certainly covered everything I needed, including spam handling, multiple domains, relaying, SASL authentication and using LDAP. Once I'd finished grokking all that, and getting it integrated into my servers, I had a corporate email system up in three sites that replaced and improved upon a couple of thousand dollars worth of proprietary dreck. Happy is an understatement.
+<br />
+<br />Dent's writing is sometimes a little patchy, though never bad. The technical detail does seem overpowering in places, though, and I occasionally found myself reading a section through more than once with a configuration file open in front of me. There are certainly spots where a little more hand holding and care with the writing would have been appreciated. (If you are a little more cognizant of the interstices of mail systems then you may not have the same problem.)
+<br />
+<br />I did, however, appreciate the appendices enormously. The four appendices cover configuration parameters, Postfix commands, installation, and an FAQ. My system came with Postfix compiled and installed just as I required it so I didn't get a chance to thoroughly test out Dent's installation procedure (though it looks good); the other three continue to be useful.
+<br />
+<br />If you want to have a look for yourself, then the usual O'Reilly page is complete with a table of contents and index, but this time no example chapter is provided (how come, O'Reilly?). You can also get an expanded version of the FAQ in Appendix 4 from Dent's website. A better example of Dent's writing style is an excellent article on troubleshooting with Postfix logs at O'Reilly's Onlamp.com.
+<br />
+<br />This is a good book, Dent has explained the underlying methodology and use of Postfix well, taken the reader through all aspects of this MTA system and explained both the why and the how. I would recommend this book (and, as a result Postfix) to anyone looking for an MTA and a guide to configuring and running it.</span>
+                  
+                    <div class="CustomerReviewSummary">Postfix: The not very definitive guide</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>10</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-07-12</span>
+                    </div>
+                    <span>Postfix: The Definitive Guide by Kyle D. Dent would be much better titled as Postfix: Cliffnotes. It is written hastily and many sections are left incomplete.<p>In many cases throughout the book I was left searching the web for answers to my questions on the web. The configuration file reference is nothing short of being deficient. I would estimate 50%-60% of the directives are left out completely, while existing directives contain less of a description than the comments in the configuration file.<p>If this book was not under the veil of "The Definitive Guide" series I might have been happier. Definitive is defined as "serving to provide a final solution or to end a situation", which is nothing less than I have obtained in prior books I have read in this series.<p>This book is well suited, and I recommend it, for the person who already has some Postfix or Sendmail experience. If you don't have this experience, plan to use this book as a complement to Google and the Postfix site.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596007078'>
+                      SpamAssassin
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.0 based on 6 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596001584'>
+                      DNS and BIND, Fourth Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 52 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596001622'>
+                      Squid: The Definitive Guide
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 3 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1565924916'>
+                      LDAP System Administration
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.5 based on 14 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=059600012X'>
+                      Managing IMAP
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.5 based on 4 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

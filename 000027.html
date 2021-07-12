@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Parameter arrays</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000026.html" title="Using the /optimize switch in CSC" />
+
+<link rel="next" href="http://www.iunknown.com/000028.html" title="Essential .NET" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000026.html">&laquo; Using the /optimize switch in CSC</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000028.html">Essential .NET &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 04, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Parameter arrays</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I love <A href="About/Aboutme.html">my day job</A>. It lets me explore all sorts of weird nooks and crannies inside the CLR and it gives me an opportunity to share what I found with you. That's fun.</P><br />
+<P>Today's topic is parameter arrays. They are described in Section 10.5.1.4 of the C# Language Specification. Today, I needed a quick and dirty way to cruft up an object that would hold an arbitrary number of values, each of which could be a different type. I turned to parameter arrays for the solution. As it turns out, parameter arrays are simply some syntactic sugar that the C# compiler uses to hide a bit of ugliness from you. </P><br />
+<P>Consider this code frag:</P><br />
+<P><CODE>class Values <BR>{ <BR>&nbsp; private object[] _parameters; <BR>&nbsp; public Values( params object[] parameters ) <BR>&nbsp; { <BR>&nbsp;&nbsp;&nbsp; _parameters = new object[ parameters.Length ]; <BR>&nbsp;&nbsp;&nbsp; parameters.CopyTo( _parameters, 0 ); <BR>&nbsp; } <BR>}</CODE></P><br />
+<P>Notice the constructor accepts a parameter array of object parameters. Now let's consider a method that passes a bunch of values to the Values constructor:</P><br />
+<P><CODE>public static int Add( int x, int y, string[] args ) <BR>{ <BR>&nbsp; Values values = new Values( x, y, args ); <BR>&nbsp; return x + y; <BR>} </CODE></P><br />
+<P>If we use ILDASM to examine the CIL that is generated by the C# compiler, this is what we see:</P><br />
+<P><CODE>.method public hidebysig static int32&nbsp;Add(int32 x,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int32 y,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string[] args) cil managed<BR>{<BR>&nbsp; // Code size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 40 (0x28)<BR>&nbsp; .maxstack&nbsp; 3<BR>&nbsp; .locals init ([0] object[] values)<BR><BR>// Values values = new Values( x, y, args );</CODE><CODE><BR><BR>&nbsp; IL_0000:&nbsp; ldc.i4.3<BR>&nbsp; IL_0001:&nbsp; newarr&nbsp;&nbsp;&nbsp;&nbsp; [mscorlib]System.Object<BR>&nbsp; IL_0006:&nbsp; stloc.0<BR>&nbsp; IL_0007:&nbsp; ldloc.0<BR>&nbsp; IL_0008:&nbsp; ldc.i4.0<BR>&nbsp; IL_0009:&nbsp; ldarg.0<BR>&nbsp; IL_000a:&nbsp; box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mscorlib]System.Int32<BR>&nbsp; IL_000f:&nbsp; stelem.ref<BR>&nbsp; IL_0010:&nbsp; ldloc.0<BR>&nbsp; IL_0011:&nbsp; ldc.i4.1<BR>&nbsp; IL_0012:&nbsp; ldarg.1<BR>&nbsp; IL_0013:&nbsp; box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mscorlib]System.Int32<BR>&nbsp; IL_0018:&nbsp; stelem.ref<BR>&nbsp; IL_0019:&nbsp; ldloc.0<BR>&nbsp; IL_001a:&nbsp; ldc.i4.2<BR>&nbsp; IL_001b:&nbsp; ldarg.2<BR>&nbsp; IL_001c:&nbsp; stelem.ref<BR>&nbsp; IL_001d:&nbsp; ldloc.0<BR>&nbsp; IL_001e:&nbsp; newobj&nbsp;&nbsp;&nbsp;&nbsp; instance void ParameterArrays.Values::.ctor(object[])<BR>&nbsp; IL_0023:&nbsp; pop<BR><BR>// return x + y;<BR><BR>&nbsp; IL_0024:&nbsp; ldarg.0<BR>&nbsp; IL_0025:&nbsp; ldarg.1<BR>&nbsp; IL_0026:&nbsp; add<BR>&nbsp; IL_0027:&nbsp; ret<BR>} // end of method Class1::ExplicitAdd<BR></P></CODE><br />
+<P>Note that this code was compiled using the /optimize switch so we see the <EM>real</EM> CIL, and <A href="Weblog/fog0000000049.html">not the wierd crap</A> that is generated to make debuggers happy.</P><br />
+<P>As you can see, the C# compiler generated quite a bit of code for the call to the Values constructor. All this code does is create an object array with three elements, stuff the values of x, y and args into those elements, and pass a reference to that object array to the Values constructor. Note that since we are passing an <EM>object</EM> array, it is necessary to box the integer values x and y prior to stuffing them in the parameter array. </P><br />
+<P>In fact, the original Add() method is identical to the following ExplicitAdd() method that manually constructs an object array:</P><br />
+<P><CODE>public static int ExplicitAdd( int x, int y, string[] args ) <BR>{ <BR>&nbsp; object[] values = new object[ 3 ]; <BR>&nbsp; values[ 0 ] = x;&nbsp;<BR>&nbsp;&nbsp;values[ 1 ] = y; <BR>&nbsp; values[ 2 ] = args; <BR>&nbsp; Values data = new Values( values ); <BR>&nbsp; return x + y;<BR>}</CODE></P><br />
+<P>Run this code through your C# compiler; you will see that it generates exactly the same CIL. There are other places in C# where the compiler generates a bunch of code to hide ugliness from you. The way delegates are handled is an example of this. I'll cover that in a future entry.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January  4, 2002 04:04 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="27" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000027.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="27" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

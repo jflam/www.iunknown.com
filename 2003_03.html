@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: March 2003 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2003_02.html" title="February 2003" />
+
+<link rel="next" href="http://www.iunknown.com/2003_04.html" title="April 2003" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2003_02.html">&laquo; February 2003</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2003_04.html">April 2003 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+
+
+<h2 class="date">March 22, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000230"></a>
+<h3 class="title">Code generation links</h3>
+
+<p><P>I spent some time this evening googling to see who else is talking about code generation. </P><br />
+<P>This <A href="http://www.softwarereality.com/programming/code_generation.jsp">first article by Matt Stephens</A> is a very good overview of the problem space. He motivates the problem well, and motivates why code generation is a good fit. In particular, he spends tie talking about generating the data access layer of an application, an area that I often see as being some of the "low hanging fruit" for code generation. Unfortunately, Matt doesn't provide any concrete examples of code generation in action, which makes his paper feels a bit too abstract.</P><br />
+<P>Next, I found an&nbsp;article that talks about <A href="http://www.developer.com/xml/article.php/1562561">generating code using XSLT</A>. Jeff Ryan walks through a fairly complete sample where he builds a JavaBean component using XML and XSLT. Christian Georgescu wrote <A href="http://www.cuj.com/articles/2002/0201/0201a/0201a.htm?topic=articles">a similar article in the C/C++ Users Journal</A>&nbsp;where he talks about generating C++ code from XML and XSLT. I like Christian's motivation part of his article.</P><br />
+<P>Based on my experience, writing a code generator in XSLT is difficult since the syntax of XSLT tends to obscure what the generated code looks like.&nbsp;Maintaining an XSLT-based code generator would be difficult for non-trivial applications.</P><br />
+<P>The thing that I really like about <A href="http://www.imatix.com/html/gslgen/">gslgen </A>is that the syntax of the code generator is very clean and simplistic. Over the next week or so, I'll publish a few sample code generation scripts using gslgen to illustrate the utility of the technique.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000230.html">07:37 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=230" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">March 13, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000229"></a>
+<h3 class="title">Sleepless nights and future plans</h3>
+
+<p><P>Thanks to everyone who said hi to Kobe! We can see he's getting quite the fan club on the web as well!</P><br />
+<P>I'm writing this entry after I took Kobe out three times to go potty. He signaled that he needed to go at 11:30pm, but it took three separate trips down to his spot (and about 1 hour of total time) before all of his business was done. </P><br />
+<P>I suspect that some of the trouble was related to switching his crate from a wire cage to a Vari enclosed crate; this is his first night in his new crate, and there was the expected bit of resistance. However, he's adjusting a lot better to the new crate than he did initially to his old crate, and we're hoping that the smaller size and a more den-like feel will help him (and us!) in the long run. Now I have to look forward to the 4:00am potty run ... I can't wait until he sleeps through the night.</P><br />
+<P>The peace and quiet that I get at this hour lets me reflect on future plans. There are two key pieces of technology that figure heavily into my plans: code generation and Longhorn.</P><br />
+<P>I've been spending some time recently doing some consulting work on code generation in a large distributed .NET application. The feedback that I'm getting based on our initial week of consultation is extremely positive. I'm going to be spending a lot of time over the next few months working with this company to integrate code generation into their development process. I haven't been this excited about consulting in a long time; I look forward to seeing my client succeed.</P><br />
+<P>I'm very excited by the promise of code generation as a "force multiplier" in the development process. The abstraction level that you can reach is really unsurpassed by any other technique that I've worked with. You can simply generate better code faster using code generation. I'm seriously thinking about putting my ideas down on paper, and building a set of open source code generation tools. The tool I'm using now, <A href="http://www.imatix.com/html/gslgen/">gslgen</A>, is a classic 80% tool. It does a good enough job, but there's a lot of interesting ways that it could be extended. More on this later.</P><br />
+<P>The second key technology in my future plans is Longhorn. However, since, I'm all NDA'd up on Longhorn, there won't be anything showing up on this web site. The only thing I can say is <A href="http://msdn.microsoft.com/events/pdc/">make sure that you go to the PDC this year</A>. This promises to be the most important PDC since the .NET PDC in 2000.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000229.html">12:50 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=229" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">March 11, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000228"></a>
+<h3 class="title">Introducing Kobe</h3>
+
+<p><P>My extremely low blogging frequency of late can be partially explained by this snapshot:</P><SPAN><br />
+<CENTER><IMG height=600 alt=[Image] hspace=4 src="Images/Kobe_with_toy_medium.jpg" width=800 border=0 cd:pos="0"><BR clear=all></CENTER></SPAN><SPAN><br />
+<P><BR clear=all>This is our new puppy; his name is Kobe. He's a black Labrador Retriever that we brought home from <A href="http://www.bralexlabradors.ca">Bralex Labradors</A>. For some earlier pictures of Kobe (and his littermates),&nbsp;<A href="http://www.bralexlabradors.ca/puppies.html">look here</A> (this link will&nbsp;probably be obsolete in a few days when <A href="http://www.bralexlabradors.ca/upcomming.html#litters">Darbi's puppies arrive</A>).&nbsp;We visited Bralex several times before finally picking up Kobe last Saturday. He had the sweetest temperment amongst his littermates, and took to us instantly.</P><br />
+<P>As new parents, Carolyn and I have had a few sleep-deprived nights as we struggled to understand Kobe and how to communicate with him. Crate training has really helped to housebreak him. So far there have only been a few isolated accidents as we're learning his signals to us. </P><br />
+<P></SPAN><SPAN>He's got a <EM>really </EM>great temperment. He loves meeting new people, and is absolutely the star of our apartment building. His fan club becomes bigger every time we take him outside to go potty. </SPAN></P><br />
+<P><SPAN></SPAN><SPAN>We took Kobe for his first visit to his vet, Dr. Al Moroz of the Animal Hospital of High Park, this afternoon. Al's a tremendous vet; we were so impressed by how well he handled Kobe and how he was able to settle down his anxious parents! Al's got a new black Lab puppy as well, who's just a week younger than Kobe. His stories about his dog and how she gets along with him really helped us out in understanding black Lab behavior. I can't recommend Al enough as a vet.</SPAN></P><br />
+<P><SPAN></SPAN><SPAN>Kobe's a big puppy already. Born on January 5, he already weighs a whopping 17 pounds as a 9-week old! To put that growth spurt in perspective, he weighed 9 pounds on Februrary 18 ...&nbsp;</SPAN><SPAN>Al figures he's going to be a really big dog when he's full-grown. His best guess right now is 90+ pounds. </SPAN><SPAN></P></SPAN></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000228.html">03:05 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=228" onclick="OpenComments(this.href); return false">Comments (8)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+<h2 class="date">March 02, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000227"></a>
+<h3 class="title">Test First Development Pitfalls</h3>
+
+<p><P>I've been spending a fair amount of time recently writing GUI rendering code. I've also been spending a fair amount of time recently grappling with unfamiliar API's. These experiences have revealed two areas where test-first development doesn't quite work:</P><br />
+<OL><br />
+<LI>GUI rendering code where "correctness" is determined by how something must look<br />
+<LI>Early stage implementation where interface churn is the norm</LI></OL><br />
+<P>The first case encompasses virtually all of GUI development, regardless of whether your GUI is an HTML page or a traditional Windows application. In these cases, whether or not something is "correct" depends on how an object appears. Unfortunately, there are usually several different ways to render the object, all of which yield correct results. Furthermore, it's really hard to determine how an object is rendered programmatically, whereas it is usually quite simple for a human to determine if an object looks "correct".</P><br />
+<P>Dan Dunham <A href="http://coding.strangesearch.net/archives/000033.html">recently wrote about this problem</A>. One suggestion that makes a lot of sense involves validating the objects that define the state for the to-be-rendered object (e.g. 10x20 pixel green box at 5,20). This way your unit tests can test to see whether the object contains the expected state at the expected time.</P><br />
+<P>The second case commonly turns up when you have finished writing your disposable prototypes, and have begun writing your production code. In these early stages of development, your class interfaces tend to change very quickly.&nbsp;The desired interaction between different classes and objects in your system is generally never evident from the beginning, and your are&nbsp;forced to discard initial designs as your code quickly evolves.</P><br />
+<P>I found that maintaining a suite of unit tests for these classes greatly increases the amount of friction involved in changing a class. This causes me to rapidly run into my <A href="http://www.well.com/user/smalin/miller.html">7+/-2 limitations</A>, and slows down the development process in these critical early stages of development. This experience has led me to change my approach in these cases: I build my unit tests once the interactions between different classes and objects have been established.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000227.html">05:37 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=227" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<div class="blogbody">
+<a name="000226"></a>
+<h3 class="title">Microsoft vs. Open Source</h3>
+
+<p><P>I saw that Dare Obasanjo <A href="http://www.kuro5hin.org/story/2003/3/1/6633/32605">commented</A> on Robert Scoble's <A href="http://radio.weblogs.com/0001011/2003/03/01.html#a2380">open letter to Bill</A>, and I felt compelled to add some comments of my own to the discussion.</P><br />
+<P>One book that has strongly influenced my thinking over the past few years is Clayton Christensen's "The Innovator's Dilemma". The following figure represents a Christensen-like analysis of Windows vs. Linux:</P><SPAN><br />
+<DIV align=left><IMG height=374 alt=[Image] hspace=4 src="Images/graph.png" width=423 border=0 cd:pos="0"> </DIV><br />
+<P align=left>The key point about this figure is that the rate of innovation in Linux is greater than the rate of increase of the lower limit of user expectations. Therefore it is inevitable that the Linux curve and the lower limit of user expectations curve intersect. This is what Christensen calls a "disruptive technology".</P><br />
+<P align=left>In the case of server applications, Linux has clearly exceeded the lower limit of user expectations, which explains why Linux is commoditizing the market for low-end server applications. In the case of desktop applications, the OpenOffice / Linux combination hasn't quite reached the lower limit of user expectations, which explains the relatively shallow penetration of Linux into those markets. </P><br />
+<P align=left>However, if you accept that the rate of OpenOffice / Linux innovation will outstrip the rate of increase in the lower limit of user expectations, it becomes inevitable that Linux will begin to hit Microsoft close to home: in the desktop and the office productivity markets.</P><br />
+<P align=left>Unfortunately for Microsoft, many of the recent features that have been added to Windows / Office have primarily benefited the high-end (read: Enterprise) user. In many ways, I feel that the current package that Microsoft offers outstrips the upper limit of&nbsp; user expectations. </P><br />
+<P align=left>So, what can Microsoft do about this problem? Increase the lower limit of user expectations. Drive the pace of innovation (and user expectations) so that the slope of the lower limit of user expectations line is parallel to, or steeper than the line that defines the rate of Linux innovation. I suspect that this was what Dave Stutz meant when he told Microsoft to keep innovating and to stop looking over their collective shoulders. </P><br />
+<P align=left>Another (albeit radical) possibility would have Microsoft give away the base services that comprise Windows, and sell value-added technologies that layer on top of that base. This would get Microsoft a lot closer to the oft-desired subscription-based business model, while blunting the effect of Linux on the desktop marketplace. However, this approach would cannibalize Microsoft OEM "computer tax" revenues, which means that it would likely only be employed if:</P><br />
+<OL><br />
+<LI><br />
+<DIV align=left>Linux rapidly grabs desktop market share (the we-don't-have-a-choice scenario) or</DIV><br />
+<LI><br />
+<DIV align=left>Microsoft comes up with a package of services that are truly compelling and which would convince subscribers to sign up (the increase-lower-limit-of-expectations scenario)</DIV></LI></OL><br />
+<P align=left>How this ultimately plays out is anyone's guess. But it means that we're in for some exciting times over the next few years.</P></SPAN></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000226.html">02:37 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=226" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

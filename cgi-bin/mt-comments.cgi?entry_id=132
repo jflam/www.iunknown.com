@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on I love PBase.com</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: I love PBase.com</div>
+
+
+<div class="comments-body">
+<p>They are about to charge people for holding the account, check out the website!!!</p>
+<span class="comments-post">Posted by <a href="mailto&#58;kw__12&#64;hotmail&#46;com">Ken</a> at December 25, 2002 12:05 AM</span>
+</div>
+<div class="comments-body">
+<p>I guess that was inevitable. I contributed more than that as a donor, so it's actually a price break for me </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 28, 2002 05:23 PM</span>
+</div>
+<div class="comments-body">
+<p>I only just discovered pbase 2 wks. ago and regardless of the fact that we discovered a yr. apart, I completely agree with both yr. positive & negative comments about the service.</p>
+
+<p>It looks great, is realtively easy to use & has great features (esp. compared w. blogger.com--where I came from).</p>
+
+<p>My problem (& I think you mentioned this in somewhat technical terms which I had some trouble following) is with the CSS stylesheets & textual elements.  The editing function is miserable & is unnecessarily hard to use or figure out.  They should do a better job of explaining to users how to use stylesheets AND how to edit existing stylesheets in order to personalize them for an individual member's use.  I think that their FAQs & Help info is pretty lame.</p>
+
+<p>Here's hoping that the good stuff stays good & the bad stuff gets fixed.</p>
+
+<p>Richard</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.pbase.com/richards1052/">Richard Silverstein</a> at July 12, 2003 04:31 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

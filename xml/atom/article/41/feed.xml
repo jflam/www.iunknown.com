@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Refactoring CIL</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/41/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2005/12/15/refactoring-cil" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:40-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:2c54ae719a66c2c3c8ed0d9ca1b3a908</id>
+    <published>2005-12-15T17:33:00-08:00</published>
+    <updated>2006-08-21T15:55:40-07:00</updated>
+    <title type="html">Refactoring CIL</title>
+    <link href="http://www.iunknown.com/articles/2005/12/15/refactoring-cil" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;I had a great day today. I had one of those a-ha experiences where you get to benefit from an earlier decision in ways that you did not expect. I started down the path of generating constructor shims using &lt;code&gt;RbDynamicMethod&lt;/code&gt;. I completed my first spike yesterday, when I successfully constructed &lt;code&gt;ArrayList&lt;/code&gt; objects using &lt;code&gt;RbDynamicMethod&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Today, I wanted to make a slightly more generic constructor shim that would let me call both a default and a single argument constructor: &lt;code&gt;ArrayList()&lt;/code&gt; and &lt;code&gt;ArrayList(Int32)&lt;/code&gt;. While I was writing this code, I began to feel some &lt;span class="caps"&gt;CIL&lt;/span&gt; pain (it is, after all &lt;strong&gt;assembly language&lt;/strong&gt;). So I did what came naturally: I began to refactor the code.&lt;/p&gt;
+
+
+	&lt;p&gt;This reminds me of the talk that I saw this year at &lt;span class="caps"&gt;OOPSLA&lt;/span&gt; where Ward Cunningham was refactoring assembly language using IntelliJ. In my case, I refactored &lt;span class="caps"&gt;CIL&lt;/span&gt; using emacs :) Here&amp;#8217;s the end result:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def initialize(*params)
+  create_ruby_instance_method(self.class, 'initialize') do
+    include     'System.Collections'
+    declare     "#{symbol}", :obj
+    ldarg_0
+    switch      [:zero_param, :one_param]
+    br_s        :end_switch
+    label       :zero_param
+    newobj      '#{symbol}()'
+    stloc_s     :obj
+    br_s        :end_switch
+    label       :one_param
+    ld_rb_param 0, 'Int32'
+    newobj      '#{symbol}(Int32)'
+    stloc_s     :obj
+    label       :end_switch
+    ret_objref  :obj
+  end
+  initialize(*params)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;While this is mostly &lt;span class="caps"&gt;CIL&lt;/span&gt;, it also contains a number of macros and fun Ruby string stuff. The macros that I used are: &lt;code&gt;ld_rb_param&lt;/code&gt;, &lt;code&gt;ret_objref&lt;/code&gt;. As it turns out, these will be very common code fragments that will be used throughout the bridge. Writing those macros was even easier. Here&amp;#8217;s a sample:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+module RbDynamicMethodHelpers
+  def ld_self
+    ldarg_2
+  end
+
+  def ld_rb_param(index, type)
+    ldarg_1
+    case index
+    when 1:
+      ldc_i4_4
+      add
+    when 2:
+      ldc_i4_8
+      add
+    else
+      ldc_i4    index &amp;lt;&amp;lt; 2
+      add
+    end
+    ldind_i4
+    call      "static Marshal::To#{type}(VALUE)" 
+  end
+
+  def ret_objref(local_variable_name)
+    ld_self
+    ldloc_s  local_variable_name
+    call     'static Marshal::AssignToClassInstance(VALUE, Object)'
+    ret
+  end
+end
+&lt;/pre&gt;&lt;/code&gt;
+
+	&lt;p&gt;It turned out it was a good thing that I left the method declarations as strings, since I could do some simple string manipulation to inject implement syntactic sugar methods such as &lt;code&gt;ld_rb_param&lt;/code&gt; (which is actually a very efficient &lt;span class="caps"&gt;CIL&lt;/span&gt; implementation that is optimized for the common cases).&lt;/p&gt;
+
+
+	&lt;p&gt;Oh yeah, how much extra code did I have to add to &lt;code&gt;RbDynamicMethod&lt;/code&gt; to enable macros? I changed:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;object.extend RbDynamicMethod&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;to:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;object.extend RbDynamicMethod, RbDynamicMethodHelpers&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Did I mention how much I love Ruby? :)&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;I had a great day today. I had one of those a-ha experiences where you get to benefit from an earlier decision in ways that you did not expect. I started down the path of generating constructor shims using &lt;code&gt;RbDynamicMethod&lt;/code&gt;. I completed my first spike yesterday, when I successfully constructed &lt;code&gt;ArrayList&lt;/code&gt; objects using &lt;code&gt;RbDynamicMethod&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Today, I wanted to make a slightly more generic constructor shim that would let me call both a default and a single argument constructor: &lt;code&gt;ArrayList()&lt;/code&gt; and &lt;code&gt;ArrayList(Int32)&lt;/code&gt;. While I was writing this code, I began to feel some &lt;span class="caps"&gt;CIL&lt;/span&gt; pain (it is, after all &lt;strong&gt;assembly language&lt;/strong&gt;). So I did what came naturally: I began to refactor the code.&lt;/p&gt;
+
+
+	&lt;p&gt;This reminds me of the talk that I saw this year at &lt;span class="caps"&gt;OOPSLA&lt;/span&gt; where Ward Cunningham was refactoring assembly language using IntelliJ. In my case, I refactored &lt;span class="caps"&gt;CIL&lt;/span&gt; using emacs :) Here&amp;#8217;s the end result:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def initialize(*params)
+  create_ruby_instance_method(self.class, 'initialize') do
+    include     'System.Collections'
+    declare     "#{symbol}", :obj
+    ldarg_0
+    switch      [:zero_param, :one_param]
+    br_s        :end_switch
+    label       :zero_param
+    newobj      '#{symbol}()'
+    stloc_s     :obj
+    br_s        :end_switch
+    label       :one_param
+    ld_rb_param 0, 'Int32'
+    newobj      '#{symbol}(Int32)'
+    stloc_s     :obj
+    label       :end_switch
+    ret_objref  :obj
+  end
+  initialize(*params)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;While this is mostly &lt;span class="caps"&gt;CIL&lt;/span&gt;, it also contains a number of macros and fun Ruby string stuff. The macros that I used are: &lt;code&gt;ld_rb_param&lt;/code&gt;, &lt;code&gt;ret_objref&lt;/code&gt;. As it turns out, these will be very common code fragments that will be used throughout the bridge. Writing those macros was even easier. Here&amp;#8217;s a sample:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+module RbDynamicMethodHelpers
+  def ld_self
+    ldarg_2
+  end
+
+  def ld_rb_param(index, type)
+    ldarg_1
+    case index
+    when 1:
+      ldc_i4_4
+      add
+    when 2:
+      ldc_i4_8
+      add
+    else
+      ldc_i4    index &amp;lt;&amp;lt; 2
+      add
+    end
+    ldind_i4
+    call      "static Marshal::To#{type}(VALUE)" 
+  end
+
+  def ret_objref(local_variable_name)
+    ld_self
+    ldloc_s  local_variable_name
+    call     'static Marshal::AssignToClassInstance(VALUE, Object)'
+    ret
+  end
+end
+&lt;/pre&gt;&lt;/code&gt;
+
+	&lt;p&gt;It turned out it was a good thing that I left the method declarations as strings, since I could do some simple string manipulation to inject implement syntactic sugar methods such as &lt;code&gt;ld_rb_param&lt;/code&gt; (which is actually a very efficient &lt;span class="caps"&gt;CIL&lt;/span&gt; implementation that is optimized for the common cases).&lt;/p&gt;
+
+
+	&lt;p&gt;Oh yeah, how much extra code did I have to add to &lt;code&gt;RbDynamicMethod&lt;/code&gt; to enable macros? I changed:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;object.extend RbDynamicMethod&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;to:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;object.extend RbDynamicMethod, RbDynamicMethodHelpers&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Did I mention how much I love Ruby? :)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-12-15T19:59:10-08:00</published>
+    <updated>2006-08-21T20:56:27-07:00</updated>
+    <title type="html">Comment on Refactoring CIL by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2005/12/15/refactoring-cil#comment-272" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;There are a number of IDEs available for Ruby. There's "ArachnoRuby":http://www.ruby-ide.com/ruby/ruby&lt;em&gt;ide&lt;/em&gt;and&lt;em&gt;ruby&lt;/em&gt;editor.php and "Komodo":http://www.activestate.com/Products/Komodo/.&lt;/p&gt;
+
+&lt;p&gt;Personally, I use emacs on Windows and TextMate on the Mac.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>SM</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-12-15T18:23:43-08:00</published>
+    <updated>2006-08-21T20:56:26-07:00</updated>
+    <title type="html">Comment on Refactoring CIL by SM</title>
+    <link href="http://www.iunknown.com/articles/2005/12/15/refactoring-cil#comment-271" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hi John:  Love the blog and you adventures in Ruby/CLR land. I'm from the .NET world and considering getting into Ruby.  ROR looks very enticing.  What environment/editor do you use for Ruby?  Know of any similar to VS for Ruby/ROR?&lt;/p&gt;</content>
+  </entry>
+</feed>

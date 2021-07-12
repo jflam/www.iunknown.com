@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: WSE 2.0, UsernameToken and wsse:PasswordDigest</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000515.html" title="Misconceptions on Pollution and causes of Cancer" />
+
+<link rel="next" href="http://www.iunknown.com/000517.html" title="1.5MB - that's it" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000516.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/260"
+    dc:title="WSE 2.0, UsernameToken and wsse:PasswordDigest"
+    dc:identifier="http://www.iunknown.com/000516.html"
+    dc:subject="Blog"
+    dc:description="If you&apos;re using WSE 2.0 and UsernameToken to handle your web service authentication requirements, you&apos;ll immediately run into a few problems. First, if you use it &quot;out of the box&quot; (aka allowing the default UsernameTokenManager implementation to authenticate your users),..."
+    dc:creator="John"
+    dc:date="2004-11-01T11:41:16-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000515.html">&laquo; Misconceptions on Pollution and causes of Cancer</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000517.html">1.5MB - that's it &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">November 01, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">WSE 2.0, UsernameToken and wsse:PasswordDigest</h3>
+
+<p>If you're using <span class="caps">WSE 2.0</span> and <code>UsernameToken</code> to handle your web service authentication requirements, you'll immediately run into a few problems. First, if you use it "out of the box" (aka allowing the default <code>UsernameTokenManager</code> implementation to authenticate your users), you <strong>must</strong> pass your passwords to the server as plain text via the <code>wsse:PasswordText</code> option. <code>UsernameTokenManager.AuthenticateToken()</code> simply passes the plain text password to the Win32 <code>LogonUser()</code> <span class="caps">API</span> to authenticate the user.</p>
+
+<p>This solution is sub-optimal for several reasons. First, you <strong>must</strong> send your credentials over a secure transport like <span class="caps">SSL</span>/TLS to avoid exposing your users' credentials to eavesdroppers. Second, you pay the performance hit of using a secure transport even in cases where the payload of your <span class="caps">SOAP</span> message does not have to be encrypted. Finally, your users must either have local machine accounts or Active Directory domain accounts - which for many web applications is not what you really want.</p>
+
+<p>If you want to use the <code>wsse:PasswordDigest</code> option to transport a hashed password to the server, you'll have to implement a custom TokenManager class. You can do this by deriving a new type from <code>UsernameTokenManager</code> and overriding the <code>AuthenticateToken</code> virtual method. In this method, you must lookup and return the user's <em>plain text</em> password in your authentication database. </p>
+
+<p>The <span class="caps">WSE 2.0</span> infrastructure does a number of things when it transports a hashed password to the server. On the client side, it transmits a base-64 encoded hash of a nonce (one-time value) + password + created time to the server. On the server, it calculates the base-64 encoded hash of the nonce + password supplied by your <code>AuthenticateToken</code> method + created time and performs a comparison. If the values match, you're allowed in - if they don't the client receives a security fault.</p>
+
+<p>The main problem with this approach is that your authentication database must store the plain text user password. Since users typically use the same password across many servers, if your server is compromised you have effectively compromised your users' security on multiple servers. One approach that Keith Brown has suggested is to use what he calls a <a href="http://pluralsight.com/blogs/keith/archive/2004/07/03/1532.aspx">scope <span class="caps">URI</span></a>. The scope <span class="caps">URI</span> is either known ahead of time, or is discovered at runtime by inspecting a <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnglobspec/html/ws-policy.asp">WS-Policy</a> document. It can be something as simple as the <span class="caps">DNS</span> name fof your web service endpoint (e.g. <code>services.yourcompany.com</code>). </p>
+
+<p>Here's a simple class that generates a hex encoded <span class="caps">SHA1</span> hash of a password + a scope <span class="caps">URI. </span></p>
+
+<p><strong>Update:</strong> <a href="http://www.leastprivilege.com/">Dominick Baier</a> who I met last week through the <a href="http://www.develop.com">DevelopMentor</a> alumni network (he just joined my alma mater), posted a nice tip in my comments that trimmed a lot of excess fat (and added a whole lot of functionality) to my <code>ScopeUriValidator</code> class. It now handles Unicode correctly.</p>
+
+<pre><code>
+public sealed class ScopeUriValidator {
+  private string _scopeUri;
+  private SHA1 _hashFunction = new SHA1CryptoServiceProvider();
+
+  public ScopeUriValidator(string uri) {
+    _scopeUri = uri;
+  }
+
+  public string CalculateValidator(string password) {
+    string validator = password + _scopeUri;
+    byte[] bytes = System.Text.Encoding.Unicode.GetBytes(password);
+    byte[] hash = _hashFunction.ComputeHash(bytes);
+    return System.Text.Encoding.Unicode.GetString(hash);
+  }
+}
+</code></pre>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at November  1, 2004 11:41 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=516" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="516" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000516.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Interesting approach.  I wrote up an approach whereby the client can request the Salt value for the particular user and then uses the salt when sending the hash value.  Although the salt is somewhat publicly available, it solves the issue of using the hashed password value on other sites.</p>
+
+<p>http://haacked.com/archive/2004/09/09/1177.aspx</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://haacked.com/">Haacked</a> at November  1, 2004 12:06 PM</span>
+</div>
+<div class="comments-body">
+<p>hey john!</p>
+
+<p>was nice meeting you at windev!</p>
+
+<p>couldn't you just replace your stringbyte conversion with</p>
+
+<p>System.Text.Encoding.Unicode.GetBytes()/GetString()</p>
+
+<p>dominick</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.leastprivilege.com">dominick</a> at November  1, 2004 01:49 PM</span>
+</div>
+<div class="comments-body">
+<p>Hey Dominick - </p>
+
+<p>This is why I left the exercise to the reader - I knew that method must exist, but I had no idea where to look :) Thanks for the pointer - I'll update the code frag.</p>
+
+<p>Hope to see you over here next time around on the conference circuit!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at November  1, 2004 03:00 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="516" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

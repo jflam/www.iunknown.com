@@ -1,0 +1,839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+    <meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+    <meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" />
+	<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.iunknown.com/rss.xml" />
+
+
+	<title>John Lam on Software: Steve Yegge ported Rails to JavaScript</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/06/foo-camp-electr.html?no_prefetch=1" title="Foo Camp + electric car == fun" />
+	<link rel="next" href="http://www.iunknown.com/2007/06/when-is-12-mpg-.html?no_prefetch=1" title="When is 12 mpg better than 100 mpg?" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/06/steve-yegge-por.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/19569010"
+    dc:title="Steve Yegge ported Rails to JavaScript"
+    dc:identifier="http://www.iunknown.com/2007/06/steve-yegge-por.html"
+    dc:description="One of the first talks that I went to at Foo Camp was called &quot;Google Rails Clone&quot; by Steve Yegge. With a title like that, how could I resist? Google uses four different programming languages: C++, Java, Python, and JavaScript...."
+    dc:creator="John Lam"
+    dc:date="2007-06-24T22:47:01-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/06/foo-camp-electr.html">&laquo; Foo Camp + electric car == fun</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/06/when-is-12-mpg-.html">When is 12 mpg better than 100 mpg? &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">June 24, 2007</h2>
+
+
+<div class="entry" id="entry-35746864">
+			<h3 class="entry-header">Steve Yegge ported Rails to JavaScript</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a href="http://www.flickr.com/photos/john_lam/613143038/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1338/613143038_bc8fb9b2fc.jpg" width="500" height="331" alt="Board" /></a></p>
+
+<p>One of the first talks that I went to at Foo Camp was called "Google Rails Clone" by <a href="http://steve-yegge.blogspot.com/">Steve Yegge</a>. With a title like that, how could I resist?</p>
+
+<p>Google uses four different programming languages: C++, Java, Python, and JavaScript. Apparently, nobody likes writing web front ends in Java, not even Google who has a lot of web front end code in Java. </p>
+
+<p>In an effort to increase developer productivity at Google, Steve tried to convince the company to adopt Rails (and consequently Ruby) as a programming language. When that fell on deaf ears (Google really does not want to increase the number of languages that must be supported by their infrastructure), Steve decided to do what any other frustrated programmer would do: he <strong>ported Rails to JavaScript</strong>. Line by line. In 6 months. Working 2000 hours. Steve is a coding stud. </p>
+
+<p><a href="http://www.flickr.com/photos/john_lam/612490975/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1188/612490975_5b2f804df2.jpg" width="500" height="331" alt="Steve Yegge" /></a></p>
+
+<p>It runs on top of the <a href="http://www.mozilla.org/rhino/">Rhino</a> JavaScript engine that runs on the JVM. He also fixed some bugs along the way, and tightened up security considerably (lesson: working with your security organization in the early stages of a framework, even a port, saves you tons of time and pain later). You can see how Steve became rather enamored with JavaScript, when he proclaimed that it would become the <a href="http://steve-yegge.blogspot.com/2007/02/next-big-language.html">Next Big Language</a>. </p>
+
+<p>Maybe it will be. The forthcoming optional static typing in EcmaScript 4 will also give his Rails implementation a big performance boost.</p>
+
+<p>This is seriously cool. Thanks for sharing the story!</p>
+
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http://www.iunknown.com/2007/06/steve-yegge-por.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 10:47 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/06/steve-yegge-por.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/06/steve-yegge-por.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/google" rel="tag">google</a>, <a href="http://technorati.com/tag/javascript" rel="tag">javascript</a>, <a href="http://technorati.com/tag/rails" rel="tag">rails</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/19569010</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/06/steve-yegge-por.html">Steve Yegge ported Rails to JavaScript</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		<div class="comments-content">
+			<!-- comment list -->
+	<a id="c73884558"></a>
+	<div class="comment" id="comment-73884558">
+		<div class="comment-content">
+			<p>Interesting.  Another port of rails to JS was TrimPath Junction (<a href="http://code.google.com/p/trimpath/wiki/TrimJunction)," rel="nofollow">http://code.google.com/p/trimpath/wiki/TrimJunction),</a> which I started back in 2005.  Turns out it was 2 years too early!  <br />
+</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.trimpath.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73884558">Steve Yen</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73884558">June 25, 2007 at 12:01 AM</a>
+		</p>
+	</div>
+	<a id="c73889496"></a>
+	<div class="comment" id="comment-73889496">
+		<div class="comment-content">
+			<p> 2000 hours / (6 months == 180 days)  == 11+ hours a day!</p>
+
+<p>wow! where does he find the time ?<br />
+Or was this an official google project with him working on it fulltime?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://ravimohan.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73889496">Ravi Mohan</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73889496">June 25, 2007 at 02:08 AM</a>
+		</p>
+	</div>
+	<a id="c73910268"></a>
+	<div class="comment" id="comment-73910268">
+		<div class="comment-content">
+			<p>That's what the marshmallow story and most recently, his rich programmer food blog post was all about.</p>
+
+<p>Check it out <a href="http://steve-yegge.blogspot.com/" rel="nofollow">http://steve-yegge.blogspot.com/</a><br />
+</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.oliyiptong.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73910268">Olivier Yiptong</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73910268">June 25, 2007 at 07:17 AM</a>
+		</p>
+	</div>
+	<a id="c73916032"></a>
+	<div class="comment" id="comment-73916032">
+		<div class="comment-content">
+			<p>Great to see similar tech :)</p>
+
+<p>If you are a .net guy then my project may interest you - it converts your c# and vb.net assemblies to javascript.</p>
+
+<p><a href="http://jsc.sf.net" rel="nofollow">http://jsc.sf.net</a></p>
+
+<p>cheers</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://zproxy.wordpress.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73916032">zproxy</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73916032">June 25, 2007 at 08:12 AM</a>
+		</p>
+	</div>
+	<a id="c73922786"></a>
+	<div class="comment" id="comment-73922786">
+		<div class="comment-content">
+			<p>Did he say why he chose this path instead of using Grails?<br />
+Or use Django? Or WebPy? Or CherryPy? Or any of the other web frameworks for Python or Java?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://lazycoder.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73922786">Scott</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73922786">June 25, 2007 at 09:23 AM</a>
+		</p>
+	</div>
+	<a id="c73929568"></a>
+	<div class="comment" id="comment-73929568">
+		<div class="comment-content">
+			<p>That's interesting.  The most innovative tech company is already starting to slow down due to legacy applications.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Tom |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73929568">June 25, 2007 at 10:34 AM</a>
+		</p>
+	</div>
+	<a id="c73932394"></a>
+	<div class="comment" id="comment-73932394">
+		<div class="comment-content">
+			<p>Scott: Steve said he first considered using Python (via Jython) but that he was dissatisfied with Jython's momentum. He also said he'd made this decision *before* Google hired Guido and that he might've done otherwise if he'd known Guido would be on staff.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.holovaty.com/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73932394">Adrian Holovaty</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73932394">June 25, 2007 at 11:04 AM</a>
+		</p>
+	</div>
+	<a id="c73932824"></a>
+	<div class="comment" id="comment-73932824">
+		<div class="comment-content">
+			<p>Now I'm incredibly curious about the marshmallow story's background.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			bonaldi |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73932824">June 25, 2007 at 11:09 AM</a>
+		</p>
+	</div>
+	<a id="c73933660"></a>
+	<div class="comment" id="comment-73933660">
+		<div class="comment-content">
+			<p>Optional static typing won't necessarily bring performance increases. Look for example at Groovy, where optionally adding static types actually slows down execution. Why? Because it's still a dynamic language around those static types, and as a result more work must be done to keep confirming that the variables with static types remain safe. There are probably ways to improve this, but there's always going to be this overhead for some situations.</p>
+
+<p>Personally I think optional static typing is only useful for two things:</p>
+
+<p>- interfacing with statically typed languages (i.e. being able to define method signatures et al that require specific types)<br />
+- forcing typing contracts on particular variables (with the understanding that this will slow execution in many cases)</p>
+
+<p>Don't look to optional static typing as something to automatically increase performance.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://headius.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73933660">Charles Oliver Nutter</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73933660">June 25, 2007 at 11:19 AM</a>
+		</p>
+	</div>
+	<a id="c73934410"></a>
+	<div class="comment" id="comment-73934410">
+		<div class="comment-content">
+			<p>What about Perl6's optional static typing?  At least when I watched Audrey Tang's presentation, she mentioned that the optional types would improve performance.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Dean Mao |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73934410">June 25, 2007 at 11:27 AM</a>
+		</p>
+	</div>
+	<a id="c73938646"></a>
+	<div class="comment" id="comment-73938646">
+		<div class="comment-content">
+			<p>@Dean:</p>
+
+<p>What Charles is saying is that optional static typing will not "just" give you a perf boost. But optional static typing done intelligently can give you that perf boost. I suspect that the Google folks will do it "intelligently" :)</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73938646">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73938646">June 25, 2007 at 12:11 PM</a>
+		</p>
+	</div>
+	<a id="c73938942"></a>
+	<div class="comment" id="comment-73938942">
+		<div class="comment-content">
+			<p>@zproxy:</p>
+
+<p>Wow. That is a seriously cool project! Thanks for the link - it's on my stack.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73938942">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73938942">June 25, 2007 at 12:14 PM</a>
+		</p>
+	</div>
+	<a id="c73946886"></a>
+	<div class="comment" id="comment-73946886">
+		<div class="comment-content">
+			<p>re: static typing</p>
+
+<p>Static typing has been shown to make for a very siginificant performance boost in the Tamarin VM, which came from Adobe's ActionScript implementation and is being merged into Spidermonkey, Mozilla's C-based JavaScript engine. Rhino is Mozilla's Java-based JavaScript engine, but there were not any immediate plans to implement JavaScript 2 with it. That is, the engine Steve's Rails clone is running on is not expected to actually get optional static types any time soon. But if Google is using Rhino now and could use the performance boost, then perhaps Google will put some resources toward implementing the new features.</p>
+
+<p>Does anyone know if/when this Rails clone is going to be publicly available? (I'm not missing a really obvious link on this page, am I?) Right now I'm in the process of moving to Helma , but I'd  seriously consider this one instead if it were available.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://letterblock.com/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73946886">Joshua Paine</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73946886">June 25, 2007 at 01:40 PM</a>
+		</p>
+	</div>
+	<a id="c73948742"></a>
+	<div class="comment" id="comment-73948742">
+		<div class="comment-content">
+			<p>So what does this really mean? How can JavaScript emulate Rails? Does it handle database ORM, too?</p>
+
+<p>This post sounds cool and all, but how can JS, a client-side technology, emulate Rails, a (more-or-less) server-side tech?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://rabbitcreative.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73948742">Rabbit</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73948742">June 25, 2007 at 02:00 PM</a>
+		</p>
+	</div>
+	<a id="c73949166"></a>
+	<div class="comment" id="comment-73949166">
+		<div class="comment-content">
+			<p>Hi Rabbit, you can use Rhino (<a href="http://www.mozilla.org/rhino/)" rel="nofollow">http://www.mozilla.org/rhino/)</a> to run Javascript on the server using the Java JVM.</p>
+
+<p>99% of the time, the web browser downloads and runs Javascript, but the server can execute javascript code as well, and return the result.</p>
+
+<p>I'm a big fan of both Rails and Javascript, and am excited to see how this turns out.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://betterexplained.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73949166">Kalid</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73949166">June 25, 2007 at 02:05 PM</a>
+		</p>
+	</div>
+	<a id="c73952186"></a>
+	<div class="comment" id="comment-73952186">
+		<div class="comment-content">
+			<p>If no-one at google likes writing webapps in Java then why did they write GWT? It seems like there are two camps going in opposite directions.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Asd |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73952186">June 25, 2007 at 02:41 PM</a>
+		</p>
+	</div>
+	<a id="c73953446"></a>
+	<div class="comment" id="comment-73953446">
+		<div class="comment-content">
+			<p>All i can say is...</p>
+
+<p>Sounds crazy! 0_0</p>
+
+<p>Though then again, i guess if its all server side (and thus doesn't immediately bump into the infamous issue of cross-browser compatibility), its not so bad. :)</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.cuppadev.co.uk" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73953446">James Urquhart</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73953446">June 25, 2007 at 02:56 PM</a>
+		</p>
+	</div>
+	<a id="c73969256"></a>
+	<div class="comment" id="comment-73969256">
+		<div class="comment-content">
+			<p>Rails is hardly a major win for the type of webapp that Google writes.  What are they expecting Google to use it for?  Writing the next big blog software?  lol.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Ivan |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73969256">June 25, 2007 at 06:23 PM</a>
+		</p>
+	</div>
+	<a id="c73981270"></a>
+	<div class="comment" id="comment-73981270">
+		<div class="comment-content">
+			<p>Heya John, thanks for the props.</p>
+
+<p>The only quibble I'd make with your otherwise solid summary is that lots of folks at Google do like writing web apps in Java.  It just didn't seem practical to me to do a Rails port on the JVM using Java, when more Ruby-ish languages like Jython and Rhino are available.</p>
+
+<p>Cheers,</p>
+
+<p>-steve</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://steve-yegge.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73981270">Steve Yegge</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73981270">June 25, 2007 at 09:17 PM</a>
+		</p>
+	</div>
+	<a id="c73988668"></a>
+	<div class="comment" id="comment-73988668">
+		<div class="comment-content">
+			<p>He told us on his blog: I was in Barnes today, doing my usual weekend stroll through the tech section. Helps me keep up on the latest trends. And wouldn't you know it, I skipped a few weeks there, and suddenly Ruby and Rails have almost as many books out as Python. I counted eleven Ruby/RoR titles tonight, and thirteen for Python (including one Zope book). And Ruby had a big display section at the end of one of the shelves."</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://letras32.com/letras/c.php" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73988668">Donna Flow</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-73988668">June 25, 2007 at 11:44 PM</a>
+		</p>
+	</div>
+	<a id="c74013248"></a>
+	<div class="comment" id="comment-74013248">
+		<div class="comment-content">
+			<p>This looks _very_ interesting.</p>
+
+<p>I'm curious: does his framework require you to use any particular language on the backend, or is it server-side agnostic?</p>
+
+<p>Charles Jolley of SproutIt is working on a Cocoa-esque JavaScript framework that sits on top of Prototype.</p>
+
+<p>Checkout Mailroom (sproutit.com) to see it in action.  It's pretty slick.  Should be open-source at some point when it's mature enough.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://onwebapps.com/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=74013248">Shanti Braford</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-74013248">June 26, 2007 at 06:24 AM</a>
+		</p>
+	</div>
+	<a id="c74021750"></a>
+	<div class="comment" id="comment-74021750">
+		<div class="comment-content">
+			<p>does his framework require you to use any particular language on the backend, or is it server-side agnostic?</p>
+
+<p>Well, yes, it requires Javascript and a JVM. Its the opposite pole to language agnostic.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			jeff |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-74021750">June 26, 2007 at 07:44 AM</a>
+		</p>
+	</div>
+	<a id="c74086324"></a>
+	<div class="comment" id="comment-74086324">
+		<div class="comment-content">
+			<p>So, I assume this work was started before JRuby on Rails was an option?  Does the fact that you can now run it change the picture at all?</p>
+
+<p>Or was the point that, regardless of the underlying tech, it's not desirable to add another programming language to the stack at Google, even if it's running on the JVM?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.nicksieger.com/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=74086324">Nick</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-74086324">June 26, 2007 at 04:17 PM</a>
+		</p>
+	</div>
+	<a id="c74111106"></a>
+	<div class="comment" id="comment-74111106">
+		<div class="comment-content">
+			<p>Yeah, but look what it did to him physically.  Worth it?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			sean |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-74111106">June 26, 2007 at 10:27 PM</a>
+		</p>
+	</div>
+	<a id="c74260754"></a>
+	<div class="comment" id="comment-74260754">
+		<div class="comment-content">
+			<p>This is cool.  I hope this JS Rails clone gets released on the Rhino open source site, and look forward to being able to try it out sometime soon.  It will be interesting to see the traction it gets, esp if used a good amount within Google and improved upon.  Exciting news-</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://holtsblog.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=74260754">Mark Holton</a> |
+			<a href="http://www.iunknown.com/2007/06/steve-yegge-por.html#comment-74260754">June 27, 2007 at 11:26 PM</a>
+		</p>
+	</div>
+
+
+		</div>
+		
+	</div>
+
+	<!-- comment form -->
+	<script type="text/javascript" src="/.shared/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="35746864" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=35746864">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=35746864">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/p/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85704358">islam</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85704328">Adult</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85704272">sohbet</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85704240">sohbet</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85704186">chat</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85704132">chat</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85338658">John Lam</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-85223936">SoftMind</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-84353608">winterheat</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html#comment-84337300">John Lam</a> on <a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+			
+		</ul>
+	</div>
+</div>
+	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/we-need-more-he.html">We need more help and we're willing to pay for it!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/ironruby-librar.html">IronRuby Libraries</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+			<ul class="module-list">
+									<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/index.html">October 2007</a></li>
+									<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/index.html">September 2007</a></li>
+									<li class="module-list-item"><a href="http://www.iunknown.com/2007/08/index.html">August 2007</a></li>
+									<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/index.html">July 2007</a></li>
+									<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/index.html">June 2007</a></li>
+									<li class="module-list-item"><a href="http://www.iunknown.com/2007/05/index.html">May 2007</a></li>
+									<li class="module-list-item"><a href="http://www.iunknown.com/2007/04/index.html">April 2007</a></li>
+				
+			</ul>
+		</div>
+	</div>
+
+<div class="module-categories module">
+	<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Categories</a></h2>
+	<div class="module-content">
+		<ul class="module-list">
+												<li class="module-list-item"><a href="http://www.iunknown.com/current_affairs/index.html">Current Affairs</a></li>
+				
+				
+			
+		</ul>
+	</div>
+</div>
+<div class="module-calendar module">
+	<h2 class="module-header">October 2007</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				
+							
+					<td>4</td>
+				
+							
+					<td>5</td>
+				
+							
+					<td>6</td>
+				</tr>
+							<tr>
+					<td>7</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/10/we-need-more-he.html">8</a></td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				
+							
+					<td>11</td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				</tr>
+							<tr>
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				</tr>
+							<tr>
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				</tr>
+							<tr>
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		Powered by <a href="http://www.typepad.com/t/app/track?poweredby-2419952" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+</body>
+</html>

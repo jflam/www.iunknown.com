@@ -1,0 +1,997 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+
+<title>
+  Dynamic Languages, Microsoft, and me&nbsp;|&nbsp;John Lam on Software</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="http://iunknown.com/wp-content/themes/headlines/style.css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/LessIsBetter" />
+<link rel="pingback" href="http://iunknown.com/xmlrpc.php" />
+   
+<!--[if IE 6]>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/pngfix.js"></script>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/menu.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie6.css" />
+<![endif]-->	
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie7.css" />
+<![endif]-->
+   
+<link rel="alternate" type="application/rss+xml" title="John Lam on Software &raquo; Dynamic Languages, Microsoft, and me Comments Feed" href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/feed" />
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/jquery/jquery.js?ver=1.3.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/superfish.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/woo_tabs.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/cufon-yui.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/Liberation.font.js?ver=2.9.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://iunknown.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://iunknown.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='John Lam on Software' href='http://iunknown.com' />
+<link rel='start' title='Motorola DROID Review' href='http://iunknown.com/2009/12/motorola-droid-review.html' />
+<link rel='prev' title='See you at RubyConf 2006' href='http://iunknown.com/2006/10/see-you-at-rubyconf-2006.html' />
+<link rel='next' title='RubyConf 2006 in pictures' href='http://iunknown.com/2006/10/rubyconf-2006-in-pictures.html' />
+<meta name="generator" content="WordPress 2.9.2" />
+<link rel='canonical' href='http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html' />
+<meta name="generator" content="Headlines 2.4.1" />
+<meta name="generator" content="Woo Framework Version 2.5.3" />
+<script type="text/javascript">Cufon.replace("h2, h3, h4, h5, h6, .title, .cufon");</script>
+<style type="text/css">.widget h3 { line-height:22px; }</style>
+<link href="http://iunknown.com/wp-content/themes/headlines/styles/color.css" rel="stylesheet" type="text/css" />
+<link href="http://iunknown.com/wp-content/themes/headlines/custom.css" rel="stylesheet" type="text/css" />
+<!-- Woo Styling -->
+<style type="text/css">
+#logo img { display:none; }
+#logo .site-title, #logo .site-description { display:block; } 
+</style>
+
+<!--[if lte IE 7]>
+<script type="text/javascript">
+jQuery(function() {
+	var zIndexNumber = 1000;
+	jQuery('div').each(function() {
+		jQuery(this).css('zIndex', zIndexNumber);
+		zIndexNumber -= 1;
+	});
+});
+</script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="container">
+       
+	<div id="top">
+    
+		
+        <div id="header" class="col-full">
+       
+            <div id="logo">
+               
+                                
+                                    <span class="site-title"><a href="http://iunknown.com">John Lam on Software</a></span>
+                                
+                    <span class="site-description">Working for The Man in Redmond</span>
+                
+            </div><!-- /#logo -->
+               
+			            <div id="twitter-top">
+            	<div class="logo">
+                    <a href="http://www.twitter.com/john_lam" title="Follow on Twitter"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-twitter.png" alt="Twitter" /></a>                
+                </div>
+                <div class="tweet">
+	                <ul id="twitter_update_list"><li></li></ul>
+                </div>
+            </div><!-- /#topad -->
+			                       
+        </div><!-- /#header -->
+        
+        <div id="navigation">
+        
+			<div id="page-nav">
+    <div class="col-full">
+        <ul id="nav" class="fl">
+        
+            <li><a href="http://iunknown.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-home.png" class="ico-home" alt="Home" /></a></li>
+			        
+            <li class="page_item page-item-2"><a href="http://iunknown.com/about" title="About">About</a></li>
+            
+			            
+            
+        </ul><!-- /#nav1 -->
+        
+        <ul class="rss fr">
+                        <li><a href="http://feeds.feedburner.com/LessIsBetter">Posts</a></li>
+        </ul><!-- /.rss -->
+    </div><!-- /.col-full -->
+</div><!-- /#page-nav -->
+                        
+            <div id="cat-nav">
+                <div class="col-full">
+                    <ul id="secnav" class="fl">
+                    
+					                    
+						      
+                        <li>
+                            <a href="http://iunknown.com/category/ironruby">IronRuby</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/microsoft">Microsoft</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/misc_geek">Misc Geek</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/personal">Personal</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/rubyclr">RubyCLR</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/uncategorized">Uncategorized</a>
+                            
+                                                    </li>        
+                                                
+					                        
+                    </ul><!-- /#nav2 -->
+                    
+                                        <div id="search" class="fr">
+                        <form method="get" id="searchform" action="http://iunknown.com">
+                            <input type="text" class="field" name="s" id="s"  value="Enter keywords..." onfocus="if (this.value == 'Enter keywords...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter keywords...';}" />
+                            <input class="submit btn" type="image" src="http://iunknown.com/wp-content/themes/headlines/images/ico-search.png" value="Go" />
+                        </form>
+                    </div><!-- /#search -->
+                                    </div><!-- /.col-full -->
+            </div><!-- /#cat-nav -->
+            
+        </div><!-- /#navigation -->
+    
+    </div><!--/#top-->       
+    <div id="content" class="col-full">
+		<div id="main" class="col-left">
+		           
+                                    
+                <div class="box">
+                    <div class="post">
+    
+						                           
+                        <h1 class="title">Dynamic Languages, Microsoft, and me</h1>
+                        
+                        <p class="post-meta">
+							<img src="http://iunknown.com/wp-content/themes/headlines/images/ico-time.png" alt="" />20. Oct, 2006                            <span class="comments"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-comment.png" alt="" /><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html#comments" title="Comment on Dynamic Languages, Microsoft, and me">62 Comments</a></span>
+                        </p>
+
+																	
+                        <div class="entry">
+							<p><img src="http://www.iunknown.com/files/plantotk.jpg" alt="" /></p>
+<p>I&#8217;ve decided to stage a friendly takeover of Microsoft. As of January, 2007 my new work address will be Building 42 at Microsoft. I&#8217;ll be working in the <span class="caps">CLR</span> team to help bring the love of dynamic languages out to the statically typed heathens <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>This all started back in August when I was dragged into various back rooms at <span class="caps">OSCON</span> and Lang.Net and presented with an offer that I could not refuse. At some point in your life, you realize that you have an opportunity to affect some real change in the world. <a href="http://www.rubyclr.com">RubyCLR</a> was one way to affect that change, and thanks to the gracious support of my partners Barry Gervin, Dave Lloyd, and Bruce Johnson over at <a href="http://www.objectsharp.com">ObjectSharp</a>, I was able to give folks a glimpse of what is possible. Thank you all for your generosity and your friendship.</p>
+<p>However, my platform and reach at ObjectSharp is limited. We&#8217;re a consulting company and while we do use Ruby to deliver value to our customers, it&#8217;s literally one developer at a time (hi Andrew!) It&#8217;s a whole other thing to work at a platform company whose reach extends out to millions of developers. That&#8217;s a remarkable opportunity, and a unique privilege.</p>
+<p>This is why I&#8217;m uprooting my family and moving all the way across the continent and to a different country. The timing is right since our kids are young enough that they won&#8217;t even notice (I was the same age as Matthew when I moved to Canada from Hong Kong). A big public thank-you to my wife, Carolyn, who has supported me since day one. I love you.</p>
+<p>So, now begins the next phase of my life. I know that some of you have questions, but I&#8217;m somewhat limited in what I can say about what comes next. I hope you can understand if my answers are somewhat evasive or vague. I merely ask for your patience as all will become apparent in due time. It really will. I wouldn&#8217;t have put my family on a one-way flight to Seattle if that weren&#8217;t the case &#8230;</p>
+<p>What&#8217;s going to happen to RubyCLR? It&#8217;s in reasonably good shape now, and I&#8217;m actively looking for people to help drive that project. There is still a couple of months before I start at Microsoft, so please contact me if you&#8217;re interested in helping out. The source code is released under the <span class="caps">MIT</span> license, so you are free to do with it as you wish if you don&#8217;t like the direction the project is taking.</p>
+<p>What am I going to do once I get to Microsoft? This is the part where I&#8217;m going to have to be evasive and vague. I can tell you what I&#8217;m not going to be doing: I&#8217;m not going to stop blogging, I&#8217;m not going to leave the Ruby community, and I&#8217;m not going to do evil things. I see my mission at Microsoft as helping to make developers happier; to give them tools that make programming fun. That&#8217;s why I program-I enjoy programming. I like to use tools that put a smile on my face. Perhaps what I&#8217;ll be making at Microsoft will put a smile on your face too. Just be patient &#8230;</p>
+<p>If you&#8217;re at <a href="http://www.rubyconf.org">RubyConf</a> this weekend and you&#8217;d like to talk in person about my move, make sure you come over to say hi. I&#8217;m the guy with the giant camera in the front row.</p>
+                        </div>
+                        <div class="fix"></div>
+
+                                                <div id="share">
+							<div class="banner">Share</div>
+                            <a href="http://twitter.com/home/?status=Dynamic Languages, Microsoft, and me : http://tinyurl.com/y98kfzs"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-twitter.png" alt="Twitter" /></a>
+<a href="http://digg.com/submit?phase=2&amp;url=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-digg.png" alt="Digg" /></a>                            
+<a href="http://del.icio.us/post?url=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html&amp;title=Dynamic Languages, Microsoft, and me"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-delicious.png" alt="Delicious" /></a>                            
+<a href="http://www.stumbleupon.com/submit?url=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html&amp;title=Dynamic+Languages%2C+Microsoft%2C+and+me"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-stumbleupon.png" alt="Stumbleupon" /></a>                            
+<a href="http://technorati.com/cosmos/search.html?url=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-technorati.png" alt="Technorati" /></a>                            
+<a href="http://www.facebook.com/sharer.php?u=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html&amp;t=Dynamic Languages, Microsoft, and me"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-facebook.png" alt="Facebook" /></a>
+<a href="mailto:EMAIL ADDRESS?body=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-mail.png" alt="Email" /></a>                           
+                        </div>
+                                                                        
+                    </div><!-- /.post -->
+                    
+                    <div class="post-bottom">
+                        <div class="fl"><span class="cat"><a href="http://iunknown.com/category/uncategorized" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></span></div>
+                        <div class="fr"></div> 
+                        <div class="fix"></div>                       
+                    </div>
+                    
+                </div><!-- /.box -->
+
+                <div class="more_entries">
+					<div class="fl"><a href="http://iunknown.com/2006/10/see-you-at-rubyconf-2006.html" rel="prev">See you at RubyConf 2006</a></div>
+					<div class="fr"><a href="http://iunknown.com/2006/10/rubyconf-2006-in-pictures.html" rel="next">RubyConf 2006 in pictures</a></div>
+                    <div class="fix"></div>                       
+				</div>               
+                
+				
+    
+
+<!-- You can start editing here. -->
+
+<div id="comments">
+
+
+	
+        <h3>62 Responses to &#8220;Dynamic Languages, Microsoft, and me&#8221;</h3>
+    
+        <ol class="commentlist">
+    
+                             
+	<li class="comment even thread-even depth-1" id="li-comment-1140">
+    
+    	<a name="comment-1140"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Gunnar</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1140" title="Direct link to this comment">19. Jan, 2007 at 9:46 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1140">
+                
+                    <p>Super Congratulations John !</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1141">
+    
+    	<a name="comment-1141"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">trimin</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1141" title="Direct link to this comment">06. Feb, 2007 at 11:40 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1141">
+                
+                    <p>Sweet and Congrats! Just don&#8217;t give them Zell2j or Vbat. Too many years of hard work.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1142">
+    
+    	<a name="comment-1142"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/c278636906ba5ffeb5994100b538e02d?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://webfr.homeip.net' rel='external nofollow' class='url url'>Pete</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1142" title="Direct link to this comment">07. Mar, 2007 at 4:40 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1142">
+                
+                    <p>Congrats! it will give you an excellent experience.<br />
+Maybe you will work for google after that and work in the AI department and win a lot of monney!! <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1143">
+    
+    	<a name="comment-1143"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://che-fai.italist.info/' rel='external nofollow' class='url url'>Che Fai</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1143" title="Direct link to this comment">13. Mar, 2007 at 4:32 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1143">
+                
+                    <p>Great stuff! And HAML support would be awesomeâ€¦</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1144">
+    
+    	<a name="comment-1144"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ed7cc56c48c15d55a66775b8f85cdfe6?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.chatgroups.de' rel='external nofollow' class='url url'>cemal unakitan</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1144" title="Direct link to this comment">13. Mar, 2007 at 7:00 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1144">
+                
+                    <p>Congratulations! Make sure you join the Canucks at Microsoft alias, it definitely brings a unique perspective to the job <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1145">
+    
+    	<a name="comment-1145"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/becfb7688558012bef72c1538ce0f954?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://phototony.blogspot.com' rel='external nofollow' class='url url'>Tony</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1145" title="Direct link to this comment">16. Mar, 2007 at 4:36 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1145">
+                
+                    <p>Congrats on your new job at Microsoft. Hope you adapt quickly to your new work environment. Changing companies can be really stressful, so good luck!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1146">
+    
+    	<a name="comment-1146"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/7fe6664ac53cf6403a4c7d669bfe6a38?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.online-sinema.com' rel='external nofollow' class='url url'>yesil perde</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1146" title="Direct link to this comment">21. Mar, 2007 at 12:48 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1146">
+                
+                    <p>You missed one thing, though. C#, VB, C++ &#8212; they&#8217;re not based in building 42&#8230; <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1147">
+    
+    	<a name="comment-1147"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/90d46d8141ab699d30f8cb5033e78f2b?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.turk-tv.com' rel='external nofollow' class='url url'>canli yayin</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1147" title="Direct link to this comment">24. Mar, 2007 at 3:18 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1147">
+                
+                    <p>John: I just read about JRails (in the transcript from Charles Nutter&#8217;s talk on Second Life about JRuby) between my last comment and this one&#8230; is that your way of saying &#8220;yes you can do that with RubyCLR but you&#8217;ll need to spend lots of time and be as smart as they are to get it working&#8221;?<br />
+(P.S. to my last comment: I should add that I&#8217;m pretty much assuming that what you&#8217;ll do at Microsoft will be along the same lines as RubyCLR, and that you&#8217;ll be furthering the same ends, even if you&#8217;re not actively continuing the RubyCLR project.)</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1148">
+    
+    	<a name="comment-1148"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/529e5ccc4061ea693f64ea2aacc29e0b?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://patricks-gadgets.blogspot.com' rel='external nofollow' class='url url'>Patrick</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1148" title="Direct link to this comment">26. Mar, 2007 at 5:16 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1148">
+                
+                    <p>Good luck with RubyCLR. I wish you the best, and a great Microsoft career.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1149">
+    
+    	<a name="comment-1149"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/30aed654b30b2a9f6a1dcb3e204d9229?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://greg-kudrowski.blogspot.com' rel='external nofollow' class='url url'>Greg</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1149" title="Direct link to this comment">08. Apr, 2007 at 2:49 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1149">
+                
+                    <p>Congrats John! I heard Building 42 was really nice:)</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1150">
+    
+    	<a name="comment-1150"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">msn ifadeleri</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1150" title="Direct link to this comment">16. Apr, 2007 at 6:33 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1150">
+                
+                    <p>All the luck in taking over building 42 and then Microsoft<br />
+<a href="http://www.gizligizli.net" target="_blank" title="msn resimleri, msn ifadeleri, msn nickleri" rel="nofollow">msn nickleri</a></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1151">
+    
+    	<a name="comment-1151"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/acbd629ae1607e6fbfc0ad2b9a8e8540?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.sevsem.com' rel='external nofollow' class='url url'>msn adresleri</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#comment-1151" title="Direct link to this comment">17. Apr, 2007 at 11:56 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1151">
+                
+                    <p>Sweet and Congrats! Just don&#8217;t give them Zell2j or Vbat. Too many years of hard work.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+        
+        </ol>    
+    
+        <div class="navigation">
+            <div class="fl"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comments" >&laquo; Older Comments</a></div>
+            <div class="fr"></div>
+            <div class="fix"></div>
+        </div><!-- /.navigation -->
+
+			
+		
+
+</div> <!-- /#comments_wrap -->
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+	
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-2#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div><!-- /.cancel-comment-reply -->
+
+		    
+		<form action="http://iunknown.com/wp-comments-post.php" method="post" id="commentform" onsubmit="if (url.value == 'Website (optional)') {url.value = '';}">
+
+	    <div class="left">
+
+		
+			<p>
+                <input type="text" name="author" class="txt" id="commentauthor" tabindex="1" value="Name (required)" onfocus="if (this.value == 'Name (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="email" class="txt" id="email" tabindex="2" value="Email (required)" onfocus="if (this.value == 'Email (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="url" class="txt" id="url" tabindex="3" value="Website (optional)" onfocus="if (this.value == 'Website (optional)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Website (optional)';}" />
+			</p>
+
+		        
+        </div>
+
+		<div class="right">
+        
+		<!--<p><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </p>-->
+
+		<p><textarea name="comment" id="comment" rows="10" cols="50" tabindex="4"></textarea></p>
+
+		<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+		<input type="hidden" name="comment_post_ID" value="116" />
+		
+		<input type='hidden' name='comment_post_ID' value='116' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+				
+        </div>
+        
+		</form><!-- /#commentform -->
+
+	
+	<div class="fix"></div>
+
+</div><!-- /#respond -->
+
+                                                    
+			  
+        
+		</div><!-- /#main -->
+
+        <div id="sidebar" class="col-right">
+
+	<!-- Widgetized Sidebar -->	
+	<div id="text-3" class="widget widget_text"><h3>Subscribe!</h3>			<div class="textwidget"><p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+		</div>		
+    
+	<!-- TABS STARTS --> 
+		<div id="tabs">
+		
+		<ul class="wooTabs tabs">
+			<li><a href="#pop">Popular</a></li>
+			<li><a href="#feat">Latest</a></li>
+            <li><a href="#comm">Comments</a></li>
+			<li><a href="#tagcloud">Tags</a></li>
+		</ul>	
+		
+		<div class="fix"></div>
+		
+		<div class="inside">
+		 <div id="pop">
+			<ul>
+					<li>
+			                
+            <a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html" title="A first look at IronRuby">A first look at IronRuby</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/08/funtwo-unmasked.html" title="funtwo unmasked">funtwo unmasked</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html" title="Dynamic Languages, Microsoft, and me">Dynamic Languages, Microsoft, and me</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2008/03/dynamic-silverlight-part-1-hello-world.html" title="Dynamic Silverlight Part 1: Hello, World!">Dynamic Silverlight Part 1: Hello, World!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html" title="IronRuby on Rubyforge!">IronRuby on Rubyforge!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+                    
+			</ul>
+           </div>
+           
+         <div id="feat"> 
+	        <ul>
+			<li>
+		<a title="Permalink to  Motorola DROID Review" href="http://iunknown.com/2009/12/motorola-droid-review.html" rel="bookmark">Motorola DROID Review</a>
+	<span class="meta">10. Dec, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Passing the torch" href="http://iunknown.com/2009/11/passing-the-torch.html" rel="bookmark">Passing the torch</a>
+	<span class="meta">17. Nov, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Dynamic Languages at TechEd 2009" href="http://iunknown.com/2009/05/dynamic-languages-at-teched-2009.html" rel="bookmark">Dynamic Languages at TechEd 2009</a>
+	<span class="meta">18. May, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Disable that annoying beep on Thinkpads when resuming from Sleep" href="http://iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html" rel="bookmark">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+	<span class="meta">02. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Hello, 2009" href="http://iunknown.com/2009/01/hello-2009.html" rel="bookmark">Hello, 2009</a>
+	<span class="meta">01. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+		
+                    
+			</ul>
+          </div>
+          <div id="comm">  
+			<ul>
+			<li>
+    <img alt='' src='http://www.gravatar.com/avatar/d1e701feeafaf4228572298aea23d13f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2007/07/outlook-zen.html#comment-2224" title="on  Outlook Zen">
+		Frank S: I've been using Jello 5 for the last few years.  J...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/634e0589ae0ec312596b20e8c95474ae?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2119" title="on  Passing the torch">
+		Mattias: Now we are really curious... the announcement is d...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/52bf71ded85623e0f7f976192399621f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2016" title="on  Passing the torch">
+		Dave Bettin: New dynamic language?...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/0ad20a1e4b560f1c2771903112cc4fa9?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2008/03/dynamic-silverlight-part-3-integrating-silverlight-with-asp-net-mvc.html#comment-174" title="on  Dynamic Silverlight Part 3: Integrating Silverlight with ASP.NET MVC">
+		sikat ang pinoy: Creating silverlight on asp.net mvc are now easy. ...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-31" title="on  Passing the torch">
+		John Lam: Hang in there ... will happen later this month! So...
+    </a>
+    <div style="clear:both"></div>
+</li>
+                    
+			</ul>
+	      </div>
+			<div id="tagcloud">
+			    			</div>
+		
+	</div><!-- INSIDE END -->
+	
+	</div><!-- TABS END -->
+	
+	<div class="fix" style="height:25px !important;"></div>
+	
+	  
+	<!-- TABS END -->    
+    
+	<!-- Widgetized Sidebar -->	
+	<div id="archives-3" class="widget widget_archive"><h3>Archives</h3>		<select name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> <option value="">Select Month</option> 	<option value='http://iunknown.com/2009/12'> December 2009 </option>
+	<option value='http://iunknown.com/2009/11'> November 2009 </option>
+	<option value='http://iunknown.com/2009/05'> May 2009 </option>
+	<option value='http://iunknown.com/2009/01'> January 2009 </option>
+	<option value='http://iunknown.com/2008/10'> October 2008 </option>
+	<option value='http://iunknown.com/2008/09'> September 2008 </option>
+	<option value='http://iunknown.com/2008/08'> August 2008 </option>
+	<option value='http://iunknown.com/2008/07'> July 2008 </option>
+	<option value='http://iunknown.com/2008/06'> June 2008 </option>
+	<option value='http://iunknown.com/2008/05'> May 2008 </option>
+	<option value='http://iunknown.com/2008/04'> April 2008 </option>
+	<option value='http://iunknown.com/2008/03'> March 2008 </option>
+	<option value='http://iunknown.com/2008/02'> February 2008 </option>
+	<option value='http://iunknown.com/2008/01'> January 2008 </option>
+	<option value='http://iunknown.com/2007/12'> December 2007 </option>
+	<option value='http://iunknown.com/2007/11'> November 2007 </option>
+	<option value='http://iunknown.com/2007/10'> October 2007 </option>
+	<option value='http://iunknown.com/2007/09'> September 2007 </option>
+	<option value='http://iunknown.com/2007/08'> August 2007 </option>
+	<option value='http://iunknown.com/2007/07'> July 2007 </option>
+	<option value='http://iunknown.com/2007/06'> June 2007 </option>
+	<option value='http://iunknown.com/2007/05'> May 2007 </option>
+	<option value='http://iunknown.com/2007/04'> April 2007 </option>
+	<option value='http://iunknown.com/2007/03'> March 2007 </option>
+	<option value='http://iunknown.com/2007/02'> February 2007 </option>
+	<option value='http://iunknown.com/2007/01'> January 2007 </option>
+	<option value='http://iunknown.com/2006/12'> December 2006 </option>
+	<option value='http://iunknown.com/2006/11'> November 2006 </option>
+	<option value='http://iunknown.com/2006/10'> October 2006 </option>
+	<option value='http://iunknown.com/2006/09'> September 2006 </option>
+	<option value='http://iunknown.com/2006/08'> August 2006 </option>
+	<option value='http://iunknown.com/2006/07'> July 2006 </option>
+	<option value='http://iunknown.com/2006/06'> June 2006 </option>
+	<option value='http://iunknown.com/2006/05'> May 2006 </option>
+	<option value='http://iunknown.com/2006/04'> April 2006 </option>
+	<option value='http://iunknown.com/2006/03'> March 2006 </option>
+	<option value='http://iunknown.com/2006/02'> February 2006 </option>
+	<option value='http://iunknown.com/2006/01'> January 2006 </option>
+	<option value='http://iunknown.com/2005/12'> December 2005 </option>
+	<option value='http://iunknown.com/2005/11'> November 2005 </option>
+	<option value='http://iunknown.com/2005/10'> October 2005 </option>
+ </select>
+</div><div id="twitter-1" class="widget widget_twitter"><h3><a href="http://twitter.com/john_lam" class="twitter_title_link">Tweets</a></h3><ul class="twitter"><li class="twitter-item"> hahahahahahahahahahahaha: <a href="http://bit.ly/9hq7EB" class="twitter-link">http://bit.ly/9hq7EB</a> </li><li class="twitter-item"> <a href="http://twitter.com/LANjackal" class="twitter-user">@LANjackal</a> unfortunately i had to answer his question ... :) am amazed that they don't staff the booth. iPad I was looking at was in chinese </li><li class="twitter-item"> <a href="http://twitter.com/migueldeicaza" class="twitter-user">@migueldeicaza</a> is this going to be like that underground BOF at whatever that PDC was that got you guys kicked out? :) </li><li class="twitter-item"> OH at Best Buy: can I use a mouse with this iPad? </li><li class="twitter-item"> Matthew solved his first sodoku puzzle today! </li><li class="twitter-item"> Elevation profile from my ride up Zoo hill today:  <a href="http://twitpic.com/1q5upe" class="twitter-link">http://twitpic.com/1q5upe</a> </li><li class="twitter-item"> At the top of zoo hill. Tough climb felt hardest last 100m. Boston waved dad off at bottom. They are going to the zoo. </li><li class="twitter-item"> A wee bit wet out here on the bike. Riding zoo today </li><li class="twitter-item"> Work on large solutions in VS? The recursive collapse selection in solution explore add-in is a life saver: <a href="http://bit.ly/98tVqD" class="twitter-link">http://bit.ly/98tVqD</a> </li><li class="twitter-item"> Huge story about Floyd Landis - ESPN scores a phone interview: <a href="http://sports.espn.go.com/oly/cycling/news/story?id=5203604" class="twitter-link">http://sports.espn.go.com/oly/cycling/news/story?id=5203604</a> </li></ul></div>
+<div id="flickr" class="widget">
+	<h3 class="widget_title">Photos on <span>Flick<span>r</span></span></h3>
+	<div class="wrap">
+		<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=18&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=23649168@N00"></script>        
+		<div class="fix"></div>
+	</div>
+</div>
+
+		
+             
+	
+</div><!-- /#sidebar -->
+    </div><!-- /#content -->
+		
+    <!-- Footer Widget Area Starts -->
+	<div id="footer-widgets">
+		<div class="container col-full">
+            <div class="block">
+                		           
+            </div>
+            <div class="block">
+                		           
+            </div>
+            <div class="block last">
+                		           
+            </div>
+   			<div class="fix"></div>
+		</div>    
+    </div>
+    <!-- Footer Widget Area Ends -->
+
+	<div id="footer">
+		<div class="col-full">
+            <div id="copyright" class="col-left">
+                <p>&copy; 2010 John Lam on Software. All Rights Reserved.</p>
+            </div>
+            
+            <div id="credit" class="col-right">
+                <p>Powered by <a href="http://www.wordpress.org">Wordpress</a>. Designed by <a href="http://www.woothemes.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/woothemes.png" width="87" height="21" alt="Woo Themes" /></a></p>
+            </div>
+		</div>
+	</div>
+	<!-- footer Ends -->
+	
+</div><!-- /#container -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&amp;count=1"></script>
+</body>
+</html>

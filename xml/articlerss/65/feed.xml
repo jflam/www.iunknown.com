@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on User-defined value type marshaling</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"User-defined value type marshaling": comment by John Lam</title>
+      <description>&lt;p&gt;I've been battling the "fairly straightforward" comment I wrote :) I've got most of it figured out now, so I'd expect to see something beginning of next week.&lt;/p&gt;</description>
+      <pubDate>Fri, 10 Feb 2006 15:41:59 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/10/user-defined-value-type-marshaling#comment-121</guid>
+      <link>http://www.iunknown.com/articles/2006/02/10/user-defined-value-type-marshaling#comment-121</link>
+    </item>
+    <item>
+      <title>"User-defined value type marshaling": comment by Jared Nuzzolillo</title>
+      <description>&lt;p&gt;Oooo. ooooo! when can we have the new drop?&lt;/p&gt;</description>
+      <pubDate>Fri, 10 Feb 2006 15:18:54 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/10/user-defined-value-type-marshaling#comment-120</guid>
+      <link>http://www.iunknown.com/articles/2006/02/10/user-defined-value-type-marshaling#comment-120</link>
+    </item>
+    <item>
+      <title>"User-defined value type marshaling" by jlam</title>
+      <description>&lt;p&gt;I got value type marshaling working tonight (but not creation just yet &amp;#8211; but that&amp;#8217;s fairly straightforward). It wasn&amp;#8217;t quite as hard as I thought since I previously thought that value types could be extended. I&amp;#8217;ll write more about this issue tomorrow.&lt;/p&gt;
+
+
+	&lt;p&gt;Here are the unit tests that now pass:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+static Point GetPoint() {
+  return Point(3, 4);
+}
+
+...
+
+class ValueTypeTests &amp;lt; Test::Unit::TestCase
+  def test_get_point
+    p = System::MarshalerTests.GetPoint
+    assert_equal 3, p.X
+    assert_equal 4, p.Y
+    assert_equal 'System.Drawing.Point', p.class_name
+  end
+
+  def test_point_instance_method
+    p = System::MarshalerTests.GetPoint
+    p.Offset(1, 1)
+    assert_equal 4, p.X
+    assert_equal 5, p.Y
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Fri, 10 Feb 2006 00:29:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/10/user-defined-value-type-marshaling"&gt;User-defined value type marshaling&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/10/user-defined-value-type-marshaling"&gt;User-defined value type marshaling&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

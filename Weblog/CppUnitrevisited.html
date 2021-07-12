@@ -1,0 +1,136 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/171 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>CppUnit revisited</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">CppUnit revisited</div>
+        <div class="entryDate">2002-06-21</div>
+        <p><P>I spent some time last night and this morning thinking through some test cases that I'm implementing in <A href="http://sourceforge.net/projects/cppunit">CppUnit</A>. This is all part of my plan to integrate <A href="http://nant.sourceforge.net/">NAnt</A> with CppUnit tests.</P>
+<P>Since <A href="HellofromAOSD2002.html">CLAW</A> is a COM object, I needed some tests to verify that it was functioning correctly as a COM object. I needed to execute a suite of tests in a predefined order <EM>against the same COM object</EM>. This gives rise to the concept of stateful vs. stateless test fixtures in CppUnit.</P>
+<P>If you follow the excellent CppUnit cookbook, you will wind up with a stateless fixture. Towards the end of the cookbook, the authors encourage you to use a number of macros that are defined in the cppunit\extensions\HelperMacros.h header file. They recommend that you registering a number of tests with a test suite can using:</P><CODE>CPPUNIT_TEST_SUITE( StatelessComTest );<BR>&nbsp; CPPUNIT_TEST( testCreateInstance );<BR>&nbsp; CPPUNIT_TEST( testInitialize );<BR>&nbsp; CPPUNIT_TEST( testShutDown );<BR>CPPUNIT_TEST_SUITE_END();<BR></CODE>
+<P>However, the problem with this approach is that it will construct separate StatelessComTest objects for each one of the three tests being run: testCreateInstance, testInitialize, testShutDown. This effectively prevents you from sharing the same COM object instance across all three tests. </P>
+<P>The macros shown above construct a method that resembles:</P><CODE>
+<P>static Test *suite() <BR>{<BR>&nbsp; TestSuite *testSuite = new TestSuite();<BR>&nbsp; testSuite-&gt;addTest( new TestCaller&lt; StatelessComTest &gt;( "testCreateInstance", testCreateInstance ) );<BR>&nbsp; ...<BR>}</P></CODE>
+<P>Each call to TestSuite::addTest() adds a separate object to the suite. This is not acceptable if&nbsp;you want to invokve a number of methods on the same COM object; you'll need to keep it hanging around.</P>
+<P>To solve this problem, you need to implement an instance method called suite() as opposed to the static method shown above:</P><CODE>
+<P>Test *suite()<BR>{<BR>&nbsp; TestSuite *testSuite = new TestSuite( "StatefulComTest" );<BR>&nbsp; testSuite-&gt;addTest( new TestCaller&lt; StatefulComTest &gt;( "testCreateInstance", testCreateInstance, *this ) );<BR>&nbsp; testSuite-&gt;addTest( new TestCaller&lt; StatefulComTest &gt;( "testInitialize", testInitialize, *this ) );<BR>&nbsp; testSuite-&gt;addTest( new TestCaller&lt; StatefulComTest &gt;( "testShutDown", testShutDown, *this ) )<BR>&nbsp; return testSuite;<BR>}</P></CODE>
+<P>In this method, notice that *this is passed as the last parameter to TestCaller's constructor. This ensures that the <EM>same</EM> StatefulComTest object is called for all three tests.</P>
+<P>The next question that naturally arises is where to construct the instance of the COM object that will be shared. The correct solution is in the constructor of the StatefulComTest object. You might be tempted to use the setUp()&nbsp; and tearDown() methods, but you must remember that these methods are called before and after each test in your test suite, regardless of whether the tests are run on the same object or not!</P>
+<P>If you're interested in looking at some sample code that illustrates these points, <A href="../Files/COMTest.h">click here</A> to view the C++ header file for the tests.</P>
+<P><STRONG>Update</STRONG>: You can't really use the constructor /destructor to setup and tear down the COM object either since you'd be tempted to throw exceptions from there. Unfortunately, CppUnit (1.8.0 is the build that I'm using) does not catch any thrown exceptions from TestFixture constructors, so they leak. </P>
+<P>I'm currently investigating how to work around this. I suspect that each test must be stateful, and maintaining state across tests is just <EM>not the way to do things</EM> using CppUnit.</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/CppUnitrevisited.html');"><script type="text/javascript">postCount('Weblog/CppUnitrevisited.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

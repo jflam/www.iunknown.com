@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on RubyCLR makes .NET feel more like Ruby</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"RubyCLR makes .NET feel more like Ruby": comment by John Lam</title>
+      <description>&lt;p&gt;I really want to open up the auto-mixin feature to users. This should let you do what you want to do (since I cannot and should not attempt to anticipate all such scenarios).&lt;/p&gt;
+
+&lt;p&gt;There are two things: how to decide whether to mix-in a module, and what module(s) to mix-in. I have to do some more thinking about how to make that happen, and the caveats involved. But it will definitely happen soon. You'll see this code stuff hard-coded in the next release, but it will be modularized over time.&lt;/p&gt;</description>
+      <pubDate>Tue, 14 Mar 2006 09:33:59 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby#comment-187</guid>
+      <link>http://www.iunknown.com/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby#comment-187</link>
+    </item>
+    <item>
+      <title>"RubyCLR makes .NET feel more like Ruby": comment by Thibaut</title>
+      <description>&lt;p&gt;Wow I've been thinking about exactly the same stuff, but for iterations on IDictionary. As a test-bench, I'm writing some integration tests in ruby, for a C# layer which relies a lot on IDictionaries.&lt;/p&gt;
+
+&lt;p&gt;dict.each { |k,v| dothestuff(k...) }&lt;/p&gt;
+
+&lt;p&gt;I'm wondering: should you inject some specific behavior when the IDictionary actually is a IDictionaryEnumerator, to call the block with two parameters instead of one (key/value) ?&lt;/p&gt;
+
+&lt;p&gt;It's easy to code myself anyway, but maybe this would make sense in RubyCLR itself.&lt;/p&gt;
+
+&lt;p&gt;Also once you'll have set up the rubyforge project, I'll be happy to help (maybe submitting unit tests for instance).&lt;/p&gt;
+
+&lt;p&gt;cheers and keep up the good work&lt;/p&gt;</description>
+      <pubDate>Tue, 14 Mar 2006 07:51:38 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby#comment-186</guid>
+      <link>http://www.iunknown.com/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby#comment-186</link>
+    </item>
+    <item>
+      <title>"RubyCLR makes .NET feel more like Ruby" by jlam</title>
+      <description>&lt;p&gt;As I was implementing my &lt;a href="http://www.iunknown.com/articles/2006/03/10/new-rubyclr-reflection-features"&gt;dynamic help&lt;/a&gt; feature, I was constantly annoyed by the code that I had to write to manipulate &lt;span class="caps"&gt;CLR&lt;/span&gt; arrays. That code looked something like this:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+array = get_an_array_from_somewhere
+
+holder_for_a_bunch_of_things = []
+0.upto(array.length - 1) do |i|
+  # gather up a bunch of things
+end
+
+# use holder_for_a_bunch_of_things
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Now, most Ruby programmers would rather use the &lt;a href="http://www.ruby-doc.org/core/classes/Enumerable.html#M002099"&gt;collect&lt;/a&gt; method from the &lt;code&gt;Enumerable&lt;/code&gt; module:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+array = get_an_array_from_somewhere
+holder = array.collect do |item|
+  # expression for transforming an item
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I&amp;#8217;m happy to say that RubyCLR now automatically mixes in the &lt;a href="http://www.ruby-doc.org/core/classes/Enumerable.html"&gt;Enumerable&lt;/a&gt; module for any &lt;span class="caps"&gt;CLR&lt;/span&gt; type that implements the &lt;code&gt;IEnumerable&lt;/code&gt; interface. This means that your Ruby programs will &lt;em&gt;feel&lt;/em&gt; much more like a Ruby program.&lt;/p&gt;
+
+
+	&lt;p&gt;RubyCLR now also automatically defines the &lt;code&gt;&amp;lt;=&amp;gt;&lt;/code&gt; method for any object that implements the &lt;a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemicomparableclasstopic.asp"&gt;IComparable&lt;/a&gt; interface. It prefers &lt;code&gt;IComparable&amp;lt;T&amp;gt;&lt;/code&gt;, but will bind as well to &lt;code&gt;IComparable&lt;/code&gt;. This means that you can now use the &lt;code&gt;Enumerable#sort&lt;/code&gt; method to sort a .NET array, or list (if that&amp;#8217;s what you want to do).&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a simple unit test that validates this behavior:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_object_sort
+  john  = Person.new('John')
+  steve = Person.new('Steve')
+  mike  = Person.new('Mike')
+
+  a = ArrayList.new
+  a.add(john)
+  a.add(steve)
+  a.add(mike)
+
+  b = a.sort
+  assert_equal Array, b.class
+  assert_equal 'John', b[0].name
+  assert_equal 'Mike', b[1].name
+  assert_equal 'Steve', b[2].name
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The &lt;code&gt;Person&lt;/code&gt; object implements the &lt;code&gt;IComparable&lt;/code&gt; interface. Notice as well that the &lt;code&gt;Enumerable#sort&lt;/code&gt; method returns a Ruby array, not a &lt;span class="caps"&gt;CLR&lt;/span&gt; array.&lt;/p&gt;
+
+
+	&lt;p&gt;I have a lot more ideas about how to further blur the boundary between Ruby and the &lt;span class="caps"&gt;CLR &lt;/span&gt;(such as letting Ruby objects implement arbitrary &lt;span class="caps"&gt;CLR&lt;/span&gt; interfaces), but those features will have to wait for a while.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m now in app-writing mode for the next release. There will be a really nice Avalon aka Windows Presentation Foundation sample app, so make sure you go and download the &lt;a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=F51C4D96-9AEA-474F-86D3-172BFA3B828B&amp;#38;displaylang=en"&gt;February WinFX &lt;span class="caps"&gt;CTP&lt;/span&gt;&lt;/a&gt; now!&lt;/p&gt;
+
+</description>
+      <pubDate>Mon, 13 Mar 2006 20:37:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby"&gt;RubyCLR makes .NET feel more like Ruby&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/03/13/rubyclr-makes-net-feel-more-like-ruby"&gt;RubyCLR makes .NET feel more like Ruby&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

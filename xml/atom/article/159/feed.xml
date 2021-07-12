@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: A Journey of a Thousand Miles begins with a Single step.</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/159/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:43-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:bba72b985697ab1bd54f6195da2a781c</id>
+    <published>2006-06-01T15:44:00-07:00</published>
+    <updated>2006-08-21T15:55:43-07:00</updated>
+    <title type="html">A Journey of a Thousand Miles begins with a Single step.</title>
+    <link href="http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;pre&gt;
+qsort []     = []
+qsort (s:xs) = qsort [x|x &amp;lt;- xs,x &amp;lt; s] ++ [s] ++ qsort[x|x &amp;lt;-xs, x &amp;gt;= s]
+&lt;/pre&gt;
+
+	&lt;p&gt;I&amp;#8217;ll admit that I&amp;#8217;ve never really understood the QuickSort algorithm until yesterday. I&amp;#8217;m amazed by the clarity and simplicity of the algorithm once all of the surrounding cruft is stripped away.&lt;/p&gt;</summary>
+    <content type="html">&lt;pre&gt;
+qsort []     = []
+qsort (s:xs) = qsort [x|x &amp;lt;- xs,x &amp;lt; s] ++ [s] ++ qsort[x|x &amp;lt;-xs, x &amp;gt;= s]
+&lt;/pre&gt;
+
+	&lt;p&gt;I&amp;#8217;ll admit that I&amp;#8217;ve never really understood the QuickSort algorithm until yesterday. I&amp;#8217;m amazed by the clarity and simplicity of the algorithm once all of the surrounding cruft is stripped away.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>gabriele</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-10T11:08:39-07:00</published>
+    <updated>2006-08-21T19:05:45-07:00</updated>
+    <title type="html">Comment on A Journey of a Thousand Miles begins with a Single step. by gabriele</title>
+    <link href="http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step#comment-528" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I still think the ruby version is mucb cleaner, even if I miss pattern matching :(&lt;/p&gt;
+
+&lt;pre&gt;
+ def qsort(list)
+  return [] if list.empty?
+  x, xs = *list
+  less, more = xs.partition{|y| y &lt;/pre&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Nick Guerrera</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-02T12:30:23-07:00</published>
+    <updated>2006-08-21T19:05:44-07:00</updated>
+    <title type="html">Comment on A Journey of a Thousand Miles begins with a Single step. by Nick Guerrera</title>
+    <link href="http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step#comment-516" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Got it. &lt;/p&gt;
+
+&lt;p&gt;I think the term "cruft" is confusing in this context since it's often used to describe code which is of poor quality or entirely redundant.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Cruft"&gt;http://en.wikipedia.org/wiki/Cruft&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-02T10:28:30-07:00</published>
+    <updated>2006-08-21T19:05:43-07:00</updated>
+    <title type="html">Comment on A Journey of a Thousand Miles begins with a Single step. by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step#comment-515" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;No no no! I didn't mean to say that "cruft" is not essential to a good Quicksort implementation. I just meant that it's an impedement to understanding.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Nick Guerrera</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-01T23:59:03-07:00</published>
+    <updated>2006-08-21T19:05:42-07:00</updated>
+    <title type="html">Comment on A Journey of a Thousand Miles begins with a Single step. by Nick Guerrera</title>
+    <link href="http://www.iunknown.com/articles/2006/06/01/a-journey-of-a-thousand-miles-begins-with-a-single-step#comment-514" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;The natural recursive definition of quicksort is beautiful and simple. On the journey to discovering the full ingenuity of the algorithm, I can't imagine anywhere else to start. However, I wouldn't classify good pivot selection or sorting in place as "cruft". After all, they put the "quick" in quicksort...&lt;/p&gt;</content>
+  </entry>
+</feed>

@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2006/01/18/windows-forms-and-value-types">Windows Forms and Value Types</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 18 Jan 2006 16:03:00 GMT">Wed, 18 Jan 2006 16:03:00 GMT</span></p>
+<p>Justin in <a href="http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comments">my comments</a> reported not being able to create a simple <code>MessageBox.Show('Hello, World')</code> app. There were two things missing in Justin&#8217;s app: explicitly loading the <code>System.Windows.Forms</code> assembly, along with a bit of confusion about Ruby namespaces and scoping.</p>
+
+
+	<p>Here&#8217;s a version of Justin&#8217;s code that <em>should</em> work:</p>
+
+
+<pre><code>
+require 'rubyclr'
+include RubyClr
+
+RubyClr::reference 'System.Windows.Forms'
+
+include System
+include System::Windows::Forms
+
+MessageBox.Show('Hello, World')
+</code></pre>
+
+	<p>It displays the message box and then promptly crashes. Why? Because <code>MessageBox.Show</code> returns a <code>DialogResult</code>, which is a user-defined value type. I&#8217;m not marshaling user-defined value types yet, but it&#8217;s a very high priority for the next release of the bridge.</p>
+
+
+	<p>In other news, I&#8217;ve done some pretty major refactoring of the C++ code in my current internal builds &#8211; I was very unhappy with some of the code that I had in my first drop (hint: grep for &#8216;enema&#8217; in the source). I&#8217;ve also got support for virtual call optimization in the current internal build.</p>
+
+
+	<p>I&#8217;m pretty busy writing <a href="http://www.objectsharp.com">ObjectSharp&#8217;s</a> ASP.NET 2.0 Best Practices course the next couple of weeks, so I&#8217;m anticipating a new release of the bridge towards the end of <em>next</em> week. At the very least expect to see user defined value type marshaling working by then.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/18/windows-forms-and-value-types#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/18/timesnapper-saves-my-butt">TimeSnapper and Personal Life Recorders</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 18 Jan 2006 15:10:00 GMT">Wed, 18 Jan 2006 15:10:00 GMT</span></p>
+<p>This year is the 3rd year that I&#8217;m a judge for the <a href="http://www.sdmagazine.com/jolts/">Jolt Software Awards</a>. A couple of nights ago, I thought that I had submitted my votes for the first round of voting to select the finalists. As it turns out, somewhere along the way my votes got lost (I blame my general sleep-deprived stupor these days).</p>
+
+
+	<p>Fortunately for me, I was running <a href="http://www.timesnapper.com/">TimeSnapper</a> at the time. This incredibly useful utility takes a snapshot of your desktop every 5 seconds and records the result as a <span class="caps">PNG</span> image. So it was a simple matter to replay my day around the time I was entering my votes to see exactly what I voted for.</p>
+
+
+	<p>This morning I was chatting with my mother in law during our morning baby / toddler shift and I told her the story of <a href="http://en.wikipedia.org/wiki/Vannevar_Bush">Vannevar Bush&#8217;s</a> description of a <a href="http://en.wikipedia.org/wiki/Memex">Memex</a> which was his vision of a life recorder. A modern implementation of Vannevar Bush&#8217;s ideas is <a href="http://en.wikipedia.org/wiki/Gordon_Bell">Gordon Bell&#8217;s</a> <a href="http://research.microsoft.com/barc/mediapresence/MyLifeBits.aspx">MyLifeBits</a> project.</p>
+
+
+	<p>A fairly full day&#8217;s worth of work for me is about 350MB worth of screenshots. That means that it would take about 100GB to store a year&#8217;s worth of screenshots, which translates into about $40 Canadian dollars today. Now until this data is searchable, I doubt that it will be tremendously useful, but I find it fascinating that it costs so little to digitize an entire year&#8217;s worth of my computer activity.</p>
+
+
+	<p>If you could synchronize those screenshots with a keystroke logger and a network activity monitor, you could quickly make a quick-and-dirty searchable archive. Hmmmm &#8230;.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/18/timesnapper-saves-my-butt#comments">11 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/12/first-drop-of-rubyclr">First drop of RubyCLR</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 12 Jan 2006 22:46:00 GMT">Thu, 12 Jan 2006 22:46:00 GMT</span></p>
+<p>Here&#8217;s the <a href="http://www.iunknown.com/images/RbDynamicMethod.zip">first drop of RubyCLR</a>.</p>
+
+
+	<p>I think this version is usable for folks who are interested in playing around with the current state of the bits. It supports constructor and method overloading, static and instance methods, properties, indexers, static and instance fields, events, multi-dimensional arrays, primitive (ints, floats, bools) value-type marshaling, and reference-type marshaling. Look at the <code>tests2.rb</code> unit test file to see the evidence.</p>
+
+
+	<p>Notable are the things that this release does <strong>not</strong> support. There is no support for generics, nor is there support for marshaling user-defined value types like <code>Point</code>.</p>
+
+
+	<p>There&#8217;s a rakefile in this project too if you want to compile the bits. I&#8217;ve included a compiled <span class="caps">DLL</span> for folks who don&#8217;t have <span class="caps">MS C</span>++ 14.0 installed on their computer.</p>
+
+
+	<p>This release requires the <span class="caps">RTM</span> version of .NET 2.0.</p>
+
+
+	<p>I haven&#8217;t tried to build anything using these bits yet outside of the unit tests, but I wanted to provide a drop for the curious.</p>
+
+
+	<p>I&#8217;m <strong>really</strong> interested in getting feedback about the implementation of the bridge. If folks have the time and could do a code review of either the C++ or Ruby code (or both!) I would greatly appreciate it.</p>
+
+
+	<p>Bug reports in the form of a unit test that can repro the bug would also be greatly appreciated.</p>
+
+
+	<p>The state of error messages in this release is more-or-less non-existent. I plan on fixing this once I tackle the next two hard problems: marshaling user defined value types and handling generics.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/12/first-drop-of-rubyclr#comments">14 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/12/events-and-rubyclr">Events and RubyCLR</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 12 Jan 2006 15:20:00 GMT">Thu, 12 Jan 2006 15:20:00 GMT</span></p>
+<p>I got events up and running last night. It was a bit harder than I anticipated, and there&#8217;s still a bit of work that needs to be done around marshaling, but this unit test now passes:</p>
+
+
+<pre><code>
+public ref class CallbackTests {
+public:
+  event EventHandler^ Event;
+
+  void CallMeBack() {
+    Event(nullptr, EventArgs::Empty);
+  }
+};
+
+class EventTests &lt; Test::Unit::TestCase
+  def test_simple_event
+    c = System::CallbackTests.new
+    c.Event do |sender, args|
+      assert_equal 1, 1
+    end
+    c.CallMeBack
+  end
+end
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/12/events-and-rubyclr#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/11/rubyclr-update">RubyCLR update</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 11 Jan 2006 18:30:00 GMT">Wed, 11 Jan 2006 18:30:00 GMT</span></p>
+<p>I&#8217;ve been spending a surprising amount of time working on my Ruby <span class="caps">CLR</span> bridge. Ben sleeps on/around me for about 3 hours in the evening to give Carolyn 3 hours of uninterrupted sleep, and I&#8217;ve been using that time very productively to add features.</p>
+
+
+	<p>The older version of the bridge that I had working was a grotesque hack &#8211; it was essentially a bunch of experiments cobbled together in a Frankenstein-esque contraption. Anyone who has a copy of that code is respectfully asked to destroy it once I ship any of these newer bits.</p>
+
+
+	<p>One of the big things that I&#8217;ve been working on is getting a seamless array experience. I marshal data types between the <span class="caps">CLR</span> and Ruby by value where possible, and by reference in all other cases. So value types like floating point numbers and integers are marshaled by value (aka copied and converted) across the runtime boundaries. So code like this just works:</p>
+
+
+<pre><code>
+static array&lt;int&gt;^ StaticGetOneDimensionalArray() {
+  return gcnew array&lt;int&gt; { 0, 1, 2, 3 };
+}
+
+a = MarshalerTests.StaticGetOneDimensionalArray
+assert_equal 0, a[0]
+assert_equal 4, a.Length
+</code></pre>
+
+	<p>As you can see, I marshal by reference the array from the C++ function. But all of the elements of the array are marshaled by value, which lets me treat them as if they were native Ruby numbers.</p>
+
+
+	<p>I&#8217;ve also done a ton of performance work in this release. If you&#8217;re calling a method that has overloads, I take a slower path where I have to lookup at runtime the correct method based on the parameters that you&#8217;re passing. However, if the method doesn&#8217;t have any overloads, I generate a different shim that doesn&#8217;t do any runtime lookups &#8211; it just pushes parameters onto the call stack and invokes the method. The array code that you see above calls <code>Array.Get</code> which is <strong>not</strong> overloaded (unlike <code>Array.GetValue</code> which is) which results in extremely fast <span class="caps">CLR</span> array element access from Ruby.</p>
+
+
+	<p>I&#8217;m punting on some hard problems like generics for the time being. I have to add support for events before I ship this release; if Ben cooperates that should be by the end of this week.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/11/rubyclr-update#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/11/hanselminutes">Hanselminutes</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 11 Jan 2006 18:28:00 GMT">Wed, 11 Jan 2006 18:28:00 GMT</span></p>
+<p><a href="http://www.computerzen.com">Scott Hanselman</a> is <a href="http://hanselminutes.com">podcasting</a>. I&#8217;m a <strong>huge</strong> fan of his recommendations on almost anything. I discovered <a href="http://www.timesnapper.com">Timesnapper</a> by listening to his podcast today during lunch.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/11/hanselminutes#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/11/a-nice-ruby-moment-today">A nice Ruby moment today</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 11 Jan 2006 18:19:00 GMT">Wed, 11 Jan 2006 18:19:00 GMT</span></p>
+<p>I used to have a chunk of code that looked like:</p>
+
+
+<pre><code>
+def new_clrobj(ctor_info, sig = null)
+  sig = ctor_info.signature if sig == null
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+</code></pre>
+
+	<p>It now looks like:</p>
+
+
+<pre><code>
+def new_clrobj(ctor_info, sig = ctor_info.signature)
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+</code></pre>
+
+	<p>It was one of those &#8220;it just works&#8221; moments that makes me love this language.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/11/a-nice-ruby-moment-today#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/09/our-other-boy">Our other boy</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 09 Jan 2006 23:57:00 GMT">Mon, 09 Jan 2006 23:57:00 GMT</span></p>
+<p>It&#8217;s been a long time since I&#8217;ve posted about Matthew:</p>
+
+
+	<p><a href="http://www.flickr.com/photos/23649168@N00/84578490/"><img src="http://static.flickr.com/39/84578490_119d64f19d.jpg?v=0" alt="" /></a></p>
+
+
+	<p>He&#8217;s almost 28 months old now, and he&#8217;s starting his new pre-school on Wednesday. He&#8217;s a pretty bright boy; he can read fairly elementary books completely on his own, and his vocabulary is growing by leaps and bounds. He was impressing his new pre-school teachers today by doing a &#8220;reverse&#8221; flash-card trick &#8211; that is predicting the letter on the other side (these were the simple alphabet flashcards that have a picture on one side and a single letter on the other side) based on the picture. I guess all of Daddy&#8217;s hard work creating his birthday present paid off! :)</p>
+
+
+	<p>We got Matthew his first computer for Christmas this year. Well, it was really just one of Daddy&#8217;s older computers brought back to life with a <span class="caps">PCI 802</span>.11g wireless card. I was amazed by how quickly he learned how to use the mouse &#8211; it took <em>maybe</em> 2 days before he had it figured out. The hard part of course, is the fixed length of the cord, so you have to pick up the mouse or move it faster to get to where you want to go. We&#8217;re not using a wireless mouse so that the mouse doesn&#8217;t wander away.</p>
+
+
+	<p>He figured out the Start button pretty quickly, so I had to lock down the options there (although he is running under a normal user account &#8211; no admin privileges quite yet :). He also figured out how to start Explorer without any options present under the Start menu, and today he demonstrated his virtuosity with drop-down combo boxes &#8211; I caught him browsing the <span class="caps">DVD</span> drive today.</p>
+
+
+	<p>We&#8217;re working on typing skills next &#8211; Textpad appears to be his editor of choice right now. I think it will take some time before his hands get big enough to start using emacs :)</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/personal" rel="category tag">Life</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/09/our-other-boy#comments">5 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2006/01/04/ruby-in-the-real-world">Ruby in the real world</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 04 Jan 2006 20:01:00 GMT">Wed, 04 Jan 2006 20:01:00 GMT</span></p>
+<p><a href="http://samgentile.com/blog/archive/2005/12/30/32204.aspx">Sam Gentile</a> was wondering about where Ruby is used in the &#8216;real world&#8217;, and where I&#8217;ve personally used Ruby.</p>
+
+
+	<p>Sam, you can easily Google around to see where Ruby is being used in the real world. Check out the <a href="http://www.rubyonrails.com/">Rails web site</a> for some pointers to some large web sites that are running on Rails.</p>
+
+
+	<p>As for where I&#8217;ve personally used Ruby and Rails, we wrote a lot of Ruby code for my last customer. The product hasn&#8217;t been announced yet, so I still can&#8217;t talk about it, but suffice to say that it&#8217;s a high performance e-commerce web service with two very large customers running on top of it (and many more to come).</p>
+
+
+	<p>We used Ruby to automate deploying the web service to our cluster. Ruby&#8217;s integration with <span class="caps">COM</span> made writing the <span class="caps">ADSI </span>+ WMI goo much more pleasant. I even toyed with rewriting the core web service (which is a .NET web service) in Ruby and was able to exploit an optimization that simply was not possible using .NET and <span class="caps">SQL </span>Server. There was an intermediate result set that could easily be cached in-memory using Ruby that wuold net us at least a 10X performance increase over the existing .NET application.</p>
+
+
+	<p>To be fair, I could have done the same optimization using C#, but there would be no way that I could squeeze it down into 200 lines of very concise Ruby code. The other qualitative difference is that the caching optimization was just <strong>really obvious</strong> in the Ruby code; there was just so few lines of code to look at.</p>
+
+
+	<p>We also built out a Rails web site to support the <span class="caps">API</span>. Developers using the web service could run live queries against our catalog using the site. The web site would also generate the application code for them in their programming language of choice: C#, VB.NET, Java or raw <span class="caps">SOAP</span> calls. It&#8217;s very similar in spirit to the <a href="http://www.awszone.com/">AWS Zone</a> site (even though I&#8217;m convinced that we have a much simpler query <span class="caps">API</span> than Amazon does).</p>
+
+
+	<p>I&#8217;m convinced that Ruby and meta-programming is a great way to approach modeling business applications. That&#8217;s why I&#8217;m investing so much time building my <a href="http://www.iunknown.com/articles/2005/12/14/hello-rubyclr">Ruby to <span class="caps">CLR</span> bridge</a>.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2006/01/04/ruby-in-the-real-world#comments">7 comments</a></p> 
+  </div>
+
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/109809504/"><img alt="Windows Presentation Foundation and RubyCLR" src="http://static.flickr.com/49/109809504_3cb96cef07_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/84578490/"><img alt="Groovin'" src="http://static.flickr.com/39/84578490_119d64f19d_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102353551/"><img alt="RSS Reader in Ruby" src="http://static.flickr.com/43/102353551_a14d82507d_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/105005076/"><img alt="Ben's Funny Look" src="http://static.flickr.com/38/105005076_f528bbd27f_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01/page/3">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

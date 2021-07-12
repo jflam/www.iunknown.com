@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Windows Forms and Value Types</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Windows Forms and Value Types": comment by Justin</title>
+      <description>&lt;p&gt;Thanks for the post. I'll wait until the next drop to play with it again. Installing .NET 2.0 side-by-side with 1.1 didn't work out too well for me - but it was cool to see all the unit tests pass :)&lt;/p&gt;</description>
+      <pubDate>Wed, 18 Jan 2006 13:51:11 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/01/18/windows-forms-and-value-types#comment-93</guid>
+      <link>http://www.iunknown.com/articles/2006/01/18/windows-forms-and-value-types#comment-93</link>
+    </item>
+    <item>
+      <title>"Windows Forms and Value Types" by jlam</title>
+      <description>&lt;p&gt;Justin in &lt;a href="http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comments"&gt;my comments&lt;/a&gt; reported not being able to create a simple &lt;code&gt;MessageBox.Show('Hello, World')&lt;/code&gt; app. There were two things missing in Justin&amp;#8217;s app: explicitly loading the &lt;code&gt;System.Windows.Forms&lt;/code&gt; assembly, along with a bit of confusion about Ruby namespaces and scoping.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a version of Justin&amp;#8217;s code that &lt;em&gt;should&lt;/em&gt; work:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+require 'rubyclr'
+include RubyClr
+
+RubyClr::reference 'System.Windows.Forms'
+
+include System
+include System::Windows::Forms
+
+MessageBox.Show('Hello, World')
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;It displays the message box and then promptly crashes. Why? Because &lt;code&gt;MessageBox.Show&lt;/code&gt; returns a &lt;code&gt;DialogResult&lt;/code&gt;, which is a user-defined value type. I&amp;#8217;m not marshaling user-defined value types yet, but it&amp;#8217;s a very high priority for the next release of the bridge.&lt;/p&gt;
+
+
+	&lt;p&gt;In other news, I&amp;#8217;ve done some pretty major refactoring of the C++ code in my current internal builds &amp;#8211; I was very unhappy with some of the code that I had in my first drop (hint: grep for &amp;#8216;enema&amp;#8217; in the source). I&amp;#8217;ve also got support for virtual call optimization in the current internal build.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m pretty busy writing &lt;a href="http://www.objectsharp.com"&gt;ObjectSharp&amp;#8217;s&lt;/a&gt; ASP.NET 2.0 Best Practices course the next couple of weeks, so I&amp;#8217;m anticipating a new release of the bridge towards the end of &lt;em&gt;next&lt;/em&gt; week. At the very least expect to see user defined value type marshaling working by then.&lt;/p&gt;
+
+</description>
+      <pubDate>Wed, 18 Jan 2006 11:03:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/01/18/windows-forms-and-value-types"&gt;Windows Forms and Value Types&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/01/18/windows-forms-and-value-types"&gt;Windows Forms and Value Types&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on RubyCLR on Vista</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"RubyCLR on Vista": comment by John Lam</title>
+      <description>&lt;p&gt;It doesn't belong in the GAC since the DLL is really a Ruby extension as opposed to a .NET library (even though it's all managed code). So you don't need to worry :)&lt;/p&gt;</description>
+      <pubDate>Thu, 09 Mar 2006 23:06:08 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/07/rubyclr-on-vista#comment-183</guid>
+      <link>http://www.iunknown.com/articles/2006/03/07/rubyclr-on-vista#comment-183</link>
+    </item>
+    <item>
+      <title>"RubyCLR on Vista": comment by Jeem</title>
+      <description>&lt;p&gt;Re:  installer:  Just please don't put it in the GAC or any other such place!  I'm successfully embeding it with RubyScript2Exe, and I hope I'll be able to continue doing so in future versions.&lt;/p&gt;</description>
+      <pubDate>Thu, 09 Mar 2006 18:03:23 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/07/rubyclr-on-vista#comment-181</guid>
+      <link>http://www.iunknown.com/articles/2006/03/07/rubyclr-on-vista#comment-181</link>
+    </item>
+    <item>
+      <title>"RubyCLR on Vista" by jlam</title>
+      <description>&lt;p&gt;I got Vista Build 5308 up and running on a secondary partition on my Toshiba &lt;span class="caps"&gt;M200 &lt;/span&gt;Tablet PC. Of course, the first thing that I did was get RubyCLR up and running on it. Everything worked great under the new &lt;a href="http://blogs.msdn.com/uac/archive/2006/03/03/Wei_Wang.aspx"&gt;User Account Control&lt;/a&gt; features of Vista (simply put, you run by default in a non-admin mode, with a reasonably seamless &amp;#8220;su&amp;#8221; experience to elevate privileges when appropriate).&lt;/p&gt;
+
+
+	&lt;p&gt;One thing that you will have to do in the next drop of RubyCLR is run a setup script in the RubyCLR distribution directory. It sets up some environment variables, and it creates some performance counters (I use this to help tune the runtime, as well as to provide you with more information about what it&amp;#8217;s doing). Since it creates some performance counters, you&amp;#8217;ll need to run this script as a local administrator. RubyCLR degrades gracefully if the performance counters aren&amp;#8217;t present; you just won&amp;#8217;t see any statistics.&lt;/p&gt;
+
+</description>
+      <pubDate>Tue, 07 Mar 2006 11:35:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/03/07/rubyclr-on-vista"&gt;RubyCLR on Vista&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/03/07/rubyclr-on-vista"&gt;RubyCLR on Vista&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Method Overload Resolution</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Method Overload Resolution" by jlam</title>
+      <description>&lt;p&gt;The current method overload algorithm in the RubyCLR bridge is a placeholder. It only works for very simple cases (which, granted easily account for 80+% of the cases). It doesn&amp;#8217;t handle corner cases very well, nor does it handle parameter arrays (although there is some code there to handle those cases, it&amp;#8217;s just not called right now). The algorithm is also fairly poor both in terms of space and in time. So there&amp;#8217;s quite a lot of room for improvement there.&lt;/p&gt;
+
+
+	&lt;p&gt;In this next iteration, I&amp;#8217;m planning on tackling the generics overloading problem, which requires me to think very carefully about the algorithm.&lt;/p&gt;
+
+
+	&lt;p&gt;Before tackling generics, I decided to spend some time writing test cases for non-generic corner cases, as well as cleaning up a bunch of missing bits in the code. Rather than reinventing the wheel, I decided to take a look at the test cases for &lt;a href="http://www.gotdotnet.com/workspaces/workspace.aspx?id=ad7acff7-ab1e-4bcb-99c0-57ac5a3a9742"&gt;IronPython&lt;/a&gt;, since I figure that they would have a similar set of problems to deal with.&lt;/p&gt;
+
+
+	&lt;p&gt;I found a &lt;em&gt;very&lt;/em&gt; clever set of test cases in &lt;code&gt;BindingTest.py&lt;/code&gt;. As I ported them to Ruby, I discovered a number of missing features in my existing codebase (such as marshaling Booleans as parameters &amp;#8211; I was missing an entry in a hashtable). I&amp;#8217;ve spent part of the day fixing those bugs and writing a new set of unit tests in preparation for a rewrite of the method overload algorithm.&lt;/p&gt;
+
+
+	&lt;p&gt;One thing that I discovered while looking at the Python unit tests is that I&amp;#8217;m going to have to tackle enumerations sooner rather than later. Once I have support for enumerations in RubyCLR, I&amp;#8217;ll ship a new drop, likely by the end of the week.&lt;/p&gt;
+
+</description>
+      <pubDate>Mon, 13 Feb 2006 16:38:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/13/method-overload-resolution"&gt;Method Overload Resolution&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/13/method-overload-resolution"&gt;Method Overload Resolution&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Tech Ed Reflections</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000447.html" title="The XML angle bracket tax" />
+
+<link rel="next" href="http://www.iunknown.com/000449.html" title="Seriously scary stuff" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000448.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/192"
+    dc:title="Tech Ed Reflections"
+    dc:identifier="http://www.iunknown.com/000448.html"
+    dc:subject="Blog"
+    dc:description="After an entirely uneventful and on-time flight back to Toronto, I finally have some cycles to reflect on Tech Ed. A reliable network connection also helps :) I had a chance to catch up with a lot of old friends..."
+    dc:creator="John"
+    dc:date="2004-05-28T01:41:29-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000447.html">&laquo; The XML angle bracket tax</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000449.html">Seriously scary stuff &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">May 28, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Tech Ed Reflections</h3>
+
+<p>After an entirely uneventful and on-time flight back to Toronto, I finally have some cycles to reflect on Tech Ed. A reliable network connection also helps :)</p>
+
+<p>I had a chance to catch up with a lot of old friends at Tech Ed. I'd like to wish the good folks at <a href="http://www.pluralsight.com">Pluralsight</a> all the best. It was a lot of fun catching up with Fritz, Aaron, Keith and Mike. </p>
+
+<p>I had a chance to meet <a href="http://www.hanselman.com/blog/">Scott Hanselman</a> in person. His code generation <span class="caps">BOF</span> was one of my highlights from this year's Tech Ed. Scott is seriously funny too - I hope he didn't mind my hijacking his <span class="caps">BOF</span> for a few minutes to rant about the abuse of <span class="caps">XML.</span></p>
+
+<p>A few other bloggers came up to me and introduced themselves at the <span class="caps">BOF. A</span> shout out to <a href="http://benjaminm.net/default.aspx">Benjamin Mitchell</a>, and <a href="http://bristowe.com/blog/">John Bristowe</a>.</p>
+
+<p><a href="http://blogs.msdn.com/akipman">Alex Kipman</a> and I got a chance to bond over some good food, drinks and music. It was fun meeting some of the other folks who work with Alex - maybe once he starts blogging he can drag Marie, Justin and Scott into the fold as well. </p>
+
+<p><strong>Update:</strong> <a href="http://blogs.msdn.com/jledgard/">Josh Ledgard</a> points out in my comments that <a href="http://blogs.msdn.com/scottsw">Scott Swanson</a> already has a blog. It's amazing the power of context since I'm sure there's lots of guys named Scott that work at <span class="caps">MS </span>:)</p>
+
+<p>It was fun to finally meet Richard Ersek, a PM on the <span class="caps">IIS</span> team who I worked closely with to put together our pre-conference tutorial. The <span class="caps">IIS</span> and <span class="caps">ASP.NET</span> teams are finally in the same org now at <span class="caps">MS,</span> so folks in the <span class="caps">ASP.NET</span> community will be hearing a lot more from Richard in the future. </p>
+
+<p>A <em>really</em> big surprise this year was running into <a href="http://www.iunknown.com/000446.html">Mark Miller</a>, the evil genius behind <a href="http://www.devexpress.com/?section=/Products/NET/CodeRush">CodeRush</a>. I see that <a href="http://www.pluralsight.com/keith/default.aspx?key=2004-05-27T21:27:38Z">Keith I Hate Software that requires admin privileges Brown</a> has discovered why Mark needs to stop writing software as a local admin. Mark and I are old friends from our Borland Conference days - it's good to see that Mark is as high-energy as ever. </p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at May 28, 2004 01:41 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=448" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="448" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000448.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>If you are talking about Scott Swanson, then he has a blog... http://blogs.msdn.com/scottsw.  Enjoy. </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://blogs.msdn.com/jledgard">josh ledgard</a> at May 29, 2004 11:11 AM</span>
+</div>
+<div class="comments-body">
+<p>The pleasure was mine.  Thanks for putting together a great pre-con.  </p>
+
+<p>-Rich</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://blogs.msdn.com/richarde">Rich Ersek</a> at June  3, 2004 11:25 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="448" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Alignment Cost</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000040.html" title="Back to work" />
+
+<link rel="next" href="http://www.iunknown.com/000042.html" title="Lutz Roeder's Reflector.NET Rocks!" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000040.html">&laquo; Back to work</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000042.html">Lutz Roeder's Reflector.NET Rocks! &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 22, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Alignment Cost</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>The Pentium III-M processor is <EM>not </EM>sensitive to branch target instruction alignment. In this experiment, I created a tight loop that executes 100,000,000 times, and aligned the start of the loop at +1 and +2 bytes beyond the beginning of the 16-byte boundary, as in the following two code fragments:</P><br />
+<P><CODE>00433A51 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc edi <BR>00433A52 81 FF 00 E1 F5 05 cmp edi,5F5E100h <BR>00433A58 7C F7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jl loopx (433A51h)</CODE></P><br />
+<P>and</P><br />
+<P><CODE>00433A52 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc edi <BR>00433A53 81 FF 00 E1 F5 05 cmp edi,5F5E100h <BR>00433A59 7C F7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jl loopx (433A52h)</CODE></P><br />
+<P>The results showed that there was <EM>no difference</EM> in performance between these two loops. On a 1.13GHz PIII-M processor, these loops took 0.180 +/- 0.001 and 0.182 +/- 0.002 seconds to complete respectively.</P><br />
+<P>However, Pentium III-M processors pre-fetch instructions 16 bytes at a time. If you force loops to straddle a 16-byte boundary unnecessarily, you will pay a 1 cycle penalty for your transgression. Consider the following two loops:</P><br />
+<P><CODE>00433370 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc edi <BR>00433371 81 FF 00 E1 F5 05 cmp edi,5F5E100h <BR>00433377 7C F7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jl loopx (433370h)</CODE></P><br />
+<P>and</P><br />
+<P><CODE>0043351F 47&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inc edi <BR>00433520 81 FF 00 E1 F5 05 cmp edi,5F5E100h <BR>00433526 7C F7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jl loopx (43351Fh)</CODE></P><br />
+<P>The first loop is set up so that all of its instructions fit within a single 16-byte paragraph. The second loop is set up so that it straddles two 16-byte paragraphs. The performance penalty in this case is significant; these loops execute in 0.182 +/- 0.001 and 0.274 +/- 0.001 seconds respectively. </P><br />
+<P>The penalty paid&nbsp;in this case is 0.092 seconds. These experiments were conducted on a 1.13GHz Pentium III-M processor. In 0.092 seconds, the processor clock ticks 0.092 * 1.13 billion = 0.104 billion times. Our loop executed 0.1 billion times. Therefore, we we are paying a penalty of exactly 1 clock cycle for forcing an additional 16-byte prefetch operation. In a tight loop such as this, we are paying a significant performance penalty of 49.7%!</P><br />
+<P>To see whether this 1 cycle penalty is consistent with larger loops, I constructed a larger loop whose body was padded using 9 nop instructions. This was sufficient to make the loop 18 bytes in length. This lets me construct a case where the same loop could straddle either two or three 16-byte paragraphs. The loop that straddled two 16-byte paragraphs took 0.540 +/- 0.001 seconds to complete. The loop that straddled three 16-byte paragraphs took 0.630 +/- 0.001 seconds to complete. The difference in time is 0.90 seconds, which implies that we pay yet another 1 cycle penalty for fetching three 16-byte paragraphs vs. two 16-byte paragraphs, consistent with our previous set of observations.</P><br />
+<P>Therefore, for tight loops, a very useful performance optimization on Pentium III-M processors is to ensure that the loops fit entirely within the smallest number of 16-byte paragraphs possible. </P><br />
+<P>I haven't investigated these effects on other processor types yet, so I'll leave that for a future installment.</P><br />
+<P>If you are interested in the source code for this simple experiment, along with an Excel spreadsheet that contains some of the raw numbers used to generate these results, <A href="Files/AlignmentCost2.zip">click here</A>. Note that you <EM>must</EM> compile as a debug build so that the padding that I added in inline assembler will cause the expected results. </P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January 22, 2002 06:40 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="41" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000041.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

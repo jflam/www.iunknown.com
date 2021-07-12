@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Building C++ projects with NAnt</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000104.html" title="Revised VersionTask" />
+
+<link rel="next" href="http://www.iunknown.com/000106.html" title="More C++ and NAnt stuff" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000104.html">&laquo; Revised VersionTask</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000106.html">More C++ and NAnt stuff &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 18, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Building C++ projects with NAnt</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>Now that I've more-or-less figured out how to build C# projects using NAnt, I'm turning to the real meat of my development process: compiling C++ projects. In theory, it should be no different from using the csc task in NAnt. The reality, however, is that the C++ compiler has a lot more knobs and switches that you can and should flip while doing development. </P><br />
+<P>There are two unique challenges in creating a NAnt build file that works correctly with C++ projects. The first is making sure that all of your favorite CL.EXE command line options are set correctly. However, if you're like me and were raised in IDE's, this can be a really daunting task. However, the VS.NET IDE has a savior: the build log. If you look at the build log, you'll see the actual command lines that were used by VS.NET to compile your application. This makes it considerably easier to replicate your VS.NET build inside of a NAnt build file.</P><br />
+<P>The second is doing all of those little things that we take for granted in ATL projects. Things like running the MIDL compiler or registering your COM DLL's using regsvr32.exe. Fortunately, these commands are captured using the VS.NET build log as well, so it's mostly a matter of patience and typing to get these things integrated into your NAnt build file.</P><br />
+<P>To this end, I'm doing the NAnt equivalent of "Hello, World" for an ATL project in VS.NET. This is a simple AppWizard generated ATL skeleton project.</P><br />
+<P>WATCH OUT FOR DOUBLE QUOTES! Most command line options contain double quoted filenames. Most people like to use double quotes to delimit their XML attribute values (I know I do). This is a very, very bad mix in NAnt build files. Make sure that you use single quotes to delimit your attribute values so that you can continue to use double quotes in your command line options. If you change your command line options to use single quotes, you will get tons of unexplainable errors in your build scripts. </P><br />
+<P>If you want to take a peek at this work in progress, <A href="Files/simple_atl_default.build">click here</A>. There's still a bunch of things that I need to change in this build script. Most notably, none of my fun versioning / VSS stuff&nbsp;lives in this file. But I managed to get a simple script that&nbsp;compiles a debug build of an ATL project up and running.&nbsp;After working with this script a bit, I realize that there's a few&nbsp;additional features that would make NAnt better:</P><br />
+<OL><br />
+<LI><br />
+<DIV>A way of defining symbols in something that resembles a NAnt fileset. Defining them on the command line is really awkward.</DIV><br />
+<LI><br />
+<DIV>Additional tasks for running&nbsp;midl.exe and&nbsp;rc.exe that does some dependency checking.</DIV></LI></OL><br />
+<P>These are fairly low-priority items right now since the exec task provides a reasonable, albeit sub-optimal workaround.</P><br />
+<P>One other thing that I never got working was the /Yc and /Yu options for controlling the generation / use of precompiled headers. If you look closely at the build script, you'll notice that I used the /YX option to let cl.exe figure out what to do about precompiled headers. <A href="mailto:jlam@iunknown.com">I'd be interested in hearing</A> whether /Yc + /Yu is preferable to using /YX. <STRONG>Update:</STRONG> I've <A href="Weblog/MoreC++andNAntstuff.html">posted a new entry</A> that shows how this problem was solved.</P><br />
+<P>Next up is to make these scripts work on release and debug builds to capture the most commonly used options. </P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 18, 2002 05:40 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="105" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000105.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>i want to join you</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://master of computer application">sushil kumar patel</a> at August 28, 2003 08:12 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

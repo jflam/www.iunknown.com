@@ -1,0 +1,136 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/134 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Fun with NAnt</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">Fun with NAnt</div>
+        <div class="entryDate">2002-04-12</div>
+        <p><P>I decided to take some time out on my flight home from Tech-Ed in New Orleans to work on the build system for my Cross-Language Aspect Weaver (CLAW).[1] After watching lots of discussion about the merits of a one-step build, deploy and test script, I decided to bite the bullet and start taking a closer look at the NAnt (.NET Ant) build tool </P>
+<P>NAnt is a very powerful build tool. It maps XML elements in a build script to <EM>tasks</EM>. Tasks perform various operations that are essential to any build process, such as running compilers, copying and deleting files, running unit tests, and even sending email to team members informing them of the status of that build.</P>
+<P>NAnt is more-or-less a port of the Java Ant build tool. However, it is adapted to specifically meet the needs of CLR developers. For example, where the Ant tool has a task for running the javac compiler, NAnt has a task for running the csc compiler. There are also small, arbitrary, differences in standard tasks such as the echo task; the message attribute is mandatory in NAnt and optional in Ant.</P>
+<P>Here's a simple NAnt build script:</P>
+<P><CODE>&lt;project name="Hello NAnt" default="debug"&gt;<BR>&nbsp; &lt;target name="debug"&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;echo message="DEBUG build"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;csc target="exe" output="HelloWorld.exe" debug="true"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;sources&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;includes name="HelloWorld.cs"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/sources&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/csc&gt;<BR>&nbsp; &lt;/target&gt;<BR>&lt;/project&gt;</CODE></P>
+<P>The script&nbsp;performs the equivalent of typing:</P>
+<P><CODE>csc /target:exe /debug+ HelloWorld.cs</CODE></P>
+<P>on the command line.</P>
+<P>To invoke this script, you only have to type nant on the command line. NAnt will automatically search for the first file (in alphabetical order) in the current directory that contains a .build extension.</P>
+<P>Now, what if you wanted to create multiple targets? Here's a simple script that will do either a debug or a release build. </P>
+<P><CODE>&lt;project name="Hello Nant" default="debug"&gt;</P>
+<P>&nbsp; &lt;target name="release"&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;echo message="RELEASE build"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;csc target="exe" output="HelloWorld.exe" debug="false"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;sources&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;includes name="HelloWorld.cs"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/sources&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/csc&gt;&nbsp;&nbsp;&nbsp; <BR>&nbsp; &lt;/target&gt;<BR>&nbsp; <BR>&nbsp; &lt;target name="debug"&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;echo message="DEBUG build"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;csc target="exe" output="HelloWorld.exe" debug="true"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;sources&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;includes name="HelloWorld.cs"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/sources&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/csc&gt;<BR>&nbsp; &lt;/target&gt;</P>
+<P>&lt;/project&gt;</CODE></P>
+<P>Note that there two different output targets in this build script. To select the appropriate target, you need to indicate the target on the nant command line; nant release generates a release build, and nant debug generates a debug build.</P>
+<P>In this build script, you'll find that both the release and debug builds build to the same directory. Unfortunately, this means that you can't switch between a debug and a release build without deleting the output file first, otherwise you're risking the build not happening because the target is up to date. One possible solution to this problem is to have separate debug and release directories, much like what Visual C++ and C# do. In a future entry in this log, I'll outline what I've come up with to solve this problem.</P>
+<P>[1] I decided to code-name my AOP project CLAW. <A href="http://www.cs.uni-bonn.de/~gk/">Guenter Kniesel</A> came up with this clever acronym to describe&nbsp;my upcoming talk at the Aspect Oriented Software Development conference.</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/FunwithNAnt.html');"><script type="text/javascript">postCount('Weblog/FunwithNAnt.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

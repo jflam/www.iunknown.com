@@ -1,0 +1,148 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Design and Use of Software Architectures
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0201674947" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjAxNjc0OTQ3LjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPERlc2lnbiBhbmQgVXNlIG9mIFNvZnR3YXJlIEFyY2hpdGVjdHVyZXM7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEphbiBCb3NjaDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDUyLjk5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkNDUuMTA7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQuMDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Mzs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wMjAxNjc0OTQ3L3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47Pu2NPiTIUmuqO+DIXBHsn+Q5mMCw" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0201674947.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Design and Use of Software Architectures</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Jan Bosch</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$52.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$45.10</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.0</span>
+          based on
+          <span id="TotalReviews">3</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0201674947/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Low on specifics, low on applicability</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>2</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-07-05</span>
+                    </div>
+                    <span>I had much higher hopes for this book. The idea of software architecture is finally coming into its own as a field of study. That includes the levels above individual software systems, including highly configurable systems and whole corporate product families. The subtitle, "Adopting and evolving a product line approach," looked promising. <P>A few things early on left me skeptical. Section I.4.1, for example, discusses quality factors of an architecture. The approach is completely retrospective, though. It only looks backwards at what emerged in a system, not forwards into how a system should be designed. I agree with section I.5.5 that some quality requirement X will be implemented across some set of system modules. Summing that quality's presence across all modules to add up to X is a positively dangerous mis-statement. The strength of a chain is in all of its links, but is not the sum of the link strengths - the strength of a system's security is not increased by adding yet more insecure modules. <P>The treatment of "software science" metrics is deplorably shallow. If you must use that approach, it's best to use a wide variety of indicators with different sensitivities, ideally indicators that don't depend on the programming language. The author stops with one metric, a graph-theoretic number that would be nearly impossible to apply to XSLT, Prolog, UI specification systems, database schemata, and so on. "Experience-based assessment" proposes the use of external assessment teams, without suggesting any way of guaging that team's ability. The discussion of processes vs. threads, with respect to program reliability misses the most critical point: that processes normally have hardware memory protection and threads don't. Unwittingly or maliciously shared memory is the biggest threat to reliability, and is a threat in process systems without memory protection.<P>The same shallow approach appears elsewhere in the "Transformation of architecture" section, in the dicussion of design patterns. The failure to distinguish strategic from tactical design issues is disappointing. A facade pattern is a useful tool, at the level of a few modules or minor subsystem. It is not a fundamental organizational principle capable of guiding the system's future structure - it doesn't work at the architectural level.<P>Bosch's emphasis is on analysis of successful systems and on retrofit of older systems under active development. Good stuff - that really describes the large majority of software effort. The discussion never gets started, however, because it scarcely mentions any way of determining which existing subsystems demand the most immediate attention.<P>There are lots more problems with this book, but I hope the pattern is clear: shallow discussion, weak specifics, and sparse mention of commercially critical issues.</span>
+                  
+                    <div class="CustomerReviewSummary">An excellent fifth book about the subject</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>10</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-03-27</span>
+                    </div>
+                    <span>This book is certainly not for beginners. You already have to know a lot about software architecture to meaningfully read it.<P>It is very abstract, elegant and bright. The reading style is still amazingly light. If you are in the know you are delighted to read about it in such an elegant way. If you are not in the know you will have trouble to develop a concrete idea and to digest all those different aspects on so few pages.</span>
+                  
+                    <div class="CustomerReviewSummary">Sound approach - ATAM proponents will like this book!</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>52</span>
+                      /
+                      <span>55</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-04-30</span>
+                    </div>
+                    <span>This book provides an interesting and comprehensive approach to designing software architectures. The author crystalized four concepts that have greatly influenced on my thinking: (1)focus on quality attributes during the design and evaluation, (2) a rich set of evaluation techniques, (3) dimensional views of the architecture design, and (4) a realistic approach to reusability.<P>The author's treatment of quality attributes provides a good foundation for the design process. The author's method of linking quality attributes to quality requirements is plain good practice and bears careful reading. Traceability in any engineering or design effort is essential and the approach proposed needs to be included early in the life cycle.<P>There are major four evaluation techniques covered in the book: Scenario-based that examines software qualities within the context of scenarios; simulation techniques that model the architecture in a simulation environment; mathematical modeling that uses statistics, probability and other techniques to predict qualities such as reliability, etc.; and experienced-based reasoning (see Brooks' Mythical Man Month for a good explanation of that!).<P>Among the most powerful concepts presented is dimensional views, which decompose the architecture into component and system views; business, organization, process and technology views; and development, usage and evolution views. This approach ensures that an architecture's design proceeds in accordance with findings from a thorough analysis, and that all factors be considered and incorporated into the design. If you are a proponent of SEI's Architecture Trade-off Analysis Method (ATAM) you will see some similarities. However, if you carefully examine the author's approach you will see some gaps: the focus is not on trade-off points (although the dimensional views will certainly uncover trade-offs that have to be made), and ATAM does not address the evolution of the architecture. The product line approach proposed by the author does. Applying product line concepts to design and development promotes reusability, as well as providing a set of guidelines for evolving or changing the architecture. <P>Overall this is an excellent book that balances theory with a practical approach that is supported by case studies and real examples. I view it as a philosophy on architecture design instead of a methodology. It is a refreshing change from some of the architecture books I have read that are filled with dogmatic methods and "design in a vacuum". The approach proposed will link design to requirements, and will ensure that the architecture meets standards that are defined by quality attributes and not arbitrary design criteria.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201703327'>
+                      Software Product Lines : Practices and Patterns
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 6 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201775948'>
+                      Beyond Software Architecture: Creating and Sustaining Winning Solutions
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 21 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=020170482X'>
+                      Evaluating Software Architectures: Methods and Case Studies
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 2 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201703726'>
+                      Documenting Software Architectures: Views and Beyond
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 4 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321154959'>
+                      Software Architecture in Practice, Second Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 16 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

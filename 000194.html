@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Has John gone off the deep end?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000193.html" title="Software co-operative" />
+
+<link rel="next" href="http://www.iunknown.com/000195.html" title="Sun Tech Days Presentation" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000193.html">&laquo; Software co-operative</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000195.html">Sun Tech Days Presentation &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 06, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Has John gone off the deep end?</h3>
+
+<p><P><A href="http://radio.weblogs.com/0105852/">Sam Gentile</A> thinks that I might have gone off the deep end. First <A href="Weblog/MerryChristmastome....html">I run off and buy a Mac</A>, next I decide that I need to <A href="Weblog/Softwareco-operative.html">create my own software commune</A>. I'm fairly certain that Sam thinks I've become some kind of software hippy. He wonders how the Mac is going to impact my bottom line. That's a fair question; I'll try to address it in this entry.</P><br />
+<P>As far as the bottom line is concerned, I've never been particularly motivated by money. That doesn't mean that I would turn down money that was offered to me, nor does it mean that I'm inexpensive to hire (I'm not). It simply means that the choices that I make are not <EM>primarily </EM>motivated by money. I've got more than enough money to maintain my lifestyle, so the rest of my time is spent on <A href="http://web.utk.edu/~gwynne/maslow.HTM">self-actualization</A>.</P><br />
+<P>I firmly believe that I have spent too much time being influenced by one school of thought - the Windows / COM / C++ school of thought. I feel that this school <A href="Weblog/Keepinganopenmind.html">colors into my thinking in certain ways</A>. Therefore, I have identified two areas that I want to investigate further. The first is how the Win32 API compares to Mac OS X as a client application development environment, and the second is whether dynamically typed languages really are more productive than the statically typed languages that I'm used to.</P><br />
+<P>Mac OS X lets me spend time learning from folks who have a different solution to the same sets of problems that we try to solve in the Windows world. There are some really nice features in Cocoa, such as native rendering of documents in PostScript and a model-view-controller approach to building UI's.</P><br />
+<P>Objective C has some elements of a dynamically typed language.&nbsp;I can send messages to arbitrary objects without knowing their types at compile time. This is a very different approach to programming than I'm used to, and it's great to see things from a different point of view. It's even more useful when you gain enough experience to be able to intelligently compare it with C++ and C#.[1] </P><br />
+<P>A nice side effect of these investigations is that I am able to observe <EM>how </EM>I learn a new set of technologies. I think this feedback is extremely valuable in helping me improve my course materials for <A href="http://www.wintellect.com/seminars/training.aspx?courses=1&amp;id=3">my Programming ASP.NET class</A>. Too often, I forget what it is like to learn an entirely new technology like ASP.NET. These days I spend lots of time thinking about how to improve the learning process for my students.</P><br />
+<P>My hope is that I become a better programmer after exploring these new horizons. Yes, I'm aware of the opportunity cost associated with these efforts, but I firmly believe that the opportunity cost of <EM>not</EM> investigating these technologies at this point in my career would be far, far greater. </P><br />
+<P>[1] I don't think that I'm there yet, but I'm collecting a set of observations that I intend to write up in the future. </P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January  6, 2003 09:54 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="194" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000194.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="194" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

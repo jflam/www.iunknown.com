@@ -1,0 +1,137 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/118 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>IL Corner: the ldtoken instruction</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">IL Corner: the ldtoken instruction</div>
+        <div class="entryDate">2002-03-06</div>
+        <p><P>My friend <A href="http://www.wintellect.com/about/instructors.asp?id=3">Jeffrey Richter</A> sent me a really cryptic email several weeks ago. I had MSN messenger'd him a question about how one converts a MethodDef token into a MethodBase object. However, MSN Messenger does not <EM>really</EM> show you someone else's status in real time, so he didn't see my message until later. He replied using Hotmail since I had since logged off for the evening. His message contained a subject of "Does ldtoken do this?"</P>
+<P>Now, when I finally got around to checking my Hotmail account, I didn't really understand what he meant by this. When I ran into Jeffrey at VS Live a few weeks ago, he remembered that message and asked me if it had helped me out. At that time I had no idea what he was referring to. He reminded me&nbsp;about what I had asked him and a light bulb went off in my head.&nbsp;</P>
+<P>When I got home, I took a closer look at the CIL documentation in the Partition III ECMA spec. Wow. That's all I can say. Wow. The ldtoken instruction does <EM>exactly</EM> what I needed. It is a really unusual instruction since what it does is convert a MethodDef, TypeDef, and FieldDef token into a RuntimeMethodHandle, a RuntimeTypeHandle or a RuntimeFieldHandle object, respectively. You can use these handle objects to construct the appropriate System.Reflection objects at runtime.</P>
+<P>Before we go any further, I need to explain why I even care about this instruction. Most of my CLR spelunking relates to solving real problems in my runtime aspect weaver. The problem that was sitting on the back-burner for a while was how to integrate my runtime aspect weaver with the System.Reflection API's. </P>
+<P>When I weave new code at some join-point, one of the pieces of information that I provide the advice method with is the name of the method that was weaved. In the M3 build of my runtime aspect weaver that I showed at VS Live!, I simply passed the name of the method as part of the CallContext object that I create in my dynamic proxy. </P>
+<P>However, I wanted more power than that. What if the advice method wanted to reflect on that method to get more information about the context of the call? In order to enable this, I needed to provide the advice method with a System.Reflection.MethodBase object that represents the original method that was weaved. In my previous implementation of my CallContext object, I actually walked the stack to find the MethodBase object:</P>
+<P><CODE>// Caller is always one past the dynamic interceptor on the call stack<BR>protected MethodBase TargetMethod<BR>{<BR>&nbsp; get<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; StackTrace trace = new StackTrace();<BR>&nbsp;&nbsp;&nbsp; if( trace.FrameCount &lt; 2 )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new Exception( "Not enough stack frames in StackTrace!" );</P>
+<P>&nbsp;&nbsp;&nbsp; StackFrame frame = trace.GetFrame( 2 );<BR>&nbsp;&nbsp;&nbsp; return frame.GetMethod();<BR>&nbsp; }<BR>}</CODE></P>
+<P>Now this is a really crufty hack since I shouldn't need to walk the call stack to get the MethodBase object. After all, I already know the MethodDef token of the method being weaved! So ... what I needed to be able to do was to convert a MethodDef token into a MethodBase object. The key, as it turns out, is the RuntimeMethodHandle object.</P>
+<P>To create a RuntimeMethodHandle object, you need to generate a ldtoken instruction. The ldtoken instruction also contains the token that needs to be encoded, so it is 5 bytes in length. Here's an example from some experiments that I did today:</P>
+<P><CODE>IL_0000:&nbsp; /* D0&nbsp;&nbsp; | (06)000007&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */ ldtoken&nbsp;&nbsp;&nbsp; method instance void Library.AnotherType/* 02000003 */::DoNothing() /* 06000007 */</CODE></P>
+<P>As you can see, the MethodDef token (0x06000007) is part of the ldtoken instruction. This is not a problem for my runtime aspect weaver, since I need to generate the dynamic proxies on the fly, so generating custom ldtoken instructions is very straightforward.</P>
+<P>To obtain a MethodBase object from a RuntimeMethodHandle object, all you need to do is call the static GetMethodFromHandle() method:</P>
+<P><CODE>MethodBase method = MethodBase.GetMethodFromHandle( handle );</CODE></P>
+<P>As you can see, ldtoken is a very powerful instruction. Unfortunately, it isn't really useful for folks other than compiler writers since you need to dynamically emit this instruction at runtime. It would be nice, however, if there were a new method on System.Reflection.Module that would let folks look up MethodBase objects based on a MethodDef token; this would provide valuable integration with the unmanaged metadata API's.</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/fog0000000118.html');"><script type="text/javascript">postCount('Weblog/fog0000000118.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

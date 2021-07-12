@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: The Joy of Deleting Code</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/893/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/09/06/the-joy-of-deleting-code" rel="alternate" type="text/html"/>
+  <updated>2006-09-06T21:19:51-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:4a7626ef-9709-4f94-81b6-a79ec697bd73</id>
+    <published>2006-09-06T21:18:19-07:00</published>
+    <updated>2006-09-06T21:19:51-07:00</updated>
+    <title type="html">The Joy of Deleting Code</title>
+    <link href="http://www.iunknown.com/articles/2006/09/06/the-joy-of-deleting-code" rel="alternate" type="text/html"/>
+    <category term="RubyCLR" scheme="http://www.iunknown.com/articles/tag/rubyclr"/>
+    <summary type="html">&lt;p&gt;&lt;img src="http://images.google.com/images?q=tbn:BmEpAIN5vQESGM:http://www.howtospot.com/delete-button.jpg" style="float:left;margin-right:20px;margin-bottom:20px;"&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;You know how it is. At first you have to rip things apart before you can begin building things back up again. There&amp;#8217;s been lots of ripping apart happening in RubyCLR over the past few weeks. A brand-new and very high performance reflection layer now lies underneath everything. And tonight I got the first vertical slice to work.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the unit test that now passes:&lt;/p&gt;
+
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;test_default_ctor&lt;/span&gt;
+  &lt;span class="ident"&gt;a&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;ArrayList&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;
+  &lt;span class="ident"&gt;assert_equal&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;System.Collections.ArrayList&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;clr_type&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;full_name&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+	&lt;p&gt;Here&amp;#8217;s what the code used to look like for defining a method shim:&lt;/p&gt;
+
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;self.method_shim&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+  &lt;span class="ident"&gt;method_labels&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;..&lt;/span&gt;&lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;signatures&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;length&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;collect&lt;/span&gt; &lt;span class="punct"&gt;{&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt; &lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;l&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt; &lt;span class="punct"&gt;+&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;to_s&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;to_sym&lt;/span&gt; &lt;span class="punct"&gt;}&lt;/span&gt;
+
+  &lt;span class="ident"&gt;create_safe_ruby_instance_method&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;ruby_member_name&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+    &lt;span class="ident"&gt;match_sig&lt;/span&gt;   &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;member_id&lt;/span&gt;
+    &lt;span class="ident"&gt;switch&lt;/span&gt;      &lt;span class="ident"&gt;method_labels&lt;/span&gt;
+    &lt;span class="ident"&gt;throw_clr&lt;/span&gt;   &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;Cannot find method that matches Ruby parameters&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+
+    &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;signatures&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each_with_index&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;sig&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+      &lt;span class="ident"&gt;label&lt;/span&gt;      &lt;span class="ident"&gt;method_labels&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt;
+
+      &lt;span class="ident"&gt;ld_this&lt;/span&gt;    &lt;span class="ident"&gt;klass&lt;/span&gt;
+      &lt;span class="ident"&gt;ld_params&lt;/span&gt;  &lt;span class="ident"&gt;sig&lt;/span&gt;
+      &lt;span class="ident"&gt;inst_call&lt;/span&gt;  &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;
+      &lt;span class="ident"&gt;ret_2rb&lt;/span&gt;    &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+	&lt;p&gt;Here&amp;#8217;s what it looks like now:&lt;/p&gt;
+
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;self.method_shim&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;method_name&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;members&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+  &lt;span class="ident"&gt;method_labels&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;..&lt;/span&gt;&lt;span class="ident"&gt;members&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;length&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;collect&lt;/span&gt; &lt;span class="punct"&gt;{&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt; &lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;l&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt; &lt;span class="punct"&gt;+&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;to_s&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;to_sym&lt;/span&gt; &lt;span class="punct"&gt;}&lt;/span&gt;
+
+  &lt;span class="ident"&gt;create_safe_ruby_instance_method&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;method_name&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+    &lt;span class="ident"&gt;match_sig&lt;/span&gt;   &lt;span class="ident"&gt;add_members_to_signature_cache&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;members&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="ident"&gt;switch&lt;/span&gt;      &lt;span class="ident"&gt;method_labels&lt;/span&gt;
+    &lt;span class="ident"&gt;throw_clr&lt;/span&gt;   &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;Cannot find method that matches Ruby parameters&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+
+    &lt;span class="ident"&gt;members&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each_with_index&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;member&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+      &lt;span class="ident"&gt;label&lt;/span&gt;      &lt;span class="ident"&gt;method_labels&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt;
+
+      &lt;span class="ident"&gt;ld_this&lt;/span&gt;    &lt;span class="ident"&gt;klass&lt;/span&gt;
+      &lt;span class="ident"&gt;ld_params&lt;/span&gt;  &lt;span class="ident"&gt;member&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;get_signature&lt;/span&gt;
+      &lt;span class="ident"&gt;inst_call&lt;/span&gt;  &lt;span class="ident"&gt;member&lt;/span&gt;
+      &lt;span class="ident"&gt;ret_2rb&lt;/span&gt;    &lt;span class="ident"&gt;member&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+	&lt;p&gt;The new code is much better than the old code. In the old code, all type information was expressed using strings. This made things quite flexible, but at a severe performance penalty. There were many type lookup operations (to be fair, some of which were cached), but these are now eliminated in the new code.&lt;/p&gt;
+
+
+	&lt;p&gt;I was also rather ashamed of the method_info data structure. It&amp;#8217;s a rather central data structure in RubyCLR and it became the kitchen sink of metadata. It evolved over time and was never redesigned. In the new code it doesn&amp;#8217;t exist anymore.&lt;/p&gt;
+
+
+	&lt;p&gt;Tomorrow should be a fun day &amp;#8211; I get to &lt;strong&gt;delete&lt;/strong&gt; a ton of code that isn&amp;#8217;t used anymore. I have far more fun deleting code than writing it.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;&lt;img src="http://images.google.com/images?q=tbn:BmEpAIN5vQESGM:http://www.howtospot.com/delete-button.jpg" style="float:left;margin-right:20px;margin-bottom:20px;"&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;You know how it is. At first you have to rip things apart before you can begin building things back up again. There&amp;#8217;s been lots of ripping apart happening in RubyCLR over the past few weeks. A brand-new and very high performance reflection layer now lies underneath everything. And tonight I got the first vertical slice to work.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the unit test that now passes:&lt;/p&gt;
+
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;test_default_ctor&lt;/span&gt;
+  &lt;span class="ident"&gt;a&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="constant"&gt;ArrayList&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;new&lt;/span&gt;
+  &lt;span class="ident"&gt;assert_equal&lt;/span&gt; &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;System.Collections.ArrayList&lt;/span&gt;&lt;span class="punct"&gt;',&lt;/span&gt; &lt;span class="ident"&gt;a&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;clr_type&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;full_name&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+	&lt;p&gt;Here&amp;#8217;s what the code used to look like for defining a method shim:&lt;/p&gt;
+
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;self.method_shim&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+  &lt;span class="ident"&gt;method_labels&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;..&lt;/span&gt;&lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;signatures&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;length&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;collect&lt;/span&gt; &lt;span class="punct"&gt;{&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt; &lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;l&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt; &lt;span class="punct"&gt;+&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;to_s&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;to_sym&lt;/span&gt; &lt;span class="punct"&gt;}&lt;/span&gt;
+
+  &lt;span class="ident"&gt;create_safe_ruby_instance_method&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;ruby_member_name&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+    &lt;span class="ident"&gt;match_sig&lt;/span&gt;   &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;member_id&lt;/span&gt;
+    &lt;span class="ident"&gt;switch&lt;/span&gt;      &lt;span class="ident"&gt;method_labels&lt;/span&gt;
+    &lt;span class="ident"&gt;throw_clr&lt;/span&gt;   &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;Cannot find method that matches Ruby parameters&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+
+    &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;signatures&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each_with_index&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;sig&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+      &lt;span class="ident"&gt;label&lt;/span&gt;      &lt;span class="ident"&gt;method_labels&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt;
+
+      &lt;span class="ident"&gt;ld_this&lt;/span&gt;    &lt;span class="ident"&gt;klass&lt;/span&gt;
+      &lt;span class="ident"&gt;ld_params&lt;/span&gt;  &lt;span class="ident"&gt;sig&lt;/span&gt;
+      &lt;span class="ident"&gt;inst_call&lt;/span&gt;  &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;
+      &lt;span class="ident"&gt;ret_2rb&lt;/span&gt;    &lt;span class="ident"&gt;method_info&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+	&lt;p&gt;Here&amp;#8217;s what it looks like now:&lt;/p&gt;
+
+
+&lt;div class="typocode"&gt;&lt;pre&gt;&lt;code class="typocode_ruby "&gt;&lt;span class="keyword"&gt;def &lt;/span&gt;&lt;span class="method"&gt;self.method_shim&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;method_name&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;members&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+  &lt;span class="ident"&gt;method_labels&lt;/span&gt; &lt;span class="punct"&gt;=&lt;/span&gt; &lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="number"&gt;1&lt;/span&gt;&lt;span class="punct"&gt;..&lt;/span&gt;&lt;span class="ident"&gt;members&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;length&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;collect&lt;/span&gt; &lt;span class="punct"&gt;{&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt; &lt;span class="punct"&gt;(&amp;quot;&lt;/span&gt;&lt;span class="string"&gt;l&lt;/span&gt;&lt;span class="punct"&gt;&amp;quot;&lt;/span&gt; &lt;span class="punct"&gt;+&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;to_s&lt;/span&gt;&lt;span class="punct"&gt;).&lt;/span&gt;&lt;span class="ident"&gt;to_sym&lt;/span&gt; &lt;span class="punct"&gt;}&lt;/span&gt;
+
+  &lt;span class="ident"&gt;create_safe_ruby_instance_method&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;klass&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;method_name&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt;
+    &lt;span class="ident"&gt;match_sig&lt;/span&gt;   &lt;span class="ident"&gt;add_members_to_signature_cache&lt;/span&gt;&lt;span class="punct"&gt;(&lt;/span&gt;&lt;span class="ident"&gt;members&lt;/span&gt;&lt;span class="punct"&gt;)&lt;/span&gt;
+    &lt;span class="ident"&gt;switch&lt;/span&gt;      &lt;span class="ident"&gt;method_labels&lt;/span&gt;
+    &lt;span class="ident"&gt;throw_clr&lt;/span&gt;   &lt;span class="punct"&gt;'&lt;/span&gt;&lt;span class="string"&gt;Cannot find method that matches Ruby parameters&lt;/span&gt;&lt;span class="punct"&gt;'&lt;/span&gt;
+
+    &lt;span class="ident"&gt;members&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;each_with_index&lt;/span&gt; &lt;span class="keyword"&gt;do&lt;/span&gt; &lt;span class="punct"&gt;|&lt;/span&gt;&lt;span class="ident"&gt;member&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;|&lt;/span&gt;
+      &lt;span class="ident"&gt;label&lt;/span&gt;      &lt;span class="ident"&gt;method_labels&lt;/span&gt;&lt;span class="punct"&gt;[&lt;/span&gt;&lt;span class="ident"&gt;i&lt;/span&gt;&lt;span class="punct"&gt;]&lt;/span&gt;
+
+      &lt;span class="ident"&gt;ld_this&lt;/span&gt;    &lt;span class="ident"&gt;klass&lt;/span&gt;
+      &lt;span class="ident"&gt;ld_params&lt;/span&gt;  &lt;span class="ident"&gt;member&lt;/span&gt;&lt;span class="punct"&gt;.&lt;/span&gt;&lt;span class="ident"&gt;get_signature&lt;/span&gt;
+      &lt;span class="ident"&gt;inst_call&lt;/span&gt;  &lt;span class="ident"&gt;member&lt;/span&gt;
+      &lt;span class="ident"&gt;ret_2rb&lt;/span&gt;    &lt;span class="ident"&gt;member&lt;/span&gt;&lt;span class="punct"&gt;,&lt;/span&gt; &lt;span class="ident"&gt;i&lt;/span&gt;
+    &lt;span class="keyword"&gt;end&lt;/span&gt;
+  &lt;span class="keyword"&gt;end&lt;/span&gt;
+&lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+	&lt;p&gt;The new code is much better than the old code. In the old code, all type information was expressed using strings. This made things quite flexible, but at a severe performance penalty. There were many type lookup operations (to be fair, some of which were cached), but these are now eliminated in the new code.&lt;/p&gt;
+
+
+	&lt;p&gt;I was also rather ashamed of the method_info data structure. It&amp;#8217;s a rather central data structure in RubyCLR and it became the kitchen sink of metadata. It evolved over time and was never redesigned. In the new code it doesn&amp;#8217;t exist anymore.&lt;/p&gt;
+
+
+	&lt;p&gt;Tomorrow should be a fun day &amp;#8211; I get to &lt;strong&gt;delete&lt;/strong&gt; a ton of code that isn&amp;#8217;t used anymore. I have far more fun deleting code than writing it.&lt;/p&gt;</content>
+  </entry>
+</feed>

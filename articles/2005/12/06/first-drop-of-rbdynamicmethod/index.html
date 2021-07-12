@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>First Drop of RbDynamicMethod</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/LessIsBetter" />
+  <script src="/javascripts/cookies.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1156231406" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/application.css?1163198688" media="all" rel="Stylesheet" type="text/css" />
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Less is better</a></span></h1>
+    <h2>John Lam on software</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <!--
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+  rdf:about=""
+  trackback:ping="http://www.iunknown.com/articles/trackback/33"
+  dc:title="First Drop of RbDynamicMethod"
+  dc:identifier="http://www.iunknown.com/articles/read/33"
+  dc:description="Here&amp;#8217;s a drop of my RbDynamicMethod library. You&amp;#8217;ll need to have some version of Visual C++ 2005 installed to compile it. I&amp;#8217;ve supplied a Rakefile, so the build is pre"
+  dc:creator="jlam"
+  dc:date="2006-08-21T15:55:40-07:00" />
+</rdf:RDF>
+-->
+
+<div class="atomentry" id="article-33">
+  <h2 class="title">
+    First Drop of RbDynamicMethod 
+    <span class="comment_count">4</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2005-12-06T23:39:00-08:00"><span class="typo_date" title="Wed, 07 Dec 2005 07:39:00 GMT">Wed, 07 Dec 2005 07:39:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">a drop</a> of my <code>RbDynamicMethod</code> library. You&#8217;ll need to have some version of Visual C++ 2005 installed to compile it. I&#8217;ve supplied a <code>Rakefile</code>, so the build is pretty painless provided that you have <code>cl.exe</code> somewhere on your path.</p>
+
+
+	<p>All of the C++ code can be found in <code>RbDynamicMethod.h</code>. All of the Ruby code can be found in <code>Tests\ruby_dynamic_method.rb</code>. The documentation is in <code>Tests\tests.rb</code> :)</p>
+
+
+	<p>My most recent addition is a <code>create_safe_ruby_method</code> wrapper. It creates a method that is callable from Ruby, but wraps the entire user-defined block in an exception handler that traps nearly all<sup><a href="#fn1">1</a></sup> <span class="caps">CLR</span> exceptions and maps them to a Ruby <code>RuntimeError</code> exception.</p>
+
+
+	<p>Here&#8217;s a normal <code>create_ruby_method</code> from the unit tests. The weird <code>ldc_i4_4</code> instruction is required since this is a Ruby varargs method that has a <code>VALUE (int, VALUE*, VALUE)</code> signature, and I need to return a <code>Qnil</code> (integer value 4) from this method.</p>
+
+
+<pre><code>
+create_ruby_method('convert_clr_exception') do
+  try
+    ldstr    'error'
+    newobj   'Exception.ctor(String)'
+    throw_ex
+  catch_ex   'Exception'
+    call     'static ExceptionHelper.RaiseRubyException(Exception)'
+  end_try
+  ldc_i4_4
+  ret
+end
+</code></pre>
+
+	<p>Here&#8217;s the same method via <code>create_safe_ruby_method</code>, also from the unit tests:</p>
+
+
+<pre><code>
+create_safe_ruby_method('catch_clr_exception') do
+  ldstr    'error'
+  newobj   'Exception.ctor(String)'
+  throw_ex
+end
+</code></pre>
+
+	<p>Comments and suggestions would be greatly appreciated.</p>
+
+
+	<p>[1] My code catches exceptions that derive only from <code>Exception</code> whereas it&#8217;s possible to throw exceptions that derive from <code>Object</code>.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod#comments">4 comments</a>,
+      <a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/33/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/33/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2005/12/06/first-drop-of-rbdynamicmethod">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2005/12/06/first-drop-of-rbdynamicmethod;title=First Drop of RbDynamicMethod">reddit</a>
+    </li>
+  </ul>
+</div>
+
+
+
+  <h5><a name="comments">Comments</a></h5>
+  <p><a href="#commentform">Leave a response</a></p>
+
+  <div id="comments_div">
+    <ol id="comments" class="comments">
+  	<li class="comment" id="comment-261">
+	  <div class="author">
+	    
+	    <cite>Barry Allison</cite>
+		<abbr title="2005-12-07T01:23:36-08:00"><span class="typo_date" title="Wed, 07 Dec 2005 09:23:36 GMT">Wed, 07 Dec 2005 09:23:36 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>I'm getting an error on that link</p>
+
+<p>File not found</p>
+
+<p>Change this error message for pages not found in public/404.html</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-262">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.iunknown.com">John Lam</a></cite>
+		<abbr title="2005-12-07T08:44:05-08:00"><span class="typo_date" title="Wed, 07 Dec 2005 16:44:05 GMT">Wed, 07 Dec 2005 16:44:05 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>It seems to work fine for me. Can you try again? Anyone else having a problem?</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-263">
+	  <div class="author">
+	    
+	    <cite>Justin</cite>
+		<abbr title="2005-12-07T12:38:31-08:00"><span class="typo_date" title="Wed, 07 Dec 2005 20:38:31 GMT">Wed, 07 Dec 2005 20:38:31 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>I downloaded the code and checked out the Ruby side (I"m not real intersted in the C++), but I don't quite understand what this accomplishes. Does this create a method, from ruby, that runs in a .NET context, using the CLR? Would you mind providing a more complete example of use? It looks like a cool project and I'd love to see more!</p>
+	  </div>
+	</li>
+		<li class="comment" id="comment-264">
+	  <div class="author">
+	    
+	    <cite><a href="http://www.iunknown.com">John Lam</a></cite>
+		<abbr title="2005-12-07T13:05:21-08:00"><span class="typo_date" title="Wed, 07 Dec 2005 21:05:21 GMT">Wed, 07 Dec 2005 21:05:21 GMT</span></abbr>
+	  </div>
+	  <div class="content">
+	    <p>Justin, it does exactly what you said it does. It's going to form the core of my Ruby &lt;=&gt; CLR bridge. The first rev of the bridge (which I haven't publicly released) was written mostly in C++, which made it much more difficult to maintain, particularly as features such as the @create<em>safe</em>ruby_method@ became needed.</p>
+
+<p>The goal is to not really expand the C++ code much more than what you currently see, and to build the rest of the bridge entirely in Ruby.</p>
+	  </div>
+	</li>
+	</ol>
+
+  </div>
+
+<form action="/articles/comment/33" class="comments" id="commentform" method="post" onsubmit="new Ajax.Updater('comments_div', '/articles/comment/33', {asynchronous:true, evalScripts:true, onComplete:function(request){commentComplete()}, onLoading:function(request){commentLoading()}, parameters:Form.serialize(this)}); return false;">
+
+<div id="preview" style="display:none"></div>
+
+<fieldset>
+  <legend>Comments</legend>
+  <p>
+    <label>Name:<br /> 
+      <input id="comment_author" name="comment[author]" size="30" type="text" />
+      <small>(<a href="#" onclick="new Effect.toggle('extra_fields', 'blind', {duration: .3}); return false;">leave url/email &#187;</a>)</small>
+    </label>
+  </p>
+  
+  <div id="extra_fields" style="display:none;">  
+	  <p>
+	    <label>Email: <br />
+	      <input id="comment_email" name="comment[email]" size="30" type="text" />
+	    </label>
+	  </p>
+	  <p>
+	    <label>Url:<br />
+	      <input id="comment_url" name="comment[url]" size="30" type="text" />
+	    </label>
+	  </p>
+  </div>
+    
+  <p>
+    <label>
+      Comments:
+      
+      <small><a href="http://daringfireball.net/projects/markdown/">Markdown enabled</a></small>
+      <br />
+      <textarea cols="40" id="comment_body" name="comment[body]" rows="20"></textarea>
+    </label>
+  </p>
+  
+  <p>
+    <input type="button" value="Preview" onclick="new Ajax.Updater('preview','/articles/comment_preview',{asynchronous:true,evalScripts:true,parameters:Form.serialize('commentform'),onComplete:function(request){Element.show('preview')}});return false;" />      
+    <input name="commit" type="submit" value="Submit" />
+    <img alt="Spinner" id="spinner" src="/images/theme/spinner.gif?1163199356" style="display:none" />
+  </p>
+</fieldset>
+</form>
+
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- search -->
+      <div id="search" class="search">
+	<form action="/articles/search" id="sform" method="get">
+	  <p><input type="text" id="q" name="q" value="" /></p>
+	</form>
+	
+	<div id="loading" class="loading" style="display:none;">Searching...</div>
+	<div id="results" class="results"></div>
+  <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('loading')}, onLoading:function(request){Element.show('loading')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script>
+</div>
+
+
+      <!-- sidebar components -->
+      
+      
+<div class="sidebar-node">
+  <h3>John Lam</h3>
+<a href="/pages/about_me"><img src="http://static.flickr.com/90/222479189_d4e19a202c_t.jpg" width="67" height="100" alt="Self portrait" /></a>
+
+<p>I am a software developer living in Toronto, Canada. I write .NET and Ruby code on a Mac. I'm the creator of <a href="http://www.rubyclr.com">RubyCLR</a>, a high performance bridge between Ruby and .NET. I'm a Partner at <a href="http://www.objectsharp.com"><b>Object</b>Sharp</a>, and am available to help you with your Ruby or .NET projects. <a href="/pages/about_me">More ...</a>
+
+<table>
+<tr>
+  <td>email:</td>
+  <td>jlam@iunknown.com</td>
+</tr>
+<tr>
+  <td>phone:</td>
+  <td>647 836 3718</td>
+</tr>
+<tr>
+  <td>msn:</td>
+  <td>drjflam@hotmail.com</td>
+</tr>
+<tr>
+  <td>gtalk:</td>
+  <td>drjflam@gmail.com</td>
+</tr>
+</table>
+<br>
+<h3>Syndicate</h3>
+
+<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="/images/rss.png"/></a>&nbsp;
+<a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+<br>
+<form style="padding:3px;text-align:left;" action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Subscribe by email:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=180551" name="url"/><input type="hidden" value="Less is better" name="title"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a></p></form>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+    <div id="delicious">
+    <h3><a href="http://del.icio.us/drjflam">del.icio.us/drjflam</a></h3>
+            <ul>
+      
+      <li>
+        <a href="http://uninformed.org/index.cgi?v=3&amp;a=3" title="An excellent article that reverse-engineers how PatchGuard works on Windows x64 circa Dec 2005. It talks about the practical limitations on asserting the integrity of code and data when the thing doing the assertion runs at the same privilege level.">Bypassing PatchGuard on Windows x64</a>
+              </li>
+      
+      <li>
+        <a href="http://www.cs.cityu.edu.hk/~hwchun/nsolver/download/CPIntro.pdf" title="A nice introduction to constraint programming with some practical examples thrown in at the end.">Introduction to Constraint Programming Presentation by Andy Chun</a>
+              </li>
+      
+      <li>
+        <a href="http://www.digilife.be/quickreferences/QRC/VIM%20Quick%20Reference%20Card.pdf" title="excellent two-page reference card for vim">VIM Quick Reference Card</a>
+              </li>
+      
+      <li>
+        <a href="http://www.sciam.com/print_version.cfm?articleID=000B557A-71ED-146C-ADB783414B7F0000" title="">Scientific American: The Flipping Point</a>
+              </li>
+      
+      <li>
+        <a href="http://blogs.msdn.com/tims/articles/475132.aspx" title="">Tim Sneath : Windows Presentation Foundation Blogs</a>
+              </li>
+      
+      <li>
+        <a href="http://windowssdk.msdn.microsoft.com/en-us/library/ms746683.aspx" title="">Base Elements</a>
+              </li>
+      
+      <li>
+        <a href="http://blogs.msdn.com/text/" title="">WPF Text Blog</a>
+              </li>
+      
+      <li>
+        <a href="http://www.washingtonpost.com/wp-dyn/content/article/2006/04/14/AR2006041401209_pf.html" title="Founder of Greenpeace in an editorial that advocates a return to nuclear power as a way to combat climate change.">Going Nuclear</a>
+              </li>
+      
+      <li>
+        <a href="http://www.velonews.com/" title="">VeloNews: The Journal of Competitive Cycling</a>
+              </li>
+      
+      <li>
+        <a href="http://illconsidered.blogspot.com/" title="">A Few Things Ill Considered</a>
+              </li>
+      
+      <li>
+        <a href="http://www.iunknown.com/" title="">Less is better</a>
+              </li>
+          </ul>
+      </div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>My Photos</h3>
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge_new.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">what is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge_new.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/11">November 2006</a>
+      <em>(1)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/10">October 2006</a>
+      <em>(8)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/9">September 2006</a>
+      <em>(12)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/8">August 2006</a>
+      <em>(39)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/7">July 2006</a>
+      <em>(29)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/6">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/5">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/4">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/3">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/2">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/1">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(6)</em>
+    </li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Tags</h3>
+<p style="overflow:hidden">
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/barcampearthtoronto">BarCampEarthToronto</a></span>
+<span style="font-size:138.888888888889%"><a href="/articles/tag/dynamiclanguages">DynamicLanguages</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/ironpython">IronPython</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/life">Life</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/mac">Mac</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/marketing">Marketing</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/microsoft">Microsoft</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/parenting">Parenting</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/photography">Photography</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/platforms">Platforms</a></span>
+<span style="font-size:200%"><a href="/articles/tag/props">Props</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/python">Python</a></span>
+<span style="font-size:200%"><a href="/articles/tag/ruby">Ruby</a></span>
+<span style="font-size:200%"><a href="/articles/tag/rubyclr">RubyCLR</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/rubyconf">RubyConf</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/secondlife">SecondLife</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/simplicity">simplicity</a></span>
+<span style="font-size:200%"><a href="/articles/tag/thoughts">Thoughts</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/vim">Vim</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/workspaces">workspaces</a></span>
+</p>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(58)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(148)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+  
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">Less is better</a></p>
+    <ul>
+      <li>powered by <a href="http://typosphere.org">typo</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

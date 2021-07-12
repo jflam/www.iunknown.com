@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: RubyCLR, now with new and improved inlining</title>
+    <link>http://www.iunknown.com/articles/2006/03/30/rubyclr-now-with-new-and-improved-inlining</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>RubyCLR, now with new and improved inlining</title>
+      <description>&lt;p&gt;Thanks to &lt;a href="http://segment7.net/"&gt;Eric Hodel&lt;/a&gt; and &lt;a href="http://www.zenspider.com/RWD/"&gt;Ryan Davis&lt;/a&gt; for pointing me to &lt;a href="http://sourceforge.net/projects/rubyinline/"&gt;RubyInline&lt;/a&gt; for yet another source of inspiration.&lt;/p&gt;
+
+
+	&lt;p&gt;I first saw RubyInline at last years&amp;#8217; RubyConf &amp;#8211; it&amp;#8217;s a remarkable piece of code that lets you drop inline C into your Ruby programs. However, I don&amp;#8217;t really need most of the features in RubyInline since the managed &lt;a href="http://msdn2.microsoft.com/en-US/library/microsoft.csharp.csharpcodeprovider(VS.80).aspx"&gt;CSharpCodeProvider&lt;/a&gt; class already does most of what they do (and a bit more), and RubyCLR does the rest (handling marshaling of parameter types).&lt;/p&gt;
+
+
+	&lt;p&gt;However, I did look at their implementation and lifted how they added an &lt;code&gt;inline&lt;/code&gt; method to the &lt;code&gt;Module&lt;/code&gt; class, and yielding a block that contains the correct compiler wrapper.&lt;/p&gt;
+
+
+	&lt;p&gt;The current implementation now does both C# and VB.NET code (and I&amp;#8217;ll add support for JScript.NET once I ship this blog entry). Here&amp;#8217;s how it looks now:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class InliningTests &amp;lt; TestCase
+  inline :csharp do |compiler|
+    compiler.reference('System.Windows.Forms.dll')
+    compiler.compile &amp;lt;&amp;lt;-EOF
+      namespace Scratch {
+        public class Fibonnaci {
+          public static long Calc(long n) {
+            long x1 = 1, x2 = 2, tmp;
+            for (long i = 1; i &amp;lt; n; ++i) {
+              x1 += x2;
+              tmp = x2; x2 = x1; x1 = tmp;
+            }
+            return x1;
+          }
+          public static void SayHello() {
+            System.Windows.Forms.MessageBox.Show("Hello, World!");
+          }
+        }
+      }
+    EOF
+
+    inline :vb do |compiler|
+      compiler.compile &amp;lt;&amp;lt;-EOF
+        Namespace VBScratch
+          Public Class Fibonnaci
+            Public Shared Function Calc(n As Long) As Long
+              Dim x1 As Long = 1
+              Dim x2 As Long = 2
+              Dim tmp As Long
+              Dim i As Long
+              For i = 1 To n - 1
+                x1 = x1 + x2
+                tmp = x2
+                x2 = x1
+                x1 = tmp
+              Next
+              Return x1
+            End Function
+          End Class
+        End Namespace
+      EOF
+    end
+
+    def test_csharp_inline    
+      assert_equal 8, Scratch::Fibonnaci.calc(5)
+      assert_equal 8, VBScratch::Fibonnaci.calc(5)
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Notice how I can add references to external assemblies as well via &lt;code&gt;compiler.reference&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;So please disregard the implementation that I &lt;a href="http://www.iunknown.com/articles/2006/03/29/rubyclr-can-now-inline-c"&gt;posted yesterday&lt;/a&gt; :)&lt;/p&gt;</description>
+      <pubDate>Thu, 30 Mar 2006 14:07:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:908944993dc41242c8a24273a8786852</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/03/30/rubyclr-now-with-new-and-improved-inlining</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"RubyCLR, now with new and improved inlining" by Eric Hodel</title>
+      <description>&lt;p&gt;Nice :)&lt;/p&gt;</description>
+      <pubDate>Thu, 30 Mar 2006 17:02:46 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/30/rubyclr-now-with-new-and-improved-inlining#comment-418</link>
+    </item>
+  </channel>
+</rss>

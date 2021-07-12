@@ -1,0 +1,124 @@
+<!-- Published by Fog Creek Software CityDesk EKANXPWNIHDVOPBJ/5193B323/94 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Reverse-engineering Google</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">Reverse-engineering Google</div>
+        <div class="entryDate">2002-02-05</div>
+        <p><P>I've been writing my web log for just over two months now. It's been fun to read my web server logs to figure out exactly how people got to my site, and what web crawlers are visiting my site. I noticed that <A href="http://www.google.com/bot.html">GoogleBot</A> would come by several times before I actually saw anything appearing in their search engine. It took <A href="fog0000000045.html">almost a month</A> before <A href="http://www.google.com">Google</A> finally recognized my existence and added me to their search results index.</P>
+<P>One of the things that I had coveted for quite a while was more frequent visits by GoogleBot, due to the fact that my web log's content changes several times a week (yes, I do strive for daily updates but sometimes work gets in the way ;). You can tell that Google visits your site frequently if you see a date on the line of green text that is underneath each search result. That's the date that Google last visited your site. If you don't have a date, that means that Google will only visit you roughly once a month (at least based on my experiments).</P>
+<P>Now, I didn't know what algorithm Google used to determine whether to increase its frequency of visits. Foolishly, I thought that they would try to look at the difference in content between visits to determine if the site had changed enough to be worth crawling more frequently, and gradually reduce the interval between crawls until it converged on your update frequency.[1]</P>
+<P>It all changed when I recently saw that Ingo Rammer, who maintains the excellent <A href="http://www.dotnetremoting.cc/">DotNetRemoting</A> web site, recently added a <A href="http://www.dotnetremoting.cc/DotNetCentric/">web log</A> to his site. I decided to do a <A href="http://www.google.com/search?hl=en&amp;q=ingo+rammer">search for Ingo Rammer</A> using Google and boy was I pissed off that he got a date in his green text! After all, he just started!!! So, this got me thinking ... what's different between Ingo's web page and mine? </P>
+<P>As it turned out, one word in particular stood out: the word WebLog in the title of his page. Would this work on my web site, I wondered? Well, you can <A href="http://www.google.com/search?hl=en&amp;q=john+lam">see for yourself now</A>. ;) It's the little things in life that make me happy ;)</P>
+<P>[1]&nbsp; I found <A href="http://pdclab.cs.ucdavis.edu/sws/SWS/KwongGertz-DB.pdf">this paper by Kwong and Gertz</A> that outlines one possible algorithm to predict the update frequency of a page based on historical data, the update frequency of nearby pages in its domain tree. </P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/fog0000000094.html');"><script type="text/javascript">postCount('Weblog/fog0000000094.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/February2003.html">February2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

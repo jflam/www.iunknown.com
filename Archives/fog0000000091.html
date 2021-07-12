@@ -1,0 +1,601 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/91 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Fog Creek CityDesk 1.0.1">
+<title>IUnknown.com - February 2002 Weblog Archives</title>
+<link rel="stylesheet" href="../global.css">
+<script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+<script language="javascript">
+  function HaloScan2(id) { 
+    location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+  }
+</script>
+</head>
+<BODY>
+
+<table border="0" width="800" class="heading">
+  <tr>
+    <td width="100%" class="heading"><A href="../index.html">IUnknown.com</a></td>
+  </tr>
+</table>
+<table border="0" width="800" class="subheading">
+  <tr>
+    <td width="100%" class="subheading">    &nbsp; John Lam's weblog on software development</td>
+  </tr>
+</table>
+
+<table width="800" border="0" cellpadding="7" cellspacing="0">
+<tr>
+<td class="left_panel" valign="top" align="right">
+<p><a href="/rss.xml">rss feed</a></p>
+<p>about</p>
+
+<A href="../About/Aboutme.html">About me</a><br>
+
+<A href="../About/fog0000000006.html">About this site</a><br>
+
+<A href="../About/fog0000000010.html">My plan</a><br>
+
+<A href="../About/fog0000000009.html">My other life</a><br>
+
+<A href="../About/fog0000000008.html">My products</a><br>
+
+<A href="../About/fog0000000013.html">My publications</a><br>
+
+<p>aop</p>
+
+<A href="../AOP/fog0000000115.html">My Runtime Aspect Weaver</a><br>
+
+<A href="../AOP/fog0000000114.html">What is AOP?</a><br>
+
+<p>book</p>
+
+<A href="../CLRInternals/fog0000000043.html">About Inside the CLR</a><br>
+
+<p>articles</p>
+
+<A href="../Articles/Booksuggestions.html">Book suggestions</a><br>
+
+<A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</a><br>
+
+<A href="../Articles/fog0000000065.html">x86 Resources</a><br>
+
+<A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</a><br>
+
+<A href="../Articles/fog0000000034.html">Entertainment PC's</a><br>
+
+<A href="../Articles/fog0000000025.html">Hello CppUnit</a><br>
+
+<p>archives</p>
+
+<A href="March2003.html">March 2003</a><br>
+
+<A href="February2003.html">February 2003</a><br>
+
+<A href="January2003.html">January 2003</a><br>
+
+<A href="December2002.html">December 2002</a><br>
+
+<A href="November2002.html">November 2002</a><br>
+
+<A href="October2002.html">October 2002</a><br>
+
+<A href="September2002.html">September 2002</a><br>
+
+<A href="August2002.html">August 2002</a><br>
+
+<A href="July2002.html">July 2002</a><br>
+
+<A href="June2002.html">June 2002</a><br>
+
+<A href="May2002.html">May 2002</a><br>
+
+<A href="April2002.html">April 2002</a><br>
+
+<A href="fog0000000116.html">March 2002</a><br>
+
+<A href="fog0000000091.html">February 2002</a><br>
+
+<A href="fog0000000046.html">January 2002</a><br>
+
+<A href="fog0000000030.html">December 2001</a><br>
+
+<a href="http://www.haloscan.com/"><img width="88" height="31" src="http://www.haloscan.com/halolink.gif" border="0" alt="Weblog Commenting by HaloScan.com" /></a> 
+</td>
+<td class="main_panel">
+<p><span class="article_heading">February 2002 Archives</span></p>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000112.html">References to other assemblies</A>
+  </span><BR>
+  28 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Ever wondered how one assembly references types in another assembly? The following is a simplified explanation of what goes on. This is a lab-style entry. If you <EM>really</EM> want to understand how this happens, follow along using your own computer.</P>
+<P>In this example, we're going to look at System.Xml.Dll using ILDASM. Run the following command from the directory that contains System.Xml.Dll:</P>
+<P><CODE>ildasm /tokens&nbsp;system.xml.dll</CODE></P>
+<P>Notice that I used the /tokens command line switch that instructs ILDASM to display token values in its disassembly.</P>
+<P>Navigate to the System.Xml.XmlDocument class and find its Load( System.IO.Stream ) method. This is a method that clearly references a type (System.IO.Stream) that is defined inside of another assembly (mscorlib).</P>
+<P>When you disassemble the method it by double-clicking on the method name in ILDASM, you should see the following lines at the top of the disassembly window:</P>
+<P><CODE>.method /*060002DF*/ public hidebysig newslot virtual instance void&nbsp; Load(class [mscorlib/* 23000001 */]System.IO.Stream/* 0100000F */ inStream) cil managed</CODE></P>
+<P>Metadata in assemblies is identified by tokens. The token values in our disassembly are enclosed inside of the inline comments (/* */). </P>
+<P>There are many different types of metadata tokens. Tokens can refer to type definitions, type references, method definitions, method references, and so on. The type of a token can be readily discerned by looking at the value of its most signifant byte.</P>
+<P>In our example, there are three types of tokens in the disassembly shown above:</P>
+<OL>
+<LI>
+<DIV>A MethodDef (method definition) token (0x060002DF)</DIV>
+<LI>
+<DIV>An AssemblyRef (assembly reference) token (0x23000001)</DIV>
+<LI>
+<DIV>A TypeRef (type reference) token (0x0100000F)</DIV></LI></OL>
+<P>The remaining 24 bits of the token value is either an index into a row in a metadata table (as is the case for all three tokens types shown here) or an offset into a heap (which is the case for all String and UserString tokens).</P>
+<P>You can find definitions of all token types in the Partition II - Metadata specification in the %FrameworkSDK%\Tool Developers Guide\docs directory.</P>
+<P>The token that we're going to focus on is the TypeRef token. In our example, this token referes to the System.IO.Stream type in the mscorlib assembly. The question that we want answered is what information is required to find that type at runtime? In other words, what does MSCOREE have to do to find this type?</P>
+<P>To see this in action, we need to use a tool that ships as uncompiled source code in the Framework SDK. That tool is METAINFO. Navigate to the %FrameworkSDK%\Tool Developers Guide\Samples\metainfo directory. Build the sample by typing the following command in your command prompt:</P>
+<P><CODE>nmake</CODE></P>
+<P>To make your life easier, put METAINFO.EXE on your path by copying Debug\Metainfo.exe to a directory on your path (I like to put it in my \Windows directory).</P>
+<P>Next you want to dump the metadata in System.Xml.Dll out to a text file that you can read. Issue the following command from the directory that contains System.Xml.Dll:</P>
+<P><CODE>metainfo -raw -heaps System.Xml.Dll &gt; out.txt</CODE></P>
+<P>Open the generated text file, out.txt, using Notepad. The second table that you will see is the TypeRef table. Locate the 0F row in this table. This, of course, corresponds to the row in the TypeRef table that would be referenced by our TypeRef token whose value is 0x0100000F:</P>
+<P><CODE>&nbsp;&nbsp; f == 0:ResolutionScope[23000001], 1:string#27c, 2:string#283</CODE></P>
+<P>There are three columns in this row. The first column is the ResolutionScope of this type reference. This tells the execution engine which assembly this type resides in. The next two columns provide offsets into the Strings heap for the type's name and the type's namespace. Here are the relevant entries from the Strings heap:</P>
+<P><CODE>0000027c: Stream<BR>00000283: System.IO</CODE></P>
+<P>Note that the fact that there is a namespace column in the TypeRef table does <EM>not</EM> mean that the runtime understands namespaces. This presence of a namespace column only serves to act as a form of data compression in the metadata tables. This is understandable since many types can be referenced from the same namespace, and this scheme avoids duplicating the namespace string unnecessarily in the Strings heap.</P>
+<P>Let's turn our attention to the ResolutionScope token. In this case, the ResolutionScope token happens to be an AssemblyRef token (0x23000001). Here's the first row from the AssemblyRef table:</P>
+<P><CODE>35: AssemblyRef&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cRecs:&nbsp;&nbsp;&nbsp; 2(0x2), cbRec: 28(0x1c), cbTable:&nbsp;&nbsp;&nbsp; 56(0x38)<BR>&nbsp; col&nbsp; 0:&nbsp; MajorVersion oCol: 0, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 1:&nbsp; MinorVersion oCol: 2, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 2:&nbsp; BuildNumber&nbsp; oCol: 4, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 3:&nbsp; RevisionNumber oCol: 6, cbCol:2, USHORT <BR>&nbsp; col&nbsp; 4:&nbsp; Flags&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol: 8, cbCol:4, ULONG&nbsp; <BR>&nbsp; col&nbsp; 5:&nbsp; PublicKeyOrToken oCol: c, cbCol:4, blob&nbsp;&nbsp; <BR>&nbsp; col&nbsp; 6:&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol:10, cbCol:4, string <BR>&nbsp; col&nbsp; 7:&nbsp; Locale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; oCol:14, cbCol:4, string <BR>&nbsp; col&nbsp; 8:&nbsp; HashValue&nbsp;&nbsp;&nbsp; oCol:18, cbCol:4, blob&nbsp;&nbsp; <BR>-------------------------------------------------<BR>&nbsp;&nbsp; 1 == 0:0001, 1:0000, 2:0ce4, 3:0000, 4:00000000, 5:blob#14, 6:string#7, 7:string#0, 8:blob#0</CODE></P>
+<P>Notice here that I also printed out the legend that is supplied by MetaInfo to simplify our discussion. </P>
+<P>All of the information found in this table is used to locate the assembly that is referenced. In this case, these are what their values are:</P>
+<UL>
+<LI>
+<DIV>MajorVersion = 1</DIV>
+<LI>
+<DIV>Minor Version = 0</DIV>
+<LI>
+<DIV>Build Number = 3705</DIV>
+<LI>
+<DIV>Revision Number = 0</DIV>
+<LI>
+<DIV>Flags = 0</DIV>
+<LI>
+<DIV>PublicKeyOrToken = b7 7a 5c 56 19 34 e0 89</DIV>
+<LI>
+<DIV>Name = mscorlib</DIV>
+<LI>
+<DIV>Locale = NULL</DIV>
+<LI>
+<DIV>Hash Value = NULL</DIV></LI></UL>
+<P>This information is passed by MSCOREE to a mysterious piece of OS software called Fusion. It lives inside fusion.dll. Fusion's job is to use this information together with a bewildering array of policy information to locate the correct assembly on your computer. The details&nbsp;are described in the Framework SDK documentation in the <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconhowruntimelocatesassemblies.asp">How the Runtime Locates Assemblies</A> and <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconassemblies.asp">Assembly Versioning</A> articles.</P>
+<P>Unfortunately for guys like me, there isn't a documented API where I can pass this information and get back a path to the correct assembly. This limitation makes it virtually impossible (unless I want to duplicate the functionality of fusion.dll myself - unlikely) for me to correctly resolve assembly references at runtime. There are hacks that I am using to work around this problem, but none of them make me particularly happy.</P>
+<P>Hopefully this has helped to clarify some of the questions that y'all might have about how type references are resolved in the CLR. Please send comments to the usual place.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000112.html');"><script type="text/javascript">postCount('Weblog/fog0000000112.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000110.html">Multi-module assemblies</A>
+  </span><BR>
+  25 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>OK. I've got a confession to make: I've never written a multi-module assembly. But then again, you probably haven't written one of these either, right? Come on, admit it. There's no shame in it ;)</P>
+<P>Today, I actually had to create one of these things so that I could examine the effects that multi-module assemblies would have on my runtime aspect weaver. Before we get there, let's quickly review the difference between a module and an assembly.</P>
+<P><A href="http://msdn.microsoft.com/library/en-us/cpguide/html/cpconassembliesoverview.asp?frame=true">Assemblies are&nbsp;defined</A> quite nicely in the Framework SDK documentation. You can refer to the documentation for details, but I'm going to define an assembly as a <EM>logical</EM> module, where a module is a classic Win32 PE file. I call it a logical module because it can be composed of one or more <EM>physical</EM> modules that are bound together through an <A href="http://msdn.microsoft.com/library/en-us/cpguide/html/cpconassemblymanifest.asp?frame=true">assembly manifest</A>.</P>
+<P>Most modules that you are likely to encounter (such as the Framework SDK assemblies) are single module assemblies. The manifest, metadata, code, and resources all live inside of a single Win32 PE file. </P>
+<P>However, there are cases where some other developer wanted to combine code that was written using different programming languages into a single assembly. To do this, she would instruct her compilers to compile the code into a <EM>module</EM>, rather than an assembly. Once that was done, she would generate the assembly manifest that binds the modules together into a logical assembly using the assembly linker tool. </P>
+<P>This is best illustrated by an example. In our example, we will create a multi-module assembly that contains both C# and VB.NET code.</P>
+<P>Here's the C# code:</P>
+<P><CODE>using System;</P>
+<P>namespace Module1<BR>{<BR>&nbsp; public class AClassInModule1<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; public static void SayHello()<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine( "Hello from Module1" );<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }<BR>}</CODE></P>
+<P>To tell the C# compiler to compile this code into a module instead of an assembly, you would have to issue the following command from your command prompt:</P>
+<P><CODE>csc /t:module module1.cs</CODE></P>
+<P>Note that the compiler generated a new file called module1.netmodule. The default filename extension for all .NET modules is .netmodule.</P>
+<P>Here's the VB.NET code:</P>
+<P><CODE>Imports System</P>
+<P>Namespace Module2</P>
+<P>&nbsp; Public Class AClassInModule2<BR>&nbsp; <BR>&nbsp;&nbsp;&nbsp; Public Shared Sub SayHello()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine( "Hello from VB Module2" )<BR>&nbsp;&nbsp;&nbsp; End Sub</P>
+<P>&nbsp; End Class</P>
+<P>End Namespace<BR></CODE></P>
+<P>To tell the VB.NET compiler to compile this code into a module instead of an assembly, you would have to issue the following command from your command prompt:</P>
+<P><CODE>vbc /t:module module2.vb</CODE></P>
+<P>The VB.NET compiler generated a new file called module2.netmodule.</P>
+<P>To generate the manifest that binds the two modules that we created earlier, we need to use the assembly linker utility (AL.EXE). Here's the command that generates a DLL that contains the assembly manifest:</P>
+<P><CODE>al /t:lib /out:master.dll module1.netmodule module2.netmodule</CODE></P>
+<P>If you look at the manifest that is generated by AL.EXE using ILDASM, you'll see the following (edited) manifest:</P>
+<P><CODE>// Deleted extern assembly references <BR>.assembly master<BR>{<BR>&nbsp; //&nbsp;Deleted DebuggableAttribute comment<BR>&nbsp; .hash algorithm 0x00008004<BR>&nbsp; .ver 0:0:0:0<BR>}<BR>.file Module1.netmodule<BR>&nbsp; //&nbsp;Deleted hash<BR>.file Module2.netmodule<BR>&nbsp; //&nbsp;Deleted hash<BR>.class extern public Module1.AClassInModule1<BR>{<BR>&nbsp; .file Module1.netmodule<BR>&nbsp; .class 0x02000002<BR>}<BR>.class extern public Module2.AClassInModule2<BR>{<BR>&nbsp; .file Module2.netmodule<BR>&nbsp; .class 0x02000002<BR>}<BR>.module master.dll<BR>// MVID: {6DBAEEA8-9B41-436A-A7F8-2A4824175652}<BR>.imagebase 0x00400000<BR>.subsystem 0x00000003<BR>.file alignment 512<BR>.corflags 0x00000001<BR>// Image base: 0x02ee0000</CODE></P>
+<P>The manifest reveals several interesting things:</P>
+<UL>
+<LI>
+<DIV>The .file declarations identify the two .netmodule files that were created by the csc.exe and vbc.exe compilers. </DIV>
+<LI>
+<DIV>All public types must be explicitly exported from those modules using the .class extern declarations. </DIV>
+<LI>
+<DIV>The .class extern declarations map the name of the Type to the module that it was implemented in and its TypeDef token value. </DIV>
+<LI>
+<DIV>An interesting observation: the two exported types have the same TypeDef token value: 0x02000002. This should not be surprising since TypeDef tokens are scoped by the <EM>module</EM> that they are defined in and not by the <EM>assembly</EM> that they are found in.</DIV></LI></UL>
+<P>Why does all of this information exist? To make it possible for the execution engine to resolve type references at runtime. You may not know this, but the runtime always resolves types based on their full names (namespace + name).[1] When a compiler needs to generate code to call a method on one of our exported types, it needs to generate a reference to that type. That reference must contains the referenced type's full name. At runtime, when the execution engine attempts to locate the referenced type, it needs to consult the master.dll's manifest to resolve the type name to a module + TypeDef token for the referenced type. </P>
+<P>This opens up a potentially nasty can of worms for the developer who created the two modules in the first place. Since&nbsp;the two modules were compiled independently of each other, the possibility of a name conflict exists. Since each compiler has no knowledge of the other module being compiled, it cannot inform her of a name collision at compile time. </P>
+<P>You would expect that the assembly linker would at least warn you of an impending name collision, right? Wrong. It silently picks the type from the first module and exports that type only.&nbsp;Be careful!</P>
+<P>Enough introductory stuff. In a future entry in this web log, I'll discuss why I had to create this multi-module assembly in the first place. As it turns out, writing this entry really helped me solidify my understanding of the more arcane details of multi-module assemblies. This is another reason for me to <A href="../Weblog/fog0000000109.html">maintain this web log</A>: there is no better way to really understand something than by trying to explain it to somebody else. </P>
+<P>As always, please feel free to <A href="mailto:jlam@iunknown.com">send comments my way</A>.</P>
+<P>[1] Namespaces are a work of fiction; the runtime does not have any knowledge of namespaces, they are just created by the compilers to ease the burden on developers.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000110.html');"><script type="text/javascript">postCount('Weblog/fog0000000110.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000109.html">Why run a web log?</A>
+  </span><BR>
+  25 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I'm coming up on the <A href="../Weblog/fog0000000011.html">three-month anniversary</A> of my web log. I've been posting bits and pieces of interesting information that I've figured out about .NET, and a few random links to things that I've found interesting. Mostly, I try and restrict the content to stuff that I've personally figured out, as opposed to pointing to stuff that other people have figured out. </P>
+<P>In some ways, I look at it as being an exercise in vanity. In other ways, I look at it as being a way of giving back to the community. In yet another way, I look at it as being a place where I can promote the projects that I'm currently working on. The reality is that it is a complex mixture of these three things, and probably a few other things that I haven't quite figured out yet. </P>
+<P>There are other folks who have been at this for far longer than I have. <A href="http://www.andrewsullivan.com/bio.php">Andrew Sullivan</A> posts an excellent <A href="http://www.andrewsullivan.com/main_article.php?artnum=20020224">Blogger Manifesto</A> that describes his experience with web logging, how it impacts journalism, how it affected him personally, and ways that he has found to turn web logging into an activity that can actually generate him some revenue. A very thought-provoking and well-written post.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000109.html');"><script type="text/javascript">postCount('Weblog/fog0000000109.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000108.html">The book I really want to write</A>
+  </span><BR>
+  24 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just surfed to Brad Wilson's web log where he posted a question: <A href="http://www.quality.nu/dotnetguy/archive/fog0000000051.aspx">What Book do you Want?</A>&nbsp;No offense to Brad, rather than answer his question, I'd like to propose my own: What book do I really want to write?</P>
+<P>Some day, if I ever retire from this business and have more time than I know what to do with, the book I really want to write is "How does Hello, World <EM>Really</EM> work?". The general idea of this book is that it would follow the life and times of the execution of a simple Hello, World program written in C# using a system-level debugger like Soft ICE. This would give me an excuse to talk about the following set of topics:</P>
+<UL>
+<LI>The layout of CIL and metadata in PE files 
+<LI>How the JIT compiler works 
+<LI>How the Windows loader works 
+<LI>How the Win32 API and the Native API interact 
+<LI>How the cache manager works 
+<LI>How the file system works 
+<LI>How I/O is dispatched 
+<LI>How the CPU dispatches instructions 
+<LI>How the memory subsystem interacts with the CPU 
+<LI>How the I/O subsystems (disk, video) interacts with the CPU</LI></UL>
+<P>The goal is to show how an innocuous line of code like Console.WriteLine( "Hello, World" ); stands on the shoulders of giants, and to give the reader a real look at how modern computers work.</P>
+<P>Hey, I can dream, can't I? ;)</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000108.html');"><script type="text/javascript">postCount('Weblog/fog0000000108.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000107.html">Inside the CLR</A>
+  </span><BR>
+  24 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P>After some ribbing from some friends who are working on a book project also called CLR Internals, I decided to change the name of my <EM>writing </EM>project to <EM><A href="../CLRInternals/fog0000000043.html"><EM>Inside the CLR</EM></A></EM>. You guys owe me a beer (or two) for this ;)</P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000107.html');"><script type="text/javascript">postCount('Weblog/fog0000000107.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000106.html">MC++ and CIL</A>
+  </span><BR>
+  23 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just had an epiphany today while walking down Bloor Street in <A href="http://www.toronto.com">Toronto</A>: <EM>you can use CIL to learn C++ (and MC++)</EM>. My epiphany came after reading some of the items in <A href="http://www.gotw.ca/">Herb Sutter's</A> <A href="http://www.amazon.com/exec/obidos/ASIN/0201615622/qid=1014557298/sr=8-1/ref=sr_8_71_1/104-7823647-9515158">Exceptional C++</A> (the chapter on Exception Safety Issues and techniques is absolutely essential reading) this afternoon.</P>
+<P>Let's face it, C++ compilers do an awful lot of work behind your back. Especially when templates are involved. This is why it takes a shelf full of books (that you have read ;) written by really, really smart people like <A href="http://www.aristeia.com/">Scott Meyers</A>, <A href="http://www.gotw.ca">Herb Sutter</A>,&nbsp;and <A href="http://www.moderncppdesign.com/">Andrei Alexandrescu</A> to explain to you how you can shoot yourself (or avoid shooting yourself) in the foot.</P>
+<P>So what do poor schmucks like myself, who have been programming in uh <EM><A href="http://www.ecma.ch/ecma1/STAND/ecma-334.htm"><EM>more</EM></A> <A href="http://www.w3.org/TR/xslt">trendy</A> <A href="http://www.ecma.ch/ecma1/STAND/ECMA-262.HTM">languages</A> </EM>the past few years, do? Well, for one thing, you carve out a large chunk of time and you read the recent C++ canon:</P>
+<OL>
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201310155/qid=1014557106/sr=8-1/ref=sr_8_71_1/104-7823647-9515158">Effective C++</A> CD by Scott Meyers 
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201749629/qid=1014557129/sr=1-1/ref=sr_1_1/104-7823647-9515158">Effective STL</A> by Scott Meyers 
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201379260/qid=1014159000/sr=8-1/ref=sr_8_83_1/104-7823647-9515158">The Standard C++ Library</A> by Nicolai Josuttis 
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201615622/qid=1014557149/sr=1-1/ref=sr_1_1/104-7823647-9515158">Exceptional C++</A> and <A href="http://www.amazon.com/exec/obidos/ASIN/020170434X/qid=1014557298/sr=8-2/ref=sr_8_71_2/104-7823647-9515158">More Exceptional C++</A> by Herb Sutter 
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201704315/qid%3D1014557168/ref%3Dsr%5F11%5F0%5F1/104-7823647-9515158">Modern C++</A> by Andrei Alexandrescu 
+<LI><A href="http://www.amazon.com/exec/obidos/ASIN/0201183951/qid%3D1014557190/ref%3Dsr%5F11%5F0%5F1/104-7823647-9515158">Standard C++ IOStreams and Locales</A> by Angelika Langer and Klaus Kreft</LI></OL>
+<P>Consider Item 6 from Exceptional C++ on Temporary Objects&nbsp;(It was based on <A href="http://www.gotw.ca/gotw/002.htm">Guru of the Week (GOTW) column #2</A>). Here is the code frag from the book:</P>
+<P><CODE>string FindAddr( list&lt;Employee&gt; emps, string name )<BR>{<BR>&nbsp; for( list&lt;Employee&gt;::iterator i = emps.begin();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i != emps.end();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i++ )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; if( *i == name )<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return i-&gt;addr;<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }<BR>&nbsp; return "";<BR>}</CODE></P>
+<P>There are some obvious and non-obvious temporary objects that are created in this example. Now, most developers that I know would not look at the x86 code that was generated by the compiler for this rather innocuous looking function. However, what if you looked at the considerably more readable CIL?</P>
+<P>The first place to look is at the code that is generated for calls to the FindAddr method:</P>
+<P><CODE>string UseFindAddr()<BR>{<BR>&nbsp;&nbsp;list&lt; Employee &gt; emp;<BR>&nbsp;&nbsp;emp.push_back( Employee( "john", "canada" ) );<BR>&nbsp; return FindAddr( emp, "john" );<BR>}</CODE></P>
+<P>If you look at the generated CIL using ILDASM, you will be <EM>shocked </EM>by the number of custom modifiers that are generated by the MC++ compiler. The following listing shows a heavily edited disassembly that shows just the bare essentials of the return FindAddr( emp. "john" ) line of code.[1]</P>
+<P><CODE>L_0066: ldloca.s V_11<BR>L_0068: stloc.1 <BR>L_0069: ldloc.1 <BR>L_006a: ldsflda ?A0xe390182c.unnamed-global-3<BR><STRONG>L_006f: call (basic_string).__ctor</STRONG><BR>L_0074: stloc.s V_5<BR>.try {<BR>&nbsp; L_0076: ldloca.s V_10<BR>&nbsp; L_0078: stloc.s V_4<BR>&nbsp; L_007a: ldloc.s V_4<BR>&nbsp; L_007c: ldloca.s V_15<BR><STRONG>&nbsp; L_007e: call std.list&lt;Employee&gt;.__ctor</STRONG><BR>&nbsp; L_0083: stloc.3 <BR>&nbsp; L_0084: leave.s L_0092<BR>}<BR>.fault {<BR>&nbsp; L_0086: ldsfld (basic string allocator)<BR>&nbsp; L_008b: ldloc.1 <BR>&nbsp; L_008c: call __CxxCallUnwindDtor<BR>&nbsp; L_0091: endfinally <BR>}<BR>L_0092: ldarg.0 <BR>L_0093: ldloc.3 <BR>L_0094: ldloc.s V_5<BR>L_0096: call FindAddr( )<BR>L_009b: pop <BR>L_009c: ldloc.0 <BR>L_009d: ldc.i4.1 <BR>L_009e: or <BR>L_009f: stloc.0 <BR>L_00a0: leave.s L_00af</CODE></P>
+<P>In this block of code, you can clearly see the calls to the constructor of the basic_string class and the copy constructor of the list&lt; Emplyee &gt; class. Thus, two temporaries objects are created prior to the call to the FindAddr method.</P>
+<P>Next, let's turn our attention to the implementation of the FindAddr() method. I won't repeat the disassembly here because of its length (and the fact that the interesting bits are scattered throughout the code). Interested readers can&nbsp;see the <A href="../Files/findaddr_disassembly.txt">dissasembly of FindAddr here</A>.&nbsp;However, I want to point out the two interesting lines of code:</P>
+<P><CODE>return i-&gt;addr;</CODE></P>
+<P>and </P>
+<P><CODE>return "";</CODE></P>
+<P>Both of these lines result in the generation of a temporary object that is returned to the caller, as you can clearly see by the two calls to the basic_string class's constructor.</P>
+<P>What's even more interesting is what happens when you compile the same code using Release compiler settings. As <A href="../Files/findaddr_release_disassembly.txt">the disassembly of the release code shows</A>, the calls to the basic_string class's constructors have been optimized out of the code.</P>
+<P>What this points out very clearly is that you should never ever be tempted to return references to temporary objects, i.e. by changing the method signature to:</P>
+<P><CODE><STRONG>string&amp;</STRONG> FindAddr( list<EMPLOYEE> emps, string name )</CODE></P>
+<P>This is clearly very dangerous (what happens to the "" string after the it goes out of scope?) and a pointless optimization since compilers can optimize away the creation of the temporary objects.</P>
+<P>[1] I created this disassembly using a combination of <A href="http://www.amazon.com/exec/obidos/ASIN/0735615470/qid=1014559445/sr=8-1/ref=sr_8_3_1/104-7823647-9515158">Serge Lidin's</A> ILDASM and <A href="http://www.aisto.com/roeder/">Lutz Roeder's</A> <A href="http://www.aisto.com/roeder/dotnet/">Reflector</A>&nbsp;and Notepad. I heavily edited some of the generated names, and replaced them with&nbsp;abbreviated names in parenthesis. I did this to improve&nbsp;readability. If you want to see the original disassembly, <A href="../Files/findaddr_call_disassembly.txt">click here</A>. Clearly, <EM>somebody</EM> must create a better disassembler with various options that let you simplify the generated output.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000106.html');"><script type="text/javascript">postCount('Weblog/fog0000000106.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000105.html">AOP demo code</A>
+  </span><BR>
+  19 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I promised <A href="http://www.sellsbrothers.com">Chris Sells</A> that I would publish the sample code and output of my demos at VS Live!. </P>
+<P>Here's the Main() method of the test application:</P>
+<P><CODE>static int Main(string[] args)<BR>{<BR>&nbsp; Console.WriteLine( "Hello, World!" );<BR><BR>&nbsp; XmlDocument doc = new XmlDocument();<BR>&nbsp; doc.Load( @"c:\work\codexp\weavecompiler\wc\weavemanifest.xml" );&nbsp;&nbsp;<BR><BR>&nbsp; Math math = new Math();<BR>&nbsp; Console.WriteLine( Math.GetString( "Bar" ) );<BR>&nbsp; Console.WriteLine( "The answer is: " + math.Add( 3, 4 ) );<BR>&nbsp; Console.WriteLine( "Another call: " + math.Add( 1000, 2000 ) );<BR>&nbsp; Console.WriteLine( "Yet another call: " + math.Multiply( 3, 3, 3 ) );<BR><BR>&nbsp; return 0;<BR>}</CODE></P>
+<P>Here's the user-defined type that was weaved in the first part of the demonstration:</P>
+<P><CODE>public class Math<BR>{<BR>&nbsp; public static string GetString( string before )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; return String.Format( "Before: {0}", before );<BR>&nbsp; }<BR>&nbsp; public int Add( int x, int y )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; return x + y;<BR>&nbsp; }<BR>&nbsp; public int Multiply( int x, int y, int z )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; return x * y;<BR>&nbsp; }<BR>}</CODE></P>
+<P>The first demonstration that I showed at VS Live! weaved all of the methods of the Math class shown above. The aspect was defined in a separate assembly, and contains a single piece of advice: the Interceptor() method shown below. This method was weaved as before advice on an execution join-point (in plain English: the Interceptor method is called before any of the method bodies of the Math class methods are executed).</P>
+<P><CODE>public class TraceAspect <BR>{<BR>&nbsp; private static TraceAspect m_this;<BR><BR>&nbsp; static TraceAspect()<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; m_this = new TraceAspect();<BR>&nbsp; }<BR>&nbsp; public static TraceAspect AspectOf() <BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; return m_this;<BR>&nbsp; }<BR>&nbsp; public void Interceptor( CallContext context )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; string result = String.Format( "Intercepted: {0}( ", context.MethodName );<BR>&nbsp;&nbsp;&nbsp; if( context.Parameters != null )<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for( int i = 0; i &lt; context.Parameters.Length; i++ )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( i != context.Parameters.Length - 1 )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result += String.Format( "{0}, ", context.Parameters[ i ] );<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result += String.Format( "{0} )", context.Parameters[ i ] );<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result += ")";<BR>&nbsp;&nbsp;&nbsp; Console.WriteLine( result );<BR>&nbsp; }<BR>}</CODE></P>
+<P>The output that was generated by the first demonstration is:</P>
+<P><CODE>Hello, World!<BR>Intercepted: GetString( Bar )<BR>Before: Bar<BR>Intercepted: Add( 3, 4 )<BR>The answer is: 7<BR>Intercepted: Add( 1000, 2000 )<BR>Another call: 3000<BR>Intercepted: Multiply( 3, 3, 3 )<BR>Yet another call: 9</CODE></P>
+<P>The second demonstration showed weaving of methods that were defined in system libraries. I weaved all of the public methods of System.Xml.XmlDocument as well as System.Xml.XmlTextReader. The weave was defined in an external XML configuration file, which was fed through a weave compiler that generated a binary file that was used by the runtime aspect weaver to determine which methods to weave. Here is the weave definition file:</P>
+<P><CODE>&lt;?xml version="1.0" encoding="utf-8" ?&gt; <BR>&lt;weave&gt;<BR>&nbsp; &lt;pointcut target="public.*System.Xml.XmlDocument.*\(" adviceType="before" advice="public void CallTrace.Trace\( CodeXP.CallContext \)" /&gt;<BR>&nbsp; &lt;pointcut target="public.*System.Xml.XmlTextReader.*\(" adviceType="before" advice="public void CallTrace.Trace\( CodeXP.CallContext \)" /&gt;<BR>&lt;/weave&gt;</CODE></P>
+<P>The output of the second demonstration is:</P>
+<P><CODE>Hello, World!<BR>Intercepted: Load( c:\work\codexp\weavecompiler\wc\weavemanifest.xml )<BR>Intercepted: get_NameTable( )<BR>Intercepted: get_NameTable( )<BR>Intercepted: get_BaseURI( )<BR>Intercepted: get_NameTable( )<BR>Intercepted: get_NameTable( )<BR>Intercepted: get_NameTable( )<BR>Intercepted: Load( System.Xml.XmlValidatingReader )<BR>...</CODE></P>
+<P>Folks who are really interested in the entire output that was generated by the program can <A href="../Files/demo2.txt">look here</A>.</P>
+<P>This represents the current state of the AOP engine. It can weave before advice into arbitrary methods in both user and system library code. Note that the syntax of the weave definition file is very much in flux right now. I might turn it into custom attributes that are embedded into the source code of the aspects.</P>
+<P>Next up (after an extensive cleanup of the code) is after, around and exception advice weaving at execution join-points.&nbsp;Then comes the more difficult case:&nbsp;weaving advice into&nbsp;call join-points.</P>
+<P>In case you are wondering where all of this terminology comes from, I'm lifting it from <A href="http://aspectj.org/doc/dist/progguide/apb.html#d0e3870">AspectJ</A>&nbsp;;)</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000105.html');"><script type="text/javascript">postCount('Weblog/fog0000000105.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000104.html">Polymorphic objects and the STL</A>
+  </span><BR>
+  18 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>While building my AOP engine, I needed to use containers that would hold polymorphic objects. Unfortunately for me, I had been programming in non-pointer based languages for so long that I have a serious case of brain-rot. So my first (and yes, really stupid attempt) at solving this problem was to use the following construct:</P>
+<P>std::vector&lt; Type &gt;</P>
+<P>Of course, this exposed me to the dreaded slicing problem since STL uses a value-type idiom for its container elements. So, I quickly resorted to my old friend, the pointer, since I needed to bang out a bunch of code in a hurry for my demonstration at VS Live!</P>
+<P>std::vector&lt; Type* &gt;</P>
+<P>Now that I've got some time carved out to refactor my code, I want to get rid of this ugliness. So, I proceeded to look at various smart pointer implementations:</P>
+<P>std::vector&lt; SmartPtr&lt; Type &gt; &gt;</P>
+<P>However, nothing in C++ is ever as simple as it appears. I had to contend with issues like whether the smart pointer would copy the object when assigning to the container, or whether I could get away with a reference counted smart pointer.</P>
+<P>In the end, I decided to go with <A href="http://www.boost.org">the Boost library's</A> <A href="http://www.boost.org/libs/smart_ptr/shared_ptr.htm">shared_ptr</A> implementation. So far so good.</P>
+<P>Here's two papers that I found through a Google search that have helped influence my thinking in this area.</P>
+<P>[1] <A href="http://www.oonumerics.org/tmpw00/kuehl.html">STL and OO Don't Easily Mix</A></P>
+<P>[2] <A href="http://pages.cpsc.ucalgary.ca/~kremer/STL/1024x768/ref2.html">A solution to the polymorphic class problem in STL</A></P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000104.html');"><script type="text/javascript">postCount('Weblog/fog0000000104.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000103.html">Report on AOP and VS Live!</A>
+  </span><BR>
+  17 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I managed to get my <A href="../Weblog/fog0000000093.html">AOP engine</A> up and running for my demo at Midnight Madness. The demo consisted of a simple demo of weaving before advice on an execution join-point (english translation:&nbsp;call my interceptor method before&nbsp;executing the body of a method)&nbsp;for both user-defined as well as system (System.Xml.XmlDocument) methods.</P>
+<P>I&nbsp;had a very useful birds-of-a-feather discussion the next day with a few attendees, where I got a much better perspective on how AOP can be applied to commercial software. One of the key things that were discussed were implementing business rules and coding standards in terms of aspects. This is something that I hadn't thought about much previously (I was more concerned with more ivory tower applications like weaving in synchronization and dirty-state detection advice). However, I am convinced that this is the angle that must be pursued if AOP is going to become successful in commercial applications.</P>
+<P>I also provided personal demonstrations for several friends. In fact, I think that I was quite annoying at VS Live since all I talked about was my AOP engine (well, I did talk about how a recycling bin attacked my car last week, but that's a story for another day). <A href="http://www.wintellect.com/about/instructors.asp?id=3">Jeffrey Richter</A>, <A href="http://www.wintellect.com/about/instructors.asp?id=2">John Robbins</A>, <A href="http://staff.develop.com/aarons/">Aaron Skonnard</A>, <A href="http://www.develop.com/dm/bio.asp?id=27">Brian Randell</A>, <A href="http://www.razorsoft.net/weblog/">Peter Drayton</A>, <A href="http://www.grimes.demon.co.uk/">Richard Grimes</A>, and&nbsp;<A href="http://www.vb2themax.com/">Francesco Balena</A>&nbsp;were among my victims at this conference.</P>
+<P>Now that I've finished the demo, I'm going to spend the next few days heavily refactoring my code. Since I'm convinced that most of the technical issues have now been solved, the refactoring will let me solidify the foundations of my code as I continue to add new features.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000103.html');"><script type="text/javascript">postCount('Weblog/fog0000000103.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000102.html">VS Live!</A>
+  </span><BR>
+  12 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I'm off to VS Live! for the rest of the week. After tons of coding this weekend, I managed to get the core engine of my runtime aspect weaver up and running. I'm spending the next couple of days cooking up a set of compelling demos. </P>
+<P>I do my demo Thursday night at Midnight Madness at around 9pm. If you're going to be at VS Live, make sure you drop by to say hi. </P>
+<P>We're trying to arrange a Birds of a Feather session on Aspect Oriented Programming sometime on Friday. Make sure you check with the the conference organizers to find out when and where. </P>
+<P>I probably won't get a chance to update this web log while I'm out there. But I should have lots to write about when I get back! </P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000102.html');"><script type="text/javascript">postCount('Weblog/fog0000000102.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000101.html">HDTV!</A>
+  </span><BR>
+  10 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I have owned a <A href="http://www.toshiba.ca/ceg/html/cw34xc2.htm">Toshiba CW34XC2</A> (Canadian model number) / <A href="http://www.epinions.com/elec-Video-Televisions-All-Toshiba_CW34X92-Toshiba_CW34X92">CW34X92</A> HDTV-ready television for nearly two years now. I have absolutely loved this television. It's a 16:9 aspect ratio television that has a built-in line doubler. It renders DVD movies <EM>so</EM> well.</P>
+<P>Due to Canada seriously lagging behind the US in broadcast technology adoption[1], it has taken until just two months ago before <A href="http://www.rogers.com">Rogers Cablesystems</A> in Canada was able to offer <A href="http://www.shoprogers.com/store/cable/digitaltvpurchase/hdtv.asp?shopperID=DAM8HDK93NSR2G4U0Q0P8J6FX8Q26D6E&amp;nav=digitaltv&amp;Target=HDTV">HDTV</A> broadcasts over cable. I received my set-top box that was manufactured by <A href="http://www.sciatl.com/">Scientific Atlanta</A>&nbsp;just a couple of days ago, and have been enjoying watching 5 HDTV channels ever since: ABC, CBS, NBC, FOX, PBS. My set-top box also lets me tune into analog channels as well, but they look so horrible by comparison. I really am spoiled now.&nbsp;</P>
+<P>I have even spent a bunch of time watching PBS broadcasts of flowers and building interiors! These would be insufferably boring on regular television, but these shows really show off the remarkably high resolution offered by HDTV.</P>
+<P>All of this is seriously cutting into programming time. I'm still on track to show off an early prototype of my <A href="../Weblog/fog0000000093.html">aspect weaver</A> at <A href="http://www.vslive.com/2002/sf/agenda.asp">VS Live!</A> next week. I'll be showing a demonstration sometime around 9pm during the Midnight Madness event on Thursday.</P>
+<P>[1]&nbsp;I blame the horribly draconian <A href="http://www.crtc.gc.ca/">Canadian Radio and Television Corporation</A>&nbsp;which does nothing more than errect artificial barriers to protect "Canadian Content". </P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000101.html');"><script type="text/javascript">postCount('Weblog/fog0000000101.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000099.html">Dynamically typed languages suck</A>
+  </span><BR>
+  07 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just saw <A href="http://radio.weblogs.com/0100812/2002/02/07.html#a142">two</A> <A href="http://www.treedragon.com/ged/map/ti/newFeb02.htm#06feb02-box">posts</A> replying to <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnwsdl/html/boxwsdl.asp?frame=true">Don Box's WSDL appeal</A> to the scripting community that made me mad. </P>
+<P dir=ltr>The central theme of both of these posts is that you don't need strong typing and you don't need compilers because you can just write your own tests. In fact, they argue that compilers lull you into a false sense of security! This is about as silly as those folks who claim "you can never have perfect security, so why bother?". Think about how preposterous that is. It's like saying "gee, I know that anyone who really wants to can break into my house, so why bother locking the door on the way out?"</P>
+<P dir=ltr>What is so damn hard about writing a WSDL file? How on earth does that lock you into Microsoft's implementation? What is so bad about strong typing? Why rely on Moore's law to save you from the horribly inefficient code that you write? Sheesh. Grow up and learn experienced software developers learned a long time ago: strong typing reduces bugs. It eliminates entire classes of bugs. This is a good thing. Let's not go back to the 1950's where the only type that we had was the byte (or was it the nybble? Thank God I'm not old enough to know that ;)</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000099.html');"><script type="text/javascript">postCount('Weblog/fog0000000099.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000098.html">Why __arglist is undocumented</A>
+  </span><BR>
+  06 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Today was an interesting day. </P>
+<P>I started off the day with a problem: I needed to pass an arbitrary set of parameters to a constructor. The standard way of doing this in C# is to use the params object[] syntax in the constructor's argument list. I talked about this in <A href="../Weblog/fog0000000050.html">an earlier entry</A> in my weblog.</P>
+<P>The problem with this approach is that the caller has to do the heavy lifting. It has to:</P>
+<OL>
+<LI>Create an array of objects 
+<LI>Assign each of the parameters that you wish to pass to an element in the object array. You need to box valuetypes before stuffing them into the array. 
+<LI>Pass the array of objects to the method</LI></OL>
+<P>However, I was intrigued by the varargs calling convention that is supported by the CLR. This seemed to be a cleaner way of passing an arbitrary set of parameters since all that you needed to do was push the parameters onto the call stack and invoke the method. The method would then parse the parameters itself using the System.ArgIterator type.</P>
+<P>I looked through the docs and couldn't find any way of implementing varargs methods using C# (or MC++ for that matter). So, I started writing the methods using CIL. I decided to hedge my bets, so I posted a message to the DOTNET list to see whether folks had heard of a way to either call a varargs method from C# or to implement a varargs method using C#. <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0202a&amp;L=dotnet&amp;F=&amp;S=&amp;P=76067">Jason Bock replied</A> with the suggestion to use the undocumented __arglist keyword in C# to <EM>call</EM> a varargs method.</P>
+<P>After a bit of experimentation, I managed to figure out how to use __arglist to both call a varargs method and to implement a varargs method. Here's a simple code fragment that illustrates its usage:</P>
+<P><CODE>class Class1 <BR>{&nbsp;<BR>&nbsp; static int AddABunchOfInts( __arglist ) <BR>&nbsp; { <BR>&nbsp;&nbsp;&nbsp; int result = 0; <BR>&nbsp;&nbsp;&nbsp; System.ArgIterator iter = new System.ArgIterator( __arglist ); <BR>&nbsp;&nbsp;&nbsp; int argCount = iter.GetRemainingCount(); <BR>&nbsp;&nbsp;&nbsp; for( int i = 0; i &lt; argCount; i++ ) <BR>&nbsp;&nbsp;&nbsp; { <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.TypedReference typedRef = iter.GetNextArg(); <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result += (int)TypedReference.ToObject( typedRef ); <BR>&nbsp;&nbsp;&nbsp; } <BR>&nbsp;&nbsp;&nbsp; return result; <BR>&nbsp; }&nbsp;<BR>&nbsp; static int Main( string[] args )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;return AddABunchOfInts( __arglist( 2, 3, 4 ) );<BR>&nbsp; }<BR>}</CODE></P>
+<P>If you look at the CIL code that is generated for the Main() method, you will see that it just pushes the three constants onto the stack and calls the AddABunchOfInts() method.</P>
+<P><CODE>&nbsp; IL_0000:&nbsp; ldc.i4.2<BR>&nbsp; IL_0001:&nbsp; ldc.i4.3<BR>&nbsp; IL_0002:&nbsp; ldc.i4.4<BR>&nbsp; IL_0003:&nbsp; call&nbsp;vararg int32 Client.Class1::AddABunchOfInts()</CODE></P>
+<P>I was <EM>ecstatic</EM>. I thought wow, this is the way we should always call methods that expect a variable number of parameters. Who wants to use something crufty like params object[]? Why on earth is __arglist undocumented? Why aren't varargs methods used in more places in the Framework Class Libraries?</P>
+<P>As it turns out, there's a very good reason why __arglist is undocumented. The performance of the varargs calling convention&nbsp;is <EM>horrible</EM>.</P>
+<P>I did a super-simple benchmark to illustrate the relative difference in performance. Here are the three method signatures for methods that will add three integers together. The relative time taken to call each of these three methods is&nbsp;shown in square brackets:</P><CODE>
+<OL>
+<LI>
+<DIV>[1]&nbsp;&nbsp; int AddThreeInts( int x, int y, int z )</DIV>
+<LI>
+<DIV>[68]&nbsp; int AddThreeIntsUsingObjectArray( params object[] args )</DIV>
+<LI>
+<DIV>[680] int AddThreeIntsUsingArgList(&nbsp;__arglist )</DIV></LI></OL></CODE>
+<P>As you can see, the varargs&nbsp;calling convention is TEN TIMES SLOWER than the parameter array method. Then Mattias Sjogren <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0202a&amp;L=dotnet&amp;F=&amp;S=&amp;P=77324">showed me a cool trick</A> on the DOTNET list where you replace:</P>
+<P><CODE>result += (int)TypedReference.ToObject( typedRef );</CODE></P>
+<P>with</P>
+<P><CODE>result += __refvalue( typedRef, int );</CODE></P>
+<P>This narrowed the gap to a 5x spread between varargs and parameter arrays.</P>
+<P>Unless I'm missing something in my benchmarks, the take home message here is clear: do NOT use varargs methods if you care about performance!</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000098.html');"><script type="text/javascript">postCount('Weblog/fog0000000098.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000097.html">Thwarted by Google</A>
+  </span><BR>
+  06 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>As Ingo Rammer <A href="http://www.dotnetremoting.cc/DotNetCentric/WebLog/fog0000000032.asp">just pointed out</A>, I have just joined the ranks of Google conspiracy theorists ;) I can see now that Google has reverted to an older version of their index. I suspect that this must be due to some kind of server crash on their part. </P>
+<P>Ingo did point me in the right direction, however, to a site that is devoted to people trying to come up with ways of boosting their Google page ranks. Here is one particularly insightful forum post on how to build a successful site using Google alone.[1]</P>
+<P>[1] <A href="http://www.webmasterworld.com/forum3/2010.htm">http://www.webmasterworld.com/forum3/2010.htm</A></P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000097.html');"><script type="text/javascript">postCount('Weblog/fog0000000097.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000096.html">Compressed digital audio revealed</A>
+  </span><BR>
+  06 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>While hunting around for some information today on what the best variable-rate MP3 encoders are, I found this post through Google.[1] It does an incredible job of demystifying all of the incredibly confusing acronyms that are used to describe the myriad formats that we encounter today (as an example of my ignorance, I thought that DTS was Dolby Theatre Sound - I'm sure the Dolby marketing folks must be ecstatic about that!). It is also meticulously researched, and provides links to the original source materials used by the author.</P>
+<P>I'm in the process of re-ripping my CD collection using a combination of VBR MP3 and WMA, depending on the musical genre. I'm super-disappointed about the quality of WMA music files for pop / rock music. WMA for classical / jazz, however, is excellent. This rather dated, but still very well thought-out&nbsp; post[2] describes a double-blind experiment to see if listeners could distinguish between WMA, MP3 and EPAC encoding formats. </P>
+<P>[1] <A href="http://groups.google.com/groups?q=variable+bit+rate+mp3+encoders+review&amp;hl=en&amp;selm=7u0c5n%24goe%241%40nnrp1.deja.com&amp;rnum=3">http://groups.google.com/groups?q=variable+bit+rate+mp3+encoders+review&amp;hl=en&amp;selm=7u0c5n%24goe%241%40nnrp1.deja.com&amp;rnum=3</A></P>
+<P>[2] <A href="http://groups.google.com/groups?q=epac+mp3+wma+compared&amp;hl=en&amp;selm=7tq1j6%244u%241%40nnrp1.deja.com&amp;rnum=1">http://groups.google.com/groups?q=epac+mp3+wma+compared&amp;hl=en&amp;selm=7tq1j6%244u%241%40nnrp1.deja.com&amp;rnum=1</A></P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000096.html');"><script type="text/javascript">postCount('Weblog/fog0000000096.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000094.html">Reverse-engineering Google</A>
+  </span><BR>
+  05 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I've been writing my web log for just over two months now. It's been fun to read my web server logs to figure out exactly how people got to my site, and what web crawlers are visiting my site. I noticed that <A href="http://www.google.com/bot.html">GoogleBot</A> would come by several times before I actually saw anything appearing in their search engine. It took <A href="../Weblog/fog0000000045.html">almost a month</A> before <A href="http://www.google.com">Google</A> finally recognized my existence and added me to their search results index.</P>
+<P>One of the things that I had coveted for quite a while was more frequent visits by GoogleBot, due to the fact that my web log's content changes several times a week (yes, I do strive for daily updates but sometimes work gets in the way ;). You can tell that Google visits your site frequently if you see a date on the line of green text that is underneath each search result. That's the date that Google last visited your site. If you don't have a date, that means that Google will only visit you roughly once a month (at least based on my experiments).</P>
+<P>Now, I didn't know what algorithm Google used to determine whether to increase its frequency of visits. Foolishly, I thought that they would try to look at the difference in content between visits to determine if the site had changed enough to be worth crawling more frequently, and gradually reduce the interval between crawls until it converged on your update frequency.[1]</P>
+<P>It all changed when I recently saw that Ingo Rammer, who maintains the excellent <A href="http://www.dotnetremoting.cc/">DotNetRemoting</A> web site, recently added a <A href="http://www.dotnetremoting.cc/DotNetCentric/">web log</A> to his site. I decided to do a <A href="http://www.google.com/search?hl=en&amp;q=ingo+rammer">search for Ingo Rammer</A> using Google and boy was I pissed off that he got a date in his green text! After all, he just started!!! So, this got me thinking ... what's different between Ingo's web page and mine? </P>
+<P>As it turned out, one word in particular stood out: the word WebLog in the title of his page. Would this work on my web site, I wondered? Well, you can <A href="http://www.google.com/search?hl=en&amp;q=john+lam">see for yourself now</A>. ;) It's the little things in life that make me happy ;)</P>
+<P>[1]&nbsp; I found <A href="http://pdclab.cs.ucdavis.edu/sws/SWS/KwongGertz-DB.pdf">this paper by Kwong and Gertz</A> that outlines one possible algorithm to predict the update frequency of a page based on historical data, the update frequency of nearby pages in its domain tree. </P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000094.html');"><script type="text/javascript">postCount('Weblog/fog0000000094.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000093.html">Aspect Oriented Programming and the CLR</A>
+  </span><BR>
+  04 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Today was a <EM>great</EM> day!! My demonstration proposal was accepted at the first Aspect Oriented Software Development conference in the Netherlands![1] I will be demonstrating for the first time my implementation of Aspect-Oriented Programming (AOP) using the CLR. This will also be my first talk at a computer science&nbsp;academic conference. This is quite unlike my last stint in academia during <A href="../About/fog0000000009.html">my other life</A>.</P>
+<P>The AOP plumbing that I built for the CLR is quite novel. It relies on the metadata and profiling interfaces provided by the CLR's execution engine to rewrite CIL code on the fly at JIT compilation time. Since all of the aspect weaving is done at JIT compilation time, I can weave system library code as well as user-defined code.</P>
+<P>Aspect oriented programming is a way of dealing with software complexity.[2] The canonical examples of applications of AOP typically involve code that is scattered throughout an application. Some examples are:</P>
+<OL>
+<LI>Tracing / logging 
+<LI>Security access control checks 
+<LI>Pre / post condition assertions (which could ultimately lead to an implementation of Eiffel's <A href="http://www.eiffel.com/doc/manuals/technology/contract/">Design-By-Contract </A>semantics).</LI></OL>
+<P>What AOP promises is the ability to gather all of this code and put it in a single place (the aspect). You do so by instructing your AOP runtime / framework to weave your aspect throughout your application. Here are some examples:</P>
+<OL>
+<LI>"call the logMethodCall() method after any call to any method in the System.Xml namespace" 
+<LI>"call the accessCheck() method instead of any call to a constructor in the System.IO namespace"</LI></OL>
+<P>One of the great features of AOP is that the aspects can be introduced and removed <EM>very</EM> <EM>easily</EM>. You no longer have to modify your source code; you simply change the weave instructions to add or remove your aspects from your program. For example, you can easily turn on and off tracing at various points in the execution of your program simply by changing the weave instructions.&nbsp;What's even more powerful is the ability of the CLR to force the re-JIT of an existing compiled method; this lets you weave and un-weave code without shutting down or restarting an application!</P>
+<P>This is just one part of what I've been up to <A href="../About/fog0000000010.html">in my plan</A>. My AOP engine for the CLR will serve as the technological foundation for a set of products that I will be producing later this year. Stay tuned to this weblog for more details on my AOP engine and AOP programming in general as I drive towards the first public unveiling[3] of this technology!</P>
+<P>[1] <A href="http://trese.cs.utwente.nl/aosd2002/index.php">http://trese.cs.utwente.nl/aosd2002/index.php</A></P>
+<P>[2] In the words of Dijkstra, "I have a small mind and can only comprehend one thing at a time". </P>
+<P>[3] Attendees of the <A href="http://www.vslive.com/2002/sf/default.asp">VS Live!</A> conference February 13-15 in San Francisco might get a sneak preview of this code in action if I can hit my milestone 3 release criteria by then.</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000093.html');"><script type="text/javascript">postCount('Weblog/fog0000000093.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000092.html">JitCost revisited</A>
+  </span><BR>
+  04 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I just recompiled my <A href="../Weblog/fog0000000047.html">JitCost utility</A> using the RTM CLR bits. I did so because I wanted to take a closer look at some MC++ code that I just wrote today. It's a fairly complex piece of MC++ code that uses IJW to create an array of managed structures from information gleaned from the unmanaged Metadata API's. It retrieves the PCCOR_SIGNATURE blob from the unmanaged Metadata API's, converts it into a string, and maps it to its corresponding MethodDef token.</P>
+<P>When I ran my code, I found that it only took 5s to generate a 6.5MB text file that contains all of this data from the 12MB or so of assemblies that the program looked at. This is already pretty impressive.&nbsp;However, nearly 1s of this time was spent inside of the JIT (1400 methods had to be compiled). Clearly, this is a piece of code that should be run through NGEN. I will post a detailed analysis of the NGEN effects later.</P>
+<P>Some more caveats for folks who are interested in measuring the performance of their code:</P>
+<OL>
+<LI>You need to account for the time taken by the JIT. 
+<LI>You also need to account for time spent inside the GC (although one could argue that this <EM>is</EM> part of the execution time of your code). I'll build a tool later that measures the amount of time spent garbage collecting a long-running application.</LI></OL></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000092.html');"><script type="text/javascript">postCount('Weblog/fog0000000092.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000089.html">Some MC++ gotchas</A>
+  </span><BR>
+  03 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>I've been spending a lot of time the past few days writing MC++ code. During this period of time, I had the MC++ epiphany, and <A href="../Weblog/fog0000000087.html">I publicly apologized</A> for my premature dismissal of this wonderful technology. At the time, I just didn't get it.</P>
+<P>What prompted me to use MC++ was my need to use the unmanaged metadata API's, which I can only access via class COM interfaces. I'm not using these API's because of some bizarre C++ machismo, I'm using them because the current System.Reflection API's <A href="../Weblog/fog0000000090.html">are too limiting</A>. </P>
+<P>However, before you dive to far into MC++, there is one important gotcha: you cannot debug unmanaged pointers using VS.NET! Yes that's right folks, you cannot inspect the values of unmanaged pointers. This means that you had better not have any bugs in your unmanaged code before you use MC++ to write the high-performance interop layer. If you do, you're back to <A href="http://www.wheaty.net">manly man debugging</A> using OutputDebugString and friends.</P>
+<P>One possible solution to this debacle is to create two separate projects. The first project&nbsp;compiles your unmanaged C++ code only, and uses a test driver like <A href="../Weblog/fog0000000024.html">CppUnit</A> to drive your test cases. The second project compiles your unmanaged C++ code and your MC++ wrapper classes. I suspect that most folks will have to use a technique similar to this until MS fixes this bug (or is it a <EM>by-design limitation</EM>? ;)</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000089.html');"><script type="text/javascript">postCount('Weblog/fog0000000089.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/fog0000000090.html">Wish list for V2 System.Reflection</A>
+  </span><BR>
+  03 Feb, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>Over the past couple of years, I've become rather intimate with the various metadata API's in the CLR. For some more info on this, see the slides for the <A href="../Files/metadata_internals.pdf">Metadata Internals talk</A> that I gave at last year's WinSummit conference.</P>
+<P>Interestingly enough, I find that the metadata API that I use the least is System.Reflection. This is due to the fact that the work that I do (mostly involving CIL instruction rewriting these days) simply cannot be done using the existing System.Reflection API's. There's a bunch of things that really need to be added to System.Reflection to make it useful for my purposes.[1] Here's a short list:</P>
+<OL>
+<LI>Given a MethodBase object, make it possible for me to retrieve the underlying MethodDef token that defines that method signature. You will also need a mechanism for mapping MethodRef's to the appropriate MethodDef in the current App Domain. 
+<LI>Given a MethodBase object, make it possible for me to retrieve the underlying CIL instructions. 
+<LI>Given a MethodBase object, make it possible for me to <EM>rewrite</EM> the underlying CIL instructions. This is already possible via the Profiling API's. It would be nice to be able to do all of this from managed code. 
+<LI>Make it possible for me to create a MethodBase object from&nbsp;a MethodDef token. Obviously, scoping rules must apply, i.e. the factory that creates the MethodBase object must know what module the MethodDef token is scoped by.</LI></OL>
+<P>If you have any more ideas about what should go on this list, <A href="mailto:jlam@iunknown.com">send me some mail</A> and I'll add it to this list.</P>
+<P>[1] Don't get me wrong, System.Reflection and its companion, System.Reflection.Emit, are wonderful API's if you use them for what they were intended. They are particularly useful if you want to build dynamic proxies. But that's just not on my radar screen (and besides, its been done to death in the Java world ... it's time for something more innovative ;).</P></P>
+    <a href="javascript:HaloScan2('Weblog/fog0000000090.html');"><script type="text/javascript">postCount('Weblog/fog0000000090.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+
+<div class="copyright">Site contents copyright 2001-2002 by John Lam. No animals were harmed during the production of this site. Some assembly required. Your mileage may vary. Use at your own risk.</div>
+</td>
+<td class="right_panel"></td>
+</tr>
+</table>
+</BODY>
+</HTML>

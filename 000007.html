@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Prototyping and Refactoring</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000006.html" title="Chris Sells on Delegates" />
+
+<link rel="next" href="http://www.iunknown.com/000008.html" title="Pedagogy and developer training" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000006.html">&laquo; Chris Sells on Delegates</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000008.html">Pedagogy and developer training &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 06, 2001</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Prototyping and Refactoring</h3>
+
+<p><P>I have spent the last three weeks working on a prototype for some really cool CLR plumbing. One of the fun things about writing prototypes is that you get to ignore all of that engineering stuff and focus on trying to figure out if something is possible. Well, after three weeks of very focused work, I discovered that everything that I want to do is in fact possible. Now comes the hard part: trying to create a build that actually does something&nbsp;<EM>useful</EM>.</P><br />
+<P>One of the things that you quickly discover about any prototype codebase is that it is <EM>extremely</EM> brittle and resistant to change. Why? Because you were too busy figuring out if stuff is possible vs. engineering solid software. Now, the temptation always is to throw out that prototype and start again. But I'm resisting that temptation because I need to continue to prototype <EM>after</EM> I've built an intermediate build that I intend on using for a period of time.</P><br />
+<P>To enable further work on the prototype codebase, I need to refactor the existing code. One of the reasons that the prototype is so complex is that there is duplicate code scattered all over the code base. There are complex data structures intermingled with core behavior. I'm abusing COM horribly (like calling interface methods from threads that haven't called <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/com/cmf_a2c_36qt.asp">CoInitialize()</A> yet -- and no, it's not because I'm lazy, it's a much more complicated problem than that). I've got bizarre global variables sitting in my code because I haven't designed the caching objects to take care of them yet. I need to fix my code base before I can use it, much less extend it.</P><br />
+<P>I tend to refactor fairly naturally since I've been programming for a long time. Earlier this year, however, I discovered <A href="http://www.martinfowler.com/">Martin Fowler's</A> most excellent book: <A href="http://www.amazon.com/exec/obidos/ASIN/0201485672/qid=1007686735/sr=8-1/ref=sr_8_3_1/107-1596383-3252568">Refactoring: Improving the Design of Existing Code</A>. I've spent the better part of yesterday and today refactoring my code base. However, instead of doing stuff like "hmmm, I need to move this redundant code into a separate method", I've been forcing myself to look up the refactoring method in the list of refactorings in Fowler's book. So, I've been saying stuff like "<A href="http://www.refactoring.com/catalog/extractMethod.html">Extract Method</A>" to myself instead. The benefit of this is that I'm learning lots of interesting refactoring methodologies that I wouldn't have otherwise used, and it creates a vocabulary that I can use to communicate with other developers. Try it, I'm sure you'll grow to love it like I have.</P><br />
+<P>Another tip for those times when you are heavily refactoring your codebase: use your version control system. Make small changes, test those changes, and check those changes back into your VCS. Believe me, it's an awesome safety net for those times when you've got your code dissected into a million pieces and you can't remember how to put it back together again ...</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December  6, 2001 05:31 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="7" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000007.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="7" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

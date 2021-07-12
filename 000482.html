@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Experiments with lambda functions</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000481.html" title="Why?" />
+
+<link rel="next" href="http://www.iunknown.com/000483.html" title="Python and parsing" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000482.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/226"
+    dc:title="Experiments with lambda functions"
+    dc:identifier="http://www.iunknown.com/000482.html"
+    dc:subject="Blog"
+    dc:description="Lambda functions in Python, which are somewhat related to anonymous methods in C# can be really useful in certain situations. In this example, I&apos;m using lambda functions to define jump tables based on dictionaries. Using a single line of code,..."
+    dc:creator="John"
+    dc:date="2004-09-17T20:57:02-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000481.html">&laquo; Why?</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000483.html">Python and parsing &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">September 17, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Experiments with lambda functions</h3>
+
+<p>Lambda functions in Python, which are somewhat related to <a href="http://download.microsoft.com/download/8/1/6/81682478-4018-48fe-9e5e-f87a44af3db9/SpecificationVer2.doc">anonymous methods in C#</a> can be really useful in certain situations. </p>
+
+<p>In this example, I'm using lambda functions to define jump tables based on dictionaries. Using a single line of code, I can substitute arbitrary markup blocks in a "little" language that I defined for writing music. There are two markup characters: ! and #. ! lets me declare the tempo of the music, and # lets me declare the pitch of the note. </p>
+
+<pre>
+import re
+import win32com.client
+
+notes = dict([['c',65],['d',73],['e',82],['f',87],['g',98],['aa',110],['bbf',117],['cc',131]])
+tempo = dict([['f',130],['s',55]])
+
+re_markup = re.compile(r'([\#|\!])(\w+)', re.IGNORECASE)
+
+markup = dict([['#', (lambda mo : '\\pit=%s\\' % notes[mo.group(2)])],
+               ['!', (lambda mo : '\\spd=%s\\' % tempo[mo.group(2)])]])
+
+def parseSong(song):
+    return '\\chr=\&quot;monotone\&quot;\\' + re_markup.sub(lambda mo : markup[mo.group(1)](mo), song)
+
+song = ['!f#c Hap- #c p #d birth-#c day !s#f to #e you.',
+        '!f#c Hap- #c p #d birth-#c day !s#g to #f you.',
+        '!f#c Hap- #c p #cc birth- #aa day !s#f to  #e Maa- #d foo.',
+        '!f#bbf Hap- #bbf p #aa birth- #f day !s#g to #f you.']
+
+agent = win32com.client.Dispatch(&quot;Agent.Control.2&quot;)
+agent.Connected = -1
+agent.Characters.Load(&quot;Peedy&quot;, &quot;Peedy.acs&quot;)
+
+peedy = agent.Characters(&quot;Peedy&quot;)
+peedy.Height = 600
+peedy.Width = 600
+peedy.LanguageID = 0x409
+peedy.Show()
+
+for line in song:
+    peedy.Speak(parseSong(line))
+
+peedy.Hide()
+</pre><p>I'm amazed that I can create in such a compact form a "little language" for writing a birthday song for my boy Matthew who will turn one on September 22. Note that this little sample program also uses <span class="caps">COM</span> to talk to Microsoft Agent via <a href="http://starship.python.net/crew/mhammond/">Mark Hammond's</a> most excellent <code>win32com</code> libraries (and <span class="caps">IDE</span>!)</p>
+
+<p>Wow. Programming is becoming a lot of fun again. </p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at September 17, 2004 08:57 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=482" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="482" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000482.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="482" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

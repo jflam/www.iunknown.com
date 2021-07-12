@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Enterprise Services?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000168.html" title="A new look" />
+
+<link rel="next" href="http://www.iunknown.com/000170.html" title="Enterprise Services!" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000168.html">&laquo; A new look</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000170.html">Enterprise Services! &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">November 29, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Enterprise Services?</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I have been watching from the sidelines the recent discussion on Enterprise Services in .NET. <A href="http://radio.weblogs.com/0108971/2002/11/28.html#a41">Clemens Vasters</A> started it, with <A href="http://www.dotnetremoting.cc/DotNetCentric/2002/11/16.asp">Ingo Rammer</A> and <A href="http://www.winterdom.com/weblog/archives/000180.html">Tomas Restrepo</A> chipping in with additional comments. I've been quite busy lately, so I haven't had a chance to respond yet. My response centers around this question:</P><br />
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px"><br />
+<P>If I'm writing a managed application that has a web-based front end[1], and I don't need <STRONG>distributed transactions</STRONG>, why do I need to care about Enterprise Services?</P></BLOCKQUOTE><br />
+<P>The way I see it, almost all of what was in COM+ (and please, let's just call it COM+ for simplicity) is now duplicated in the frameworks. </P><br />
+<P>Let's first begin with load balancing. I tend to look at load balancing as a technology that improves the robustness of your application with load balancing as a nice side-effect. If you are using HTTP as your transport, there are lots of nice hardware load balancing solutions available, and they scale extraordinarily well. </P><br />
+<P>By using HTTP as your transport, you are most likely going to be using IIS as the gateway to your application. This leads to the next feature that was provided by COM+: thread pooling. If you can assume HTTP as your transport, then your thread pool is effectively IIS.</P><br />
+<P>Now, in a traditional ASP application there was always the question of "where do my application layer components go?" In almost all cases, the answer is that your application layer components physically run on the same computer as IIS. If you decide to run your application layer components on another computer, you run into the (hard) problems involved in load-balancing COM+ components. Besides, I always question why one would want to load-balance a load-balancer unless you can show me data that shows that this is a more effective solution for your application.</P><br />
+<P>In a managed application, your application layer components should reside on the same computer as IIS. This is what you get by default if you use ASP.NET as the gateway into your managed code. ASP.NET has some nice plumbing that (nearly) <A href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">abstracts away</A> the fact that IIS (and Windows for that matter) is the baseline technology. This way you automatically get the benefits of HTTP load balancing and thread pooling. Not bad for doing absolutely no work whatsoever!</P><br />
+<P>Next up is role-based security. In the pre-MTS/COM+ world, folks that built server applications also had to build a separate administration tool that would be used to manage the security requirements of those components. MTS/COM+ eliminated that requirement by providing a standard MMC (Microsoft-Management Console) snap-in that let developers define roles and that let administrators populate those roles with actual user accounts and groups. </P><br />
+<P>The downside of the MTS/COM+ technologies are that they were tightly coupled to the Windows security model. In the managed world, there is also a notion of roles. However, these roles are now decoupled from the underlying OS security model. You now have the flexibility to define roles based on Windows users and groups, or you can map roles to a custom authentication scheme that you can provide. This is significantly more important in building large-scale applications today, since you can no longer assume that clients will run within the same Windows domain or on a domain with appropriate pre-established trust relationships.</P><br />
+<P>Next up is the (controversial) object pooling feature of COM+. In most cases, the object pool was used to overcome a deficiency in the OLE DB database connection pool - you couldn't tune the min and max pool size parameters on a per-application basis. What you could do, however, was define a class of objects where each object which holds onto a single OLE DB connection. You then place that class under the control of the COM+-managed object pool. This way you could use the min and max object pool size parameters in COM+ to tune the database connection pool size.</P><br />
+<P>In the managed world, however, you now have the Min Pool Size and Max Pool Size connection string parameters if you are using the SQL Managed Provider. This eliminates the need for object pooling in the vast majority of the applications that used this feature in the COM+ world. Building your own managed object pool requires you to do some work if you absolutely need to use this feature. There are some nice examples of object pools in the frameworks <A href="http://www.saurik.com/net/exemplar/">for you to examine</A> (see System.Web.HttpApplication and friends in system.web.dll) if you are inclined to build your own.</P><br />
+<P>IMHO the features that I outlined here: thread pooling, database connection pooling, load balancing, role-based security, and object pooling are the typical features used in most COM+ applications. And they all have managed equivalents. But, you ask, what about transactions?</P><br />
+<P>Don't forget that you don't <EM>need</EM> COM+ to do transactional programming against a single resource manager. You can always use that resource manager's native transactional API to obtain the ACID transaction benefits. However, where COM+ really helps out is in the realm of <STRONG>distributed </STRONG>transactions that involve more than one RM; this is where COM+ really shines. That said, however, there are <EM>very few</EM> applications out there that actually use distributed transactions. </P><br />
+<P>So, this begs the question: if I'm writing a managed application that has a web-based front end[1], and I don't need <STRONG>distributed transactions</STRONG>, why do I need to care about Enterprise Services?</P><br />
+<P>[1] That will migrate to a Web Services front end once we evolve out of our current (irrational) infatuation with browser-hosted applications.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at November 29, 2002 12:35 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="169" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000169.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

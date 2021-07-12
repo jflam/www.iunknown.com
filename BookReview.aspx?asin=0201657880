@@ -1,0 +1,192 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Programming Pearls (2nd Edition)
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0201657880" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjAxNjU3ODgwLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFByb2dyYW1taW5nIFBlYXJscyAoMm5kIEVkaXRpb24pOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxKb24gQmVudGxleTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDM0Ljk5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkMjMuMDk7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQuNTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8MjM7Pj47Pjs7Pjt0PEA8aHR0cDovL3d3dy5hbWF6b24uY29tL2V4ZWMvb2JpZG9zL0FTSU4vMDIwMTY1Nzg4MC9yZWY9bm9zaW0vaXVua25vd25jb20tMjA7Pjs7Pjt0PDtsPGk8MD47aTwxPjs+O2w8dDxAPEFtYXpvbi5jb207Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEZvdXJ0ZWVuIHllYXJzIGFmdGVyIGl0IHdhcyBmaXJzdCBpc3N1ZWQsIEMrKyBleHBlcnQgSm9uIEJlbnRsZXkgcmVpbnZlbnRzIGEgdHJ1ZSBjbGFzc2ljIHdpdGggdGhlIHNlY29uZCBlZGl0aW9uIG9mIGhpcyBcPElcPlByb2dyYW1taW5nIFBlYXJsc1w8L0lcPi4gQ29tcGxldGVseSByZXZpc2VkIGFuZCBicm91Z2h0IHVwIHRvIGRhdGUgd2l0aCBhbGwgbmV3IGNvZGUgZXhhbXBsZXMgaW4gQyBhbmQgQysrLCB0aGlzIGJvb2sgcmVtYWlucyBhbiBleGNlcHRpb25hbCB0dXRvcmlhbCBmb3IgbGVhcm5pbmcgdG8gXDxJXD50aGlua1w8L0lcPiBsaWtlIGEgcHJvZ3JhbW1lci4gXDxwXD4gVGhlICJwZWFybHMiIGluIHF1ZXN0aW9uIGNlbnRlciBub3Qgb25seSBvbiBjaG9vc2luZyB0aGUgcmlnaHQgYWxnb3JpdGhtcyAobGlrZSBiaW5hcnkgc2VhcmNoZXMsIHNvcnRpbmcgdGVjaG5pcXVlcywgb3Igc3BhcnNlIGFycmF5cykgYnV0IGFsc28gb24gc2hvd2luZyBob3cgdG8gc29sdmUgcHJvYmxlbXMgZWZmZWN0aXZlbHkuIEVhY2ggY2hhcHRlciBmcmFtZXMgYSBwYXJ0aWN1bGFyIHByb2dyYW1taW5nIHRhc2stLXN1Y2ggYXMgc29ydGluZyBudW1iZXJzLCBjcmVhdGluZyBhbmFncmFtcywgb3IgY291bnRpbmcgdGhlIHdvcmRzIGluIGEgYmxvY2sgb2YgdGV4dC0tbWFueSBkcmF3biBmcm9tIEJlbnRsZXkncyBleHBlcmllbmNlcyBpbiBoaXMgbG9uZyBjYXJlZXIgYXMgYSBkZXZlbG9wZXIuIFRoZSBib29rIHRyYWNlcyB0aGUgcHJvY2VzcyBvZiBhcnJpdmluZyBhdCBhIGZhc3QsIGVmZmljaWVudCwgYW5kIGFjY3VyYXRlIHNvbHV0aW9uLCBhbG9uZyB3aXRoIGNvZGUgcHJvZmlsaW5nIHRvIGRpc2NvdmVyIHdoYXQgd29ya3MgYmVzdC4gQWZ0ZXIgcmVmaW5pbmcgdGhlIGNvcnJlY3QgYW5zd2VyLCBlYWNoIGNoYXB0ZXIgZW51bWVyYXRlcyBwcm9ncmFtbWluZyBwcmluY2lwbGVzIHRoYXQgeW91IGNhbiB1c2Ugb24geW91ciBvd24uXDxwXD4gVGhlIGF1dGhvciBhbHNvIGNoYWxsZW5nZXMgeW91IHRvIHRoaW5rIGxpa2UgYW4gZW5naW5lZXIsIGFuZCBlYWNoIGNoYXB0ZXIgZW5kcyB3aXRoIGFib3V0IGEgZG96ZW4gcHJvYmxlbXMgdG8gZ2V0IHlvdSB0aGlua2luZyBjcmVhdGl2ZWx5IGFib3V0IGRlc2lnbiBpc3N1ZXMuIChTaWRlYmFycyBvbiBzdWNoIGhpc3RvcmljYWwgdG9waWNzIGFzIHRoZSBmaXJzdCBjb21wdXRlciBzb2x1dGlvbnMgdG8gY29tcHV0ZXIgY2hlc3MsIHNwZWxsLWNoZWNraW5nLCBhbmQgZXZlbiBhcmNoaXRlY3R1cmFsIGRlc2lnbiBoZWxwIGNyZWF0ZSBhIHBlcnNwZWN0aXZlIG9uIHN1Y2Nlc3NmdWwgcHJvYmxlbSBzb2x2aW5nIGFuZCBtYWtlIGZvciBhIHRydWx5IGVkdWNhdGlvbmFsIGFuZCBlbmpveWFibGUgdG91ciBvZiBob3cgdG8gYmVjb21lIGEgYmV0dGVyIHByb2dyYW1tZXIuKSBCZW50bGV5IGFsc28gYXNrcyB0aGUgcmVhZGVyIHRvIHRoaW5rIGFuYWx5dGljYWxseSBhYm91dCB0aGUgd29ybGQgd2l0aCAiYmFjayBvZiB0aGUgZW52ZWxvcGUiIGVzdGltYXRpb24gdGVjaG5pcXVlcyBkcmF3biBmcm9tIGVuZ2luZWVyaW5nLiBBcHBlbmRpY2VzIGxpc3QgdGhlIGFsZ29yaXRobXMgYW5kIGNvZGUgcnVsZXMgY292ZXJlZCBpbiB0aGUgYm9vaywgcGx1cyBzb21lIHNhbXBsZSBzb2x1dGlvbnMuXDxwXD4gRmFucyBvZiB0aGUgZmlyc3QgZWRpdGlvbiBvZiB0aGlzIHRpdGxlIHdpbGwgYmUgcGxlYXNlZCB0byBzZWUgdGhpcyBmYXZvcml0ZSBjb21wdXRlciB0ZXh0IGJyb3VnaHQgdXAgdG8gZGF0ZSBmb3IgdG9kYXkncyBmYXN0ZXIgaGFyZHdhcmUuIFdoZXRoZXIgeW91IHdhbnQgdG8gaW1wcm92ZSB5b3VyIGNvbW1hbmQgb2YgYWxnb3JpdGhtcyBvciB0ZXN0IHlvdXIgcHJvYmxlbS1zb2x2aW5nIHNraWxscywgdGhlIG5ldyB2ZXJzaW9uIG9mIFw8SVw+UHJvZ3JhbW1pbmcgUGVhcmxcPC9JXD4gaXMgYSBjaGFsbGVuZ2luZywgaW5zdHJ1Y3RpdmUsIGFuZCB0aG9yb3VnaGx5IGVudGVydGFpbmluZyByZXNvdXJjZS4gXDxJXD4tLVJpY2hhcmQgRHJhZ2FuXDwvSVw+XDxwXD4gXDxCXD5Ub3BpY3MgY292ZXJlZFw8L0JcPjogUHJvZ3JhbW1pbmcgYW5kIHByb2JsZW0tc29sdmluZyB0dXRvcmlhbCwgc29ydGluZyBhbGdvcml0aG1zLCBtZXJnZSBzb3J0LCBiaXQgdmVjdG9ycywgYmluYXJ5IHNlYXJjaGVzLCBwcm9ncmFtIGNvcnJlY3RuZXNzIGFuZCB0ZXN0aW5nLCBpbXByb3ZpbmcgcGVyZm9ybWFuY2UsIGVuZ2luZWVyaW5nIGFuZCBwcm9ibGVtLXNvbHZpbmcgdGVjaG5pcXVlcywgcGVyZm9ybWFuY2UgZXN0aW1hdGVzLCBkZXNpZ25pbmcgZm9yIHNhZmV0eSwgZGl2aWRlLWFuZC1jb25xdWVyIGFuZCBzY2FubmluZyBhbGdvcml0aG1zLCB0dW5pbmcgY29kZSwgdGlwcyBmb3IgbW9yZSBlZmZpY2llbnQgbWVtb3J5IHVzYWdlLCBpbnNlcnRpb24gc29ydCwgcXVpY2tzb3J0IGFsZ29yaXRobXMsIHNwYXJzZSBhcnJheXMsIHNlYXJjaGluZyBhbGdvcml0aG1zLCBiaW5hcnkgc2VhcmNoIHRyZWVzLCBoZWFwcywgcHJpb3JpdHkgcXVldWVzLCBzZWFyY2hpbmcgdGV4dCwgYW5kIGdlbmVyYXRpbmcgcmFuZG9tIHRleHQuOz4+Oz47Oz47Pj47Pj47Pj47Pj7ZWckQym2/Kn7N44GC2vEm7KgF" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0201657880.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Programming Pearls (2nd Edition)</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Jon Bentley</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$34.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$23.09</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">23</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0201657880/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              <table id="EditorialReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Amazon.com:</DIV>
+                <span id="Label1">Fourteen years after it was first issued, C++ expert Jon Bentley reinvents a true classic with the second edition of his <I>Programming Pearls</I>. Completely revised and brought up to date with all new code examples in C and C++, this book remains an exceptional tutorial for learning to <I>think</I> like a programmer. <p> The "pearls" in question center not only on choosing the right algorithms (like binary searches, sorting techniques, or sparse arrays) but also on showing how to solve problems effectively. Each chapter frames a particular programming task--such as sorting numbers, creating anagrams, or counting the words in a block of text--many drawn from Bentley's experiences in his long career as a developer. The book traces the process of arriving at a fast, efficient, and accurate solution, along with code profiling to discover what works best. After refining the correct answer, each chapter enumerates programming principles that you can use on your own.<p> The author also challenges you to think like an engineer, and each chapter ends with about a dozen problems to get you thinking creatively about design issues. (Sidebars on such historical topics as the first computer solutions to computer chess, spell-checking, and even architectural design help create a perspective on successful problem solving and make for a truly educational and enjoyable tour of how to become a better programmer.) Bentley also asks the reader to think analytically about the world with "back of the envelope" estimation techniques drawn from engineering. Appendices list the algorithms and code rules covered in the book, plus some sample solutions.<p> Fans of the first edition of this title will be pleased to see this favorite computer text brought up to date for today's faster hardware. Whether you want to improve your command of algorithms or test your problem-solving skills, the new version of <I>Programming Pearl</I> is a challenging, instructive, and thoroughly entertaining resource. <I>--Richard Dragan</I><p> <B>Topics covered</B>: Programming and problem-solving tutorial, sorting algorithms, merge sort, bit vectors, binary searches, program correctness and testing, improving performance, engineering and problem-solving techniques, performance estimates, designing for safety, divide-and-conquer and scanning algorithms, tuning code, tips for more efficient memory usage, insertion sort, quicksort algorithms, sparse arrays, searching algorithms, binary search trees, heaps, priority queues, searching text, and generating random text.</span>
+              
+</td></tr></table>
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Must have (even if you are experienced).</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>1</span>
+                      /
+                      <span>1</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-11-07</span>
+                    </div>
+                    <span>Programming Pearls is one of the very few books that looks at the problems that we as programmers all have, and keep on having day in and day out. It strives for solutions to problems that are compact, efficient and fast. It questions thinking and makes you think about programming. 
+<br />
+<br />The book is comprised of a series of articles focused on a topic which you can read in any order you like. This is one of my favorite programming books, as I always find something 'new' just by browsing it. Unlike some other books on similar topics, the delivery of the information is concise and pallatable. I love this book.</span>
+                  
+                    <div class="CustomerReviewSummary">Great mental warm-up</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>1</span>
+                      /
+                      <span>1</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-08-20</span>
+                    </div>
+                    <span>With tight schedules it is often easy to forget to ask the question "Why do you want this?" If you help other coders solve problems like I do, you are often approached with a solution that "needs to go faster." This book has paid for itself with just the fact it reminds me to ask this question. 
+<br />
+<br />If you are a very experienced programmer you probably won't find much new, but you might find lending it to other people allows you to get more done. Teach a person to fish...</span>
+                  
+                    <div class="CustomerReviewSummary">Makes you think harder</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-08-19</span>
+                    </div>
+                    <span>Programming pearls is a compendium of 15 columns previously published in Communications of the ACM. The columns cover a wide range of topics related to programming: from requirements gathering to performance tuning. The focus is primarily on coding techniques and algorithms. 
+<br />
+<br />Each column has been reorganized as a chapter. Chapters usually start with the presentation of a practical problem. Then various solutions are presented and are used as lessons to be learned. The writing style is clear and fun.
+<br />
+<br />Programming Pearls is not a usual book teaching new programming concepts. Although it contains good and sometimes quite novel ideas, the aim of the book is not to teach something new. For example, the search and sort algorithms presented are well-known. The aim is to remind programmers to think hard before starting writing code. The book has great chapter on back-of-the-envelope computation for example which is useful when comparing various solutions. The easy solutions to the column's problems are usually very slow. The `good' solutions are lightening fast but require thinking hard about the problems. I would recommend having a book about algorithms nearby when reading Programming Pearls.
+<br />
+<br />The book is full of little (and some not so little) exercises that are given throughout the chapters. Solutions or hints are given at the end. The exercises usually take a few hours to do properly and are a great resource. Again the emphasis is on making the reader think.
+<br />
+<br />If you consider programming a repetitious activity, Programming Pearls will provoke you into thinking harder about finding elegant solutions. I recommend this book.
+<br /></span>
+                  
+                    <div class="CustomerReviewSummary">Back to Basics...   Still a Valuable Book</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>1</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-04-25</span>
+                    </div>
+                    <span>I bought the 2nd edition of the book.<br>This book takes you to the Basics of Programming: Problem definition, Algorithm design , choosing the correct data structures, Assertions, Performance considerations during Design and coding, Code Tuning, Squeezing the space.<p>Though the examples are mainly based on searching and sorting and other primitive programming problems, the fundamental concepts and conclusions at the end of each column, are still valuable and hold true as they are 2 decades ago.<p>	The examples and the exercises are challenging and enjoyable. But, don't expect things related to modern programming like related to High Level Programming languages or Databases, this is purely a Basics book focussing on techniques of solving the problems the simplest and the best way.<p>Some of the gem quotes or conclusions from the book are:<p>"Coding skill is just one small part of writing correct programs. The majority of the task is problem definition, algorithm design and data structure selection."<p>"Defining the problem is about ninety percent of the battle"<p>Characteristics of a good Aircraft(or a good program) - "Simple, few parts, easy to maintain, very strong"<p>"A designer knows he has arrived perfection not when there is no longer anything to add, but when there is no longer anything to takeaway."<p>"Good programmers sit back and wait for an insight rather than rushing forward with their first idea"<p>"A proper view of data does indeed structure programs. Before writing code good programmers thoroughly understand the input, the output and the intermediate data structures around"</span>
+                  
+                    <div class="CustomerReviewSummary">Wow!</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-12-24</span>
+                    </div>
+                    <span>This book is amazing! Its a true classic on algorithims.<p>I would place this on my list of the top 5 programming books of all time. A must read for every who calls themselves a "programmer".</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=020161586X'>
+                      The Practice of Programming
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 42 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0738205370'>
+                      Conceptual Blockbusting: A Guide to Better Ideas
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.5 based on 10 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0471383562'>
+                      Programming Interviews Exposed: Secrets to Landing Your Next Job
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 24 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0735619670'>
+                      Code Complete, Second Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 28 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0316919160'>
+                      How Would You Move Mount Fuji? Microsoft's Cult of the Puzzle - How the World's Smartest Company Selects the Most Creative Thinkers
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 26 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

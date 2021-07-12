@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Hello RubyClr</title>
+    <link>http://www.iunknown.com/articles/2005/12/14/hello-rubyclr</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Hello RubyClr</title>
+      <description>&lt;p&gt;I spent most of yesterday and today hacking out the first spike of the Ruby rewrite of my original Ruby to &lt;span class="caps"&gt;CLR&lt;/span&gt; bridge. I wound up adding some additional code to &lt;code&gt;RbDynamicMethod&lt;/code&gt; to support some scenarios that I didn&amp;#8217;t envision (nothing like having a &amp;#8216;customer&amp;#8217; to reveal deficiencies in an &lt;span class="caps"&gt;API&lt;/span&gt;!). I also spent a &lt;strong&gt;lot&lt;/strong&gt; of time learning about how objects are constructed in Ruby. Here&amp;#8217;s a very simplified explanation of Ruby&amp;#8217;s object model; for a complete description, see Chapter 24 of Dave Thomas&amp;#8217; excellent &lt;a href="http://www.amazon.com/exec/obidos/ASIN/0974514055/ref=nosim/iunknowncom-20"&gt;Programming Ruby&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;br&gt;
+&lt;a href="http://www.amazon.com/exec/obidos/ASIN/0974514055/ref=nosim/iunknowncom-20"&gt;&lt;img src="http://images.amazon.com/images/P/0974514055.01._AA240_SCLZZZZZZZ_.jpg" alt="" /&gt;&lt;/a&gt;
+&lt;br&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;In Ruby, objects are instances of classes. However, classes are also objects in Ruby, which means that a class is an instance of a class called &lt;code&gt;Class&lt;/code&gt;. Let&amp;#8217;s consider the following code fragment:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+a = ArrayList.new
+puts a.Count
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;In the first line, we&amp;#8217;ve created an instance of class &lt;code&gt;ArrayList&lt;/code&gt; and assigned it to the variable &lt;code&gt;a&lt;/code&gt;. Next, we invoke the &lt;code&gt;Count&lt;/code&gt; instance method of the &lt;code&gt;ArrayList&lt;/code&gt; object. So far so good, right?&lt;/p&gt;
+
+
+	&lt;p&gt;Next let&amp;#8217;s see how Ruby invokes instance methods. Every Ruby object contains a reference to its class object. This is stored in an internal field called &lt;code&gt;klass&lt;/code&gt;. When we invoke the &lt;code&gt;Count&lt;/code&gt; method on the &lt;code&gt;ArrayList&lt;/code&gt; object, Ruby follows the &lt;code&gt;klass&lt;/code&gt; reference to find the &lt;code&gt;ArrayList&lt;/code&gt; class object. It searches its method table, finds the &lt;code&gt;Count&lt;/code&gt; method and invokes it.&lt;/p&gt;
+
+
+	&lt;p&gt;In my bridge, I delay binding to a method on a &lt;span class="caps"&gt;CLR&lt;/span&gt; object until it is called. When it is called, I build a small piece of &lt;span class="caps"&gt;CIL&lt;/span&gt; code using &lt;code&gt;RbDynamicMethod&lt;/code&gt; to call the method and marshal data back to the caller. I can delay binding to the method using the &lt;code&gt;method_missing&lt;/code&gt; instance method of the object. In the case of the call to the &lt;code&gt;Count&lt;/code&gt; method, you could imagine a piece of code that looks like:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+alias alias_method_missing method_missing
+
+def method_missing(name, *params)
+  alias_method_missing(name, *params) unless name == :Count
+
+  create_ruby_instance_method(self.class, 'Count') do
+    include  'System.Collections'
+    ldarg_2
+    call     'static Marshal::ToClrObject(VALUE)'
+    call     'ArrayList::get_Count()'
+    call     'static Marshal::ToRubyNumber(Int32)'
+    ret
+  end
+  self.Count
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;This is a hard-coded example that generates a shim for the &lt;code&gt;Count&lt;/code&gt; method. The shim invokes the &lt;code&gt;get_Count&lt;/code&gt; method to retrieve the value of the &lt;code&gt;Count&lt;/code&gt; property of the &lt;code&gt;ArrayList&lt;/code&gt; object. It marshals the return value (an &lt;code&gt;Int32&lt;/code&gt;) back to the caller using the &lt;code&gt;Marshal::ToRubyNumber()&lt;/code&gt; helper method in the &lt;code&gt;RbDynamicMethod&lt;/code&gt; library.&lt;/p&gt;
+
+
+	&lt;p&gt;Where things get interesting is the first two lines of &lt;span class="caps"&gt;CIL&lt;/span&gt; code in the shim. Here, I reach into the Ruby object and pull out the actual &lt;code&gt;ArrayList&lt;/code&gt; object reference that is stored in a &lt;em&gt;secret&lt;/em&gt; field of the Ruby object. This secret field is completely inaccessible to Ruby code. Once I have the object reference, I can freely invoke the &lt;code&gt;get_Count&lt;/code&gt; instance method using the &lt;span class="caps"&gt;CIL&lt;/span&gt; &lt;code&gt;call&lt;/code&gt; instruction.&lt;/p&gt;
+
+
+	&lt;p&gt;Notice that I&amp;#8217;m defining an instance method called &lt;code&gt;Count&lt;/code&gt; on the &lt;code&gt;ArrayList&lt;/code&gt; class object. At the end of the &lt;code&gt;method_missing&lt;/code&gt; method, I invoke the &lt;code&gt;Count&lt;/code&gt; method that I just defined. However, all &lt;em&gt;subsequent&lt;/em&gt; calls to the &lt;code&gt;Count&lt;/code&gt; instance method will go directly to the &lt;span class="caps"&gt;CIL&lt;/span&gt; code that I just wrote (which of course will have been compiled into x86 code as well). This means that we will have excellent performance since we completely avoid having to use the &lt;code&gt;Reflection&lt;/code&gt; APIs in the &lt;span class="caps"&gt;CLR&lt;/span&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;You&amp;#8217;re probably wondering how the &lt;code&gt;ArrayList&lt;/code&gt; object reference got stored in the secret field? I&amp;#8217;ll talk about that in tomorrow&amp;#8217;s installment of the story when we look at how objects get created in Ruby (and it&amp;#8217;s nowhere near as simple as it looks!).&lt;/p&gt;</description>
+      <pubDate>Wed, 14 Dec 2005 21:57:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:8bc37366c79537358759994e5393d186</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2005/12/14/hello-rubyclr</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"Hello RubyClr" by Pillangószív</title>
+      <description>&lt;p&gt;Nice to read this article, which has written in the past :D&lt;/p&gt;</description>
+      <pubDate>Sun, 24 Sep 2006 04:05:56 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:87f6b58f-b9f9-423c-a6eb-24bda37154e9</guid>
+      <link>http://www.iunknown.com/articles/2005/12/14/hello-rubyclr#comment-1009</link>
+    </item>
+  </channel>
+</rss>

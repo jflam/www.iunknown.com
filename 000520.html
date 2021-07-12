@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Bayesian filtering for auto-categorization of blog content?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000519.html" title="Windows Forms Data Binding" />
+
+<link rel="next" href="http://www.iunknown.com/000521.html" title="A (speculative) look inside Google" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000520.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/264"
+    dc:title="Bayesian filtering for auto-categorization of blog content?"
+    dc:identifier="http://www.iunknown.com/000520.html"
+    dc:subject="Blog"
+    dc:description="I&apos;m writing this mostly as a reminder to myself - it would be interesting to use a Bayesian filtering approach to analyze the content of a blog entry to aid in auto-categorization of the content. I&apos;d be interested if others..."
+    dc:creator="John"
+    dc:date="2004-11-05T11:54:46-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000519.html">&laquo; Windows Forms Data Binding</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000521.html">A (speculative) look inside Google &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">November 05, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Bayesian filtering for auto-categorization of blog content?</h3>
+
+<p>I'm writing this mostly as a reminder to myself - it would be interesting to use a <a href="http://www.paulgraham.com/spam.html">Bayesian filtering</a> approach to analyze the content of a blog entry to aid in auto-categorization of the content. </p>
+
+<p>I'd be interested if others have thought about this approach to reduce the amount of friction involved in categorizing blog entries (or other types of free-form content for that matter).</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at November  5, 2004 11:54 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=520" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="520" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000520.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>The LinkTron 5000 can sorta-kinda do this.</p>
+
+<p>http://www.codinghorror.com/linktron5k/</p>
+
+<p>It builds a unique google search string for any given content page, based on how unique google thinks the words in the page are. I have some experimental code that extends this logic to repeated phrases in the page too, but I haven't exposed it yet (uh, this is hard?)</p>
+
+<p>And, obviously, behind the scenes I am using a giant dictionary table consisting of abusively (one time!) preloaded Google queries for each word in the English dictionary.</p>
+
+<p>However, automatic *categorization* based on terms -- at first glance, that seems to me like one of those insoluble lead to gold computing problems. Would be nice though.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.codinghorror.com/blog/">Jeff Atwood</a> at November  5, 2004 12:19 PM</span>
+</div>
+<div class="comments-body">
+<p>Have a look at Reverend (http://www.divmod.org/Home/Projects/Reverend/), which is a Bayesian classifier for Python.   <br />
+The thing with Bayes is that it's a binary decision, which is why it's perfect for Spam classification; your decision is spam/not spam.  For general classification, I think you'd end up with something like a tree or a chain of filters.  The other thing is that you'd need to know your categories ahead of time, because Bayesian classification needs to have buckets.  It sounds like Jeff is talking about dynamic categorization, which is a more interesting problem.  Maybe a word frequency count on your posts would help to determine a good set of categories.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://eighty-twenty.net/blog">Gordon Weakliem</a> at November  5, 2004 12:46 PM</span>
+</div>
+<div class="comments-body">
+<p>this has been done using a Self Organizing Map (SOM) neural network. do a search for WebSOM. it 1st ogranizes similar words, and then matches newsgroups or websites to those words. could also be applied to blogs. i recently applied this technique to organizing images (http://www.brains-N-brawn.com/aiSomPic). it just clusters them for visualization  and searching though, but not for classification</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.brains-n-brawn.com">casey chesnut</a> at November  5, 2004 12:51 PM</span>
+</div>
+<div class="comments-body">
+<p>You might want to check out  http://nclassifier.sourceforge.net/</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.ShitalShah.com/blog">Shital Shah</a> at November  5, 2004 01:22 PM</span>
+</div>
+<div class="comments-body">
+<p>I think it'd depend on how differentiated the entries that'd constitute each category would be.  You'd probably get a lot more accuracy out of trying to separate say programming entries from entries about politics.  If your topics are more similar to each other, say Python vs. Java programmming, your accuracy will probably go down because the number of words than can act as strong discriminators between the categories goes down.</p>
+
+<p>Since you'd probably want to seed the learner with some trained examples first, you'd probably get the most bang for your buck in terms of effort & results using a Naive Bayes classifier instead of any of the other more exotic techniques (SVMs, boosting, etc...).  Multi-class text classification (i.e. using the same learner to learn how to classify a blog entry between multiple categories) can be done using Naive Bayes- there's no restriction that keeps it to binary classification.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.hashedtables.com/lumberjack">Eric</a> at November  5, 2004 03:24 PM</span>
+</div>
+<div class="comments-body">
+<p>Jon Udell's mentioned it: </p>
+
+<p>http://www.xml.com/pub/a/2003/11/19/udell.html</p>
+
+<p>It seems clearly do-able, given a decent Bayesian library and corpus.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.knowing.net">Larry O'Brien</a> at November  5, 2004 03:38 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm working (in my vanishingly small spare time) on an application that will include autocategorization of arbitrary content; one design goal is to produce a tool my wife (a Ph.D. candidate) can use to easily organize notes, quotes, references, etc and other information while writing papers (and eventually her dissertation).</p>
+
+<p>Ironically, I wrote my own .Net port of Classifier4J before nClassifier went up on SourceForge.  :-P</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.randomtree.org/eric/techblog/">Not the same Eric as the guy right above me</a> at November  5, 2004 03:41 PM</span>
+</div>
+<div class="comments-body">
+<p>(sorry about the vague labelling Eric, I added my last name to this post to clarify)</p>
+
+<p>One suggestion I've heard in regards to text categorization is to use hand crafted rules first, and when you've got a sufficiently large training set, switch over to a learner (i.e. Naive Bayes, etc).  From what I understand, you'd need a lot of training instances before you can get what'd be deemed as good accuracy.</p>
+
+<p>I've heard there are techniques out there, such as using term frequencies and various statistical tests, that can discover words/terms that are especially telling when it comes to separating categories (i.e. good discriminators).  Search engines use a "tf/idf" weighting scheme (http://phpwiki.sourceforge.net/phpwiki/TfIdfRanking), to determine how important a term is for describing a document, so maybe that might be an interesting thing to try.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.hashedtables.com/lumberjack">Eric Yeh</a> at November  5, 2004 05:23 PM</span>
+</div>
+<div class="comments-body">
+<p>PopFile (Bayesian email classifier written in Perl) - http://popfile.sourceforge.net/ - have a XML-RPC iterface to its classifier, so it is very easy to connect it to a blog software to classify blog posts just like any email.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;andrey&#64;cherezov&#46;koenig&#46;su">Andrey Cherezov</a> at November  6, 2004 03:28 AM</span>
+</div>
+<div class="comments-body">
+<p>probably worth looking at some of the named entity extraction algorithms. Some open source tools there. http://threattracker.com:8080/lingpipe-demo/demo.html</p>
+
+<p>Next time over a beer, ask me about sonicboomerang.</p>
+<span class="comments-post">Posted by: Barry Gervin at November  6, 2004 11:06 AM</span>
+</div>
+<div class="comments-body">
+<p>I've been playing with using latent semantic indexing/analysis (LSI/LSA) to do this kind of thing. Better in my mind than Bayesian since it extracts meaning from the content itself so you don't need a starting corpus.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://weblogs.asp.net/wallen">Wayne Allen</a> at November  6, 2004 12:32 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks everyone for forwarding these links - there's lots of interesting stuff there. I'll summarize some of my findings in a future blog.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at November  8, 2004 08:44 AM</span>
+</div>
+<div class="comments-body">
+<p>Gosh, I've just started a couple of days ago implementing Bayesian categorization in RSS Bandit. Well, I think it will take several weeks, since I've not as much time as I'd like to.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://ThomasFreudenberg/blog/">Thomas Freudenberg</a> at November 10, 2004 03:50 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="520" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

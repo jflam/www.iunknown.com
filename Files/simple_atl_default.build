@@ -1,0 +1,45 @@
+<!-- NAnt build file for the Weaver COM object -->
+
+<project name="Weaver" default="build">
+
+  <property name="build" value="..\..\build"/>
+  
+  <target name="build">
+    
+    <echo message="Building Weaver COM object"/>
+
+    <exec program='midl.exe' commandline='/D "_DEBUG" /env win32 /Oicf /tlb "${build}\Weaver.tlb" /h "Weaver.h" /iid "Weaver_i.c" /proxy "Weaver_p.c" Weaver.idl'/>
+    
+    <cl outputdir="${build}" pchfile="Weaver.pch" options='/Od /D "WIN32" /D "_WINDOWS" /D "_DEBUG" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /D "_MBCS" /D "_WINDLL" /Gm /EHsc /RTC1 /MDd /Yc"stdafx.h" /W4 /Wp64 /ZI /TP'>
+      <sources>
+        <includes name="stdafx.cpp"/>
+      </sources>
+    </cl>
+
+    <cl outputdir="${build}" pchfile="Weaver.pch" options='/Od /D "WIN32" /D "_WINDOWS" /D "_DEBUG" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /D "_MBCS" /D "_WINDLL" /Gm /EHsc /RTC1 /MDd /Yu"stdafx.h" /W4 /Wp64 /ZI /TP'>
+      <sources>
+        <excludes name="stdafx.cpp"/>
+        <includes name="*.cpp"/>
+      </sources>
+    </cl>
+
+    <cl outputdir="${build}" options='/Od /D "WIN32" /D "_WINDOWS" /D "_DEBUG" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /D "_MBCS" /D "_WINDLL" /Gm /EHsc /RTC1 /MDd /W4 /Wp64 /ZI /TC'>
+      <sources>
+        <includes name="*.c"/>
+      </sources>
+    </cl>
+
+    <rc rcfile='Weaver.rc' output='${build}\Weaver.res' options='/d "_DEBUG" /l 0x409 /I "${build}"'/>
+    
+    <link output='${build}\Weaver.dll' options='/INCREMENTAL /NOLOGO /DLL /DEF:".\Weaver.def" /DEBUG /PDB:"${build}\Weaver.pdb" /SUBSYSTEM:WINDOWS /IMPLIB:"..\..\build\Weaver.lib" /MACHINE:IX86  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib'>
+      <sources>
+        <includes name="${build}\*.obj"/>
+        <includes name="${build}\*.res"/>
+      </sources>
+    </link>
+    
+    <exec program='regsvr32.exe' commandline='/s ${build}\Weaver.dll'/>
+    
+  </target>
+  
+</project>

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Software co-operative</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Software co-operative</div>
+
+
+<div class="comments-body">
+<p>This is such a great idea! I have the option to work from home but choose not to most of the time because it is, as you said, very isolating. If only you lived in Chattanooga, TN instead of Toronto! Actually, Toronto does sound appealing...</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://goodish.org/">Joshua Goodlett</a> at January  6, 2003 12:22 PM</span>
+</div>
+<div class="comments-body">
+<p>What, no Java? </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.winterdom.com/weblog">Tomas Restrepo</a> at January  6, 2003 02:28 PM</span>
+</div>
+<div class="comments-body">
+<p>Whoops! I knew I forgot something  I'll fix it now.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  6, 2003 03:52 PM</span>
+</div>
+<div class="comments-body">
+<p>First the Mac, and now this-)</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://radio.weblogs.com/0105852/">Sam Gentile</a> at January  6, 2003 04:31 PM</span>
+</div>
+<div class="comments-body">
+<p>See, Steve Jobs was right about that "think different" campaign </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  6, 2003 04:43 PM</span>
+</div>
+<div class="comments-body">
+<p>Dude, think different is wonderful but what is going to do for your bottom line? I mean, this is all a wonderful theoritical excerise but how are you going to make money from the Mac or use it for your career? I'm not trying to be a thorn but I am curious as to your thoughts.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://radio.weblogs.com/0105852/">Sam Gentile</a> at January  6, 2003 06:16 PM</span>
+</div>
+<div class="comments-body">
+<p>Well, without wanting to speak for John, my POV is: Being exposed to other systems and paradigms is good. Besides, it's cool, who cares about profit (heck, even *I* want one).<br />
+That's sort of the reasons I'm trying to learn things like Perl (and Python, in a near future)... it's not like I'll ever make a dime out of it, but it's just more tools in the arsenal...</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.winterdom.com/weblog">Tomas Restrepo</a> at January  6, 2003 06:33 PM</span>
+</div>
+<div class="comments-body">
+<p>Great idea, John! I suffer from many the same, shall we say, perils of home-office life. And yet, I don't live in Toronto, sigh. However, to amplify your idea, I'd propose further that what is really necessary is a Software Co-Op Co-Op - a meta organization to setup these Co-Ops different places. I'm not quite sure how that would work, but I'm throwing it out there. Ideas? </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.blue-newt.com">Bob Kuehne</a> at January  7, 2003 06:54 AM</span>
+</div>
+<div class="comments-body">
+<p>Yes! I think right now I'm going to have to go and speak at various user groups in Torpnto so that I can have an opportunity to get the idea out in front of prospective members. The meta-coop idea sounds really interesting too, but I think it needs an exemplar. I'd be more than happy to set a meta-coop up once I've figured out how to do it once. I'm off today to the local Sun Developer Days event here in Toronto. I'll see if I can't bounce the idea past some folks there.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  7, 2003 07:03 AM</span>
+</div>
+<div class="comments-body">
+<p>I live in Toronto.  I think this office is a great idea.  My wife is a professional music therapist, and they have a simular office set-up.  It gives her a chance to work in a clinical space, and she gets to share instruments, etc...  The best part though is it's an amazing place for her to network with fellow music therapists.<br />
+Unfortunately I don't work as an independant.  Maybe I can drop by and hang out sometimes though?  Please?  </p>
+<span class="comments-post">Posted by <a href="mailto&#58;jason&#64;jasonjudge&#46;net">Jason Judge</a> at January  7, 2003 10:59 AM</span>
+</div>
+<div class="comments-body">
+<p>Great idea, John...the Denver-Toronto commute is gonna be tough, but count me in.  </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.rassoc.com/gregr/weblog/">Greg Reinacker</a> at January  7, 2003 04:13 PM</span>
+</div>
+<div class="comments-body">
+<p>I live in Toronto. Excellent idea. Where do I sign up? Any ideas for locations? What about equipment? Do we co-op that as well? </p>
+<span class="comments-post">Posted by <a href="mailto&#58;drew&#64;apitat&#46;com">Andrew Sadavoy</a> at January 11, 2003 03:20 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm in too John. Maybe it should be made as a hotelier office space where you can have more people than rooms - kind of an overpriced gym or a time share. Sometimes I'm at a clients, sometimes I'm at home. Sometimes I have a team that needs to be together, but not necessarily at the clients office. <br />
+Tell me do I have to wear sandals? If so, I'm out. And there has to be wireless lan access....and a server farm that we can abuse.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.ObjectSharp.com/Barry">Barry Gervin</a> at January 29, 2003 03:10 PM</span>
+</div>
+<div class="comments-body">
+<p>so now, a year on, did this get anywhere???<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.borderemail.com">Lubosh</a> at January 23, 2004 09:02 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

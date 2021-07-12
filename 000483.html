@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Python and parsing</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000482.html" title="Experiments with lambda functions" />
+
+<link rel="next" href="http://www.iunknown.com/000484.html" title="Method interception made easy" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000483.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/227"
+    dc:title="Python and parsing"
+    dc:identifier="http://www.iunknown.com/000483.html"
+    dc:subject="Blog"
+    dc:description="Wow. I&apos;m having fun tonight. I discovered a package called ToyParser which is an LL parser generator with limited backtracking abilities. It&apos;s sufficient for building simple grammars for little languages. I refactored my earlier program that parses song input, and..."
+    dc:creator="John"
+    dc:date="2004-09-18T02:36:01-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000482.html">&laquo; Experiments with lambda functions</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000484.html">Method interception made easy &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">September 18, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Python and parsing</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>Wow. I'm having fun tonight. I discovered a package called <a href="http://christophe.delord.free.fr/en/tpg/">ToyParser</a> which is an <acronym title="1+">LL</acronym> parser generator with limited backtracking abilities. It's sufficient for building simple grammars for little languages.</p>
+
+<p>I refactored my earlier program that parses song input, and I defined a little language for scripting <a href="http://www.microsoft.com/msagent/default.asp">Microsoft Agent</a> characters. Here's a simple script that I just wrote:</p>
+
+<pre>
+show
+move 300,400
+play Greet
+speak &quot;Hello, Matthew!&quot;
+speak &quot;I'm so happy to meet you!!&quot;
+play Pleased
+speak &quot;I hear it's your birthday!&quot;
+speak &quot;So I will sing you a birthday song!&quot;
+play MoveRight
+move 1000,0
+sing &quot;!f#c Hap- #c p #d birth-#c day !s#f to #e you.&quot;
+sing &quot;!f#c Hap- #c p #d birth-#c day !s#g to #f you.&quot;
+sing &quot;!f#c Hap- #c p #cc birth- #aa day !s#f to  #e Maa- #d foo.&quot;
+sing &quot;!f#bbf Hap- #bbf p #aa birth- #f day !s#g to #f you.&quot;
+play Wave
+speak &quot;Would you like to play a game?&quot;
+play DoMagic1
+speak &quot;Isn't this great magic?&quot;
+hide
+</pre><p>And here is the ridiculously simple Python program that I wrote that parses it. Notable things in this program are my first Python classes, <code>SongParser</code> and <code>AgentParser</code>. Also, notice how I use the <code>exec</code> statement to execute the code that my <code>AgentParser</code> class generates:</p>
+
+<pre>
+import re
+import tpg
+import win32com.client
+import fileinput
+
+class SongParser:
+    notes = dict([['c',65],['d',73],['e',82],['f',87],\
+                  ['g',98],['aa',110],['bbf',117],['cc',131]])
+    tempo = dict([['f',130],['s',55]])
+
+    re_markup = re.compile(r'([\#|\!])(\w+)', re.IGNORECASE)
+
+    markup = dict([['#', (lambda mo : '\\pit=%s\\' \
+                          % SongParser.notes[mo.group(2)])],
+                   ['!', (lambda mo : '\\spd=%s\\' \
+                          % SongParser.tempo[mo.group(2)])]])
+
+    def parseSong(self, song):
+        return '\\chr=\&quot;monotone\&quot;\\' + \
+               SongParser.re_markup.sub(lambda mo : \
+                                        SongParser.markup[mo.group(1)](mo), song)
+
+class AgentParser(tpg.Parser):
+    r&quot;&quot;&quot;
+        # Tokens
+        separator   spaces  '\s+';
+        token       int     '\d+' int;
+        token       id      '\w+' ;
+        token       string  '\&quot;.*\&quot;' ;
+
+        # Rules
+        START/s -&gt; statement/s (statement/k $ s += k $)*;
+        statement/s -&gt; (show/k | move/k | play/k | speak/k | sing/k | hide/k) $ s = 'self.agent.%s\n' % k $;
+
+        show/s  -&gt; 'show'                               $ s = 'Show()' $;
+        move/m  -&gt; 'move' int/x ',' int/y               $ m = &quot;MoveTo(%i, %i)&quot; % (x, y) $;
+        play/p  -&gt; 'play' id/n                          $ p = &quot;Play(\&quot;%s\&quot;)&quot; % n $;
+        speak/s -&gt; 'speak' string/n                     $ s = &quot;Speak(%s)&quot; % n $;
+        sing/s  -&gt; 'sing' string/n                      $ s = &quot;Speak(self.songParser.parseSong(%s))&quot; % n$;
+        hide/h  -&gt; 'hide'                               $ h = 'Hide()' $;
+    &quot;&quot;&quot;
+    def __init__(self, name, file, size):
+        self.server = win32com.client.Dispatch(&quot;Agent.Control.2&quot;)
+        self.songParser = SongParser()
+        self.server.Connected = -1
+        self.server.Characters.Load(name, file)
+        self.agent = self.server.Characters(name)
+        self.agent.Width = size;
+        self.agent.Height = size;
+        tpg.Parser.__init__(self)
+
+    def run(self, expr):
+        exec self(expr)
+
+peedy = AgentParser(&quot;Peedy&quot;, &quot;Peedy.acs&quot;, 600)
+for line in fileinput.input():
+    peedy.run(line)
+fileinput.close()
+</pre><p>I'm blown away by how productive this environment is.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at September 18, 2004 02:36 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=483" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="483" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000483.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>This looks really interesting, especially the sing command :). I'm absolutely new to Python and was trying to run your script in Pythonwin but I don't know where the value of expr comes in. It will be cool if you can post source files and compile instructions... Its a nice brithday app anyhow :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.ShitalShah.com/blog">Sy</a> at September 19, 2004 01:09 AM</span>
+</div>
+<div class="comments-body">
+<p>Sy, you'll need to save my test script as a separate file, and pass the path to that filename as a command-line argument to the python script. When you run the script under PythonWin, it will prompt you for command-line arguments when you run your app.</p>
+
+<p>Enjoy!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at September 19, 2004 09:21 AM</span>
+</div>
+<div class="comments-body">
+<p>Hey Gordon: you'll need to download the Lernout and Hauspie text to speect engine from: http://www.microsoft.com/msagent/downloads/user.asp. </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at September 20, 2004 02:32 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="483" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

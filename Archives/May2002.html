@@ -1,0 +1,203 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/175 -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Fog Creek CityDesk 1.0.1">
+<title>IUnknown.com - May 2002 Weblog Archives</title>
+<link rel="stylesheet" href="../global.css">
+<script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+<script language="javascript">
+  function HaloScan2(id) { 
+    location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+  }
+</script>
+</head>
+<BODY>
+
+<table border="0" width="800" class="heading">
+  <tr>
+    <td width="100%" class="heading"><A href="../index.html">IUnknown.com</a></td>
+  </tr>
+</table>
+<table border="0" width="800" class="subheading">
+  <tr>
+    <td width="100%" class="subheading">    &nbsp; John Lam's weblog on software development</td>
+  </tr>
+</table>
+
+<table width="800" border="0" cellpadding="7" cellspacing="0">
+<tr>
+<td class="left_panel" valign="top" align="right">
+<p><a href="/rss.xml">rss feed</a></p>
+<p>about</p>
+
+<A href="../About/Aboutme.html">About me</a><br>
+
+<A href="../About/fog0000000006.html">About this site</a><br>
+
+<A href="../About/fog0000000010.html">My plan</a><br>
+
+<A href="../About/fog0000000009.html">My other life</a><br>
+
+<A href="../About/fog0000000008.html">My products</a><br>
+
+<A href="../About/fog0000000013.html">My publications</a><br>
+
+<p>aop</p>
+
+<A href="../AOP/fog0000000115.html">My Runtime Aspect Weaver</a><br>
+
+<A href="../AOP/fog0000000114.html">What is AOP?</a><br>
+
+<p>book</p>
+
+<A href="../CLRInternals/fog0000000043.html">About Inside the CLR</a><br>
+
+<p>articles</p>
+
+<A href="../Articles/Booksuggestions.html">Book suggestions</a><br>
+
+<A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</a><br>
+
+<A href="../Articles/fog0000000065.html">x86 Resources</a><br>
+
+<A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</a><br>
+
+<A href="../Articles/fog0000000034.html">Entertainment PC's</a><br>
+
+<A href="../Articles/fog0000000025.html">Hello CppUnit</a><br>
+
+<p>archives</p>
+
+<A href="March2003.html">March 2003</a><br>
+
+<A href="February2003.html">February 2003</a><br>
+
+<A href="January2003.html">January 2003</a><br>
+
+<A href="December2002.html">December 2002</a><br>
+
+<A href="November2002.html">November 2002</a><br>
+
+<A href="October2002.html">October 2002</a><br>
+
+<A href="September2002.html">September 2002</a><br>
+
+<A href="August2002.html">August 2002</a><br>
+
+<A href="July2002.html">July 2002</a><br>
+
+<A href="June2002.html">June 2002</a><br>
+
+<A href="May2002.html">May 2002</a><br>
+
+<A href="April2002.html">April 2002</a><br>
+
+<A href="fog0000000116.html">March 2002</a><br>
+
+<A href="fog0000000091.html">February 2002</a><br>
+
+<A href="fog0000000046.html">January 2002</a><br>
+
+<A href="fog0000000030.html">December 2001</a><br>
+
+<a href="http://www.haloscan.com/"><img width="88" height="31" src="http://www.haloscan.com/halolink.gif" border="0" alt="Weblog Commenting by HaloScan.com" /></a> 
+</td>
+<td class="main_panel">
+<p><span class="article_heading">May 2002 Archives</span></p>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/Ivegotdebuggingsupportimp.html">I've got debugging support implemented!</A>
+  </span><BR>
+  24 May, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P>Until recently, my CLAW aspects have been too simple to require debugging support. This week, I've been pretty busy creating some new demos for CLAW. One demo in particular is a rather sophisticated aspect, and I had to fire up the VS.NET debugger to fix it. To my surprise, some modifications that I made to CLAW a few weeks ago actually worked (I hadn't gotten around to testing them yet), and bingo, I was debugging my aspect in VS.NET!</P>
+    <a href="javascript:HaloScan2('Weblog/Ivegotdebuggingsupportimp.html');"><script type="text/javascript">postCount('Weblog/Ivegotdebuggingsupportimp.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/Enforcingdevelopmentpolic.html">Enforcing development policies using aspects</A>
+  </span><BR>
+  22 May, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>One of the best sessions at the AOSD conference was the AspectJ tutorial by Jim Hugunin and Erik Hilsdale. These guys are extremely pragmatic, and that really appeals to me. They're driven by their goal of getting their technology adopted, and they are interested in anything that furthers that cause. Their pragmatism (and hard work!) is probably the main reason why AspectJ is the clear front-runner in AOP tools. </P>
+<P>One of the key ideas that I took away from that tutorial was the notion of enforcing development policies using aspects. One example that particularly resonated with me was the use of an aspect to log all unhandled RuntimeExceptions. This is a great example of a&nbsp; transparent development policy; they program the way they normally do and the policy gets applied by the compiler. The reason why it is a transparent policy has to do with the fact that logging exceptions is orthogonal and (hopefully) free of side effects. </P>
+<P>The problem with this example, however,&nbsp;is that it is yet another example of aspects being good for logging. Frankly, there are far too many examples of this sort, and yet it is difficult to envision new applications without appealing to the community at large.</P>
+<P>I'm trying to collect information from the community at large as to what kinds of development policies you could see being enforced by aspects. Jim &amp; Erik showed in the AspectJ tutorial an interesting use of a compile-time aspect that would throw a compile-time error if someone tried to bypass a factory pattern when creating objects of a particular type. </P>
+<P>I'm <EM>very</EM> interested in more feedback along these lines. What kinds of development practices require constraints? I've already created an aspect that will throw an exception if the size of ViewState in an ASP.NET page exceeds a pre-determined threshold. I suspect that there's a fair number of these types of constraints that could be weaved into applications using CLAW.</P></P>
+    <a href="javascript:HaloScan2('Weblog/Enforcingdevelopmentpolic.html');"><script type="text/javascript">postCount('Weblog/Enforcingdevelopmentpolic.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/Resistingrepavingisgoodfo.html">Resisting repaving is good for you</A>
+  </span><BR>
+  20 May, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>If you're like me, you tend to love having a nice, pristine machine to work on. As we all know, over time, our computers gradually degrade as we install more software, use bizarre combinations of features of existing software, or write really nasty bits that hook into existing software ;) This is a story of me successfully resisting my urge to repave whenever I run into a nasty problem.</P>
+<P>This weekend, as part of <A href="../Weblog/GetOrganized.html">my larger effort to reorganize my life</A>, I decided to fix some of the IT problems in our home office. One of our other computers (a dual proc Win2K Advanced Server box) kept on faulting in spoolsv.exe. This, of course, meant that you couldn't print using that machine. Also, Active Directory was messed up something awful, and I couldn't add any new accounts to our Exchange Server. It would fail with a "The name could not be resolved. The name could not be matched to a name in the address list." error every time I attempted to check a name in Exchange.</P>
+<P>These two issues killed the better part of a day. The first one - spoolsv.exe, could be fixed by some judicious editing of the registry.[1] This one was actually quite easy to find - just type "spoolsv.exe" into Google, and it's the 4th entry. </P>
+<P>The second problem, however, turned out to be really evil. My first step was to streamline my Active Directory install. I killed a redundant domain controller on my network , and got myself down to a single Global Catalog Server. This wasn't as easy as it looked - I had to manually delete Active Directory on that machine by - you will never guess - editing the registry and deleting the \winnt\ntds directory from the machine.[2]</P>
+<P>Once I got to that stage, I blew many hours twiddling various Exchange settings and messing around with ADSIEdit. It got to the point where I almost was ready to repave. However, repaving my Exchange / Domain Controller box would result in several days worth of downtime. I was almost willing to live with not being able to add a new account to Exchange to avoid several days worth of reinstallation / backups / restores. </P>
+<P>My savior turned out to be Google, once again. However instead of trying to find the solution on the Web, the answer turned up in a search of Google Groups. At roughly 3am, I found a link to this Microsoft KB article[3] that had me make yet another very minor tweak to the Registry. Apparently, installing the Q311401 Windows 2000 Security Rollup Package on my Global Catalog Server was what prevented name resolution in the Exchange Global Catalog List. </P>
+<P>Needless to say, I was <EM>very </EM>happy to find this KB article. It also goes to show how difficult it is to be a part-time sys admin without having better diagnostic tools for determining what these problems are and linking the diagnostic tools to the solutions / KB articles. However, the bigger take-home message was that it is possible to fix a machine without repaving. In fact repaving in this case would have only cost me a few days worth of work with ZERO benefit since I would most likely install the Q311401 Security Rollup Package before trying to add the accounts. </P>
+<P>[1] <A href="http://www.jsifaq.com/SUBJ/tip4900/rh4900.htm">http://www.jsifaq.com/SUBJ/tip4900/rh4900.htm</A></P>
+<P>[2] <A href="http://www.jsifaq.com/SUBG/TIP3200/rh3222.htm">http://www.jsifaq.com/SUBG/TIP3200/rh3222.htm</A></P>
+<P>[3] <A href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q309622">http://support.microsoft.com/default.aspx?scid=kb;en-us;Q309622</A></P>
+<P>&nbsp;</P></P>
+    <a href="javascript:HaloScan2('Weblog/Resistingrepavingisgoodfo.html');"><script type="text/javascript">postCount('Weblog/Resistingrepavingisgoodfo.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/GetOrganized.html">Get Organized!</A>
+  </span><BR>
+  09 May, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>OK, this entry has very little to do with software. But wait, maybe it does ...</P>
+<P>The spring conference circuit was especially busy for me this year. Lots of stuff piled up all at once it seemed. In a two month period, I spoke at VS Live, Tech Ed, WinDev and AOSD, taught a class at Microsoft SVC, went on a vacation, and attended a wedding. I racked up way more frequent flyer miles than I really wanted to.</P>
+<P>There was also this not-so-insignificant event called Tax Time (April 30 in Canada). That left my home office littered with unbelievable amounts of paper. It got so bad that I just stopped going into my office. Instead I would pack up my laptop and go somewhere else to work.</P>
+<P>Now that all of the hectic travel is over, I have resolved to fix this problem. I just read a book that looks like it was written just for me: <A href="http://www.amazon.com/exec/obidos/ASIN/0609807773/iunknowncom-20">Order from Chaos by Liz Davenport</A>. Every part of this book that I've read seems <EM>so obvious</EM>. But sometimes it takes someone (or a book) stating the obvious to you over and over again to send you on your way.</P>
+<P>I'm at Pre-Step 1: Pre-organizing - Creating a Vacuum. This chapter begins with:</P>
+<P align=center>OVERWHELMING AMOUNTS OF OLD STUFF ALERT!</P>
+<P align=center>READ THIS ALERT FIRST!</P>
+<P>I am so<EM> </EM>loving this book!!!</P></P>
+    <a href="javascript:HaloScan2('Weblog/GetOrganized.html');"><script type="text/javascript">postCount('Weblog/GetOrganized.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+ 
+<P>
+  <span class="article_heading">
+    <A href="../Weblog/HellofromWinDev2002.html">Hello from WinDev 2002</A>
+  </span><BR>
+  05 May, 2002
+
+  <BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+    <P><P>The spring conference circuit is finally over! After logging over 20,000 miles over the past month, I'm relieved to be writing this on the plane ride home, where I plan on staying put for at least 6 weeks or so.</P>
+<P>I presented several sessions at WinDev 2002 in New Orleans this year. There were some oldies: Understanding XSLT, which I have presented quite a few times in the past, and some brand new talks such as WebForms Internals. The WebForms Internals talk provided me with an excuse to show off CLAW to yet another audience. The demo, however, required me to modify CLAW so that it works with ASP.NET code.</P>
+<P>I spent the first couple of days at WinDev updating CLAW so that it works correctly inside the aspnet_wp.exe worker process. This proved to be rather painful for two reasons. The first was complications involved in recompiling CLAW itself, and the second involved complications involved in redefining weaves.</P>
+<P>To understand why recompiling CLAW was painful, we need to understand how the CLR loads profilers.&nbsp;CLR profilers are loaded based on the presence of two environment variables: Cor_Enable_Profiling and COR_PROFILER. Cor_Enable_Profiling must be set to 0x01, and COR_PROFILER must be set to the CLSID of the COM object that contains the profiler's implementation. When the CLR creates a new managed process, it looks for the presence of these environment variables. If they are set, it loads the designated profiler. </P>
+<P>However, recompiling CLAW was painful because </P>
+<P>&nbsp;Recompiling CLAW required rebooting IIS using the IISRESET command .to restart inetinfo.exe, and by extension, aspnet_wp.exe which is a child process of inetinfo.exe.</P>
+<P>&nbsp;</P></P>
+    <a href="javascript:HaloScan2('Weblog/HellofromWinDev2002.html');"><script type="text/javascript">postCount('Weblog/HellofromWinDev2002.html');</script></a>
+  </BLOCKQUOTE>
+      <P></P>
+
+<div class="copyright">Site contents copyright 2001-2002 by John Lam. No animals were harmed during the production of this site. Some assembly required. Your mileage may vary. Use at your own risk.</div>
+</td>
+<td class="right_panel"></td>
+</tr>
+</table>
+</BODY>
+</HTML>

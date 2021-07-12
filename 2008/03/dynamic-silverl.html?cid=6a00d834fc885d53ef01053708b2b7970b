@@ -1,0 +1,1317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="dynamic silverlight, ironruby, silverlight" />
+	<meta name="description" content="Our team is happy to announce Dynamic Silverlight (DSL), which integrates our DLR dynamic languages with Silverlight. It requires Silverlight 2, which includes the cross-platform CLR and a set of libraries for rich graphics, media and web programming. It is..." />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared-typepad/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: Dynamic Silverlight Part 1: Hello, World!</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2008/03/ironruby-mix-08.html?no_prefetch=1" title="IronRuby @ MIX 08" />
+	<link rel="next" href="http://www.iunknown.com/2008/03/dynamic-silve-1.html?no_prefetch=1" title="Dynamic Silverlight Part 2: Managed JScript and flickr" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2008/03/dynamic-silverl.html"
+    trackback:ping="http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e55098547f8833"
+    dc:title="Dynamic Silverlight Part 1: Hello, World!"
+    dc:identifier="http://www.iunknown.com/2008/03/dynamic-silverl.html"
+    dc:description="Our team is happy to announce Dynamic Silverlight (DSL), which integrates our DLR dynamic languages with Silverlight. It requires Silverlight 2, which includes the cross-platform CLR and a set of libraries for rich graphics, media and web programming. It is..."
+    dc:creator="John Lam"
+    dc:date="2008-03-05T07:02:48-08:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2008/03/ironruby-mix-08.html">&laquo; IronRuby @ MIX 08</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2008/03/dynamic-silve-1.html">Dynamic Silverlight Part 2: Managed JScript and flickr &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">March 05, 2008</h2>
+
+
+<div class="entry" id="entry-46612352">
+			<h3 class="entry-header">Dynamic Silverlight Part 1: Hello, World!</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p>Our team is happy to announce Dynamic Silverlight (DSL), which integrates our DLR dynamic languages with <a href="http://www.silverlight.net/">Silverlight</a>. It requires Silverlight 2, which includes the cross-platform CLR and a set of libraries for rich graphics, media and web programming. It is packaged as a Silverlight extension, which means that it is downloaded in addition to Silverlight on an as-needed basis. </p>
+
+<p>DSL has a runtime and an SDK component. The runtime consists of two assemblies: Microsoft.Scripting.dll, and Microsoft.Scripting.Silverlight.dll. You'll also need the language assemblies, which are IronRuby.dll and IronRuby.Libraries.dll for Ruby and IronPython.dll and IronPython.Modules.dll for Python. The runtime component is a <em>small</em> additional download. Today, the IronRuby Silverlight runtime is just a <strong>712KB download</strong>, which takes less than 5 seconds to download over modern broadband.</p>
+
+<p>There is also an SDK component to DSL. The piece of software that you'll interact with the most is our local web server called <em>Chiron</em>. Created by John Messerly and <a href="http://blogs.msdn.com/dmitryr/">Dmitry Robsman</a>, it gives you a very nice interactive development experience using nothing more than your local file system. Let's take a look at Chiron.[1]</p>
+
+<p><strong>Update: </strong>Here's a <a href="http://dynamicsilverlight.net/dynamic-silverlight.zip">link to the download</a> of the Dynamic Silverlight SDK. The dsl.bat file can be found in the \bin directory of the SDK.</p>
+
+<p>Open up a command prompt and ensure that Chiron is on your path:</p>
+
+<p><a title="Chiron by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2312058786/"><img height="500" alt="Chiron" src="http://farm3.static.flickr.com/2028/2312058786_1480b77a73.jpg" width="432" /></a></p>
+
+<p>Next, use our template generator to create a starter IronRuby Dynamic Silverlight project:</p>
+
+<p><a title="DSL by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2311248879/"><img height="197" alt="DSL" src="http://farm4.static.flickr.com/3232/2311248879_612c9630db_o.png" width="477" /></a></p>
+
+<p>You'll see that we've generated a set of starter files for you. To run this app, type chiron /b on your command prompt:</p>
+
+<p><a title="StartChiron by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2312058842/"><img height="349" alt="StartChiron" src="http://farm3.static.flickr.com/2138/2312058842_243c71ce66.jpg" width="500" /></a></p>
+
+<p>This should bring up a browser window with the current directory's contents displayed:</p>
+
+<p><a title="Directory by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2312058854/"><img height="235" alt="Directory" src="http://farm3.static.flickr.com/2384/2312058854_b81eb6c749_o.png" width="453" /></a></p>
+
+<p>If you click on the index.html file, you'll see that the browser fetches a number of files from the server, and displays our Hello, World message:</p>
+
+<p><a title="Hello IronRuby by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2311248947/"><img height="189" alt="Hello IronRuby" src="http://farm3.static.flickr.com/2395/2311248947_8c1990bffb.jpg" width="500" /></a></p>
+
+<p><a title="Xap Appears by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2312058906/"><img height="187" alt="Xap Appears" src="http://farm3.static.flickr.com/2248/2312058906_cde036104c.jpg" width="500" /></a></p>
+
+<p>Chiron prints a list of files that the browser requested. The interesting file is app.xap. This is the way we package Silverlight components for distribution. It's just a ZIP file with a different name. To look at its contents, just point your browser at <a href="http://localhost:2060/app.xap">http://localhost:2060/app.xap</a>, and you'll see that it contains:</p>
+
+<p><a title="app.xap by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2312058948/"><img height="301" alt="app.xap" src="http://farm4.static.flickr.com/3131/2312058948_b1d59e7d89_o.png" width="463" /></a></p>
+
+<p>This illustrates what Chiron does: it <em>dynamically </em>packages everything that you need to run your DSL application into the XAP and serves it up to your browser. The core DSL runtime pieces and the IronRuby assemblies are in the file, along with all of the other files that we generated in our starter application.</p>
+
+<p>Binaries are listed in the AppManifest.xaml file that Chiron generated for you. You can see how Silverlight 2 boots DSL when you open the file:</p>
+
+<p><a title="AppManifest by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2311249035/"><img height="218" alt="AppManifest" src="http://farm3.static.flickr.com/2035/2311249035_f0aca845f2.jpg" width="500" /></a></p>
+
+<p>The EntryPointAssembly is the DSL 'shim' that connects the DLR to Silverlight. The EntryPointType is the name of the type that Silverlight will run when it starts up. DynamicApplication derives from the Silverlight System.Windows.Application type, which defines the Startup event which is used to bootstrap the DLR.</p>
+
+<p>Next, let's look at index.html. The &lt;object&gt; tag is all that is needed to startup Silverlight. No more external JS files for folks who are familiar with the older Silverlight 1.1 Alpha. The source attribute points to app.xap, and initParams are used to pass initialization data to your program. </p>
+
+<p><a title="ObjectTag by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2311249057/"><img height="306" alt="ObjectTag" src="http://farm3.static.flickr.com/2231/2311249057_2dc2fbc780.jpg" width="500" /></a></p>
+
+<p>Notice the reportErrors = errorLocation parameter. This points to a &lt;div&gt; element that we generated for you. We use this &lt;div&gt; to report runtime errors and their stack traces to you.</p>
+
+<p><a title="errorLocation by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2311249067/"><img height="107" alt="errorLocation" src="http://farm3.static.flickr.com/2125/2311249067_2b88769e81.jpg" width="500" /></a></p>
+
+<p>This element also has a dependency on error.css to define the formatting for the error messages. I think it's pretty cool that we were able to use the extensibility mechanisms of Silverlight to inject custom DLR error message formatting into Silverlight.</p>
+
+<p>Next, lets look at app.rb:</p>
+
+<p><a title="App.rb by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2312059014/"><img height="224" alt="App.rb" src="http://farm3.static.flickr.com/2239/2312059014_5f89386b9b.jpg" width="500" /></a></p>
+
+<p>You'll notice that we just run this script and inject our hello world message into the element tree defined by the XAML:</p>
+
+<p><a title="App.Xaml by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2311249103/"><img height="180" alt="App.Xaml" src="http://farm3.static.flickr.com/2065/2311249103_9a723117d0.jpg" width="500" /></a></p>
+
+<p>There's a little bit of magic in layout_root.message.text. The message XAML element is a child of the layout_root element. How does Ruby resolve these references? The answer is found in the required file, Silverlight.rb:</p>
+
+<p><a title="Silverlight.rb by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2311249143/"><img height="331" alt="Silverlight.rb" src="http://farm4.static.flickr.com/3109/2311249143_b80b7d081b.jpg" width="500" /></a></p>
+
+<p>We're adding a method_missing method to the FrameworkElement class and the SilverlightApplication class. So when we try to retrieve layout_root, it delegates to the SilverlightApplication's implementation of method_missing. It dynamically invokes the target passed in m, which invokes the generic method_missing method in FrameworkElement. This gives a very natural feel for 'dotting through' a set of contained XAML elements, which is largely made possible by the Ruby programming language.</p>
+
+<p>I hope this post gives you a feel for what Silverlight programming from IronRuby looks like. In the next part of this series, we'll look at how we can build a more sophisticated application that uses network stack, JSON, flickr, and some funky animation as well.</p>
+
+<p><strong>[1] The fine print:</strong></p>
+
+<p><del>There's still some work that we have left to do before we can push the sources and bits out. The code is baked, but packaging this stuff still takes some time. Check back here on Friday, the day of my talk at MIX (you are going, right?), and you'll have some bits that you can use to follow along with this tutorial</del>.</p>
+
+<p><strong>Update: </strong>Here's a <a href="http://dynamicsilverlight.net/dynamic-silverlight.zip">link to the download</a> of the Dynamic Silverlight SDK.</p>
+
+<p>You'll also need to have a working install of CRuby to run some of our utilities. I recommend the <a href="http://rubyforge.org/projects/rubyinstaller/">Ruby one-click installer for Windows</a>. This will be fixed in the next release of IronRuby.</p>
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2008%2F03%2Fdynamic-silverl.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 07:02 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2008/03/dynamic-silverl.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2008/03/dynamic-silverl.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dynamic%2Bsilverlight" rel="tag">dynamic silverlight</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/silverlight" rel="tag">silverlight</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e55098547f8833</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2008/03/dynamic-silverl.html">Dynamic Silverlight Part 1: Hello, World!</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list -->	<a id="c105971662"></a>
+	<div class="comment comment-odd" id="comment-105971662">
+		<div class="comment-content" id="comment-105971662-content">
+			
+			<span id="comment-105971662-content"><p>This is really cool. But it&#39;s hard to see it as a general solution if it doesn&#39;t run on Macs and Linux. I can see how it could work in a controlled environment, but in my case I can&#39;t depend on my users having PCs.</p>
+
+<p>Is this a technology that is destined to stay on PCs only? Or is there a plan to move it to Mac and Linux as well?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Timothy |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=105971662#comment-105971662">March 05, 2008 at 08:04 AM</a>
+		</p>
+	</div>	<a id="c105973942"></a>
+	<div class="comment comment-even" id="comment-105973942">
+		<div class="comment-content" id="comment-105973942-content">
+			
+			<span id="comment-105973942-content"><p>Really awesone, but I respect you man, using the poor power shell, instead of a more powerful shell (zsh, bash, etc.), with cygwin.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Thibaut Assus |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=105973942#comment-105973942">March 05, 2008 at 08:22 AM</a>
+		</p>
+	</div>	<a id="c105979950"></a>
+	<div class="comment comment-odd" id="comment-105979950">
+		<div class="comment-content" id="comment-105979950-content">
+			
+			<span id="comment-105979950-content"><p>@Timothy What makes you think this is PC only?  IronRuby runs on Mono... John&#39;s very first paragraph uses the phrase &quot;cross-platform&quot;... ?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.prokrams.com" href="http://blog.prokrams.com">Michael Letterle</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=105979950#comment-105979950">March 05, 2008 at 09:09 AM</a>
+		</p>
+	</div>	<a id="c105980688"></a>
+	<div class="comment comment-even" id="comment-105980688">
+		<div class="comment-content" id="comment-105980688-content">
+			
+			<span id="comment-105980688-content"><p>I guess it was the runtime dlls that made me think this is currently PC-only. Is that only for the development environment, or for deployment to browsers?</p>
+
+<p>So this all works now on all platforms?</p>
+
+<p>A screenshot in Camino instead of IE would have convinced me. :-)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Timothy |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=105980688#comment-105980688">March 05, 2008 at 09:15 AM</a>
+		</p>
+	</div>	<a id="c105981408"></a>
+	<div class="comment comment-odd" id="comment-105981408">
+		<div class="comment-content" id="comment-105981408-content">
+			
+			<span id="comment-105981408-content"><p>Mono uses the same PE format as the .NET CLR... so you can have dlls that run on both windows and linux/Mac ;)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.prokrams.com" href="http://blog.prokrams.com">Michael Letterle</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=105981408#comment-105981408">March 05, 2008 at 09:20 AM</a>
+		</p>
+	</div>	<a id="c105982362"></a>
+	<div class="comment comment-even" id="comment-105982362">
+		<div class="comment-content" id="comment-105982362-content">
+			
+			<span id="comment-105982362-content"><p>Cool.</p>
+
+<p>I wish you could of called it something besides DSL.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://smartic.us" href="http://smartic.us">bryanl</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=105982362#comment-105982362">March 05, 2008 at 09:27 AM</a>
+		</p>
+	</div>	<a id="c105984598"></a>
+	<div class="comment comment-odd" id="comment-105984598">
+		<div class="comment-content" id="comment-105984598-content">
+			
+			<span id="comment-105984598-content"><p>@Timothy:</p>
+
+<p>Dynamic Silverlight should just run on Moonlight modulo bugs / missing features. Debugging is something that I *know* works under IE and even that literally just got working reliably two days ago. So, that&#39;s life on the bleeding edge right now :)</p>
+
+<p>We will work with Miguel&#39;s team to make sure that our stuff just runs on Moonlight. Chiron is a fully managed app that should just run under the desktop Mono stack.</p>
+
+<p>Once we get our bits out at the end of this week, feel free to start opening bugs on our Mono support :)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=105984598#comment-105984598">March 05, 2008 at 09:44 AM</a>
+		</p>
+	</div>	<a id="c105989156"></a>
+	<div class="comment comment-even" id="comment-105989156">
+		<div class="comment-content" id="comment-105989156-content">
+			
+			<span id="comment-105989156-content"><p>OK. If it works across browsers and platforms then it&#39;s worth a trial run for me.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Timothy |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=105989156#comment-105989156">March 05, 2008 at 10:18 AM</a>
+		</p>
+	</div>	<a id="c106050002"></a>
+	<div class="comment comment-odd" id="comment-106050002">
+		<div class="comment-content" id="comment-106050002-content">
+			
+			<span id="comment-106050002-content"><p>This is really cool stuff.  I can&#39;t wait to get my hands on this on Friday!</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.bluespire.com/blogs" href="http://www.bluespire.com/blogs">Christopher Bennage</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106050002#comment-106050002">March 05, 2008 at 08:13 PM</a>
+		</p>
+	</div>	<a id="c106070530"></a>
+	<div class="comment comment-even" id="comment-106070530">
+		<div class="comment-content" id="comment-106070530-content">
+			
+			<span id="comment-106070530-content"><p>@Michael Letterle:</p>
+
+<p>I&#39;ll second that. DSL is too confusing (see Domain Specific Languages).</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Shimon Amit |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106070530#comment-106070530">March 06, 2008 at 02:24 AM</a>
+		</p>
+	</div>	<a id="c106119562"></a>
+	<div class="comment comment-odd" id="comment-106119562">
+		<div class="comment-content" id="comment-106119562-content">
+			
+			<span id="comment-106119562-content"><p>+1.  No more ambiguous TLA overloading, please!  </p>
+
+<p>&quot;DSL&quot; already has a meaning that plays into DLR and the whole concept of rolling your own language: Domain Specific Language</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://jasonfollas.com" href="http://jasonfollas.com">Jason Follas</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106119562#comment-106119562">March 06, 2008 at 10:30 AM</a>
+		</p>
+	</div>	<a id="c106128164"></a>
+	<div class="comment comment-even" id="comment-106128164">
+		<div class="comment-content" id="comment-106128164-content">
+			
+			<span id="comment-106128164-content"><p>John just called it &quot;DSL&quot; to put a simpler name for the integration between Silverlight and Dynamic Languages; there&#39;s no &quot;real&quot; name for it ... it&#39;s just all Silverlight.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://jimmy.schementi.com/blog" href="http://jimmy.schementi.com/blog">Jimmy Schementi</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106128164#comment-106128164">March 06, 2008 at 11:43 AM</a>
+		</p>
+	</div>	<a id="c106129106"></a>
+	<div class="comment comment-odd" id="comment-106129106">
+		<div class="comment-content" id="comment-106129106-content">
+			
+			<span id="comment-106129106-content"><p>Silverlight runs on Mac as well (<a href="http://www.microsoft.com/silverlight/resources/installationFiles.aspx?v=2.0)," rel="nofollow">http://www.microsoft.com/silverlight/resources/installationFiles.aspx?v=2.0),</a> and Chiron runs on the Mac via Mono (<a href="http://www.mono-project.com/Main_Page)." rel="nofollow">http://www.mono-project.com/Main_Page).</a></p>
+
+<p>As far as Linux support, the Mono team is working on an implementation of Silverlight called &quot;Moonlight&quot; (<a href="http://www.mono-project.com/Main_Page)." rel="nofollow">http://www.mono-project.com/Main_Page).</a> Chiron also runs on Linux via Mono today.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://jimmy.schementi.com/blog" href="http://jimmy.schementi.com/blog">Jimmy Schementi</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106129106#comment-106129106">March 06, 2008 at 11:51 AM</a>
+		</p>
+	</div>	<a id="c106129822"></a>
+	<div class="comment comment-even" id="comment-106129822">
+		<div class="comment-content" id="comment-106129822-content">
+			
+			<span id="comment-106129822-content"><p>John, your blog ate my links!</p>
+
+<p>SL on Mac: <a href="http://www.microsoft.com/silverlight/resources/installationFiles.aspx?v=2.0" rel="nofollow">http://www.microsoft.com/silverlight/resources/installationFiles.aspx?v=2.0</a><br />
+Mono: <a href="http://www.mono-project.com/Main_Page" rel="nofollow">http://www.mono-project.com/Main_Page</a><br />
+Moonlight: <a href="http://www.mono-project.com/Moonlight" rel="nofollow">http://www.mono-project.com/Moonlight</a></p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://jimmy.schementi.com/blog" href="http://jimmy.schementi.com/blog">Jimmy Schementi</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106129822#comment-106129822">March 06, 2008 at 11:57 AM</a>
+		</p>
+	</div>	<a id="c106130632"></a>
+	<div class="comment comment-odd" id="comment-106130632">
+		<div class="comment-content" id="comment-106130632-content">
+			
+			<span id="comment-106130632-content"><p>I vote for DWPF/E!</p>
+
+<p>Actually DSlt.... then you could call it Dee-slight....</p>
+
+<p>Bah, whatever... tell me the first release of Chiron will be called Chiron Beta Prime!</p>
+
+<p>Is it just me or do I feel a slight Rails/WEBrick influence?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.prokrams.com" href="http://blog.prokrams.com">Michael Letterle</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106130632#comment-106130632">March 06, 2008 at 12:05 PM</a>
+		</p>
+	</div>	<a id="c106138992"></a>
+	<div class="comment comment-even" id="comment-106138992">
+		<div class="comment-content" id="comment-106138992-content">
+			
+			<span id="comment-106138992-content"><p>John, I mentioned your blog post on CodeProject: <a href="http://www.codeproject.com/script/Forums/View.aspx?fid=1159&msg=2453462" rel="nofollow">http://www.codeproject.com/script/Forums/View.aspx?fid=1159&amp;msg=2453462</a></p>
+
+<p>And one of the regulars there was outraged that your simple Hellow World app requires 700K. What would you say to that?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://judahgabriel.blogspot.com" href="http://judahgabriel.blogspot.com">Judah Himango</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106138992#comment-106138992">March 06, 2008 at 01:14 PM</a>
+		</p>
+	</div>	<a id="c106174026"></a>
+	<div class="comment comment-odd" id="comment-106174026">
+		<div class="comment-content" id="comment-106174026-content">
+			
+			<span id="comment-106174026-content"><p>In the case of Mac OS X and Linux, because httpd has already been installed, the Chiron.exe is unnecessary, I guess.<br />
+However, it is necessary to add some MIME setting to execute the app.xap .<br />
+See Chiron.exe.config in Silverlight SDK.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			KKI |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106174026#comment-106174026">March 06, 2008 at 07:25 PM</a>
+		</p>
+	</div>	<a id="c106175198"></a>
+	<div class="comment comment-even" id="comment-106175198">
+		<div class="comment-content" id="comment-106175198-content">
+			
+			<span id="comment-106175198-content"><p>@Judah: Depending on how you configure your app, you can download the DSL dependencies (DLR + IronRuby) in a separate XAP that comes from one of our servers (this isn&#39;t working yet). So your XAP becomes something like 2K in that case. It will also be cached in your browser cache so it is a one-time download. Compare with any of the other binary redists of Ruby 1.8.6 for size ...</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106175198#comment-106175198">March 06, 2008 at 07:38 PM</a>
+		</p>
+	</div>	<a id="c106176434"></a>
+	<div class="comment comment-odd" id="comment-106176434">
+		<div class="comment-content" id="comment-106176434-content">
+			
+			<span id="comment-106176434-content"><p>Hi John,<br />
+&gt;Depending on how you configure your app, you can download the DSL dependencies (DLR + IronRuby) in a separate XAP that comes from one of our servers (this isn&#39;t working yet).<br />
+&gt;So your XAP becomes something like 2K in that case.</p>
+
+<p>really?<br />
+It does not work because of the cross domain limitation, I guess.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			KKI |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106176434#comment-106176434">March 06, 2008 at 07:54 PM</a>
+		</p>
+	</div>	<a id="c106181310"></a>
+	<div class="comment comment-even" id="comment-106181310">
+		<div class="comment-content" id="comment-106181310-content">
+			
+			<span id="comment-106181310-content"><p>Sorry, I just noticed the following URL.<br />
+<a href="http://msdn2.microsoft.com/en-us/library/cc197955(VS.95).aspx" rel="nofollow">http://msdn2.microsoft.com/en-us/library/cc197955(VS.95).aspx</a></p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			KKI |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106181310#comment-106181310">March 06, 2008 at 09:00 PM</a>
+		</p>
+	</div>	<a id="c106223428"></a>
+	<div class="comment comment-odd" id="comment-106223428">
+		<div class="comment-content" id="comment-106223428-content">
+			
+			<span id="comment-106223428-content"><p>Excellent, John, thanks for the info. I&#39;ll let the guy from CodeProject know.</p>
+
+<p>Great job on getting IronRuby running in the browser! Really looking forward to experimenting with this.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://judahgabriel.blogspot.com" href="http://judahgabriel.blogspot.com">Judah Himango</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106223428#comment-106223428">March 07, 2008 at 07:53 AM</a>
+		</p>
+	</div>	<a id="c106267402"></a>
+	<div class="comment comment-even" id="comment-106267402">
+		<div class="comment-content" id="comment-106267402-content">
+			
+			<span id="comment-106267402-content"><p>You are missing some steps in this presentation:  </p>
+
+<p>You jump from verifying that Chiron is in your path to invoking the template generator.  Your screen shot shows a &gt;&gt; prompt.  What CLI, shell, or app is generating this?  </p>
+
+<p>Where is the &quot;dsl&quot; template generator located?</p>
+
+<p>I have seem several demos of the DLR console that show Ruby, Python, and JScript yet there does not seem to be a version available.  Where can I find this?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Tim |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106267402#comment-106267402">March 07, 2008 at 01:48 PM</a>
+		</p>
+	</div>	<a id="c106309896"></a>
+	<div class="comment comment-odd" id="comment-106309896">
+		<div class="comment-content" id="comment-106309896-content">
+			
+			<span id="comment-106309896-content"><p>In case anybody is wondering how to customize your powershell prompt to look like  John&#39;s.<br />
+Create a directory WindowsPowerShell in My Documents and put a file profile1.ps in there with the following content:</p>
+
+<p>function prompt<br />
+{<br />
+    $host.ui.rawui.WindowTitle = $(get-location)<br />
+    Write-Host (&quot;+ &quot; + $(get-location)) -foregroundcolor Yellow<br />
+    return &quot;» &quot;<br />
+}</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://flanders.co.nz/blog" href="http://flanders.co.nz/blog">Ivan Porto Carrero</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106309896#comment-106309896">March 08, 2008 at 12:45 AM</a>
+		</p>
+	</div>	<a id="c106429950"></a>
+	<div class="comment comment-even" id="comment-106429950">
+		<div class="comment-content" id="comment-106429950-content">
+			
+			<span id="comment-106429950-content"><p>Looks very interesting. Unfortunately like Tim I&#39;m stuck at:</p>
+
+<p>&quot;&quot;&quot;<br />
+Next, use our template generator to create a starter IronRuby Dynamic Silverlight project:<br />
+&quot;&quot;&quot;<br />
+It would be useful to have some lights on this.</p>
+
+<p>Thanks.<br />
+</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			francois |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106429950#comment-106429950">March 09, 2008 at 02:44 PM</a>
+		</p>
+	</div>	<a id="c106434978"></a>
+	<div class="comment comment-odd" id="comment-106434978">
+		<div class="comment-content" id="comment-106434978-content">
+			
+			<span id="comment-106434978-content"><p>@francois: hang in there. Will upload new templates later tonight.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=106434978#comment-106434978">March 09, 2008 at 03:59 PM</a>
+		</p>
+	</div>	<a id="c107022410"></a>
+	<div class="comment comment-even" id="comment-107022410">
+		<div class="comment-content" id="comment-107022410-content">
+			
+			<span id="comment-107022410-content"><p>John,</p>
+
+<p>I love what you have done and all that you are doing to help the Ruby community run on the MS platform (it can only help us in the end).  </p>
+
+<p>Being a big proponent of Ruby though, I&#39;m wondering why you guys decided to latch onto the DSL acronym.  I know that with all TLA&#39;s you have a chance of tripping over another one; however, with Ruby this seems more serious.  One of the benefits of using Ruby (IMHO) is the ability to create DSL&#39;s (as in Domain Specific Languages) to not only aid development, but communication in code.  </p>
+
+<p>-Joe</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://objo.com" href="http://objo.com">Joe OBrien</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=107022410#comment-107022410">March 14, 2008 at 12:39 PM</a>
+		</p>
+	</div>	<a id="c107172840"></a>
+	<div class="comment comment-odd" id="comment-107172840">
+		<div class="comment-content" id="comment-107172840-content">
+			
+			<span id="comment-107172840-content"><p>I found a bug in either IronRuby or Silverlight, but am not sure where to put it, so here it goes:</p>
+
+<p>When you require files from a subdir in app.rb, the use_xaml expression afterwards fails with the message &#39;XamlParseException: [Line: 0 Position: 0]</p>
+
+<p>A workaround is to do another require in your current app-dir and then the error message suddenly dissapears. Very odd.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.nedforce.nl/" href="http://www.nedforce.nl/">Roel van der Hoorn</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=107172840#comment-107172840">March 16, 2008 at 03:55 AM</a>
+		</p>
+	</div>	<a id="c107381860"></a>
+	<div class="comment comment-even" id="comment-107381860">
+		<div class="comment-content" id="comment-107381860-content">
+			
+			<span id="comment-107381860-content"><p>Where can I find the dsl.rb template, since it doesn&#39;t seem to be included in the SDK or in the rubyforge repository?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			paul van brenk |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=107381860#comment-107381860">March 18, 2008 at 02:37 AM</a>
+		</p>
+	</div>	<a id="c108083482"></a>
+	<div class="comment comment-odd" id="comment-108083482">
+		<div class="comment-content" id="comment-108083482-content">
+			
+			<span id="comment-108083482-content"><p>Ditto others about producing the template. I tried to figure it out but no go. DSL generator is a big ???. The concept of writing Ruby in Silverlight is what has made me interested in Silverlight. But so far its a dead end. Maybe I should just bite the bullet and learn Actionscript 3.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			ChessMess |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=108083482#comment-108083482">March 24, 2008 at 07:35 AM</a>
+		</p>
+	</div>	<a id="c108204650"></a>
+	<div class="comment comment-even" id="comment-108204650">
+		<div class="comment-content" id="comment-108204650-content">
+			
+			<span id="comment-108204650-content"><p>@{paul,chessmess} you can find the template in the DynamicSilverlight SDK at <a href="http://www.dynamicsilverlight.net" rel="nofollow">http://www.dynamicsilverlight.net</a></p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=108204650#comment-108204650">March 25, 2008 at 06:48 AM</a>
+		</p>
+	</div>	<a id="c108325380"></a>
+	<div class="comment comment-odd" id="comment-108325380">
+		<div class="comment-content" id="comment-108325380-content">
+			
+			<span id="comment-108325380-content"><p>I have having some trouble getting started. This is the problematic step: &quot;Next, use our template generator to create a starter IronRuby Dynamic Silverlight project.&quot;</p>
+
+<p>Where dose the dsl.rb file come from? How can I call this from a standard command prompt? I have Chiron and Ruby in my class path, not sure how to progress?<br />
+Thanks</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://darynholmes.wordpress.com/" href="http://darynholmes.wordpress.com/">Daryn</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=108325380#comment-108325380">March 26, 2008 at 05:29 AM</a>
+		</p>
+	</div>	<a id="c108338562"></a>
+	<div class="comment comment-even" id="comment-108338562">
+		<div class="comment-content" id="comment-108338562-content">
+			
+			<span id="comment-108338562-content"><p>@daryn: the file lives in the \bin directory of the dynamicsilverlight SDK.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=108338562#comment-108338562">March 26, 2008 at 07:32 AM</a>
+		</p>
+	</div>	<a id="c108534720"></a>
+	<div class="comment comment-odd" id="comment-108534720">
+		<div class="comment-content" id="comment-108534720-content">
+			
+			<span id="comment-108534720-content"><p>@John: the file isn&#39;t there. I&#39;ve tried downloading both the sdk from the location you specified in your post above, as from the codeplex site. In both cases, no dsl.rb in the \bin directory. All there is are a bunch of .dlls and chiron.exe (and a readme).</p>
+
+<p>Any clues?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://codedump.blergh.be" href="http://codedump.blergh.be">Inferis</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=108534720#comment-108534720">March 27, 2008 at 05:57 PM</a>
+		</p>
+	</div>	<a id="c109234084"></a>
+	<div class="comment comment-even" id="comment-109234084">
+		<div class="comment-content" id="comment-109234084-content">
+			
+			<span id="comment-109234084-content"><p>All,</p>
+
+<p>dsl.rb isn&#39;t shipped in DynamicSilverlight yet, it&#39;s a small ruby script that simply spits a template file structure; you can achieve the same file structure by just using the hello_world sample found in samples/ruby/hello_world as a starting point. I didn&#39;t tell John that it wouldn&#39;t ship in our package, so it&#39;s my fault =P</p>
+
+<p>If you guys really want the script to do that for you, I can add it to dynamicsilverlight.zip for you. </p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.jimmy.schementi.com" href="http://blog.jimmy.schementi.com">Jimmy Schementi</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=109234084#comment-109234084">April 03, 2008 at 12:49 AM</a>
+		</p>
+	</div>	<a id="c109234208"></a>
+	<div class="comment comment-odd" id="comment-109234208">
+		<div class="comment-content" id="comment-109234208-content">
+			
+			<span id="comment-109234208-content"><p>@Roel: use_xaml is a helper method to load an associated xaml file for you automatically from a class which inherits from SilverlightApplication. use_xaml lives in Silverlight.rb, so feel free to change it ... and let me know what fixes you do to fix your bug.</p>
+
+<p>I always use it from app.rb like this:</p>
+
+<p>class App &lt; SilverlightApplication<br />
+  use_xaml<br />
+end</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blog.jimmy.schementi.com" href="http://blog.jimmy.schementi.com">Jimmy Schementi</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=109234208#comment-109234208">April 03, 2008 at 12:52 AM</a>
+		</p>
+	</div>	<a id="c112630226"></a>
+	<div class="comment comment-even" id="comment-112630226">
+		<div class="comment-content" id="comment-112630226-content">
+			
+			<span id="comment-112630226-content"><p>Hey Jimmy, that would maybe very cool if add the dsl.rb to the project, because it generates  a little bit confusion at my side to get the example started.</p>
+
+<p>thank a lot,</p>
+
+<p>zazi</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			zazi |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=112630226#comment-112630226">April 29, 2008 at 02:55 AM</a>
+		</p>
+	</div>	<a id="c113321242"></a>
+	<div class="comment comment-odd" id="comment-113321242">
+		<div class="comment-content" id="comment-113321242-content">
+			
+			<span id="comment-113321242-content"><p>Will the dsl.rb included?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.myfavoritemovies.us/ironruby" href="http://www.myfavoritemovies.us/ironruby">Unni</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=113321242#comment-113321242">May 04, 2008 at 07:16 PM</a>
+		</p>
+	</div>	<a id="c113412594"></a>
+	<div class="comment comment-even" id="comment-113412594">
+		<div class="comment-content" id="comment-113412594-content">
+			
+			<span id="comment-113412594-content"><p>Question, is it only few controls are wired to work with Ironruby or all of WPF/E controls are enabled?<br />
+I tried some different panels and other controls like check box etc., aren&#39;t working. Just curious.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://myfavoritemovies.spaces.live.com" href="http://myfavoritemovies.spaces.live.com">Nair</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=113412594#comment-113412594">May 05, 2008 at 02:25 PM</a>
+		</p>
+	</div>	<a id="c113534736"></a>
+	<div class="comment comment-odd" id="comment-113534736">
+		<div class="comment-content" id="comment-113534736-content">
+			
+			<span id="comment-113534736-content"><p>If you look at silverlight.rb, you&#39;ll see that I&#39;ve only wrapped a few controls and properties.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=113534736#comment-113534736">May 06, 2008 at 11:17 AM</a>
+		</p>
+	</div>	<a id="c113534748"></a>
+	<div class="comment comment-even" id="comment-113534748">
+		<div class="comment-content" id="comment-113534748-content">
+			
+			<span id="comment-113534748-content"><p>If you look at silverlight.rb, you&#39;ll see that I&#39;ve only wrapped a few controls and properties.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=113534748#comment-113534748">May 06, 2008 at 11:17 AM</a>
+		</p>
+	</div>	<a id="c124210840"></a>
+	<div class="comment comment-odd" id="comment-124210840">
+		<div class="comment-content" id="comment-124210840-content">
+			
+			<span id="comment-124210840-content"><p>Tutorial - Develop Silverlight with Ruby on Mac OS X or Linux with the DLR SDK and a Text Editor (TextMate) </p>
+
+<p><a href="http://code.steelpotato.com/2008/07/tutorial-develop-silverlight-with-ruby.html" rel="nofollow">http://code.steelpotato.com/2008/07/tutorial-develop-silverlight-with-ruby.html</a></p>
+
+<p>I updated the tutorial for Silverlight 2 Beta 2, and explain how to set up your system to follow John Lam&#39;s tutorial on Linux or OS X</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://code.steelpotato.com/2008/07/tutorial-develop-silverlight-with-ruby.html" href="http://code.steelpotato.com/2008/07/tutorial-develop-silverlight-with-ruby.html">Sean Clark Hess</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=124210840#comment-124210840">July 28, 2008 at 01:33 PM</a>
+		</p>
+	</div>	<a id="c6a00d834fc885d53ef01053708b2b7970b"></a>
+	<div class="comment comment-even" id="comment-6a00d834fc885d53ef01053708b2b7970b">
+		<div class="comment-content" id="comment-6a00d834fc885d53ef01053708b2b7970b-content">
+			
+			<span id="comment-6a00d834fc885d53ef01053708b2b7970b-content"><p>I&#39;ve been trying hard to get the &#39;Hello World&#39; app to work, but no luck.</p>
+
+<p>I get the icon, &#39;get Microsoft Silverlight&#39;.</p>
+
+<p>What gives. When I launch localhost:2060 on my application directory, I click index.html. I believe this should take me to my app. I copied all the dlls from /Program Files/Microsoft Silverlight/2* into my chiron/bin directory just to ensure that there were no problems with my path.</p>
+
+<p>Sorry if this question is dumb, but after struggling for several days, I had to seek professional help :(</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			NO LIGHT IN SIGHT |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=6a00d834fc885d53ef01053708b2b7970b#comment-6a00d834fc885d53ef01053708b2b7970b">February 03, 2009 at 08:56 AM</a>
+		</p>
+	</div>	<a id="c6a00d834fc885d53ef0105370dee9e970b"></a>
+	<div class="comment comment-odd" id="comment-6a00d834fc885d53ef0105370dee9e970b">
+		<div class="comment-content" id="comment-6a00d834fc885d53ef0105370dee9e970b-content">
+			
+			<span id="comment-6a00d834fc885d53ef0105370dee9e970b-content"><p>@&quot;NO LIGHT IN SIGHT&quot;</p>
+
+<p>Did you download the latest release from <a href="http://codeplex.com/sdlsdk?" rel="nofollow">http://codeplex.com/sdlsdk?</a> <br />
+The other steps you describe are correct, but you definitely shouldn&#39;t copy files from Program Files, as they will never be loaded, only things in AppManifest.xaml are loaded. </p>
+
+<p>If you&#39;re getting the &quot;Get Microsoft Silverlight&quot; image, please make sure you have the latest version of Silverlight installed.</p>
+
+<p>If you are still having this problem, please open a defect on <a href="http://codeplex.com/sdlsdk," rel="nofollow">http://codeplex.com/sdlsdk,</a> with your app attached.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://jimmy.schementi.com" href="http://jimmy.schementi.com">Jimmy Schementi</a> |
+			<a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=6a00d834fc885d53ef0105370dee9e970b#comment-6a00d834fc885d53ef0105370dee9e970b">February 04, 2009 at 05:18 PM</a>
+		</p>
+	</div>
+
+		</div>
+        
+	</div>
+    
+    	<!-- comment form -->
+<!-- comment-form-atp.tt -->
+
+	
+<div id="atp-comments">
+    
+        <div id="comment-preview" class="hiddenBox">
+	<h3 id="header-verify-comment" class="comments-header hiddenBox">Verify your Comment</h3>
+    <h3 id="header-preview-comment" class="comments-header hiddenBox">Previewing your Comment</h3>
+	<div class="comments-content">
+		<div class="comment">
+			<div id="comment-preview-content" class="comment-content">
+			</div>
+			<p class="comment-footer">
+				Posted by: 
+				<span id="comment-preview-author"></span>&nbsp;|&nbsp;<span id="comment-preview-datetime"></span>
+			</p>
+		</div>
+	</div>
+</div>
+<div id="comment-preview-confirmation" class="hiddenBox yellowBox">
+    <p>This is only a preview. Your comment has not yet been posted.</p>
+   	<form id="comment-preview-form"
+   		method="post"
+   		onsubmit="atpComments.interceptPost(commentFormNum); return false;">
+		<input type="submit" name="post" id="comment-confirm-post" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;"/>		    
+		<input type="submit" name="edit" id="comment-edit" value="&nbsp;&nbsp;Edit&nbsp;&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 2); return false;"/>
+        <span id="previewFormSpinner" class="hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+	</form>
+</div>
+<div id="comment-error" class="hiddenBox redBox">	    
+   Your comment could not be posted. Error type: <span id="comment-error-msg"></span> 
+</div>	
+<div id="comment-complete" class="hiddenBox yellowGreenBox">
+    Your comment has been posted. <a href="javascript:void 0;" onclick="window.location.hash='#comment-form';window.location.reload(false)">Post another comment</a>
+</div>	
+<div id="comment-captcha" class="hiddenBox yellowBox">	
+    <div id="captchaText">
+	    <p id="captchaFailMsg" class="captchaErrorText hiddenBox">The letters and numbers you entered did not match the image. Please try again.</p>	    	        
+	    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.</p>
+	    <p><span id="comment-captcha-viewalt">Having trouble reading this image? <a href="#comment-captcha" onClick="atpComments.generateCaptcha(commentFormNum);">View an alternate.</a></span></p>
+    </div>
+    <p class=""><img id="captchaImg" /></p>		
+    <form id="comment-captcha-form" 
+		  method="post"
+		  onsubmit="atpComments.submitWithCaptcha(commentFormNum); return false;">
+		<input type="hidden" name="captcha_chal" id="comment-captcha-chal" value="" />
+        <p>
+	        <input id="comment-captcha-text" name="captcha_text" size="10" />
+        </p>
+        <p>
+            <input type="submit" name="continue" id="captcha-continue" value="&nbsp;Continue&nbsp;" />
+            <span id="captchaFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+        </p>
+    </form>
+</div>
+
+    
+	<div id="primary-comment-form" class="comment-form">
+    	<form id="comment-form" action="http://www.typepad.com/services/comments"
+    		method="post">
+    		<input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e55098547f8833" />
+                <input type="hidden" name="token" value="1242413637-7c830431a901433a8a792d57d69384fe44aeaee4:i7RN2voJSBmeIk3r" />
+    		<div class="comments-open">
+    			<h2 class="comments-open-header" id="comment-title">Post a comment</h2>
+    			<div id="comments-open-content" class="comments-open-content">
+    				
+				
+    									
+    					<p id="comments-open-login" style="display: none;">
+    													If you have a TypeKey or TypePad account, please
+    							<a href="https://www.typekey.com/t/typekey/login?v=1.0&t=f38d194ea4409777c93b384ce618a8f971b911b7&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2008%2F03%2Fdynamic-silverl.html">Sign In</a>
+    						
+    					</p>
+					
+    					<p id="comments-open-logout" style="display: none;">
+    						You are currently signed in as
+    						<span id="commenter-name">(nobody)</span>.
+    						<a href="http://www.iunknown.com/.services/sitelogout?to=https%3A%2F%2Fwww.typekey.com%2Ft%2Ftypekey%2F%3F__mode%3Dlogout%26_return%3Dhttp%253A%252F%252Fwww.iunknown.com%252F2008%252F03%252Fdynamic-silverl.html">Sign Out</a>
+    					</p>
+    				
+                    	<div id="comments-open-text" style="display:none;">
+        					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="atpComments.maxTextArea(this, 64000);"></textarea>
+            				
+            				<p class="comments-open-subtext">
+            				    (URLs automatically linked.)
+            				</p>			
+            				                    					
+        				</div>
+    				    <div id="comments-open-data" style="display:none;">
+                            <p>Your Information</p>
+                            <p>
+                                (Name and email address are required. Email address will not be displayed with the comment.)
+                            
+                            </p>
+    						<p>
+    							<input id="comment-author" at:default="Name" name="author" size="30" value="Name" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-author" id="comment-author-error" class="comment-error hiddenBox">Name is required to post a comment</label>
+    						</p>
+    						<p>
+    							<input id="comment-email" at:default="Email Address" name="email" size="30" value="Email Address" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-email" id="comment-email-error" class="comment-error hiddenBox">Please enter a valid email address</label>
+    						</p>
+    						<p>
+    							<input id="comment-url" at:default="Web Site URL" name="url" size="30" value="Web Site URL" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-url" id="comment-url-error" class="comment-error hiddenBox">Invalid URL</label>
+    						</p>
+    					</div>
+    			</div>
+                <div id="comments-open-footer" class="comments-open-footer" style="display:none;">
+    				<input type="submit" name="post" id="comment-post-button" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;" disabled="true" />
+    				<input type="submit" name="preview" id="comment-preview-button" value="&nbsp;Preview&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 1); return false;" disabled="true" />
+    				<span id="commentEntryFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+    			</div>
+    		</div>
+    	</form>
+        <noscript>
+            
+			<div id="comments-open-noscript" class="comments-open-noscript">
+		        <form action="http://www.typepad.com/services/comments" method="post">
+		            <input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e55098547f8833" />
+                            <input type="hidden" name="token" value="1242413637-9c47d635c1d64c9df173df85060897fef3e0d21c:b5Pk1IwWaVn0Ddt8" />
+		            Name:<br /><input type="text" name="author" size="30" /><br />
+		            Email address:<br /><input type="text" name="email" size="30" /><br />
+		            URL:<br /><input type="text" name="url" size="30" /><br /><br />
+		            Comment:<br /><textarea name="text" cols="40" rows="4"></textarea><br />
+		            
+		            <input type="submit" name="submit" value="Submit" />
+		        </form>
+			</div>
+			
+		</noscript>
+	</div>
+</div>
+
+
+
+    
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html?cid=6a00d834fc885d53ef01156f8329a5970c#comment-6a00d834fc885d53ef01156f8329a5970c">Paul</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html?cid=6a00d834fc885d53ef0115702e0121970b#comment-6a00d834fc885d53ef0115702e0121970b">web development Dubai</a> on <a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef01127943175728a4#comment-6a00d834fc885d53ef01127943175728a4">Aaron S.</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef011168cd9674970c#comment-6a00d834fc885d53ef011168cd9674970c">Ram</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2006/06/rubyclr-and-met.html?cid=6a00d834fc885d53ef0112791d6dc528a4#comment-6a00d834fc885d53ef0112791d6dc528a4">Stefan Wenig</a> on <a href="http://www.iunknown.com/2006/06/rubyclr-and-met.html">RubyCLR and method name conflicts</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2005/11/synergy.html?cid=6a00d834fc885d53ef011168a6fd25970c#comment-6a00d834fc885d53ef011168a6fd25970c">insane.tsunami</a> on <a href="http://www.iunknown.com/2005/11/synergy.html">Synergy!</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef0111689567ed970c#comment-6a00d834fc885d53ef0111689567ed970c">DJ</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html?cid=6a00d834fc885d53ef0111685d4ac6970c#comment-6a00d834fc885d53ef0111685d4ac6970c">PHenry</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silverl.html?cid=6a00d834fc885d53ef0105370dee9e970b#comment-6a00d834fc885d53ef0105370dee9e970b">Jimmy Schementi</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silverl.html">Dynamic Silverlight Part 1: Hello, World!</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silve-1.html?cid=6a00d834fc885d53ef011168480d24970c#comment-6a00d834fc885d53ef011168480d24970c">Jimmy Schementi</a> on <a href="http://www.iunknown.com/2008/03/dynamic-silve-1.html">Dynamic Silverlight Part 2: Managed JScript and flickr</a></li>
+			
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">MVP Summit Ruby Meetup</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/index.html">January 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/index.html">April 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">January 2009</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/01/hello-2009.html">1</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">2</a></td>
+				
+							
+					<td>3</td>
+				</tr>
+							<tr>
+					<td>4</td>
+				
+							
+					<td>5</td>
+				
+							
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				</tr>
+							<tr>
+					<td>11</td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				</tr>
+							<tr>
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				</tr>
+							<tr>
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+		</div>
+	</div>
+	
+<!-- c 6a00d834fc885d53ef00d83531ed5d69e2 disabled -->
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+
+<script type="text/javascript">
+var captchaImgAttempts = 0;
+var allowAnonComments = '0';
+var registrationRequired = 0;
+var registrationOptional = 1;
+var emailRequired = 1;
+var jsonURL = "/.services/json-rpc";
+
+var captchaSrc = "/.services/captcha?code_encrypted=";
+var alertCommentCannotBeBlank = "You can not leave an empty comment. Please enter some text in the Comment field.";
+var alertEditingExpired = "Sorry, you're no longer allowed to edit this comment. You may have taken too much time before submitting your edit or someone may have already replied to it.";
+
+var alertAuthorCannotBeBlank = "Name must not be blank.";
+var alertEmailCannotBeBlank = "Email Address must not be blank.";
+var alertAuthorAndEmailCannotBeBlank = "Name and email address are both required!";
+var alertEmailIsInvalid = "The Email Address you entered is invalid. Please enter a valid email address.";
+var alertUnauthorizedAction = "The comments on this post are closed.";
+var msgPostReplyTo = "Reply to ";  
+var msgInReplyTo = "In reply to ";
+var msgPostAComment = "Post a comment ";
+var atpCommentsPath = "/.shared/js/atpcomments_yui.js?v=2";
+var hasChanged = 0;
+var hostName = ".iunknown.com";
+var tp_comment_token = "1242413638-034b0ad9be2aee0ee238ae3e0804136ee91c04df:GKdYM4DblEgOrIH9";
+
+var isPage = 0;
+var blog_xid = "6a00d834fc885d53ef00d83531ed5d69e2";
+var xid = "";
+var injectCode = '<div id=\"comment-preview\" class=\"hiddenBox\">\n\t<h3 id=\"header-verify-comment\" class=\"comments-header hiddenBox\">Verify your Comment<\/h3>\n    <h3 id=\"header-preview-comment\" class=\"comments-header hiddenBox\">Previewing your Comment<\/h3>\n\t<div class=\"comments-content\">\n\t\t<div class=\"comment\">\n\t\t\t<div id=\"comment-preview-content\" class=\"comment-content\">\n\t\t\t<\/div>\n\t\t\t<p class=\"comment-footer\">\n\t\t\t\tPosted by: \n\t\t\t\t<span id=\"comment-preview-author\"><\/span>&nbsp;|&nbsp;<span id=\"comment-preview-datetime\"><\/span>\n\t\t\t<\/p>\n\t\t<\/div>\n\t<\/div>\n<\/div>\n<div id=\"comment-preview-confirmation\" class=\"hiddenBox yellowBox\">\n    <p>This is only a preview. Your comment has not yet been posted.<\/p>\n   \t<form id=\"comment-preview-form\"\n   \t\tmethod=\"post\"\n   \t\tonsubmit=\"atpComments.interceptPost(commentFormNum); return false;\">\n\t\t<input type=\"submit\" name=\"post\" id=\"comment-confirm-post\" value=\"&nbsp;Post&nbsp;\" onclick=\"atpComments.interceptPost(commentFormNum); return false;\"/>\t\t    \n\t\t<input type=\"submit\" name=\"edit\" id=\"comment-edit\" value=\"&nbsp;&nbsp;Edit&nbsp;&nbsp;\" onclick=\"atpComments.previewOnly(commentFormNum, 2); return false;\"/>\n        <span id=\"previewFormSpinner\" class=\"hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n\t<\/form>\n<\/div>\n<div id=\"comment-error\" class=\"hiddenBox redBox\">\t    \n   Your comment could not be posted. Error type: <span id=\"comment-error-msg\"><\/span> \n<\/div>\t\n<div id=\"comment-complete\" class=\"hiddenBox yellowGreenBox\">\n    Your comment has been posted. <a href=\"javascript:void 0;\" onclick=\"window.location.hash=\'#comment-form\';window.location.reload(false)\">Post another comment<\/a>\n<\/div>\t\n<div id=\"comment-captcha\" class=\"hiddenBox yellowBox\">\t\n    <div id=\"captchaText\">\n\t    <p id=\"captchaFailMsg\" class=\"captchaErrorText hiddenBox\">The letters and numbers you entered did not match the image. Please try again.<\/p>\t    \t        \n\t    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.<\/p>\n\t    <p><span id=\"comment-captcha-viewalt\">Having trouble reading this image? <a href=\"#comment-captcha\" onClick=\"atpComments.generateCaptcha(commentFormNum);\">View an alternate.<\/a><\/span><\/p>\n    <\/div>\n    <p class=\"\"><img id=\"captchaImg\" /><\/p>\t\t\n    <form id=\"comment-captcha-form\" \n\t\t  method=\"post\"\n\t\t  onsubmit=\"atpComments.submitWithCaptcha(commentFormNum); return false;\">\n\t\t<input type=\"hidden\" name=\"captcha_chal\" id=\"comment-captcha-chal\" value=\"\" />\n        <p>\n\t        <input id=\"comment-captcha-text\" name=\"captcha_text\" size=\"10\" />\n        <\/p>\n        <p>\n            <input type=\"submit\" name=\"continue\" id=\"captcha-continue\" value=\"&nbsp;Continue&nbsp;\" />\n            <span id=\"captchaFormSpinner\" class=\"commentSpinner hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n        <\/p>\n    <\/form>\n<\/div>\n'; 
+var commentFormNum;
+var entryPermalink = "http://www.iunknown.com/2008/03/dynamic-silverl.html";
+var inlineReply = document.createElement("div");
+var commentFooterLinks;
+var commentHeader;
+var commentReplyXID;
+var commentReplyAuthor;
+var commentReplyComplete;
+var inlineReplyLoaded = 0;
+
+function xidToCommentPermalink (entryUrl, xid) {
+    return entryUrl + "?cid=" + xid + "#comment-" + xid;
+}
+
+</script>
+<script type="text/javascript" src="/.shared/js/yui/yuiloader-beta-min.js"></script>
+<script type="text/javascript" src="/.shared/js/atpcomments.js?v=2"></script>
+
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

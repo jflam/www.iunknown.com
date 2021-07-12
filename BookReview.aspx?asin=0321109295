@@ -1,0 +1,174 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Refactoring Workbook
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0321109295" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMzIxMTA5Mjk1LjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFJlZmFjdG9yaW5nIFdvcmtib29rOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxXaWxsaWFtIEMuIFdha2U7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQzNC45OTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDIzLjA5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw0LjU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDU7Pj47Pjs7Pjt0PEA8aHR0cDovL3d3dy5hbWF6b24uY29tL2V4ZWMvb2JpZG9zL0FTSU4vMDMyMTEwOTI5NS9yZWY9bm9zaW0vaXVua25vd25jb20tMjA7Pjs7Pjt0PHA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47PjtsPGk8MD47aTwxPjs+O2w8dDxAPFxlOz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz5WU2bIPG/Zw9xvw8ecpqrMxw+zOg==" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0321109295.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Refactoring Workbook</span>
+        <div class="ItemDetail">By
+          <span id="Authors">William C. Wake</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$34.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$23.09</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">5</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0321109295/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Good exercises in refactoring</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-05-21</span>
+                    </div>
+                    <span>Refactoring is the process of recognizing and correcting problems in code that is functional. Since the code is working correctly, refactoring is something that is generally done late in the development cycle or perhaps not until the code has entered the maintenance phase. However, refactoring has proven to be so valuable that most recent books on software engineering spend some time describing what it is.<br> Performing a refactoring starts with identifying a "code smell", a segment or feature of the code that just feels awkward or unusual. This is not as hard as it may appear, many of the most common "smells" have been cataloged and the solutions identified.  For example, the first "smells" covered in this book are:<p>* Obscure or overly descriptive comments.<br>* Overly long methods.<br>* Overly large classes. <br>* Overly long parameter lists to methods.<p>and all examples are coded in Java. Programming veterans will recognize most of these problems as old and venerated programming difficulties. With the exception of large classes, they have been part of the list of bad programming habits for decades. However, the solutions require a bit of thought, it is conceptually simple to make comments, variable names and method names more descriptive, but of course there are reasonable bounds that reasonable people can disagree on. There are only rules of thumb available to guide us, and Wake sets down his thoughts on this matter. <br> The real difficult problems in this list, and where this book is the biggest help in this section, is in demonstrating how to make methods and classes shorter. To factor out just the right amount of code and still maintain the same level of understandability can be a difficult judgement call. Programmers learn best by seeing worked examples, so the sequence of presentation is:<p>* Symptoms.<br>* Causes.<br>* What to do?<br>* Payoff.<br>* Discussion.<br>* Contraindications.<p> Coding veterans will most likely find the "contraindications" section of the exercises the most helpful. It describes reasons why performing the refactoring may not be the best decision. <br> The second set of refactoring exercises are:<p>* Unnecessary complexity.<br>* Duplication.<br>* Conditional logic.<p>This set of refactorings will also be familiar to coding veterans. Removing dead code, eliminating duplicate code, deleting magic numbers and using more efficient Boolean operations have been on the list of good programming habits for decades. Therefore, the refactorings in this section are fairly routine, as they do not require an object-oriented example to demonstrate them.   <br> The most valuable section of the book is the second one, where the coverage is smells between classes, which are as follows:<p>* Data.<br>* Inheritance.<br>* Responsibility.<br>* Accommodating change.<br>* Library classes.<p>Most modern programmers will be familiar with the first section and will have already done many of them as part of their general coding practices. However, the "smells" in the second list are those that always seem to creep undetected into large programs. Therefore, they are harder to identify and often even harder to remove. I found the segment on problems in library classes to be the most valuable one of the entire book. I often use library classes in Java and there have been times when I have looked at a library class and been puzzled by how it is constructed. <br> The book closes with four small programs that are to be refactored as exercises. Large and complex enough to be worthwhile exercises, they are an excellent conclusion to a helpful book. Many problems are included and solutions to almost all are found in an appendix. <br> While this book is a good way to practice refactoring, it is not a good way to learn it. The classic book by Martin Fowler is still the best introduction to refactoring.</span>
+                  
+                    <div class="CustomerReviewSummary">Makes Refactoring Real</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>1</span>
+                      /
+                      <span>1</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-05-20</span>
+                    </div>
+                    <span>This book proved to be an excellent learning tool during a refactoring session at my eXtreme Programming Users Group meeting.  We discussed most of the covered refactorings, divided into pairs, and went through several of the exercises (many of which had downloadable code).  Thereafter, each pair discussed their approach with the entire group.  I must say the book accomplished its goal:  To give novices and veterans alike the chance to gain or sharpen refactoring skills.  I highly recommend this book and suggest its use within a group.</span>
+                  
+                    <div class="CustomerReviewSummary">Required reading to get effective at refactoring</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-12-22</span>
+                    </div>
+                    <span>The concrete identification of smells, working examples, and straighforward but useful exercises make this book a must-have to really understand how to refactor your code -- even if you're a non-Java guy like myself.<p>It would've been nice to have examples inline for some of the refactorings -- more of the feel of _Design Patterns_. I also didn't agree with him everywhere; he asserted that there were some smells that had no known justitications and had to always be addressed. However, unit tests look like they would set off his 'too much internal knowledge' smell, but I probably wouldn't just go chopping them out because of that.</span>
+                  
+                    <div class="CustomerReviewSummary">An ideal companion to Martin Fowler Refactoring book</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-12-11</span>
+                    </div>
+                    <span>An ideal companion to Martin Fowler's Refactoring book. Wake delivers a more practical oriented book, with a generous amount of relevant examples and code listings. Compared to Fowler's seminal title this one, due to its "workbook" nature, is much more Java-centric, making it harder to translate certain concepts to different languages and environments. In my opinion a very interesting and informative book, somewhat affected by a confused typographical layout not very well suited to its content. Just remember to read Fowler's book first!</span>
+                  
+                    <div class="CustomerReviewSummary">Made me a better programmer</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>5</span>
+                      /
+                      <span>5</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-10-06</span>
+                    </div>
+                    <span>Most books about programming teach us about a specific technology or two. Right now I'm staring at some great books on my shelf that have taught me things like user interface programming in Java, templates in C++, how to work with XML files, and so on. Bill Wake's "Refactoring Workbook" goes well beyond books like these. Those books give me some fleeting insights into a technology du juor. Wake's book teaching me things that will stay with me throughout my career. I finished it having learned new skills that will make me a better programmer, regardless of what I'm working on-Java user interfaces, C++, or code to read XML files.<p>The book includes over 100 exercises, many of which are answered in an appendix. I worked through the book alone but this is the type of book I'd love to work through with a group.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321125215'>
+                      Domain-Driven Design: Tackling Complexity in the Heart of Software
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 15 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0735619484'>
+                      Test-Driven Development in Microsoft  .NET (Microsoft Professional)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.5 based on 11 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0735619670'>
+                      Code Complete, Second Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 26 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0131177052'>
+                      Working Effectively with Legacy Code
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 10 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321146530'>
+                      Test Driven Development: By Example
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 18 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

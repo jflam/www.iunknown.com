@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: From AOP to Code Generation</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000274.html" title="TextPad syntax highlighting for GSLgen" />
+
+<link rel="next" href="http://www.iunknown.com/000276.html" title="Win-Dev 2003 Wrap-up" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000275.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/19"
+    dc:title="From AOP to Code Generation"
+    dc:identifier="http://www.iunknown.com/000275.html"
+    dc:subject=""
+    dc:description="I&amp;#8217;ve been off of the AOP bandwagon for some time now. This is why I can&amp;#8217;t agree more with Craig Andera&amp;#8217;s recent blog entry on Side Effects and Code Generation. Craig and Tim are old colleagues of mine from my..."
+    dc:creator="John"
+    dc:date="2003-06-10T13:15:23-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000274.html">&laquo; TextPad syntax highlighting for GSLgen</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000276.html">Win-Dev 2003 Wrap-up &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 10, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">From AOP to Code Generation</h3>
+
+<p>I&#8217;ve been off of the <span class="caps">AOP</span> bandwagon for some time now. This is why I can&#8217;t agree more with <a href="http://staff.develop.com/candera/">Craig Andera&#8217;s</a> recent blog entry on <a href="http://staff.develop.com/candera/weblog2/PermaLink.aspx/84d013ed-cd90-446c-962a-dd4776795d74">Side Effects and Code Generation</a>.</p>
+
+<p>Craig and Tim are old colleagues of mine from my DevelopMentor days. Last year, Tim and I spent some time at together at the <span class="caps">PDC</span> talking about Aspect Oriented Programming. I distinctly remembered Tim dissing the prospects of <span class="caps">AOP</span> as a general purpose abstraction tool for many of the same reasons that Craig pointed out in his blog entry. At that point in time, I totally agreed with Tim, since my work in that area led me to roughly the same conclusions.</p>
+
+<p>First, a bit of background. Some of you out there know about my prior work with <span class="caps">CLAW,</span> my Cross-Language Aspect Weaver for the <span class="caps">CLR. I</span> spent the better part of six months of my life thinking about nothing else other than building and implementing a dynamic aspect-weaving engine. Along the way, I learned an awful lot about how to do cool things to impress my friends, like dynamically injecting IL code into running assemblies. </p>
+
+<p>In the early stages of <span class="caps">CLAW, I</span> did all of my work in relative isolation. Once I discovered that there was an active <span class="caps">AOP</span> community out there, I jumped at an opportunity to present my work at the first ever academic conference on Aspect Oriented Software Development: <a href="http://trese.cs.utwente.nl/aosd2002/"><span class="caps">AOSD 2002</span></a>. I went to the conference for two reasons: one was to present my work for the purposes of feedback, and the second was to see how people were applying <span class="caps">AOP</span> techniques.</p>
+
+<p>Unfortunately, what I found out was that most of the folks at the conference were still talking about the canonical examples of <span class="caps">AOP</span>: tracing, logging, security, and instrumentation. What all of these examples have in common is the fact that the aspects are <em>stateless</em>. When you start thinking about how to build <em>stateful</em> aspects, you run into much of the same problems that web developers run into when building web pages: how do I manage the caller&#8217;s context?<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn1">1</a></sup></p>
+
+<p>Building stateful aspects requires the ability to manage call context. If you can successfully associate call context with thread id&#8217;s, for example, everything works great. But if you&#8217;re in an environment like <span class="caps">ASP.NET,</span> where you can&#8217;t associate call context with thread id&#8217;s (since the thread pool is managed by the <span class="caps">ASP.NET</span> runtime and not you) you run into a much harder problem. The problem arises because you don&#8217;t control both ends of the call: you only control the "server" side of the call.<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn2">2</a></sup></p>
+
+<p>Complicating matters is the composition problem that Craig points out: <em>services are not generally orthogonal</em>. The problem can be boiled down to <em>who gets called first?</em> Aspects must be called in some order, and some orders will yield correct results, whereas other orders do not. This is even more important in the case of aspects that yield side effects, such as committing a transaction.</p>
+
+<p>All is not lost on the <span class="caps">AOP</span> front, however. I think that <span class="caps">AOP</span> is yet another tool in your toolbox that you can use to solve specific problems. Most of those problems fall into the side-effect-free category, such as tracing, logging, and instrumentation. There are really useful applications of <span class="caps">AOP</span> in these areas, particularly in the instrumentation arena. It can be <em>very</em> useful in cases where you need help to diagnose problems on running production servers. For an example of work in this area, check out the work that <span class="caps">IBM </span>Research has done using <a href="http://trese.cs.utwente.nl/aosd2002/index.php?content=hyperprobe">HyperProbe</a>.<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn3">3</a></sup></p>
+
+<p>Authorization checking is an example of a stateless aspect that yields a side effect. <span class="caps">AOP</span> can be used to implement authorization checks, but you run into the problem of defining what the interactions between it and other stateful aspects are. I know that there are some companies out there working on using <span class="caps">AOP</span> as a technique for implementing security in existing systems. I suspect that they will succeed as long as they don&#8217;t have to fight with other services for the same join points in the system.</p>
+
+<p>Craig ends his entry by singling out code generation as the possible answer to the problems that <span class="caps">AOP</span> tries to solve. One way of looking at <span class="caps">AOP</span> is to think about it as being yet another code generation tool, which it is. The problem is that most <span class="caps">AOP</span> implementations tie aspects to a particular implementation language: <a href="http://www.eclipse.org/aspectj/">AspectJ</a> is a perfect example of this. </p>
+
+<p>However, I have a different hope for code generation: one of being able to build technology-neutral abstractions. You create a domain language that models a particular problem domain, and you write code generators that target specific implementation technologies. The real power here is being able to evolve your abstraction independent of the underlying implementation technology. For example, you can build an abstraction that represents an object-relational mapping layer that works with <span class="caps">SQL </span>Server <em>and</em> Oracle. This is an example of a category of problems that I call <a href="http://www.iunknown.com/000239.html">cross-technology abstractions</a>.</p>
+
+<p>Inventing domain languages from scratch is a hard problem. But my personal goal is to make it easier for you to make this happen in your own projects by cataloging patterns that appear in certain problem domains. I&#8217;m currently hard at work building a code-generated version of Pet Shop 3.0. Creating a code generated implementation is the easy part; finding patterns that stand up to scrutiny is another matter entirely... Stay tuned for more details!</p>
+
+<p>[1] Web developers like to think about this as the caller&#8217;s session.<br/><br />
+<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn2">2</a></sup> Defining join-points on the caller side of the equation is much harder than it looks. You run into context problems here as well &#8211; and the nasty thing is that the context changes whenever a dev touches that client code.<br/><br />
+<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn3">3</a></sup> I saw Doug Kimelman&#8217;s excellent presentation on HyperProbe at <span class="caps">AOSD 2002. </span>Unfortunately, I haven&#8217;t seen much discussion of it on the web since then.<br/></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 10, 2003 01:15 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=275" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="275" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000275.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>>I learned an awful lot about how to do cool >things to impress my friends, like dynamically >injecting IL code into running assemblies.</p>
+
+<p>That sounds really great. Could you share with us a bit of that code? It would be nice.<br />
+Thanks a lot.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.jlsa.cjb.net">Jose Luis Sampayo</a> at June 12, 2003 01:18 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>"one of being able to build technology-neutral abstractions. You create a domain language that models a particular problem domain, and you write code generators that target specific implementation technologies"</p>
+
+<p>Have you seen OMG's Model-Driven Architecture (MDA) work?  http://www.omg.org/mda</p>
+
+<p>MDA defines Platform Independent Models (PIMs) and Platform Specific Models (PSMs).  The idea is that the business analyst can model the business process as a PIM.  A technology wonk defines patterns that transform the PIM into a PSM.  An application architect customizes the PSM to handle specializations that aren't in the pattern.  The technology wonk also defines patterns that transform the PSM into working code.  A developer then customizes the code as necessary, such as making it conform to your company's standard look and feel. </p>
+
+<p>In the case of our OptimalJ tool, we give you a bunch of patterns.  You can add your own as well if you wish.  Patterns are a good place to capture boiler plate code.  </p>
+
+<p>  KC </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.compuware.com/products/devpartner">Ken Cowan</a> at June 13, 2003 10:05 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the heads-up on the MDA stuff, Ken! It was on my list of things to do, but I had initially dismissed it as "yet another UML modelling tool". I'm going to look into it on a lot more detail this weekend as I plan on curling up with at least one MDA book :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at June 13, 2003 02:07 PM</span>
+</div>
+<div class="comments-body">
+<p>Ahh, an issue close to my heart:</p>
+
+<p>Craig: >><br />
+a whole app in zero lines of code being the ultimate experience. Obviously I’m exaggerating, but I think the phenomenon of seeking to do things with fewer and fewer lines of code is a real one&lt;&lt;</p>
+
+<p>Although I didn't get on the AOP bandwagon, I do have strong feelings about code generation.  I hate it!  Our motto at Couloir is: If you know enough to generate code, you know enough NOT to.  In fact, at Couloir, we have managed to create significant applications without ANY source code.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.couloir-software.com">Gunnar Skogsholm</a> at June 14, 2003 04:24 PM</span>
+</div>
+<div class="comments-body">
+<p>But then how do you debug that code, Gunnar?</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at July  1, 2003 10:58 AM</span>
+</div>
+<div class="comments-body">
+<p>> Inventing domain languages from scratch is a hard <br />
+> problem. But my personal goal is to make it easier<br />
+> for you to make this happen in your own projects <br />
+> by cataloging patterns that appear in certain <br />
+> problem domains. Iâ€™m currently hard at work <br />
+> building a code-generated version of Pet Shop 3.0.<br />
+> Creating a code generated implementation is the <br />
+> easy part; finding patterns that stand up to <br />
+> scrutiny is another matter entirely... Stay tuned <br />
+> for more details!<br />
+I'm very interested in your case study.  Have you already finished (a part of) the generated version?</p>
+
+<p>Best regards,<br />
+Pieter Van Gorp.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.pietervangorp.com/">Pieter Van Gorp</a> at January  8, 2004 07:15 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>Sorry for a very late comment, but...<br />
+:-)</p>
+
+<p>Anyway, here it is:<br />
+http://www.jnsk.se/weblog/posts/aop.htm</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.jnsk.se/weblog/">Jimmy Nilsson</a> at February  5, 2004 04:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>Sorry for a very late comment, but...<br />
+:-)</p>
+
+<p>Anyway, here it is:<br />
+http://www.jnsk.se/weblog/posts/aop.htm</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.jnsk.se/weblog/">Jimmy Nilsson</a> at February  5, 2004 04:44 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

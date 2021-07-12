@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: The Light at the End of the Tunnel</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/934/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/09/14/the-light-at-the-end-of-the-tunnel" rel="alternate" type="text/html"/>
+  <updated>2006-09-14T19:10:04-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:fe44a916-556e-4683-bd65-0d005cc0e306</id>
+    <published>2006-09-14T19:09:42-07:00</published>
+    <updated>2006-09-14T19:10:04-07:00</updated>
+    <title type="html">The Light at the End of the Tunnel</title>
+    <link href="http://www.iunknown.com/articles/2006/09/14/the-light-at-the-end-of-the-tunnel" rel="alternate" type="text/html"/>
+    <category term="RubyCLR" scheme="http://www.iunknown.com/articles/tag/rubyclr"/>
+    <category term="Thoughts" scheme="http://www.iunknown.com/articles/tag/thoughts"/>
+    <summary type="html">&lt;p&gt;&lt;a href="http://www.bedfordonline.com/vignettes/tunnel/index.htm"&gt;&lt;img src="http://www.bedfordonline.com/vignettes/tunnel/005.jpg" width="500"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;ve spent most of the past month or so working on a rewrite of the internals of RubyCLR. I got the last major set of tests to pass today, and I&amp;#8217;m almost at feature parity with the &lt;a href="http://www.iunknown.com/articles/2006/06/19/rubyclr-drop-4"&gt;Drop 4 release&lt;/a&gt;. So I finally decided to check in new bits into the &lt;a href="http://rubyforge.org/projects/rubyclr/"&gt;Subversion repository&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a brief summary of what&amp;#8217;s changed:&lt;/p&gt;
+
+
+	&lt;ol&gt;
+	&lt;li&gt;Better coverage in trapping &lt;span class="caps"&gt;CLR&lt;/span&gt; exceptions and marshaling them to Ruby.&lt;/li&gt;
+		&lt;li&gt;Better error reporting &amp;#8211; you will see both a &lt;span class="caps"&gt;CLR&lt;/span&gt; and a Ruby stack trace if your application crashes.&lt;/li&gt;
+		&lt;li&gt;Better performance, the unit tests run about 60% faster than in Drop 4. &lt;/li&gt;
+		&lt;li&gt;Cleaner organization of code in the C++ layer. I would say that 90% of the code was touched during this rewrite (which is why it took so long).&lt;/li&gt;
+		&lt;li&gt;Vastly improved support for generics and nested types.&lt;/li&gt;
+		&lt;li&gt;Independent set of unit tests for new reflection library.&lt;/li&gt;
+		&lt;li&gt;Better separation of layers. Things are very strict in this release and it&amp;#8217;s much more obvious which layer you&amp;#8217;re coding in.&lt;/li&gt;
+	&lt;/ol&gt;
+
+
+	&lt;p&gt;Most of the samples work, including the &lt;a href="http://www.iunknown.com/articles/2006/07/27/oscon-day-3-and-a-better-ruby-ide"&gt;prototype irb in Avalon&lt;/a&gt;. I&amp;#8217;ll fix the few remaining bugs on my list and will probably release a Drop 5 tomorrow in anticipation of Beta 1 (which will include docs!) in time for &lt;a href="http://www.rubyconf.org"&gt;RubyConf&lt;/a&gt;.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;&lt;a href="http://www.bedfordonline.com/vignettes/tunnel/index.htm"&gt;&lt;img src="http://www.bedfordonline.com/vignettes/tunnel/005.jpg" width="500"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;ve spent most of the past month or so working on a rewrite of the internals of RubyCLR. I got the last major set of tests to pass today, and I&amp;#8217;m almost at feature parity with the &lt;a href="http://www.iunknown.com/articles/2006/06/19/rubyclr-drop-4"&gt;Drop 4 release&lt;/a&gt;. So I finally decided to check in new bits into the &lt;a href="http://rubyforge.org/projects/rubyclr/"&gt;Subversion repository&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a brief summary of what&amp;#8217;s changed:&lt;/p&gt;
+
+
+	&lt;ol&gt;
+	&lt;li&gt;Better coverage in trapping &lt;span class="caps"&gt;CLR&lt;/span&gt; exceptions and marshaling them to Ruby.&lt;/li&gt;
+		&lt;li&gt;Better error reporting &amp;#8211; you will see both a &lt;span class="caps"&gt;CLR&lt;/span&gt; and a Ruby stack trace if your application crashes.&lt;/li&gt;
+		&lt;li&gt;Better performance, the unit tests run about 60% faster than in Drop 4. &lt;/li&gt;
+		&lt;li&gt;Cleaner organization of code in the C++ layer. I would say that 90% of the code was touched during this rewrite (which is why it took so long).&lt;/li&gt;
+		&lt;li&gt;Vastly improved support for generics and nested types.&lt;/li&gt;
+		&lt;li&gt;Independent set of unit tests for new reflection library.&lt;/li&gt;
+		&lt;li&gt;Better separation of layers. Things are very strict in this release and it&amp;#8217;s much more obvious which layer you&amp;#8217;re coding in.&lt;/li&gt;
+	&lt;/ol&gt;
+
+
+	&lt;p&gt;Most of the samples work, including the &lt;a href="http://www.iunknown.com/articles/2006/07/27/oscon-day-3-and-a-better-ruby-ide"&gt;prototype irb in Avalon&lt;/a&gt;. I&amp;#8217;ll fix the few remaining bugs on my list and will probably release a Drop 5 tomorrow in anticipation of Beta 1 (which will include docs!) in time for &lt;a href="http://www.rubyconf.org"&gt;RubyConf&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:b953646c-ef94-4c6c-bd78-b8c2538c407c</id>
+    <published>2006-09-15T12:26:34-07:00</published>
+    <updated>2006-09-15T14:20:54-07:00</updated>
+    <title type="html">Comment on The Light at the End of the Tunnel by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/09/14/the-light-at-the-end-of-the-tunnel#comment-945" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;New snapshot will be out tonight (I have a lousy net connection here at the library where I do most of my work). &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Justin</name>
+    </author>
+    <id>urn:uuid:71047a6e-93ba-4e77-9f90-c002cf12b368</id>
+    <published>2006-09-15T11:41:08-07:00</published>
+    <updated>2006-09-15T12:25:21-07:00</updated>
+    <title type="html">Comment on The Light at the End of the Tunnel by Justin</title>
+    <link href="http://www.iunknown.com/articles/2006/09/14/the-light-at-the-end-of-the-tunnel#comment-943" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;John,&lt;/p&gt;
+
+&lt;p&gt;I can't get to the subversion repository from behind my proxy at work. Any chance you are going to put this in a gem soon or make a new downloadable release?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:1a85c676-8baa-4a0d-ba26-dff2f6820fa8</id>
+    <published>2006-09-15T05:22:23-07:00</published>
+    <updated>2006-09-15T07:03:26-07:00</updated>
+    <title type="html">Comment on The Light at the End of the Tunnel by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/09/14/the-light-at-the-end-of-the-tunnel#comment-941" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;It was checked into a private repository here, just not the main respository. The new code was very broken for a very long time (this was a fundamental rewrite) that it didn't make any sense to have it in the public repository.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Peter Krantz</name>
+    </author>
+    <id>urn:uuid:9893da7e-e594-457a-a600-5df554595394</id>
+    <published>2006-09-14T23:38:49-07:00</published>
+    <updated>2006-09-15T07:03:29-07:00</updated>
+    <title type="html">Comment on The Light at the End of the Tunnel by Peter Krantz</title>
+    <link href="http://www.iunknown.com/articles/2006/09/14/the-light-at-the-end-of-the-tunnel#comment-940" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Way to go John! This looks very promising. It looks like we are close to be able to sun Rails on either the JVM or CLR in the near future. Has Microsoft made you an offer yet? :-)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Nathan</name>
+    </author>
+    <id>urn:uuid:5470385a-a03d-44b7-a4aa-6e391b592200</id>
+    <published>2006-09-14T21:11:03-07:00</published>
+    <updated>2006-09-15T05:20:49-07:00</updated>
+    <title type="html">Comment on The Light at the End of the Tunnel by Nathan</title>
+    <link href="http://www.iunknown.com/articles/2006/09/14/the-light-at-the-end-of-the-tunnel#comment-937" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;You mean you have a months worth of work that is not checked in anywhere, not even on a branch?  That seems just a little bit reckless to me.&lt;/p&gt;
+
+&lt;p&gt;Then again the computer department where I work (I'm not a professional developer) don't use any version control software at all.  so what do I know. &lt;/p&gt;</content>
+  </entry>
+</feed>

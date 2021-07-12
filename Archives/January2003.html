@@ -1,0 +1,417 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/276 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>IUnknown.com - January 2003 Weblog Archives</title>
+<link rel="stylesheet" href="../iunknown.css">
+<script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+<script language="javascript">
+  function HaloScan2(id) { 
+    location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+  }
+</script>
+</head>
+<BODY>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <p><span class="entryTitle">January 2003 Archives</span></p>
+         
+          <div class="entryTitle">Hello SpamNet</div>
+          <div class="entryDate">2003-01-27</div>
+          <p><P>Since I couldn't get Spam Assassin Pro running (and I needed to retire that other computer) I decided to try out <A href="http://www.cloudmark.com">CloudMark's SpamNet</A>. Apparently this software works by collecting information about Spam in a giant distributed network - it relies on Outlook users everywhere to generate its "blacklist". </P>
+<P>I had a tough time installing it though. Since I <A href="../Weblog/Ivemadetheswitch....html">no longer run as a local administrator</A> on my computer, I rely on switching to a shell with admin privileges to run setup programs. However, SpamNet's setup&nbsp;apparently uses your logon token to determine which account should be setup for SpamNet. Therefore my usual tricks didn't work. I had to manually add myself to the local admins group on my computer, install SpamNet, and then remove myself from the local admins group. This would be useful as a KB article on their web site.</P>
+<P><STRONG>Update:</STRONG> You also have to configure ISA server to open up port 2703 for outbound TCP traffic.</P></p>
+          <p><a href="../Weblog/HelloSpamNet.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Hello SpamNet" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/HelloSpamNet.html');"><script type="text/javascript">postCount('Weblog/HelloSpamNet.html');</script></a></p>
+         
+          <div class="entryTitle">Spam Assassin Pro</div>
+          <div class="entryDate">2003-01-27</div>
+          <p><P>Apparently <A href="http://www.deersoft.com">Deersoft</A> has been <A href="http://www.mcafeeb2b.com/other/jump/deersoft.asp">bought by McAfee</A>. I purchased Spam Assassin Pro a few months ago, and have loved the product. Unfortunately, it runs on a computer that I want to retire, and I no longer have the setup bits handy.</P>
+<P>So I went to their web site, and they no longer offer the product for download anymore! I have a registration code, all I need is the @#$@#$ trial version installation bits! Does anyone out there have a copy of the trial version? </P></p>
+          <p><a href="../Weblog/SpamAssassinPro.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Spam Assassin Pro" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/SpamAssassinPro.html');"><script type="text/javascript">postCount('Weblog/SpamAssassinPro.html');</script></a></p>
+         
+          <div class="entryTitle">Let's be careful out there ...</div>
+          <div class="entryDate">2003-01-27</div>
+          <p><P>I'm in the process of setting up a new desktop dev machine, and spent the better part of this evening installing tons of software. One of the patches that I hadn't installed yet was SQL Server 2000 Service Pack 3. The reason why I hadn't really thought about it was because none of my SQL Server boxes are exposed to the public Internet. My ISA server is configured to block UDP port 1434 traffic by default.</P>
+<P>But there is one SQL Server box that I <EM>almost</EM> forgot about: my laptop. I tend to connect to all sorts of foreign networks with my laptop. Had I done so with an unpatched SQL Server running on my laptop, I would have brought the Slammer worm back home behind my ISA server firewall. Then all hell would have broken loose.</P>
+<P>So the lesson here is: beware of laptops. They can easily subvert the security provided by your network's perimeter defenses. And make sure you patch ALL SQL servers regardless of whether they are behind your firewall or not!</P></p>
+          <p><a href="../Weblog/Letsbecarefuloutthere....html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Let's be careful out there ..." alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Letsbecarefuloutthere....html');"><script type="text/javascript">postCount('Weblog/Letsbecarefuloutthere....html');</script></a></p>
+         
+          <div class="entryTitle">From the way-back machine</div>
+          <div class="entryDate">2003-01-26</div>
+          <p><P>While we were hunting around for a floppy disk that Carolyn could use to bring some files to school, we stumbled across this picture:</P><SPAN>
+<P>
+<TABLE align=center>
+<CAPTION align=bottom>Optimizing DCOM class, DevelopMentor August 22, 1997</CAPTION>
+<TBODY>
+<TR>
+<TD>
+<CENTER><IMG height=397 alt=[Image] hspace=4 src="../Images/CLASS.jpg" width=573 border=0 cd:pos="6"></CENTER></TD></TR></TBODY></TABLE></P>
+<P><BR clear=all>This was the class picture taken at the end of the Optimizing DCOM class that I took from <A href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</A> in preparation for becoming a COM instructor at <A href="http://www.develop.com">DevelopMentor</A>. It was taken outside of DM's old office on Voyager Blvd in Torrance, CA. </P>
+<P>I'm pretty sure that this photo was taken using Don's DSC F2&nbsp;digital camera - a 640 x 480 marvel of technology in its day. I met Don at the inaugural design review for the CLR (called COR back then), in Redmond on June 25, 1997 when Charlie Kindel introduced us.&nbsp;Man, it seems like just yesterday. How time flies!</SPAN></P></p>
+          <p><a href="../Weblog/Fromtheway-backmachine.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to From the way-back machine" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Fromtheway-backmachine.html');"><script type="text/javascript">postCount('Weblog/Fromtheway-backmachine.html');</script></a></p>
+         
+          <div class="entryTitle">Digital camera workflow</div>
+          <div class="entryDate">2003-01-24</div>
+          <p><P>My brother Thomas and I bought a Canon S30 digital camera for our dad's birthday last week. I chipped in by donating my Epson Stylus 860 photo printer. </P>
+<P>One of the things that new digital camera users inevitably run straight into is the complexity of the digital camera "workflow". The complexity of this workflow is not usually obvious until you compare it with the film camera "workflow":</P>
+<OL>
+<LI>Shoot a roll of film 
+<LI>Give it to someone else who processes your film into prints / slides</LI></OL>
+<P>The digital camera workflow is significantly more complicated because you now are managing all of step 2 yourself. In a digital camera, your workflow looks like:</P>
+<OL>
+<LI>Shoot some pictures 
+<LI>Download pictures into your computer 
+<LI>Select the ones that "turned out" and discard the rest 
+<LI>Tweak and adjust the pictures 
+<LI>Print the ones you <EM>really</EM> like</LI></OL>
+<P>This is a lot more friction than the film workflow. Ideally, you would like to give your photos to your computer and have it perform the job of a digital mini-lab. While this is theoretically possible, it really isn't possible given the crappy usability of the software that exists today.</P>
+<P>Steps 2 and 3 are handled reasonably well by software today. The things that complicate matters are steps 4 and 5. The problem here is that typical film camera users never could do these tasks in the past, so there is nothing for them to relate to. </P>
+<P>Ideally, Step 4 would be fully automatic. It would detect common exposure flaws (red-eye caused by on-camera flashes, and shooting back-lit portraits without flash are probably the most common) and perform automatic exposure compensation. Eliminating Step 4 would be a huge boom to usability, as it eliminates a common "friction" step. </P>
+<P>Step 5 can also be problematic, especially if you haven't color-calibrated your monitor and printer. If you want to "adjust" the colors of your photographs, invariably you will find that they won't match the colors that are on your display. Camera and printer manufacturers are getting better with the new Print Image Matching (PIM) feature - really just an extension of the EXIF metadata format, but the biggest problem is getting your monitor calibrated.</P>
+<P>All in all, it would be great if usability considerations would be addressed in the digital camera workflow process. Things are getting better (iPhoto does a nice job by integrating steps 2-5 into a single application). However, it's <EM>really </EM>tough to compete with the film camera workflow. I can now understand why digital minilabs and dedicated 4 x 6 photo printers have a place in the marketplace.</P></p>
+          <p><a href="../Weblog/Digitalcameraworkflow.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Digital camera workflow" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Digitalcameraworkflow.html');"><script type="text/javascript">postCount('Weblog/Digitalcameraworkflow.html');</script></a></p>
+         
+          <div class="entryTitle">Conference Season</div>
+          <div class="entryDate">2003-01-21</div>
+          <p><P>So far, it's shaping up to be an interesting conference season. </P>
+<P>I'm speaking at this year's <A href="http://butrain.com/windev/">WinDev conference</A> June 16-20 in Boston.</P>
+<P>I'm the C++ / C# track chair for the <A href="http://www.devconnections.com">DevConnections conference</A> May 6-9 in New Orleans. I'm really proud of the speaker lineup that I have put together for my tracks this year. </P>
+<P>In the C++ track, I have <A href="http://www.aristeia.com">Scott Meyers</A>, <A href="http://www.langer.camelot.de/">Angelika Langer</A> and <A href="http://www.grimes.demon.co.uk/">Richard Grimes</A>. Here's a list of the talks that they will be presenting:</P>
+<P>Scott Meyers:</P>
+<OL>
+<LI>Effective STL Programming pre-conference tutorial 
+<LI>Approaches to the Static Initialization Problem 
+<LI>rvalues in C++ 
+<LI>False Friends in C++</LI></OL>
+<P>Angelika Langer:</P>
+<OL>
+<LI>The Pragmatic Template Programmer 
+<LI>Programming with C++ Exceptions 
+<LI>Type Conversions in C++</LI></OL>
+<P>Richard Grimes:</P>
+<OL>
+<LI>Managed Extensions for C++ 
+<LI>Interop and Managed C++ 
+<LI>ATL7 Architecture</LI></OL>
+<P>In the C# side track, I have <A href="http://www.wintellect.com/about/instructors.aspx?id=11">Jason Clark</A>, <A href="http://staff.develop.com/aarons/">Aaron Skonnard</A>, <A href="http://staff.develop.com/bobb/">Bob Beauchemin</A>, and <A href="http://www.ingorammer.com/weblog/default.aspx">Ingo Rammer</A>. Here's a list of the talks that they will be presenting:</P>
+<P>Jason Clark:</P>
+<OL>
+<LI>A Day of Managed Programming with C#: pre-conference tutorial together with yours truly 
+<LI>Introduction to .NET Code Access Security 
+<LI>.NET Multithreaded Programming 
+<LI>Dissecting the .NET Type System</LI></OL>
+<P>Aaron Skonnard:</P>
+<OL>
+<LI>The XML "Top Ten" 
+<LI>Understanding .NET Web Services 
+<LI>Mapping XML to Objects: Type System Mismatches</LI></OL>
+<P>Bob Beauchemin:</P>
+<OL>
+<LI>Optimizing SQL Server access in .NET 
+<LI>Optimistic Concurrency choices using SqlClient 
+<LI>ADO.NET and ASP.NET Applications</LI></OL>
+<P>Ingo Rammer:</P>
+<OL>
+<LI>Design and Development of Distributed .NET Applications Parts 1 and 2 
+<LI>Why you should care about Enterprise Services</LI></OL>
+<P>John Lam:</P>
+<OL>
+<LI>Pragmatic C# development 
+<LI>The CLR "Top Ten" (title shamelessly stolen from Aaron's talk&nbsp;:)</LI></OL>
+<P>I'll be giving the following talks at WinDev:</P>
+<OL>
+<LI>From AOP to Generative Programming: Creating Manageable Abstractions 
+<LI>Using NAnt and NUnit to Manage the Development Process 
+<LI>Web Forms Internals 
+<LI>ASP.NET Debugging Technqiues</LI></OL></p>
+          <p><a href="../Weblog/ConferenceSeason.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Conference Season" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/ConferenceSeason.html');"><script type="text/javascript">postCount('Weblog/ConferenceSeason.html');</script></a></p>
+         
+          <div class="entryTitle">Consistency == usability</div>
+          <div class="entryDate">2003-01-15</div>
+          <p><P>One of the hardest things to deal with when learning something new is inconsistency. I rely on finding patterns in systems and reducing those patterns to idioms that I can easily remember. There have been two different things that I have been working on recently that have driven me <EM>crazy</EM> and in both cases the root of the problem is inconsistency.</P>
+<P>OS X applications lack consistency in the way they handle the keyboard. It seems like every application has a different set of keystrokes for extremely common operations. By common operations, I mean things that devs do every day: next word, previous word, beginning of line, end of line, top of document, bottom of document. Among the three editors that I use on a daily basis, email and two different programming editors, they <EM>all</EM> have different keystrokes for these simple operations. In one editor command left takes me to the beginning of a line, in another editor it takes me to the previous word. Because of this, my TiBook just feels ... awkward. </P>
+<P>In the other case, I've been learning a new API. This API is <EM>incredibly</EM> inconsistent. The abstractions&nbsp;break down in so many different places. Just when&nbsp;you think you've got the API figured out, it throws&nbsp;yet another curveball at you.&nbsp;It makes me appreciate just how difficult it is to create an API that is actually usable, especially when it has to evolve over several product releases, and you have to maintain backward compatibility.</P></p>
+          <p><a href="../Weblog/Consistencyusability.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Consistency == usability" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Consistencyusability.html');"><script type="text/javascript">postCount('Weblog/Consistencyusability.html');</script></a></p>
+         
+          <div class="entryTitle">What's the big deal about Safari?</div>
+          <div class="entryDate">2003-01-11</div>
+          <p><P>Is it just me, or is <A href="http://www.apple.com/safari/">Safari</A> a solution looking for a problem? I've run this browser for a few days on my Mac, and I personally don't see <EM>any</EM> difference in rendering speed when doing side-by-side comparisons with IE. Even if it were faster, I suspect that most of speed difference would be soaked up by network latency.</P>
+<P>Personally, I look at web browsing as a solved problem. There are far more important and interesting problems to spend engineering dollars on than building yet another web browser.</P></p>
+          <p><a href="../Weblog/WhatsthebigdealaboutSafar.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to What's the big deal about Safari?" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/WhatsthebigdealaboutSafar.html');"><script type="text/javascript">postCount('Weblog/WhatsthebigdealaboutSafar.html');</script></a></p>
+         
+          <div class="entryTitle">Rotor</div>
+          <div class="entryDate">2003-01-10</div>
+          <p><P>You knew it had to <A href="../Weblog/Inowhaveanexcusetobuythat.html">happen some day</A>:</P><SPAN>
+<CENTER><IMG height=182 alt=[Image] hspace=4 src="../Images/rotor.png" width=545 border=0 cd:pos="0"><BR clear=all></CENTER></SPAN>
+<P>It took about 50 minutes to build the SSCLI sources on my TiBook. Thanks to <A href="http://www.devhood.com/tutorials/tutorial_details.aspx?tutorial_id=579">Aaron Brethorst's most excellent instructions</A> for how to do this.</P></p>
+          <p><a href="../Weblog/Rotor.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Rotor" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Rotor.html');"><script type="text/javascript">postCount('Weblog/Rotor.html');</script></a></p>
+         
+          <div class="entryTitle">Keynote</div>
+          <div class="entryDate">2003-01-10</div>
+          <p><P>My copy of <A href="http://www.apple.com/keynote/">Keynote</A> arrived today. I'm amazed that I ordered this software without even seeing a demo of it. So in some ways I was unsure of what to expect today. I have to report, however, that I'm totally blown away.</P>
+<P>I'm a long-time <A href="http://www.microsoft.com/office/powerpoint/default.asp">PowerPoint</A> user. Since I pay my mortgage by teaching software developers, PowerPoint has been a central part of my life for a long time. I thought that there wasn't much left to do in the presentation space, and apparently so did Microsoft, since there hasn't been much in the way of new features in PowerPoint in a <EM>long</EM> time.</P>
+<P>So when I got my copy of Keynote, I fired up the demo slide deck that ships with the product. I was totally amazed by the eye candy that awaited me. There were beautifully done 3D transitions, as well as incredibly fast alpha blending cross-fades and animation. The speed with which my TiBook could render a picture twirling in from stage left was breathtaking. </P>
+<P>Now I realize that with great power comes great responsibility. I'm sure that these effects will be abused by a great many presenters (myself included) for a while before we calm down. But I think that if used creatively, these things will add quite a lot of sizzle to a presentation. </P>
+<P>The stock templates that ship with Keynote are really pretty as well. They reflect the rendering power and storage that is available on modern laptops. The presentations created by Keynote are not small by any stretch (Presentation Tips.key weighs in at a hefty 11.2MB), but honestly who cares? </P>
+<P>Probably the most important feature of Keynote (and this was why I ordered it sight unseen) is the fact that Keynote stores its content as XML documents. Keynote documents are really directories, and within those directories you will find all of the media files associated with your presentation, as well as the content of your presentation in a presentation.apxl file.</P>
+<P>The cool thing about having my content in XML is the fact that I can auto-generate my slide decks from other sources. One example is extracting code frags from actual source code files, rather than have to manually cut and paste that code into my presentation software. </P>
+<P>So far, I'm very happy with Keynote. I'll post more observations once I get more time to work with it.</P></p>
+          <p><a href="../Weblog/Keynote.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Keynote" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Keynote.html');"><script type="text/javascript">postCount('Weblog/Keynote.html');</script></a></p>
+         
+          <div class="entryTitle">Cool Mac and Windows utilities</div>
+          <div class="entryDate">2003-01-09</div>
+          <p><P>There are a number of really cool utilities that I really can't live without, and I thought I'd gather them here to generate a bit of discussion. In the Windows corner:</P>
+<P><A href="http://www.dqsd.net/">Dave's Quick Search Deskbar</A>. This is by far the coolest utility that I have ever used. I haven't used anywhere near all of its features, but here's a list of the ones that I use often:</P>
+<UL>
+<LI>Typing in arbitrary text will search for that text using Google 
+<LI>amaz <EM>search terms </EM>/books will search for the search terms in the books section of Amazon 
+<LI>fedex <EM>tracking number</EM> will check the status of a fedex shipment 
+<LI>radix <EM>number</EM> will display that number in octal, hex, and binary 
+<LI>0x<EM>hex</EM>= will convert a hex number to decimal 
+<LI><EM>num1&nbsp;op num2= </EM>will act as an inline calculator</LI></UL>
+<P>There's tons of other features that I haven't used yet. Best of all, it's free!</P>
+<P><A href="http://www.panicware.com/">Popup Stopper</A>. I can't surf without this free utility that effectively blocks popup ads from appearing. However, there are times when it blocks legitimate applications, so you need to remember to turn it on and off as well. </P>
+<P>Windows command completion. This lets you complete directory paths / filenames by pressing the tab key in a command shell. For example you can type "c:\Pro" and then hit the tab key to get "c:\Program Files" in the command prompt. This feature is enabled by default in fresh installs of Windows XP. For those of you who don't have this feature turned on, use regedit to set HKLM\Software\Microsoft\Command Processor\CompletionChar=0x9.</P>
+<P>In the Mac corner:</P>
+<P><A href="http://www.obdev.at/products/launchbar/">LaunchBar</A>: This utility lets you use the keyboard to launch applications and open Finder windows. For example, you can type "CMD-Space itu ENTER" to launch iTunes or "CMD-Space /L ENTER" to navigate to open a Finder window for the /Library directory. This saves me a lot of time every day.</P>
+<P><A href="http://home.earthlink.net/~basilisksoftmirror/menumeters/">MenuMeters</A>: This utility places icons in your Menu bar that shows network activity, disk I/O, memory usage and cpu usage. It's great to be able to see what your computer is up to at all times in a nice and&nbsp;compact UI.</P>
+<P>Since I'm new to the Mac world, I'd love to hear about more utilities that you can't live without in the Mac world. </P></p>
+          <p><a href="../Weblog/CoolMacandWindowsutilitie.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Cool Mac and Windows utilities" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/CoolMacandWindowsutilitie.html');"><script type="text/javascript">postCount('Weblog/CoolMacandWindowsutilitie.html');</script></a></p>
+         
+          <div class="entryTitle">A switch that I would love to see</div>
+          <div class="entryDate">2003-01-07</div>
+          <p><P>is Mac OS X running on standard PC hardware. Dan Gillmor <A href="http://www.siliconvalley.com/mld/siliconvalley/4878488.htm">wrote this op-ed piece on the weekend</A>.</P>
+<P>I think that Apple needs to increase its user base at <EM>any</EM> cost or risk becoming irrelevant. <A href="../Weblog/HowMacsarefasterthanPCsan.html">The price / performance gap</A> between Apple and PC hardware is only getting bigger these days.</P>
+<P>I'm fortunate enough that I have the money to pay nearly $5K CDN to "switch" to OS X. Personally I would rather have spent $200 CDN on Mac OS X to run on one of my existing Windows boxes. I know that lots of other folks would love to be able to do the same thing too.</P>
+<P>I suspect, however, that the biggest obstacle to running OS X on arbitrary PC hardware is driver support. That isn't going to be an easy problem for Apple to overcome, considering the bewildering array of hardware available in the PC space.</P></p>
+          <p><a href="../Weblog/AswitchthatIwouldlovetose.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to A switch that I would love to see" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/AswitchthatIwouldlovetose.html');"><script type="text/javascript">postCount('Weblog/AswitchthatIwouldlovetose.html');</script></a></p>
+         
+          <div class="entryTitle">The slippery slope of WORA</div>
+          <div class="entryDate">2003-01-07</div>
+          <p><P>On my drive over to the Sun Tech Days presentation in Toronto, an idea kept rattling around in my head: Sun cares a lot about WORA (Write Once Run Anywhere). During the sessions that I attended, one of the things that Sun speakers stressed over and over again was the need for portability across different EJB containers. The question that I don't see addressed very often is: <EM>why does Sun care about portability</EM>? </P>
+<P>The answer to this question isn't immediately obvious. After all, Sun is a <EM>hardware</EM> company that doesn't appear to make money directly from its Java technology suite. Java, however, is the technology that brought Sun into the forefront of public / developer consciousness. So I believe the question really is one of how Sun can turn Java mind share into hardware profits. </P>
+<P>The answer to this question is that Sun wants Java applications to run on Sun hardware. In order to make that a reality, Java must be portable, otherwise there would be too much friction involved in migrating an application from one hardware / container platform to Sun's. By adopting this strategy, they have effectively tied the future of Sun to the idea that folks could develop Java code on their existing hardware, but that eventually, someday, those folks would reach into their checkbook and buy some Sun hardware. </P>
+<P>While this is not necessarily a bad strategy, I think its a <EM>horrible</EM> strategy for Sun. Java portability is a double-edged sword that lets folks switch to Sun hardware, but it also makes it possible for folks to switch <EM>away </EM>from Sun hardware. The only way that this strategy can work effectively in the long term is if Sun can outperform the competition in price / performance. </P>
+<P>I really don't see how this is possible, as&nbsp;Sun builds and sells proprietary hardware. Their hardware commands a considerable price premium over competitor's products today. In fact, no Sun hardware can be found in the top 10 results for TPC-C <A href="http://www.tpc.org/tpcc/results/tpcc_perf_results.asp">raw performance</A> or <A href="http://www.tpc.org/tpcc/results/tpcc_price_perf_results.asp">price/performance</A>.&nbsp;This premium is likely to continue to exist in the future because they lack the economies of scale that are available to the competition. Unless Sun can turn this around, it is likely that businesses will exploit Java's portability to switch <EM>away </EM>from Sun hardware. </P>
+<P>As applications continue to migrate towards Web Services, things will only get worse for Sun since Web Services are yet another technology that make it easier for businesses to switch to the platform that provides best price / performance. It is unclear what that platform might be long term, but Sun faces some really serious competition in that space. </P></p>
+          <p><a href="../Weblog/TheslipperyslopeofWORA.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to The slippery slope of WORA" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/TheslipperyslopeofWORA.html');"><script type="text/javascript">postCount('Weblog/TheslipperyslopeofWORA.html');</script></a></p>
+         
+          <div class="entryTitle">Sun Tech Days Presentation</div>
+          <div class="entryDate">2003-01-07</div>
+          <p><P>I went to <A href="http://www.sun.com/developers/techdays/agenda/toronto.html">the Sun Tech Days presentation in Toronto</A> this morning to hear <A href="http://java.sun.com/people/jag/">James Gosling</A> speak. I had always wanted to see James speak, as I had always respected his contributions to software development through his Java efforts. I was horribly disappointed by what I heard. </P>
+<P>Instead of hearing something insightful about the state of Java, we were subjected to a 40 minute rambling talk about nothing in particular. There were examples of Java being used in inconsequential applications - cel phone pets in Japan, automotive computers, and the Java application he was using to show his presentation slides. There was discussion about tangential topics: Moore's Law, <A href="http://www.ntia.doc.gov/otiahome/top/conferenceworkshops/2001_outreach_workshops/three_laws.html">Metcalf's Law</A>, and how many developers were using Java. There was even some tangential Web Services bashing - "the amount of XML/SOAP traffic on your network is below detectable limits", which of course is surprising since the follow-on session was a description of Sun's Web Services strategy. </P>
+<P>Gosling's talk was doomed from the start; he didn't have a story that he was trying to tell the audience. Instead, we listened to a number of totally unrelated anecdotes from his professional life. The only connection between those anecdotes was that Java was somehow involved in each one of them. At the end of the presentation, it wasn't clear at all to me why I should be excited by Java. </P>
+<P>It's sad that Sun has to capitalize on his reputation in order to get an audience into a room. If this was a typical Gosling presentation, they really should keep him in the research lab and away from the public. The only cool thing about James was that he used a TiBook in his presentation :) </P>
+<P>The tag-team Web Services speakers that followed James were even worse. The Web Services title of their talk was a smokescreen for their marketing message: why you need <A href="http://wwws.sun.com/software/sunone/">the Sun ONE developer platform</A>. They talked for a couple of minutes about Web Services, but the rest of the time was spent as an infomercial for various Sun products. They even spent took a timeout to bash Microsoft by claiming that Java was more secure than the CLR since the speaker's mom could download and run Java applets on her computer! </P>
+<P>The one redeeming thing about sitting through this presentation was that I had an opportunity to write this blog entry on my TiBook. I wrote it using TextEdit, which surprised me with its on-the-fly spell checking feature. Since TextEdit is a Cocoa application, I'm guessing that the spell check service is a feature provided by OS X that I should be able to integrate into any Cocoa application. I'm also loving the battery life of my TiBook - the power gauge has indicated 3.5 hours remaining for the past 45 minutes or so :) </P></p>
+          <p><a href="../Weblog/SunTechDaysPresentation.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Sun Tech Days Presentation" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/SunTechDaysPresentation.html');"><script type="text/javascript">postCount('Weblog/SunTechDaysPresentation.html');</script></a></p>
+         
+          <div class="entryTitle">Has John gone off the deep end?</div>
+          <div class="entryDate">2003-01-06</div>
+          <p><P><A href="http://radio.weblogs.com/0105852/">Sam Gentile</A> thinks that I might have gone off the deep end. First <A href="../Weblog/MerryChristmastome....html">I run off and buy a Mac</A>, next I decide that I need to <A href="../Weblog/Softwareco-operative.html">create my own software commune</A>. I'm fairly certain that Sam thinks I've become some kind of software hippy. He wonders how the Mac is going to impact my bottom line. That's a fair question; I'll try to address it in this entry.</P>
+<P>As far as the bottom line is concerned, I've never been particularly motivated by money. That doesn't mean that I would turn down money that was offered to me, nor does it mean that I'm inexpensive to hire (I'm not). It simply means that the choices that I make are not <EM>primarily </EM>motivated by money. I've got more than enough money to maintain my lifestyle, so the rest of my time is spent on <A href="http://web.utk.edu/~gwynne/maslow.HTM">self-actualization</A>.</P>
+<P>I firmly believe that I have spent too much time being influenced by one school of thought - the Windows / COM / C++ school of thought. I feel that this school <A href="../Weblog/Keepinganopenmind.html">colors into my thinking in certain ways</A>. Therefore, I have identified two areas that I want to investigate further. The first is how the Win32 API compares to Mac OS X as a client application development environment, and the second is whether dynamically typed languages really are more productive than the statically typed languages that I'm used to.</P>
+<P>Mac OS X lets me spend time learning from folks who have a different solution to the same sets of problems that we try to solve in the Windows world. There are some really nice features in Cocoa, such as native rendering of documents in PostScript and a model-view-controller approach to building UI's.</P>
+<P>Objective C has some elements of a dynamically typed language.&nbsp;I can send messages to arbitrary objects without knowing their types at compile time. This is a very different approach to programming than I'm used to, and it's great to see things from a different point of view. It's even more useful when you gain enough experience to be able to intelligently compare it with C++ and C#.[1] </P>
+<P>A nice side effect of these investigations is that I am able to observe <EM>how </EM>I learn a new set of technologies. I think this feedback is extremely valuable in helping me improve my course materials for <A href="http://www.wintellect.com/seminars/training.aspx?courses=1&amp;id=3">my Programming ASP.NET class</A>. Too often, I forget what it is like to learn an entirely new technology like ASP.NET. These days I spend lots of time thinking about how to improve the learning process for my students.</P>
+<P>My hope is that I become a better programmer after exploring these new horizons. Yes, I'm aware of the opportunity cost associated with these efforts, but I firmly believe that the opportunity cost of <EM>not</EM> investigating these technologies at this point in my career would be far, far greater. </P>
+<P>[1] I don't think that I'm there yet, but I'm collecting a set of observations that I intend to write up in the future. </P></p>
+          <p><a href="../Weblog/HasJohngoneoffthedeepend.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Has John gone off the deep end?" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/HasJohngoneoffthedeepend.html');"><script type="text/javascript">postCount('Weblog/HasJohngoneoffthedeepend.html');</script></a></p>
+         
+          <div class="entryTitle">Software co-operative</div>
+          <div class="entryDate">2003-01-06</div>
+          <p><P>I spent some time this morning reading <A href="http://www.pobronson.com">Po Bronson's web site</A>. I really loved one of his earlier books, <A href="http://www.pobronson.com/index_nudist.htm">The Nudist on the Late Shift</A>, which captures the spirit of Silicon Valley in the midst of the .com boom of the late 90's. What brought me back to his site is a new book that he just released, <A href="http://www.pobronson.com/index_what_should_I_do_with_my_life.htm">What Should I Do With My Life?</A>&nbsp;I read <A href="http://www.fastcompany.com/online/66/mylife.html">an excerpt from this book in Fast Company</A>, and it has me hooked. This will be the next non-geek book on my reading list.</P>
+<P>While reading about his history, I read his fascinating description of <A href="http://www.pobronson.com/index_the_grotto.htm">a writer's cooperative called The Grotto in San Francisco</A>. This idea really has me stoked. A few years ago, my friend Michael Lenaghan graciously offered me free office space in Toronto. I have fond memories of the years that I spent hanging out there, and one of our discussions there directly lead me to becoming an instructor at DevelopMentor and being exposed to the CLR for the first time.</P>
+<P>These days, I work mostly out of my home office. However, it can be a very isolating experience. On days when I'm on a roll, it doesn't matter much where I am. However, on those <EM>other days</EM>, it can be a tremendous disadvantage. </P>
+<P>So here's what I want to set up: a software co-operative based in Toronto. It would involve renting space either in a traditional office building or renting out an entire house.&nbsp;The members of the co-op would rent individual rooms in the office, and we would share common expenditures such as electricity, heating, and Internet access. Included in the cost would be some shared facilities like a kitchen and&nbsp;some sort of common room. It would be located in a transit-friendly place, most likely in the downtown core of Toronto.</P>
+<P>The purpose of the co-operative would be to have a friendly place where people can go and get work done. It is not going to be anything more than that. The goal is NOT to create an umbrella "corporate" organization. It's really all about getting a bunch of people with shared interests together in a common space.</P>
+<P>If you live in Toronto, and work as an independent generating some kind of computer code, please get in contact with me. By generating "some kind of computer code" I mean stuff like (but not restricted to):</P>
+<UL>
+<LI>C# / VB.NET managed development 
+<LI>Java 
+<LI>Flash 
+<LI>C++ 
+<LI>VB 
+<LI>x86 assembler 
+<LI>Cocoa / Carbon on Mac OS 
+<LI>PHP 
+<LI>Python, Perl, Ruby 
+<LI>Lisp, Smalltalk</LI></UL>
+<P>I would love to have a community of folks from different backgrounds. This would let us learn from each other and expand our collective horizons. It would be great to get a mixture of Computer Science researchers together with Flash developers. It would be great to have C# developers talking to Python developers. It would be great to have Mac OS developers talking to Windows developers. It's about celebrating what we have in common instead of letting marketing labels like "Linux", "Windows", and "Mac OS"&nbsp;divide us.</P></p>
+          <p><a href="../Weblog/Softwareco-operative.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Software co-operative" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Softwareco-operative.html');"><script type="text/javascript">postCount('Weblog/Softwareco-operative.html');</script></a></p>
+         
+          <div class="entryTitle">While wandering around in the OS X alternate universe ...</div>
+          <div class="entryDate">2003-01-05</div>
+          <p><P>I discovered <A href="http://www.vanderburg.org/cgi-bin/glv/blosxom/">Glenn Vanderburg's blog</A>. This is such a useful treasure-trove of insightful observations and links. I have found several entries that have made me stop and think. That's probably the highest compliment that I can pay anyone. Among the things that made me stop and think are:</P>
+<UL>
+<LI><A href="http://www.vanderburg.org/cgi-bin/glv/blosxom/2002/11/15#Software/Development/Learning/what_should_cs_teach">Learning the history of engineering and understanding where software engineering sits on the path to maturity.</A></LI>
+<LI><A href="http://www.vanderburg.org/cgi-bin/glv/blosxom/2002/10/25#Software/Development/specialization_for_insects">The role of specialists vs. generalists.</A></LI>
+<LI>Some useful pointers to some recent work by <A href="http://c2.com/~ward/">Ward Cunningham</A> on <A href="http://c2.com/doc/SignatureSurvey/">Software Archaeology</A>.</LI></UL>
+<P>Being exposed to new ideas and different ways of looking at old ideas is <EM>such </EM>a useful thing. </P>
+<P>One useful perk for folks that work at traditional jobs would be to set aside a certain amount of time for personal research projects. I have some friends who work as biological chemists in the pharmaceutical industry and forward-looking companies <A href="http://www.merck.com">like Merck</A>, let them use 15% of their time on personal research projects. It should be noted that this kind of research, unlike CS research, cannot be done at home :)</P></p>
+          <p><a href="../Weblog/Whilewanderingaroundinthe.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to While wandering around in the OS X alternate universe ..." alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Whilewanderingaroundinthe.html');"><script type="text/javascript">postCount('Weblog/Whilewanderingaroundinthe.html');</script></a></p>
+         
+          <div class="entryTitle">Observations on learning Cocoa</div>
+          <div class="entryDate">2003-01-05</div>
+          <p><P>In between social engagements for the holidays, I've managed to finish James Duncan Davidson's <A href="http://www.amazon.com/exec/obidos/ASIN/0596003013/iunknowncom-20/">Learning Cocoa with Objective C book</A>. </P>
+<P>It's a good first book on writing Cocoa applications, and will get you familiarized with Project Builder, Interface Builder and Objective C. It's real strength lies in the fact that there are lots of "labs" in this book. Each chapter contains a self-contained application that you build by typing in code or following step-by-step instructions where Interface Builder is involved. This gives you a real sense of accomplishment and builds confidence as you tackle progressively more difficult projects.</P>
+<P>It's been such a long time since I've learned a new technology this way. When I was first learning C# / FCL, most of that involved writing command-line applications that explored various classes in the libraries. I have fond memories of dumping stack traces to the console window once I discovered the existence of the <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemdiagnosticsstacktraceclasstopic.asp">System.Diagnostics.StackTrace</A> class. </P>
+<P>These two approaches are dramatically different from each other. In the case of the CLR, I approached learning technologies from the "bottom up". It was a long time before I looked at high-level technologies in the stack such as ASP.NET or Windows Forms. In the case of Cocoa, I'm definitely starting from the "top down". I'm finding my way around an IDE (there was no IDE in the early days of the CLR), learning a new programming language, and learning a new class library.</P>
+<P>I suspect the main reason why I am approaching learning OS X the way I am is that I don't know how the underlying OS works. I don't understand how code is packaged for execution, how it's loaded, how processes are structured etc. I took for granted all of that knowledge when I approached learning the CLR for the first time. During that experience, I spent a lot of time thinking about "well Win32 does it this way, I wonder how the CLR does it?"</P>
+<P>What I do know is that I need to be able to write some code to write test programs as I explore the frameworks. Since console applications are so 1970's, I decided to learn enough about writing GUI applications using Cocoa to be dangerous. Once that has been established, I can revert to my time-honored techniques for spelunking in new territory. To be honest, I really should be writing console applications and exploring things from the ground up, but I just can't resist that UI :)</P>
+<P>Now that I've finished my first Cocoa book, I'm working my way through my second&nbsp;one: Simson Garfinkel and Michael Mahoney's <A href="http://www.amazon.com/exec/obidos/ASIN/0596002351/iunknowncom-20/">Building Cocoa Applications: A step-by-step guide</A>. This is a much more detailed book than Davidson's. In particular, Chapter 4 shows how to build a Cocoa application <EM>without</EM> using Interface Builder. This is extremely useful, since IB is a giant black box; it's so important to be able to understand what IB generates for you.</P>
+<P>A quick note: IB differs from Windows frameworks such as MFC or Windows Forms in that it doesn't generate code. Instead, it appears to create various Cocoa framework objects at design time to express your user interface. Then when you are ready to write code, it serializes that object graph into a nib (NEXT Interface Builder) file that is then consumed by your Cocoa application. A nib to XML deserializer would be a really fun tool to write :)</P></p>
+          <p><a href="../Weblog/ObservationsonlearningCoc.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Observations on learning Cocoa" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/ObservationsonlearningCoc.html');"><script type="text/javascript">postCount('Weblog/ObservationsonlearningCoc.html');</script></a></p>
+         
+          <div class="entryTitle">Minor UI annoyances in OS X</div>
+          <div class="entryDate">2003-01-03</div>
+          <p><P>Here's a few things that I have found annoying about the OS X UI in the past few days. In no particular order:</P>
+<UL>
+<LI>Inconsistent usage of keyboard shortcuts. This one is driving me batty. For example, there are at least two different HTML browser-like things that I use. The first one is, of course, IE and I go backwards to the previous page using Command [. For the project builder documentation browser, I have no idea what the keyboard shortcut is. But it certainly isn't Command [. There are lots of places in the OS X UI where keyboard shortcuts are inconsistently used, which makes them so much harder to learn (another good example is Command M used for minimizing windows in every other application EXCEPT Acrobat Reader). 
+<LI>One thing that I really like about Acrobat Reader is its support for CoolType. This is about the closest thing to ClearType that I have found on the Mac. I have replaced the default PDF reader on OS X with Acrobat Reader for this reason alone. However, it's non-Mac-like interface really sticks out like a sore thumb. 
+<LI>Inconsistent mouse cursor changes to indicate what you can do. Again, using Project Builder as an example, if I'm over a documentation pane, the mouse cursor is an I-beam. When I move it over the main menu for the application, it <EM>remains</EM> an I-beam. If I click on a menu item, it becomes an arrow cursor (which is what it should have changed into when I moved my mouse over the menu). When I move my arrow cursor back over the documentation pane, it becomes an I-beam again. Why does it change going in one direction and not the other? 
+<LI>The fonts for the Cocoa documentation files are really small. Is there any way of globally changing the font sizes / font faces used to render the docs?</LI></UL>
+<P>&nbsp;</P></p>
+          <p><a href="../Weblog/MinorUIannoyancesinOSX.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Minor UI annoyances in OS X" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/MinorUIannoyancesinOSX.html');"><script type="text/javascript">postCount('Weblog/MinorUIannoyancesinOSX.html');</script></a></p>
+         
+          <div class="entryTitle">Interface Builder Rocks!</div>
+          <div class="entryDate">2003-01-02</div>
+          <p><P><A href="http://developer.apple.com/tools/interfacebuilder/">Interface Builder</A> is an <EM>awesome </EM>forms designer package. I really like the way it understands the <A href="http://developer.apple.com/techpubs/macosx/Essentials/AquaHIGuidelines/index.html">Aqua Human Interface Guidelines</A>. For example, if you drag a UI element like a text field close to the edge of the form, IB will draw a dotted blue line that tells you where the boundary lies. This makes it really hard to create form-based applications that don't look "Mac like". Another cool feature happens when you select a UI element, hold the option button down, and roll your mouse pointer over another UI element. IB will tell you how far away that other element is on the screen.&nbsp;This makes it really easy to control how far apart items are spaced, as well as doing other operations like centering an item relative to another element.</P>
+<P>I know I really need to get some screenshots to show this stuff in action. The problem is getting the hang of the workflow of doing a screen capture on my TiBook and then getting it over to my Windows box so that I can blog it (I'm still using <A href="http://www.fogcreek.com/CityDesk/">CityDesk</A> to do all of my blogging). What I really need to be able to do is blog from my TiBook ... but I'm not ready to go through the gyrations involved in switching my blogging software right now. There are just too many other cool things to do ... :)</P></p>
+          <p><a href="../Weblog/InterfaceBuilderRocks.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Interface Builder Rocks!" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/InterfaceBuilderRocks.html');"><script type="text/javascript">postCount('Weblog/InterfaceBuilderRocks.html');</script></a></p>
+         
+          <div class="entryTitle">Serialization</div>
+          <div class="entryDate">2003-01-02</div>
+          <p><P>There's some interesting XML serialization functionality built into Cocoa. You can write some fairly simple code such as:</P>
+<P><CODE>NSMutableArray *array = [[NSMutableArray alloc] init];<BR>[array addObject:@"John"];<BR>[array addObject:@"Carolyn"];<BR>if( [array writeToFile:@"people.plist" atomically:YES] )<BR>&nbsp; NSLog( "succeeded" );</CODE></P>
+<P>which results in the following XML being produced:</P>
+<P><CODE>...<BR>&lt;array&gt;<BR>&nbsp; &lt;string&gt;John&lt;/string&gt;<BR>&nbsp; &lt;string&gt;Carolyn&lt;/string&gt;<BR>&lt;/array&gt;</CODE></P>
+<P>Apparently Mac OS X uses XML configuration files known as plist files to configure functionality. There is a simple tool called the Property List Editor for editing these files. </P>
+<P>I don't yet know how to serialize arbitrary objects (I tried serializing an <A href="http://developer.apple.com/techpubs/macosx/Cocoa/Reference/Foundation/ObjC_classic/Classes/NSArray.html">NSArray</A> of <A href="http://developer.apple.com/techpubs/macosx/AdditionalTechnologies/AddressBook/Tasks/Searching.html">ABPerson</A> objects, and that didn't work). Unfortunately, writeToFile failed silently without giving me a clue about what was causing it to fail.</P>
+<P>The one thing that I am missing in Cocoa so far is a stream-based I/O model. It seems a bit crufty to have to send messages like writeToFile instead of writeToStream.</P></p>
+          <p><a href="../Weblog/Serialization.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Serialization" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/Serialization.html');"><script type="text/javascript">postCount('Weblog/Serialization.html');</script></a></p>
+         
+          <div class="entryTitle">Intellisense for Objective C?</div>
+          <div class="entryDate">2003-01-02</div>
+          <p><P>I've been using Project Builder this morning, and so far I really love how <EM>clean </EM>the UI is. Lots of whitespace, and nice use of primary colors. However, one thing that I'm missing a lot as I'm slowly learning the class libraries (and the IDE!) is,&nbsp;of course, Intellisense.</P>
+<P>Is there an Intellisense-like plug-in for Objective C? Is Intellisense even possible for dynamically typed languages?</P></p>
+          <p><a href="../Weblog/IntellisenseforObjectiveC.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Intellisense for Objective C?" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/IntellisenseforObjectiveC.html');"><script type="text/javascript">postCount('Weblog/IntellisenseforObjectiveC.html');</script></a></p>
+         
+          <div class="entryTitle">IUnknown lives!</div>
+          <div class="entryDate">2003-01-02</div>
+          <p><P>This morning, I found myself typing strangely familiar code:</P>
+<P><CODE>- (void) setName: (NSString *) name<BR>{<BR>&nbsp; [ name retain ];<BR>&nbsp; [ name_ release ];<BR>&nbsp; name_ = name;</CODE><CODE><BR>} </CODE></P>
+<P>My first few minutes programming with <A href="http://developer.apple.com/techpubs/macosx/Cocoa/ObjectiveC/ObjC.pdf">Objective C</A> were fairly painless. Surprisingly, most of my C/C++ instincts worked just fine. My really rusty COM instincts kicked in when I saw the retain (aka AddRef) and release messages.&nbsp;I was surprised that my C# instincts worked fine too - I was instinctively NOT typing semicolons at the end of the message sending operators (those scary looking [ ... ] things in the middle of the code), which of course the compiler gently reminded me of when I tried to build my project.</P>
+<P>However, after not programming in C++ for quite a few months, I was revulsed by the fact that I needed to have both an interface and an implementation section. And the number of keystrokes that I needed to&nbsp;use to get a fairly simple "Person" class up and running was also painful given the programming languages that I've recently been writing code in.</P>
+<P>I'm working my way through <A href="http://www.x180.net/Blog ">James Duncan Davidson's</A> <A href="http://www.amazon.com/exec/obidos/ASIN/0596003013/iunknowncom-20/">Learning Cocoa with Objective-C</A> book that <A href="http://radio.weblogs.com/0106046">Gordon Weakliem</A> recommended to me. It's so much fun learning a new programming a language and set of libraries. It reminds me of the fun that I had back in May of 2000 when Don Box gave us our first drop of the CLR bits at a DevelopMentor retreat. It's hard to believe that was almost&nbsp;2.5 YEARS ago!</P></p>
+          <p><a href="../Weblog/IUnknownlives.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to IUnknown lives!" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/IUnknownlives.html');"><script type="text/javascript">postCount('Weblog/IUnknownlives.html');</script></a></p>
+         
+          <div class="entryTitle">Virtual PC</div>
+          <div class="entryDate">2003-01-01</div>
+          <p><P>To celebrate the new year, I decided that I needed to get Windows XP up and running on my TiBook. I went out and bought a copy of <A href="http://www.connectix.com/products/vpc6m.html">Virtual PC&nbsp;6</A>&nbsp;, and had it up and running in about 5 minutes. A few hours later, I had Windows XP SP 1 + all of the current patches installed. </P>
+<P>I even got ClearType enabled on a Windows XP session on my TiBook! It really is too bad that OS X doesn't have native support for ClearType. Hopefully Apple can license ClearType from MS (they have to since <A href="http://www.microsoft.com/typography/cleartype/default.htm">ClearType is heavily patented by Microsoft</A>). My display looks a bit better after I followed Steve Makofsky's suggestion to make sure that font smoothing is turned on for LCD panels. </P>
+<P>I'm totally amazed by <A href="http://www.byte.com/art/9711/sec4/art4.htm">the technology behind Virtual PC</A>. Even with the recent performance bump provided by Version 6, the performance is still fairly slow, so I doubt that I'll be getting rid of my T23 anytime soon :) I haven't done any benchmarks yet, but I will once I get VS.NET up and running on my TiBook.</P></p>
+          <p><a href="../Weblog/VirtualPC.html"><img src="../Images/blue_button.jpg" border="0" title="Permanent link to Virtual PC" alt="Permanent Link" width="18" height="18" align="top"></a>&nbsp;&nbsp;<a href="javascript:HaloScan2('Weblog/VirtualPC.html');"><script type="text/javascript">postCount('Weblog/VirtualPC.html');</script></a></p>
+        
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="March2003.html">March 2003</A><br>
+         
+           <A href="February2003.html">February 2003</A><br>
+         
+           <A href="January2003.html">January 2003</A><br>
+         
+           <A href="December2002.html">December 2002</A><br>
+         
+           <A href="November2002.html">November 2002</A><br>
+         
+           <A href="October2002.html">October 2002</A><br>
+         
+           <A href="September2002.html">September 2002</A><br>
+         
+           <A href="August2002.html">August 2002</A><br>
+         
+           <A href="July2002.html">July 2002</A><br>
+         
+           <A href="June2002.html">June 2002</A><br>
+         
+           <A href="May2002.html">May 2002</A><br>
+         
+           <A href="April2002.html">April 2002</A><br>
+         
+           <A href="fog0000000116.html">March 2002</A><br>
+         
+           <A href="fog0000000091.html">February 2002</A><br>
+         
+           <A href="fog0000000046.html">January 2002</A><br>
+         
+           <A href="fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</BODY>
+</HTML>

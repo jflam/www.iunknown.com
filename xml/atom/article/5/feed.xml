@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Why not a Ruby.NET?</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/5/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2005/10/27/why-not-a-ruby-net" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:39-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:3ca592b9b71772b6a0fe28528ee31184</id>
+    <published>2005-10-27T07:00:00-07:00</published>
+    <updated>2006-08-21T15:55:39-07:00</updated>
+    <title type="html">Why not a Ruby.NET?</title>
+    <link href="http://www.iunknown.com/articles/2005/10/27/why-not-a-ruby-net" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;Building a native Ruby implementation on the &lt;span class="caps"&gt;CLR&lt;/span&gt; is an ambitious
+goal. &lt;a href="http://sky.fit.qut.edu.au/~gough/"&gt;John Gough&lt;/a&gt; and associates are attempting to do exactly this in
+their Ruby.NET project. This is a much harder problem than it looks,
+and kudos to John for even attempting it. The semantics of Ruby are
+significantly different than other &lt;span class="caps"&gt;CLR&lt;/span&gt; languages.&lt;/p&gt;
+
+
+	&lt;p&gt;As a simple example, consider the fact that Ruby does not allow method
+overloading. How would you construct a Ruby type that must override
+methods in an abstract base class that differ only based on their
+signatures?&lt;/p&gt;
+
+
+	&lt;p&gt;Another example is the case where you want to surface &lt;span class="caps"&gt;CLR&lt;/span&gt; features
+natively in Ruby. How, for example, will you declare a generic array
+in a language that does not support type declarations?&lt;/p&gt;
+
+
+	&lt;p&gt;Last but certainly not least are the sophisticated features
+in Ruby such as continuations that make it very challenging for an
+implementor to implement efficiently. This feature requires a stack
+copying mechanism that isn&amp;#8217;t a native feature of the &lt;span class="caps"&gt;CLR&lt;/span&gt;. Can such a
+feature be added to the &lt;span class="caps"&gt;CLR&lt;/span&gt; without compromising the performance of
+existing languages? This is not clear, and was one of the topics that
+came up for discussion during the &lt;a href="http://decomp.ulb.ac.be:8082/events/dls05/implementingdynamiclanguagesonthe.netclr/"&gt;dynamic languages &lt;span class="caps"&gt;BOF&lt;/span&gt; at &lt;span class="caps"&gt;OOPSLA&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Building a native Ruby implementation on the &lt;span class="caps"&gt;CLR&lt;/span&gt; is an ambitious
+goal. &lt;a href="http://sky.fit.qut.edu.au/~gough/"&gt;John Gough&lt;/a&gt; and associates are attempting to do exactly this in
+their Ruby.NET project. This is a much harder problem than it looks,
+and kudos to John for even attempting it. The semantics of Ruby are
+significantly different than other &lt;span class="caps"&gt;CLR&lt;/span&gt; languages.&lt;/p&gt;
+
+
+	&lt;p&gt;As a simple example, consider the fact that Ruby does not allow method
+overloading. How would you construct a Ruby type that must override
+methods in an abstract base class that differ only based on their
+signatures?&lt;/p&gt;
+
+
+	&lt;p&gt;Another example is the case where you want to surface &lt;span class="caps"&gt;CLR&lt;/span&gt; features
+natively in Ruby. How, for example, will you declare a generic array
+in a language that does not support type declarations?&lt;/p&gt;
+
+
+	&lt;p&gt;Last but certainly not least are the sophisticated features
+in Ruby such as continuations that make it very challenging for an
+implementor to implement efficiently. This feature requires a stack
+copying mechanism that isn&amp;#8217;t a native feature of the &lt;span class="caps"&gt;CLR&lt;/span&gt;. Can such a
+feature be added to the &lt;span class="caps"&gt;CLR&lt;/span&gt; without compromising the performance of
+existing languages? This is not clear, and was one of the topics that
+came up for discussion during the &lt;a href="http://decomp.ulb.ac.be:8082/events/dls05/implementingdynamiclanguagesonthe.netclr/"&gt;dynamic languages &lt;span class="caps"&gt;BOF&lt;/span&gt; at &lt;span class="caps"&gt;OOPSLA&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>sara</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-20T13:09:40-07:00</published>
+    <updated>2006-08-21T19:05:40-07:00</updated>
+    <title type="html">Comment on Why not a Ruby.NET? by sara</title>
+    <link href="http://www.iunknown.com/articles/2005/10/27/why-not-a-ruby-net#comment-534" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thanks for the update, Florian.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-10-29T23:43:20-07:00</published>
+    <updated>2006-08-21T20:55:59-07:00</updated>
+    <title type="html">Comment on Why not a Ruby.NET? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2005/10/27/why-not-a-ruby-net#comment-241" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thanks for the update, Florian. I was wondering what had happened to your project. I'll take a look at your code when I get some cycles (probably next week) and I'll probably mail you some questions (probably via ruby-talk?) then.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Florian Gross</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-10-28T20:30:27-07:00</published>
+    <updated>2006-08-21T20:55:58-07:00</updated>
+    <title type="html">Comment on Why not a Ruby.NET? by Florian Gross</title>
+    <link href="http://www.iunknown.com/articles/2005/10/27/why-not-a-ruby-net#comment-240" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I was also sort of part of a Google Summer of Code project that tried to implement Ruby.NET for Mono. This project has not yet gotten far, but there's some code in SVN and you might be able to join forces with us (I was supposed to be the run time guy, but work on that hasn't really started. Not sure if I still have enough time for it, either, but it's certainly worth a try.)&lt;/p&gt;
+
+&lt;p&gt;The code's at svn+ssh://mono-cvs.ximian.com/source/trunk/rubynet&lt;/p&gt;
+
+&lt;p&gt;Oh, and nowadays I think that doing this in a self-hosting way would be best.&lt;/p&gt;
+
+&lt;p&gt;There already is various Ruby&amp;lt;&amp;gt;.NET bridges available on the .NET. I'd use them to call System.Reflection.Emit from Ruby. You don't even need to initially write a parser because Ruby comes with Ripper.&lt;/p&gt;
+
+&lt;p&gt;It would probably still be a good idea to at least initially implement the standard library of Ruby in C# just so that performance isn't all bad and to keep things simple.&lt;/p&gt;
+
+&lt;p&gt;Having a full self-hosted Ruby in Ruby on .NET implementation would be very flexible. It would allow changing the language in itself which is insanely powerful.&lt;/p&gt;
+
+&lt;p&gt;Doing all this in a test-driven way would also be priceless.&lt;/p&gt;
+
+&lt;p&gt;Isn't there some kind of place where folks interested in this could talk together and team up? It seems to noble a project not to do so. Please mail me if anyone of you decides to set something like this up. I'm definitely interested.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Tom Janssens</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-10-28T09:03:10-07:00</published>
+    <updated>2006-08-21T20:55:57-07:00</updated>
+    <title type="html">Comment on Why not a Ruby.NET? by Tom Janssens</title>
+    <link href="http://www.iunknown.com/articles/2005/10/27/why-not-a-ruby-net#comment-239" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;While there is no native implementation of Ruby.Net, there is a language that closely resembles ruby, developped as a new language on top of the CLR platfom :
+BOO&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://boo.codehaus.org/"&gt;http://boo.codehaus.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It supports much of the ruby aspects.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-10-27T12:46:08-07:00</published>
+    <updated>2006-08-21T20:55:56-07:00</updated>
+    <title type="html">Comment on Why not a Ruby.NET? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2005/10/27/why-not-a-ruby-net#comment-238" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thanks for the link, Jason.&lt;/p&gt;
+
+&lt;p&gt;Wow. That is the most verbose solution that I've ever seen! Maybe when Ruby gets attributes (Matz talked about adding it in 2.0) I could use them to disambiguate. That is, of course, if I ever even attempt that part of the project :)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Jason Bock</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2005-10-27T09:18:52-07:00</published>
+    <updated>2006-08-21T20:55:56-07:00</updated>
+    <title type="html">Comment on Why not a Ruby.NET? by Jason Bock</title>
+    <link href="http://www.iunknown.com/articles/2005/10/27/why-not-a-ruby-net#comment-237" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Eiffel is another language that does not support method overloading and there's a .NET compiler for Eiffel. May be worth a look to see what they had to do to handle the case you mentioned - this link talks a bit about what they do to handle this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://docs.eiffel.com/eiffelstudio/technologies/dotnet/eiffel"&gt;http://docs.eiffel.com/eiffelstudio/technologies/dotnet/eiffel&lt;/a&gt;&lt;em&gt;dotnet&lt;/em&gt;language/10&lt;em&gt;conventions/20&lt;/em&gt;names.html&lt;/p&gt;
+
+&lt;p&gt;Regards,
+Jason&lt;/p&gt;</content>
+  </entry>
+</feed>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: RubyCLR can now inline C#</title>
+    <link>http://www.iunknown.com/articles/2006/03/29/rubyclr-can-now-inline-c</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>RubyCLR can now inline C#</title>
+      <description>&lt;p&gt;RubyCLR now inlines C#:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+class InliningTests &amp;lt; TestCase
+  def test_class_inline
+    Inline::compile :csharp, &amp;lt;&amp;lt;-EOF
+      namespace Scratch {
+        public class Fibonnaci {
+          public static long Calc(long n) {
+            long x1 = 1, x2 = 2, tmp;
+            for (long i = 1; i &amp;lt; n; ++i) {
+              x1 += x2;
+              tmp = x2; x2 = x1; x1 = tmp;
+            }
+            return x1;
+          }
+        }
+      }
+    EOF
+
+    assert_equal 8, Scratch::Fibonnaci.calc(5)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I shell out to the C# compiler to compile the embedded C# source code. I&amp;#8217;ll be adding some code to inline C# methods as well so that you can define a Ruby method signature that has a C# implementation.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Please disregard this grotesque hack. See the &lt;a href="http://www.iunknown.com/articles/2006/03/30/rubyclr-now-with-new-and-improved-inlining"&gt;new and improved version&lt;/a&gt;.&lt;/p&gt;</description>
+      <pubDate>Wed, 29 Mar 2006 17:46:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:e974ba13c4385088e7db5ad9856f6635</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/03/29/rubyclr-can-now-inline-c</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"RubyCLR can now inline C#" by John Lam</title>
+      <description>&lt;p&gt;When I hacked out this code I was in the library, and couldn't download RubyInline.  &lt;/p&gt;
+
+&lt;p&gt;The C# compiler has a set of managed wrappers that let me pass a string, and it generates the temp file, compiles to a temp assembly and loads it all in one fell swoop. I suspect that RubyInline tries to do most of that stuff for me which I don't really need ...&lt;/p&gt;</description>
+      <pubDate>Wed, 29 Mar 2006 22:32:10 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/29/rubyclr-can-now-inline-c#comment-415</link>
+    </item>
+    <item>
+      <title>"RubyCLR can now inline C#" by Eric Hodel</title>
+      <description>&lt;p&gt;You don't seem to be using RubyInline...&lt;/p&gt;
+
+&lt;p&gt;It should be easy to plug right into it...&lt;/p&gt;</description>
+      <pubDate>Wed, 29 Mar 2006 20:59:59 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/29/rubyclr-can-now-inline-c#comment-414</link>
+    </item>
+  </channel>
+</rss>

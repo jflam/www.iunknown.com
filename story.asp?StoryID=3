@@ -1,0 +1,353 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<Title>Current Story</Title>
+
+<HEAD>
+<META http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<META name="GENERATOR" content="Visual Notepad 1.0">
+<TITLE>COM is good for you. Have you thought about COM today?</TITLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF"
+text="#000000" topmargin="0" leftmargin="0">
+
+<STYLE>
+
+	.textRed	{ color:red; font-weight:bold }
+	.textBlack	{ color:black; font-weight:bold }
+	.dropDown	{ position:relative;top:10;left:10;cursor:'hand' }
+
+	H1		{ font:'14pt Arial' }
+	H2		{ font:'14pt Arial';border-bottom:1px outset green }
+	H3		{ font:'12pt Arial';font-weight:bold;cursor:'hand' }
+	H4		{ font:'8pt Arial';font-weight:normal;font-style:italic }
+	H5		{ font: '10pt Arial' }
+
+</STYLE>
+
+<SCRIPT>
+	function ChangeDisplay( element )
+	{
+		if( element.style.display == "" ) {
+			element.style.display = "none";
+		} else {
+			element.style.display = "";
+		}
+		window.event.cancelBubble = true;
+	}
+
+	function Dummy()
+	{
+		return True;
+	}
+
+	function IsIE( browsertype )
+	{
+		return True;
+
+		if( browsertype.Browser == "IE" ) {
+			if( browserType.Version >= 4 ) {
+				return True;
+			}
+		}
+		return False;
+	}
+</SCRIPT>
+
+<SCRIPT language=vbscript>
+	Sub NewBuildTOC()
+
+		dim anchorTags
+		dim objTOC
+		dim doc
+
+		set anchorTags = parent.frames( "MainFrame" ).document.anchors
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><HEAD></HEAD><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white>"
+		doc.write "<STYLE>H4 { font:'8pt Arial';font-weight:normal;font-style:italic }</STYLE><H4>"
+		doc.write "<BR><BR><BR><B>Contents</U></B><BR><HR>"
+
+		for i = 0 to anchorTags.length - 1
+			doc.write "<A href='#" & anchorTags( i ).name & "' target='MainFrame'>"
+			doc.write anchorTags( i ).innerText & "</A><BR>"
+		next
+
+		doc.write "<HR>"
+		doc.write "</H4></BODY></HTML>"
+		doc.close()
+
+	End Sub
+
+	Sub ClearTOC()
+
+		dim doc
+		set doc = parent.frames( "Contents" ).document
+
+		doc.open()
+		doc.write "<HTML><BODY bgcolor=darkblue text=white alink=yellow link=white vlink=white></BODY></HTML>"
+		doc.close()
+
+	End Sub
+</SCRIPT>
+
+<P>
+	<FONT face="VERDANA, ARIAL, HELVETICA">
+	<IMG src="images/onepixel.gif" vspace="30" hspace="10" width="1" height="1"></IMG>
+	<IMG src="/images/iunknownlogo.gif"></IMG>
+	<IMG src="images/onepixel.gif" hspace="81" width="1" height="1"></IMG>
+	</FONT>
+</P>
+
+<TABLE border="0">
+<TR>
+    <TD width="10" valign=TOP>&nbsp
+	</TD>
+    <TD width="480">
+		<FONT face="VERDANA, ARIAL, HELVETICA">
+
+	<font size="3"><b>Borland Delphi 3.0 and ActiveX Controls                                                                                                                                                                                                                   </b></font><br>
+	<font size="1">By </font><a href="author.asp?AuthorID=1">
+	<font size="1"> John                                               Lam                                               </font></a>
+	<font size="1"><br>Last updated on 
+		Wednesday, July 09, 1997
+	 at 12:11:19 PM<br><br></font>
+	<font size="2"><A HREF="http://www8.zdnet.com/pcmag/issues/1608/contents.htm">
+<font size = 1><I>First appeared in the April 22, 1997 issue of PC Magazine</I></a></font>
+<P>The latest version of Delphi, Version 3.0, now fully supports the
+creation of ActiveX controls. With the addition of a full complement of
+ActiveX Experts (Figure 5), Delphi makes it easy to create new ActiveX
+controls, property sheets, forms, type libraries and nonvisual COM
+objects. Delphi 3.0 should be shipping by the time you read this. As we
+go to press, pricing and availability have yet to be announced.
+Borland's Web site (<I>www.borland.com</I>) should have details.</P>
+<P>Delphi developers have always been able to create their own custom
+controls by building on the foundation provided by Delphi's Visual
+Component Library (VCL), and the value of the skill set required to
+create new VCL components is not lost with this latest version of
+Delphi; you can create ActiveX controls from any existing VCL
+component.</P>
+<P>Figure 6 shows Delphi's new ActiveX Control Expert for creating
+ActiveX controls. Simply by specifying the name of the VCL component
+class that you wish to use, the Expert will generate a set of source
+code files that you can compile into an ActiveX control.</P>
+<H3>
+<A name="A0">
+Creating Our Reference Control
+</A>
+</H3>
+<P>Delphi, like VB, allows you to build on a foundation provided by the
+controls that ship with the tool. But Delphi's method is different.
+Whereas VB relies on object composition to extend an existing control,
+the VCL allows you to derive a new control from an existing one. Both
+methods allow developers to accomplish the same goal: to reuse existing
+functionality.</P>
+<P>Delphi's Component Expert lets you quickly generate a skeleton
+control. We will create a new control from the VCL's TEdit
+component.</P>
+<P>Adding properties to a Delphi project is very simple. Just add a new
+property declaration to the published section of your component's class
+declaration:</P>
+<PRE>
+    property ErrorColor: TColor read
+    Get_ErrorColor write
+    Set_ErrorColor;
+</PRE>
+<P>We have to add a couple of functions to read and write the
+ErrorColor variable, which is defined as FErrorColor: TColor.</P>
+<PRE>
+    function TValidEdit10.Get_ErrorColor: TColor;
+    begin
+    Result := FErrorColor;
+    end;
+    procedure TValidEdit10.Set_ErrorColor
+    ( Value: TColor );
+    begin
+    FErrorColor := Value;
+    FCurrentColor := Value;
+    end;
+</PRE>
+<P>To add our Validate event handler is almost as straightforward. An
+important concept in Delphi is the <I>method pointer,</I> a pointer
+that contains information about the name of the method that is being
+invoked as well as the object that is being invoked.</P>
+<P>The first thing we must declare is the type of our method
+pointer:</P>
+<PRE>
+    TValidateEvent = procedure( Sender:
+    TObject; Text: String;
+    var Valid: Boolean ) of object;
+</PRE>
+<P>This is the same event-handler declaration we've seen in our other
+test-bed controls. The Text property is passed by value as a string,
+and the other parameter, a Boolean called Valid, is passed by
+reference.</P>
+<P>Inside our component, we also need a declaration of our method
+pointer:</P>
+<PRE>
+    FOnValidateEvent: TValidateEvent;
+</PRE>
+<P>and we must declare our Event property in the published section of
+our class:</P>
+<PRE>
+    property OnValidate: TValidateEvent
+    read FOnValidateEvent write
+    FOnValidateEvent;
+</PRE>
+<P>The data member FOnValidate is set at design time by the property
+inspector to point to the appropriate event handler in your Delphi
+project.</P>
+<P>The final item we must add to our new Delphi component is the code
+that actually fires the Validate event when the focus leaves our
+control. We can do this by intercepting Delphi's DoExit event trigger
+by overriding the dynamic function DoExit in our derived class:</P>
+<PRE>
+    inherited DoExit;
+    if Assigned( FOnValidateEvent )
+    then
+    begin
+    DoValidate( Self, Text, Valid );
+    if Valid then
+    begin
+    Color := FCurrentColor;
+    end else
+    begin
+    FCurrentColor := Color;
+    Color := FErrorColor;
+    end;
+    end;
+</PRE>
+<P>In our code, we make sure that we call the inherited DoExit first.
+This ensures that any code that expects the DoExit event to fire will
+continue to work correctly.</P>
+<P>To actually fire the Validate event, we call our own protected
+dynamic function, DoValidate:</P>
+<PRE>
+    procedure TValidEdit10.DoValidate
+    (Sender: TObject; Text: String; var
+    Valid: Boolean );
+    begin
+    FOnValidateEvent( Sender, Text,
+    Valid );
+    end;
+</PRE>
+<P>By firing our Validate event via a protected dynamic function (which
+is similar to a virtual function), we ensure that anyone who wants to
+subclass our control will be able to intercept and modify the behavior
+of our Validate event.</P>
+<P>The rest of the code is very similar to the code we wrote for Visual
+Basic and ATL; if the Validate event handler sets Valid to False, we
+set the background color to the value contained in FErrorColor.</P>
+<H3>
+<A name="A1">
+Creating an ActiveX Control
+</A>
+</H3>
+<P>The foregoing describes the steps involved in creating a Delphi VCL
+component. To turn the component into an ActiveX control, just run the
+ActiveX Control Expert. Select the class name (TValidEdit10) of the
+component, and the expert will generate a set of new source-code files
+for you. Normally, you won't have to edit any of the expert-generated
+source code. Just compile the files to create your new ActiveX
+control.</P>
+<H3>
+<A name="A2">
+Summing Up Delphi
+</A>
+</H3>
+<P>In about 30 lines of code, we have managed to create not only a VCL
+component, but a full-fledged ActiveX control. The clever use of
+experts in Delphi 3.0 makes creating ActiveX controls a snap. Even more
+important, it allows developers who are already proficient at creating
+VCL components in Delphi to distribute their VCL components as ActiveX
+controls.</P>
+<P>Also significant is the fact that Delphi 3.0 objects <I>are</I> COM
+objects. You get the best of both worlds when creating ActiveX objects
+using Delphi. You have the ability to leverage an existing class
+library with over 100 prebuilt components, plus the ability to create
+and interact with native COM objects.</P>
+<P>On the downside, Delphi 3.0 controls require the presence of
+VCL30.DLL on your user's computer. This is not a small DLL, weighing in
+at just over 1.1MB. The actual control generated by the ActiveX Control
+expert is just 29K.</P>
+<H3>
+<A name="A3">
+Which Tool Should You Use?
+</A>
+</H3>
+<P>The tool that you should use should fit the job at hand. If you're
+creating ActiveX components for resale, then you must consider the
+licensing implications of extending someone else's control. While you
+may be allowed to redistribute such controls with your applications,
+you probably do not have the right to redistribute them to other
+developers to incorporate into their applications.</P>
+<P>In this case, you'll probably want to create a control from scratch,
+and that makes ATL and Delphi likely candidates for you to consider.
+Both of these tools give you access to the full power of the Windows
+API, allowing you to distribute your ActiveX controls as compiled
+native code.</P>
+<P>You will also need to consider the size of the controls you'll be
+distributing. Figure 7 shows a comparison of the sizes of our test-bed
+control as generated by each of the three tools discussed here. You
+should also pay attention to the size of the runtime libraries. While
+that may not be important in many cases, since the library has to be
+installed only once on a new computer, you may want to consider what
+the implications might be if you are creating your own controls for
+resale.</P>
+<P>If you are creating objects that are going to interact heavily with
+other nonvisual COM objects, choose between Delphi and ATL. Keep in
+mind, however, the programming language the objects were created in and
+the language their header files are written in. If you are planning to
+interact with a large set of objects and interfaces, such as the
+Microsoft OLE DB SDK, you'll have to port their header files to Delphi
+or use ATL.</P>
+<P>Finally, the tool should also mesh well with your experience as a
+developer. If you have little experience in creating components and
+want a quick-and-easy introduction to creating ActiveX controls, Visual
+Basic 5 Control Creation Edition is easily your best bet. You can't
+beat the price, and it's the quickest route to creating your first
+ActiveX control.</P>
+<P>If you're fairly familiar with Windows API programming, C++, and the
+details of how ActiveX interfaces operate, then ATL offers the most
+power and flexibility. On the other hand, if your experience lies in
+creating VCL components, Delphi provides a one-step conversion tool to
+transform your components into ActiveX controls. In short, the right
+tool depends heavily on the knowledge and skills of the developer.</P>
+
+FIGURE 5: <I>Delphi 3.0's new ActiveX Experts make creating new ActiveX
+controls easy.</I>
+
+FIGURE 6: <I>Delphi 3.0's ActiveX Control Expert allows you to turn any
+VCL component, including custom components you can create, into an
+ActiveX control.</I>
+
+FIGURE 7: <I>Comparison of the sizes of controls generated by the
+products in our roundup. Both the size of the control and the size of
+associated runtime libraries are shown.</I>
+
+<!--navigation bar-->
+<P></font><br>
+	<hr>
+		</FONT>
+		<CENTER>
+		<FONT size = 1>&#169; 1997 John Lam. All rights reserved.<BR><BR></FONT>
+		<A href="#TOP"><IMG src="images/top.gif" border=0 alt="Back to top"></A><BR>
+		<BR><FONT FACE="ARIAL,HELVETICA" SIZE="1">
+		<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="5">
+		<TR>
+				<TD ALIGN="right" VALIGN="middle"><a href="/ie/" target="_top"><img src="/images/ie_animated.gif" width="88" height="31" border="0" alt="Microsoft Internet Explorer"></a></TD>
+				<TD ALIGN="center" VALIGN="middle"><IMG SRC="images/bar.gif" width="3" height="43"></TD>
+				<TD ALIGN="left" VALIGN="middle"><a href="/backoffice/designed/logo.htm" target="_top"><IMG SRC="/images/msbo_iis.gif" width="100" height="31" border="0" alt="Microsoft Windows NT Server with Internet Information Server"></a></TD>
+		</TR>
+		</TABLE>
+		</FONT></CENTER><BR>
+	</TD>	
+</TR>
+</TABLE>
+
+</table>
+</body>
+</html>

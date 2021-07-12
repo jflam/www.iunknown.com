@@ -1,0 +1,777 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	
+	<meta name="description" content="Update: Added missing profile.ps1 file. The IronRuby team is getting ready for another major push for the PDC. To get ready for this (be careful what you wish for!) I'm upgrading my laptop's hard drive from the stock 160GB that..." />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared-typepad/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: My Dev Kit</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html?no_prefetch=1" title="IronRuby at OSCON" />
+	<link rel="next" href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html?no_prefetch=1" title="The Fukuoka Ruby Delegation" />
+	
+	
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">&laquo; IronRuby at OSCON</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">August 31, 2008</h2>
+
+
+<div class="entry" id="entry-54957470">
+			<h3 class="entry-header">My Dev Kit</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a href="http://www.flickr.com/photos/john_lam/2742655543/" title="Untitled by John Lam, on Flickr"><img alt="" height="375" src="http://farm4.static.flickr.com/3112/2742655543_edc43c24d8.jpg" width="500" /></a></p>
+<p><strong>Update:</strong> Added missing profile.ps1 file.</p>
+<p>The <a href="http://ironruby.net">IronRuby</a> team is getting ready for another major push for the <a href="http://www.microsoftpdc.com/">PDC</a>. To get ready for this (be careful what you wish for!) I&#39;m upgrading my laptop&#39;s hard drive from the stock 160GB that it came with to a brand-spanking new <a href="http://www.wdc.com/en/products/Products.asp?DriveID=477">Black Scorpio 320GB drive</a>.</p>
+<p>This also means that I&#39;m repaving my Boot Camp partition (I had previously allocated a measly 40GB on the old drive). While waiting for software to install, I figured that folks out there might be interested in what my setup is for a computer. So, here it is:</p>
+<h3>Operating System and general productivity tools:</h3>
+<p>I run Windows Vista SP1, 32-bit. I had tried to get Windows Server 2008 64 bit installed in the BootCamp partition, but it was a lost cause. The combination of my pre-Santa Rosa 17&quot; MBP hardware and the general lack of 64 bit drivers made it virtually impossible to do a native OS install on the Boot Camp partition. I should be able to get 64 bit Windows Server 2008 installed in a Fusion virtual machine. I&#39;ll report later how that goes.</p>
+<p>I do have a mildly pimped out Vista Sidebar. I&#39;m a huge fan of <a href="http://blog.orbmu2k.de/">Christian&#39;s widgets</a>. I use his CPU, Memory, and Network Traffic meters. I run <a href="http://weather.weatherbug.com/">WeatherBug</a>, and <a href="http://sascha.katzner.de/driveactivity.html">Drive Activity</a> as well. I don&#39;t find it nearly as useful on my laptop as I do on my desktop where I have two 21&quot; panels.</p>
+<p>I use Internet Explorer quite a bit, especially for browsing internal Microsoft sites. I leave it set as my default browser, since I&#39;ve always loved its startup time vs. Firefox. I&#39;m currently using IE 7, but I do have IE 8 Beta 2 installed on one of my desktops at the office.</p>
+<p>I use Firefox 3 quite a bit as well, especially since it has <a href="http://vimperator.mozdev.org/">Vimperator</a>, which adds VI key-bindings to Firefox. IE should seriously consider building a Firefox compatible plug-in API so that it can run Firefox plug-ins. </p>
+<p>I&#39;m a big fan of <a href="http://www.cooliris.com/">PicLens</a>, and I have it installed on both IE and Firefox.</p>
+<p>As you might imagine, I spend a lot of time in Outlook 2007. While I have a hard time understanding why it needs to use 36 threads and open 3,319 OS handles to do its thing, it works quite well once I&#39;ve pimped it out a bit with my <a href="http://www.iunknown.com/2007/07/outlook-zen.html">three basic macros</a>. </p>
+<p>I use <a href="http://get.live.com/writer/overview">Windows Live Writer</a> to compose all of my blog posts. It works great with TypePad, who is my blogging hosting provider. Life is too short to run your own blog engine on some random hosting provider (I used to use Dreamhost back in the day). I want it to be somebody else&#39;s problem to solve if my site goes down.</p>
+<p>I use <a href="http://jgpaiva.donationcoders.com/gridmove.html">GridMove</a> as a tiling window manager using its 2-part grid vertical template. CTRL-ALT-1 moves the active window to the left *half* of the screen, and CTRL-ALT-2 moves the active window to the right *half* of the screen. On my desktop, CTRL-ALT-3 moves the active window to the left half of monitor 2 and CTRL-ALT-4 moves the active window to the right half of monitor 2. It&#39;s easily the most useful utility that I&#39;ve added in a long time.</p>
+<h3>Developer Tools</h3>
+<p>I use <a href="http://msdn.microsoft.com/en-us/vsts2008/default.aspx">Visual Studio 2008 Team System</a>, SP1. I configure it via a custom <a href="http://www.iunknown.com/2007/11/visual-studio-2.html">vssettings</a> file that I&#39;ve carried around from machine to machine. </p>
+<p>I use multiple enlistments so that I can do work in parallel. Some of the devs on my team have 6 enlistments(!) Such is life when you have to battle the Troll to get your changes committed into the source repository.</p>
+<p>I use <a href="http://www.viemu.com/">ViEmu</a> to enable VI key bindings in Visual Studio. Developer Division at Microsoft has a site license for it, but I&#39;d definitely pay my own money for this.</p>
+<p>My primary text editor is <a href="http://www.vim.org/">vim</a>. I have a custom <a href="http://www.iunknown.com/2006/09/vim-can-save-yo.html">.vimrc</a> file that I&#39;ve carried around from machine to machine. It&#39;s not as pimped out as some other folks&#39; vim setup, but it works for me. </p>
+<p>I use Windows PowerShell for my day-to-day work. I have a mildly pimped out PowerShell console that uses a directory that I cloned from <a href="http://www.hanselman.com/blog/">Scott Hanselman&#39;s</a> machine. Like a lot of folks, I can&#39;t work without a good set of aliases. Those can be found in my <a href="http://www.iunknown.com/files/profile.ps1">profile.ps1</a>.</p>
+<p>I have a Tools directory that I carry around from machine to machine. There&#39;s lots of stuff in it, but here&#39;s a general breakdown of the tools I use most often:</p>
+<ul>
+<li>Keith Brown&#39;s <a href="http://www.pluralsight.com/community/blogs/keith/archive/2008/08/05/where-to-get-password-minder.aspx">Password Minder</a> 
+<li>Most of Mark Russinovich&#39;s <a href="http://technet.microsoft.com/en-us/sysinternals/default.aspx">Sysinternals Tools</a> 
+<li><a href="http://sourceforge.net/projects/notepad2">Notepad 2</a> - it&#39;s awesome for viewing integrated diff files. 
+<li>Lutz Roeder&#39;s <a href="http://www.red-gate.com/products/reflector/">Reflector</a> 
+<li><a href="http://www.scootersoftware.com/">Beyond Compare 2.0</a> 
+<li><a href="http://www.tgries.de/agrep/">AGREP</a> 
+<li>RemapKey from the <a href="http://www.microsoft.com/downloads/details.aspx?familyid=9d467a69-57ff-4ae7-96ee-b18c4790cffd&amp;displaylang=en">Windows Server Resource Kit</a> (I remap Caps Lock to CTRL via this, reverse the Windows / ALT key mapping on the left side and re-assign my right Command key to DEL). </li>
+</ul>
+<p>IronRuby uses <a href="http://subversion.tigris.org/">Subversion</a> for our external-facing source control. Our SVN repo lives on RubyForge, and I use a combination of <a href="http://tortoisesvn.tigris.org/">Tortoise SVN</a> and the command-line tools to do my day-to-day work.</p>
+<p>IronRuby is using <a href="http://git.or.cz/">GIT</a> for a few of our sub-projects. Eventually we&#39;ll be moving the primary source repository from SVN to GIT. Like most folks using GIT these days, we use the awesome <a href="http://github.com/jflam">github</a> service. I use the <a href="http://code.google.com/p/msysgit/">MSysGit</a> implementation on Windows with the option to run GIT from the Windows Command Prompt enabled.</p>
+<h3>The Cloud</h3>
+<p>More and more of my life is moving to the cloud. Here&#39;s a list of the services that I use, and the places where I go.</p>
+<p>I use <a href="http://www.flickr.com/photos/john_lam">flickr</a> for posting my photos. I&#39;ve been a Pro member for quite some time. For $25 / year it&#39;s a bargain. I don&#39;t really use flickr as a social network like some other folks, but I&#39;m quite happy with how well it works for me.</p>
+<p>I use <a href="http://twitter.com/john_lam">twitter</a> to post random bits of status. The 140 character limit encourages posting. I&#39;m pretty much only using the blog to post longer pieces.</p>
+<p>I use Google Reader to consume my RSS feeds. I use multiple computers every day, and I like the fact that read / unread status is stored in a central location.</p>
+<p>I use Google Apps for my domain for my personal email. I used to run my own Exchange Server back in the day, and the day I switched was an awesome liberating moment for me. I no longer run any servers in my house.</p>
+<p>I have a <a href="http://www.facebook.com/people/John_Lam/685772348">facebook</a> account that I don&#39;t use all that much. It&#39;s pretty much at the bottom of my list of places to go. My status updates are via twitter, which makes it look like I&#39;m on facebook a lot more than I actually am.</p>
+<h3>What about you?</h3>
+<p>As you might have figured out by now, I&#39;m a big fan of minimalist UI, black backgrounds and keyboard-driven UI&#39;s. What&#39;s in your dev kit, and why do you love it?</p>
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2008%2F08%2Fmy-dev-kit.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 08:18 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2008/08/my-dev-kit.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/32956698</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list -->	<a id="c128565082"></a>
+	<div class="comment comment-odd" id="comment-128565082">
+		<div class="comment-content" id="comment-128565082-content">
+			
+			<span id="comment-128565082-content"><p>I've been thinking about upgrading the hard drive on my MacBook Pro too.  Last year I had to convert my Boot Camp partition to a virtual machine image to make room to the gigantic iPhone SDK.</p>
+
+<p>I'm curious, are you going to upgrade the hard drive yourself, or pay someone to install it?  Also, are you going to do a drive to drive copy, or re-install from scratch?  Last year, ExtremeTech ran a how-to on changing the MBP hard drive.  It seemed pretty tedious.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.ejstembler.com" href="http://www.ejstembler.com">Edward J. Stembler</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128565082">August 31, 2008 at 10:09 PM</a>
+		</p>
+	</div>	<a id="c128568834"></a>
+	<div class="comment comment-even" id="comment-128568834">
+		<div class="comment-content" id="comment-128568834-content">
+			
+			<span id="comment-128568834-content"><p>I took your challenge on and blogged about my own Dev Kit:</p>
+
+<p><a href="http://wildermuth.com/2008/09/01/My_Dev_Kit" rel="nofollow">http://wildermuth.com/2008/09/01/My_Dev_Kit</a></p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://wildermuth.com" href="http://wildermuth.com">Shawn Wildermuth</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128568834">August 31, 2008 at 11:22 PM</a>
+		</p>
+	</div>	<a id="c128578580"></a>
+	<div class="comment comment-odd" id="comment-128578580">
+		<div class="comment-content" id="comment-128578580-content">
+			
+			<span id="comment-128578580-content"><p>@Edward - the procedure for replacing the MBP hard drive is as nothing compared to the procedure needed for my 14" iBook. One case removal and you're there? The iBook needed the lower case, upper case, lower shield and upper shield removing before I could get at the HDD.</p>
+
+<p>My advice would be just do it, but be methodical and keep track of where all the different screws came from. Also, acquaint yourself with the guides @ <a href="http://www.ifixit.com/" rel="nofollow">http://www.ifixit.com/</a> - they're very good, IMO.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Stuart Dootson |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128578580">September 01, 2008 at 03:13 AM</a>
+		</p>
+	</div>	<a id="c128602032"></a>
+	<div class="comment comment-even" id="comment-128602032">
+		<div class="comment-content" id="comment-128602032-content">
+			
+			<span id="comment-128602032-content"><p>John,</p>
+
+<p>What grid template(s) do you use?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://developernotes.com" href="http://developernotes.com">Nick Parker</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128602032">September 01, 2008 at 08:49 AM</a>
+		</p>
+	</div>	<a id="c128605086"></a>
+	<div class="comment comment-odd" id="comment-128605086">
+		<div class="comment-content" id="comment-128605086-content">
+			
+			<span id="comment-128605086-content"><p>John,</p>
+
+<p>Missed it above.  ;-)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://developernotes.com" href="http://developernotes.com">Nick Parker</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128605086">September 01, 2008 at 09:18 AM</a>
+		</p>
+	</div>	<a id="c128647408"></a>
+	<div class="comment comment-even" id="comment-128647408">
+		<div class="comment-content" id="comment-128647408-content">
+			
+			<span id="comment-128647408-content"><p>I love gear posts.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			DanF |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128647408">September 01, 2008 at 03:27 PM</a>
+		</p>
+	</div>	<a id="c128728962"></a>
+	<div class="comment comment-odd" id="comment-128728962">
+		<div class="comment-content" id="comment-128728962-content">
+			
+			<span id="comment-128728962-content"><p>Last week, my dev machine hard drive died. Got a new machine and reinstalled this list of tools:</p>
+
+<p>WinRar<br />
+Consolas fon pack<br />
+TestDriven.NET<br />
+GhostDoc for Visual Studio<br />
+Krypton Toolkit<br />
+Red Gate ANTS profiler<br />
+Lutz Reflector<br />
+RssBandit<br />
+Twhirl<br />
+Silverlight 2<br />
+.NET 3.5 SP1<br />
+Adobe Air<br />
+Live Mesh<br />
+Fiefox 3<br />
+CruiseControl.NET<br />
+SlickRun <-- very handy<br />
+AVG antivirus<br />
+IE tab for Firefox<br />
+Flashblock for Firefox<br />
+Visual Studio 2005<br />
+Visual Studio 2008</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://judahgabriel.blogspot.com" href="http://judahgabriel.blogspot.com">Judah</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128728962">September 02, 2008 at 07:29 AM</a>
+		</p>
+	</div>	<a id="c128742186"></a>
+	<div class="comment comment-even" id="comment-128742186">
+		<div class="comment-content" id="comment-128742186-content">
+			
+			<span id="comment-128742186-content"><p>@Judah - I was over in Hong Kong not that long ago (based in the UK), and I came across 7zip (<a href="http://www.7-zip.org/)" rel="nofollow">http://www.7-zip.org/)</a> - handles rars and most anything else you can throw at it, but without the horrible WinRAR GUI.</p>
+
+<p>I might just be behind the curve, but it seems very popular out that way, I couldn't live without it.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Sam |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128742186">September 02, 2008 at 09:05 AM</a>
+		</p>
+	</div>	<a id="c128754126"></a>
+	<div class="comment comment-odd" id="comment-128754126">
+		<div class="comment-content" id="comment-128754126-content">
+			
+			<span id="comment-128754126-content"><p>> Those can be found in my profile.ps1.</p>
+
+<p>Is there a link missing to this file?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Norbert Schulze |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128754126">September 02, 2008 at 10:28 AM</a>
+		</p>
+	</div>	<a id="c128754326"></a>
+	<div class="comment comment-even" id="comment-128754326">
+		<div class="comment-content" id="comment-128754326-content">
+			
+			<span id="comment-128754326-content"><p>+1 on 7zip. I forgot to mention it in my tools list since I haven't had to install it yet :)</p>
+
+<p>The compression they achieve is stunning as well. We'll be using it to package up IronRuby binaries for distribution.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128754326">September 02, 2008 at 10:30 AM</a>
+		</p>
+	</div>	<a id="c128755002"></a>
+	<div class="comment comment-odd" id="comment-128755002">
+		<div class="comment-content" id="comment-128755002-content">
+			
+			<span id="comment-128755002-content"><p>@Norbert: Just uploaded it now. One knock on Live Writer is how I can't simply attach files to blog posts and have them auto-uploaded to the blog engine.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-128755002">September 02, 2008 at 10:34 AM</a>
+		</p>
+	</div>	<a id="c129051712"></a>
+	<div class="comment comment-even" id="comment-129051712">
+		<div class="comment-content" id="comment-129051712-content">
+			
+			<span id="comment-129051712-content"><p>> keyboard-driven UI</p>
+
+<p>Do you use some keyboard macro/automator program like Autohotkey? I use it like WinKey of old, but I also make my own menus, and copy text modifiers, window mover functions, and macros.</p>
+
+<p>You can do a lot with the scripts:<br />
+<a href="http://www.autohotkey.com/wiki/index.php?title=Script_Listing" rel="nofollow">http://www.autohotkey.com/wiki/index.php?title=Script_Listing</a><br />
+though the syntax of the language is pretty bad.</p>
+
+<p>Also some other programs:</p>
+
+<p>Folder Guide - Jump to a folder in your Explorer window/Save Dialog box via a right-click menu.</p>
+
+<p>"Windows Shell Extensions" by Synesis - Grab Path for pasting paths into dialogs or email, File Touch</p>
+
+<p>ntfslink - Explorer extension for NTFS hard links</p>
+
+<p>nircmd - interesting functions in one exe like "Turn Off Monitor"</p>
+
+<p>dd for windows - when you need to make plain old ISOs of CDs and DVDs.</p>
+
+<p>delegate - for network proxying</p>
+
+<p>wget - a static one exe file version: <a href="http://users.ugent.be/~bpuype/wget/" rel="nofollow">http://users.ugent.be/~bpuype/wget/</a></p>
+
+<p>htpdate - sync a computer's clock to a HTTP server's response headers</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://piyokun.googlepages.com" href="http://piyokun.googlepages.com">piyo</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-129051712">September 04, 2008 at 07:35 AM</a>
+		</p>
+	</div>	<a id="c129759960"></a>
+	<div class="comment comment-odd" id="comment-129759960">
+		<div class="comment-content" id="comment-129759960-content">
+			
+			<span id="comment-129759960-content"><p>I see you use Subversion for IronRuby. What are you using as a ticket/work item system? Have you ever tried Trac. You can find Visual Studio integration for trac (and tortoisesvn) at <a href="http://tracexplorer.devjavu.com/" rel="nofollow">http://tracexplorer.devjavu.com/</a> <br />
+If you try it, let me know what you think...</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://tracexplorer.devjavu.com" href="http://tracexplorer.devjavu.com">Mladen Mihajlovic</a> |
+			<a href="http://www.iunknown.com/2008/08/my-dev-kit.html#comment-129759960">September 08, 2008 at 11:29 PM</a>
+		</p>
+	</div>
+
+		</div>
+        
+	</div>
+    
+    	<!-- comment form -->
+	<script type="text/javascript" src="/.shared-typepad/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="54957470" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=54957470">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=54957470">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+    
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/05/silverlight_do_.html#comment-141831038">Alt experienced user</a> on <a href="http://www.iunknown.com/2007/05/silverlight_do_.html">Silverlight: do you love it or hate it?</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html#comment-139015006">Afshin Zavar</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-138908118">Ryan</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html#comment-137529587">Mike</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137271631">Gokhan</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137214923">John Lam</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137204227">Scott</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137190111">Jason</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137186049">Josh</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137153559">John Lam</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+			
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">MVP Summit Ruby Meetup</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/nominate-us-for.html">Nominate Us for Open Spaces Sessions at MS MVP Summit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/open-source-amb.html">Open Source Ambassador</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/index.html">April 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/01/index.html">January 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">October 2008</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				
+							
+					<td>4</td>
+				</tr>
+							<tr>
+					<td>5</td>
+				
+							
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				
+							
+					<td>11</td>
+				</tr>
+							<tr>
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				</tr>
+							<tr>
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				</tr>
+							<tr>
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

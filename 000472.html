@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Imagine a world without the Angle Bracket Tax</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000471.html" title="Databinding and application architecture" />
+
+<link rel="next" href="http://www.iunknown.com/000473.html" title="Infrastructure Stories Part 1" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000472.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/216"
+    dc:title="Imagine a world without the Angle Bracket Tax"
+    dc:identifier="http://www.iunknown.com/000472.html"
+    dc:subject="Blog"
+    dc:description="I had a dream tonight: project BuildAll default BuildAll { target BuildManifest { foreach(Line lab.dir in &amp;#147;manifest.txt&amp;#148;) nant(&amp;#147;${lab.dir}/app.build&amp;#148;, &amp;#147;Build&amp;#148;); } target BuildAll { foreach(Folder lab.dir in &amp;#147;.&amp;#148;) nant(&amp;#147;${lab.dir}/app.build&amp;#148;, &amp;#147;Build&amp;#148;); } target Clean { foreach(Folder lab.dir in &amp;#147;.&amp;#148;) nant(&amp;#147;${lab.dir}/app.build&amp;#148;, &amp;#147;Clean&amp;#148;); }..."
+    dc:creator="John"
+    dc:date="2004-07-09T01:15:01-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000471.html">&laquo; Databinding and application architecture</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000473.html">Infrastructure Stories Part 1 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">July 09, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Imagine a world without the Angle Bracket Tax</h3>
+
+<p>I had a dream tonight:</p>
+
+<pre><code>
+project BuildAll default BuildAll
+{
+  target BuildManifest
+  {
+    foreach(Line lab.dir in &#147;manifest.txt&#148;)
+      nant(&#147;${lab.dir}/app.build&#148;, &#147;Build&#148;);
+  }
+
+  target BuildAll
+  {
+    foreach(Folder lab.dir in &#147;.&#148;)
+      nant(&#147;${lab.dir}/app.build&#148;, &#147;Build&#148;);
+  }
+
+  target Clean
+  {
+    foreach(Folder lab.dir in &#147;.&#148;)
+      nant(&#147;${lab.dir}/app.build&#148;, &#147;Clean&#148;);
+  }
+}
+</code></pre>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at July  9, 2004 01:15 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=472" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="472" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000472.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>You should dream in C# instead of yet another custom lanugage.</p>
+
+<p>public class BuildAll : BuildProject {</p>
+
+<p>    public SimpleBuild() {<br />
+        DefaultTarget = "BuildAll";<br />
+    }<br />
+    <br />
+    public void BuildManifest() {<br />
+        foreach (string path in FileHelper.ReadTextFile("manifest.txt")) {<br />
+            RunNant(path + "/app.build", "Build");<br />
+        }<br />
+    }<br />
+    <br />
+    public void BuildAll() {<br />
+        foreach (string path in Directory.GetDirectories(Environment.CurrentDirectory)) {<br />
+            RunNant(path + /app.build", "Build");<br />
+        }<br />
+    }<br />
+    <br />
+    public void Clean() {<br />
+        foreach (string path in Directory.GetDirectories(Environment.CurrentDirectory)) {<br />
+            RunNant(path + /app.build", "Clean");<br />
+        }<br />
+    }<br />
+}</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;gerry_shaw&#64;yahoo&#46;com">Gerry Shaw</a> at July  9, 2004 03:09 AM</span>
+</div>
+<div class="comments-body">
+<p>I'm sure MLK was a NAnt user too :)</p>
+
+<p>I bet the VB programmers are feeling the curly brace/semi-colon tax :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.ObjectSharp.com/blogs/barry">Barry Gervin</a> at July  9, 2004 10:35 AM</span>
+</div>
+<div class="comments-body">
+<p>Gerry, the reason why most folks still write NAnt scripts using XML is because C# is arguably an even worse syntax. Besides, they lose the nice Perl-like semantics of inline property expansion within string literals. </p>
+
+<p>If you can build a nice clean language (no easy feat - and that syntax did come from a dream-like state) that generates NAnt XML on the fly, you can get some real benefit.</p>
+
+<p>I'm not volunteering to write said language, but it is intriguing to me nonetheless.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at July  9, 2004 11:07 AM</span>
+</div>
+<div class="comments-body">
+<p>Why, on earth, are you dreaming of code???</p>
+
+<p></p>
+
+<p><br />
+_______________<br />
+ITIL Consultant</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.axiossystems.com">ITIL Consultant</a> at July  9, 2004 11:56 AM</span>
+</div>
+<div class="comments-body">
+<p>Surely either someone's impersonating Gerry Shaw, or he relishes being ironic.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.eighty-twenty.net/blog">Gordon Weakliem</a> at July  9, 2004 12:08 PM</span>
+</div>
+<div class="comments-body">
+<p>I like this John. We should work out a grammar and try to make it go. Shouldn't be too bad...</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.peterprovost.org/">Peter Provost</a> at July  9, 2004 08:06 PM</span>
+</div>
+<div class="comments-body">
+<p>How about something like this for a C# approach.  It loses some of the simplicity of the original code (especially the string construction) but stays pretty close.</p>
+
+<p>[BuildProject( "BuildAll" )]<br />
+public class BuildAll : BuildBase<br />
+{<br />
+  [Target]<br />
+  public void BuildManifest()<br />
+  {<br />
+    foreach(Line lab in Dir(“manifest.txt”) )<br />
+      nant(lab+"/app.build”, “Build”);<br />
+  }</p>
+
+<p>  [Target]<br />
+  public void BuildAll()<br />
+  {<br />
+    foreach(Folder lab in “.”)<br />
+      nant(lab+"/app.build”, “Build”);<br />
+  }</p>
+
+<p>  [Target]<br />
+  public void Clean()<br />
+  {<br />
+    foreach(Folder lab  in “.”)<br />
+      nant(lab+"/app.build”, “Clean”);<br />
+  }<br />
+}<br />
+</p>
+<span class="comments-post">Posted by: Pete McKinney at July 13, 2004 04:24 PM</span>
+</div>
+<div class="comments-body">
+<p>Being both a Java and C# developer, Apache's Maven looks attractive to me. Now I have dreams to get this on dotNet.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.solarpapex.com">Alex</a> at July 14, 2004 02:40 AM</span>
+</div>
+<div class="comments-body">
+<p>The thing exists, actually, using the most beautifull programming language that there is: </p>
+
+<p>http://rake.rubyforge.org/<br />
+</p>
+<span class="comments-post">Posted by: M. at July 22, 2004 06:08 AM</span>
+</div>
+<div class="comments-body">
+<p>Something similar can be found here : http://today.java.net/pub/a/today/2003/06/10/jython.html<br />
+Stop dreamin' John ! ;-)</p>
+<span class="comments-post">Posted by: A. Coward at July 30, 2004 09:33 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="472" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

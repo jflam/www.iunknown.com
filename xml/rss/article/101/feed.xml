@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: reference_file bug in third drop of RubyCLR</title>
+    <link>http://www.iunknown.com/articles/2006/03/29/reference_file-bug-in-third-drop-of-rubyclr</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>reference_file bug in third drop of RubyCLR</title>
+      <description>&lt;p&gt;I just found a bug in RubyCLR that could potentially break the way enumerations (and potentially generic types) are handled. If you call &lt;code&gt;RubyClr::reference_file&lt;/code&gt; more than once for the same assembly, I&amp;#8217;ll parse the assembly more than once (this is the bug).&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a patch that will fix this bug. You&amp;#8217;ll need to replace the method body for &lt;code&gt;reference_file&lt;/code&gt; in &lt;code&gt;core.rb&lt;/code&gt;.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def self.reference_file(assembly_path)
+  @@assembly_filenames ||= []
+  if @@assembly_filenames.include?(assembly_path)
+    false
+  else
+    generate_modules(internal_reference_file(assembly_path))
+    @@assembly_filenames &amp;lt;&amp;lt; assembly_path
+    true
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;Yes, I&amp;#8217;m working on getting the source loaded into rubyforge, but I need to carve out some time to make that happen.&lt;/p&gt;
+
+
+	&lt;p&gt;Please let me know if you have any problems with the bridge. jlam at this domain or via the comments.&lt;/p&gt;</description>
+      <pubDate>Wed, 29 Mar 2006 00:09:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:093292c273213cccdc2379f38fe7f0b8</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/03/29/reference_file-bug-in-third-drop-of-rubyclr</link>
+      <category>Thoughts</category>
+    </item>
+  </channel>
+</rss>

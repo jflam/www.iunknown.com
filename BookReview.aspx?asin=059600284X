@@ -1,0 +1,179 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: System Performance Tuning, 2nd Edition (O'Reilly System Administration)
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=059600284X" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wNTk2MDAyODRYLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFN5c3RlbSBQZXJmb3JtYW5jZSBUdW5pbmcsIDJuZCBFZGl0aW9uIChPJ1JlaWxseSBTeXN0ZW0gQWRtaW5pc3RyYXRpb24pOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxHaWFuLVBhb2xvIEQuIE11c3VtZWNpOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkMzkuOTU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQyNi4zNzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8NC4wOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw2Oz4+Oz47Oz47dDxAPGh0dHA6Ly93d3cuYW1hem9uLmNvbS9leGVjL29iaWRvcy9BU0lOLzA1OTYwMDI4NFgvcmVmPW5vc2ltL2l1bmtub3duY29tLTIwOz47Oz47dDw7bDxpPDA+O2k8MT47PjtsPHQ8QDxBbWF6b24uY29tOz47Oz47dDxwPHA8bDxUZXh0Oz47bDxUaGUgZWFzeSB3YXkgdG8gc29sdmUgYSBwZXJmb3JtYW5jZSBwcm9ibGVtLS1hbmQgdGhlIG9uZSB0byB3aGljaCBoYXJkd2FyZSBtYW51ZmFjdHVyZXJzIGxvdmUgdG8gY2FsbCBhdHRlbnRpb24tLWlzIHRvIGFwcGx5IG1vcmUgaG9yc2Vwb3dlciB0byB0aGUgYXBwbGljYXRpb24gaW4gcXVlc3Rpb24uIEl0J3Mgc2FmZSB0byBiZXQgdGhhdCBhIHNlcnZlciB1cGdyYWRlIHdpbGwgc3BlZWQgdGhpbmdzIHVwLiBUcnVlIGluZm9ybWF0aW9uIHRlY2hub2xvZ3kgcHJvZmVzc2lvbmFscywgaG93ZXZlciwgd29uJ3QgdGFrZSB0aGUgZWFzeSB3YXkgb3V0IHdoZW4gZGVhbGluZyB3aXRoIGFuIGluY3JlYXNlZCB3b3JrbG9hZCBmb3Igb2xkZXIgc3lzdGVtcy4gVGhleSdsbCBkbyB0aGVpciBiZXN0IHRvIHdyaW5nIHRvcCBwZXJmb3JtYW5jZSAod2l0aCByZXF1aXJlZCByZWxpYWJpbGl0eSkgZnJvbSBleGlzdGluZyBoYXJkd2FyZSwgdGh1cyBpbXByb3ZpbmcgdGhlaXIgb3JnYW5pemF0aW9ucycgcmV0dXJuIG9uIGNhcGl0YWwgaW52ZXN0bWVudCBhbmQgZGVtb25zdHJhdGluZyB0aGVpciBvd24gZW5naW5lZXJpbmcgc2tpbGxzLiBUaGUgc2Vjb25kIGVkaXRpb24gb2YgXDxJXD5TeXN0ZW0gUGVyZm9ybWFuY2UgVHVuaW5nXDwvSVw+IG9mZmVycyBhZHZpY2Ugb24gd2hlcmUgdG8gbG9vayBmb3IgYm90dGxlbmVja3MgaW4gYXBwbGljYXRpb25zLS1ib3RoIGxvY2FsIGFuZCBuZXR3b3JrZWQtLXRoYXQgcnVuIHVuZGVyIFVuaXguIEl0IGFsc28gb2ZmZXJzIGFkdmljZSBvbiBwcm92aXNpb25pbmcgbmV3IHN5c3RlbXMsIHdoaWNoIGlzIHRvIHNheSBpdCBvZmZlcnMgYWR2aWNlIG9uIGRlY2lkaW5nIGhvdyBtdWNoIGNvbXB1dGluZyBwb3dlciBpcyBlbm91Z2ggZm9yIGEgbmV3IHN5c3RlbSB0byBiZSBpbXBsZW1lbnRlZC5cPHBcPiAgRW1waGFzaXppbmcgU29sYXJpcyA4IGFuZCwgdG8gYSBsZXNzZXIgZXh0ZW50LCBMaW51eCwgdGhlIG5ldyB2ZXJzaW9uIG9mIHRoaXMgYm9vayByZXByZXNlbnRzIGEgc2lnbmlmaWNhbnQgcmV2aXNpb24gKHRoZSBmaXJzdCBjYW1lIG91dCBpbiAxOTkwIGFuZCB3YXMgcHJldHR5IGJhZGx5IG9ic29sZXRlKS4gVGhlcmUncyBjb3ZlcmFnZSBvZiBhZHZhbmNlcyBpbiBoYXJkd2FyZS0tbXVsdGlwbGUgcHJvY2Vzc29ycywgUkFJRCBzdG9yYWdlLCBmYXN0ZXIgYW5kIGNoZWFwZXIgbWVtb3J5LCBhbmQgbmV0d29ya2VkIGRldmljZXMtLWFzIHdlbGwgYXMgY29uc2lkZXJhdGlvbiBvZiBjaGFuZ2VzIGluIHRoZSBkZW1hbmRzIHBsYWNlZCBvbiBtYWNoaW5lcyAoYWZ0ZXIgYWxsLCBmZXcgcGVvcGxlIHdlcmUgY29uY2VybmVkIGFib3V0IFdlYiBzZXJ2ZXIgcGVyZm9ybWFuY2UgaW4gMTk5MCkuIEFkbWluaXN0cmF0b3JzIHdpbGwgZ2V0IHBsZW50eSBvZiB2YWx1ZSBmcm9tIHRoZSBhdXRob3JzJyBkaXNjdXNzaW9uIG9mIHdoYXQgZ29lcyBvbiBkdXJpbmcsIGZvciBleGFtcGxlLCBhIHNlcmllcyBvZiBsYXJnZSBzdG9yZS10by1kaXNrIG9wZXJhdGlvbnMsIGFuZCBiZSBiZXR0ZXIgYWJsZSB0byBvcHRpbWl6ZSB0aGVpciBzeXN0ZW1zLiBcPElcPi0tRGF2aWQgV2FsbFw8L0lcPlw8cFw+ICBcPEJcPlRvcGljcyBjb3ZlcmVkOlw8L0JcPiBIb3cgdG8gZ2V0IHRvcCBwZXJmb3JtYW5jZSBmcm9tIGNvbXB1dGVyIHN5c3RlbXMgKHRob3NlIHJ1bm5pbmcgTGludXggYW5kIGVzcGVjaWFsbHkgU3VuIFNvbGFyaXMgOCkgd2l0aG91dCBhZGRpbmcgcHJvY2Vzc29yIGNhcGFjaXR5LCBtZW1vcnksIGFuZCBvdGhlciByZXNvdXJjZXMgYXQgcG90ZW50aWFsbHkgZ3JlYXQgZXhwZW5zZS4gVGhlIGF1dGhvcnMgZXhwbGFpbiB0aGUgd2F5cyBpbiB3aGljaCBvcGVyYXRpbmcgc3lzdGVtcyBhbmQgYXBwbGljYXRpb25zIHVzZSBwcm9jZXNzb3JzLCBtZW1vcnksIHBlcnNpc3RlbnQgc3RvcmFnZSwgYW5kIG5ldHdvcmtzLCBhbmQgcG9pbnQgb3V0IHBvdGVudGlhbCBib3R0bGVuZWNrcy4gVGhleSBhbHNvIHNob3cgaG93IHRvIHVzZSB0b29scy0tc3VjaCBhcyBleGVjdXRpb24gdGltZXJzLS10aGF0IHlvdSBjYW4gdXNlIHRvIGJlbmNobWFyayBwZXJmb3JtYW5jZSBjaGFuZ2VzLjs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz43UvxtUXU4cG1LOUcqKbdGDb/AAQ==" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/059600284X.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">System Performance Tuning, 2nd Edition (O'Reilly System Administration)</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Gian-Paolo D. Musumeci</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$39.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$26.37</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.0</span>
+          based on
+          <span id="TotalReviews">6</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/059600284X/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              <table id="EditorialReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Amazon.com:</DIV>
+                <span id="Label1">The easy way to solve a performance problem--and the one to which hardware manufacturers love to call attention--is to apply more horsepower to the application in question. It's safe to bet that a server upgrade will speed things up. True information technology professionals, however, won't take the easy way out when dealing with an increased workload for older systems. They'll do their best to wring top performance (with required reliability) from existing hardware, thus improving their organizations' return on capital investment and demonstrating their own engineering skills. The second edition of <I>System Performance Tuning</I> offers advice on where to look for bottlenecks in applications--both local and networked--that run under Unix. It also offers advice on provisioning new systems, which is to say it offers advice on deciding how much computing power is enough for a new system to be implemented.<p>  Emphasizing Solaris 8 and, to a lesser extent, Linux, the new version of this book represents a significant revision (the first came out in 1990 and was pretty badly obsolete). There's coverage of advances in hardware--multiple processors, RAID storage, faster and cheaper memory, and networked devices--as well as consideration of changes in the demands placed on machines (after all, few people were concerned about Web server performance in 1990). Administrators will get plenty of value from the authors' discussion of what goes on during, for example, a series of large store-to-disk operations, and be better able to optimize their systems. <I>--David Wall</I><p>  <B>Topics covered:</B> How to get top performance from computer systems (those running Linux and especially Sun Solaris 8) without adding processor capacity, memory, and other resources at potentially great expense. The authors explain the ways in which operating systems and applications use processors, memory, persistent storage, and networks, and point out potential bottlenecks. They also show how to use tools--such as execution timers--that you can use to benchmark performance changes.</span>
+              
+</td></tr></table>
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Good when it's right, but be careful...</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>7</span>
+                      /
+                      <span>7</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-05-13</span>
+                    </div>
+                    <span>I had looked at the first edition of this book many times, but not bought it because of the age of the information. At long last--a second edition! Completely updated, and current!<P>Many parts of this book are top-notch. It does an excellent job of drilling down the process tree, caching processes (memory and disk, and the structures of both), and bottlenecks such as latency. I learned a lot, and I've got a fair background in performance tuning.<P>However...<P>The "Solaris and Linux" part is a joke--they could have eliminated all of the Linux tuning instruction/reference, and the book might have lost 15 pages. Clearly the authors aren't nearly as familiar with Linux as they are with Solaris. Not a big deal, but it's misleadingly marketed.<P>Furthermore, there are many MANY mistakes in the text--mistakes that, if read as given, run absolutely counter to the way the system behaves. Weren't there ANY proofreaders for this book? Also, the sections on disk performance and reliability (i.e. RAID arrays) were confusing and inconsistent. This is a subject I know and know well, and can only assume that the authors simply don't 'get' some of the stuff they're trying to present.<P>Buried in all of these mistakes and shortcomings is a 5-star book just screaming to get out. If they fixed the things I've mentioned, this would be THE standard reference--the performance tuning version of Evi Nemeth (et. al)'s Unix sysadmin handbook.<P>As it is, it's very useful, but get a second reference on anything you can't puzzle out--you might be right.</span>
+                  
+                    <div class="CustomerReviewSummary">A comprehensive, "user friendly" technical sourcebook</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-05-06</span>
+                    </div>
+                    <span>Now in a newly revised and expanded second edition, System Performance Tuning by Gian-Paolo D. Musumeci (Research Engineer, Performance and Availability Engineering Group, Sun Microsystems) and Mike Loukides (Editor, O'Reilly & Associates) is a comprehensive, "user friendly", technical sourcebook, guide, and reference for UNIX system administrators who seek optimum speed and overall performance. Tacking complex problems for which there are no simple solutions, individual chapters address workflow management, disk arrays, code tuning, and much more. A first-class resource, System Performance Tuning is an invaluable and highly recommended tutorial and continuing reference work.</span>
+                  
+                    <div class="CustomerReviewSummary">An excellent guide to system performance and architecture</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>8</span>
+                      /
+                      <span>8</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-02-15</span>
+                    </div>
+                    <span>The second edition brings a well known classic in system administration up to date, focusing on both the theory and principals governing system performance, along with a set of excellent practical examples that can be applied to see immediate results.<P>The book is great for both introductory and advanced administrators, and covers the full gamut of performance, from code to disk to CPU. What is especially refreshing is the focus on practical performance tuning, helping to make tuning you do have maximal benefit for your applications.</span>
+                  
+                    <div class="CustomerReviewSummary">Previous revies refer to an older version</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>5</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-02-14</span>
+                    </div>
+                    <span>Please note that the previous reviews refer to the first edition of this book. This is the second edition, which was released in February 2002 and is up-to-date.</span>
+                  
+                    <div class="CustomerReviewSummary">What the man pages forgot to say.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>1</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2000-07-01</span>
+                    </div>
+                    <span>This is really a five star book. However it is generic and only dated to the extent that there is more information now. The concepts and methoods are still sound<BR>Want to know about SAR?<BR>When you time an application do you want to know what the user-state CPU time and systemstate CPU time means?<BR>Many of the pertinent questions and answers to System Performance Tuning are in this book. The chapters are:<P>· Introduction to System Performance<BR>· Monitoring System Activity<BR>· Managing the Workload<BR>· Memory Performance<BR>· Disk Performance Issues<BR>· Network Performance<BR>· Terminal Performance<BR>· Kernel Configuration<BR>· Appendix A Real-time Processes<BR>· Appendix B A Performance Tuning Strategy<P>This book has helped point to the pertinent manuals on several flavors of UNIX.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=059600172X'>
+                      Web Performance Tuning, 2nd Edition (O'Reilly Internet)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.2 based on 19 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596003439'>
+                      Essential System Administration, Third Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.3 based on 64 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0130952494'>
+                      Sun Performance and Tuning: Java and the Internet (2nd Edition)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.9 based on 10 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0672320819'>
+                      Linux Performance Tuning and Capacity Planning
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 2.5 based on 2 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0130224960'>
+                      Solaris Internals: Core Kernel Architecture
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.7 based on 24 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

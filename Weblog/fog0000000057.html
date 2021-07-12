@@ -1,0 +1,256 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/57 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Athlon interface method dispatch cost</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">Athlon interface method dispatch cost</div>
+        <div class="entryDate">2002-01-10</div>
+        <p><P><A href="fog0000000055.html">Yesterday</A>, I examined the cost of virtual method dispatch (VMD) vs. interface method dispatch (IMD). I did my investigations on my Thinkpad T-23, which uses a Pentium III-M processor. Today, I am curious about the effects of CPU architecture on the <EM>relative</EM> cost of VMD vs. IMD. While I was investigating these effects, I encountered a number of <A href="fog0000000056.html">Heisenberg effects</A> that caused me to spend some performing control experiments&nbsp;so that I could actually determine what it was that I was looking at.</P>
+<P>I have a large number of different CPU's running in various computers around my house. I have a Pentium 166 MMX, a Pentium Pro 150, a Pentium 233 MMX, a dual Celeron 400, a Celeron 600, a Pentium III-M 1.13GHz, an Athlon 1200, and a Pentium 4 1.6GHz. Eventually, I might decide to examine the progress that Intel has made with respect to hiding indirection costs, but for the time being, I decided to look at the differences between my 1.13GHz Pentium III-M and my Athlon 1200.</P>
+<P>Since I am now comparing results between different computers, I needed to update my benchmark software so that it would report results in seconds, instead of ticks of the high-resolution CPU counter. Here is what the test rig looks like in its current form:</P>
+<P><CODE>const int MAX_COUNT = 100000000; <BR>static long _performanceFrequency; <BR><BR>static double TimeVirtualMethodDispatch( C c ) <BR>{ <BR>&nbsp; long vmdStart, vmdEnd; <BR>&nbsp; QueryPerformanceCounter( out vmdStart ); <BR>&nbsp; for( int i = 0; i &lt; MAX_COUNT; i++ )&nbsp;<BR>&nbsp;&nbsp;&nbsp; c.M1(); <BR>&nbsp; QueryPerformanceCounter( out vmdEnd ); <BR>&nbsp; return ((double)(vmdEnd - vmdStart)) / _performanceFrequency; <BR>} <BR><BR>static double TimeInterfaceMethodDispatch( I1 i1 ) <BR>{ <BR>&nbsp; long imdStart, imdEnd; <BR>&nbsp; QueryPerformanceCounter( out imdStart ); <BR>&nbsp; for( int i = 0; i &lt; MAX_COUNT; i++ )<BR>&nbsp;&nbsp;&nbsp; i1.M1();<BR>&nbsp; QueryPerformanceCounter( out imdEnd ); <BR>&nbsp; return ((double)(imdEnd - imdStart)) / _performanceFrequency; <BR>} <BR><BR>static void Main(string[] args) <BR>{ <BR>&nbsp; C c = new C(); <BR>&nbsp; I1 i1 = (I1)c; <BR><BR>&nbsp; QueryPerformanceFrequency( out _performanceFrequency ); <BR><BR>&nbsp; // Force JIT-compilation<BR>&nbsp; TimeVirtualMethodDispatch( c ); <BR>&nbsp; TimeInterfaceMethodDispatch( i1 ); <BR><BR>&nbsp; // Calls to output results omitted for clarity<BR>}</CODE></P>
+<P>To jog your memory, these are the x86 instruction sequences for:</P>
+<P>Virtual Method Dispatch:</P>
+<P><CODE>0440 mov ecx,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;esi contains objref<BR>0442 mov eax,[ecx]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;get method table<BR>0444 call dword ptr [eax+0x38] ;invoke via slot in MT</CODE></P>
+<P>Interface Method Dispatch:</P>
+<P><CODE>04af mov ecx,edi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;edi contains objref<BR>04b1 mov eax,[ecx]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;get method table<BR>04b3 mov eax,[eax+0xc]&nbsp;&nbsp;&nbsp; ;get global IT<BR>04b6 mov eax,[eax+0x2c]&nbsp;&nbsp; ;get local IT<BR>04b9 call dword ptr [eax] ;invoke via slot in IT</CODE></P>
+<P>Recall that we are attempting to measure the cost of the two additional levels of indirection introduced by the interface method dispatch mechanism used by the CLR. Here are the raw benchmark results:</P>
+<P>
+<TABLE style="WIDTH: 197pt; BORDER-COLLAPSE: collapse" cellSpacing=0 cellPadding=0 width=261 border=0 x:str>
+<COLGROUP>
+<COL style="WIDTH: 32pt; mso-width-source: userset; mso-width-alt: 1536" width=42>
+<COL style="WIDTH: 55pt; mso-width-source: userset; mso-width-alt: 2669" span=2 width=73>
+<COL style="WIDTH: 55pt; mso-width-source: userset; mso-width-alt: 2669" width=73>
+<TBODY>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; WIDTH: 197pt; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent; mso-ignore: colspan" width=261 colSpan=4 height=17><STRONG><FONT face=Arial size=2>Athlon 1200 Results -- Release build</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><FONT face=Arial size=2>Run</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>VMD</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>IMD</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>%Diff</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>1</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>0.610</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num><FONT face=Arial size=2>0.870</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.2988505747126437" x:fmla="=(C4-B4)/C4"><FONT face=Arial size=2>29.9%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>2</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.61299999999999999"><FONT face=Arial size=2>0.613</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.86899999999999999"><FONT face=Arial size=2>0.869</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.29459148446490219" x:fmla="=(C5-B5)/C5"><FONT face=Arial size=2>29.5%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>3</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.60799999999999998"><FONT face=Arial size=2>0.608</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.877"><FONT face=Arial size=2>0.877</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.30672748004561007" x:fmla="=(C6-B6)/C6"><FONT face=Arial size=2>30.7%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>4</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.61099999999999999"><FONT face=Arial size=2>0.611</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.86799999999999999"><FONT face=Arial size=2>0.868</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.29608294930875578" x:fmla="=(C7-B7)/C7"><FONT face=Arial size=2>29.6%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>5</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.60699999999999998"><FONT face=Arial size=2>0.607</FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.86899999999999999"><FONT face=Arial size=2>0.869</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.30149597238204834" x:fmla="=(C8-B8)/C8"><FONT face=Arial size=2>30.1%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><FONT face=Arial size=2></FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD>
+<TD class=xl25 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2>Avg</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.60980000000000012" x:fmla="=AVERAGE(B4:B8)"><STRONG><FONT face=Arial size=2>0.610</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.87059999999999993" x:fmla="=AVERAGE(C4:C8)"><STRONG><FONT face=Arial size=2>0.871</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.29954969218279198" x:fmla="=AVERAGE(D4:D8)"><STRONG><FONT face=Arial size=2>30.0%</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:str="'+/-"><STRONG><FONT face=Arial size=2>+/-</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="2.387467277227238E-3" x:fmla="=STDEV(B4:B8)"><STRONG><FONT face=Arial size=2>0.002</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="3.6469165057612537E-3" x:fmla="=STDEV(C4:C8)"><STRONG><FONT face=Arial size=2>0.004</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="4.8062339826313964E-3" x:fmla="=STDEV(D4:D8)"><STRONG><FONT face=Arial size=2>0.5%</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent; mso-ignore: colspan" colSpan=4 height=17><STRONG><FONT face=Arial size=2>Pentium III-M Results -- Release build</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><STRONG><FONT face=Arial size=2></FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><FONT face=Arial size=2>Run</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>VMD</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>IMD</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2>%Diff</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>1</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.629"><FONT face=Arial size=2>0.629</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71499999999999997"><FONT face=Arial size=2>0.715</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12027972027972024" x:fmla="=(C16-B16)/C16"><FONT face=Arial size=2>12.0%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>2</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.623"><FONT face=Arial size=2>0.623</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71499999999999997"><FONT face=Arial size=2>0.715</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12867132867132863" x:fmla="=(C17-B17)/C17"><FONT face=Arial size=2>12.9%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>3</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.63100000000000001"><FONT face=Arial size=2>0.631</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.72299999999999998"><FONT face=Arial size=2>0.723</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12724757952973717" x:fmla="=(C18-B18)/C18"><FONT face=Arial size=2>12.7%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>4</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.629"><FONT face=Arial size=2>0.629</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71899999999999997"><FONT face=Arial size=2>0.719</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12517385257301805" x:fmla="=(C19-B19)/C19"><FONT face=Arial size=2>12.5%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" align=right height=17 x:num><FONT face=Arial size=2>5</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.63100000000000001"><FONT face=Arial size=2>0.631</FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71899999999999997"><FONT face=Arial size=2>0.719</FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12239221140472875" x:fmla="=(C20-B20)/C20"><FONT face=Arial size=2>12.2%</FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><FONT face=Arial size=2></FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD>
+<TD style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD>
+<TD class=xl26 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent"><FONT face=Arial size=2></FONT></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17><STRONG><FONT face=Arial size=2>Avg</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.62859999999999994" x:fmla="=AVERAGE(B16:B20)"><STRONG><FONT face=Arial size=2>0.629</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.71819999999999995" x:fmla="=AVERAGE(C16:C20)"><STRONG><FONT face=Arial size=2>0.718</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="0.12475293849170657" x:fmla="=AVERAGE(D16:D20)"><STRONG><FONT face=Arial size=2>12.5%</FONT></STRONG></TD></TR>
+<TR style="HEIGHT: 12.75pt" height=17>
+<TD class=xl24 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; HEIGHT: 12.75pt; BACKGROUND-COLOR: transparent" height=17 x:str="'+/-"><STRONG><FONT face=Arial size=2>+/-</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="3.286335345044464E-3" x:fmla="=STDEV(B16:B20)"><STRONG><FONT face=Arial size=2>0.003</FONT></STRONG></TD>
+<TD class=xl28 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="3.346640106134658E-3" x:fmla="=STDEV(C16:C20)"><STRONG><FONT face=Arial size=2>0.003</FONT></STRONG></TD>
+<TD class=xl27 style="BORDER-RIGHT: #ece9d8; BORDER-TOP: #ece9d8; BORDER-LEFT: #ece9d8; BORDER-BOTTOM: #ece9d8; BACKGROUND-COLOR: transparent" align=right x:num="3.440090759103382E-3" x:fmla="=STDEV(D16:D20)"><STRONG><FONT face=Arial size=2>0.3%</FONT></STRONG></TD></TR></TBODY></TABLE></P>
+<P>
+<P><CODE></CODE></P>
+<P>The Pentium III-M executes the IMD instruction sequence only 12.5% slower than the VMD instruction sequence. The Athlon 1200, on the other hand, executes the IMD instruction sequence 30% slower than the VMD instruction sequence. The key observation here is that the Pentium III-M totally kicks the Athlon 1200's ass in hiding the cost of the indirection used by IMD! </P>
+<P>The take-home message here is that your mileage will vary <EM>significantly</EM> if your code is executed on different platforms. However, keep in mind the following:</P>
+<OL>
+<LI>This is a totally contrived benchmark; we are measuring the <EM>ping</EM> cost of invoking methods via VMD and IMD. 
+<LI>These are relative numbers, we are still invoking a method 100,000,000 times in well under a second. Expressed differently, the Pentium III-M is dispatching 159 <EM>million</EM> VMD calls per second and the Athlon 1200 is dispatching 164 <EM>million </EM>VMD calls per second!</LI></OL>
+<P>It would be interesting to see whether the x86 instruction sequence for IMD could be optimized specifically for Athlon processors to try and narrow the performance gap.</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/fog0000000057.html');"><script type="text/javascript">postCount('Weblog/fog0000000057.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

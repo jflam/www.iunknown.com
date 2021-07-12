@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Cool C# feature spotted</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000208.html" title="Hello SpamNet" />
+
+<link rel="next" href="http://www.iunknown.com/000210.html" title="Scalable API's" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000208.html">&laquo; Hello SpamNet</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000210.html">Scalable API's &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 02, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Cool C# feature spotted</h3>
+
+<p><P>I didn't know about namespace aliasing before I spotted it in some sample code this morning:</P><br />
+<P>using Channels = System.Runtime.Remoting.Channels;</P><br />
+<P>This is really nice if you have namespace conflicts and need to disambiguate your type references, or if you're from the school of thought that says that you must always use fully qualified type names, but don't want to obscure your code with giant namespace references.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February  2, 2003 10:24 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="209" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000209.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>This is indeed a nice feature. Unfortunately, I've always thought C# namespace name resolution was only half done... For example, if you have a class X in namespace M.N, there's no way to say:<br />
+using M;<br />
+...<br />
+N::X x = N::X.<br />
+This sucks, in my opinion, cause you either use a full namespace name, a complete namespace using declaration, or an alias. </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.winterdom.com/weblog">Tomas Restrepo</a> at February  2, 2003 02:07 PM</span>
+</div>
+<div class="comments-body">
+<p>What's funny is that you can do using on a class in Visual Basic .NET using the VB's Imports command.<br />
+For example, I usually do:<br />
+Imports System.Runtime.InteropServices.Marshal<br />
+so that I can then just use<br />
+ReleaseComObject(obj)<br />
+Brian</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;brianr&#64;develop&#46;com">Brian Randell</a> at February  2, 2003 02:34 PM</span>
+</div>
+<div class="comments-body">
+<p>I couldn't agree with you any more Thomas.  I hope in v2 that the MS folks change their implementation.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://mph.homeip.net">Mark Hurley</a> at February  2, 2003 02:55 PM</span>
+</div>
+<div class="comments-body">
+<p>I agree as well...isn't it possible to use partial specifications if you are inside the namespace though? For instance if you have a class M.N.X:<br />
+namespace M<br />
+{<br />
+   public class Y<br />
+   {<br />
+     public DoSomething()<br />
+     {<br />
+        N.X x = new N.X();<br />
+     }<br />
+   }<br />
+}<br />
+I get autocomplete in VS.NET on that type of thing, so it has always confused me why one gives it and not the other. Never took the time to look at it in depth though.<br />
+--Jesse</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://radio.weblogs.com/0117374/">Jesse Ezell</a> at February  2, 2003 08:42 PM</span>
+</div>
+<div class="comments-body">
+<p>Don't forget you can alias class names as well.<br />
+using mb = System.Windows.Forms.MessageBox;<br />
+mb.Show("");</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.surrealization.com">adam</a> at February  2, 2003 10:06 PM</span>
+</div>
+<div class="comments-body">
+<p>"Don't forget you can alias class names as well."<br />
+As a developer, I would _never_ want to see that. You're in for some serious heartache when people start doing that.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www25.brinkster.com/rchildress">Rick Childress</a> at February  4, 2003 11:14 AM</span>
+</div>
+<div class="comments-body">
+<p>nor would i, however just imagine the impossible to read code you can write</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.surrealization.com">adam</a> at February  4, 2003 04:26 PM</span>
+</div>
+<div class="comments-body">
+<p>I think we are!  RUN AWAY SCREAMING ... AAaaauuuuugggghhh</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://dotnetweblogs.com/bmore">Brad More</a> at February  4, 2003 08:08 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

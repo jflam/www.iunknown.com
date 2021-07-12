@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Local variable declarations</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Local variable declarations" by jlam</title>
+      <description>&lt;p&gt;I added unit tests to my Ruby &lt;span class="caps"&gt;CIL DSL&lt;/span&gt;, and did a refactoring pass tonight. I now handle named local variable declarations. I&amp;#8217;m probably going to auto-include both the &lt;code&gt;System&lt;/code&gt; and &lt;code&gt;RbDynamicMethod&lt;/code&gt; namespaces by default to get rid of the &lt;code&gt;include&lt;/code&gt; noise in the method.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_declare_local_name_reference
+  create_ruby_method('declare_local_name_reference') do
+    include   'System, RbDynamicMethod'
+    declare   'Int32', 'count'
+    ldc_i4    42
+    stloc     'count'
+    ldloc     'count'
+    call      'static Marshal.Int32ToFixnum(Int32)'
+    ret
+  end
+
+  assert_equal 42, declare_local_name_reference
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Tue, 06 Dec 2005 00:06:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/06/local-variable-declarations"&gt;Local variable declarations&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/06/local-variable-declarations"&gt;Local variable declarations&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

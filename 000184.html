@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Some more TiBook observations</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000183.html" title="My TiBook is here!" />
+
+<link rel="next" href="http://www.iunknown.com/000185.html" title="Virtual PC" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000183.html">&laquo; My TiBook is here!</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000185.html">Virtual PC &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 31, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Some more TiBook observations</h3>
+
+<p><P>So I've been using my TiBook all afternoon. In no particular order, here are a few more observations / questions.</P><br />
+<P>I spent a bunch of time running off of the battery to see how good the battery life is. I ran it for about 2 hours, but I didn't do anything particularly taxing on the machine. I spent a lot of time just reading stuff. The battery gauge still reported 2.5 hours of power remaining.</P><br />
+<P>The boot time of the TiBook is not particularly impressive since&nbsp;I'm used to Windows XP boot speeds. On the other hand, I love how quickly it goes in and out of suspend mode. The glowing suspend light is also a nice touch.</P><br />
+<P>I've been trying to get Entourage talking to my Exchange server. So far getting it to pick up email via IMAP4 has been a no-op. But getting Exchange to let me send email is another story. I've been stuck for the past hour or so with "SendAs permission denied" errors. I'm not entirely sure what that means, and have been tweaking ACL's on my Exchange server with no success.</P><br />
+<P>I found <A href="http://www.macnn.com/news.php?id=16327">this link to an article on MacNN</A>, which seems to indicate that MS will support Exchange from Entourage sometime in the future. It can't be too soon for me ...</P><br />
+<P>I'm getting used to the font smoothing on OS X. It's not ClearType, but your eyes do adjust. What I have realized is that ClearType does an incredible job with small font sizes. With OS X, you simply cannot turn on font smoothing for small font sizes&nbsp;since it makes the fonts <EM>much </EM>harder to read.</P><br />
+<P>I'm using Microsoft's Remote Desktop Connection utility to manage my other Windows PC's. So far it has worked just as good as the RDC on XP.</P><br />
+<P>I downloaded the Apple Developer tools this afternoon. I've installed them, but haven't had a chance to try writing Hello, World yet. Hopefully tomorrow sometime after I recover from New Years.</P><br />
+<P>I figured out the problem with MSN Messenger 3.0 on OS X - it doesn't have the same defaults as MSN Messenger 5.0 on XP. I now have my contacts organized by category again.</P><br />
+<P>I'm (slowly) learning the keyboard shortcuts on OS X. Does anyone know if&nbsp;it&nbsp;is possible to run the menus via the keyboard, much like I can under Windows?</P><br />
+<P>I adjusted my monitor's gamma to be 2.2 just like Windows. I'm doing this so that any images I manipulate on my TiBook will look the same way that they do to Windows users. Is this what other Mac folks do as well? Or do they stick to 1.8?</P><br />
+<P>I took a quick peek at iPhoto. So far I'm really liking the way the UI works, particularly for assigning categories to individual photographs. I'll see how it does when I copy the rest of my photos over to my TiBook.</P><br />
+<P>I managed to connect to my Windows boxes using SMB earlier. That was a very painless process. I simply connected, and added my windows logon to my OS X key chain. </P><br />
+<P>While doing my  SMB experiments, I noticed something interesting. When I've got my AirPort card enabled AND I am also plugged into my wired Ethernet network, OS X does NOT automatically select the fastest connection. Windows XP does do a better job in this area. However, if I disable my AirPort card, OS X will use the wired connection just fine.</P><br />
+<P>I'm now copying all of my photos over to my TiBook. That's about 4.5GB of data. One thing that is really nice is that Finder sets up for copying large numbers of files MUCH better than Explorer does in XP. I abandoned file copying using Explorer under Windows a long time ago in favor of Robocopy.</P><br />
+<P>Well, it's almost time to head out for New Years.&nbsp;I hope all of you out there have a safe and happy New Year!</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December 31, 2002 07:13 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="184" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000184.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>To run the menus via the keyboard, go to the System Preferences, choose Keyboard, go to the "Full Keyboard Access" tab, and check "Turn on full keyboard access." Then you have your choice of control key combinations; either function keys or alpha.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dewaynec at cox dot net">Dewayne Christensen</a> at December 31, 2002 10:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks Dewayne! Do you know how I can assign a custom function key from these settings? I want (ctrl) F11 to bring up the menu, but I can't reassign the key using the dialog, even though the instructions in the dialog claim that I can do this.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  1, 2003 12:14 PM</span>
+</div>
+<div class="comments-body">
+<p>Hopefully a couple of notes to help with your switch!<br />
+Jaguar's boot time is much better than previous versions of Mac OS X, but it's still a little slow (add in a notebook HDD that's generally slower than desktop varieties and it doesn't make things better). Just do what I do...never shutdown! I hardly ever actually shutdown my machine. It sleeps a lot; I log out occasionally, but why do I really need to shut it down?<br />
+I've had mixed success with Entourage X and Exchange as well. As long as you're running Exchange 5.5 SP3+ and have full IMAP support enabled, it should work. I just ended up switching to Apple's Mail program and it works just great with our Exchange environment. Now if Apple can only crack the code to let iCal talk to my Exchange calendar, life will be great!<br />
+I've never really had a problem with Mac OS X's font smoothing since I hate seeing anti-aliased fonts below 12pt.<br />
+As for monitor gammas, most Mac folks stick to the standard gamma. Remember, it's PCs that are wrong  Apps like Photoshop let you preview images with either gamma setting.<br />
+iPhoto is great; SMB support works great except that I can't get the Finder to remember my passwords since all of our corporate shares are hidden (they end with the dollar sign).<br />
+Have a great time with your TiBook...Apple should be providing us with some interesting developments for 2003!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://homepage.mac.com/cgervais/blog">Chris Gervais</a> at January  1, 2003 03:44 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks, Chris! I never shutdown my T23 either, and surprisingly I'm now finding that OS X reboots faster than it did before.<br />
+Thanks for sharing your knowledge. Your comments have really helped in my transition.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  2, 2003 11:23 AM</span>
+</div>
+<div class="comments-body">
+<p>I just tried setting the menu key to Ctl+F11 and it worked fine here. I'm still running 10.2; haven't put on the 10.2.3 update yet. I just chose "Custom Keys" from the drop down, highlighted the "menu" field, pressed F11, quit prefs and it worked, so I don't know what to tell you.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dewaynec at cox dot net">Dewayne Christensen</a> at January  2, 2003 08:01 PM</span>
+</div>
+<div class="comments-body">
+<p>Just loaded 10.2.3, and Ctl+F11 still works here.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dewaynec at cox dot net">Dewayne Christensen</a> at January  2, 2003 11:10 PM</span>
+</div>
+<div class="comments-body">
+<p>It was my fault  Silly me, I'm STILL getting used to having to press the fn key on my TiBook to get the F11 key.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January  2, 2003 11:38 PM</span>
+</div>
+<div class="comments-body">
+<p>What I see is that you are using microsoft stuff all over the place. Try to imagine your apple computer without beeing able to use any MS technologie on it. Would you still be that happy with ? So, if the differences comes from the MS side, what does justify the move ?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;knipjo&#64;hotmail&#46;com">Jonx</a> at January 20, 2003 07:48 AM</span>
+</div>
+<div class="comments-body">
+<p>I don't categorize technology as "MS" and "non-MS". I find that it doesn't make sense to accept or reject software simply because it comes from any particular vendor. If the software happens to fit the bill, then I use it. e.g. why use anything other than Photoshop for imaging?</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January 21, 2003 06:04 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,<br />
+Just got my new TBook and I'm in love. I just got the same problems as you with Entourage. It's so bad not being able to use it. Would you please inform me in the future if you find a way of making it work with exchange server?<br />
+Thanks Pal,</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.dieselmarketing.com">Martin Gauthier</a> at February 11, 2003 01:33 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

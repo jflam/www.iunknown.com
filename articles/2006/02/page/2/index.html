@@ -1,0 +1,986 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/LessIsBetter" />
+  <script src="/javascripts/cookies.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1156231406" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/application.css?1164503575" media="all" rel="Stylesheet" type="text/css" />
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Less is better</a></span></h1>
+    <h2>John Lam on software</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <div class="atomentry" id="article-73">
+  <h2 class="title">
+    <a href="/articles/2006/02/20/indexers-and-ruby">Indexers and Ruby</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-20T11:05:00-08:00"><span class="typo_date" title="Mon, 20 Feb 2006 19:05:00 GMT">Mon, 20 Feb 2006 19:05:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I can support indexers (properties with parameters) in my bridge. So these tests pass:</p>
+
+
+<pre><code>
+  def test_property_overload_resolution
+    o = System::PropertyOverloads.new
+    o[4] = 42
+    o['5'] = 43
+    assert_equal 42, o[4]
+    assert_equal 43, o[5]
+    assert_equal 42, o['4']
+    assert_equal 43, o['5']
+  end
+</code></pre>
+
+	<p>given these properties written in C++:</p>
+
+
+<pre><code>
+property int default[int] {
+  int get(int index) { return _values[index]; }
+  void set(int index, int value) { _values[index] = value; }
+}
+
+property int default[String^] {
+  int get(String^ index) { return _values[Convert::ToInt32(index)]; }
+  void set(String^ index, int value) { _values[Convert::ToInt32(index)] = value; }
+}
+</code></pre>
+
+	<p>I was writing some corner case tests to validate my new <code>fastproperty</code> code generator (for non-overloaded properties, I bind directly to the method to avoid a runtime lookup) when I came across this interesting oddity:</p>
+
+
+<pre><code>
+static property int OverloadedProperty {
+  int get() { return 1; }
+}
+
+static property int OverloadedProperty[int] {
+  int get(int x) { return _overloadedValue; }
+  void set(int x, int value) { _overloadedValue = value; }
+}
+</code></pre>
+
+	<p>Note that in C++ I can overload non-default properties (I don&#8217;t think you can do this in C# or VB). The <span class="caps">CLR</span>, of course, supports this but it appears that the languages don&#8217;t.</p>
+
+
+	<p>I&#8217;m not really sure how to support this case in Ruby:</p>
+
+
+	<p><code>PropertyTests.OverloadedProperty[]</code></p>
+
+
+	<p>It resolves into a call to <code>OverloadedProperty</code>, followed by a call to the <code>[]</code> method on the object that was returned by <code>OverloadedProperty</code>.</p>
+
+
+	<p>I don&#8217;t think there are cases in the libraries that require this, nor can I think of a good reason why I should support this case.</p>
+
+
+	<p>What do y&#8217;all think?</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/20/indexers-and-ruby#comments">no comments</a>,
+      <a href="/articles/2006/02/20/indexers-and-ruby" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/73/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/73/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/20/indexers-and-ruby">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/20/indexers-and-ruby;title=Indexers and Ruby">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-72">
+  <h2 class="title">
+    <a href="/articles/2006/02/17/covariance-in-the-clr">Covariance in the CLR</a> 
+    <span class="comment_count">5</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-17T15:47:00-08:00"><span class="typo_date" title="Fri, 17 Feb 2006 23:47:00 GMT">Fri, 17 Feb 2006 23:47:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>While writing my first real Ruby app using my bridge, I came across my first real honest-go-goodness nasty bug. Most of the other bugs have been nice and deterministic &#8211; something I just did caused the bridge to blow up. This one was just plain nasty, and of course it was based on an invalid assumption. It manifested itself as a corrupted call stack and dumped me rather unceramoniously into the debugger.</p>
+
+
+	<p>Here&#8217;s the invalid assumption: I thought that there wasn&#8217;t return-value <a href="http://en.wikipedia.org/wiki/Parameter_covariance">covariance</a> in C# (the <span class="caps">CLR</span> supports return-value covariance, but I thought this was a safe assumption since I figured most folks wouldn&#8217;t be writing code using <code>ilasm</code>).</p>
+
+
+	<p>For example, you cannot have these two methods in the same type:</p>
+
+
+	<p><code>int Method()</code> and <code>string Method()</code></p>
+
+
+	<p>However, if they can be distinguished based on their parameter lists, then it&#8217;s OK:</p>
+
+
+	<p><code>int Method(int)</code> and <code>string Method(string)</code></p>
+
+
+	<p>I had made the assumption in my overload shim that all overloads would return the same type. Oops. I ran into this bug when I was calling <code>ToolStripItemCollection.Add</code>.</p>
+
+
+	<p>What&#8217;s worse, the <span class="caps">MSDN</span> docs essentially imply that all of the return values are the same since the return values of the methods aren&#8217;t shown in the overloads list. I only noticed this when I pulled out Reflector to look at the methods myself.</p>
+
+
+	<p>I&#8217;m really happy that this was the root cause of the stack corruption bug. I was worried that there was something flaky about the interactions between the garbage collectors on both sides of the marshaling boundary &#8230;</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/17/covariance-in-the-clr#comments">5 comments</a>,
+      <a href="/articles/2006/02/17/covariance-in-the-clr" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/72/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/72/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/17/covariance-in-the-clr">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/17/covariance-in-the-clr;title=Covariance in the CLR">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-71">
+  <h2 class="title">
+    <a href="/articles/2006/02/16/data-binding-and-ruby">Data Binding and Ruby</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-16T22:18:00-08:00"><span class="typo_date" title="Fri, 17 Feb 2006 06:18:00 GMT">Fri, 17 Feb 2006 06:18:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>It&#8217;s going to take a lot of work to let you data bind against a native Ruby array, or a native Ruby array of objects. So how about some helper methods that takes an array of Ruby objects and converts it into a <code>DataTable</code>? Or a helper method that converts a Ruby array into an <code>ArrayList</code>? (Once generics are working I can marshal it into an array or a <code>List&lt;T&gt;</code>).</p>
+
+
+	<p>While this is not the most efficient way to do things since it involves copying data in memory, would it be a useful workaround in the short term?</p>
+
+
+	<p><strong>Update:</strong> I implemented this tonight after fixing some bugs in my overload resolution algorithm. Works like a charm.</p>
+
+
+<pre><code>
+def marshal_to_data_table(array)
+  dt = DataTable.new
+  raise 'array must have at least one element' if array.length &lt; 1
+  schema = array[0].members
+  schema.each { |column_name| dt.Columns.Add(column_name) }
+  array.each do |element|
+    row = dt.NewRow
+    schema.each do |column_name| 
+      row[column_name] = element.send column_name
+    end
+    dt.Rows.Add(row)
+  end
+  dt
+end
+</code></pre>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/16/data-binding-and-ruby#comments">2 comments</a>,
+      <a href="/articles/2006/02/16/data-binding-and-ruby" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/71/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/71/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/16/data-binding-and-ruby">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/16/data-binding-and-ruby;title=Data Binding and Ruby">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-70">
+  <h2 class="title">
+    <a href="/articles/2006/02/16/method-interception">Method interception</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-16T11:52:00-08:00"><span class="typo_date" title="Thu, 16 Feb 2006 19:52:00 GMT">Thu, 16 Feb 2006 19:52:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I&#8217;m trying to think of some simple scenarios where Ruby&#8217;s dynamic nature could be put to good use in writing .NET applications. Here&#8217;s one off the top of my head:</p>
+
+
+<pre><code>
+class TextBox
+  import Text=
+  alias  old_set_Text Text=
+
+  def Text=(value)
+    puts "Changed value from #{self.Text} to #{value}" 
+    old_set_Text(value)
+  end
+end
+</code></pre>
+
+	<p>The <code>TextBox</code> class that you see is a Windows Forms <code>TextBox</code>. Here&#8217;s a case where I can intercept all calls to change the <code>Text</code> property of <em>any</em> <code>TextBox</code> control in the application (I can also do this per-control as well).</p>
+
+
+	<p>Of course, it only works if you call from Ruby &#8211; this can&#8217;t be used, for example, to monitor how C# code changes the <code>Text</code> property of <code>TextBox</code> controls.</p>
+
+
+	<p>The <code>import</code> directive / method that you see is some hypothetical syntax to force my bridge to generate the method shim for <code>Text=</code> (this is done automatically the first time you try to use the property in normal usage scenarios).</p>
+
+
+	<p>Another idea is to monitor <code>SqlConnection</code> opens and closes to make sure that they are balanced. I did this example many years ago when I wrote my <span class="caps">AOP</span> weaver for the <span class="caps">CLR</span>.</p>
+
+
+	<p>If folks could leave some comments about how they could see using method interception via Ruby, I&#8217;d be very interested in seeing if I can code it up using my bridge.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/16/method-interception#comments">2 comments</a>,
+      <a href="/articles/2006/02/16/method-interception" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/70/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/70/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/16/method-interception">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/16/method-interception;title=Method interception">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-69">
+  <h2 class="title">
+    <a href="/articles/2006/02/16/windows-forms-and-rubyclr-happy-together">Windows Forms and RubyCLR: Happy Together</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-16T10:58:00-08:00"><span class="typo_date" title="Thu, 16 Feb 2006 18:58:00 GMT">Thu, 16 Feb 2006 18:58:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I was going to write something about how I got nested types working last night, and some cool Ruby features that I discovered to make it work (remind me later &#8211; it is a very cool story), but there&#8217;s something much more exciting to report:</p>
+
+
+	<p><strong>I&#8217;ve built my first trivial Windows Forms 2.0 Application using RubyCLR!</strong></p>
+
+
+	<p><img src="http://static.flickr.com/32/100461042_bc3667dced_o.png" alt="" /></p>
+
+
+	<p>Yes, it is the &#8220;Hello, World&#8221; Windows Forms data binding application, but it represents a major step forward in the maturity of RubyCLR. Lots of features had to be added to the product to make this work, and that&#8217;s what&#8217;s been driving most of my development effort recently; I&#8217;m worrying less about the edge cases for now, and focusing on implementing the most important core features to make it usable.</p>
+
+
+	<p>Now, this application is not intended to represent anything about how one would actually write Windows Forms applications using Ruby &#8211; this application is <strong>very</strong> un-Ruby-esque. I can imagine lots of ways to improve how it&#8217;s implemented, and I&#8217;m going to spend a few days building an app to see what kinds of idioms I can discover along the way (provided the bridge is stable enough to actually build that app).</p>
+
+
+	<p>Here&#8217;s the code:</p>
+
+
+<pre><code>
+require 'rubyclr'
+
+RubyClr::reference 'System.Data'
+RubyClr::reference 'System.Drawing'
+RubyClr::reference 'System.Windows.Forms'
+
+include System
+include System::Data
+include System::Data::SqlClient
+include System::Drawing
+include System::Windows::Forms
+
+class MainForm
+  attr_reader :form, :grid
+
+  CS  = 'server=.\SQLEXPRESS;database=adventureworks;integrated security=sspi'
+  SQL = 'select * from humanresources.employee'
+
+  def create_form(grid)
+    form               = Form.new
+    form.AutoScaleMode = AutoScaleMode::Font
+    form.ClientSize    = Size.new(292, 266)
+    form.Controls.Add(grid)
+    form.Load do |sender, args|
+      adapter = SqlDataAdapter.new(SQL, CS)
+      ds      = DataSet.new
+      adapter.Fill(ds, 'Employee')
+      grid.DataSource = ds
+      grid.DataMember = 'Employee'
+    end
+    form
+  end
+
+  def create_gridview
+    grid = DataGridView.new
+    grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode::AutoSize
+    grid.Dock     = DockStyle::Fill
+    grid.Location = Point.new(0, 0)
+    grid.Size     = Size.new(292, 266)
+    grid.TabIndex = 0
+    grid
+  end
+
+  def initialize
+    @grid = create_gridview
+    @form = create_form(@grid)
+  end
+end
+
+Application.EnableVisualStyles
+Application.SetCompatibleTextRenderingDefault false
+
+main = MainForm.new
+Application.Run(main.form)
+</code></pre>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/16/windows-forms-and-rubyclr-happy-together#comments">2 comments</a>,
+      <a href="/articles/2006/02/16/windows-forms-and-rubyclr-happy-together" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/69/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/69/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/16/windows-forms-and-rubyclr-happy-together">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/16/windows-forms-and-rubyclr-happy-together;title=Windows Forms and RubyCLR: Happy Together">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-68">
+  <h2 class="title">
+    <a href="/articles/2006/02/14/enumerations-in-rubyclr">Enumerations in RubyCLR</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-14T23:35:00-08:00"><span class="typo_date" title="Wed, 15 Feb 2006 07:35:00 GMT">Wed, 15 Feb 2006 07:35:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I added enumerations support to RubyCLR today. It was a bit tricky since Ruby has no native support for enumerations (or user-defined value types), so I have to fake out enumerations using Ruby objects. For most scenarios, it feels very much like an enumeration would in C#.</p>
+
+
+	<p>Here&#8217;s a simple Windows Forms MessageBox sample that uses enumerations:</p>
+
+
+<pre><code>
+require 'rubyclr'
+
+RubyClr::reference 'System.Windows.Forms'
+include System::Windows::Forms
+
+result = MessageBox.Show('Yes or no?', 'Answer this!', 
+                         MessageBoxButtons::YesNo)
+puts result.to_s
+</code></pre>
+
+	<p>The <code>to_s</code> method outputs the string value of the enum, in this case Yes or No based on which button the user clicks. I also support adding, subtracting and bitwise or operations against enumerations.</p>
+
+
+	<p>My overload resolution algorithm needs to account for implicit up-conversions to the enumeration&#8217;s underlying type. That will be accounted for when I rewrite that algorithm beginning tomorrow.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/14/enumerations-in-rubyclr#comments">2 comments</a>,
+      <a href="/articles/2006/02/14/enumerations-in-rubyclr" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/68/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/68/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/14/enumerations-in-rubyclr">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/14/enumerations-in-rubyclr;title=Enumerations in RubyCLR">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-67">
+  <h2 class="title">
+    <a href="/articles/2006/02/13/method-overload-resolution">Method Overload Resolution</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-13T16:38:00-08:00"><span class="typo_date" title="Tue, 14 Feb 2006 00:38:00 GMT">Tue, 14 Feb 2006 00:38:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>The current method overload algorithm in the RubyCLR bridge is a placeholder. It only works for very simple cases (which, granted easily account for 80+% of the cases). It doesn&#8217;t handle corner cases very well, nor does it handle parameter arrays (although there is some code there to handle those cases, it&#8217;s just not called right now). The algorithm is also fairly poor both in terms of space and in time. So there&#8217;s quite a lot of room for improvement there.</p>
+
+
+	<p>In this next iteration, I&#8217;m planning on tackling the generics overloading problem, which requires me to think very carefully about the algorithm.</p>
+
+
+	<p>Before tackling generics, I decided to spend some time writing test cases for non-generic corner cases, as well as cleaning up a bunch of missing bits in the code. Rather than reinventing the wheel, I decided to take a look at the test cases for <a href="http://www.gotdotnet.com/workspaces/workspace.aspx?id=ad7acff7-ab1e-4bcb-99c0-57ac5a3a9742">IronPython</a>, since I figure that they would have a similar set of problems to deal with.</p>
+
+
+	<p>I found a <em>very</em> clever set of test cases in <code>BindingTest.py</code>. As I ported them to Ruby, I discovered a number of missing features in my existing codebase (such as marshaling Booleans as parameters &#8211; I was missing an entry in a hashtable). I&#8217;ve spent part of the day fixing those bugs and writing a new set of unit tests in preparation for a rewrite of the method overload algorithm.</p>
+
+
+	<p>One thing that I discovered while looking at the Python unit tests is that I&#8217;m going to have to tackle enumerations sooner rather than later. Once I have support for enumerations in RubyCLR, I&#8217;ll ship a new drop, likely by the end of the week.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/13/method-overload-resolution#comments">no comments</a>,
+      <a href="/articles/2006/02/13/method-overload-resolution" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/67/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/67/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/13/method-overload-resolution">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/13/method-overload-resolution;title=Method Overload Resolution">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-66">
+  <h2 class="title">
+    <a href="/articles/2006/02/10/clr-value-types-in-ruby">CLR Value Types in Ruby</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-10T22:56:00-08:00"><span class="typo_date" title="Sat, 11 Feb 2006 06:56:00 GMT">Sat, 11 Feb 2006 06:56:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I thought I&#8217;d expand a bit on a problem that I solved today. Consider this bit of C# code:</p>
+
+
+<pre><code>
+Point p1 = new Point(2, 3);
+Point p2 = p1;
+p2.X += 1;
+Assert.Equals(p1.X + 1, p2.X);
+</code></pre>
+
+	<p>This should run without throwing an assertion, right? That&#8217;s because the semantics of value types in the <span class="caps">CLR</span> dictate that they must be <em>copied</em> upon assignment.</p>
+
+
+	<p>However, consider this Ruby code that uses my bridge:</p>
+
+
+<pre><code>
+p1 = Point.new(2, 3)
+p2 = p1
+p2.X += 1
+assert_equal p1.X, p2.X
+</code></pre>
+
+	<p>This code also runs without throwing an assertion. What you&#8217;re seeing is Ruby treating all objects as reference types for assignment purposes. Ruby doesn&#8217;t know anything about .NET value types, so its behavior is consistent with its type system.</p>
+
+
+	<p>However, if you use the Ruby <code>clone</code> method, you will see the same behavior as the C# code:</p>
+
+
+<pre><code>
+p1 = Point.new(2, 3)
+p2 = p1.clone
+p2.X += 1
+assert_equal p1.X + 1, p2.X
+</code></pre>
+
+	<p>I had to do a bit of hacking to implement <code>clone</code> semantics correctly for <code>T_DATA</code> Ruby C object types. There&#8217;s still some work to be done to implement <code>clone</code> correctly for <span class="caps">CLR</span> reference types once I turn my attention to object identity in the near future.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/10/clr-value-types-in-ruby#comments">no comments</a>,
+      <a href="/articles/2006/02/10/clr-value-types-in-ruby" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/66/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/66/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/10/clr-value-types-in-ruby">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/10/clr-value-types-in-ruby;title=CLR Value Types in Ruby">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-65">
+  <h2 class="title">
+    <a href="/articles/2006/02/10/user-defined-value-type-marshaling">User-defined value type marshaling</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-10T00:29:00-08:00"><span class="typo_date" title="Fri, 10 Feb 2006 08:29:00 GMT">Fri, 10 Feb 2006 08:29:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I got value type marshaling working tonight (but not creation just yet &#8211; but that&#8217;s fairly straightforward). It wasn&#8217;t quite as hard as I thought since I previously thought that value types could be extended. I&#8217;ll write more about this issue tomorrow.</p>
+
+
+	<p>Here are the unit tests that now pass:</p>
+
+
+<pre><code>
+static Point GetPoint() {
+  return Point(3, 4);
+}
+
+...
+
+class ValueTypeTests &lt; Test::Unit::TestCase
+  def test_get_point
+    p = System::MarshalerTests.GetPoint
+    assert_equal 3, p.X
+    assert_equal 4, p.Y
+    assert_equal 'System.Drawing.Point', p.class_name
+  end
+
+  def test_point_instance_method
+    p = System::MarshalerTests.GetPoint
+    p.Offset(1, 1)
+    assert_equal 4, p.X
+    assert_equal 5, p.Y
+  end
+end
+</code></pre>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/10/user-defined-value-type-marshaling#comments">2 comments</a>,
+      <a href="/articles/2006/02/10/user-defined-value-type-marshaling" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/65/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/65/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/10/user-defined-value-type-marshaling">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/10/user-defined-value-type-marshaling;title=User-defined value type marshaling">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-64">
+  <h2 class="title">
+    <a href="/articles/2006/02/09/pixel-quality-vs-quantity">Pixel Quality vs. Quantity</a> 
+    <span class="comment_count">5</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-02-09T15:55:00-08:00"><span class="typo_date" title="Thu, 09 Feb 2006 23:55:00 GMT">Thu, 09 Feb 2006 23:55:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>For the longest time, I really preferred having more pixels vs. having higher quality pixels. Just this week I decided to make the switch and bought a pair of <a href="http://www.necdisplay.com/products/ProductDetail.cfm?Product=436&#38;ClassificationFamily=2&#38;Classification=1"><span class="caps">NEC 70GX2</span></a> panels:</p>
+
+
+	<p><a href="http://www.necdisplay.com/products/ProductDetail.cfm?Product=436&#38;ClassificationFamily=2&#38;Classification=1"><img src="http://www.necdisplay.com/images/C/F/70GX2_lt_2300px.jpg" alt="" /></a></p>
+
+
+	<p>to replace my Viewsonic VP201s:</p>
+
+
+	<p><a href="http://www.viewsonic.com/products/desktopdisplays/lcddisplays/proseries/vp201s/"><img src="http://www.viewsonic.com/images/media/VP201s_us_eng_med.jpg" alt="" /></a></p>
+
+
+	<p>and Samsung 172T panels:</p>
+
+
+	<p><img src="http://www.pcworld.com/reviews/graphics/110653-2107p090-2b.jpg" alt="" /></p>
+
+
+	<p>The <span class="caps">NEC 70GX2</span> is a spectacular panel. It is so much brigher (400 nits vs. 250 nits) than my other two panels that they are totally usable in a backlit sunlit room. The Opticlear coating on the panel is fairly reflective, yet not distracting at all, even using the black backgrounds that I prefer.</p>
+
+
+	<p>The pair of these panels cost about the same as just <strong>one</strong> of the panels that they replace at the time that I bought them. So even though they are only 1280&#215;1024, I find that they are very usable. They should do until 200 ppi versions of those panels arrive in a few years :)</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/02/09/pixel-quality-vs-quantity#comments">5 comments</a>,
+      <a href="/articles/2006/02/09/pixel-quality-vs-quantity" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/64/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/64/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/02/09/pixel-quality-vs-quantity">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/02/09/pixel-quality-vs-quantity;title=Pixel Quality vs. Quantity">reddit</a>
+    </li>
+  </ul>
+</div>
+
+
+<p class="pagination">Older posts: <a href="/articles/2006/02/page/1">1</a> 2 <a href="/articles/2006/02/page/3">3</a> </p>
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- search -->
+      <div id="search" class="search">
+	<form action="/articles/search" id="sform" method="get">
+	  <p><input type="text" id="q" name="q" value="" /></p>
+	</form>
+	
+	<div id="loading" class="loading" style="display:none;">Searching...</div>
+	<div id="results" class="results"></div>
+  <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('loading')}, onLoading:function(request){Element.show('loading')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script>
+</div>
+
+
+      <!-- sidebar components -->
+      
+      
+<div class="sidebar-node">
+  <h3>John Lam</h3>
+<a href="/pages/about_me"><img src="http://static.flickr.com/90/222479189_d4e19a202c_t.jpg" width="67" height="100" alt="Self portrait" /></a>
+
+<p>I am a Program Manager on the Common Language Runtime team at Microsoft. I write .NET and Ruby code on a Mac. I'm the creator of <a href="http://www.rubyclr.com">RubyCLR</a>, a high performance bridge between Ruby and .NET. <a href="/pages/about_me">More ...</a>
+
+<table>
+<tr>
+  <td>email:</td>
+  <td>jlam@iunknown.com</td>
+</tr>
+<tr>
+  <td>phone:</td>
+  <td>425 698 9332</td>
+</tr>
+<tr>
+  <td>msn:</td>
+  <td>drjflam@hotmail.com</td>
+</tr>
+<tr>
+  <td>gtalk:</td>
+  <td>drjflam@gmail.com</td>
+</tr>
+</table>
+<br>
+<h3>Syndicate</h3>
+
+<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="/images/rss.png"/></a>&nbsp;
+<a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+<br>
+<form style="padding:3px;text-align:left;" action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Subscribe by email:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=180551" name="url"/><input type="hidden" value="Less is better" name="title"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a></p></form>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+    <div id="delicious">
+    <h3><a href="http://del.icio.us/drjflam">del.icio.us/drjflam</a></h3>
+            <ul>
+      
+      <li>
+        <a href="http://www.washingtonpost.com/wp-dyn/content/article/2007/04/04/AR2007040401721.html?referrer=digg" title="The story about Joshua Bell performing as a busker in Washington DC - $32.17 for 43 minutes worth of work. A very well written article about the importance of context in beauty (my conclusion - not necessarily the article's).">Pearls Before Breakfast - washingtonpost.com</a>
+              </li>
+      
+      <li>
+        <a href="http://bargiel.home.pl/iGTD/" title="A Getting Things Done organizer for the Mac as a desktop application">iGTD</a>
+              </li>
+      
+      <li>
+        <a href="http://blogs.smugmug.com/onethumb/files/ETech-SmugMug-Amazon-2007.pdf" title="">Don MacAskill on how S3 saved SmugMug 692K last year</a>
+              </li>
+      
+      <li>
+        <a href="http://www.people.iup.edu/pnwm/comparison.gif" title="Fun comparison of fictional starships from different SF shows.">Starship size comparison chart</a>
+              </li>
+      
+      <li>
+        <a href="http://www.teach12.com/" title="Bill Gates listens to the lectures from this company - available as downloads as well.">The Teaching Company</a>
+              </li>
+      
+      <li>
+        <a href="http://www.speedtest.net/" title="Found this via StumbleUpon">Speedtest.net - The Global Broadband Speed Test</a>
+              </li>
+      
+      <li>
+        <a href="http://wvs.topleftpixel.com/flash/cntower_timelapse.swf" title="Move your mouse around this picture and see it change.">Downtown Toronto Photo</a>
+              </li>
+      
+      <li>
+        <a href="ftp://gatekeeper.dec.com/pub/DEC/WRL/research-reports/WRL-TR-95.7.pdf" title="">Shared Memory Consistency Models</a>
+              </li>
+      
+      <li>
+        <a href="http://discuss.develop.com/archives/wa.exe?A2=ind0203B&amp;L=DOTNET&amp;P=R375" title="An excellent discussion on the motivation for and implementation of the CLR memory model.">Vance Morrison on CLR Memory Model</a>
+              </li>
+      
+      <li>
+        <a href="http://slideshare.net/" title="A YouTube like service for sharing slides from talks.">SlideShare</a>
+              </li>
+      
+      <li>
+        <a href="http://research.microsoft.com/manuvir/papers/instruction_level_tracing_VEE06.pdf" title="This is MSR's Nirvana framework for dynamically injecting tracing code into x86 binaries at runtime. It lets them travel forwards and backwards in execution flow ('time travel debugging').">Framework for Instruction-level Tracing and Analysis of Program Executions</a>
+              </li>
+          </ul>
+      </div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>My Photos</h3>
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge_new.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">what is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge_new.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2007/3">March 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/2">February 2007</a>
+      <em>(3)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/1">January 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/12">December 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/11">November 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/10">October 2006</a>
+      <em>(8)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/9">September 2006</a>
+      <em>(12)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/8">August 2006</a>
+      <em>(39)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/7">July 2006</a>
+      <em>(29)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/6">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/5">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/4">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/3">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/2">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/1">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(6)</em>
+    </li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Tags</h3>
+<p style="overflow:hidden">
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/barcampearthtoronto">BarCampEarthToronto</a></span>
+<span style="font-size:128.205128205128%"><a href="/articles/tag/dynamiclanguages">DynamicLanguages</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/ironpython">IronPython</a></span>
+<span style="font-size:128.205128205128%"><a href="/articles/tag/life">Life</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/mac">Mac</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/marketing">Marketing</a></span>
+<span style="font-size:76.9230769230769%"><a href="/articles/tag/microsoft">Microsoft</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/parenting">Parenting</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/photography">Photography</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/platforms">Platforms</a></span>
+<span style="font-size:200%"><a href="/articles/tag/props">Props</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/python">Python</a></span>
+<span style="font-size:200%"><a href="/articles/tag/ruby">Ruby</a></span>
+<span style="font-size:200%"><a href="/articles/tag/rubyclr">RubyCLR</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/rubyconf">RubyConf</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/secondlife">SecondLife</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/simplicity">simplicity</a></span>
+<span style="font-size:200%"><a href="/articles/tag/thoughts">Thoughts</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/vim">Vim</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/workspaces">workspaces</a></span>
+</p>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(20)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(58)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(149)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+  
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">Less is better</a></p>
+    <ul>
+      <li>powered by <a href="http://typosphere.org">typo</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

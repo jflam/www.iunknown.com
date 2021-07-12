@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Code generation with GSLgen: Step 0</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000236.html" title="Beating the code generation drum" />
+
+<link rel="next" href="http://www.iunknown.com/000238.html" title="Puppy advice" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000236.html">&laquo; Beating the code generation drum</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000238.html">Puppy advice &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">April 26, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Code generation with GSLgen: Step 0</h3>
+
+<p><P>As <A href="Weblog/Codegenerationobservation.html">promised earlier</A>, this is the first in my series of articles on how to use GSLgen as a code generator.</P><br />
+<P>Before you can do any code generation with GSLgen, you first have to download, compile and setup your environment variables. Currently, the latest version of GSLgen is 3.1, and it is packaged along with a number of other open-source tools from <A href="http://www.imatix.com">iMatix</A> in a source code only distribution called <A href="http://www.imatix.com/downloads.htm">RealiBase 1.0</A>. The cool thing about RealiBase is that the bits can be compiled and run on both Windows and Linux.</P><br />
+<P>The RealiBase makefile assumes that you have MSVC 6.0 installed on your computer. Dismayed by the blizzard of build time errors when I tried to compile using VS.NET 2003, I simply installed MSVC 6.0 and compiled the sources from a MSVC 6.0 command prompt window. Andy Hopper, having a higher&nbsp;pain tolerance than me,&nbsp;messed around with the build under VS.NET 2002 and got it to build by copying the required libraries from the Platform SDK into the Microsoft Visual Studio .NET\Vc7\lib folder: </P><br />
+<P><CODE>uuid.lib <BR>mpr.lib <BR>winmm.lib <BR>wsock32.lib <BR>odbc32.lib <BR>shell32.lib <BR>netapi32.lib <BR>advapi32.lib <BR>comdlg32.lib <BR>gdi32.lib <BR>user32.lib </CODE></P><br />
+<P>Once you have the bits built, you need to place gsl.exe on your system path (the build script compiles GSLgen/3.1 into \imatix\bin\gsl.exe), and you're off to the races.</P><br />
+<P>GSLgen expects two different files as its input. The first file is the file that contains the GSLgen code generation script. The second file is the file that contains your custom language, which must be implemented using XML.</P><br />
+<P>What follows is arguably the simplest possible GSLgen code generation script. It lives in a file called helloworld.gsl, and is simply a C# Hello World application that writes the application name to the system console.</P><CODE><br />
+<P>.define ignorecase=0<BR>using System;</P><br />
+<P>public class App<BR>{<BR>&nbsp; public static void Main()<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; Console.WriteLine( "Hello, $(app.name)" );<BR>&nbsp; }<BR>}</P></CODE><br />
+<P>We define the application name in an XML custom language file (helloworld.xml) that is used as input to this GSL script is:</P><br />
+<P><CODE>&lt;app name="John"/&gt;</CODE></P><br />
+<P>If you run the GSLgen interpreter from the command prompt using:</P><br />
+<P><CODE>&gt;gsl -script:helloworld.gsl helloworld.xml</CODE></P><br />
+<P>you should get the following as output:</P><CODE><br />
+<P>using System;</P><br />
+<P>public class App<BR>{<BR>&nbsp; public static void Main()<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; Console.WriteLine( "Hello, John" );<BR>&nbsp; }<BR>}</P></CODE><br />
+<P>Next, let's examine the GSL script. The first line of your script instructs GSLgen to be case-sensitive (which is what you want most, if not all of the time). The rest of the script, with one notable exception, is simply literal text that gets copied to the output. </P><br />
+<P>The $(app.name) construct tells the GSLgen interpreter to evaluate the expression contained within the parentheses and copy the result to standard output. This is what generates "John" in the output . In this case, our expression means "the name attribute of the app element".[1] </P><br />
+<P>The thing that really appeals to me is GSLgen's strength as a templating language. As you can see, the syntax of the GSL script is very clean and uncluttered (contrast this with XSLT!). There is a minimum amount of syntax that gets in the way of seeing what is template and what is code.</P><br />
+<P>I'd like to close off this entry by providing you with a couple of tips. First, you can initialize global variables from the command line. The ignorecase variable that we defined earlier in the GSL script is a variable that can be initialized using the following command line:</P><br />
+<P><CODE>&gt;gsl -ignorecase:0 -script:helloworld.gsl helloworld.xml</CODE></P><br />
+<P>Another option that you might want to consider (but that I wouldn't necessarily recommend) is the fact that you can have an XML file associated with a GSL file by adding a script attribute to the document element of your XML file. For example, you can get a simpler command line:</P><br />
+<P><CODE>&gt;gsl -ignorecase:0 helloworld.xml</CODE></P><br />
+<P>By changing your XML file to:</P><br />
+<P><CODE>&lt;app script="helloworld.gsl" name="John"/&gt;</CODE></P><br />
+<P>This is somewhat similar to the way XSLT works via the &lt;?xml-stylesheet .../&gt; pseudo-element.</P><br />
+<P>There are two drawbacks to using this embedding. The first is that your XML file is usually used as input to more than one GSLgen script. The second (and this is the reason I'm bringing this up at all) is that the GSLgen XML parser doesn't understand namespaces.</P><br />
+<P>Ideally, I would have implemented this feature using an attribute that would have been scoped to the GSLgen namespace:</P><br />
+<P><CODE>&lt;app xmlns:gsl="http://www.imatix.com/gsl/31"&nbsp;gsl:script="helloworld.gsl" name="John"/&gt;</CODE></P><br />
+<P>but this simply isn't possible using the current version of GSLgen. </P><br />
+<P>So that's Hello, World using GSLgen. Hopefully this whets your appetite to try out this tool. Hopefully folks currently using&nbsp;XSLT to do their code generation will be encouraged by the&nbsp;more straightforward of this tool.&nbsp;In the next installment in this series, I'll examine the notion of context in GSLgen and how it can be exploited in loops.</P><br />
+<P>[1] You might be tempted to think that you can arbitrarily nest these expressions a'la XPath. Unfortunately, you cannot, and you will quickly find out that your expressions are really limited to (element name.attribute name). Note that these expressions are always evaluated relative to your current <EM>context; </EM>I will discuss GSL contexts in a future article.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at April 26, 2003 10:08 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="237" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000237.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Hmm, that last remark's not entirely correct...<br />
+given the following xml document:<br />
+Running the following script:<br />
+.#Spanglish.gsl<br />
+.echo -&gt;one-&gt;two-&gt;three-&gt;four.spanish<br />
+will generate the output<br />
+[some date and time] gsl M: quattro<br />
+This is a risky thing to do unless you know for a fact that the path exists because GSL will throw an error if any of those path elements don't exist. However! This is an opportunity for a wrapper function.<br />
+-Andy</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.hoppersoft.com/Andy">Andy Hopper</a> at April 26, 2003 07:08 PM</span>
+</div>
+<div class="comments-body">
+<p>Snot. I thought Haloscan would entitize my comment. Here's that magic XML document:<br />
+&lt;documentElement script="test.gsl"&gt;<br />
+  &lt;one spanish="uno"&gt;<br />
+    &lt;two spanish="dos"&gt;<br />
+      &lt;three spanish="tres"&gt;<br />
+        &lt;four spanish="quattro"&gt;<br />
+        &lt;/four&gt;<br />
+      &lt;/three&gt;<br />
+    &lt;/two&gt;<br />
+  &lt;/one&gt;<br />
+&lt;/documentElement&gt;</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.hoppersoft.com/Andy">Andy Hopper</a> at April 26, 2003 07:11 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the catch, Andy! What I meant to say (and didn't) was that you can't use XPath like syntax using the dot operator (which is what you would intuitively expect) such as one.two.three.four, since you can't distinguish between elements and attributes in such a scheme. I figured that I would introduce the arrow operator in the next article, but you beat me to the punch </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at April 27, 2003 07:44 AM</span>
+</div>
+<div class="comments-body">
+<p>for those wanting to build on OS X, here is a script I put together<br />
+#!/bin/sh<br />
+echo `grep -A 1 '^*predefines:' /usr/libexec/gcc/darwin/ppc/3.1/specs` -<br />
+D__FreeBSD__ &gt; tmpspecs<br />
+for i in */boomake; do<br />
+    perl -pi -e 's/cp lib/cp -p lib/' $i<br />
+done<br />
+CCOPTS="-O2 -Wall -specs=`pwd`/tmpspecs" ./build.sh<br />
+# end of script</p>
+<span class="comments-post">Posted by: Dave Lee at April 27, 2003 12:54 PM</span>
+</div>
+<div class="comments-body">
+<p>I guess haloscan ignores  tags, so here is the script properly formattedhttp://cherryville.org/build-gslgen.txt<br />
+to run it do a `sh ./build-gslgen.txt`<br />
+this script needs to be run in the directory you unpacked the rbase archive.</p>
+<span class="comments-post">Posted by: Dave Lee at April 27, 2003 01:05 PM</span>
+</div>
+<div class="comments-body">
+<p>Whoa, Dave. This might mean that I'm going to have to fight my wife for the TiBook </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at April 28, 2003 10:28 PM</span>
+</div>
+<div class="comments-body">
+<p>John,<br />
+You've done some work with GSLgen and FreeMind. Since the output of FreeMind is an XML document, have you attempted using FreeMind to define the class structure of components and input into GSLgen?<br />
+Unfortuately, the XML structure is full of "node" nodes instead of real names. Maybe running it through an XSLT could put it into a better format. FreeMind was simple to use and gives a nice structure picture of the classes as you enter items. <br />
+This thought came about when I was looking at FreeMind after your article about it. I found myself adding more detail to some fixes I was going to make to a program. I ended up creating some structures and flow charting some methods.</p>
+
+<p>Jeff</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;jeffpclark&#64;columbus&#46;rr&#46;com">Jeff Clark</a> at December  2, 2003 06:55 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

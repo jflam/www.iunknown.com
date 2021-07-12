@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Dynamic SQL vs. sproc performance</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000386.html" title="Quickbooks 2003 from a non-privileged account" />
+
+<link rel="next" href="http://www.iunknown.com/000388.html" title="New Years Reflections" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000387.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/131"
+    dc:title="Dynamic SQL vs. sproc performance"
+    dc:identifier="http://www.iunknown.com/000387.html"
+    dc:subject="Blog"
+    dc:description="Like many age-old arguments in other walks of life (boxers vs. briefs, Coke vs. Pepsi) we developers have the dynamic SQL vs. stored procedure debate. I realize that there has been lots of FUD over this issue, and that there..."
+    dc:creator="John"
+    dc:date="2003-12-22T14:26:30-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000386.html">&laquo; Quickbooks 2003 from a non-privileged account</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000388.html">New Years Reflections &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 22, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Dynamic SQL vs. sproc performance</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>Like many age-old arguments in other walks of life (boxers vs. briefs, Coke vs. Pepsi) we developers have the dynamic <span class="caps">SQL</span> vs. stored procedure debate. I realize that there has been lots of <span class="caps">FUD</span> over this issue, and that there has been a considerable amount of <a href="http://weblogs.asp.net/fbouma/posts/38178.aspx">debate</a> on this <a href="http://weblogs.asp.net/rhoward/posts/38298.aspx">issue</a> recently.</p>
+
+<p>As a guy who dabbles in low-level bit twiddling stuff from time-to-time, the performance claims are quite interesting to me. The new (as of <span class="caps">SQL </span>Server 7.0) cached execution plan optimization in <span class="caps">SQL </span>Server looks to me a lot like <span class="caps">JIT</span> compilation. If this is, in fact, the case it seems to me that the only overhead that would be associated with dynamic <span class="caps">SQL</span> would be:</p>
+
+<p>1. The amount of bandwidth + time it takes to transmit the dynamic <span class="caps">SQL</span> text to the database.<br />
+2. The amount of time it takes to calculate the hash of the dynamic <span class="caps">SQL</span> text to look up the cached execution plan.</p>
+
+<p>I can imagine quite a few scenarios where the above overhead would disappear into the noise of the network roundtrip. </p>
+
+<p>What upsets me are the folks who spout forth anecdotal arguments that claim stored procedures have "much better" performance than dynamic <span class="caps">SQL. </span>Now, I figure that folks in academia must have done studies on these types of claims. It seems that it's all the rage in academia to do performance studies on stuff like <span class="caps">TCP</span>/IP stacks, so why not dynamic <span class="caps">SQL</span> vs. sprocs? Comments?</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December 22, 2003 02:26 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=387" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="387" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000387.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>You could probably count the academic institutions that even acknowledge mssql exists on one hand (Oracle or MySQL on %nix, man. Who needs a GUI anyway?).</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;r&#46;childress&#64;comcast&#46;net">Rick Childress</a> at December 22, 2003 11:15 PM</span>
+</div>
+<div class="comments-body">
+<p>The argument against dynamic SQL isn't so much the performance issues (though many argue that performance is better, understandable given the faint distinction between compiled and JIT code) as the security implications.</p>
+
+<p>If your database allows dynamic SQL, then that means that permissions have to be granted for select, delete, update, and insert to the SQL user. That opens up a whole lot of privilege to the web user and allows for SQL injection attacks if the server-side validation isn't strict enough.</p>
+
+<p>Stored procedures, on the other hand, require only execute stored procedure permission for the SQL user and thus limit the user to running only those stored procedures already defined in the database. SQL injection attacks can also be thwarted much easier on the stored procedure side because data scrubbing is generally performed there for database integrity (plus there's more type safety available).</p>
+
+<p>Another reason to use stored procedures is that they can be scheduled and batched at the database level. That's a great feature since few of the server-side scripting languages (ColdFusion is the only one that I know of) have schedulers to run pages automatically.</p>
+
+<p>There are problems with stored procedures, however. You need someone that knows T-SQL well enough to write all the ones that you'll need. It's harder to make the DBAs understand your requirements for dynamically constructing your queries than if you did them yourself. T-SQL isn't as robust a language as most of the server-side scripting ones and it doesn't have access to a lot of the page context stuff, so you end up doing a lot of preprocessing and sending of information to the stored procedure&mdash;further increasing its complexity.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.bbrown.info/blogs/bblog/">Bill Brown</a> at December 24, 2003 12:33 PM</span>
+</div>
+<div class="comments-body">
+<p>I forgot one other value in using stored procedures. They encapsulate the data model so that you don't need to rebuild your dynamic queries if you choose to switch server-side languages. At my work, we use ColdFusion extensively but its days are numbered since we're moving to ASP.NET eventually. Since both languages have facilities to call stored procedures, we only have to change the calls, we don't have to rewrite the queries themselves. Such huge platform changes don't happen often, but such encapsulation is nice when it does happen.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.bbrown.info/blogs/bblog/">Bill Brown</a> at January  2, 2004 10:39 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

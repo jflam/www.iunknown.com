@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2005/10/31/do-databases-rot-the-mind">Do Databases Rot the Mind?</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 31 Oct 2005 12:00:00 GMT">Mon, 31 Oct 2005 12:00:00 GMT</span></p>
+<p>Do databases rot the mind? Charles Petzold&#8217;s recent <a href="http://www.charlespetzold.com/etc/DoesVisualStudioRotTheMind.html">post about Visual
+Studio</a>
+triggered this thought in the back of my mind.</p>
+
+
+	<p>All too often when confronted with a &#8220;business&#8221; problem I, like many
+other people I know, wind up reaching for my trusty database. Or, in a
+more common scenario, someone hands you an existing schema and says
+&#8220;solve my problem&#8221; using it. The reality, however, is that
+relational databases are a lousy solution to many problems that we
+commonly run across. In a recent e-commerce platform that I created
+there was a 7-way join that had to be executed just to retrieve a list
+of products to display to a customer. We did <span class="caps">LOTS</span> of performance
+tuning of that database and our queries to make it go about as fast as
+it could reasonably be expected to go under <span class="caps">SQL </span>Server.</p>
+
+
+	<p>Just this week, I decided to do an experiment. I reimplemented the
+core of our e-commerce platform by loading the entire database into a
+custom in-memory data structure. It took me about 1 hour to write the
+code to load the core tables into my custom data structure, and about
+an additional 15 hours to tune the data structure and refactor the
+code to my liking. Oh yeah, I wrote it using Ruby.</p>
+
+
+	<p>My app was 201 lines of Ruby code (including liberal use of blank
+lines to enhance readability). For sake of comparison, just one of the
+dynamically generated <span class="caps">SQL</span> queries that it replaced was in the order of
+150+ lines of <span class="caps">SQL</span>. And that, of course, doesn&#8217;t count all of the lines
+of C# code required to generate, execute, and parse the results of the
+<span class="caps">SQL</span> query.</p>
+
+
+	<p>One more thing: it also ran <strong>100x</strong> faster.</p>
+
+
+	<p>A bit of history: the original application that I inherited was on
+the order of 20,000 lines of <span class="caps">SQL </span>+ C#. This was largely due to an
+enormous amount of duplication of code due to the (ab)use of stored
+procedures to handle queries. My rewrite of that application trimmed
+it down to 4000 lines of <span class="caps">SQL </span>+ C#. My Ruby application, while not at
+feature parity with the existing application, solved essentially all
+of the &#8220;hard&#8221; problems. I would estimate that it duplicates >80%
+of the functionality of the real application.</p>
+
+
+	<p>The first version of the code was about 5x faster than the original
+application. I then spent some time looking for optimizations. When
+you only have about 100 lines of code to look through, optimizations
+become pretty obvious. I was able to cache the results of a
+(relatively) expensive O(M+N) algorithm that sat on the
+rate-determining-step of the computation. This netted me a 20x
+speedup. This optimization is simply not possible using <span class="caps">SQL </span>Server,
+but is dead-simple when you get to implement your own query engine.</p>
+
+
+	<p>I <em>love</em> the symmetry of my results: 1/100th the code and 100x the performance. It&#8217;s also much easier to maintain 200 lines of code than 20,000 lines of code. Testing was also much more straightforward.</p>
+
+
+	<p>Now the code that I rewrote was tailor-made for this kind of
+rewrite. It was a read-only database that was relatively (< 1GB) small in
+size. If you have such an application lying around &#8211; try rewriting it
+using in-memory data structures. If you&#8217;re a bit more adventurous, try
+using a dynamically typed language to do this (might I suggest
+Ruby?). You just might be surprised by the outcome and come away with
+a new technique in your toolbox by doing so.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/31/do-databases-rot-the-mind#comments">5 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/28/notation-matters">Notation matters</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 28 Oct 2005 11:00:00 GMT">Fri, 28 Oct 2005 11:00:00 GMT</span></p>
+<p><a href="http://www.swiss.ai.mit.edu/~gjs/gjs.html">Gerald Sussman&#8217;s</a> talk at <span class="caps">OOPSLA</span> was tied to one of the themes of this year&#8217;s conference: poetry, the arts, and their relationship to software. He talked about code that is prose, and code that is poetry. He showed us some examples of prose that he wrote: some C code that controlled the servos of a large radio telescope array in Chile. He also showed us some code that is poetry: the two-page implementation of <code>eval</code> in Lisp.</p>
+
+
+	<p>He also talked about how writing programs can help improve the way you think. One example came from a first-year graduate level course in <a href="http://www-swiss.ai.mit.edu/~gjs/6946/index.html">Classical Mechanics at <span class="caps">MIT</span></a>. In this course, he gets his students to write Scheme code to describe certain equations. The students found that they understood the equations far better when asked to reformulate them using a computer language instead of mathematical notation. There was also the added side effect that they could now perform computations using their equations.</p>
+
+
+	<p>Gerald Sussman comes across as a geeky version of <a href="http://en.wikipedia.org/wiki/Deion_Sanders">Deion Sanders</a>. Deion Sanders was great and he wanted to remind you of it when he spoke. Similarly, Sussman is great and he reminds you of that fact when he speaks as well. Some people find this kind of grand standing offensive. Others, like myself, find nothing wrong with this &#8211; if you can talk the talk <strong>and</strong> walk the walk then that&#8217;s fine by me.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/28/notation-matters#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/27/why-not-a-ruby-net">Why not a Ruby.NET?</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 27 Oct 2005 11:00:00 GMT">Thu, 27 Oct 2005 11:00:00 GMT</span></p>
+<p>Building a native Ruby implementation on the <span class="caps">CLR</span> is an ambitious
+goal. <a href="http://sky.fit.qut.edu.au/~gough/">John Gough</a> and associates are attempting to do exactly this in
+their Ruby.NET project. This is a much harder problem than it looks,
+and kudos to John for even attempting it. The semantics of Ruby are
+significantly different than other <span class="caps">CLR</span> languages.</p>
+
+
+	<p>As a simple example, consider the fact that Ruby does not allow method
+overloading. How would you construct a Ruby type that must override
+methods in an abstract base class that differ only based on their
+signatures?</p>
+
+
+	<p>Another example is the case where you want to surface <span class="caps">CLR</span> features
+natively in Ruby. How, for example, will you declare a generic array
+in a language that does not support type declarations?</p>
+
+
+	<p>Last but certainly not least are the sophisticated features
+in Ruby such as continuations that make it very challenging for an
+implementor to implement efficiently. This feature requires a stack
+copying mechanism that isn&#8217;t a native feature of the <span class="caps">CLR</span>. Can such a
+feature be added to the <span class="caps">CLR</span> without compromising the performance of
+existing languages? This is not clear, and was one of the topics that
+came up for discussion during the <a href="http://decomp.ulb.ac.be:8082/events/dls05/implementingdynamiclanguagesonthe.netclr/">dynamic languages <span class="caps">BOF</span> at <span class="caps">OOPSLA</span></a>.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/27/why-not-a-ruby-net#comments">5 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/26/building-bridges">Building bridges</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 26 Oct 2005 11:00:00 GMT">Wed, 26 Oct 2005 11:00:00 GMT</span></p>
+<p>I&#8217;ve been building a bridge from Ruby to the <span class="caps">CLR</span> in my spare
+time. It&#8217;s a complicated piece of software, and I plan on explaining
+how I created it in a series of posts on this blog. At the time of
+this writing, I can consume <span class="caps">CLR</span> objects from Ruby scripts <strong>and</strong>
+implement event handlers in Ruby scripts. The Ruby language can make
+it possible for people to create applications that would be more
+difficult and take more time using C# or VB.NET. The Ruby language has
+certainly changed the way I think while writing code; I hope to bring
+that power to people writing .NET code today. Here&#8217;s a teaser:</p>
+
+
+<pre><code>
+require   'RubyShim'
+reference 'System.Windows.Forms'
+
+include System::Drawing
+include System::Windows::Forms
+
+f               = Form.new
+f.Text          = 'My Form'
+f.AllowDrop     = true 
+f.SuspendLayout
+
+label1          = Label.new
+label1.Location = Point.new(40, 32)
+label1.Width    = 200
+label1.Text     = 'My Label'
+
+button1          = Button.new
+button1.Name     = "MyButton" 
+button1.Location = Point.new(40, 57)
+button1.Text     = 'Click me'
+
+button1.Click do |sender, args|
+  p = sender.Location
+  label1.Text = "clicked on #{sender.Name} at #{p.X}, #{p.Y}" 
+end
+
+f.Controls.Add(label1)
+f.Controls.Add(button1)
+f.ResumeLayout
+
+Application.Run(f)
+</code></pre>
+
+	<p>This will be an open-source project, and will be redistributed under
+an <a href="http://www.opensource.org/licenses/mit-license.php">MIT-style license</a>. I have not yet released the source code since it is largely proof-of-concept code at this time. If anyone
+really wants to take a look at it right now, just send me <a href="jlam@iunknown.com">an
+email</a> and I&#8217;l be more than happy to share.</p>
+
+
+	<p>I believe that I have solved most of the hard problems. I have Windows
+Forms and Avalon applications written in Ruby and running on my
+computer today.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/26/building-bridges#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/25/a-life-changing-week">A Life Changing Week</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 25 Oct 2005 11:00:00 GMT">Tue, 25 Oct 2005 11:00:00 GMT</span></p>
+<p>This year, I was fortunate enough to attend both <a href="http://www.rubyconf.com">RubyConf</a> and <a href="http://www.oopsla.org">OOPSLA</a>. These conferences exposed me to many new ideas and lots of new people. If you&#8217;re used to living in the Microsoft (or Java, or <span class="caps">PHP</span>, or Linux, or Apple &#8230;) world, it&#8217;s a <strong>really</strong> good idea to break out of your monoculture and experience something different.</p>
+
+
+	<p>For the Microsoft folks, instead of attending a <span class="caps">PDC</span>, Tech Ed, <span class="caps">VS </span>Live!, or DevConnections conference every year, choose to attend a different conference with your conference dollars. Attend a RubyConf or a <a href="http://www.jaoo.org">JAOO</a> or an <a href="conferences.oreillynet.com/oscon/">OSCON</a>. <a href="http://www.rubyonrails.com">Rails</a> is hot this year, but something else will be hot next year.</p>
+
+
+	<p>For me personally, I&#8217;ve spent way too long in the statically typed languages world. Last year at the <a href="http://www.eecg.toronto.edu/middleware2004/">Middleware</a> conference in Toronto, <a href="http://www.iona.com/blogs/vinoski/">Steve Vinoski</a> and I had a great bonding moment when we recounted our recent experiences with <a href="http://www.python.org">Python</a>. At <span class="caps">OOPSLA</span>, I had a chance to chat with some old-school <a href="http://www.squeak.org">Smalltalk</a> programmers (hello Jim!) who were more than happy to point out that most &#8220;new&#8221; language features in Python/Ruby were in existence long ago in Smalltalk. The same, of course, can be said for languages like C# as well :)</p>
+
+
+	<p>That said, it&#8217;s still important to use the right tool for the job. The libraries in the .NET world are simply too useful to be ignored. Bridging this gap is an itch I have to scratch. More on that soon.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/25/a-life-changing-week#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/24/guy-steele-on-growing-a-language">Best Talk Of All Time</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 24 Oct 2005 11:00:00 GMT">Mon, 24 Oct 2005 11:00:00 GMT</span></p>
+<p>This year at <a href="http://www.oopsla.org">OOPSLA</a>, a group took a look at the last 20 years of <span class="caps">OOPSLA</span>. When a man asked the group &#8220;what was the best talk of all time at <span class="caps">OOPSLA</span>?&#8221;, they <strong>all</strong> said Guy Steele&#8217;s talk from <span class="caps">OOPSLA 1998</span>.</p>
+
+
+	<p>They showed a film of his talk in the hall of books. I thought that I had seen great talks in my life, but I can&#8217;t think of one that tops this. If you can, watch the film (I think you will need to buy it from the <a href="http://www.acm.org">ACM</a>). You may <a href="http://homepages.inf.ed.ac.uk/wadler/steele-oopsla98.pdf">read the talk on the web</a>, but if you do read it <strong>out loud</strong>. Yes &#8211; this may seem like a strange thing to do, but you may miss the best part of this talk if you do not.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/24/guy-steele-on-growing-a-language#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/10/23/new-blog-engine">New blog engine</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 24 Oct 2005 03:13:00 GMT">Mon, 24 Oct 2005 03:13:00 GMT</span></p>
+<p>Wow. It&#8217;s been busy. I finally got some time recently to restart this blog, and my first order of business was migrating to a new blog engine &#8211; <a href="http://typo.leetsoft.com">Typo</a>. Typo is a <a href="http://www.ruby-lang.org">Ruby</a> and <a href="http://www.rubyonrails.com">Rails</a> powered blog engine.</p>
+
+
+	<p>I&#8217;m going to be posting much more regularly to this new blog. I plan on adopting the <a href="http://blogs.msdn.com/oldnewthing/">Raymond Chen</a> like approach to publishing at least one new post each day. One of my first things to do is hack an article queue into the Typo engine.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/personal" rel="category tag">Life</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/10/23/new-blog-engine#comments">no comments</a></p> 
+  </div>
+
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102769655/"><img alt="Google Calculator using RubyCLR" src="http://static.flickr.com/27/102769655_160658c51e_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/113024723/"><img alt="RubyCLR generates equations in Avalon" src="http://static.flickr.com/56/113024723_7bb322ce42_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102353551/"><img alt="RSS Reader in Ruby" src="http://static.flickr.com/43/102353551_a14d82507d_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/110674297/"><img alt="RubyCLR irb session" src="http://static.flickr.com/44/110674297_303908d4cd_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10/page/7">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

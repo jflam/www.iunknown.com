@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: ActiveRecord and Windows Forms</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/124/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:42-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:ccd54e6c2ca6e5b092ac95fc2200e288</id>
+    <published>2006-05-03T20:26:00-07:00</published>
+    <updated>2006-08-21T15:55:42-07:00</updated>
+    <title type="html">ActiveRecord and Windows Forms</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;This is a really exciting development in RubyCLR. I&amp;#8217;ve taken the first steps in integrating Rails&amp;#8217; most excellent &lt;a href="http://rubyforge.org/projects/activerecord"&gt;ActiveRecord&lt;/a&gt; object-relational mapping layer with Windows Forms data binding.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a screenshot of the result:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/55/140020351_6a1828085b_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;And here&amp;#8217;s the code:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+require 'winforms'
+
+include ActiveRecord
+
+Base.establish_connection(:adapter =&amp;gt; 'sqlserver',
+                          :host =&amp;gt; '.\SQLEXPRESS',
+                          :database =&amp;gt; 'rubyclr_tests')
+
+class Person &amp;lt; Base
+end
+
+class MainForm
+  def initialize
+    form      = Form.new
+    form.Text = 'ActiveRecord and Windows Forms'
+
+    grid             = DataGridView.new
+    grid.dock        = DockStyle::Fill
+    grid.data_source = Person.find_all
+    form.controls.add(grid)
+
+    @form = form
+  end
+end
+
+WinFormsApp.run(MainForm)
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;There&amp;#8217;s a lot of heavy lifting going on behind the scenes. The call to &lt;code&gt;Person.find_all&lt;/code&gt; returns a Ruby Array object which I marshal to the &lt;span class="caps"&gt;CLR&lt;/span&gt;. However, my Ruby Array object isn&amp;#8217;t any ordinary Ruby Array object. RubyCLR can &lt;a href="http://www.iunknown.com/articles/2006/04/18/rubyclr-now-lets-you-implement-clr-interfaces-in-ruby"&gt;implement &lt;span class="caps"&gt;CLR&lt;/span&gt; interfaces in Ruby&lt;/a&gt;, so my Array object also happens to implement &lt;code&gt;IBindingList&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;The Array contains &lt;code&gt;Person&lt;/code&gt; objects, which all derive from &lt;code&gt;ActiveRecord::Base&lt;/code&gt;. RubyCLR knows how to marshal &lt;code&gt;ActiveRecord::Base&lt;/code&gt; objects so that I transparently create a &lt;span class="caps"&gt;CLR&lt;/span&gt; &amp;#8216;anonymous&amp;#8217; type that exposes all of the Ruby ActiveRecord fields as &lt;span class="caps"&gt;CLR&lt;/span&gt; properties. I marshal by reference, so that changes in the &lt;code&gt;ActiveRecord&lt;/code&gt; object will be propagated via &lt;code&gt;IBindingList&lt;/code&gt; notifications to the &lt;code&gt;DataGridView&lt;/code&gt; control.&lt;/p&gt;
+
+
+	&lt;p&gt;This is an extremely important scenario to cover since a primary goal of RubyCLR is to enable the creation of rich client business applications. This is a major step towards enabling this scenario.&lt;/p&gt;
+
+
+	&lt;p&gt;I just checked in the code for this feature &lt;a href="http://rubyforge.org/projects/rubyclr"&gt;into the rubyclr trunk&lt;/a&gt;. So you can play with it if you want. Keep in mind that this is all prototype code, but at least this sample works and all of the existing unit tests still pass (182 tests, 365 assertions).&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;This is a really exciting development in RubyCLR. I&amp;#8217;ve taken the first steps in integrating Rails&amp;#8217; most excellent &lt;a href="http://rubyforge.org/projects/activerecord"&gt;ActiveRecord&lt;/a&gt; object-relational mapping layer with Windows Forms data binding.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s a screenshot of the result:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/55/140020351_6a1828085b_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;And here&amp;#8217;s the code:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+require 'winforms'
+
+include ActiveRecord
+
+Base.establish_connection(:adapter =&amp;gt; 'sqlserver',
+                          :host =&amp;gt; '.\SQLEXPRESS',
+                          :database =&amp;gt; 'rubyclr_tests')
+
+class Person &amp;lt; Base
+end
+
+class MainForm
+  def initialize
+    form      = Form.new
+    form.Text = 'ActiveRecord and Windows Forms'
+
+    grid             = DataGridView.new
+    grid.dock        = DockStyle::Fill
+    grid.data_source = Person.find_all
+    form.controls.add(grid)
+
+    @form = form
+  end
+end
+
+WinFormsApp.run(MainForm)
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;There&amp;#8217;s a lot of heavy lifting going on behind the scenes. The call to &lt;code&gt;Person.find_all&lt;/code&gt; returns a Ruby Array object which I marshal to the &lt;span class="caps"&gt;CLR&lt;/span&gt;. However, my Ruby Array object isn&amp;#8217;t any ordinary Ruby Array object. RubyCLR can &lt;a href="http://www.iunknown.com/articles/2006/04/18/rubyclr-now-lets-you-implement-clr-interfaces-in-ruby"&gt;implement &lt;span class="caps"&gt;CLR&lt;/span&gt; interfaces in Ruby&lt;/a&gt;, so my Array object also happens to implement &lt;code&gt;IBindingList&lt;/code&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;The Array contains &lt;code&gt;Person&lt;/code&gt; objects, which all derive from &lt;code&gt;ActiveRecord::Base&lt;/code&gt;. RubyCLR knows how to marshal &lt;code&gt;ActiveRecord::Base&lt;/code&gt; objects so that I transparently create a &lt;span class="caps"&gt;CLR&lt;/span&gt; &amp;#8216;anonymous&amp;#8217; type that exposes all of the Ruby ActiveRecord fields as &lt;span class="caps"&gt;CLR&lt;/span&gt; properties. I marshal by reference, so that changes in the &lt;code&gt;ActiveRecord&lt;/code&gt; object will be propagated via &lt;code&gt;IBindingList&lt;/code&gt; notifications to the &lt;code&gt;DataGridView&lt;/code&gt; control.&lt;/p&gt;
+
+
+	&lt;p&gt;This is an extremely important scenario to cover since a primary goal of RubyCLR is to enable the creation of rich client business applications. This is a major step towards enabling this scenario.&lt;/p&gt;
+
+
+	&lt;p&gt;I just checked in the code for this feature &lt;a href="http://rubyforge.org/projects/rubyclr"&gt;into the rubyclr trunk&lt;/a&gt;. So you can play with it if you want. Keep in mind that this is all prototype code, but at least this sample works and all of the existing unit tests still pass (182 tests, 365 assertions).&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>gozh2002</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-21T22:07:21-07:00</published>
+    <updated>2006-08-21T19:07:35-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by gozh2002</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-496" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;sorry, please delete the last comment. there is a source code written in C++.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>gozh2002</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-21T22:03:26-07:00</published>
+    <updated>2006-08-21T19:07:33-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by gozh2002</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-495" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I am interested if you are going to make it open-source, because I only see a dll for the ruby interpreter&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-12T20:29:10-07:00</published>
+    <updated>2006-08-21T19:07:35-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-475" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I guess I didn't really define 'high performance computing' very well. It's not just numerical tasks, it can be things like parsing a very large file efficiently. Having a language where I can absolutely control how memory is laid out to avoid unnecessary copying is critical to making that stuff run fast. We're not going to be writing that code in Ruby or C# - well &lt;em&gt;maybe&lt;/em&gt; C#, but I'd definitely prefer C++/CLI for that kind of work.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>RMX</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-12T16:35:38-07:00</published>
+    <updated>2006-08-21T19:07:34-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by RMX</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-474" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;John Lam wrote: "That said, however, Ruby really isn't all that suitable for high-performance computing - that's not really it's forte."&lt;/p&gt;
+
+&lt;p&gt;I disagree.  In high performance computing no matter what language you're using - even the best of them - (C, C++, Fortran, even ASM) - and certainly for the weaker ones (Java, etc) - you'll be spending 80%+ of your CPU time in high-performance vector or matrix libraries.  Whether the relatively small amounts of glue logic to string those together is in Ruby or C doesn't really matter at that point.  Ruby has a good and growing numerical library (NArray) that makes it competitive with anything else that uses similar libraries.  Eventually you'll want these matrix libraries to use hand-tuned algorithms that make use of the parallelization specific to your CPUs (i.e. the multiple integer and floating point units and SIMD features of most modern chips - and featuers like OpenMP that'll distribute a single loop over multiple CPUs) - but I'm guessing that these'll be callable from the CLR or built into it where any language including RubyCLR.&lt;/p&gt;
+
+&lt;p&gt;I think Ara Howard(?)'s examples on the ruby boards are good examples of this where his extentions to NArray are used to do pretty impressive high-performance computing tasks.&lt;/p&gt;
+
+&lt;p&gt;Re-reading what you wrote, I guess I agree with you that Ruby is not what anyone will ever write the high-performance computing libraries in (but neither is C# until someone writes a loop-parallizing-C# compiler like they have for fortran) - but I don't think that means it's inappropriate for high-performance computing -- just that you need to use the right libraries.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-08T07:43:50-07:00</published>
+    <updated>2006-08-21T19:07:59-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-459" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;It's something that you should definitely try out. I haven't put any effort into name collisions etc. with respect to multiple metaprogramming libraries interacting with each other. I have ideas about how to make this more robust, but haven't had the cycles to really try them out yet. That said, bug reports in this area are always welcome :)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Mischa Kroon</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-08T05:20:27-07:00</published>
+    <updated>2006-08-21T19:07:58-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by Mischa Kroon</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-458" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;This is some really cool stuff :)&lt;/p&gt;
+
+&lt;p&gt;Also since your using a bridge the processing of the ruby language parts are still done by the Ruby interpreter right ?&lt;/p&gt;
+
+&lt;p&gt;Would it also be possible to use Og ?&lt;/p&gt;
+
+&lt;p&gt;Or is that just a matter of testing it out myself ?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-04T17:10:58-07:00</published>
+    <updated>2006-08-21T19:08:04-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-453" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Pete - Ruby is quite a bit slower than C# code. It's within an order of magnitude when doing equivalent things. That said, however, Ruby really isn't all that suitable for high-performance computing - that's not really it's forte. However, you could do some interesting metaprogramming that results in &lt;em&gt;generating&lt;/em&gt; really high performance code. I fully support inlining CIL, C#, VB.NET and even JScript.NET code.&lt;/p&gt;
+
+&lt;p&gt;I like to think of C# as the "Ruby assembly language" :)&lt;/p&gt;
+
+&lt;p&gt;As for implementation details - just read different entries on this blog - I've been at this for a while ... I really need to write an 'overview' article on how it really works, but bottom line is that the marshaling shims that I use to interop with the CLR are all generated on the fly as CLR DynamicMethods. So the interop layer is always compiled x86 code at runtime. &lt;/p&gt;
+
+&lt;p&gt;If you want to learn about Ruby metaprogramming, check out the source code for RubyCLR itself. Most of the interesting parts are written in Ruby- the C++ is really there to interop with the bare metal of the CLR.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Pete DeLaurentis</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-04T15:47:04-07:00</published>
+    <updated>2006-08-21T19:08:03-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by Pete DeLaurentis</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-452" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hi John,&lt;/p&gt;
+
+&lt;p&gt;This is really amazing stuff.  I've recently fallen in love with Ruby, and am looking for a way to do Ruby client programming on Windows and Mac.&lt;/p&gt;
+
+&lt;p&gt;How's the performance of RubyCLR code as opposed to C# code?  Even if you just have a general sense, that would be useful.  Is there a big difference is speed, or does it seem to be in the ballpark?&lt;/p&gt;
+
+&lt;p&gt;Also, I'd love to learn more about how RubyCLR works.  Is there anything on the site you can point me toward?  If not, no worries, I can go source code browsing.&lt;/p&gt;
+
+&lt;p&gt;Thanks for doing something so cool!  I'm looking forward to trying this out on some future projects.&lt;/p&gt;
+
+&lt;p&gt;-Pete&lt;/p&gt;
+
+&lt;p&gt;Lead Software Engineer
+NextEngine, Inc.
+&lt;a href="http://www.nextengine.com"&gt;www.nextengine.com&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Thibaut Barrere</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-04T10:42:18-07:00</published>
+    <updated>2006-08-21T19:08:03-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by Thibaut Barrere</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-451" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;This is just &lt;em&gt;amazing&lt;/em&gt; :)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Thibaut Barrere</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-04T10:41:27-07:00</published>
+    <updated>2006-08-21T19:08:02-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by Thibaut Barrere</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-450" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;This is just &lt;em&gt;amazing&lt;/em&gt; :)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>MJ</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-04T09:29:14-07:00</published>
+    <updated>2006-08-21T19:08:01-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by MJ</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-449" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;You Rock!!!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Peter Krantz</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-04T06:51:48-07:00</published>
+    <updated>2006-08-21T19:08:00-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by Peter Krantz</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-448" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Whoa! This is great stuff. Providing the foundation for Ruby in the CLR can help adoption rate of dynamically types languages in the corporate world.&lt;/p&gt;
+
+&lt;p&gt;When will you be picked up by Microsoft like that IronPython guy?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-04T00:33:20-07:00</published>
+    <updated>2006-08-21T19:07:58-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-447" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hmmm ... the perf of the bridge should be much better than what you're observing. That said, I haven't really done much perf tuning recently. &lt;/p&gt;
+
+&lt;p&gt;Let me do some experiments tomorrow to see if I can pinpoint where the bottleneck is.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Sam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-05-04T00:28:25-07:00</published>
+    <updated>2006-08-21T19:07:57-07:00</updated>
+    <title type="html">Comment on ActiveRecord and Windows Forms by Sam</title>
+    <link href="http://www.iunknown.com/articles/2006/05/03/activerecord-and-windows-forms#comment-446" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Now that is cool!&lt;/p&gt;
+
+&lt;p&gt;I wonder if you might be able to give me a tip on creating a DataTable from a Ruby Array though. It's easy enough to create a row, fill it, and add it to the DataTable, but the performance on about 1.2 million calls (create_row, add 5 fields, add the row, so 7 calls and about 167,000 rows) is a little dissapointing.&lt;/p&gt;
+
+&lt;p&gt;I mean it's great considering all the magic that's going on, but it probably takes around 90 seconds, so that means I'm spending almost half my process time doing interop as far as I can tell. Do you think there might be a quicker way? Maybe an alternative to passing a DataTable to an SqlBulkCopy object?&lt;/p&gt;</content>
+  </entry>
+</feed>

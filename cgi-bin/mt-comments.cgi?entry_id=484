@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Method interception made easy</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Method interception made easy</div>
+
+
+<div class="comments-body">
+<p>The classdict[attr] = sentinel(attr) line is throwing <br />
+NameError: global name 'sentinel' is not defined<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.eighty-twenty.net/blog">Gordon Weakliem</a> at September 20, 2004 01:00 PM</span>
+</div>
+<div class="comments-body">
+<p>I think I found a way to obviate the need for  the class Callable.</p>
+
+<p>Try using "sentinel = staticmethod(sentinel)" instead of "sentinel = Callable(sentinel)", and replace the line "classdict[attr] = sentinel(attr)" with "classdict[attr] = ExecuteOnce.sentinel(attr)". This also seems to fix the exception as well. </p>
+
+<p>I would post the code except that the indentation gets removed which makes it unreadable & unrunnable.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;aghecht43&#64;yahoo&#46;com">Alan Hecht</a> at September 20, 2004 01:49 PM</span>
+</div>
+<div class="comments-body">
+<p>Is it just me or does anyone else using IE get odd displays when reading this blog? Sometimes when I scroll down bits of the text are not displayed (I mean, like the top half of some lines of text, not necessarily entire paragraphs).</p>
+<span class="comments-post">Posted by Moi at September 21, 2004 05:16 AM</span>
+</div>
+<div class="comments-body">
+<p>So are you programming in C++ without boost? Isn't that a bit foolish?</p>
+
+<p>http://www.boost.org/libs/thread/doc/once.html</p>
+
+<p>It took me a minute to find that. 6 months!</p>
+<span class="comments-post">Posted by Daniel at September 22, 2004 01:12 PM</span>
+</div>
+<div class="comments-body">
+<p>OK, I'm a complete moron - you're running the method once per object, not only once overall. But I still don't see what would take 6 months. Were you rewriting the object code?</p>
+<span class="comments-post">Posted by Daniel at September 22, 2004 01:36 PM</span>
+</div>
+<div class="comments-body">
+<p>I spent 6 months implementing generic method interception for the CLR by dynamically replacing method bodies at JIT compilation time.</p>
+
+<p>Boost wouldn't have helped me there, nor would boost let me add execute once semantics to existing code without recompiling / modifying source.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at September 22, 2004 01:39 PM</span>
+</div>
+<div class="comments-body">
+<p><br />
+You are spawning ideas!  Somebody thought it fit to do this stuff in Javascript :-)</p>
+
+<p>http://w3future.com/weblog/2004/09/22.xml#closuresForAnonymousStorage</p>
+<span class="comments-post">Posted by <a href="mailto&#58;noemail&#64;noemail&#46;com">Dilip</a> at September 22, 2004 02:32 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for your reply. Sorry for being so hasty.</p>
+
+<p>Anyway, if you haven't seen it, you might be interested in Nemerle (www.nemerle.org) which has meta-programming features for doing exactly this kind of thing. You can write a macro do get something like this:</p>
+
+<p>    [ExecuteOnce]<br />
+    class Test<br />
+    {<br />
+        method1() : void {<br />
+            print "In method1"<br />
+        }<br />
+    }</p>
+
+<p>Of course, it's all experimental, and you can only use Nemerle meta-programming abilities on Nemerle code - but because it's .NET, you can use inherit from an object written in another language (I think, I haven't looked into it in much detail). I might try writing this sometime.</p>
+<span class="comments-post">Posted by Daniel at September 22, 2004 02:40 PM</span>
+</div>
+<div class="comments-body">
+<p>Well, I've written it. It took me longer than it should have because I've very little experience with Nemerle (or .Net for that matter). I also have no idea how to do indentation in your comment field, so it's pretty unreadable, and you probably might not be remotely interested, so sorry if that's the case.</p>
+
+<p>It's compile-time, not dynamic, but then, this isn't a dynamic language so that's what you'd expect.</p>
+
+<p>It doesn't change methods in the base class. I think that's possible by creating new methods which calls the method in the base class, but I haven't implemented that yet. Here goes:</p>
+
+<p>using Nemerle.Compiler;<br />
+using Nemerle.Collections;</p>
+
+<p>// Use the macro on a class after it has been typed.<br />
+[Nemerle.MacroUsage (Nemerle.MacroPhase.WithTypedMembers,<br />
+                     Nemerle.MacroTargets.Class)]<br />
+macro ExecuteOnce(ty : TypeBuilder)<br />
+{<br />
+    // Get a list of the methods in the class<br />
+    def methods = ty.GetMethods(<br />
+            BindingFlags.Public %| BindingFlags.NonPublic %|          <br />
+            BindingFlags.Instance %| BindingFlags.DeclaredOnly);</p>
+
+<p>    foreach(m : IMethod in methods) {<br />
+        // Generate a variable name that won't clash with existing names.<br />
+        def variableName = Macros.UseSiteSymbol(Util.tmpname(m.Name));</p>
+
+<p>        // Declare it.<br />
+        ty.Define(&lt;[ decl:<br />
+            private mutable $(variableName : name) : bool = true; ]&gt;);</p>
+
+<p>        // Rewrite the Body of the method.<br />
+        def m = (m :&gt; NemerleMethod);<br />
+        m.Body = &lt;[<br />
+            when($(variableName : name)) {<br />
+                $(variableName : name) = false;<br />
+                $(m.Body);<br />
+            };<br />
+        ]&gt;;<br />
+    };<br />
+}</p>
+<span class="comments-post">Posted by Daniel at September 22, 2004 04:35 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="entry_id" value="484" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="button" onclick="window.close()" value="&nbsp;Cancel&nbsp;" />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+
+</body>
+</html>

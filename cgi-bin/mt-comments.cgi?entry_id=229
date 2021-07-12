@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Sleepless nights and future plans</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Sleepless nights and future plans</div>
+
+
+<div class="comments-body">
+<p>Yeah, code generation is great, but I think that, when it's really useful, it's equivalent to creating a "custom language".<br />
+That's what Lisp already allow with it's macro system for example.<br />
+Other languages have this great feature : Dylan is one on them (it's the one I prefer since Lisp syntax is "Write Once, Read Never" to me).</p>
+<span class="comments-post">Posted by <a href="mailto&#58;ybabel&#64;free&#46;fr">YBabel</a> at March 13, 2003 07:38 AM</span>
+</div>
+<div class="comments-body">
+<p>I agree wholeheartedly that the really useful aspects of code generation result from creating a custom problem-domain language.<br />
+That said, however, it is generally better to grab the low-hanging fruit when introducing code generation to an organization. Acceptance of the technique is key, and most folks that I show this technique to really need to see a good concrete example before continuing. <br />
+This is why we're focusing on the easy stuff first - generation of database schemas and the data access layer of the application. However, once they saw the utility of that approach, they readily came up with other suggestions - in the V2 timeframe, we'll be tackling building business rule abstractions using code generation.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at March 13, 2003 09:25 AM</span>
+</div>
+<div class="comments-body">
+<p>I can't wait for you to start working on your code generation tools.<br />
+I'm actually using an ASP.net simpleworker process run from a command line to be able to write my templates in pure C# code inside a webform. Anyway... When will you start ?<br />
+John.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;knipjo&#64;hotmail&#46;com">Jonx</a> at March 16, 2003 10:09 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

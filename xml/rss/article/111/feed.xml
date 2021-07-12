@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: MacBook Pro Notes</title>
+    <link>http://www.iunknown.com/articles/2006/04/10/macbook-pro-notes</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>MacBook Pro Notes</title>
+      <description>&lt;p&gt;My MacBook Pro is going to be my primary computer, so I&amp;#8217;m taking my time to setup &lt;span class="caps"&gt;OS X&lt;/span&gt; the way I want it to be.&lt;/p&gt;
+
+
+	&lt;p&gt;So far &lt;a href="http://www.parallels.com"&gt;Parallels&lt;/a&gt; is working fine. I&amp;#8217;ve got my dev tools setup in a Parallels VM and things are going well. Ruby&amp;#8217;s in there, VS.NET 2005 is installed, and I just successfully did a build of RubyCLR and all of the tests just passed.&lt;/p&gt;
+
+
+	&lt;p&gt;Performance is a bit disappointing though. Parallels is running my test suite about 25% slower than vmware on my Toshiba &lt;span class="caps"&gt;M200&lt;/span&gt;, which runs a slower &lt;span class="caps"&gt;CPU&lt;/span&gt; (1.8GHz Pentium M vs. 1.83GHz Core Duo). It&amp;#8217;s a single-threaded set of tests so I&amp;#8217;m not expecting the second core to amount to much.&lt;/p&gt;
+
+
+	&lt;p&gt;Hopefully either Parallels fixes the perf problems that I&amp;#8217;m seeing or VMWare does a better job. Either way, though it&amp;#8217;s usable  as an everyday OS. Worst case I&amp;#8217;ll have to live with the perf of my Opteron 175 :)&lt;/p&gt;
+
+
+	&lt;p&gt;The hardest thing to get used to is the keyboard mappings. I have to figure out if I can remap the Command key on my Mac to an &lt;span class="caps"&gt;ALT&lt;/span&gt; key a&amp;#8217;la Windows. My fingers are just programmed to hit those keyboard positions.&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I just found &lt;a href="http://doublecommand.sourceforge.net/"&gt;DoubleCommand&lt;/a&gt; which lets me remap the &lt;span class="caps"&gt;ALT&lt;/span&gt; and Command keys. Everything feels much better now.&lt;/p&gt;
+
+
+	&lt;p&gt;I also had to update my &lt;span class="caps"&gt;RSS&lt;/span&gt; Reader. On Windows I used &lt;a href="http://www.jetbrains.com/omea/"&gt;Omea Pro&lt;/a&gt; but since my host OS will be &lt;span class="caps"&gt;OS X&lt;/span&gt;, I&amp;#8217;m going to try out &lt;a href="http://ranchero.com/netnewswire/"&gt;NetNewsWire&lt;/a&gt;. When I exported my feeds from Omea Pro, I was pleasantly surprised that NetNewsWire retained all of my custom feed names (I don&amp;#8217;t like using the title of the feed, instead I like using the name of the author). Looks like a keeper.&lt;/p&gt;</description>
+      <pubDate>Mon, 10 Apr 2006 23:34:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:21592abb86eec3906ee8d16c9ca29138</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/04/10/macbook-pro-notes</link>
+      <category>Thoughts</category>
+    </item>
+  </channel>
+</rss>

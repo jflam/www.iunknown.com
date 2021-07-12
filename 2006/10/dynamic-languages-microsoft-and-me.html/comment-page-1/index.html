@@ -1,0 +1,2438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+
+<title>
+  Dynamic Languages, Microsoft, and me&nbsp;|&nbsp;John Lam on Software</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="http://iunknown.com/wp-content/themes/headlines/style.css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/LessIsBetter" />
+<link rel="pingback" href="http://iunknown.com/xmlrpc.php" />
+   
+<!--[if IE 6]>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/pngfix.js"></script>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/menu.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie6.css" />
+<![endif]-->	
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie7.css" />
+<![endif]-->
+   
+<link rel="alternate" type="application/rss+xml" title="John Lam on Software &raquo; Dynamic Languages, Microsoft, and me Comments Feed" href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/feed" />
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/jquery/jquery.js?ver=1.3.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/superfish.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/woo_tabs.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/cufon-yui.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/Liberation.font.js?ver=2.9.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://iunknown.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://iunknown.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='John Lam on Software' href='http://iunknown.com' />
+<link rel='start' title='Motorola DROID Review' href='http://iunknown.com/2009/12/motorola-droid-review.html' />
+<link rel='prev' title='See you at RubyConf 2006' href='http://iunknown.com/2006/10/see-you-at-rubyconf-2006.html' />
+<link rel='next' title='RubyConf 2006 in pictures' href='http://iunknown.com/2006/10/rubyconf-2006-in-pictures.html' />
+<meta name="generator" content="WordPress 2.9.2" />
+<link rel='canonical' href='http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html' />
+<meta name="generator" content="Headlines 2.4.1" />
+<meta name="generator" content="Woo Framework Version 2.5.3" />
+<script type="text/javascript">Cufon.replace("h2, h3, h4, h5, h6, .title, .cufon");</script>
+<style type="text/css">.widget h3 { line-height:22px; }</style>
+<link href="http://iunknown.com/wp-content/themes/headlines/styles/color.css" rel="stylesheet" type="text/css" />
+<link href="http://iunknown.com/wp-content/themes/headlines/custom.css" rel="stylesheet" type="text/css" />
+<!-- Woo Styling -->
+<style type="text/css">
+#logo img { display:none; }
+#logo .site-title, #logo .site-description { display:block; } 
+</style>
+
+<!--[if lte IE 7]>
+<script type="text/javascript">
+jQuery(function() {
+	var zIndexNumber = 1000;
+	jQuery('div').each(function() {
+		jQuery(this).css('zIndex', zIndexNumber);
+		zIndexNumber -= 1;
+	});
+});
+</script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="container">
+       
+	<div id="top">
+    
+		
+        <div id="header" class="col-full">
+       
+            <div id="logo">
+               
+                                
+                                    <span class="site-title"><a href="http://iunknown.com">John Lam on Software</a></span>
+                                
+                    <span class="site-description">Working for The Man in Redmond</span>
+                
+            </div><!-- /#logo -->
+               
+			            <div id="twitter-top">
+            	<div class="logo">
+                    <a href="http://www.twitter.com/john_lam" title="Follow on Twitter"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-twitter.png" alt="Twitter" /></a>                
+                </div>
+                <div class="tweet">
+	                <ul id="twitter_update_list"><li></li></ul>
+                </div>
+            </div><!-- /#topad -->
+			                       
+        </div><!-- /#header -->
+        
+        <div id="navigation">
+        
+			<div id="page-nav">
+    <div class="col-full">
+        <ul id="nav" class="fl">
+        
+            <li><a href="http://iunknown.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-home.png" class="ico-home" alt="Home" /></a></li>
+			        
+            <li class="page_item page-item-2"><a href="http://iunknown.com/about" title="About">About</a></li>
+            
+			            
+            
+        </ul><!-- /#nav1 -->
+        
+        <ul class="rss fr">
+                        <li><a href="http://feeds.feedburner.com/LessIsBetter">Posts</a></li>
+        </ul><!-- /.rss -->
+    </div><!-- /.col-full -->
+</div><!-- /#page-nav -->
+                        
+            <div id="cat-nav">
+                <div class="col-full">
+                    <ul id="secnav" class="fl">
+                    
+					                    
+						      
+                        <li>
+                            <a href="http://iunknown.com/category/ironruby">IronRuby</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/microsoft">Microsoft</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/misc_geek">Misc Geek</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/personal">Personal</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/rubyclr">RubyCLR</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/uncategorized">Uncategorized</a>
+                            
+                                                    </li>        
+                                                
+					                        
+                    </ul><!-- /#nav2 -->
+                    
+                                        <div id="search" class="fr">
+                        <form method="get" id="searchform" action="http://iunknown.com">
+                            <input type="text" class="field" name="s" id="s"  value="Enter keywords..." onfocus="if (this.value == 'Enter keywords...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter keywords...';}" />
+                            <input class="submit btn" type="image" src="http://iunknown.com/wp-content/themes/headlines/images/ico-search.png" value="Go" />
+                        </form>
+                    </div><!-- /#search -->
+                                    </div><!-- /.col-full -->
+            </div><!-- /#cat-nav -->
+            
+        </div><!-- /#navigation -->
+    
+    </div><!--/#top-->       
+    <div id="content" class="col-full">
+		<div id="main" class="col-left">
+		           
+                                    
+                <div class="box">
+                    <div class="post">
+    
+						                           
+                        <h1 class="title">Dynamic Languages, Microsoft, and me</h1>
+                        
+                        <p class="post-meta">
+							<img src="http://iunknown.com/wp-content/themes/headlines/images/ico-time.png" alt="" />20. Oct, 2006                            <span class="comments"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-comment.png" alt="" /><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html#comments" title="Comment on Dynamic Languages, Microsoft, and me">62 Comments</a></span>
+                        </p>
+
+																	
+                        <div class="entry">
+							<p><img src="http://www.iunknown.com/files/plantotk.jpg" alt="" /></p>
+<p>I&#8217;ve decided to stage a friendly takeover of Microsoft. As of January, 2007 my new work address will be Building 42 at Microsoft. I&#8217;ll be working in the <span class="caps">CLR</span> team to help bring the love of dynamic languages out to the statically typed heathens <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>This all started back in August when I was dragged into various back rooms at <span class="caps">OSCON</span> and Lang.Net and presented with an offer that I could not refuse. At some point in your life, you realize that you have an opportunity to affect some real change in the world. <a href="http://www.rubyclr.com">RubyCLR</a> was one way to affect that change, and thanks to the gracious support of my partners Barry Gervin, Dave Lloyd, and Bruce Johnson over at <a href="http://www.objectsharp.com">ObjectSharp</a>, I was able to give folks a glimpse of what is possible. Thank you all for your generosity and your friendship.</p>
+<p>However, my platform and reach at ObjectSharp is limited. We&#8217;re a consulting company and while we do use Ruby to deliver value to our customers, it&#8217;s literally one developer at a time (hi Andrew!) It&#8217;s a whole other thing to work at a platform company whose reach extends out to millions of developers. That&#8217;s a remarkable opportunity, and a unique privilege.</p>
+<p>This is why I&#8217;m uprooting my family and moving all the way across the continent and to a different country. The timing is right since our kids are young enough that they won&#8217;t even notice (I was the same age as Matthew when I moved to Canada from Hong Kong). A big public thank-you to my wife, Carolyn, who has supported me since day one. I love you.</p>
+<p>So, now begins the next phase of my life. I know that some of you have questions, but I&#8217;m somewhat limited in what I can say about what comes next. I hope you can understand if my answers are somewhat evasive or vague. I merely ask for your patience as all will become apparent in due time. It really will. I wouldn&#8217;t have put my family on a one-way flight to Seattle if that weren&#8217;t the case &#8230;</p>
+<p>What&#8217;s going to happen to RubyCLR? It&#8217;s in reasonably good shape now, and I&#8217;m actively looking for people to help drive that project. There is still a couple of months before I start at Microsoft, so please contact me if you&#8217;re interested in helping out. The source code is released under the <span class="caps">MIT</span> license, so you are free to do with it as you wish if you don&#8217;t like the direction the project is taking.</p>
+<p>What am I going to do once I get to Microsoft? This is the part where I&#8217;m going to have to be evasive and vague. I can tell you what I&#8217;m not going to be doing: I&#8217;m not going to stop blogging, I&#8217;m not going to leave the Ruby community, and I&#8217;m not going to do evil things. I see my mission at Microsoft as helping to make developers happier; to give them tools that make programming fun. That&#8217;s why I program-I enjoy programming. I like to use tools that put a smile on my face. Perhaps what I&#8217;ll be making at Microsoft will put a smile on your face too. Just be patient &#8230;</p>
+<p>If you&#8217;re at <a href="http://www.rubyconf.org">RubyConf</a> this weekend and you&#8217;d like to talk in person about my move, make sure you come over to say hi. I&#8217;m the guy with the giant camera in the front row.</p>
+                        </div>
+                        <div class="fix"></div>
+
+                                                <div id="share">
+							<div class="banner">Share</div>
+                            <a href="http://twitter.com/home/?status=Dynamic Languages, Microsoft, and me : http://tinyurl.com/y98kfzs"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-twitter.png" alt="Twitter" /></a>
+<a href="http://digg.com/submit?phase=2&amp;url=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-digg.png" alt="Digg" /></a>                            
+<a href="http://del.icio.us/post?url=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html&amp;title=Dynamic Languages, Microsoft, and me"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-delicious.png" alt="Delicious" /></a>                            
+<a href="http://www.stumbleupon.com/submit?url=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html&amp;title=Dynamic+Languages%2C+Microsoft%2C+and+me"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-stumbleupon.png" alt="Stumbleupon" /></a>                            
+<a href="http://technorati.com/cosmos/search.html?url=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-technorati.png" alt="Technorati" /></a>                            
+<a href="http://www.facebook.com/sharer.php?u=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html&amp;t=Dynamic Languages, Microsoft, and me"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-facebook.png" alt="Facebook" /></a>
+<a href="mailto:EMAIL ADDRESS?body=http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-mail.png" alt="Email" /></a>                           
+                        </div>
+                                                                        
+                    </div><!-- /.post -->
+                    
+                    <div class="post-bottom">
+                        <div class="fl"><span class="cat"><a href="http://iunknown.com/category/uncategorized" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></span></div>
+                        <div class="fr"></div> 
+                        <div class="fix"></div>                       
+                    </div>
+                    
+                </div><!-- /.box -->
+
+                <div class="more_entries">
+					<div class="fl"><a href="http://iunknown.com/2006/10/see-you-at-rubyconf-2006.html" rel="prev">See you at RubyConf 2006</a></div>
+					<div class="fr"><a href="http://iunknown.com/2006/10/rubyconf-2006-in-pictures.html" rel="next">RubyConf 2006 in pictures</a></div>
+                    <div class="fix"></div>                       
+				</div>               
+                
+				
+    
+
+<!-- You can start editing here. -->
+
+<div id="comments">
+
+
+	
+        <h3>62 Responses to &#8220;Dynamic Languages, Microsoft, and me&#8221;</h3>
+    
+        <ol class="commentlist">
+    
+                             
+	<li class="comment even thread-even depth-1" id="li-comment-1091">
+    
+    	<a name="comment-1091"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/93794964a6957b924572ab7c4ebc1c5b?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://softiesonrails.com' rel='external nofollow' class='url url'>Brian Eng</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1091" title="Direct link to this comment">20. Oct, 2006 at 1:17 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1091">
+                
+                    <p>Wow, John, congrats.  Microsoft needs guys like you.  Like, really badly.  Best of luck to you and yours as you begin your new adventure.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1092">
+    
+    	<a name="comment-1092"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://weblogs.asp.net/OKloeten/' rel='external nofollow' class='url url'>Omer van Kloeten</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1092" title="Direct link to this comment">20. Oct, 2006 at 1:35 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1092">
+                
+                    <p>Congratulations. All the luck in taking over building 42 and then Microsoft. <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1093">
+    
+    	<a name="comment-1093"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/d2cb495ec8c6975874403030a4865a33?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.winterdom.com/weblog/' rel='external nofollow' class='url url'>Tomas Restrepo</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1093" title="Direct link to this comment">20. Oct, 2006 at 2:06 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1093">
+                
+                    <p>Sounds pretty cool John, and you obviously seem happy about the choice. Wish you all the best and have a lot of fun on your new job!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1094">
+    
+    	<a name="comment-1094"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/855251cb6be35ab650a7bbf867ccb324?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.crazycool.co.uk' rel='external nofollow' class='url url'>El Draper</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1094" title="Direct link to this comment">20. Oct, 2006 at 2:20 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1094">
+                
+                    <p>Congratulations John, and all the best with your endeavours at Microsoft! Sounds like a great opportunity.<br />
+And I&#8217;d be happy to help out with RubyCLR if you&#8217;d like, I think it&#8217;s a great project, and Ruby/.Net integration is something I&#8217;m really interested in. Why can&#8217;t I have the best of both worlds? <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /><br />
+-= El =-</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1095">
+    
+    	<a name="comment-1095"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Lion</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1095" title="Direct link to this comment">20. Oct, 2006 at 2:39 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1095">
+                
+                    <p>Congrats John and good luck!<br />
+I&#8217;m hoping your duties at MS include creating a Ruby compiler for .NET, similar to IronPython.  I know that there a few projects out there in the wild, but it doesn&#8217;t seem like they are making any progress.  I feel that without an internal Microsoft project, we won&#8217;t be seeing such a compiler for quite some time.  And if you&#8217;re not going to be doing that, I hope you&#8217;d suggest to the &#8220;higher ups&#8221; that they should be doing this anyway.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1096">
+    
+    	<a name="comment-1096"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/41c597a48c80e37ba68d1adc7095ea0e?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://substantiality.net' rel='external nofollow' class='url url'>Sam Smoot</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1096" title="Direct link to this comment">20. Oct, 2006 at 3:02 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1096">
+                
+                    <p>Congrats! Your work is sincerely appreciated. I&#8217;m especially excited to hear about whatever new Rubyish project (hopefully) you work on when the time comes!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1097">
+    
+    	<a name="comment-1097"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/brada' rel='external nofollow' class='url url'>Brad Abrams</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1097" title="Direct link to this comment">20. Oct, 2006 at 4:11 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1097">
+                
+                    <p>Congrats!  Great to have you in bld42!  I am looking forward to seeing you around!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1098">
+    
+    	<a name="comment-1098"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://weblogs.asp.net/bleroy' rel='external nofollow' class='url url'>Bertrand</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1098" title="Direct link to this comment">20. Oct, 2006 at 4:15 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1098">
+                
+                    <p>Welcome and congrats!<br />
+You&#8217;ll love it here.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1099">
+    
+    	<a name="comment-1099"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/cdf546b601bf29a7eb4ca777544d11cd?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://haacked.com/' rel='external nofollow' class='url url'>Haacked</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1099" title="Direct link to this comment">20. Oct, 2006 at 5:39 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1099">
+                
+                    <p>Ah yes, we now have one of ours on the inside.  Commence phase 2!!!  MUAHAHAHA!<br />
+Good work John and congratulations!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1100">
+    
+    	<a name="comment-1100"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">kfarmer</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1100" title="Direct link to this comment">20. Oct, 2006 at 6:50 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1100">
+                
+                    <p>You missed one thing, though. C#, VB, C++ &#8212; they&#8217;re not based in building 42&#8230; <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1101">
+    
+    	<a name="comment-1101"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.arcware.net' rel='external nofollow' class='url url'>Dave Donaldson</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1101" title="Direct link to this comment">20. Oct, 2006 at 7:40 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1101">
+                
+                    <p>Congrats John!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1102">
+    
+    	<a name="comment-1102"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/e480a0714a4301863d8c6ad30d47776c?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://ChrisLarge.blogspot.com' rel='external nofollow' class='url url'>Chris Large</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1102" title="Direct link to this comment">20. Oct, 2006 at 8:34 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1102">
+                
+                    <p>Congratulations John,<br />
+Sounds like you are making a great move and I wish you all the best in the coming adventure.  As a fellow Rubyist I certainly hope you will continue to be very active in the community as you have lots of offer.  You will be working in teh same building as a friend of mine!<br />
+Cheers.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1103">
+    
+    	<a name="comment-1103"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Sam Gentile</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1103" title="Direct link to this comment">20. Oct, 2006 at 9:26 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1103">
+                
+                    <p>Wow! Congrats!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1104">
+    
+    	<a name="comment-1104"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/1945ab4cdb87eaf5a5c906fa884c29f1?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://quadhome.com/' rel='external nofollow' class='url url'>Scott Robinson</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1104" title="Direct link to this comment">21. Oct, 2006 at 2:22 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1104">
+                
+                    <p>Congratulations! Good luck with the dynamic languages work you&#8217;ll pound away at Microsoft.<br />
+If another Lang.NET occurs, I&#8217;ll see you there!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1105">
+    
+    	<a name="comment-1105"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/267942571862781dd912de6482a35f46?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.almostserio.us/' rel='external nofollow' class='url url'>Kevin Williams</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1105" title="Direct link to this comment">21. Oct, 2006 at 5:19 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1105">
+                
+                    <p>I&#8217;m extremely curious to see if you end up working with Jim Huginin (?), the guy behind IronPython. I would love to help with rubyclr, time permitting. I may never get a job doing Ruby, so my best hope is that C# 4.0 and its corresponding framework support Python and Ruby directly.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1106">
+    
+    	<a name="comment-1106"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Sajee</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1106" title="Direct link to this comment">21. Oct, 2006 at 7:46 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1106">
+                
+                    <p>Awesome!  Welcome aboard John!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1107">
+    
+    	<a name="comment-1107"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Drew</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1107" title="Direct link to this comment">21. Oct, 2006 at 8:45 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1107">
+                
+                    <p>well done Peter!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1108">
+    
+    	<a name="comment-1108"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/c8561e94b5667bb9a861130ef3e79a70?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/cdndevs/' rel='external nofollow' class='url url'>John Bristowe</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1108" title="Direct link to this comment">21. Oct, 2006 at 8:47 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1108">
+                
+                    <p>Congrats!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1109">
+    
+    	<a name="comment-1109"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Ant Like Worker</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1109" title="Direct link to this comment">21. Oct, 2006 at 9:17 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1109">
+                
+                    <p>My congratulations are in order as well.  But I was curious: how&#8217;s the Macbook going to fit in over in Building 42?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1110">
+    
+    	<a name="comment-1110"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ccd2cb208bf8f9e680d5a96ba5f62065?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://weblogs.asp.net/bsimser' rel='external nofollow' class='url url'>Bil Simser</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1110" title="Direct link to this comment">21. Oct, 2006 at 9:32 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1110">
+                
+                    <p>Congrats John! I&#8217;m sure you&#8217;ll take over your part of the world and have a lot of fun while you do.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1111">
+    
+    	<a name="comment-1111"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Miguel de Icaza</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1111" title="Direct link to this comment">21. Oct, 2006 at 11:54 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1111">
+                
+                    <p>Congratulations John!<br />
+Wish you good luck!<br />
+My name is Miguel, and I endorse this message.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1112">
+    
+    	<a name="comment-1112"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.peterkrantz.com' rel='external nofollow' class='url url'>Peter Krantz</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1112" title="Direct link to this comment">21. Oct, 2006 at 12:05 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1112">
+                
+                    <p>Ha! I already told you this would happen [way back in february](http://www.peterkrantz.com/2006/using-ruby-as-a-net-language/)!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1113">
+    
+    	<a name="comment-1113"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.peterkrantz.com' rel='external nofollow' class='url url'>Peter Krantz</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1113" title="Direct link to this comment">21. Oct, 2006 at 12:06 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1113">
+                
+                    <p>Oh, and congratulations!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1114">
+    
+    	<a name="comment-1114"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://scattrbrain.com' rel='external nofollow' class='url url'>Darshan</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1114" title="Direct link to this comment">21. Oct, 2006 at 1:14 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1114">
+                
+                    <p>Congratulations</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1115">
+    
+    	<a name="comment-1115"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/cb2b768a5e546b24052ea03334e43676?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://drnicwilliams.com' rel='external nofollow' class='url url'>Dr Nic</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1115" title="Direct link to this comment">21. Oct, 2006 at 1:26 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1115">
+                
+                    <p>Congrats!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1116">
+    
+    	<a name="comment-1116"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a25b24dcf7fc43d10d613ef4bde858a2?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://navin.biz' rel='external nofollow' class='url url'>Koistya `Navin</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1116" title="Direct link to this comment">21. Oct, 2006 at 2:35 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1116">
+                
+                    <p>Sounds exciting ^_^ Congratulations!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1117">
+    
+    	<a name="comment-1117"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://weblogs.asp.net/rhurlbut' rel='external nofollow' class='url url'>Robert Hurlbut</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1117" title="Direct link to this comment">21. Oct, 2006 at 7:19 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1117">
+                
+                    <p>Congratulations John! A surprise, but then again, not a surprise at all!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1118">
+    
+    	<a name="comment-1118"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/jeffabraham' rel='external nofollow' class='url url'>Jeff</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1118" title="Direct link to this comment">21. Oct, 2006 at 11:20 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1118">
+                
+                    <p>Congratulations! Make sure you join the Canucks at Microsoft alias, it definitely brings a unique perspective to the job <img src='http://iunknown.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1119">
+    
+    	<a name="comment-1119"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/b3c828334c0ec1a254650ab4cd3f206c?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.posciel-welniana.pl/' rel='external nofollow' class='url url'>PoÅ›ciel WeÅ‚niana</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1119" title="Direct link to this comment">22. Oct, 2006 at 1:14 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1119">
+                
+                    <p>Really great work! Congratulations!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1120">
+    
+    	<a name="comment-1120"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Prakash</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1120" title="Direct link to this comment">22. Oct, 2006 at 6:56 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1120">
+                
+                    <p>CONGRATULATIONS!!!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1121">
+    
+    	<a name="comment-1121"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/b6b2a86c309abf5ad482883d95e46805?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://verabass.blogspot.com' rel='external nofollow' class='url url'>Vera Bass</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1121" title="Direct link to this comment">22. Oct, 2006 at 9:04 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1121">
+                
+                    <p>Congratulations, John.<br />
+You know that I wish you (and yours) much success and happiness. May this new journey take you exactly where you want to go.<br />
+Vera</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1122">
+    
+    	<a name="comment-1122"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">IAmSad</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1122" title="Direct link to this comment">22. Oct, 2006 at 12:59 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1122">
+                
+                    <p>Well, just another brain bought by Microsoft money.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1123">
+    
+    	<a name="comment-1123"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">IAmSad</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1123" title="Direct link to this comment">22. Oct, 2006 at 1:01 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1123">
+                
+                    <p>If you dance with the devil, the devil doesn&#8217;t change.<br />
+But, you change.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1124">
+    
+    	<a name="comment-1124"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://secretGeek.net' rel='external nofollow' class='url url'>lb</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1124" title="Direct link to this comment">22. Oct, 2006 at 3:58 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1124">
+                
+                    <p>top work!<br />
+The company just got smarter.<br />
+best of luck<br />
+lb</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1125">
+    
+    	<a name="comment-1125"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">ttt</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1125" title="Direct link to this comment">22. Oct, 2006 at 11:19 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1125">
+                
+                    <p>in <a href="http://www.rubyclr.com/" rel="nofollow">http://www.rubyclr.com/</a> you have a picture that compares C# vs Ruby&#8230;<br />
+Made me laugh&#8230; hard&#8230; how about such C# piece of code:<br />
+public class Person {public string name, birthday, children;}<br />
+Oh.. wait&#8230;! now we have 1 line of C# and 1 line of Ruby! Panic, panic! <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1126">
+    
+    	<a name="comment-1126"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/38a80b720171ccd7d2fe4683a7cbfbe8?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Alain Sarti</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1126" title="Direct link to this comment">23. Oct, 2006 at 1:51 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1126">
+                
+                    <p>Congratulations.<br />
+I&#8217;m glad, a company like Microsoft recognized your work.<br />
+I hope, you&#8217;ll be able to accomplish great things.<br />
+Good luck to you and your family</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1127">
+    
+    	<a name="comment-1127"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">marklio</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1127" title="Direct link to this comment">23. Oct, 2006 at 8:50 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1127">
+                
+                    <p>Congrats, man.  Can&#8217;t wait to see you here in 42.<br />
+oh, ttt, your c# now doesn&#8217;t do the same thing as the Ruby code does.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1128">
+    
+    	<a name="comment-1128"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">ttt</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1128" title="Direct link to this comment">23. Oct, 2006 at 10:36 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1128">
+                
+                    <p>Marklio, I heard C# team is going to introduce type &#8216;variant&#8217; (which is evil in my eyes)<br />
+BTW &#8211; I&#8217;m not knowledgable in Ruby&#8230; so, feel free to explain &#8211; what&#8217;s the difference. I&#8217;d be glad to learn. Thnx.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1129">
+    
+    	<a name="comment-1129"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Josh</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1129" title="Direct link to this comment">23. Oct, 2006 at 12:24 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1129">
+                
+                    <p>Obviously I&#8217;ve been spending too much time studying for midterms when I should&#8217;ve been paying attention to this blog.<br />
+Microsoft? I don&#8217;t know what to say&#8230; except that I hope you got in under the appropriate terms (you get payed 1 bajillion dollars).</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1130">
+    
+    	<a name="comment-1130"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/b4aaa4989f75414536a61ecef589acd7?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Kenley</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1130" title="Direct link to this comment">23. Oct, 2006 at 1:32 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1130">
+                
+                    <p>Congrats John! Hope the work you did for with us at the Qube had some small part in all this.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1131">
+    
+    	<a name="comment-1131"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://smartic.us' rel='external nofollow' class='url url'>bryanl</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1131" title="Direct link to this comment">24. Oct, 2006 at 6:33 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1131">
+                
+                    <p>Congratulations, your RubyCLR speech inspired me to boot up windows.  I wish you the best.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1132">
+    
+    	<a name="comment-1132"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/texblog' rel='external nofollow' class='url url'>Steve Teixeira</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1132" title="Direct link to this comment">24. Oct, 2006 at 4:20 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1132">
+                
+                    <p>Welcome! I&#8217;m across the street from you in 41.  Now I have someone else that can wax nostalgic with me about COM and Delphi.  <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1133">
+    
+    	<a name="comment-1133"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Brandon Z</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1133" title="Direct link to this comment">25. Oct, 2006 at 8:13 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1133">
+                
+                    <p>This could hardly be more perfect, especially being in building 42.  (Oddly there seem to be exactly 42 comments as I write this&#8230; I guess I&#8217;m spoiling it: sorry!)<br />
+I have a potential client that needs an application which I want to build in Rails, but they are drinking the M$ Kool-aid&#8230; so perhaps if I&#8217;m forced to write it for .NET I can in the very least use Ruby.<br />
+Sorry if this is a really dumb question, but wouldn&#8217;t it be possible to port Rails pretty much in its entirety&#8211;or at least large parts of it&#8211;to .NET, so that you could build an app that (from the customer&#8217;s point of view) is a .NET app, but really (from the developer&#8217;s  point of view) is a Rails app?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1134">
+    
+    	<a name="comment-1134"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/dthorpe' rel='external nofollow' class='url url'>Danny Thorpe</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1134" title="Direct link to this comment">25. Oct, 2006 at 9:18 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1134">
+                
+                    <p>Congrats, John!  Looking forward to seeing what sort of trouble you can get yourself into on the inside.  ;></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1135">
+    
+    	<a name="comment-1135"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1135" title="Direct link to this comment">25. Oct, 2006 at 9:34 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1135">
+                
+                    <p>Sorry about the batch response &#8230; time is limited these days <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /><br />
+Kevin Williams &#8211; yes, Jim is on the same team as me.<br />
+kfarmer &#8211; gotta keep those statically typed guys across the street <img src='http://iunknown.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /><br />
+Ant Like Worker &#8211; I&#8217;ve put in my hardware requisition for a MacBook Pro. AFAIK it&#8217;s totally cool to run a MacBook Pro.<br />
+Kenley &#8211; everything started back at the Qube when I wrote your deployment system in Ruby. Hopefully it&#8217;s still serving y&#8217;all well.<br />
+Steve &#8211; it will be fun to talk about COM and Delphi! If only we could get Bruneau to come back to MS &#8230;<br />
+Brandon Z &#8211; the JRuby guys already have Rails running today, and with native OS threads. This means that a Java customer could look at a Rails app running on JRuby as a &#8220;Java app&#8221; &#8230;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1136">
+    
+    	<a name="comment-1136"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Brandon Z</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1136" title="Direct link to this comment">25. Oct, 2006 at 10:08 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1136">
+                
+                    <p>John:  I *just* read about JRails (in the transcript from Charles Nutter&#8217;s talk on Second Life about JRuby) between my last comment and this one&#8230; is that your way of saying &#8220;yes you can do that with RubyCLR but you&#8217;ll need to spend lots of time and be as smart as they are to get it working&#8221;?<br />
+(P.S.  to my last comment:  I should add that I&#8217;m pretty much assuming that what you&#8217;ll do at Microsoft will be along the same lines as RubyCLR, and that you&#8217;ll be furthering the same ends, even if you&#8217;re not actively continuing the RubyCLR project.)</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1137">
+    
+    	<a name="comment-1137"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ab4d96587a6172f2dd8e8079f8b60813?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.session0.com' rel='external nofollow' class='url url'>James Sheppard</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1137" title="Direct link to this comment">26. Oct, 2006 at 3:15 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1137">
+                
+                    <p>Congratulations John!  Best of luck with Microsoft and wishing you and your family well with the move.  Microsoft is lucky to have you!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1138">
+    
+    	<a name="comment-1138"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Lars-Inge TÃ¸nnessen (MVP)</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1138" title="Direct link to this comment">03. Nov, 2006 at 4:18 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1138">
+                
+                    <p>Congratulations! You will be eating your lunch at building 43 as well. They serve good food there. <img src='http://iunknown.com/wp-includes/images/smilies/icon_surprised.gif' alt=':o' class='wp-smiley' /> )</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-1139">
+    
+    	<a name="comment-1139"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/66ed996bdf881d237e1845279e68b31a?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">ADEBISI Foluso A. (C#.Net Dev. Sql Server &amp; MySQL DBA)</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1139" title="Direct link to this comment">01. Dec, 2006 at 3:05 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1139">
+                
+                    <p>Congratulations!<br />
+Waiting to add anything that comes up from you to my library of tools in order to ease life for our Customers!<br />
+Congratulations, once again!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1557">
+    
+    	<a name="comment-1557"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/66ed996bdf881d237e1845279e68b31a?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">ADEBISI Foluso A. (C#.Net Dev. Sql Server &amp; MySQL DBA)</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#comment-1557" title="Direct link to this comment">01. Dec, 2006 at 3:05 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-1557">
+                
+                    <p>Congratulations!<br />
+Waiting to add anything that comes up from you to my library of tools in order to ease life for our Customers!<br />
+Congratulations, once again!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+        
+        </ol>    
+    
+        <div class="navigation">
+            <div class="fl"></div>
+            <div class="fr"><a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html#comments" >Newer Comments &raquo;</a></div>
+            <div class="fix"></div>
+        </div><!-- /.navigation -->
+
+			
+		
+
+</div> <!-- /#comments_wrap -->
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+	
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2006/10/dynamic-languages-microsoft-and-me.html/comment-page-1#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div><!-- /.cancel-comment-reply -->
+
+		    
+		<form action="http://iunknown.com/wp-comments-post.php" method="post" id="commentform" onsubmit="if (url.value == 'Website (optional)') {url.value = '';}">
+
+	    <div class="left">
+
+		
+			<p>
+                <input type="text" name="author" class="txt" id="commentauthor" tabindex="1" value="Name (required)" onfocus="if (this.value == 'Name (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="email" class="txt" id="email" tabindex="2" value="Email (required)" onfocus="if (this.value == 'Email (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="url" class="txt" id="url" tabindex="3" value="Website (optional)" onfocus="if (this.value == 'Website (optional)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Website (optional)';}" />
+			</p>
+
+		        
+        </div>
+
+		<div class="right">
+        
+		<!--<p><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </p>-->
+
+		<p><textarea name="comment" id="comment" rows="10" cols="50" tabindex="4"></textarea></p>
+
+		<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+		<input type="hidden" name="comment_post_ID" value="116" />
+		
+		<input type='hidden' name='comment_post_ID' value='116' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+				
+        </div>
+        
+		</form><!-- /#commentform -->
+
+	
+	<div class="fix"></div>
+
+</div><!-- /#respond -->
+
+                                                    
+			  
+        
+		</div><!-- /#main -->
+
+        <div id="sidebar" class="col-right">
+
+	<!-- Widgetized Sidebar -->	
+	<div id="text-3" class="widget widget_text"><h3>Subscribe!</h3>			<div class="textwidget"><p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+		</div>		
+    
+	<!-- TABS STARTS --> 
+		<div id="tabs">
+		
+		<ul class="wooTabs tabs">
+			<li><a href="#pop">Popular</a></li>
+			<li><a href="#feat">Latest</a></li>
+            <li><a href="#comm">Comments</a></li>
+			<li><a href="#tagcloud">Tags</a></li>
+		</ul>	
+		
+		<div class="fix"></div>
+		
+		<div class="inside">
+		 <div id="pop">
+			<ul>
+					<li>
+			                
+            <a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html" title="A first look at IronRuby">A first look at IronRuby</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/08/funtwo-unmasked.html" title="funtwo unmasked">funtwo unmasked</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html" title="Dynamic Languages, Microsoft, and me">Dynamic Languages, Microsoft, and me</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2008/03/dynamic-silverlight-part-1-hello-world.html" title="Dynamic Silverlight Part 1: Hello, World!">Dynamic Silverlight Part 1: Hello, World!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html" title="IronRuby on Rubyforge!">IronRuby on Rubyforge!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+                    
+			</ul>
+           </div>
+           
+         <div id="feat"> 
+	        <ul>
+			<li>
+		<a title="Permalink to  Motorola DROID Review" href="http://iunknown.com/2009/12/motorola-droid-review.html" rel="bookmark">Motorola DROID Review</a>
+	<span class="meta">10. Dec, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Passing the torch" href="http://iunknown.com/2009/11/passing-the-torch.html" rel="bookmark">Passing the torch</a>
+	<span class="meta">17. Nov, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Dynamic Languages at TechEd 2009" href="http://iunknown.com/2009/05/dynamic-languages-at-teched-2009.html" rel="bookmark">Dynamic Languages at TechEd 2009</a>
+	<span class="meta">18. May, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Disable that annoying beep on Thinkpads when resuming from Sleep" href="http://iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html" rel="bookmark">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+	<span class="meta">02. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Hello, 2009" href="http://iunknown.com/2009/01/hello-2009.html" rel="bookmark">Hello, 2009</a>
+	<span class="meta">01. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+		
+                    
+			</ul>
+          </div>
+          <div id="comm">  
+			<ul>
+			<li>
+    <img alt='' src='http://www.gravatar.com/avatar/d1e701feeafaf4228572298aea23d13f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2007/07/outlook-zen.html#comment-2224" title="on  Outlook Zen">
+		Frank S: I've been using Jello 5 for the last few years.  J...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/634e0589ae0ec312596b20e8c95474ae?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2119" title="on  Passing the torch">
+		Mattias: Now we are really curious... the announcement is d...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/52bf71ded85623e0f7f976192399621f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2016" title="on  Passing the torch">
+		Dave Bettin: New dynamic language?...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/0ad20a1e4b560f1c2771903112cc4fa9?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2008/03/dynamic-silverlight-part-3-integrating-silverlight-with-asp-net-mvc.html#comment-174" title="on  Dynamic Silverlight Part 3: Integrating Silverlight with ASP.NET MVC">
+		sikat ang pinoy: Creating silverlight on asp.net mvc are now easy. ...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-31" title="on  Passing the torch">
+		John Lam: Hang in there ... will happen later this month! So...
+    </a>
+    <div style="clear:both"></div>
+</li>
+                    
+			</ul>
+	      </div>
+			<div id="tagcloud">
+			    			</div>
+		
+	</div><!-- INSIDE END -->
+	
+	</div><!-- TABS END -->
+	
+	<div class="fix" style="height:25px !important;"></div>
+	
+	  
+	<!-- TABS END -->    
+    
+	<!-- Widgetized Sidebar -->	
+	<div id="archives-3" class="widget widget_archive"><h3>Archives</h3>		<select name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> <option value="">Select Month</option> 	<option value='http://iunknown.com/2009/12'> December 2009 </option>
+	<option value='http://iunknown.com/2009/11'> November 2009 </option>
+	<option value='http://iunknown.com/2009/05'> May 2009 </option>
+	<option value='http://iunknown.com/2009/01'> January 2009 </option>
+	<option value='http://iunknown.com/2008/10'> October 2008 </option>
+	<option value='http://iunknown.com/2008/09'> September 2008 </option>
+	<option value='http://iunknown.com/2008/08'> August 2008 </option>
+	<option value='http://iunknown.com/2008/07'> July 2008 </option>
+	<option value='http://iunknown.com/2008/06'> June 2008 </option>
+	<option value='http://iunknown.com/2008/05'> May 2008 </option>
+	<option value='http://iunknown.com/2008/04'> April 2008 </option>
+	<option value='http://iunknown.com/2008/03'> March 2008 </option>
+	<option value='http://iunknown.com/2008/02'> February 2008 </option>
+	<option value='http://iunknown.com/2008/01'> January 2008 </option>
+	<option value='http://iunknown.com/2007/12'> December 2007 </option>
+	<option value='http://iunknown.com/2007/11'> November 2007 </option>
+	<option value='http://iunknown.com/2007/10'> October 2007 </option>
+	<option value='http://iunknown.com/2007/09'> September 2007 </option>
+	<option value='http://iunknown.com/2007/08'> August 2007 </option>
+	<option value='http://iunknown.com/2007/07'> July 2007 </option>
+	<option value='http://iunknown.com/2007/06'> June 2007 </option>
+	<option value='http://iunknown.com/2007/05'> May 2007 </option>
+	<option value='http://iunknown.com/2007/04'> April 2007 </option>
+	<option value='http://iunknown.com/2007/03'> March 2007 </option>
+	<option value='http://iunknown.com/2007/02'> February 2007 </option>
+	<option value='http://iunknown.com/2007/01'> January 2007 </option>
+	<option value='http://iunknown.com/2006/12'> December 2006 </option>
+	<option value='http://iunknown.com/2006/11'> November 2006 </option>
+	<option value='http://iunknown.com/2006/10'> October 2006 </option>
+	<option value='http://iunknown.com/2006/09'> September 2006 </option>
+	<option value='http://iunknown.com/2006/08'> August 2006 </option>
+	<option value='http://iunknown.com/2006/07'> July 2006 </option>
+	<option value='http://iunknown.com/2006/06'> June 2006 </option>
+	<option value='http://iunknown.com/2006/05'> May 2006 </option>
+	<option value='http://iunknown.com/2006/04'> April 2006 </option>
+	<option value='http://iunknown.com/2006/03'> March 2006 </option>
+	<option value='http://iunknown.com/2006/02'> February 2006 </option>
+	<option value='http://iunknown.com/2006/01'> January 2006 </option>
+	<option value='http://iunknown.com/2005/12'> December 2005 </option>
+	<option value='http://iunknown.com/2005/11'> November 2005 </option>
+	<option value='http://iunknown.com/2005/10'> October 2005 </option>
+ </select>
+</div><div id="twitter-1" class="widget widget_twitter"><h3><a href="http://twitter.com/john_lam" class="twitter_title_link">Tweets</a></h3><ul class="twitter"><li class="twitter-item"> hahahahahahahahahahahaha: <a href="http://bit.ly/9hq7EB" class="twitter-link">http://bit.ly/9hq7EB</a> </li><li class="twitter-item"> <a href="http://twitter.com/LANjackal" class="twitter-user">@LANjackal</a> unfortunately i had to answer his question ... :) am amazed that they don't staff the booth. iPad I was looking at was in chinese </li><li class="twitter-item"> <a href="http://twitter.com/migueldeicaza" class="twitter-user">@migueldeicaza</a> is this going to be like that underground BOF at whatever that PDC was that got you guys kicked out? :) </li><li class="twitter-item"> OH at Best Buy: can I use a mouse with this iPad? </li><li class="twitter-item"> Matthew solved his first sodoku puzzle today! </li><li class="twitter-item"> Elevation profile from my ride up Zoo hill today:  <a href="http://twitpic.com/1q5upe" class="twitter-link">http://twitpic.com/1q5upe</a> </li><li class="twitter-item"> At the top of zoo hill. Tough climb felt hardest last 100m. Boston waved dad off at bottom. They are going to the zoo. </li><li class="twitter-item"> A wee bit wet out here on the bike. Riding zoo today </li><li class="twitter-item"> Work on large solutions in VS? The recursive collapse selection in solution explore add-in is a life saver: <a href="http://bit.ly/98tVqD" class="twitter-link">http://bit.ly/98tVqD</a> </li><li class="twitter-item"> Huge story about Floyd Landis - ESPN scores a phone interview: <a href="http://sports.espn.go.com/oly/cycling/news/story?id=5203604" class="twitter-link">http://sports.espn.go.com/oly/cycling/news/story?id=5203604</a> </li></ul></div>
+<div id="flickr" class="widget">
+	<h3 class="widget_title">Photos on <span>Flick<span>r</span></span></h3>
+	<div class="wrap">
+		<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=18&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=23649168@N00"></script>        
+		<div class="fix"></div>
+	</div>
+</div>
+
+		
+             
+	
+</div><!-- /#sidebar -->
+    </div><!-- /#content -->
+		
+    <!-- Footer Widget Area Starts -->
+	<div id="footer-widgets">
+		<div class="container col-full">
+            <div class="block">
+                		           
+            </div>
+            <div class="block">
+                		           
+            </div>
+            <div class="block last">
+                		           
+            </div>
+   			<div class="fix"></div>
+		</div>    
+    </div>
+    <!-- Footer Widget Area Ends -->
+
+	<div id="footer">
+		<div class="col-full">
+            <div id="copyright" class="col-left">
+                <p>&copy; 2010 John Lam on Software. All Rights Reserved.</p>
+            </div>
+            
+            <div id="credit" class="col-right">
+                <p>Powered by <a href="http://www.wordpress.org">Wordpress</a>. Designed by <a href="http://www.woothemes.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/woothemes.png" width="87" height="21" alt="Woo Themes" /></a></p>
+            </div>
+		</div>
+	</div>
+	<!-- footer Ends -->
+	
+</div><!-- /#container -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&amp;count=1"></script>
+</body>
+</html>

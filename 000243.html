@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: GSLgen, context and loops</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000242.html" title="Confewzed" />
+
+<link rel="next" href="http://www.iunknown.com/000244.html" title="YARR Yet Another RSS Reader" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000242.html">&laquo; Confewzed</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000244.html">YARR Yet Another RSS Reader &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">May 06, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">GSLgen, context and loops</h3>
+
+<p><P>In the <A href="Weblog/CodegenerationwithGSLgenS.html">first article in this series</A>, I talked about the basics of acquiring, compiling and running GSLgen. In this article, I'll introduce GSLgen's notion of context, and how it can be used within loops.</P><br />
+<P>Let's consider how we can use GSLgen to generate some C# classes. Here's an XML file that contains the simplest possible definition of two classes:</P><CODE><br />
+<P>&lt;classes&gt;<BR>&nbsp; &lt;class name="Person"/&gt;<BR>&nbsp; &lt;class name="Place"/&gt;<BR>&lt;/classes&gt;</P></CODE><br />
+<P>Here's a GSL script that iterates over the XML file:</P><CODE><br />
+<P>using System;<BR>.for classes.class</P><br />
+<P>public class $(name)<BR>{<BR>}<BR>.endfor</P></CODE><br />
+<P>And this is what it generates:</P><CODE><br />
+<P>using System;<BR><BR>public class Person<BR>{<BR>}</P><br />
+<P>public class Place<BR>{<BR>}</P></CODE><br />
+<P>Let's take a closer look at the GSL script. It showcases the&nbsp;for ... endfor construct which is commonly used to iterate over a set of XML elements. The for statement's expression, <CODE>classes.class</CODE>, defines what XML elements to iterate over. Within the body of the for ... endfor statement is a template. That template's context changes each time through the loop to point to the current XML element. The $(name) expression retrieves the value of the name attribute of the current XML node and outputs the value to the output stream.</P><br />
+<P>Next, let's consider a more complex XML file that contains some nested elements that we want to iterate over:</P><CODE><br />
+<P>&lt;classes&gt;<BR>&nbsp; &lt;class name="Person"&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;field name="Name" type="string"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;field name="Age" type="int"/&gt;<BR>&nbsp; &lt;/class&gt;<BR>&nbsp; &lt;class name="Place"&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;field name="Address" type="string"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;field name="Zip" type="string"/&gt;<BR>&nbsp; &lt;/class&gt;<BR>&lt;/classes&gt;</P></CODE><br />
+<P>We can nest our for ... endfor loops like so:</P><CODE><br />
+<P>using System;<BR>.for classes.class</P><br />
+<P>public class $(name)<BR>{<BR>.for field<BR>&nbsp; private $(type) $(name)_;<BR>.endfor<BR>}<BR>.endfor</P></CODE><br />
+<P>Which results in the generation of the following C# code:</P><CODE><br />
+<P>using System;</P><br />
+<P>public class Person<BR>{<BR>&nbsp; private string Name_;<BR>&nbsp; private int Age_;<BR>}</P><br />
+<P>public class Place<BR>{<BR>&nbsp; private string Address_;<BR>&nbsp; private string Zip_;<BR>}</P></CODE><br />
+<P>As you can see, the nested for ... endfor loop inherits the context of its parent for ... endfor loop. This lets us write very simple code that can iterate over nested elements using a very natural syntax.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at May  6, 2003 02:57 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="243" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000243.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I've found that it's a Good Idea&reg; to fully qualify names in GSL. The reason for this is that, given an unqualified <br />
+attribute name, the GSL intepreter will climb up the context stack looking for a parent context that does have that <br />
+attribute. Only after it searches all of the contexts does it report that it is undefined. So, given the following XML:<br />
+&lt;documentElement&gt;<br />
+  &lt;Country name="USA"&gt;<br />
+    &lt;State name="Georgia"/&gt;<br />
+    &lt;State name="Washington"/&gt;<br />
+    &lt;State/&gt; &lt;!-- Wups! Forgot the state name. --&gt;<br />
+  &lt;/Country&gt;<br />
+&lt;/documentElement&gt;<br />
+The following GSL script:<br />
+.for Country<br />
+. for State<br />
+.# The colon at the end of the eval statement tells GSL to preserve case<br />
+$(name<br />
+. endfor State<br />
+.endfor Country<br />
+Will result in the following output:<br />
+2003/05/07 11:28:08: gsl I: Processing states.xml...<br />
+Georgia<br />
+Washington<br />
+USA<br />
+The simplest way to fully qualify names in the local context is to prefix the name with the '0' scope, like so:<br />
+0.name<br />
+If we modify our script to include the prefix, we'll now get an "Undefined Identifier" error. The way to fix this is to <br />
+either check to see if the property is defined using the 'defined' function, or to modify the evaluation string to substitute <br />
+something for undefined values:<br />
+.for Country<br />
+. for State<br />
+$(0.name?"&lt;missing&gt;"<br />
+. endfor State<br />
+.endfor Country<br />
+This will result in the following output:<br />
+2003/05/07 11:27:10: gsl I: Processing states.xml...<br />
+Georgia<br />
+Washington<br />
+&lt;missing&gt;</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at May  7, 2003 10:41 AM</span>
+</div>
+<div class="comments-body">
+<p>Grr. Haloscan can be terribly irritating. Replace all 's with :)'s</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://hoppersoft.com/Andy">Andy Hopper</a> at May  7, 2003 10:44 AM</span>
+</div>
+<div class="comments-body">
+<p>Do you know XGOF ?<br />
+http://nmatrix.com.ar/XGoF/Documentation/Overview.aspx</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;knipjo&#64;hotmail&#46;com">Jonx</a> at May  7, 2003 11:51 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the tip, Andy! I'm surprised that I haven't run into that one before, but I suspect I was just lucky </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at May  7, 2003 02:09 PM</span>
+</div>
+<div class="comments-body">
+<p>Anyone got a pointer to a good GSLgen-style code generator that handles Unicode?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dabbler&#64;rudeboy&#46;org">David Pickett</a> at May  7, 2003 04:22 PM</span>
+</div>
+<div class="comments-body">
+<p>Ah...it looks like gslgen just has problems with the UTF-8 byte-order mark at the beginning of the XML file.  Woohoo!</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;dabbler&#64;rudeboy&#46;org">David Pickett</a> at May  7, 2003 04:31 PM</span>
+</div>
+<div class="comments-body">
+<p>BTW, in case anyone else runs across the problem, it's not difficult to hack the GSLgen source to ignore UTF-8 BOMs in XML files.  Will post a link to the fixed-up source if anyone ever happens to need it.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://dabbler.blogspot.com">David Pickett</a> at July 10, 2003 03:58 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: RubyCLR can marshal auto-layout value types</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/121/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/04/30/rubyclr-can-marshal-auto-layout-value-types" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:42-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:932913f6b4d67ff37c2533761723d52b</id>
+    <published>2006-04-30T12:35:00-07:00</published>
+    <updated>2006-08-21T15:55:42-07:00</updated>
+    <title type="html">RubyCLR can marshal auto-layout value types</title>
+    <link href="http://www.iunknown.com/articles/2006/04/30/rubyclr-can-marshal-auto-layout-value-types" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;Finally.&lt;/p&gt;
+
+
+	&lt;p&gt;This was a tough one. The &lt;span class="caps"&gt;CLR&lt;/span&gt; supports three types of value types: auto-layout, sequential, and explicit. A sequential value type is one whose fields are laid out in memory in the same order that they are declared in the type. An explicit value type is one whose fields are explicitly laid out in memory to achieve compatibility with some unmanaged data structure. An auto-layout value type is one where the &lt;span class="caps"&gt;CLR&lt;/span&gt; can rearrange fields to create the most efficient representation based on the target architecture.&lt;/p&gt;
+
+
+	&lt;p&gt;Clearly, auto-layout value types are very useful. However, if you want to marshal these things you&amp;#8217;re likely to run into trouble. At the very least, you need to allocate enough memory to hold the value type&amp;#8217;s fields and then copy the value type  into that buffer. The documented way of determining the size of a value type is to use &lt;a href="http://msdn2.microsoft.com/en-us/library/system.runtime.interopservices.marshal.sizeof.aspx"&gt;System.Runtime.InteropServices.Marshal.SizeOf()&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;However, it refuses to report the size of an auto-layout value type. So I have to resort to using the &lt;span class="caps"&gt;CIL&lt;/span&gt; &lt;code&gt;sizeof&lt;/code&gt; instruction that provides the same information. But &lt;code&gt;sizeof&lt;/code&gt; requires that you specify the type of the value type. So I have to generate a small dynamic method &lt;strong&gt;for every auto-layout dynamic that I have to determine the size of&lt;/strong&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+sizeof  &amp;lt;type name&amp;gt;
+ret
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I execute and then cache the value in the Ruby class object. Yes, it&amp;#8217;s a grotesque hack, but it does work. And for the time being, the size of auto-layout value types is fixed for the duration of the process, but this will change in the future.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Finally.&lt;/p&gt;
+
+
+	&lt;p&gt;This was a tough one. The &lt;span class="caps"&gt;CLR&lt;/span&gt; supports three types of value types: auto-layout, sequential, and explicit. A sequential value type is one whose fields are laid out in memory in the same order that they are declared in the type. An explicit value type is one whose fields are explicitly laid out in memory to achieve compatibility with some unmanaged data structure. An auto-layout value type is one where the &lt;span class="caps"&gt;CLR&lt;/span&gt; can rearrange fields to create the most efficient representation based on the target architecture.&lt;/p&gt;
+
+
+	&lt;p&gt;Clearly, auto-layout value types are very useful. However, if you want to marshal these things you&amp;#8217;re likely to run into trouble. At the very least, you need to allocate enough memory to hold the value type&amp;#8217;s fields and then copy the value type  into that buffer. The documented way of determining the size of a value type is to use &lt;a href="http://msdn2.microsoft.com/en-us/library/system.runtime.interopservices.marshal.sizeof.aspx"&gt;System.Runtime.InteropServices.Marshal.SizeOf()&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;However, it refuses to report the size of an auto-layout value type. So I have to resort to using the &lt;span class="caps"&gt;CIL&lt;/span&gt; &lt;code&gt;sizeof&lt;/code&gt; instruction that provides the same information. But &lt;code&gt;sizeof&lt;/code&gt; requires that you specify the type of the value type. So I have to generate a small dynamic method &lt;strong&gt;for every auto-layout dynamic that I have to determine the size of&lt;/strong&gt;:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+sizeof  &amp;lt;type name&amp;gt;
+ret
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I execute and then cache the value in the Ruby class object. Yes, it&amp;#8217;s a grotesque hack, but it does work. And for the time being, the size of auto-layout value types is fixed for the duration of the process, but this will change in the future.&lt;/p&gt;</content>
+  </entry>
+</feed>

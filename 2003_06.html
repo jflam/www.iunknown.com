@@ -1,0 +1,422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: June 2003 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2003_05.html" title="May 2003" />
+
+<link rel="next" href="http://www.iunknown.com/2003_07.html" title="July 2003" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2003_05.html">&laquo; May 2003</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2003_07.html">July 2003 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_06.html#000278"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/22"
+    dc:title="NAntContrib and SourceForge pain"
+    dc:identifier="http://www.iunknown.com/2003_06.html#000278"
+    dc:subject=""
+    dc:description="After my NAnt/NUnit talk at WinDev, a number of folks asked me about additional tasks that will integrate their version control system into their build system. I have successfully implemented NAnt build systems that talk to VSS, but I have..."
+    dc:creator="John"
+    dc:date="2003-06-25T18:40:23-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">June 25, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000278"></a>
+<h3 class="title">NAntContrib and SourceForge pain</h3>
+
+<p>After my NAnt/NUnit talk at WinDev, a number of folks asked me about additional tasks that will integrate their version control system into their build system. I have successfully implemented NAnt build systems that talk to <span class="caps">VSS,</span> but I have since migrated my development over to <a href="http://www.perforce.com">Perforce</a>. I looked around for some Perforce tasks, but didn't find any, so I figure I'd write them and contribute them back to the community.</p>
+
+<p>I have been using a private build of NAnt for some time now, which was based on a snapshot of stuff that I got almost a year ago. I decided today to go and grab the latest sources from SourceForge and sync my private build up with the public build. The "nightly builds" can be downloaded from the <a href="http://nantcontrib.sourceforge.net/">NAntContrib home page</a>. However, these builds can't actually be built, as there are a number of things missing. So I resigned myself to grabbing all of the sources from the NAntContrib <span class="caps">CVS</span> repository. This was when I was introduced to a load of pain. </p>
+
+<p>The first wrong thing that I did was try to access <span class="caps">CVS</span> from computers inside my firewall. However, as I discovered, apparently you cannot have <span class="caps">RRAS, ISA</span> and <span class="caps">CVS</span> access all at the same time. You can have two of the three but not all three. If anyone knows of a way of opening up port 2401 so that I can talk to <span class="caps">CVS</span> from behind my <span class="caps">ISA</span> server, I'd really love to hear about it. I tried almost every combination, and some <a href="http://groups.google.ca/groups?hl=en&amp;lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=cvs&amp;btnG=Google+Search&amp;meta=group%3Dmicrosoft.public.isaserver">Google searches</a> yielded other folks who had the same observations. Apparently it's <span class="caps">RRAS</span> that's the culprit.</p>
+
+<p>In desperation, I used Terminal Server to start a <span class="caps">CVS</span> session with SourceForge from my <span class="caps">ISA </span>Server computer. This time, I ran into another set of problems. Silly me, I followed the <a href="http://sourceforge.net/cvs/?group_id=54790">instructions to talk to <span class="caps">CVS</span></a>. Each time I tried that, I got back a wonderfully informative error message:<br> <code>cvs [login aborted]: Error reading from server cvs.sourceforge.net: 0:&lt;br&gt;
+No such file or directory</code><br></p>
+
+<p>I turned to my friend <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a>, who has also done work on NAnt, and he came back with the following magic incantations that work:<br><br />
+<code>cvs -d:pserver:anonymous@cvs.nantcontrib.sourceforge.net:/cvsroot/nantcontri
+b login&lt;br&gt;
+cvs -z3 -d:pserver:anonymous@cvs.nantcontrib.sourceforge.net:/cvsroot/nantco
+ntrib co NAntContrib</code><br><br />
+Worked like a charm. I hope this helps someone else who's trying to grab the NAntContrib sources.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000278.html">06:40 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=278" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=278" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_06.html#000277"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/21"
+    dc:title="Microsoft Patterns and Practices"
+    dc:identifier="http://www.iunknown.com/2003_06.html#000277"
+    dc:subject=""
+    dc:description="I just downloaded and started reading the latest installment in Microsoft&apos;s Patterns and Practices series: Improving Web Application Security: Threats and Countermeasures. So far I really like what I&apos;ve seen. The problem is, I don&apos;t like reading large volumes of..."
+    dc:creator="John"
+    dc:date="2003-06-24T13:51:57-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">June 24, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000277"></a>
+<h3 class="title">Microsoft Patterns and Practices</h3>
+
+<p>I just downloaded and started reading the latest installment in Microsoft's Patterns and Practices series: <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnnetsec/html/ThreatCounter.asp">Improving Web Application Security: Threats and Countermeasures</a>. So far I <em>really</em> like what I've seen. The problem is, I don't like reading large volumes of text (this book is 919 pages long!) on my monitors. </p>
+
+<p>Today, I discovered that Staples Canada will do printing from a <span class="caps">PDF</span> document for 3 cents a page on printing quantities of over 1000 pages. If you splice together several of the Patterns and Practices series books, you can easily go over the 1000 page quantity for the 3 cent per page price. They do charge a $6.00 file processing fee, but you can avoid that if you already own Acrobat, since you can splice together several <span class="caps">PDF</span> documents into one large document for printing. They will also do duplex printing for you so that you can consume fewer trees. I'm off to Staples now to do the print; I'll let you know how it turns out.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000277.html">01:51 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=277" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=277" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_06.html#000276"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/20"
+    dc:title="Win-Dev 2003 Wrap-up"
+    dc:identifier="http://www.iunknown.com/2003_06.html#000276"
+    dc:subject=""
+    dc:description="It was my shortest appearance ever at a Win-Dev conference. I flew in Thursday morning and flew home Friday evening. In between, I gave 6 talks, and had an opportunity to catch up with some old friends at DevelopMentor that..."
+    dc:creator="John"
+    dc:date="2003-06-24T11:58:00-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000276"></a>
+<h3 class="title">Win-Dev 2003 Wrap-up</h3>
+
+<p>It was my shortest appearance ever at a <a href="http://butrain.com/windev/">Win-Dev</a> conference. I flew in Thursday morning and flew home Friday evening. In between, I gave 6 talks, and had an opportunity to catch up with some old friends at <a href="http://www.develop.com">DevelopMentor</a> that I haven't seen in quite some time. I also had fun hanging out with <a href="http://samgentile.com/blog/">Sam Gentile</a> and <a href="http://www.ingorammer.com/Weblog/">Ingo Rammer</a> again. On Friday, Ingo introduced me to another blogger who was attending the conference, <a href="http://urbanasylum.dynu.com/JustTheFacts/">Ethan Brown</a>. We had fun wandering around lost on the <span class="caps">MIT</span> campus on Friday afternoon.</p>
+
+<p>Due to a mistake at the printers' the slides for my Web Forms Internals talk didn't make it into the printed books. So, as a community service, I'm posting <a href="http://www.iunknown.com/Files/windev_2003.zip">a <span class="caps">ZIP</span> file that contains my slides and demos</a> for all of the talks that I gave this year at Win-Dev.</p>
+
+<p>What was interesting for me this year at Win-Dev was that my talks were evenly divided between <em>technology</em> talks (VS.NET Debugger, Flash <span class="caps">MX, </span>Web Forms Internals) and <em>technique</em> talks (AOP to Code Generation Parts 1 and 2, and NUnit / NAnt). You could argue that my Web Forms talk wasn't really a technology talk, but instead it was a talk about reverse-engineering techniques. </p>
+
+<p>Personally, I enjoyed giving the technique talks more than the technology talks. I guess part of it reflects the fact that I've been giving technology talks for far too long. Technique talks are far more interesting to me these days, and I feel that they have a longer-lasting impact on attendees than listening to a talk on how to use the <span class="caps">ADO.NET API,</span> for example. </p>
+
+<p>I think I successfully infected at least several people with the code generation bug at my talks. Some folks had been struggling with writing code generation tools using System.CodeDOM. But as most folks who have used that technology have found out, it's <em>really</em> hard to maintain a code generator that creates <span class="caps">AST</span>'s, as opposed to a code generator that creates source code files. </p>
+
+<p>Thanks again to all who attended my talks. Friday rocked in particular, since the room was packed, and those were the talks that I really wanted to give. My apologies to the folks who had to sit on the floor ... Next time, I'll have much more cool code generation stuff to talk about. I look forward to meeting y'all again!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000276.html">11:58 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=276" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=276" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_06.html#000275"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/19"
+    dc:title="From AOP to Code Generation"
+    dc:identifier="http://www.iunknown.com/2003_06.html#000275"
+    dc:subject=""
+    dc:description="I&amp;#8217;ve been off of the AOP bandwagon for some time now. This is why I can&amp;#8217;t agree more with Craig Andera&amp;#8217;s recent blog entry on Side Effects and Code Generation. Craig and Tim are old colleagues of mine from my..."
+    dc:creator="John"
+    dc:date="2003-06-10T13:15:23-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">June 10, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000275"></a>
+<h3 class="title">From AOP to Code Generation</h3>
+
+<p>I&#8217;ve been off of the <span class="caps">AOP</span> bandwagon for some time now. This is why I can&#8217;t agree more with <a href="http://staff.develop.com/candera/">Craig Andera&#8217;s</a> recent blog entry on <a href="http://staff.develop.com/candera/weblog2/PermaLink.aspx/84d013ed-cd90-446c-962a-dd4776795d74">Side Effects and Code Generation</a>.</p>
+
+<p>Craig and Tim are old colleagues of mine from my DevelopMentor days. Last year, Tim and I spent some time at together at the <span class="caps">PDC</span> talking about Aspect Oriented Programming. I distinctly remembered Tim dissing the prospects of <span class="caps">AOP</span> as a general purpose abstraction tool for many of the same reasons that Craig pointed out in his blog entry. At that point in time, I totally agreed with Tim, since my work in that area led me to roughly the same conclusions.</p>
+
+<p>First, a bit of background. Some of you out there know about my prior work with <span class="caps">CLAW,</span> my Cross-Language Aspect Weaver for the <span class="caps">CLR. I</span> spent the better part of six months of my life thinking about nothing else other than building and implementing a dynamic aspect-weaving engine. Along the way, I learned an awful lot about how to do cool things to impress my friends, like dynamically injecting IL code into running assemblies. </p>
+
+<p>In the early stages of <span class="caps">CLAW, I</span> did all of my work in relative isolation. Once I discovered that there was an active <span class="caps">AOP</span> community out there, I jumped at an opportunity to present my work at the first ever academic conference on Aspect Oriented Software Development: <a href="http://trese.cs.utwente.nl/aosd2002/"><span class="caps">AOSD 2002</span></a>. I went to the conference for two reasons: one was to present my work for the purposes of feedback, and the second was to see how people were applying <span class="caps">AOP</span> techniques.</p>
+
+<p>Unfortunately, what I found out was that most of the folks at the conference were still talking about the canonical examples of <span class="caps">AOP</span>: tracing, logging, security, and instrumentation. What all of these examples have in common is the fact that the aspects are <em>stateless</em>. When you start thinking about how to build <em>stateful</em> aspects, you run into much of the same problems that web developers run into when building web pages: how do I manage the caller&#8217;s context?<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn1">1</a></sup></p>
+
+<p>Building stateful aspects requires the ability to manage call context. If you can successfully associate call context with thread id&#8217;s, for example, everything works great. But if you&#8217;re in an environment like <span class="caps">ASP.NET,</span> where you can&#8217;t associate call context with thread id&#8217;s (since the thread pool is managed by the <span class="caps">ASP.NET</span> runtime and not you) you run into a much harder problem. The problem arises because you don&#8217;t control both ends of the call: you only control the "server" side of the call.<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn2">2</a></sup></p>
+
+<p>Complicating matters is the composition problem that Craig points out: <em>services are not generally orthogonal</em>. The problem can be boiled down to <em>who gets called first?</em> Aspects must be called in some order, and some orders will yield correct results, whereas other orders do not. This is even more important in the case of aspects that yield side effects, such as committing a transaction.</p>
+
+<p>All is not lost on the <span class="caps">AOP</span> front, however. I think that <span class="caps">AOP</span> is yet another tool in your toolbox that you can use to solve specific problems. Most of those problems fall into the side-effect-free category, such as tracing, logging, and instrumentation. There are really useful applications of <span class="caps">AOP</span> in these areas, particularly in the instrumentation arena. It can be <em>very</em> useful in cases where you need help to diagnose problems on running production servers. For an example of work in this area, check out the work that <span class="caps">IBM </span>Research has done using <a href="http://trese.cs.utwente.nl/aosd2002/index.php?content=hyperprobe">HyperProbe</a>.<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn3">3</a></sup></p>
+
+<p>Authorization checking is an example of a stateless aspect that yields a side effect. <span class="caps">AOP</span> can be used to implement authorization checks, but you run into the problem of defining what the interactions between it and other stateful aspects are. I know that there are some companies out there working on using <span class="caps">AOP</span> as a technique for implementing security in existing systems. I suspect that they will succeed as long as they don&#8217;t have to fight with other services for the same join points in the system.</p>
+
+<p>Craig ends his entry by singling out code generation as the possible answer to the problems that <span class="caps">AOP</span> tries to solve. One way of looking at <span class="caps">AOP</span> is to think about it as being yet another code generation tool, which it is. The problem is that most <span class="caps">AOP</span> implementations tie aspects to a particular implementation language: <a href="http://www.eclipse.org/aspectj/">AspectJ</a> is a perfect example of this. </p>
+
+<p>However, I have a different hope for code generation: one of being able to build technology-neutral abstractions. You create a domain language that models a particular problem domain, and you write code generators that target specific implementation technologies. The real power here is being able to evolve your abstraction independent of the underlying implementation technology. For example, you can build an abstraction that represents an object-relational mapping layer that works with <span class="caps">SQL </span>Server <em>and</em> Oracle. This is an example of a category of problems that I call <a href="http://www.iunknown.com/000239.html">cross-technology abstractions</a>.</p>
+
+<p>Inventing domain languages from scratch is a hard problem. But my personal goal is to make it easier for you to make this happen in your own projects by cataloging patterns that appear in certain problem domains. I&#8217;m currently hard at work building a code-generated version of Pet Shop 3.0. Creating a code generated implementation is the easy part; finding patterns that stand up to scrutiny is another matter entirely... Stay tuned for more details!</p>
+
+<p>[1] Web developers like to think about this as the caller&#8217;s session.<br/><br />
+<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn2">2</a></sup> Defining join-points on the caller side of the equation is much harder than it looks. You run into context problems here as well &#8211; and the nasty thing is that the context changes whenever a dev touches that client code.<br/><br />
+<sup class="footnote"><a href="http://www.iunknown.com/000275.html#fn3">3</a></sup> I saw Doug Kimelman&#8217;s excellent presentation on HyperProbe at <span class="caps">AOSD 2002. </span>Unfortunately, I haven&#8217;t seen much discussion of it on the web since then.<br/></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000275.html">01:15 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=275" onclick="OpenComments(this.href); return false">Comments (8)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=275" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_06.html#000274"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/18"
+    dc:title="TextPad syntax highlighting for GSLgen"
+    dc:identifier="http://www.iunknown.com/2003_06.html#000274"
+    dc:subject=""
+    dc:description="I was just synchronizing my laptop with my desktop computer and I realized that my gsl.syn syntax highlighting file was out of date on my desktop. I decided to upload a copy of my syntax highlighting file for any other..."
+    dc:creator="John"
+    dc:date="2003-06-07T16:39:46-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">June 07, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000274"></a>
+<h3 class="title">TextPad syntax highlighting for GSLgen</h3>
+
+<p>I was just synchronizing my laptop with my desktop computer and I realized that my gsl.syn syntax highlighting file was out of date on my desktop. I decided to upload a copy of <a href="/Files/gsl.syn">my syntax highlighting file</a> for any other GSLgen users who are using TextPad. It's a tweak of an original file that I got from Michael Leneghan, who originally turned me onto GSLgen in the first place. All you have to do is drop this file into your TextPad system directory and create a new Document Class for your .gsl files.</p>
+
+<p>Enjoy!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000274.html">04:39 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=274" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=274" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_06.html#000273"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/17"
+    dc:title="Movable Poster test post"
+    dc:identifier="http://www.iunknown.com/2003_06.html#000273"
+    dc:subject=""
+    dc:description="This is a new post using Movable Poster 1.0.4 and NewsGator. I really love MT-Textile&apos;s shorthand notation for adding formatting to messages, and I&apos;d like to continue using it. However, to make this happen, I must be able to send..."
+    dc:creator="John"
+    dc:date="2003-06-07T09:56:59-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000273"></a>
+<h3 class="title">Movable Poster test post</h3>
+
+<p>This is a new post using <a href="http://www.mattberther.com/2003/05/000121.html">Movable Poster 1.0.4</a> and NewsGator. I really love <a href="http://www.bradchoate.com/past/mttextile.php">MT-Textile's</a> shorthand notation for adding formatting to messages, and I'd like to continue using it. However, to make this happen, I must be able to send posts as plain text to <span class="caps">MT.</span></p>
+
+<p>Unfortunately, I've discovered that <em>something</em> is converting my plain text Outlook message into <span class="caps">HTML</span> on the way out to Movable Type. When I post to MT using <a href="http://www.wbloggar.com">w.bloggar</a>, I don't have these problems; I suspect that it's not the MT posting <span class="caps">API</span> that's doing the <span class="caps">HTML</span> conversion, but instead something that Matt's plugin is doing. I'll check with him and report back my findings.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000273.html">09:56 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=273" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=273" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_06.html#000272"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/16"
+    dc:title="Weblog hosting"
+    dc:identifier="http://www.iunknown.com/2003_06.html#000272"
+    dc:subject=""
+    dc:description="After a semi-painful migration, my weblog is happily ensconced in its new home on the web. However, my migration would have been a lot more difficult had it not been for the excellent support provided by a couple of friends..."
+    dc:creator="John"
+    dc:date="2003-06-05T14:24:19-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">June 05, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000272"></a>
+<h3 class="title">Weblog hosting</h3>
+
+<p>After a <a href="http://www.iunknown.com/000258.html">semi-painful migration</a>, my weblog is happily ensconced in its new home on the web. However, my migration would have been <em>a lot</em> more difficult had it not been for the excellent support provided by a couple of friends of mine who have started <a href="http://www.veldt.ca">a new weblog hosting company</a></p>
+
+<p>If you're looking for a well-managed outfit to host your web log, but still retain control over valuable assets like your domain name, look no farther than <a href="http://www.veldt.ca/about/index.html">Luke and Dave's</a> new company. They'll host your weblog on <a href="http://www.movabletype.org">Movable Type</a>, <a href="http://www.textpattern.com/">Textpattern</a>, <a href="http://www.blosxom.com/">Blosxom</a>, or <a href="http://roughingit.subtlehints.net/pyblosxom/">PyBlosxom</a> for you, and they'll only charge you the bargain-basement price of $200 per year. </p>
+
+<p><a href="mailto:info@veldt.ca">Drop them a line</a> and let them know that John sent you.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000272.html">02:24 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=272" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=272" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_06.html#000271"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/15"
+    dc:title="Code Generation in North Carolina"
+    dc:identifier="http://www.iunknown.com/2003_06.html#000271"
+    dc:subject=""
+    dc:description="I&apos;m in the Research Triangle Park area of North Carolina this week teaching my Programming ASP.NET class for Wintellect. If you&apos;re going to be around this Thursday, you should drop by my code generation talk that I&apos;ll be giving at..."
+    dc:creator="John"
+    dc:date="2003-06-03T16:13:33-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">June 03, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000271"></a>
+<h3 class="title">Code Generation in North Carolina</h3>
+
+<p>I'm in the Research Triangle Park area of North Carolina this week teaching my Programming <span class="caps">ASP.NET</span> class for Wintellect. If you're going to be around this Thursday, you should drop by my code generation talk that I'll be giving at <a href="http://www.trinug.org/SPEAKER+EVENTS/283.aspx">TriNug</a> I have a bunch of new things that I'm dying to talk about as I continue to evolve my code generation story.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000271.html">04:13 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=271" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=271" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

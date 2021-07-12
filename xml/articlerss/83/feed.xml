@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Generics stabilizing</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Generics stabilizing": comment by John Lam</title>
+      <description>&lt;p&gt;Yes - Type.GetGenericArguments() is your friend. I just wrote some code that used it today.&lt;/p&gt;</description>
+      <pubDate>Wed, 01 Mar 2006 20:39:05 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/generics-stabilizing#comment-174</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/generics-stabilizing#comment-174</link>
+    </item>
+    <item>
+      <title>"Generics stabilizing": comment by Justin</title>
+      <description>&lt;p&gt;Very slick! Is there a way to interrogate a generic to get the types it supports out? I can't think of a reason you might want to do that, but nevertheless that's what came to mind ;)&lt;/p&gt;</description>
+      <pubDate>Wed, 01 Mar 2006 13:26:29 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/28/generics-stabilizing#comment-173</guid>
+      <link>http://www.iunknown.com/articles/2006/02/28/generics-stabilizing#comment-173</link>
+    </item>
+    <item>
+      <title>"Generics stabilizing" by jlam</title>
+      <description>&lt;p&gt;RubyCLR now supports multi-type generic types such as &lt;code&gt;Dictionary&amp;lt;T, U&amp;gt;&lt;/code&gt;. I also changed the nasty &lt;code&gt;cons&lt;/code&gt; method to the infinitely cleaner &lt;code&gt;of&lt;/code&gt; method. Here&amp;#8217;s some tests to show the progress:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_create_two_parameter_generic_type
+  dict = Dictionary.of(Int32, Int32).new
+  dict.add(1, 1)
+  dict.add(2, 2)
+  assert_equal 1, dict[1]
+  assert_equal 2, dict[2]
+end
+
+def test_dictionary_with_string_key
+  dict = Dictionary.of(System::String, Int32).new
+  dict['John'] = 42
+  dict['Ruby'] = 2
+  assert_equal 42, dict['John']
+  assert_equal 2, dict['Ruby']
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;The one thing that I&amp;#8217;m not happy with right now is being forced to fully qualify the &lt;code&gt;System::String&lt;/code&gt; type. I might add some code to special-case that type name in the &lt;code&gt;of&lt;/code&gt; method and alias to the &lt;span class="caps"&gt;CLR &lt;/span&gt;&lt;code&gt;String&lt;/code&gt; type from the Ruby &lt;code&gt;String&lt;/code&gt; type.&lt;/p&gt;
+
+
+	&lt;p&gt;You might be wondering how I implement the generic types. I generate a Ruby shadow class that has a mangled name. For example, &lt;code&gt;Dictionary.of(Int32,Int32)&lt;/code&gt;, maps to a Ruby class called &lt;code&gt;Dictionary_generic_Int32_Int32&lt;/code&gt;, which is generated the first time &lt;code&gt;of&lt;/code&gt; is called. On all subsequent calls, I just look up the Ruby shadow class name. This is also how I handle arrays (you can really think of arrays as a special case of generics).&lt;/p&gt;
+
+</description>
+      <pubDate>Tue, 28 Feb 2006 23:34:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/28/generics-stabilizing"&gt;Generics stabilizing&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/28/generics-stabilizing"&gt;Generics stabilizing&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

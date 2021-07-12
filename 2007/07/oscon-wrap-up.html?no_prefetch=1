@@ -1,0 +1,676 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="ironruby, oscon" />
+	<meta name="description" content="OSCON is my favorite conference these days. I love it because it brings so many diverse people under a single umbrella for a week. For a week we can get together and experience new ideas from different communities and avoid..." />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared-typepad/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: OSCON Wrap-up</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/07/a-first-look-at.html?no_prefetch=1" title="A first look at IronRuby" />
+	<link rel="next" href="http://www.iunknown.com/2007/07/ironruby-a-prom.html?no_prefetch=1" title="IronRuby: a promising start" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/07/oscon-wrap-up.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/20408250"
+    dc:title="OSCON Wrap-up"
+    dc:identifier="http://www.iunknown.com/2007/07/oscon-wrap-up.html"
+    dc:description="OSCON is my favorite conference these days. I love it because it brings so many diverse people under a single umbrella for a week. For a week we can get together and experience new ideas from different communities and avoid..."
+    dc:creator="John Lam"
+    dc:date="2007-07-28T22:18:56-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/07/a-first-look-at.html">&laquo; A first look at IronRuby</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/07/ironruby-a-prom.html">IronRuby: a promising start &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">July 28, 2007</h2>
+
+
+<div class="entry" id="entry-37013374">
+			<h3 class="entry-header">OSCON Wrap-up</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a href="http://conferences.oreillynet.com/os2007/"><img src="http://conferences.oreillynet.com/images/os2007/oscon_logo.gif" /></a>
+
+</p>
+
+<p>OSCON is my favorite conference these days. I love it because it brings so many diverse people under a single umbrella for a week. For a week we can get together and experience new ideas from different communities and avoid the group-think in specialized technology conferences.</p>
+
+<p>Some of my highlights of the week were:</p>
+
+<p><a href="http://research.microsoft.com/Users/simonpj/">Simon Peyton-Jones</a>. He's a fabulous presenter, and had us stretching our minds for many hours throughout the conference. You can download the slides from his Taste of Haskell talk from the <a href="http://conferences.oreillynet.com/pub/w/58/presentations.html">OSCON presentations page</a>. Click the image below to see a video of Simon's Software Transactional Memory talk from the conference:</p>
+
+<div><script src="http://blip.tv/scripts/pokkariPlayer.js?ver=2007062101" type="text/javascript"></script><script src="http://blip.tv/syndication/write_player?skin=js&amp;posts_id=322473&amp;source=3&amp;autoplay=true&amp;file_type=flv&amp;player_width=&amp;player_height=" type="text/javascript"></script><div id="blip_movie_content_322473"><a onclick="play_blip_movie_322473(); return false;" href="http://blip.tv/file/get/OSCON-OSCON2007SimonPeytonJones914.mov" rel="enclosure"><img border="0" title="Click to play" src="http://blip.tv/file/get/OSCON-OSCON2007SimonPeytonJones914.mov.jpg" alt="Video thumbnail. Click to play" /></a><br /><a onclick="play_blip_movie_322473(); return false;" href="http://blip.tv/file/get/OSCON-OSCON2007SimonPeytonJones914.mov" rel="enclosure">Click To Play</a></div>							</div>
+
+
+
+<p><a href="http://www.red-bean.com/kfogel/">Karl Fogel</a>. I met Karl accidentally at the very end of the conference while hanging out with <a href="http://chopine.be/lrz/">Laurent Sansonetti</a>. I am a big fan of Karl's <a href="http://www.amazon.com/Producing-Open-Source-Software-Successful/dp/0596007590/ref=pd_bbs_sr_1/105-9339534-4105246?ie=UTF8&amp;s=books&amp;qid=1185683934&amp;sr=8-1">Producing Open Source Software book</a>, and I was surprised to hear that he had left Google to create a new non-profit organization to campaign for copyright reform in the US. Karl and Rick Falvinge of the <a href="http://en.wikipedia.org/wiki/Pirate_Party">Pirate Party</a> had some very interesting things to say about the erosion of fundamental rights brought on by recent actions by copyright holders.</p>
+
+<p><a href="http://questioncopyright.org/"><img src="http://questioncopyright.org/sites/all/themes/questioncopyright/header-main.jpg" /></a></p>
+
+<p><a href="# acg.media.mit.edu/people/fry">Ben Fry</a>. I had no idea what he did before this conference, but his demo of his work on <a href="http://www.processing.org/">Processing</a>&nbsp; absolutely blew me away. Check out this video from his talk:</p>
+
+
+<div class="video_enclosure"><script src="http://blip.tv/scripts/pokkariPlayer.js?ver=2007062101" type="text/javascript"></script><script src="http://blip.tv/syndication/write_player?skin=js&amp;posts_id=322522&amp;source=3&amp;autoplay=true&amp;file_type=flv&amp;player_width=&amp;player_height=" type="text/javascript"></script><div id="blip_movie_content_322522"><a onclick="play_blip_movie_322522(); return false;" href="http://blip.tv/file/get/OSCON-OSCON2007BenFry723.mov" rel="enclosure"><img border="0" title="Click to play" src="http://blip.tv/file/get/OSCON-OSCON2007BenFry723.mov.jpg" alt="Video thumbnail. Click to play" /></a><br /><a onclick="play_blip_movie_322522(); return false;" href="http://blip.tv/file/get/OSCON-OSCON2007BenFry723.mov" rel="enclosure">Click To Play</a></div>	</div>
+
+<p>I spent quite a lot of time hanging out with folks from the Ruby community at the conference. The response was overwhelmingly positive on our new-found ability to build a accept contributions back into our IronRuby project. This really charges me up to begin the next phase of our project, where we will build out the IronRuby community so that we can accelerate the pace of the project. I can't wait!<br /> </p>
+
+<p>Since I was already in Portland, I had a chance to give some other talks. On Tuesday night, I gave a 10 minute lightning talk on IronRuby at <a href="http://foscon2007.com/">FOSCON 2007</a>. It was held at a very funky bar called Holocene, which was a great location. Next year, though it would be really great if we could stand in front of the audience to give our talks :) The audience faced one way, and the presenter faced the other way, as you can see from the photo below:</p>
+
+<p><a href="http://www.flickr.com/photos/rcoder/900534492/"><img src="http://farm2.static.flickr.com/1329/900534492_7d107354ff.jpg?v=0" /></a></p>
+
+<p>On Thursday night, immediately after my OSCON talk, I went to give a talk at the <a href="http://www.padnug.org/padnug/default.aspx">Portland Area .NET User Group</a>. It was held at the offices of Corillian, where <a href="http://www.hanselman.com/blog/">Scott Hanselman</a> currently works. I really enjoyed talking to this group; there was plenty of time for Q&amp;A, unlike OSCON where talks were limited to only 45 minutes. I even got a chance to see Scott's shrink-wrapped copy of DOS 4.01!</p>
+
+<p>This was a fantastic trip. Thanks to everyone who took the time out to talk to me. I really enjoyed our conversations, and I'm looking forward to next year!</p>
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F07%2Foscon-wrap-up.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 10:18 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/07/oscon-wrap-up.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/07/oscon-wrap-up.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/oscon" rel="tag">oscon</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/20408250</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html">OSCON Wrap-up</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list -->	<a id="c77533936"></a>
+	<div class="comment comment-odd" id="comment-77533936">
+		<div class="comment-content" id="comment-77533936-content">
+			
+			<span id="comment-77533936-content"><p>We, of course, recorded your talk and I checked out the video this weekend and it looks great...High Def 720p. I don't think I have the bandwidth to host it at that high-res so I'll probably down-sample it to 480p and try to get it up as a Silverlight Streaming Video on Monday or Tues.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.hanselman.com/blog/" href="http://www.hanselman.com/blog/">Scott Hanselman</a> |
+			<a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html#comment-77533936">July 29, 2007 at 01:18 AM</a>
+		</p>
+	</div>	<a id="c77537220"></a>
+	<div class="comment comment-even" id="comment-77537220">
+		<div class="comment-content" id="comment-77537220-content">
+			
+			<span id="comment-77537220-content"><p>John,</p>
+
+<p>Any chance of getting a video, along with any slides, of your talk posted?</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Tony |
+			<a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html#comment-77537220">July 29, 2007 at 02:40 AM</a>
+		</p>
+	</div>	<a id="c77556036"></a>
+	<div class="comment comment-odd" id="comment-77556036">
+		<div class="comment-content" id="comment-77556036-content">
+			
+			<span id="comment-77556036-content"><p>Sorry about the weird setup at FOSCON, that was not something we realized until we got there on Tuesday to set up. That is, no one told me about it it, anyway. Next year you can be sure it will NOT be that way. ;~)</p>
+
+<p>Also, we recorded video of the talks, but I'm not sure what the status is of those. I'm waiting to find out, but when I do, I'll send you (and all the other speakers) the relevant links. </p>
+
+<p>Thanks again for coming!</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://opposable-thumbs.net" href="http://opposable-thumbs.net">Thomas Lockney</a> |
+			<a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html#comment-77556036">July 29, 2007 at 08:26 AM</a>
+		</p>
+	</div>	<a id="c77583084"></a>
+	<div class="comment comment-even" id="comment-77583084">
+		<div class="comment-content" id="comment-77583084-content">
+			
+			<span id="comment-77583084-content"><p>@Tony: Hopefully Scott will get that video out soon.</p>
+
+<p>@Thomas: at the PADNUG meeting that Scott recorded, we couldn't connect my Mac to the projector. We did a terminal server session between his laptop and mine, and we projected off his laptop instead. That was something we could have tried at FOSCON, but I was worried about all of the moving parts :)</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html#comment-77583084">July 29, 2007 at 02:49 PM</a>
+		</p>
+	</div>	<a id="c77706430"></a>
+	<div class="comment comment-odd" id="comment-77706430">
+		<div class="comment-content" id="comment-77706430-content">
+			
+			<span id="comment-77706430-content"><p>John, it was great talking to you after the conference, I really enjoyed it too.  Rick Falkvinge and I just got back (today) from a lunchtime talk at Creative Commons in downtown San Francisco (with many EFF.org people in attendance).  His message really got through, and the crowd asked some of the best questions we've had so far, probing the corner cases of the Pirate Party's platform.</p>
+
+<p>On a completely unrelated note: +1 on the Simon Peyton Jones fan club!  His talk was one of the highlights for me too.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://questioncopyright.org/" href="http://questioncopyright.org/">Karl Fogel</a> |
+			<a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html#comment-77706430">July 30, 2007 at 04:38 PM</a>
+		</p>
+	</div>	<a id="c78016218"></a>
+	<div class="comment comment-even" id="comment-78016218">
+		<div class="comment-content" id="comment-78016218-content">
+			
+			<span id="comment-78016218-content"><p>Here's the video of John presenting IronRuby at PADNUG.</p>
+
+<p><a href="http://www.hanselman.com/blog/SilverlightVideoOfJohnLamOnIronRubyAtPADNUG.aspx" rel="nofollow">http://www.hanselman.com/blog/SilverlightVideoOfJohnLamOnIronRubyAtPADNUG.aspx</a></p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.hanselman.com/blog/SilverlightVideoOfJohnLamOnIronRubyAtPADNUG.aspx" href="http://www.hanselman.com/blog/SilverlightVideoOfJohnLamOnIronRubyAtPADNUG.aspx">Scott Hanselman</a> |
+			<a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html#comment-78016218">July 31, 2007 at 11:07 PM</a>
+		</p>
+	</div>	<a id="c78207334"></a>
+	<div class="comment comment-odd" id="comment-78207334">
+		<div class="comment-content" id="comment-78207334-content">
+			
+			<span id="comment-78207334-content"><p>John,</p>
+
+<p>Any chance the OSCON talk where you fix the 1/3.0 bug is shown?</p>
+
+<p>The one Scott posted from PADNUG was very good, would like to see some others.</p>
+
+<p>-Rob</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://profile.typepad.com/rbazinet" href="http://profile.typepad.com/rbazinet">Rob Bazinet</a> |
+			<a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html#comment-78207334">August 02, 2007 at 12:23 PM</a>
+		</p>
+	</div>
+
+		</div>
+        
+	</div>
+    
+    	<!-- comment form -->
+	<script type="text/javascript" src="/.shared-typepad/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="37013374" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=37013374">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=37013374">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+    
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/05/silverlight_do_.html#comment-141831038">Alt experienced user</a> on <a href="http://www.iunknown.com/2007/05/silverlight_do_.html">Silverlight: do you love it or hate it?</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html#comment-139015006">Afshin Zavar</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-138908118">Ryan</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html#comment-137529587">Mike</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137271631">Gokhan</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137214923">John Lam</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137204227">Scott</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137190111">Jason</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137186049">Josh</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-137153559">John Lam</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+			
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">MVP Summit Ruby Meetup</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/nominate-us-for.html">Nominate Us for Open Spaces Sessions at MS MVP Summit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/open-source-amb.html">Open Source Ambassador</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/index.html">April 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/01/index.html">January 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">October 2008</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				
+							
+					<td>4</td>
+				</tr>
+							<tr>
+					<td>5</td>
+				
+							
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				
+							
+					<td>11</td>
+				</tr>
+							<tr>
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				</tr>
+							<tr>
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				</tr>
+							<tr>
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

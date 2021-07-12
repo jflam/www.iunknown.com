@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on NAntContrib and SourceForge pain</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: NAntContrib and SourceForge pain</div>
+
+
+<div class="comments-body">
+<p>Hello John<br />
+Thanks about windev_2003.zip</p>
+
+<p>"Access to the project CVS servers is provided via SSH (for developers) and the CVS pserver protocols (for non-developers). SSH uses TCP port 22; CVS pserver uses TCP port 2401. <br />
+Many firewalls block outbound traffic on these ports, thus preventing SourceForge.net developers and users from accessing the project CVS servers. <br />
+To work around this limitation, we now offer the ability to connect to the project CVS servers using alternate ports (using different hostnames).<br />
+....<br />
+To access the project CVS server using anonymous pserver-based access from behind a firewall,you may connect to port 443 or port 80 of cvs-pserver.sourceforge.net. Traffic to port 443 and to port 80 of cvs-pserver.sourceforge.net is <br />
+redirected to cvs.sourceforge.net."</p>
+
+<p>http://sourceforge.net/docman/display_doc.php?docid=768&group_id=1#firewall</p>
+
+<p>I'm looking forward to hear from you about NCodeGen</p>
+
+<p>with Best wishes<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://sourceforge.net/users/mars-man/">Edris</a> at June 26, 2003 01:34 AM</span>
+</div>
+<div class="comments-body">
+<p>John,<br />
+Thoroughly enjoyed your talks at WinDev 2003 and have been convinced that test-first development is a great thing.  Can you point me in the direction of some examples of how to use NUnit to test more 'complex' code such as UI code or data access code?</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by <a href="mailto&#58;bnewton&#64;stewart&#46;com">Brian</a> at July  9, 2003 09:00 PM</span>
+</div>
+<div class="comments-body">
+<p>John,</p>
+
+<p>How's progress on the Perforce tasks? I'm about ready to write my own, but if you're going to be contributing them soon, I'll hold off. If you want to collaborate to get them out sooner, I'm up for that, too.</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by <a href="mailto&#58;lawrencer&#64;pacficdentalservices&#46;com">Richard Lawrence</a> at July 25, 2003 02:40 PM</span>
+</div>
+<div class="comments-body">
+<p>John,</p>
+
+<p>Any chance I can get my hands on the NAnt tasks for Perforce you mentioned about a couple of months ago?</p>
+
+<p>Thanks,<br />
+-bill</p>
+<span class="comments-post">Posted by <a href="mailto&#58;bcraun&#64;financialware&#46;com">Bill Craun</a> at October  1, 2003 07:27 PM</span>
+</div>
+<div class="comments-body">
+<p>John, <br />
+I understand you've already solved the ISA problem, but for those (including me) who kept hitting this page in search for an answer, here it is:</p>
+
+<p>1. Add a "CVS pserver" protocol definition to the ISA server Policy Elements; Port 2401, Outbound.<br />
+2. Add a new Protocol Rule, allowing internal computers or users to use the "CVS pserver" protocol.</p>
+
+<p>(My initial thought was that allowing all ip traffic for internal computers would suffice, but apparently it doesn't.)</p>
+
+<p>cheers,<br />
+Gertjan</p>
+<span class="comments-post">Posted by <a href="mailto&#58;gjs&#64;xs4all&#46;nl">schuur</a> at June  4, 2004 04:31 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="entry_id" value="278" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="button" onclick="window.close()" value="&nbsp;Cancel&nbsp;" />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+
+</body>
+</html>

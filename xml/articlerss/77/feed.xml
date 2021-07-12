@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on RubyCLR is all about choice</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"RubyCLR is all about choice": comment by Justin</title>
+      <description>&lt;p&gt;Ohhh I see! Awesome. This will really help with a special type of property initialization I want to do ...&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 13:55:38 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-154</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-154</link>
+    </item>
+    <item>
+      <title>"RubyCLR is all about choice": comment by John Lam</title>
+      <description>&lt;p&gt;Justin - that's a &lt;em&gt;really&lt;/em&gt; interesting question. If I actually used inheritance to generate my shims then it would be possible to do that override in a single place. But I don't - now. I'll have to think about it some more to see if I could change my shadow classes to derive from one another ... it would certainly trim memory usage considerably ... hmmm ...&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 13:27:42 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-153</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-153</link>
+    </item>
+    <item>
+      <title>"RubyCLR is all about choice": comment by Thibaut</title>
+      <description>&lt;p&gt;They don't look the same: you can use both ruby_casing and DotNetCasing on the same dotnet object.&lt;/p&gt;
+
+&lt;p&gt;(I deserve my beer!)&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 12:04:43 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-152</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-152</link>
+    </item>
+    <item>
+      <title>"RubyCLR is all about choice": comment by Justin</title>
+      <description>&lt;p&gt;Oh, and sorry to go off topic - but did you see my comment #9 in your previous post about the second drop of the clr (http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr#comments)?&lt;/p&gt;
+
+&lt;p&gt;Basically, I'd really like to know if its possible to override a method on all Controls (for example, Text= and Text) or if I have to override each control individually.&lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 12:01:51 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-151</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-151</link>
+    </item>
+    <item>
+      <title>"RubyCLR is all about choice": comment by Justin</title>
+      <description>&lt;p&gt;Is it me or do those look exactly the same? &lt;/p&gt;</description>
+      <pubDate>Thu, 23 Feb 2006 11:58:32 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-150</guid>
+      <link>http://www.iunknown.com/articles/2006/02/23/rubyclr-is-all-about-choice#comment-150</link>
+    </item>
+    <item>
+      <title>"RubyCLR is all about choice" by jlam</title>
+      <description>&lt;p&gt;Look at what I got working this morning:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_enumerator
+  a = ArrayList.new
+  a.Add(1)
+  a.Add(2)
+  a.Add(3)
+  e = a.get_interface(IEnumerable).GetEnumerator.get_interface(IEnumerator)
+  assert e.MoveNext
+  assert 1, e.Current
+  assert e.MoveNext
+  assert 2, e.Current
+  assert e.MoveNext
+  assert 3, e.Current
+  assert !e.MoveNext
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;vs.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def test_enumerator
+  a = ArrayList.new
+  a.add(1)
+  a.add(2)
+  a.add(3)
+  e = a.get_interface(IEnumerable).get_enumerator.get_interface(IEnumerator)
+  assert e.move_next
+  assert 1, e.current
+  assert e.move_next
+  assert 2, e.current
+  assert e.move_next
+  assert 3, e.current
+  assert !e.move_next
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;By the way, both work in the same app.&lt;/p&gt;
+
+</description>
+      <pubDate>Thu, 23 Feb 2006 11:17:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/23/rubyclr-is-all-about-choice"&gt;RubyCLR is all about choice&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/23/rubyclr-is-all-about-choice"&gt;RubyCLR is all about choice&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

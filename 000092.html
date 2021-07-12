@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Hello from AOSD 2002</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000091.html" title="Re-JITing methods" />
+
+<link rel="next" href="http://www.iunknown.com/000093.html" title="Complications arising from weaving system methods" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000091.html">&laquo; Re-JITing methods</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000093.html">Complications arising from weaving system methods &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">April 26, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Hello from AOSD 2002</h3>
+
+<p><P>I've been dark for the past week or so because I'm over at the University of Twente in Enschede, Netherlands. I'm attending the first ever Aspect Oriented Software Development conference. I've learned a tremendous amount from lots of really smart folks over here this week about what AOSD is, and (more importantly IMHO) what it isn't. </P><br />
+<P>This was my first academic computer science conference. In some ways it was markedly different from the industry conferences that I usually attend. For example, unlike Tech-Ed 2002 in New Orleans, there were no marketing keynotes to kick off the conference. </P><br />
+<P>Even without the marketing keynote, there was a very perceptible buzz about this conference.&nbsp;The last time I felt this kind of buzz was at Microsoft's Professional Developers Conference in 2000, where .NET was launched.&nbsp;These are heady times for researchers working in the field, and for&nbsp;those early adopters who have begun to use AspectJ and Hyper/J. I can only hope that this translates into heady times for folks outside of the current community who will use this technology in their work.</P><br />
+<P>I also successfully demonstrated CLAW, my runtime aspect weaver.[1] Lots of different folks saw CLAW in action: industry researchers, industry practioners, graduate students and professors.&nbsp;There were three demonstrations:</P><br />
+<OL><br />
+<LI><br />
+<DIV>Weaving a C# Hello, World application with an aspect written in C#</DIV></LI><br />
+<LI><br />
+<DIV>Weaving a C# Hello, World application with an aspect written in VB.NET</DIV></LI><br />
+<LI><br />
+<DIV>Weaving all of the public methods of System.Xml.XmlDocument with a tracing aspect written in C#.</DIV></LI></OL><br />
+<P>Based on the informal feedback that I got during breaks in the conference program, it was quite well received. The future is looking quite bright for CLAW!</P><br />
+<P>I'm posting a copy of my power point presentation and the demos that I presented at the conference. The demos provide a flavor of the current syntax used by CLAW. Unfortunately, until I get a security story put together for CLAW, I won't be releasing any bits. Sorry.</P><A href="Files/demos.zip"><br />
+<P>Link to Power Point presentation and demos (zipped, 238kb).</A></P><br />
+<P>[1] CLAW = Cross Language Aspect Weaver, a term coined by Guenter Kneissel from the University of Bonn.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at April 26, 2002 12:20 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="92" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000092.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>John,<br />
+Looking over the demo, I was wondering who interprets the weave.bin file?<br />
+DL</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;laffertd&#64;cs&#46;tcd&#46;ie">Donal Lafferty</a> at March 12, 2003 07:32 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

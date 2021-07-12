@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Scalable API's</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000209.html" title="Cool C# feature spotted" />
+
+<link rel="next" href="http://www.iunknown.com/000211.html" title="SyncMaster 172T" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000209.html">&laquo; Cool C# feature spotted</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000211.html">SyncMaster 172T &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 06, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Scalable API's</h3>
+
+<p><P><A href="http://www.simplegeek.com">Chris Anderson</A> <A href="http://www.simplegeek.com/2003/02/05.html#a160">wrote today about scalable API's</A>, and in particular about how MVC is not an abstraction that should be applied liberally across all types of applications. </P><br />
+<P>I couldn't agree more. After spending a limited amount of time working with the Cocoa frameworks on OS X, one of the things that struck me was how much friction was involved in writing a simple event handler. MVC is used everywhere in Cocoa. While Interface Builder abstracts away a significant amount of the details in making this work (it creates an in-memory object graph that defines the View that&nbsp;it serializes to disk for you rather than generating code), you still have to manually do things like define your model and controller classes EVERY SINGLE TIME you want to build a UI. </P><br />
+<P>The amount of friction involved in this process is substantial. It is nowhere near as simple as double clicking on a button in a traditional RAD-style dev tool and having your editor drop you into the Click event handler. </P><br />
+<P>That said, the challenges involved in building a "scalable API" are considerably greater than "let's not do MVC". One of the things that I hated about the way classic Windows controls operated was the fact that they held a <EM>copy</EM> of the data that they owned, rather than delegating ownership of that data to some (and almost always more appropriate) application data structure. The last time I spent significant amounts of time writing windows client apps, I almost exclusively used the virtual list view and virtual tree view controls since they finally provided me with the flexibility (and performance) that I required in my app.</P><br />
+<P>The other thing that also needs to be done in the client app dev space is to provide reasonable hooks to enable unit testing of user interfaces. I would love to see an external mechanism whereby I can drive the entire UI of my application from a test script. Currently, I manually build this layer in the software that I'm writing, but it would be really nice to see a unit-test centric windows client framework in the future.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February  6, 2003 10:22 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="210" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000210.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Um.  Isn't "manually creating models" far easier than having populate and keep the ui component synchronized with your internal data structures?<br />
+I find MVC more 'declarative'.  It makes things more scalable, and IMO, easier to work with.<br />
+Microsoft (with windows forms) seems to be behind the times.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;tum&#64;veridicus&#46;com">Thong Nguyen</a> at February 14, 2003 10:48 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

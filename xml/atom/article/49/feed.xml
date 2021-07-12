@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Ruby in the real world</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/49/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:40-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:33b3bfda36010f8ae23f8c157b49e3ee</id>
+    <published>2006-01-04T15:01:00-08:00</published>
+    <updated>2006-08-21T15:55:40-07:00</updated>
+    <title type="html">Ruby in the real world</title>
+    <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world" rel="alternate" type="text/html"/>
+    <category term="thoughts" scheme="http://www.iunknown.com/articles/category/thoughts" label="Thoughts"/>
+    <summary type="html">&lt;p&gt;&lt;a href="http://samgentile.com/blog/archive/2005/12/30/32204.aspx"&gt;Sam Gentile&lt;/a&gt; was wondering about where Ruby is used in the &amp;#8216;real world&amp;#8217;, and where I&amp;#8217;ve personally used Ruby.&lt;/p&gt;
+
+
+	&lt;p&gt;Sam, you can easily Google around to see where Ruby is being used in the real world. Check out the &lt;a href="http://www.rubyonrails.com/"&gt;Rails web site&lt;/a&gt; for some pointers to some large web sites that are running on Rails.&lt;/p&gt;
+
+
+	&lt;p&gt;As for where I&amp;#8217;ve personally used Ruby and Rails, we wrote a lot of Ruby code for my last customer. The product hasn&amp;#8217;t been announced yet, so I still can&amp;#8217;t talk about it, but suffice to say that it&amp;#8217;s a high performance e-commerce web service with two very large customers running on top of it (and many more to come).&lt;/p&gt;
+
+
+	&lt;p&gt;We used Ruby to automate deploying the web service to our cluster. Ruby&amp;#8217;s integration with &lt;span class="caps"&gt;COM&lt;/span&gt; made writing the &lt;span class="caps"&gt;ADSI&lt;/span&gt; + &lt;span class="caps"&gt;WMI&lt;/span&gt; goo much more pleasant. I even toyed with rewriting the core web service (which is a .NET web service) in Ruby and was able to exploit an optimization that simply was not possible using .NET and &lt;span class="caps"&gt;SQL&lt;/span&gt; Server. There was an intermediate result set that could easily be cached in-memory using Ruby that wuold net us at least a 10X performance increase over the existing .NET application.&lt;/p&gt;
+
+
+	&lt;p&gt;To be fair, I could have done the same optimization using C#, but there would be no way that I could squeeze it down into 200 lines of very concise Ruby code. The other qualitative difference is that the caching optimization was just &lt;strong&gt;really obvious&lt;/strong&gt; in the Ruby code; there was just so few lines of code to look at.&lt;/p&gt;
+
+
+	&lt;p&gt;We also built out a Rails web site to support the &lt;span class="caps"&gt;API&lt;/span&gt;. Developers using the web service could run live queries against our catalog using the site. The web site would also generate the application code for them in their programming language of choice: C#, VB.NET, Java or raw &lt;span class="caps"&gt;SOAP&lt;/span&gt; calls. It&amp;#8217;s very similar in spirit to the &lt;a href="http://www.awszone.com/"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; Zone&lt;/a&gt; site (even though I&amp;#8217;m convinced that we have a much simpler query &lt;span class="caps"&gt;API&lt;/span&gt; than Amazon does).&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m convinced that Ruby and meta-programming is a great way to approach modeling business applications. That&amp;#8217;s why I&amp;#8217;m investing so much time building my &lt;a href="http://www.iunknown.com/articles/2005/12/14/hello-rubyclr"&gt;Ruby to &lt;span class="caps"&gt;CLR&lt;/span&gt; bridge&lt;/a&gt;.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;&lt;a href="http://samgentile.com/blog/archive/2005/12/30/32204.aspx"&gt;Sam Gentile&lt;/a&gt; was wondering about where Ruby is used in the &amp;#8216;real world&amp;#8217;, and where I&amp;#8217;ve personally used Ruby.&lt;/p&gt;
+
+
+	&lt;p&gt;Sam, you can easily Google around to see where Ruby is being used in the real world. Check out the &lt;a href="http://www.rubyonrails.com/"&gt;Rails web site&lt;/a&gt; for some pointers to some large web sites that are running on Rails.&lt;/p&gt;
+
+
+	&lt;p&gt;As for where I&amp;#8217;ve personally used Ruby and Rails, we wrote a lot of Ruby code for my last customer. The product hasn&amp;#8217;t been announced yet, so I still can&amp;#8217;t talk about it, but suffice to say that it&amp;#8217;s a high performance e-commerce web service with two very large customers running on top of it (and many more to come).&lt;/p&gt;
+
+
+	&lt;p&gt;We used Ruby to automate deploying the web service to our cluster. Ruby&amp;#8217;s integration with &lt;span class="caps"&gt;COM&lt;/span&gt; made writing the &lt;span class="caps"&gt;ADSI&lt;/span&gt; + &lt;span class="caps"&gt;WMI&lt;/span&gt; goo much more pleasant. I even toyed with rewriting the core web service (which is a .NET web service) in Ruby and was able to exploit an optimization that simply was not possible using .NET and &lt;span class="caps"&gt;SQL&lt;/span&gt; Server. There was an intermediate result set that could easily be cached in-memory using Ruby that wuold net us at least a 10X performance increase over the existing .NET application.&lt;/p&gt;
+
+
+	&lt;p&gt;To be fair, I could have done the same optimization using C#, but there would be no way that I could squeeze it down into 200 lines of very concise Ruby code. The other qualitative difference is that the caching optimization was just &lt;strong&gt;really obvious&lt;/strong&gt; in the Ruby code; there was just so few lines of code to look at.&lt;/p&gt;
+
+
+	&lt;p&gt;We also built out a Rails web site to support the &lt;span class="caps"&gt;API&lt;/span&gt;. Developers using the web service could run live queries against our catalog using the site. The web site would also generate the application code for them in their programming language of choice: C#, VB.NET, Java or raw &lt;span class="caps"&gt;SOAP&lt;/span&gt; calls. It&amp;#8217;s very similar in spirit to the &lt;a href="http://www.awszone.com/"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; Zone&lt;/a&gt; site (even though I&amp;#8217;m convinced that we have a much simpler query &lt;span class="caps"&gt;API&lt;/span&gt; than Amazon does).&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m convinced that Ruby and meta-programming is a great way to approach modeling business applications. That&amp;#8217;s why I&amp;#8217;m investing so much time building my &lt;a href="http://www.iunknown.com/articles/2005/12/14/hello-rubyclr"&gt;Ruby to &lt;span class="caps"&gt;CLR&lt;/span&gt; bridge&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-01-06T13:27:35-08:00</published>
+    <updated>2006-08-21T20:56:34-07:00</updated>
+    <title type="html">Comment on Ruby in the real world by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world#comment-290" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I've been working on the bridge on and off all week. I have constructor overloading, method overloading, and indexer support baked in. Next up is wrapping up properties, fields and events. That should make for a usable release. If I have enough cycles - that should ship towards end of next week.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Justin</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-01-06T12:50:29-08:00</published>
+    <updated>2006-08-21T20:56:33-07:00</updated>
+    <title type="html">Comment on Ruby in the real world by Justin</title>
+    <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world#comment-289" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Speaking of the .NET-CLR bridge, any updates available? I imagine you are busy with the new addition to the family so I'm not too hopeful - but I'm still excited about it!&lt;/p&gt;
+
+&lt;p&gt;In the future, could you provide a DLL with the download? I don't have VS2005 and  thus can't compile the DLL for myself ...&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-01-06T12:41:47-08:00</published>
+    <updated>2006-08-21T20:56:32-07:00</updated>
+    <title type="html">Comment on Ruby in the real world by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world#comment-288" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thanks for the great RSS pointer, Sorin. Subscribed.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Sorin</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-01-06T09:23:55-08:00</published>
+    <updated>2006-08-21T20:56:31-07:00</updated>
+    <title type="html">Comment on Ruby in the real world by Sorin</title>
+    <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world#comment-287" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Interesting:
+&lt;a href="http://www.oreillynet.com/ruby/"&gt;http://www.oreillynet.com/ruby/&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-01-05T20:29:35-08:00</published>
+    <updated>2006-08-21T20:56:30-07:00</updated>
+    <title type="html">Comment on Ruby in the real world by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world#comment-286" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I wouldn't go so far as to claim that web sites are trivial. I personally feel that web applications are among the most complicated applications that developers have to tackle. &lt;/p&gt;
+
+&lt;p&gt;And besides, why all the buzz about Rails if you could just as easily use CGI and C? Are all of those Java developers smoking crack?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Sam Gentile</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-01-05T14:56:23-08:00</published>
+    <updated>2006-08-21T20:56:29-07:00</updated>
+    <title type="html">Comment on Ruby in the real world by Sam Gentile</title>
+    <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world#comment-285" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Thanks for responding John. I am not interested in searching Google for Ruby on Rails for just web sites. Thats easy stuff as CGI and C could be used. Web sites are trivial.&lt;/p&gt;
+
+&lt;p&gt;I am more interested in "real world" apps like the one you mentioned for your customer. Thats what my question was about.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Matt</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-01-05T04:03:03-08:00</published>
+    <updated>2006-08-21T20:56:28-07:00</updated>
+    <title type="html">Comment on Ruby in the real world by Matt</title>
+    <link href="http://www.iunknown.com/articles/2006/01/04/ruby-in-the-real-world#comment-284" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;What I'm waiting for is banks to start writing trading systems in Ruby :)&lt;/p&gt;</content>
+  </entry>
+</feed>

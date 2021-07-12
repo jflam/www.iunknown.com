@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Method overloading and class inheritance</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Method overloading and class inheritance": comment by Justin</title>
+      <description>&lt;p&gt;Seems like reasonable behavior to me. If I overload a method on Control, it should show up on any derived class I reference later. But, if I overload it on ListBox, it should only show up on ListBox and children.&lt;/p&gt;
+
+&lt;p&gt;You may have a problem down the line if a derived type is loaded in dynamically, after the shim has been created, but that is really an edge case I wouldn't worry about until you have to.&lt;/p&gt;</description>
+      <pubDate>Tue, 07 Mar 2006 14:47:57 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/06/method-overloading-and-class-inheritance#comment-178</guid>
+      <link>http://www.iunknown.com/articles/2006/03/06/method-overloading-and-class-inheritance#comment-178</link>
+    </item>
+    <item>
+      <title>"Method overloading and class inheritance": comment by John Lam</title>
+      <description>&lt;p&gt;I only search when I create the method. So you pay the cost exactly once.&lt;/p&gt;
+
+&lt;p&gt;Regarding your second point, this is the current behavior. So if you did a list_box.name = 'bob', I create the Name shim on the ListBox class (and not the Control class where I believe it was declared).&lt;/p&gt;</description>
+      <pubDate>Mon, 06 Mar 2006 13:43:31 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/06/method-overloading-and-class-inheritance#comment-177</guid>
+      <link>http://www.iunknown.com/articles/2006/03/06/method-overloading-and-class-inheritance#comment-177</link>
+    </item>
+    <item>
+      <title>"Method overloading and class inheritance": comment by Justin</title>
+      <description>&lt;p&gt;I have one initial thought, that maybe this will be very resource intensive. Are you going to have to search the inheritance hiearchy to determine if a given method is overloaded anywhere "downstream"? &lt;/p&gt;
+
+&lt;p&gt;Also, I'm a little confused by what this sentence means: "If it is overloaded in derived classes, I???m going to define the shim on the Ruby class that triggered the const_missing event."&lt;/p&gt;
+
+&lt;p&gt;Care to elaborate?&lt;/p&gt;</description>
+      <pubDate>Mon, 06 Mar 2006 13:13:21 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/03/06/method-overloading-and-class-inheritance#comment-176</guid>
+      <link>http://www.iunknown.com/articles/2006/03/06/method-overloading-and-class-inheritance#comment-176</link>
+    </item>
+    <item>
+      <title>"Method overloading and class inheritance" by jlam</title>
+      <description>&lt;p&gt;I need some feedback on a design problem in RubyCLR.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s the problem in a nutshell: Ruby doesn&amp;#8217;t support method overloading. RubyCLR fakes it out by generating a shim that lets you call the union of all overloaded methods defined by the current class and all ancestor classes.&lt;/p&gt;
+
+
+	&lt;p&gt;Now, the biggest feature that I&amp;#8217;m adding to this next drop of the bridge is class-based inheritance of shims. I want to define a shim on the class that it was defined by (via &lt;code&gt;MemberInfo.DeclaringType&lt;/code&gt; property). The goal of this is to let folks (who want to) replace the definition of the method where it was defined, and to let all derived classes automatically inherit that method definition. This, of course, doesn&amp;#8217;t work if that method is ever overloaded in derived classes.&lt;/p&gt;
+
+
+	&lt;p&gt;For the next drop, I&amp;#8217;m going to take a hybrid approach: define the shim on the declaring Ruby class object if that method is never overloaded in derived classes. If it is overloaded in derived classes, I&amp;#8217;m going to define the shim on the Ruby class that triggered the &lt;code&gt;const_missing&lt;/code&gt; event.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;d &lt;strong&gt;really&lt;/strong&gt; like some second opinions about this, as this is largely stream of consciousness thinking right now. I&amp;#8217;m worried about breaking things in lots of other corner cases that I haven&amp;#8217;t considered yet.&lt;/p&gt;
+
+
+	&lt;p&gt;Do I really need to go to a full-blown method name mangling approach to implement this feature correctly?&lt;/p&gt;
+
+</description>
+      <pubDate>Mon, 06 Mar 2006 11:15:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/03/06/method-overloading-and-class-inheritance"&gt;Method overloading and class inheritance&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/03/06/method-overloading-and-class-inheritance"&gt;Method overloading and class inheritance&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

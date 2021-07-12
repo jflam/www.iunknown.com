@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Getting current method</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000043.html" title="Alignment Cost: Processor Effects" />
+
+<link rel="next" href="http://www.iunknown.com/000045.html" title="Mono status" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000043.html">&laquo; Alignment Cost: Processor Effects</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000045.html">Mono status &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 24, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Getting current method</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>Today, I needed to programmatically figure out what the name of the current method is. As it turns out, it's dead simple with the help of the System.Diagnostics.StackFrame and System.Diagnostics.StackTrace classes. Here's a simple program that illustrates the use of these classes:</P><br />
+<P><CODE>using System; <BR>using System.Diagnostics; <BR>using System.Reflection;&nbsp;<BR><BR>class App&nbsp;<BR>{&nbsp;<BR>&nbsp; static void WhoCalledMe()&nbsp;<BR>&nbsp; {&nbsp;<BR>&nbsp;&nbsp;&nbsp; StackTrace trace = new StackTrace();&nbsp;<BR>&nbsp;&nbsp;&nbsp; StackFrame frame = trace.GetFrame( 1 );&nbsp;<BR>&nbsp;&nbsp;&nbsp; MethodBase method = frame.GetMethod();&nbsp;<BR>&nbsp;&nbsp;&nbsp; Console.WriteLine( "{0} called me", method.Name );&nbsp;<BR>&nbsp; }&nbsp;<BR><BR>&nbsp; static void Main(string[] args)&nbsp;<BR>&nbsp; {&nbsp;<BR>&nbsp;&nbsp;&nbsp; StackFrame frame = new StackFrame();&nbsp;<BR>&nbsp;&nbsp;&nbsp; MethodBase method = frame.GetMethod();&nbsp;<BR>&nbsp;&nbsp;&nbsp; Console.WriteLine( method.Name );&nbsp;<BR><BR>&nbsp;&nbsp;&nbsp; WhoCalledMe();&nbsp;<BR>&nbsp; }&nbsp;<BR>} <BR></CODE></P><br />
+<P>Notice that you can retrieve a System.Reflection.MethodBase object from the System.Diagnostics.StackFrame object. Once you have one of these puppies, the world is wide open to you ;)</P><br />
+<P>Now, the performance freak in me is wondering how expensive creating a StackFrame object is ...</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January 24, 2002 04:40 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="44" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000044.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I too have been looking into obtaining the name of the current method, for tracing purposes.  Having just switched from performance driven development for Unix platforms, I was also hesitant about the impact to performance.</p>
+
+<p>I was concerned by the effects of either instantiating a new StackFrame for each trace message or a static one for each method.  I just don't trust that the Framework would free the resources often enough for the instantiated ones, or the unknown impact of having a static StackFrame hanging around for every method entered during an applications execution.</p>
+
+<p>I initially was going to use the following Trace messages to ease cut and paste replication:</p>
+
+<p>Trace.WriteLine( "ENTER - " + new StackFrame().GetMethod().Name );<br />
+Trace.WriteLine( "EXIT - " + new StackFrame().GetMethod().Name );</p>
+
+<p>or</p>
+
+<p>static StackFrame sf = new StackFrame();<br />
+Trace.WriteLine( "ENTER - " + sf.GetMethod().Name );<br />
+Trace.WriteLine( "EXIT - " + sf.GetMethod().Name );</p>
+
+<p>which could also be done as</p>
+
+<p>static string procName = new StackFrame().GetMethod().Name;<br />
+Trace.WriteLine( "ENTER - " + procName);<br />
+Trace.WriteLine( "EXIT - " + procName );</p>
+
+<p><br />
+Then I discovered a Static method of the MethodBase class that will retrieve the same results without instantiating new StackFrame or other objects.</p>
+
+<p>Use the static MethodBase.GetCurrentMethod() from the System.Reflection namespace to obtain a MethodBase object for the current method.  The resulting Trace statements should be more efficient and will also add less clutter to the code:</p>
+
+<p><br />
+Trace.WriteLine("ENTER - " + MethodBase.GetCurrentMethod().Name );<br />
+Trace.WriteLine("EXIT - " + MethodBase.GetCurrentMethod().Name );</p>
+
+<p><br />
+Hope this is able to help other folks out that are trying to achieve this.<br />
+</p>
+<span class="comments-post">Posted by: Jeremy at December  3, 2003 11:04 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

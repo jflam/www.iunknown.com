@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Looking back at some older Ruby .NET bridges</title>
+    <link>http://www.iunknown.com/articles/2006/03/28/looking-back-at-some-older-ruby-net-bridges</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Looking back at some older Ruby .NET bridges</title>
+      <description>&lt;p&gt;I just spent some time looking around at past attempts to write Ruby to .NET bridges. Here&amp;#8217;s a &lt;a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/76145"&gt;fascinating thread&lt;/a&gt; from July, 2003 that was started by Thomas Sondergaard who wrote an excellent Ruby to .NET bridge. His bridge provided much inspiration for the first version of RubyCLR which was never publicly released.&lt;/p&gt;
+
+
+	&lt;p&gt;I learned a lot writing that first bridge, and the pain that I felt implementing everything in C+&lt;ins&gt;++/CLI was enough to inspire the current RubyCLR bridge which uses as little C&lt;/ins&gt;+++ as possible.&lt;/p&gt;</description>
+      <pubDate>Tue, 28 Mar 2006 23:34:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:7fcad8c1d4720ab36a32305c6fcf13e9</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/03/28/looking-back-at-some-older-ruby-net-bridges</link>
+      <category>Props</category>
+    </item>
+  </channel>
+</rss>

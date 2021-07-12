@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: RubyCLR now resolves types in top-level namespaces</title>
+    <link>http://www.iunknown.com/articles/2006/03/31/rubyclr-now-resolves-types-in-top-level-namespaces</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>RubyCLR now resolves types in top-level namespaces</title>
+      <description>&lt;p&gt;Up until now, RubyCLR did not support finding types in the top-level (global) namespace. If you were writing code that used types in the global namespace (which you will if you don&amp;#8217;t scope things by namespace &amp;#8211; typically for your own libraries), it wouldn&amp;#8217;t work correctly.&lt;/p&gt;
+
+
+	&lt;p&gt;I had punted on this bug for a while but finally had to fix it when I added JScript.NET compilation support to RubyCLR today. JScript.NET does not support declaring types in namespaces (as far as I can tell &amp;#8211; I&amp;#8217;m by no means a JScript.NET dev).&lt;/p&gt;
+
+
+	&lt;p&gt;It required refactoring how I handled the boundary case of a type that wasn&amp;#8217;t scoped by a Ruby Module.&lt;/p&gt;
+
+
+	&lt;p&gt;So this code &lt;em&gt;finally&lt;/em&gt; works:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+inline :jscript do |compiler|
+  compiler.compile &amp;lt;&amp;lt;-EOF
+    class JScriptClass {
+      function sayHello() {
+        return "hello" 
+      }
+    }
+  EOF
+end
+
+def test_inline_jscript
+  assert_equal 'hello', JScriptClass.new.sayHello
+end
+&lt;/code&gt;&lt;/pre&gt;</description>
+      <pubDate>Fri, 31 Mar 2006 17:50:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:16f2ac51f97a948cec6da433493a0d63</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/03/31/rubyclr-now-resolves-types-in-top-level-namespaces</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"RubyCLR now resolves types in top-level namespaces" by Fatih Orhan</title>
+      <description>&lt;p&gt;Looking really nice. So with ability to inline C# (and JScript.NET), i can design forms in VS.NET IDE, inline some Designer generated code in my beloved Ruby and bind some events to it. oooh i can't wait :) when can we get it?
+And thank you for this, you filling a very needed gap with your bridge (eheh), i appreciate that.
+sorry if parts of this message didn't make sense, english is not my native language.&lt;/p&gt;</description>
+      <pubDate>Wed, 05 Apr 2006 15:55:03 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/31/rubyclr-now-resolves-types-in-top-level-namespaces#comment-422</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Dual monitors yet again</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000224.html" title="Sparse files on Windows 2000+" />
+
+<link rel="next" href="http://www.iunknown.com/000226.html" title="Microsoft vs. Open Source" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000224.html">&laquo; Sparse files on Windows 2000+</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000226.html">Microsoft vs. Open Source &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 17, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Dual monitors yet again</h3>
+
+<p><P>My name is John, and I'm a perfectionist. It drives me crazy when things don't work <EM>exactly</EM> the way that I want them to. My dual monitor saga / fiasco is a great example of this (sometimes undesirable) personality trait. My transition to managed languages from control-freak languages like C++ is hopefully an encouraging sign.</P><br />
+<P>But this entry is about dual monitors (again). To recap: I bought two Samsung 172T DVI panels. These are incredible panels - much better than the NEC 1830 panel that preceded them. I'm almost 100% satisfied with these panels except for the slight off-white nature of one of the panels. I had previously attributed this to VGA vs. DVI, but now I can report that it's not VGA connectors that are responsible for the off-white color, but instead it's something in the panel itself.</P><br />
+<P>I've now switched to a dual DVI connector setup. To do this, I had to ditch my other set of video cards in favor of <A href="http://usa.asus.com/vga/agpv9180/overview.htm">an ASUS V9180 VS card</A>. This is by far the cheapest dual DVI video card that I've come across - I bought mine for ~$120 USD. This is a lot cheaper than a Matrox G550 dual-DVI solution, that would have run about $200 USD. The GeForce MX 440 chipset in this card provides better performance than the G550.[1] The Matrox Parhelia card is ridiculously overpriced, IMHO.</P><br />
+<P>The great thing about switching to this card is that I can now continue to do development on my Windows XP box, and leave my Win2K3 Server box as a server. For details on why this was the other way around, <A href="Weblog/Itwasthefreakingmotherboa.html">see my post on dual monitors and motherboard conflicts</A>.</P><br />
+<P>After <A href="http://radio.weblogs.com/0106747/2003/02/13.html#a213">Scott Hanselman recommended UltraMon</A>, I decided to give it a whirl. I had previously complained about Ultramon's per-monitor taskbar not working with ATI's Hydravision multi-desktop software. I can now report that it doesn't exactly work with nVidia's nView multi-desktop software either. After a bit of digging around in Ultramon's support forums, I found a nice little script that I can use to switch between desktops and restore Ultramon's taskbar. I'ver reproduced it here:</P><CODE><br />
+<P>Set sys = CreateObject("UltraMon.System")<BR>Set appBars = sys.DockedAppBars</P><br />
+<P>Set shell = CreateObject("WScript.Shell")<BR>' NOTE: I configured nView to use CTRL-ALT-F10 as a shortcut key to go to the next desktop<BR>shell.SendKeys "^%{F10}"</P><br />
+<P>WScript.Sleep 1000</P><br />
+<P>For Each ab In appBars<BR>&nbsp; If ab.Name = "UltraMon Taskbar" Then<BR>&nbsp;&nbsp;&nbsp; If ab.Visible = False Then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ab.Visible = True<BR>&nbsp;&nbsp;&nbsp; End If<BR>&nbsp; End If<BR>Next</P></CODE><br />
+<P>So far this script has worked OK. But I can't use a shortcut key to run these scripts no matter what keystroke combination that I try. Perhaps it has something to do with the fact that my shell script sends keystrokes, but apparently this works on other computers. Any help here would be greatly appreciated. For now, I added shortcuts to these scripts to my Launch Bar, and I <EM>click </EM>on them to toggle desktops :(</P><br />
+<P>[1] It's a bit of a slouch <A href="http://www6.tomshardware.com/graphic/20030120/vgacharts-04.html">when compared to modern video cards like the RADEON 9700 PRO</A>, but significantly better than the ATI AIW RADEON card that it replaced, especially on my mid-range 1.6GHz P4 - I can only expect maybe double the perf on UT2003 by switching to a 9700 PRO without upgrading the rest of my computer.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 17, 2003 09:38 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="225" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000225.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Check Celexa info.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.celexa-online.net">Celexa</a> at October 25, 2004 05:47 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="225" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

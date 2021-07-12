@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: November 2003 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2003_10.html" title="October 2003" />
+
+<link rel="next" href="http://www.iunknown.com/2003_12.html" title="December 2003" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2003_10.html">&laquo; October 2003</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2003_12.html">December 2003 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000378"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/122"
+    dc:title="Algorithm complexity and modern CPU&apos;s"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000378"
+    dc:subject="Blog"
+    dc:description="Remember your college introduction to data structures and algorithms course? Remember how you spent some time calculating the complexity cost of various algorithms based on big-O notation? There was one very important assumption that was made whenever you made those..."
+    dc:creator="John"
+    dc:date="2003-11-24T10:45:26-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">November 24, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000378"></a>
+<h3 class="title">Algorithm complexity and modern CPU's</h3>
+
+<p>Remember your college introduction to data structures and algorithms course? Remember how you spent some time calculating the complexity cost of various algorithms based on big-O notation? There was one very important assumption that was made whenever you made those calculations: <strong>that the cost of accessing any address in memory was constant</strong>.</p>
+
+<p>With today's multi-tiered <span class="caps">CPU</span> cache architectures, it has become increasingly obvious (to those who care) that that assumption is no longer valid. A full cache miss on a modern 3GHz+ P4 will mean that you will waste ~1000 operations while waiting for the data to show up at the <span class="caps">CPU. </span></p>
+
+<p><a href="http://blogs.gotdotnet.com/jangr/">Jan Gray</a> <a href="http://www.fpgacpu.org/index.html#021110">wrote an excellent essay</a> that attacks a data structure that is responsible for lousy performance characteristics on modern <span class="caps">CPU</span>'s: the venerable linked list. In this essay, you'll see some of Jan's prognostications on the future of <span class="caps">CPU</span> architectures. My favorite quote from this piece is "This scenario is so bad and so common that the microprocessor vendors use 80% of their transistor budgets for on-chip caches -- Intel as glorified <span class="caps">SRAM</span> vendor.".</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000378.html">10:45 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=378" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=378" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000377"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/121"
+    dc:title="PDC presentations"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000377"
+    dc:subject="Blog"
+    dc:description="Quite a few of the presentations from this year&apos;s PDC are now available in Microsoft Producer format. The nice thing is that you get videos from the demos integrated into the presentation as well. Very nice...."
+    dc:creator="John"
+    dc:date="2003-11-22T10:28:47-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">November 22, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000377"></a>
+<h3 class="title">PDC presentations</h3>
+
+<p>Quite a few of the <a href="http://microsoft.sitestream.com/PDC2003/Default.htm">presentations from this year's <span class="caps">PDC</span></a> are now available in Microsoft Producer format. The nice thing is that you get videos from the demos integrated into the presentation as well. Very nice.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000377.html">10:28 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=377" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=377" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000376"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/120"
+    dc:title="We start training &apos;em young in the Lam family ..."
+    dc:identifier="http://www.iunknown.com/2003_11.html#000376"
+    dc:subject="Blog"
+    dc:description="I see that we have a recent theme of folks posting stories and pictures of how they lost their programming virginity. While Matthew hasn&apos;t quite mastered &quot;Hello, World&quot; yet, he&apos;s doing pretty good at surfing the web at 4 weeks..."
+    dc:creator="John"
+    dc:date="2003-11-12T23:29:24-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">November 12, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000376"></a>
+<h3 class="title">We start training 'em young in the Lam family ...</h3>
+
+<p>I see that we have a recent theme of <a href="http://www.intertwingly.net/blog/1646.html">folks</a> <a href="http://www.decafbad.com/blog/geek/as_a_child_64.html">posting</a> <a href="http://www.simplegeek.com/permalink.aspx/b5c749c7-6eb2-4e7f-814d-8b4ba853beeb">stories</a> and <a href="http://diveintomark.org/archives/2003/11/11/iie">pictures</a> of <a href="http://dotnetguy.techieswithcats.com/archives/003955.shtml">how</a> they lost their programming virginity. While <a href="http://www.iunknown.com/000339.html">Matthew</a> hasn't quite mastered "Hello, World" yet, he's doing pretty good at surfing the web at 4 weeks :)&nbsp;The computer is an ancient circa 2001 <span class="caps">P4 1.6G</span>Hz box with 768MB <span class="caps">RDRAM.</span></p>
+
+<p><img src="Files/LilDeveloper_small.jpg" alt="Matthew's first computer" /></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000376.html">11:29 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=376" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=376" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000375"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/119"
+    dc:title="C++ programmer ethos"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000375"
+    dc:subject="Blog"
+    dc:description="Why is it that whenever I start writing [Managed]C++ code that I: Feel the urge to write wrapper classes Worry much more about failure conditions / scenarios Think obsessively about const-correctness Well, writing wrapper classes is pretty much all that..."
+    dc:creator="John"
+    dc:date="2003-11-11T10:59:41-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">November 11, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000375"></a>
+<h3 class="title">C++ programmer ethos</h3>
+
+<p>Why is it that whenever I start writing [Managed]C++ code that I:</p>
+
+
+<ol>
+<li>Feel the urge to write wrapper classes</li>
+<li>Worry much more about failure conditions / scenarios</li>
+<li>Think obsessively about const-correctness</li>
+</ol>
+
+<p>Well, writing wrapper classes is pretty much all that I use MC++ for these days. There's a bunch of unmanaged Win32 <span class="caps">API</span>'s that I need to call from managed code and MC++ is the perfect tool for the job (only a masochist would try and manipulate <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/security/security/sid.asp">SIDs</a> from C#/VB.NET).  </p>
+
+<p>Yes, I know that Whidbey provides wrappers for SIDs and their friends in <code>System.Security.AccessControl</code>, but I need to deploy systems <em>today</em> on <span class="caps">V1.1.</span></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000375.html">10:59 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=375" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=375" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000374"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/118"
+    dc:title="aspnet_compiler.exe rocks!"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000374"
+    dc:subject="Blog"
+    dc:description="Today&apos;s favorite feature in FX2.0 is brought to you by the letter a, as in aspnet_compiler.exe. Finally we have the ability to compile an entire ASP.NET application within a daily build process. In the past, if you had code in..."
+    dc:creator="John"
+    dc:date="2003-11-10T11:58:53-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">November 10, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000374"></a>
+<h3 class="title">aspnet_compiler.exe rocks!</h3>
+
+<p>Today's favorite feature in <span class="caps">FX2.0</span> is brought to you by the letter a, as in <code>aspnet_compiler.exe</code>. Finally we have the ability to compile an entire <span class="caps">ASP.NET</span> application within a daily build process. In the past, if you had code in your <code>.aspx</code> files, you wouldn't know whether that code actually compiled until you <em>ran</em> that page. Now, you can compile the entire application during your daily build and get immediate feedback on compilation errors.</p>
+
+<p>More info can be found in <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnaspp/html/codecompilation.asp"><span class="caps">G. </span>Andrew Duthie's article on <span class="caps">MSDN</span></a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000374.html">11:58 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=374" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=374" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000373"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/117"
+    dc:title="System.Security.AccessControl"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000373"
+    dc:subject="Blog"
+    dc:description="Unfortunately, my AssemblyDiff tool doesn&apos;t diff mscorlib.dll since you can only have one version of mscorlib.dll loaded in a managed process. So I didn&apos;t know about System.Security.AccessControl until I sat down today to port cacls to managed C++ :) All..."
+    dc:creator="John"
+    dc:date="2003-11-10T11:45:07-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000373"></a>
+<h3 class="title">System.Security.AccessControl</h3>
+
+<p>Unfortunately, my <a href="http://www.iunknown.com/000364.html">AssemblyDiff tool</a> doesn't diff <code>mscorlib.dll</code> since you can only have one version of mscorlib.dll loaded in a managed process. So I didn't know about <code>System.Security.AccessControl</code> until I sat down today to port <a href="http://www.ss64.com/nt/cacls.html">cacls</a> to managed C++ :) All I can say is yippee!</p>
+
+<p>More details can be found <a href="http://longhorn.msdn.microsoft.com/lhsdk/ref/system.security.accesscontrol.aspx">here</a> and <a href="http://www.gotdotnet.com/team/PDC/4027/ARC340.ppt">here</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000373.html">11:45 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=373" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=373" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000372"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/116"
+    dc:title="Assembly Friendship"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000372"
+    dc:subject="Blog"
+    dc:description="[Via Charles Cook] Jim Hogg from the CLR team talks about an upcoming new feature in V2 of the CLR: &quot;Friend Assemblies&quot;. There will be a new assembly-level attribute called InternalsVisibleTo that lets the author of an assembly specify who..."
+    dc:creator="John"
+    dc:date="2003-11-06T10:26:31-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">November 06, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000372"></a>
+<h3 class="title">Assembly Friendship</h3>
+
+<p>[Via <a href="http://www.cookcomputing.com/blog/archives/000323.html">Charles Cook</a>] Jim Hogg from the <span class="caps">CLR</span> team <a href="http://weblogs.asp.net/OKloeten/posts/35176.aspx">talks about an upcoming new feature in V2 of the <span class="caps">CLR</span></a>: "Friend Assemblies". There will be a new assembly-level attribute called <code>InternalsVisibleTo</code> that lets the author of an assembly specify who it wants its <code>internal</code> methods to be visible to.</p>
+
+<p>This is extremely useful for unit-testing. There are many occasions where you need to make the internals of a class visible to unit-testing code. Today, this essentially forces you to have to conditionally compile your unit-testing code into the same assembly as the code that it tests. In <span class="caps">V2,</span> you will be able to cleanly separate the code from its tests. It also enables a scenario where <code>InternalsVisibleTo</code> can be used to allow diagnostic code to run against a shipping assembly at a customer site.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000372.html">10:26 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=372" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=372" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000371"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/115"
+    dc:title="Ant community reaction to MSBuild"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000371"
+    dc:subject="Blog"
+    dc:description="Steve Loughran posts his initial thoughts based on a reading of the docs. He has a number of interesting criticisms of MSBuild, particularly about pushing dependency analysis to the target level. Steve is a co-author of the excellent book Java..."
+    dc:creator="John"
+    dc:date="2003-11-05T13:06:53-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">November 05, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000371"></a>
+<h3 class="title">Ant community reaction to MSBuild</h3>
+
+<p><a href="http://www.iseran.com/Steve/blog/archives/000029.html#more">Steve Loughran posts his initial thoughts</a> based on a reading of the docs. He has a number of interesting criticisms of MSBuild, particularly about pushing dependency analysis to the target level. Steve is a co-author of the excellent book <a href="http://www.amazon.com/exec/obidos/ASIN/1930110588/iunknowncom-20">Java Development with Ant</a> and an Ant committer. </p>
+
+<p><a href="http://stefanbodewig.blogger.de/static/antville/files/stefanbodewig/whoami.html">Stefan Bodewig</a> posts several entries about MSBuild. </p>
+
+<p>In <a href="http://stefanbodewig.blogger.de/stories/10575/">target depenencies</a> Stefan raises some interesting issues about dependency analysis, much like what Steve did in his entry. This is a particularly interesting problem when you consider what happens with dependencies if you want to <em>incrementally</em> update an <span class="caps">FTP</span> server. It's unclear to me how Inputs/Outputs would conflict with an <span class="caps">FTP</span> task that did smart dependency analysis against remote date/time stamps.</p>
+
+<p>In <a href="http://stefanbodewig.blogger.de/stories/10616/">conditions in MSBuild and Ant</a> Stefan advocates using properties files in Ant over <span class="caps">XML</span> property elements. The problem I have with property files in general is that they aren't <span class="caps">XML. </span>This makes it much harder to manipulate these files through generalized <span class="caps">XML</span> techniques such as <span class="caps">XSLT. </span>It's not impossible, but it increases the friction considerably. +1 to MSBuild for avoiding property files (even at the cost of additional verbosity).</p>
+
+<p>In <a href="http://stefanbodewig.blogger.de/stories/10636/">Items in MSBuild</a> Stefan examines the way tasks can be decoupled via Items. Specifically, it's the OutputItem element in MSBuild that allows tasks to both consume and <em>emit</em> Items, which makes it far easier to couple the output of one task to the input of another. He also proposes a very interesting "pipe" syntax that would allow tasks to be decoupled <em>without</em> incurring the friction involved in defining an OutputItem for a task.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000371.html">01:06 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=371" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=371" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000370"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/114"
+    dc:title="Powers of 10"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000370"
+    dc:subject=""
+    dc:description="[via Larry O&apos;Brien] Zooming in by powers of 10 starting from 1023m and finishing at 10-16m. It&apos;s a wonderful tool for helping you to visualize the scale of matter in our universe...."
+    dc:creator="John"
+    dc:date="2003-11-03T19:30:01-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">November 03, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000370"></a>
+<h3 class="title">Powers of 10</h3>
+
+<p>[via <a href="http://www.thinkingin.net/2003/10/31.aspx#a462">Larry O'Brien</a>] Zooming in by <a href="http://micro.magnet.fsu.edu/primer/java/scienceopticsu/powersof10/index.html">powers of 10</a> starting from 10<sup>23m and finishing at 10</sup>-16m. It's a wonderful tool for helping you to visualize the scale of matter in our universe.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000370.html">07:30 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=370" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=370" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_11.html#000369"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/113"
+    dc:title="MSBuild on v1.1.4322"
+    dc:identifier="http://www.iunknown.com/2003_11.html#000369"
+    dc:subject="Blog"
+    dc:description="<![CDATA[I just tried adding the following app.config file to msbuild: &lt;?xml version =&quot;1.0&quot;?&gt; &lt;configuration&gt; &lt;startup&gt; &lt;requiredRuntime safemode=&quot;true&quot; imageVersion=&quot;v1.1.4322&quot; version=&quot;v1.1.4322&quot;/&gt; &lt;/startup&gt; &lt;/configuration&gt; It seems to work ... so far. That's pretty good news if you want to try out MSBuild on...]]>"
+    dc:creator="John"
+    dc:date="2003-11-03T11:04:10-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000369"></a>
+<h3 class="title">MSBuild on v1.1.4322</h3>
+
+<p>I just tried adding the following app.config file to msbuild:</p>
+
+<pre><code>
+&lt;?xml version =&quot;1.0&quot;?&gt;
+&lt;configuration&gt;
+    &lt;startup&gt;
+        &lt;requiredRuntime safemode=&quot;true&quot; imageVersion=&quot;v1.1.4322&quot; version=&quot;v1.1.4322&quot;/&gt;
+    &lt;/startup&gt;
+&lt;/configuration&gt;
+</code></pre><p>It seems to work ... so far. That's pretty good news if you want to try out MSBuild on your existing <span class="caps">V1.1</span> projects. I haven't tried this yet on a machine that doesn't have <span class="caps">V1.2</span> installed yet - any takers?</p>
+
+<p><strong>Update:</strong> It doesn't work. I just tried it on a <span class="caps">V1.1</span> framework box. There is at least one dependency on <span class="caps">V1.2,</span> but it appears to only occur on an error path in the code: <span class="caps">V1.2</span> defines a SecurityException.get_PermissionStateInstance() method that isn't present in <span class="caps">V1.1. </span>No time to dig through why the security exception was thrown in the first place, though ... I guess we'll have to wait and see whether there's an "official" implementation in the future from <span class="caps">MS.</span></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000369.html">11:04 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=369" onclick="OpenComments(this.href); return false">Comments (4)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=369" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

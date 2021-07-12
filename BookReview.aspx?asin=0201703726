@@ -1,0 +1,161 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Documenting Software Architectures: Views and Beyond
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0201703726" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjAxNzAzNzI2LjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPERvY3VtZW50aW5nIFNvZnR3YXJlIEFyY2hpdGVjdHVyZXM6IFZpZXdzIGFuZCBCZXlvbmQ7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFBhdWwgQ2xlbWVudHMsIEZlbGl4IEJhY2htYW5uLCBMZW4gQmFzcywgRGF2aWQgR2FybGFuLCBKYW1lcyBJdmVycywgUmVlZCBMaXR0bGUsIFJvYmVydCBOb3JkLCBKdWRpdGggU3RhZmZvcmQ7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQ2NC45OTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDU1Ljc1Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw0LjU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQ7Pj47Pjs7Pjt0PEA8aHR0cDovL3d3dy5hbWF6b24uY29tL2V4ZWMvb2JpZG9zL0FTSU4vMDIwMTcwMzcyNi9yZWY9bm9zaW0vaXVua25vd25jb20tMjA7Pjs7Pjt0PHA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47PjtsPGk8MD47aTwxPjs+O2w8dDxAPFxlOz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz45Fg6T9D0R0/cnnnR2lAFe7U9zwg==" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0201703726.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Documenting Software Architectures: Views and Beyond</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Paul Clements, Felix Bachmann, Len Bass, David Garlan, James Ivers, Reed Little, Robert Nord, Judith Stafford</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$64.99</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$55.75</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">4</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0201703726/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">The best to date</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-06-22</span>
+                    </div>
+                    <span>Software architecture really is unlike any other aspect of its design. The architecture has deeper meaning and larger scale than any other aspect, and can't be discussed in the same ways.<P>This book opens that discussion. Among the "architecture" books I've read lately, this is the only one to offer concrete advice on describing, presenting, and analyzing archtiectural features of a system. It identifies a number of documentation types and variations. It also identifies a number of different readers - developers, future architects, users, etc. - and addresses their different documentation needs.<P>The authors use a little UML, but not a lot. For one thing, standard UML works at too low a level for architectural discussion. Classes, and even hierarchies of class inheritance are such fine-grained entities that architecture gernerally won't address them. Instead, the authors offer a number of diagramming styles of their own. For once, I agree with the need for non-standard notation.<P>Even so, I think they under-utilize the existing standards in favor of their own terminology and notation. They could have used a UML profile for lots of the discussion. It would have had to be a new profile, however, not just a force-fit of the real-time profile. They also under-used the existing architecture standards (IEEE/ANSI, DoD, NASA, and more) in favor of their own discussion. Maybe their approach can be used in any of those frameworks, but that should have been more explicit. <P>I see only one major flaw in this book, the assumption that a software system's architecture describes the program delivered to a customer. That's way too narrow. A large system includes things like test harnesses, debug instrumentation, application-specific QA tools, and user documentation of many kinds. Those can be major undertakings of their own. They are intimately tied to the delivered software, and may constrain the actual product.<P>On the postivie side, this book offer an extensive real-world case study. That probably doubles the book's value, by putting a concrete face on the otherwise abstract discussion.<P>There are two ways to use this book: you can agree with it, or think about it and disagree with it. If you really think about it, though, you get it's full value whether you agree or not. <P>In other words, you can't lose by reading this book.</span>
+                  
+                    <div class="CustomerReviewSummary">Quite skimpy</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>18</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-05-23</span>
+                    </div>
+                    <span>This is not a bad introductory documentation book, but quite skimpy in the amount of information and examples it contains.<BR>Not sure it is worth buying at that price. I bought it after reading the previous reviews - I think they overrated it!</span>
+                  
+                    <div class="CustomerReviewSummary">The only technical documentation book you'll need</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>95</span>
+                      /
+                      <span>97</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-10-27</span>
+                    </div>
+                    <span>After reading my colleague's comments I rushed out and purchased this book. I, too, am trained and certified in Information Mapping© and was impressed at how closely the approach in this book is aligned to that method. However, what I like most is the fact that this book can be used as guidance for a wider scope than just documenting software architectures because it shows how to organize your documentation requirements, develop clear documentation and manage the entire process from start to finish.<P>I also like the clearly articulated and illustrated advice about how to augment text with graphics, and how to select the views and associated graphics to document requirements, specifications and the finished architecture. An example of how this book goes beyond documenting just architectures is a project in which I was engaged two years ago. One of the major deliverables was a set of operations guides. While this is related to architecture with respect to how its used after it's in production, there were no books that fully described how to go about it in a coherent way. Using the advice and techniques in this book I could have greatly improved upon what I did produce. While I cannot change the past, you can be sure that I'll use this book to its fullest the next time I need to write ops guides, especially when it comes to showing component and connector views, and elements and relations.<P>If you do technical writing either professionally or as a part of your job get this book and keep it nearby. If you read and use the material you're ability to communicate will surely improve, and you'll be able to tailor your documentation to each segment of your audience (business and technical), as well as to clearly communicate information. You'll also learn much about managing the documentation process itself.</span>
+                  
+                    <div class="CustomerReviewSummary">Should be an establish standard for documenting</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>51</span>
+                      /
+                      <span>52</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-10-07</span>
+                    </div>
+                    <span>Since reading a fascinating document titled "CMU/SEI-2001-TN-010 - Documenting Software Architectures: Organization of Documentation Package" a year ago and discovering that the approximately 20-page document was the basis for a book I have patiently waited, and am delighted with how the book turned out.<P>First, this book stands out as one of the clearest descriptions of how to not only document architectures, but how to manage the documentation project. Second, this is not a dogmatic prescription for how to document, but instead gives a set of techniques and views that can be used singularly or in combination to produce documentation that meets the needs of all technical and business stakeholders. <P>When I read the brief predecessor to this book I liked the way different view types and styles were introduced, but was left to my own imagination and creativity to employ them based on scant descriptions. This book rectifies those gaps by providing comprehensive guidance on how to create each view type and when it's most appropriate for inclusion into the documentation project. I was also intrigued by the earlier document because it discussed 'information chunking', which is the basis for a technique in which I'm trained and certified called Information Mapping©. The book expands on the earlier work, and it turns out that the material is not only consistent with Information Mapping© at a high level, but also shares many core principles. To me this is another plus because it will introduce readers who have not benefited from formal Information Mapping© training to powerful and effective document design and development techniques.<P>Another strong point about this book is the attention paid to managing the documentation process - it's one thing to write clear documentation and quite another to manage a process where many writers contribute to the documentation. I also liked the illustration examples, which epitomize how to effectively portray technical detail, and the discussion of other methods of documenting architecture.<P>In my opinion this book should become the standard for developing and managing documentation. It belongs on the desk of every technical writer and on the bookshelf of every architect and designer. I waited a year for this book and it was well worth the wait.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321200683'>
+                      Enterprise Integration Patterns : Designing, Building, and Deploying Messaging Solutions
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 11 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201775948'>
+                      Beyond Software Architecture: Creating and Sustaining Winning Solutions
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 21 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201734095'>
+                      Architecture-Centric Software Project Management: A Practical Guide
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 6 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=020170482X'>
+                      Evaluating Software Architectures: Methods and Case Studies
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 2 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0321154959'>
+                      Software Architecture in Practice, Second Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 16 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

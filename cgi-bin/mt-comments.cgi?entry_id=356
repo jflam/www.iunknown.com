@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on In defense of PDF ...</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: In defense of PDF ...</div>
+
+
+<div class="comments-body">
+<p>I appreciate your list of reasons for adopting PDF for your newsletter.  While I'm not a big fan of PDFs, I do like their self-contained nature.  However, I don't consider it a good way to handle longer blogs, as it seems to defeat the nature of the blogging medium.</p>
+
+<p>However, your reasoning caused me to recall a web news site whose format I've always enjoyed and that adheres to many of your ideals - the International Herald Tribune - and thought you might want to take a look.  Here's a representative piece:</p>
+
+<p>http://www.iht.com/articles/114576.html</p>
+
+<p>Via the "toolbar" at bottom, they provide formatting alternatives - one column/one page or multi-columns/multi-pages (my preference), as well as options to increase/decrease the font size, and a nice print layout option.  They deliver the entire article to you, so no round-trips are required, even when displayed in multi-page mode.  If the graphics were eliminated and the javascript embedded, it could be read off-line.  One thing that's bothersome is having to use the mouse to click between pages (although they mitigated this some by allowing you to click anywhere near the ending/beginning of the article text).</p>
+
+<p>I suppose in the end, good content trumps format anyway.  </p>
+
+<p>Good luck with the newsletter.<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://ewbi.blogs.com/develops/">Eric W. Bachtal</a> at October 21, 2003 02:13 PM</span>
+</div>
+<div class="comments-body">
+<p>Wow! Thanks for the link, Eric. That is a very nice layout that those guys have. It looks like they do it through some CSS+DHTML magic.</p>
+
+<p>I hope you enjoy my content.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October 21, 2003 11:23 PM</span>
+</div>
+<div class="comments-body">
+<p>You're welcome.  I did enjoy your newsletter.  I've been hearing and reading nothing but "Ant this" and "NAnt that" for a while now, but haven't had a moment to stop and check it out.  Your newsletter was just the intro I needed.  I look forward to the next one.<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://ewbi.blogs.com/develops/">Eric W. Bachtal</a> at October 21, 2003 11:53 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the plug John ;-).  But you should know that Reader will only pull one page at a time, so when you go to another page it pulls it dynamically so the roundtrip issue you brought up only applies if a reader right-clicks on the pdf link and downloads it to their hd before opening.<br />
+</p>
+<span class="comments-post">Posted by Jon Flanders at October 27, 2003 05:58 PM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="entry_id" value="356" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="button" onclick="window.close()" value="&nbsp;Cancel&nbsp;" />
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+
+</div>
+
+</body>
+</html>

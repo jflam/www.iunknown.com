@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Does anyone use Newzcrawler?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Does anyone use Newzcrawler?</div>
+
+
+<div class="comments-body">
+<p>I've been using it for about 3 months.  It's reasonable.  I was disappointed with the blogging client when I tried it so I implemented my own solution.  I think they have added support for MetaWeblog API since I last played with it.  You can always try it for 30 days, although it has some fairly annoying limitations in trial mode - it will only store 7 days worth of posts.  This causes old posts to show up as new on each scan.  HTH.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.codingwith.net/weblog">Brian Graf</a> at December 18, 2002 04:05 PM</span>
+</div>
+<div class="comments-body">
+<p>Use it, love it, recommend it! I don't post with it, though. I suppose I should give it another look now that it supports MetaWeblog API.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://dotnetguy.techieswithcats.com/">Brad (The .NET Guy)</a> at December 18, 2002 05:41 PM</span>
+</div>
+<div class="comments-body">
+<p>I like it a lot. I started posting to Radio with it in one of the latest versions and it works quite well for me.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://radio.weblogs.com/0105897/">Andres Aguiar</a> at December 18, 2002 06:19 PM</span>
+</div>
+<div class="comments-body">
+<p>Caveat: I'll rant about three-pane aggregators for a second even though this was about blog clients (I've used it occasionally with MT as a blogging client, but it doesn't work as well as just using the MT interface itself for me). <br />
+I use it and get really angry with it frequently*. But this is how I want to aggregate, it's the real experience I want. So I'm stuck with it for now.<br />
+NetNewsWire is nice too, I commandeered my gf's powerbook and have now since become a closeted OS X user--very pretty, but NNW does the same thing as Newz Crawler*, albeit slightly differently.<br />
+They both do the same dang thing to me, which is have a hard time remembering which posts I have and haven't read. Drives me C-R-A-Z-Y. <br />
+I haven't really reached the point of obsession yet where I figure it out, but it seems fairly random with both, but sometimes it tends to hate certain people's feeds this way--I can chalk that part up to just bad RSS generation, but the random part is almost motivation enough to roll my own.<br />
+Speaking of which, Aggie actually tends to be the most reliably aggregator for me personally, I just don't like my results in a newsletter.<br />
+OK end of aggregator rants, you hit a nerve :P</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.xl8.net">Grant Carpenter</a> at December 18, 2002 06:47 PM</span>
+</div>
+<div class="comments-body">
+<p>i built one but i haven't had much time to finish it lately. it's based on aggie but with a 3 pane ui. it works, there's just some clean up issues to take care of. http://www.slavin.org/code/starfish/setup.msi</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.slavin.org">sean</a> at December 18, 2002 08:16 PM</span>
+</div>
+<div class="comments-body">
+<p>Aggie (http://http://bitworking.org/Aggie.html) is an alternative to newscrawler. Open source, C#, reads opml channel files. </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.cs.cornell.edu/vogels/weblog">Werner Vogels</a> at December 18, 2002 09:22 PM</span>
+</div>
+<div class="comments-body">
+<p>Actually, I use Aggie right now. I just imported my opml file into Newzcrawler. So far I like the UI of Newzcrawler better. I like to be able to read posts one at a time and mark off what I've read, as opposed to Aggie's newspaper format.<br />
+I like Newzcrawler's RSS auto-discovery feature too.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 18, 2002 09:35 PM</span>
+</div>
+<div class="comments-body">
+<p>I'll check it out, Sean, much obliged.<br />
+I like Newz Crawler, its pretty much what I want in a user experience. For whatever reason when I update incoming channels, it gets new items, and it may or may not mark 1 to N previously read items as unread. Which is better than NetNewsWire--that one would just lose the ability to persist read/unread for me somewhat repeatably.<br />
+Someone blogged that you had a write up on GSLgen, John,  I was going through your publications page and chuckled to find that you wrote Developer's Handbook (great book, great co-authors from another world, good stuff.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.xl8.net">Grant Carpenter</a> at December 18, 2002 10:15 PM</span>
+</div>
+<div class="comments-body">
+<p>Hey, thanks! I miss that other world ... Maybe I'll find a reason to go back and speak at the Borland Developers Conference now that they're writing a .NET version of Delphi. I spoke for 5 straight years there from 95 to 99, and I miss that community.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 19, 2002 12:51 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

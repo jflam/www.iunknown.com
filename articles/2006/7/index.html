@@ -1,0 +1,894 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/LessIsBetter" />
+  <script src="/javascripts/cookies.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1156231406" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/application.css?1164503575" media="all" rel="Stylesheet" type="text/css" />
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Less is better</a></span></h1>
+    <h2>John Lam on software</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <div class="atomentry" id="article-213">
+  <h2 class="title">
+    <a href="/articles/2006/07/30/portland-bridges">Portland Bridges</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-30T21:54:00-07:00"><span class="typo_date" title="Mon, 31 Jul 2006 04:54:00 GMT">Mon, 31 Jul 2006 04:54:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I&#8217;m in Redmond now, getting ready for the <a href="http://www.langnetsymposium.com/">Lang .net symposium</a> tomorrow. The weather on this Sunday is strikingly different than the weather last Sunday in Portland when I shot this image (it was &gt; 100F in Portland):</p>
+
+
+	<p><img src="http://static.flickr.com/74/202379747_0d28d5862d.jpg?v=0" alt="" /></p>
+
+
+	<p>I spent the day hanging out with <a href="http://blog.zenspider.com/">Ryan Davis</a> and <a href="http://blog.segment7.net/">Eric Hodel</a> talking about all things Ruby. We got two-thirds of the way through the problem of getting Ruby Inline to work with VC++ 2005. We&#8217;ve narrowed down the cause of the problem to application manifests not being embedded in the generated <span class="caps">DLL</span>, so I&#8217;m pretty confident that we&#8217;ll solve that problem sometime tomorrow with some help from friends at <span class="caps">MSFT</span>.</p>
+
+
+	<p><strong>Update:</strong> I just figured out the problem thanks to <a href="http://www.grimes.demon.co.uk/workshops/fusWSThirteen.htm">Richard Grimes&#8217; most excellent tutorial on fusion</a>. Apparently you have to now run <code>mt.exe</code> post-compile to correctly embed the application manifest in <em>unmanaged</em> DLLs. Well now I know :)</p>
+
+
+	<p>I spent quite a lot of time hacking on RubyCLR on the train ride up here and last night / this morning. I&#8217;ll post about some new code that will let folks workaround almost any missing feature that RubyCLR has &#8211; it&#8217;s still not optimal, but at least it shouldn&#8217;t block you from getting things done. And after all, RubyCLR is <strong>all</strong> about getting things done :)</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/30/portland-bridges#comments">no comments</a>,
+      <a href="/articles/2006/07/30/portland-bridges" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/213/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/213/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/30/portland-bridges">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/30/portland-bridges;title=Portland Bridges">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-212">
+  <h2 class="title">
+    <a href="/articles/2006/07/30/open-source-the-microsoft-communiy-and-funding">Open Source, the Microsoft Community and Funding</a> 
+    <span class="comment_count">9</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-30T12:07:00-07:00"><span class="typo_date" title="Sun, 30 Jul 2006 19:07:00 GMT">Sun, 30 Jul 2006 19:07:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Scott Hanselman just <a href="http://www.hanselman.com/blog/SandcastleMicrosoftCTPOfAHelpCHMFileGeneratorOnTheTailsOfTheDeathOfNDoc.aspx">blogged about the demise of the NDoc project</a>. I&#8217;m amazed by the amount of sense of entitlement exhibited by people in at least this one instance. Kevin Downs, who was apparently the sole contributor to NDoc <em>was being threatened by some anonymous coward</em> for not working hard enough to release a .NET 2.0 compliant version quickly enough!</p>
+
+
+	<p>Now I&#8217;d like to think that this is an edge case. There weren&#8217;t any sessions this year at <span class="caps">OSCON</span> on how to survive, evade, resist and escape :) However, this points to a larger problem that is discussed often in the open source community: how do I feed my family while working on open source projects?</p>
+
+
+	<p>Some projects lend themselves naturally to small user contributions that can be combined into a large product (e.g. an operating system or NAntContrib). However, there are other projects that require the focused attention of committers who pretty much do this stuff full time (e.g. an operating system, a virtual machine, or IronPython). Note that the same project can span the spectrum.</p>
+
+
+	<p>Now how should companies who are at the heart of that software ecosystem support the efforts of the open source community? How should a Sun, or a Microsoft or an <span class="caps">IBM</span> support these efforts?</p>
+
+
+	<p>In the operating system arena, it&#8217;s well known that most of the core contributors are on staff at large companies, and it is their <em>job</em> to work on open source. That works well for projects that have a broad strategic impact like an OS. It also works for technologies like Iron<a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython">Python</a>, or the recently acquired <a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=Phalanger" title="Phalanger"><span class="caps">PHP</span>.NET project</a> whose job it is to support the Microsoft platform.</p>
+
+
+	<p>However, what should we do for smaller projects like RubyCLR and the next generation <span class="caps">IDE</span> experience that I&#8217;m building? I have the gracious support of my business partners at <a href="http://www.objectsharp.com">ObjectSharp</a>, but that&#8217;s about it. If I really wanted to do this project properly, it&#8217;s probably in the neighborhood of 3-4 person years worth of effort. That&#8217;s asking a lot of a small company like ObjectSharp especially since the time that would be required is partner time (mine).</p>
+
+
+	<p>This week, I&#8217;m at Microsoft for the <a href="http://www.langnetsymposium.com/">Lang.Net symposium</a>. I&#8217;m also meeting with a variety of folks to see if I can figure out how to fund projects like RubyCLR. Now obviously, I&#8217;m doing this in my own enlightened self-interest, but I&#8217;d also like to bring up the more general problem of funding open source projects in the Microsoft community.</p>
+
+
+	<p>Scott already floated the idea of using the existing <a href="http://www.ineta.org/"><span class="caps">INETA</span></a> infrastructure to distribute grants. This idea is promising, but only works for relatively small contributions, much like the <a href="http://code.google.com/summerofcode.html">Google Summer of Code</a> projects for students. But perhaps it could work for larger investments, but then you have the problem of trying to pick the right projects.</p>
+
+
+	<p>Please leave a comment or send email to jlam at this domain if you have ideas that I can bring up during our meetings. That would help out <strong>a lot</strong>.</p>
+
+
+	<p>Thanks.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/30/open-source-the-microsoft-communiy-and-funding#comments">9 comments</a>,
+      <a href="/articles/2006/07/30/open-source-the-microsoft-communiy-and-funding" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/212/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/212/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/30/open-source-the-microsoft-communiy-and-funding">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/30/open-source-the-microsoft-communiy-and-funding;title=Open Source, the Microsoft Community and Funding">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-211">
+  <h2 class="title">
+    <a href="/articles/2006/07/30/what-some-other-people-are-doing-with-rubyclr">What some other people are doing with RubyCLR</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-30T00:46:00-07:00"><span class="typo_date" title="Sun, 30 Jul 2006 07:46:00 GMT">Sun, 30 Jul 2006 07:46:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Charlie Poole, the creator of <a href="http://www.nunit.org">NUnit</a> has started to <a href="http://nunit.com/blogs/?p=30">blog about his adventures with generating flexible NUnit test reports using RubyCLR</a>.</p>
+
+
+	<p>Ceasar Larry is <a href="http://ca.utio.us/articles/2006/07/28/rails-rubyclr-sqlclientadapter">writing a SqlClient adapter for ActiveRecord</a>, which he as already seen a 4X perf improvement over the <span class="caps">COM</span>-based <span class="caps">DBI</span> adapter.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/30/what-some-other-people-are-doing-with-rubyclr#comments">no comments</a>,
+      <a href="/articles/2006/07/30/what-some-other-people-are-doing-with-rubyclr" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/211/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/211/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/30/what-some-other-people-are-doing-with-rubyclr">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/30/what-some-other-people-are-doing-with-rubyclr;title=What some other people are doing with RubyCLR">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-210">
+  <h2 class="title">
+    <a href="/articles/2006/07/28/linus-torvalds-on-visual-basic">Linus Torvalds on Visual Basic</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-28T23:24:00-07:00"><span class="typo_date" title="Sat, 29 Jul 2006 06:24:00 GMT">Sat, 29 Jul 2006 06:24:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Jaroslaw Rzeszotko wrote a number of &#8216;great programmers&#8217; to see if they could answer a number of questions about what it takes to become a great programmer. He then <a href="http://sztywny.titaniumhosting.com/2006/07/23/stiff-asks-great-programmers-answers/">blogged the answers</a>.</p>
+
+
+	<p>Linus, said this in his answer to the question: <em>What do you think will be the next big thing in computer programming? X-oriented programming, y language, quantum computers, what?</em></p>
+
+
+	<blockquote>
+		<p>For example, I personally believe that &#8220;Visual Basic&#8221; did more for programming than &#8220;Object-Oriented Languages&#8221; did. Yet people laugh at VB and say it&#8217;s a bad language, and they&#8217;ve been talking about OO languages for decades.</p>
+	</blockquote>
+
+
+	<blockquote>
+		<p>And no, Visual Basic wasn&#8217;t a great language, but I think the easy DB interfaces in VB were fundmantally more important than object orientation is, for example.</p>
+	</blockquote>
+
+
+	<p>Read the rest of his answer to get the context.</p>
+
+
+	<p>Perhaps this will give a little more ammunition to the VB team to return VB to its roots :)</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/28/linus-torvalds-on-visual-basic#comments">2 comments</a>,
+      <a href="/articles/2006/07/28/linus-torvalds-on-visual-basic" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/210/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/210/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/28/linus-torvalds-on-visual-basic">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/28/linus-torvalds-on-visual-basic;title=Linus Torvalds on Visual Basic">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-209">
+  <h2 class="title">
+    <a href="/articles/2006/07/28/oscon-day-5">OSCON Day 5</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-28T20:27:00-07:00"><span class="typo_date" title="Sat, 29 Jul 2006 03:27:00 GMT">Sat, 29 Jul 2006 03:27:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here are some more photos from the last day of <span class="caps">OSCON</span>.</p>
+
+
+	<p>Dave Bradley was one of the original engineers who worked on the <span class="caps">IBM PC</span>. He invented <span class="caps">CTRL</span>-ALT-DEL, and showed us the 8088 assembly language listing for that code!</p>
+
+
+	<p><img src="http://static.flickr.com/63/200628329_e5381b9275.jpg?v=0" alt="" /></p>
+
+
+	<p><img src="http://static.flickr.com/63/200628566_75bc3dd78e.jpg?v=0" alt="" /></p>
+
+
+	<p><a href="http://media.org/carl.html">Carl Malamud</a> gave an inspiring presentation on how to hack the government (politically, that is). He talked about how to use the lens of the blogosphere to shine the spotlight on politicians to inprove transparency in the political process. Lots of things to think about, even for this Canadian.</p>
+
+
+	<p><img src="http://static.flickr.com/76/200628372_df5b6215de.jpg?v=0" alt="" /></p>
+
+
+	<p><img src="http://static.flickr.com/61/200628528_2783c30721.jpg?v=0" alt="" /></p>
+
+
+	<p>The morning keynotes closed with Damian Conway&#8217;s brilliant presentation:</p>
+
+
+	<p><img src="http://static.flickr.com/67/200628477_3455d951cf.jpg?v=0" alt="" /></p>
+
+
+	<p>It was a presentation about c<strong>x*ap:</p>
+
+
+	<p><img src="http://static.flickr.com/68/200438832_db81390502.jpg" alt="" /></p>
+
+
+	<p>The wit, puns, and evil genius that he exhibited has to be seen in person. He made me see the kittens!</p>
+
+
+	<p><img src="http://static.flickr.com/54/200437102_45da3696d2.jpg" alt="" /></p>
+
+
+	<p>It was a lot of fun sitting in on Alex Martelli&#8217;s excellent session on how to be a technical manager. His focus on simplicity makes me wonder if Google spreadsheet was invented to help Google technical managers do their job!</p>
+
+
+	<p><img src="http://static.flickr.com/70/200628605_f969598673.jpg?v=0" alt="" /></p>
+
+
+	<p></strong>Update:* the shots of Damian&#8217;s slides are courtesy of <a href="http://www.flickr.com/photos/ugocei/">Ugo Cei</a></p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/28/oscon-day-5#comments">no comments</a>,
+      <a href="/articles/2006/07/28/oscon-day-5" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/209/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/209/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/28/oscon-day-5">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/28/oscon-day-5;title=OSCON Day 5">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-208">
+  <h2 class="title">
+    <a href="/articles/2006/07/28/photos-from-oscon-day-4">Photos from OSCON Day 4</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-28T02:59:00-07:00"><span class="typo_date" title="Fri, 28 Jul 2006 09:59:00 GMT">Fri, 28 Jul 2006 09:59:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here are some photos that I shot today at <span class="caps">OSCON</span>:</p>
+
+
+	<p>Jim Hugunin and Martin Maly at the IronPython talk.</p>
+
+
+	<p><img src="http://static.flickr.com/75/200127054_608efb455c.jpg?v=0" alt="" /></p>
+
+
+	<p>Neal Ford at the Ruby <span class="caps">DSL</span> talk.</p>
+
+
+	<p><img src="http://static.flickr.com/71/200134602_ee9e113778.jpg?v=0" alt="" /></p>
+
+
+	<p>Guido van Rossum at his Python 3000 talk.</p>
+
+
+	<p><img src="http://static.flickr.com/67/200126290_2798330e61.jpg?v=0" alt="" /></p>
+
+
+	<p>Charlie Poole coding away using RubyCLR to talk to his beloved NUnit.</p>
+
+
+	<p><img src="http://static.flickr.com/59/200126184_edd0e8fe2a.jpg?v=0" alt="" /></p>
+
+
+	<p>Avi Bryant was a lot of fun to shoot. Speakers take note: being animated makes it so much easier to make you look good!</p>
+
+
+	<p><img src="http://static.flickr.com/59/200126241_c6f9a59ef4.jpg?v=0" alt="" /></p>
+
+
+	<p><img src="http://static.flickr.com/66/200126134_adf02f6f00.jpg?v=0" alt="" /></p>
+
+
+	<p><img src="http://static.flickr.com/57/200126108_49a30045fe.jpg?v=0" alt="" /></p>
+
+
+	<p><img src="http://static.flickr.com/67/200126067_a2fc0a9fec.jpg?v=0" alt="" /></p>
+
+
+	<p>An attendee at Avi&#8217;s talk.</p>
+
+
+	<p><img src="http://static.flickr.com/70/200126016_b192b9ca1a.jpg?v=0" alt="" /></p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/28/photos-from-oscon-day-4#comments">2 comments</a>,
+      <a href="/articles/2006/07/28/photos-from-oscon-day-4" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/208/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/208/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/28/photos-from-oscon-day-4">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/28/photos-from-oscon-day-4;title=Photos from OSCON Day 4">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-207">
+  <h2 class="title">
+    <a href="/articles/2006/07/27/oscon-day-3-and-a-better-ruby-ide">OSCON Day 3 and a Better Ruby IDE</a> 
+    <span class="comment_count">11</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-27T03:38:00-07:00"><span class="typo_date" title="Thu, 27 Jul 2006 10:38:00 GMT">Thu, 27 Jul 2006 10:38:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Today was a long, but tremendously fun day at <span class="caps">OSCON</span>.</p>
+
+
+	<p>I did my RubyCLR talk at <span class="caps">OSCON</span> today. It was a fun talk. While all of the talks at <span class="caps">OSCON</span> are only 45 minutes long, I was able to squeeze nearly everything that I wanted to talk about into the session. I was also able to <em>finally</em> show off the thing that I&#8217;ve been working on: a better <span class="caps">IDE</span> for Ruby:</p>
+
+
+	<p><img src="http://static.flickr.com/63/199410757_734ea0b3cc.jpg?v=0" alt="" /></p>
+
+
+	<p>This is an interactive Ruby session a&#8217;la irb, but with the beauty of the Calibri and Consolas fonts that were rendered using this <span class="caps">WPF</span> application. The <span class="caps">IDE</span> is all black, and full screen. No title bar, no status bar, no scroll bars. What you see here is exactly what you get.</p>
+
+
+	<p>I have a crude version of IntelliSense working, syntax coloring of code that you have added, <strong>and</strong> the ability to retrieve online docs by typing in a this:</p>
+
+
+	<p><code>/recipe 2.7</code></p>
+
+
+	<p>This pulled out Recipe 2.7 from Lucas Carlson&#8217;s most excellent <a href="http://www.amazon.com/gp/product/0596523696/sr=8-1/qid=1153986345/ref=pd_bbs_1/104-1384278-3741548?ie=UTF8">Ruby Cookbook</a> and displayed it <em>inline</em> with the rest of the code.</p>
+
+
+	<p>The idea here is to bring the online help directly into your coding environment without forcing a context switch into an overlapping window.</p>
+
+
+	<p>I have experimental integration with the <a href="http://services.msdn.microsoft.com/ContentServices/ContentService.asmx"><span class="caps">MSDN</span> Documentation Web Service</a> as well. All you need to type is:</p>
+
+
+	<p><code>/docs System.IO.File</code></p>
+
+
+	<p>All in &lt; 300 lines of Ruby code. Not bad, huh?</p>
+
+
+	<p><a href="http://blogs.msdn.com/hugunin/">Jim Hugunin</a> of <a href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython">IronPython</a> fame was in my talk, and we had a fun chat afterwards about the difficulties in getting dynamic languages to interop with the statically typed languages on the <span class="caps">CLR</span>. While we were chatting, <a href="http://www.python.org/~guido/">Guido van Rossum</a> came up to chat with Jim, and it was an honor to be introduced to one of the really great innovators in the open source space.</p>
+
+
+	<p>That&#8217;s one of the fun things about being at <span class="caps">OSCON</span> &#8211; a lot of the folks who <em>created</em> the technologies were present and interacting under the umbrella of <span class="caps">OSCON</span>. These folks would probably never all be under the same roof without something like <span class="caps">OSCON</span> to bring them all together. And that&#8217;s a really good thing.</p>
+
+
+	<p>In the evening, the Ruby folk organized <a href="http://oscamp.org/FOSCON"><span class="caps">FOSCON</span></a>, and I had a chance to hang out with <a href="http://www.jroller.com/page/obie">Obie Fernandez</a>, my new arch nemesis <a href="http://reductivelabs.com">Luke Kanies</a>, <a href="http://blog.zenspider.com/">Ryan Davis</a>, <a href="http://drbrain.livejournal.com/">Eric Hodel</a>, and <a href="http://tech.rufy.com/">Lucas Carlson</a>.</p>
+
+
+	<p>Lucas gave me some <strong>excellent</strong> ideas about how to make my new <span class="caps">IDE</span> idea suck less, and showed me some really sweet code that lets you do cross-domain <span class="caps">AJAX</span> calls. I know that <a href="http://blogs.msdn.com/dthorpe/">Danny Thorpe</a> is working on stuff in the same area. I think that client-side mash-ups will be one of the next big things to happen in the web world.</p>
+
+
+	<p>At the end of the evening, I found myself at a Sun Microsystems party (and I have the t-shirt to prove it!) Met lots of new people, and had a great time.</p>
+
+
+	<p>I have lots more things to blog about, but I&#8217;d better call it a night.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/27/oscon-day-3-and-a-better-ruby-ide#comments">11 comments</a>,
+      <a href="/articles/2006/07/27/oscon-day-3-and-a-better-ruby-ide" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/207/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/207/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/27/oscon-day-3-and-a-better-ruby-ide">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/27/oscon-day-3-and-a-better-ruby-ide;title=OSCON Day 3 and a Better Ruby IDE">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-206">
+  <h2 class="title">
+    <a href="/articles/2006/07/26/oscon-day-2">OSCON Day 2</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-26T03:10:00-07:00"><span class="typo_date" title="Wed, 26 Jul 2006 10:10:00 GMT">Wed, 26 Jul 2006 10:10:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I went to the Haskell tutorial today. I had high hopes for the tutorial, but was disappointed by the execution of the talk. Too much time (30 minutes!) was spent motivating why you should learn Haskell (hello &#8211; we were all in the room, so we were presumably motivated enough to be there). As a result, the speaker ran out of time and decided to step on the gas for the hard topics: Monads and Monadic I/O (about 7 minutes, I kid you not). This is not the stuff that you should be glossing over in an attempt to cover all of the materials.</p>
+
+
+	<p>I had an opportunity to add some more features to the cool new thing that I&#8217;ll be showing off at my RubyCLR talk tomorrow. I privately showed the work in progress to some folks, and their feedback was pretty positive. It was great to run into <a href="http://www.relevancellc.com/main/about">Stu Halloway</a> again. It&#8217;s been a long time since our days at <a href="http://www.develop.com">DevelopMentor</a> together.</p>
+
+
+	<p>The evening events were more interesting. <a href="http://www.wall.org/~larry/">Larry Wall&#8217;s</a> State of the Onion address was steeped in metaphor and frankly not all that interesting to this non-Perl guy. Fortunately, <a href="http://headrush.typepad.com/">Kathy Sierra</a> stepped up to the plate and gave a wonderful talk on Creating Passionate Users.</p>
+
+
+	<p><img src="http://static.flickr.com/75/199022084_bd25cc1521.jpg?v=0" alt="" /></p>
+
+
+	<p>And to finish things off, the incomparable <a href="http://damian.conway.org/About_us//Bio_formal.html">Damian Conway</a> gave us a multimedia reading of &#8220;The DaVinci Codebase&#8221;. This was a great performance, and a wonderful way to cap off another interesting day at <span class="caps">OSCON</span>.</p>
+
+
+	<p><img src="http://static.flickr.com/60/199022661_32e576db0f.jpg?v=0" alt="" /></p>
+
+
+	<p><strong>Update:</strong> Here&#8217;s a photo of Damian during his reading, shot by the incomparable <a href="http://duncandavidson.com/">James Duncan Davidson</a>.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/26/oscon-day-2#comments">no comments</a>,
+      <a href="/articles/2006/07/26/oscon-day-2" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/206/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/206/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/26/oscon-day-2">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/26/oscon-day-2;title=OSCON Day 2">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-205">
+  <h2 class="title">
+    <a href="/articles/2006/07/25/first-24-hours-at-oscon">First 24 hours at OSCON</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-25T02:12:00-07:00"><span class="typo_date" title="Tue, 25 Jul 2006 09:12:00 GMT">Tue, 25 Jul 2006 09:12:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>So far it&#8217;s been a fun 24 hours at <span class="caps">OSCON</span> here in sunny Portland.</p>
+
+
+	<p>A couple of observations: the Open Source crowd is quite a bit different from the typical Tech Ed / <span class="caps">PDC</span> / WinDev / DevConnections crowd. Most of the people who I&#8217;ve met have created a significant project and, more important, <em>are passionate</em> about talking about their projects. It&#8217;s clearly not &#8220;just&#8221; a job for them. They also <em>look</em> different from the typical dev that I run across in my day job :)</p>
+
+
+	<p>The other big difference is the fact that I&#8217;m learning about things that I know very little about &#8211; and that&#8217;s a good change of pace (much like my experience at <a href="http://www.iunknown.com/articles/2005/10/25/a-life-changing-week"><span class="caps">OOPSLA</span></a> from last year). I went to Damian Conway&#8217;s session about <a href="http://www.vim.org">Vim</a>, and it sparked a lot of new ideas about how to make software tools that suck less.</p>
+
+
+	<p>Tomorrow morning&#8217;s tutorial will be Haskell. From zero to monadic I/O in 3 hours. We&#8217;ll see if I make it :)</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/25/first-24-hours-at-oscon#comments">no comments</a>,
+      <a href="/articles/2006/07/25/first-24-hours-at-oscon" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/205/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/205/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/25/first-24-hours-at-oscon">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/25/first-24-hours-at-oscon;title=First 24 hours at OSCON">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-204">
+  <h2 class="title">
+    <a href="/articles/2006/07/24/heard-at-the-ruby-guidebook-at-oscon">Heard at the Ruby Guidebook at OSCON</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-07-24T13:57:00-07:00"><span class="typo_date" title="Mon, 24 Jul 2006 20:57:00 GMT">Mon, 24 Jul 2006 20:57:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>A fun quote from Dave Thomas:</p>
+
+
+	<blockquote>
+		<p>&#8220;Java is the blunt scissors of programming. It&#8217;s what we give to children to program.&#8221;</p>
+	</blockquote>
+
+
+	<p>Here&#8217;s Dave from the <a href="http://www.flickr.com/search/?q=osconwalkabout&#38;w=all"><span class="caps">OSCON</span> photography walkabout</a> last night:</p>
+
+
+	<p><img src="http://static.flickr.com/76/197100146_407872aeb3.jpg?v=0" alt="" /></p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/07/24/heard-at-the-ruby-guidebook-at-oscon#comments">no comments</a>,
+      <a href="/articles/2006/07/24/heard-at-the-ruby-guidebook-at-oscon" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/204/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/204/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/07/24/heard-at-the-ruby-guidebook-at-oscon">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/07/24/heard-at-the-ruby-guidebook-at-oscon;title=Heard at the Ruby Guidebook at OSCON">reddit</a>
+    </li>
+  </ul>
+</div>
+
+
+<p class="pagination">Older posts: 1 <a href="/articles/2006/7/page/2">2</a> <a href="/articles/2006/7/page/3">3</a> </p>
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- search -->
+      <div id="search" class="search">
+	<form action="/articles/search" id="sform" method="get">
+	  <p><input type="text" id="q" name="q" value="" /></p>
+	</form>
+	
+	<div id="loading" class="loading" style="display:none;">Searching...</div>
+	<div id="results" class="results"></div>
+  <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('loading')}, onLoading:function(request){Element.show('loading')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script>
+</div>
+
+
+      <!-- sidebar components -->
+      
+      
+<div class="sidebar-node">
+  <h3>John Lam</h3>
+<a href="/pages/about_me"><img src="http://static.flickr.com/90/222479189_d4e19a202c_t.jpg" width="67" height="100" alt="Self portrait" /></a>
+
+<p>I am a Program Manager on the Common Language Runtime team at Microsoft. I write .NET and Ruby code on a Mac. I'm the creator of <a href="http://www.rubyclr.com">RubyCLR</a>, a high performance bridge between Ruby and .NET. <a href="/pages/about_me">More ...</a>
+
+<table>
+<tr>
+  <td>email:</td>
+  <td>jlam@iunknown.com</td>
+</tr>
+<tr>
+  <td>phone:</td>
+  <td>425 698 9332</td>
+</tr>
+<tr>
+  <td>msn:</td>
+  <td>drjflam@hotmail.com</td>
+</tr>
+<tr>
+  <td>gtalk:</td>
+  <td>drjflam@gmail.com</td>
+</tr>
+</table>
+<br>
+<h3>Syndicate</h3>
+
+<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="/images/rss.png"/></a>&nbsp;
+<a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+<br>
+<form style="padding:3px;text-align:left;" action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Subscribe by email:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=180551" name="url"/><input type="hidden" value="Less is better" name="title"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a></p></form>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+    <div id="delicious">
+    <h3><a href="http://del.icio.us/drjflam">del.icio.us/drjflam</a></h3>
+            <ul>
+      
+      <li>
+        <a href="http://www.people.iup.edu/pnwm/comparison.gif" title="Fun comparison of fictional starships from different SF shows.">Starship size comparison chart</a>
+              </li>
+      
+      <li>
+        <a href="http://www.teach12.com/" title="Bill Gates listens to the lectures from this company - available as downloads as well.">The Teaching Company</a>
+              </li>
+      
+      <li>
+        <a href="http://www.speedtest.net/" title="Found this via StumbleUpon">Speedtest.net - The Global Broadband Speed Test</a>
+              </li>
+      
+      <li>
+        <a href="http://wvs.topleftpixel.com/flash/cntower_timelapse.swf" title="Move your mouse around this picture and see it change.">Downtown Toronto Photo</a>
+              </li>
+      
+      <li>
+        <a href="ftp://gatekeeper.dec.com/pub/DEC/WRL/research-reports/WRL-TR-95.7.pdf" title="">Shared Memory Consistency Models</a>
+              </li>
+      
+      <li>
+        <a href="http://discuss.develop.com/archives/wa.exe?A2=ind0203B&amp;L=DOTNET&amp;P=R375" title="An excellent discussion on the motivation for and implementation of the CLR memory model.">Vance Morrison on CLR Memory Model</a>
+              </li>
+      
+      <li>
+        <a href="http://slideshare.net/" title="A YouTube like service for sharing slides from talks.">SlideShare</a>
+              </li>
+      
+      <li>
+        <a href="http://research.microsoft.com/manuvir/papers/instruction_level_tracing_VEE06.pdf" title="This is MSR's Nirvana framework for dynamically injecting tracing code into x86 binaries at runtime. It lets them travel forwards and backwards in execution flow ('time travel debugging').">Framework for Instruction-level Tracing and Analysis of Program Executions</a>
+              </li>
+      
+      <li>
+        <a href="http://www.macgeekery.com/hacks/software/video/how_to_view_tivo_recordings_on_your_mac_or_ipod" title="Looking forward to setting this up ...">How to View TiVo Recordings on Your Mac or iPod</a>
+              </li>
+      
+      <li>
+        <a href="http://uneasysilence.com/archive/2006/12/8602/" title="Wow - this is really nice seamless integration - Windows apps appearing to run as 'top-level' windows on Mac OS X desktop.">Parallels running IE7 &amp; Firefox on Mac OS X desktop!</a>
+              </li>
+      
+      <li>
+        <a href="http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2006T13" title="Google recently released their collection of 1-grams (single word frequency) to 5-grams (5 word frequency) as a 24GB compressed gzip'd file.">Google's collection of 1-5 grams</a>
+              </li>
+          </ul>
+      </div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>My Photos</h3>
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge_new.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">what is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge_new.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2007/2">February 2007</a>
+      <em>(1)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/1">January 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/12">December 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/11">November 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/10">October 2006</a>
+      <em>(8)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/9">September 2006</a>
+      <em>(12)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/8">August 2006</a>
+      <em>(39)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/7">July 2006</a>
+      <em>(29)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/6">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/5">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/4">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/3">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/2">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/1">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(6)</em>
+    </li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Tags</h3>
+<p style="overflow:hidden">
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/barcampearthtoronto">BarCampEarthToronto</a></span>
+<span style="font-size:129.87012987013%"><a href="/articles/tag/dynamiclanguages">DynamicLanguages</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/ironpython">IronPython</a></span>
+<span style="font-size:103.896103896104%"><a href="/articles/tag/life">Life</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/mac">Mac</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/marketing">Marketing</a></span>
+<span style="font-size:77.9220779220779%"><a href="/articles/tag/microsoft">Microsoft</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/parenting">Parenting</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/photography">Photography</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/platforms">Platforms</a></span>
+<span style="font-size:200%"><a href="/articles/tag/props">Props</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/python">Python</a></span>
+<span style="font-size:200%"><a href="/articles/tag/ruby">Ruby</a></span>
+<span style="font-size:200%"><a href="/articles/tag/rubyclr">RubyCLR</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/rubyconf">RubyConf</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/secondlife">SecondLife</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/simplicity">simplicity</a></span>
+<span style="font-size:200%"><a href="/articles/tag/thoughts">Thoughts</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/vim">Vim</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/workspaces">workspaces</a></span>
+</p>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(20)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(58)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(148)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+  
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">Less is better</a></p>
+    <ul>
+      <li>powered by <a href="http://typosphere.org">typo</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

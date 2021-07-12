@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Intentional Programming</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000147.html" title="Photos from Mt. Rainier" />
+
+<link rel="next" href="http://www.iunknown.com/000149.html" title="Flash" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000147.html">&laquo; Photos from Mt. Rainier</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000149.html">Flash &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">September 19, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Intentional Programming</h3>
+
+<p><P>The recent announcement of <A href="http://www.edge.org/digerati/simonyi/">Charles Simonyi</A> founding <A href="http://www.intentionalsoftware.com/corporate.html">Intentional Software</A> with <A href="http://www.cs.ubc.ca/~gregor/">Gregor Kiczales</A> is not that big of a surprise. Here's the facts: Microsoft killed the IP project at MSR, the two founders are both leaders in their respective (related) fields, and one of them is also capable of self-funding virtually any kind of start-up.</P><br />
+<P>I've had the privilege of meeting some folks in the IP community, as well as the AOP community. I was very caught up in the AOP movement recently, and was quite convinced that it had a strong chance of being "the next big thing" in software development. I also had a chance to view Microsoft's famous "IP video", which is an amazingly well-produced documentary of what IP represented circa 2001.</P><br />
+<P>Once I had a chance to calm down and take a step back from AOP to see the forest for the trees, I had a change of heart. This stuff is just too complicated. For most folks, the challenge will be&nbsp;dealing with cross-aspect interactions and / or creating aspects that are free of side-effects (and as a result being that much less interesting / useful). There are&nbsp;some AOP-like&nbsp;concepts in IP, which is why I suspect that Gregor was&nbsp;brought on board at IP.</P><br />
+<P>I predict that AOP and IP (which has one of the coolest editors / IDE's that I have ever seen) will most likely be a niche market. I hope that the IP editor gets a life at Intentional Software, and that the world gets a chance to see this thing. </P><br />
+<P>Does this change of heart mean that I'm abandoning my AOP work? No, but it means that I'm no longer trying to create a general-purpose AOP tool. The weaving engine continues to live on, but in a vastly different product space than what I had envisioned when I started my CLAW project. More on what that is when&nbsp;we get closer to a beta cycle.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at September 19, 2002 09:07 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="148" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000148.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

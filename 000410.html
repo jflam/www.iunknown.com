@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Using Perl to Syntax Color C#</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000409.html" title="Zestyfind: another reason to not run as local admin" />
+
+<link rel="next" href="http://www.iunknown.com/000411.html" title="The origins of IDisposable" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000410.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/154"
+    dc:title="Using Perl to Syntax Color C#"
+    dc:identifier="http://www.iunknown.com/000410.html"
+    dc:subject="Blog"
+    dc:description="It&apos;s been a long time since I&apos;ve written anything in Perl. Tonight, I wrote a simple C# syntax coloring app, that converts C# source code into syntax-colored HTML. As this is the second Perl program that I can recall ever..."
+    dc:creator="John"
+    dc:date="2004-02-14T02:45:46-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000409.html">&laquo; Zestyfind: another reason to not run as local admin</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000411.html">The origins of IDisposable &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 14, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Using Perl to Syntax Color C#</h3>
+
+<p>It's been a long time since I've written anything in Perl. Tonight, I wrote a simple C# syntax coloring app, that converts C# source code into syntax-colored <span class="caps">HTML. </span>As this is the second Perl program that I can recall ever writing, suggestions for improvements would be more than welcome. Here's the Perl script that makes it all happen:
+
+<pre><code>
+$DoubleQuotedString = qr/
+  (
+    &quot;           # Start of string
+    (           
+      \\.       # Ignore any escaped characters
+    |
+      [^&quot;\\]    # But not &quot;\
+    )*
+    &quot;           # End of string
+  )
+/x;
+#&quot; hack required for syntax hilighting in TextPad.
+
+$CSharpQuotedString = qr/
+  @
+  (
+    &quot;
+    (
+      &quot;&quot;        # Ignore &quot;&quot;
+    |
+      (^&quot;&quot;&quot;)*   # But not &quot;&quot;&quot;
+    )*
+    &quot;
+  )
+/x;
+#&quot;
+
+$EmptyLine = qr/^\s*\Z/;
+
+$CSharpComment = qr/\/\/.*/;
+
+$CSharpKeywords = qr/
+  \b
+  (
+    abstract | as | base | bool | break | byte | case |
+    catch | char | checked | class | const | continue |
+    decimal | default | delegate | do | double | else |
+    enum | event | explicit | extern | false | finally |
+    fixed | float | for | foreach | goto | if | implicit |
+    in | int | interface | internal | is | lock | long |
+    namespace | new | null | object | operator | out |
+    override | partial | params | private | protected |
+    public | readonly | ref | return | sbyte | sealed |
+    short | sizeof | stackalloc | static | string |
+    struct | switch | this | throw | true | try | typeof |
+    uint | ulong | unchecked | unsafe | ushort | using |
+    virtual | volatile | void | where | while | yield
+  )
+  \b
+/x;
+
+print &quot;&lt;html&gt;&lt;head&gt;&lt;link rel='stylesheet' href='csharp.css'&gt;&lt;\/head&gt;&lt;body&gt;&lt;div class='code'&gt;\r\n&quot;;
+
+@file = &lt;&gt;;
+foreach(@file)
+{
+  /(^\s*\/\/.*)/      &amp;&amp; do { print &quot;&lt;div class='comment'&gt;$1&lt;\/div&gt;\r\n&quot;; next; };
+  /\G($EmptyLine)/    &amp;&amp; do { print &quot;&lt;div class='line'&gt;&amp;nbsp;&lt;\/div&gt;\r\n&quot;; next; };
+  
+  print &quot;&lt;div class='line'&gt;&quot;;
+  PARSER:
+  {
+    m/\G($CSharpComment)/gc       &amp;&amp; do { print &quot;&lt;span class='comment'&gt;$1&lt;\/span&gt;&quot;; redo; };
+    m/\G($DoubleQuotedString)/gc  &amp;&amp; do { print &quot;&lt;span class='stringliteral'&gt;$1&lt;\/span&gt;&quot;; redo; };
+    m/\G($CSharpQuotedString)/gc  &amp;&amp; do { print &quot;&lt;span class='stringliteral'&gt;@$1&lt;\/span&gt;&quot;; redo; };
+    m/\G($CSharpKeywords)/gc      &amp;&amp; do { print &quot;&lt;span class='keyword'&gt;$1&lt;\/span&gt;&quot;; redo; };
+
+    m/\G\ /gc                     &amp;&amp; do { print &quot;&amp;nbsp;&quot;; redo; };
+    m/\G(\r)/gc                   &amp;&amp; do { print &quot;\r\n&quot;; redo; };
+    m/\G(.)/gc                    &amp;&amp; do { print $1; redo; };
+    print &quot;&lt;\/div&gt;\r\n&quot;;
+  }
+}
+
+print &quot;&lt;\/div&gt;&lt;\/body&gt;&lt;\/html&gt;\r\n&quot;;
+</code></pre><p>I use an external <span class="caps">CSS</span> stylesheet to define the appropriate formatting for this <span class="caps">HTML</span>:
+
+<pre><code>
+.code
+{
+  font-family: courier new;
+  font-size: 1em;
+}
+
+.comment 
+{
+  color: green;
+}
+
+.keyword
+{
+  color: blue;
+}
+
+.stringliteral
+{
+  color: red;
+}
+</code></pre><p>Here's some sample <span class="caps">HTML</span> that was generated:
+<br>
+<br>
+<div class='code'>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System;</div>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System.Drawing;</div>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System.Drawing.Drawing2D;</div>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System.Drawing.Imaging;</div>
+
+<div class='line'><span class='keyword'>using</span>&nbsp;System.IO;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'><span class='keyword'>namespace</span>&nbsp;Blog</div>
+
+<div class='line'>{</div>
+
+<div class='line'>&nbsp;&nbsp;<span class='keyword'>public</span>&nbsp;<span class='keyword'>sealed</span>&nbsp;<span class='keyword'>class</span>&nbsp;ThumbnailGenerator</div>
+
+<div class='line'>&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>readonly</span>&nbsp;<span class='keyword'>string</span>&nbsp;directory_;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>readonly</span>&nbsp;<span class='keyword'>int</span>&nbsp;width_;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>readonly</span>&nbsp;<span class='keyword'>int</span>&nbsp;height_;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>readonly</span>&nbsp;<span class='keyword'>int</span>&nbsp;border_;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;Bitmap&nbsp;thumbnails_;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;ThumbnailGenerator(<span class='keyword'>string</span>&nbsp;directory,&nbsp;<span class='keyword'>int</span>&nbsp;width,&nbsp;<span class='keyword'>int</span>&nbsp;height,&nbsp;<span class='keyword'>int</span>&nbsp;border)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;directory_&nbsp;&nbsp;=&nbsp;directory;&nbsp;<span class='comment'>// test public</span></div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;width;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;height;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;border;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>public</span>&nbsp;<span class='keyword'>static</span>&nbsp;ThumbnailGenerator&nbsp;CreateThumbnailsFromDirectory(<span class='keyword'>string</span>&nbsp;directory,&nbsp;<span class='keyword'>int</span>&nbsp;width,&nbsp;<span class='keyword'>int</span>&nbsp;height,&nbsp;<span class='keyword'>int</span>&nbsp;border)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;ThumbnailGenerator(directory,&nbsp;width,&nbsp;height,&nbsp;border);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>public</span>&nbsp;<span class='keyword'>string</span>&nbsp;Directory</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get&nbsp;{&nbsp;<span class='keyword'>return</span>&nbsp;directory_;&nbsp;}</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;Bitmap&nbsp;CreateThumbnailBitmap(<span class='keyword'>int</span>&nbsp;thumbnails)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;Bitmap(width_&nbsp;*&nbsp;thumbnails,&nbsp;height_);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;Size&nbsp;GetThumbnailBounds()</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;Size(width_&nbsp;-&nbsp;2&nbsp;*&nbsp;border_,&nbsp;height_&nbsp;-&nbsp;2&nbsp;*&nbsp;border_);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;RectangleF&nbsp;GetLandscapeThumbnailBounds(Bitmap&nbsp;source,&nbsp;<span class='keyword'>int</span>&nbsp;number)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SizeF&nbsp;thumbnailBounds&nbsp;=&nbsp;GetThumbnailBounds();</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;width&nbsp;=&nbsp;thumbnailBounds.Width;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;height&nbsp;=&nbsp;thumbnailBounds.Width&nbsp;/&nbsp;source.Width&nbsp;*&nbsp;source.Height;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;x&nbsp;=&nbsp;number&nbsp;*&nbsp;width_&nbsp;+&nbsp;border_;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;y&nbsp;=&nbsp;border_&nbsp;+&nbsp;(thumbnailBounds.Height&nbsp;-&nbsp;height)&nbsp;/&nbsp;2;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;RectangleF(x,&nbsp;y,&nbsp;width,&nbsp;height);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;RectangleF&nbsp;GetPortraitThumbnailBounds(Bitmap&nbsp;source,&nbsp;<span class='keyword'>int</span>&nbsp;number)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SizeF&nbsp;thumbnailBounds&nbsp;=&nbsp;GetThumbnailBounds();</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;width&nbsp;=&nbsp;thumbnailBounds.Height&nbsp;/&nbsp;source.Height&nbsp;*&nbsp;source.Width;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;height&nbsp;=&nbsp;thumbnailBounds.Height;&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;x&nbsp;=&nbsp;number&nbsp;*&nbsp;width_&nbsp;+&nbsp;border_&nbsp;+&nbsp;(thumbnailBounds.Width&nbsp;-&nbsp;width)&nbsp;/&nbsp;2;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>float</span>&nbsp;y&nbsp;=&nbsp;border_;</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>new</span>&nbsp;RectangleF(x,&nbsp;y,&nbsp;width,&nbsp;height);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>void</span>&nbsp;CreateThumbnail(<span class='keyword'>string</span>&nbsp;path,&nbsp;<span class='keyword'>int</span>&nbsp;number)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>using</span>&nbsp;(Bitmap&nbsp;source&nbsp;=&nbsp;<span class='keyword'>new</span>&nbsp;Bitmap(path))</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RectangleF&nbsp;bounds;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>if</span>&nbsp;(source.Width&nbsp;&gt;&nbsp;source.Height)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bounds&nbsp;=&nbsp;GetLandscapeThumbnailBounds(source,&nbsp;number);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>else</span></div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bounds&nbsp;=&nbsp;GetPortraitThumbnailBounds(source,&nbsp;number);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>using</span>&nbsp;(Graphics&nbsp;g&nbsp;=&nbsp;Graphics.FromImage(thumbnails_))</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.SmoothingMode&nbsp;=&nbsp;SmoothingMode.HighQuality;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.DrawImage(source,&nbsp;bounds);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;ImageCodecInfo&nbsp;GetEncoder(<span class='keyword'>string</span>&nbsp;mimeType)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImageCodecInfo[]&nbsp;encoders&nbsp;=&nbsp;ImageCodecInfo.GetImageDecoders();</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>for</span>&nbsp;(<span class='keyword'>int</span>&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;encoders.Length;&nbsp;++i)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>if</span>&nbsp;(encoders[i].MimeType&nbsp;==&nbsp;mimeType)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;encoders[i];</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>return</span>&nbsp;<span class='keyword'>null</span>;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>private</span>&nbsp;<span class='keyword'>void</span>&nbsp;Save(<span class='keyword'>string</span>&nbsp;path,&nbsp;<span class='keyword'>int</span>&nbsp;quality)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>if</span>&nbsp;(thumbnails_&nbsp;==&nbsp;<span class='keyword'>null</span>)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>throw</span>&nbsp;<span class='keyword'>new</span>&nbsp;Exception(<span class='stringliteral'>"You must resize the public bitmap before you save it."</span>);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImageCodecInfo&nbsp;ci&nbsp;=&nbsp;GetEncoder(<span class='stringliteral'>"image/jpeg"</span>);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>if</span>&nbsp;(ci&nbsp;==&nbsp;<span class='keyword'>null</span>)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>throw</span>&nbsp;<span class='keyword'>new</span>&nbsp;Exception(<span class='stringliteral'>"Failed to get <span class="caps">JPEG</span> image encoder."</span>);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EncoderParameters&nbsp;parameters&nbsp;=&nbsp;<span class='keyword'>new</span>&nbsp;EncoderParameters(1);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameters.Param<sup class="footnote"><a href="http://www.iunknown.com/000410.html#fn0">0</a></sup>&nbsp;=&nbsp;<span class='keyword'>new</span>&nbsp;EncoderParameter(Encoder.Quality,&nbsp;(<span class='keyword'>long</span>)quality);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thumbnails_.Save(path,&nbsp;ci,&nbsp;parameters);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>public</span>&nbsp;<span class='keyword'>void</span>&nbsp;Run(<span class='keyword'>string</span>&nbsp;thumbnailFile,&nbsp;<span class='keyword'>int</span>&nbsp;quality)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;{</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>string</span>[]&nbsp;files&nbsp;=&nbsp;System.IO.Directory.GetFiles(Directory,&nbsp;@<span class='stringliteral'>"*.jpg but "</span><span class='stringliteral'>"this is a test"</span><span class='stringliteral'>""</span>);</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thumbnails_&nbsp;=&nbsp;CreateThumbnailBitmap(files.Length);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>int</span>&nbsp;imageNumber&nbsp;=&nbsp;0;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='keyword'>foreach</span>&nbsp;(<span class='keyword'>string</span>&nbsp;file&nbsp;<span class='keyword'>in</span>&nbsp;files)</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CreateThumbnail(file,&nbsp;imageNumber++);</div>
+
+<div class='line'>&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save(thumbnailFile,&nbsp;quality);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+<div class='line'>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+
+<div class='line'>&nbsp;&nbsp;}</div>
+
+<div class='comment'>//</div>
+
+<div class='comment'>//	class App</div>
+
+<div class='comment'>//	{</div>
+
+<div class='comment'>//		[STAThread]</div>
+
+<div class='comment'>//		static void Main(string[] args)</div>
+
+<div class='comment'>//		{</div>
+
+<div class='comment'>//      Generator generator = Generator.CreateThumbnailsFromDirectory(@"c:\Dev\Blog\Web\Galleries\Barcelona\", 64, 64, 4);</div>
+
+<div class='comment'>//      generator.Run(@"c:\Dev\Blog\Web\Galleries\Barcelona\thumbnails.db", 80);</div>
+
+<div class='comment'>//		}</div>
+
+<div class='comment'>//	}</div>
+
+<div class='line'>}</div>
+
+</div>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 14, 2004 02:45 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=410" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="410" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000410.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>I have a couple suggestions for your regexps:</p>
+
+<p>$DoubleQuotedString = qr/"(\\?.)*?"/;<br />
+$CSharpQuotedString = qr/@"(""|.)*?"/;</p>
+
+<p>I believe the semantics of my  $DoubleQuotedString are the the same as your version.  Both of the above regexps use the reluctant (non-greedy) *? quantifier, which I find make writing regexps easier.</p>
+
+<p>It appears your version of $CSharpQuotedString is incorrect, since it appears you are trying to use ^ for negation of a group: (^"""), but in this context it matches the beginning of the string.  ^ only signifies negation in character sets.</p>
+
+<p>another suggestion is to place the following replacement regexp at the beginning of the foreach loop:</p>
+
+<p>s/ /&amp;nbsp;/g;</p>
+
+<p>this will ensure all spaces are replaced with the &amp;nbsp; entity, which will ensure that comments remain formatted and will also force code to only line break where the source code lines has its line breaks, no matter what size the browser or enclosing html element is.</p>
+
+<p>oh yeah, one other suggestion is to include 'use English;' at the top of your script, and then refer to $MATCH instead of $1 for readability.</p>
+
+<p>good luck with the perl ...</p>
+<span class="comments-post">Posted by: Dave at February 18, 2004 05:51 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

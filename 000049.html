@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: The real cost of dispatching virtual methods using an interface reference</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000048.html" title="An example of Cyber Bricks in action" />
+
+<link rel="next" href="http://www.iunknown.com/000050.html" title="The mysterious cmp ecx, [ecx] instruction" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000048.html">&laquo; An example of Cyber Bricks in action</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000050.html">The mysterious cmp ecx, [ecx] instruction &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 26, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">The real cost of dispatching virtual methods using an interface reference</h3>
+
+<p><P>Spurred on by <A href="http://discuss.develop.com/archives/wa.exe?A2=ind0201d&amp;L=dotnet&amp;F=&amp;S=&amp;P=88634">Nick Wienholt's recent comments</A> on the DOTNET list, I decided to finish off my investigation of the cost of dispatching virtual methods using an object reference vs. dispatching virtual methods using interface references, as illustrated by the following model system:</P><br />
+<P><CODE>interface I1 <BR>{ <BR>&nbsp; void M1(); <BR>} <BR>class C : I1 <BR>{ <BR>&nbsp; public virtual void M1() {} <BR>}</CODE></P><br />
+<P>There are two ways of calling the M1() virtual method in an instance of type C:</P><br />
+<P><CODE>C objRef = new C();<BR>I1 itfRef = (I1)objRef;<BR><BR>objRef.M1();&nbsp;<BR>itfRef.M1();</CODE></P><br />
+<P>As the code above shows, you can call M1() using an object reference, or you can call it using an interface reference. This causes the compiler to generate two completely different x86 instruction sequences:</P><br />
+<P><CODE>// Call using an object reference<BR>mov ecx, esi <BR>mov eax, [ecx] ;get method table<BR>call dword ptr [eax + zzz] ;call via method table</CODE></P><br />
+<P>and</P><br />
+<P><CODE>// Call using an interface reference<BR>mov ecx, esi <BR>mov eax, [ecx] <BR>mov eax, [eax + zzz] ;get global itf table address <BR>mov eax, [eax + zzz] ;get local itf table address <BR>call dword ptr [eax + zzz] ;call via local itf table</CODE></P><br />
+<P>The short answer is that on Pentium III-M CPU's, there is <STRONG>no measurable performance difference</STRONG> between these two instruction sequences[1]. The full story can be <A href="Articles/fog0000000082.html">found here</A>.</P><br />
+<P>If you read the fully story, you will find that you cannot accurately measure the relative dispatch cost using naive benchmarks. Hopefully this story will serve as an exemplar to others who would like to perform such investigations. As always, <A href="mailto:jlam@iunknown.com">please send me feedback</A> about this, or anything else that you read on this site.</P><br />
+<P>[1] If you were to call a virtual method using one of these two techniques inside of a loop (the only case where the overhead imposed by the calling convention would ever be significant), you should see the cost of indirection completely hidden by the CPU. Note that these results would certainly be different if any of the mov instructions caused a cache miss, which would be unlikely after the first pass through the loop.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January 26, 2002 01:43 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="49" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000049.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

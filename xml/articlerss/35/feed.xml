@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Humane interfaces</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Humane interfaces" by jlam</title>
+      <description>&lt;p&gt;After talking to some folks yesterday, I realized that there are a lot of people who likely drive by this blog, take a look at my &lt;code&gt;RbDynamicMethod&lt;/code&gt; project and wonder if I&amp;#8217;m out of my mind. Surely John can&amp;#8217;t be advocating that we all go out and write &lt;span class="caps"&gt;CIL&lt;/span&gt; code using Ruby!&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m really happy to see that at least &lt;a href="http://www.dotnetjunkies.com/WebLog/anoras/archive/2005/12/07/134193.aspx"&gt;Anders Noras&lt;/a&gt; gets the core idea behind why I&amp;#8217;m creating &lt;code&gt;RbDynamicMethod&lt;/code&gt; in the first place: I want to put a more &lt;a href="http://martinfowler.com/bliki/HumaneInterface.html"&gt;humane interface&lt;/a&gt; on top of the &lt;code&gt;DynamicMethod&lt;/code&gt; API that was introduced in .NET 2.0. &lt;code&gt;RbDynamicMethod&lt;/code&gt; will make it much easier for me to define the &lt;span class="caps"&gt;CIL&lt;/span&gt; shims that must be generated on the fly when some Ruby code wants to call some &lt;span class="caps"&gt;CLR&lt;/span&gt; code (and vice-versa).&lt;/p&gt;
+
+
+	&lt;p&gt;I found after writing my first bridge entirely in managed C++ that it was just too difficult to see the &lt;span class="caps"&gt;CIL&lt;/span&gt; through all the code that was required to create it. And when the complexity of the shims went up (to deal with generic method overloading for example), I knew that it was time to hit the reset button.&lt;/p&gt;
+
+
+	&lt;p&gt;I&amp;#8217;m writing my first bits of &lt;span class="caps"&gt;CIL&lt;/span&gt; test code to interact with generic types in the &lt;span class="caps"&gt;CLR&lt;/span&gt; today. It&amp;#8217;s forcing me to change things slightly in &lt;code&gt;RbDynamicMethod&lt;/code&gt;, and I&amp;#8217;ll post the results of those experiments shortly.&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 09 Dec 2005 15:12:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2005/12/09/humane-interfaces"&gt;Humane interfaces&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2005/12/09/humane-interfaces"&gt;Humane interfaces&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

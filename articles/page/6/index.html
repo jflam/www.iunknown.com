@@ -1,0 +1,625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2005/12/15/refactoring-cil">Refactoring CIL</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 15 Dec 2005 22:33:00 GMT">Thu, 15 Dec 2005 22:33:00 GMT</span></p>
+<p>I had a great day today. I had one of those a-ha experiences where you get to benefit from an earlier decision in ways that you did not expect. I started down the path of generating constructor shims using <code>RbDynamicMethod</code>. I completed my first spike yesterday, when I successfully constructed <code>ArrayList</code> objects using <code>RbDynamicMethod</code>.</p>
+
+
+	<p>Today, I wanted to make a slightly more generic constructor shim that would let me call both a default and a single argument constructor: <code>ArrayList()</code> and <code>ArrayList(Int32)</code>. While I was writing this code, I began to feel some <span class="caps">CIL</span> pain (it is, after all <strong>assembly language</strong>). So I did what came naturally: I began to refactor the code.</p>
+
+
+	<p>This reminds me of the talk that I saw this year at <span class="caps">OOPSLA</span> where Ward Cunningham was refactoring assembly language using IntelliJ. In my case, I refactored <span class="caps">CIL</span> using emacs :) Here&#8217;s the end result:</p>
+
+
+<pre><code>
+def initialize(*params)
+  create_ruby_instance_method(self.class, 'initialize') do
+    include     'System.Collections'
+    declare     "#{symbol}", :obj
+    ldarg_0
+    switch      [:zero_param, :one_param]
+    br_s        :end_switch
+    label       :zero_param
+    newobj      '#{symbol}()'
+    stloc_s     :obj
+    br_s        :end_switch
+    label       :one_param
+    ld_rb_param 0, 'Int32'
+    newobj      '#{symbol}(Int32)'
+    stloc_s     :obj
+    label       :end_switch
+    ret_objref  :obj
+  end
+  initialize(*params)
+end
+</code></pre>
+
+	<p>While this is mostly <span class="caps">CIL</span>, it also contains a number of macros and fun Ruby string stuff. The macros that I used are: <code>ld_rb_param</code>, <code>ret_objref</code>. As it turns out, these will be very common code fragments that will be used throughout the bridge. Writing those macros was even easier. Here&#8217;s a sample:</p>
+
+
+<pre><code>
+module RbDynamicMethodHelpers
+  def ld_self
+    ldarg_2
+  end
+
+  def ld_rb_param(index, type)
+    ldarg_1
+    case index
+    when 1:
+      ldc_i4_4
+      add
+    when 2:
+      ldc_i4_8
+      add
+    else
+      ldc_i4    index &lt;&lt; 2
+      add
+    end
+    ldind_i4
+    call      "static Marshal::To#{type}(VALUE)" 
+  end
+
+  def ret_objref(local_variable_name)
+    ld_self
+    ldloc_s  local_variable_name
+    call     'static Marshal::AssignToClassInstance(VALUE, Object)'
+    ret
+  end
+end
+</pre></code>
+
+	<p>It turned out it was a good thing that I left the method declarations as strings, since I could do some simple string manipulation to inject implement syntactic sugar methods such as <code>ld_rb_param</code> (which is actually a very efficient <span class="caps">CIL</span> implementation that is optimized for the common cases).</p>
+
+
+	<p>Oh yeah, how much extra code did I have to add to <code>RbDynamicMethod</code> to enable macros? I changed:</p>
+
+
+	<p><code>object.extend RbDynamicMethod</code></p>
+
+
+	<p>to:</p>
+
+
+	<p><code>object.extend RbDynamicMethod, RbDynamicMethodHelpers</code></p>
+
+
+	<p>Did I mention how much I love Ruby? :)</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/15/refactoring-cil#comments">2 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/14/hello-rubyclr">Hello RubyClr</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 15 Dec 2005 02:57:00 GMT">Thu, 15 Dec 2005 02:57:00 GMT</span></p>
+<p>I spent most of yesterday and today hacking out the first spike of the Ruby rewrite of my original Ruby to <span class="caps">CLR</span> bridge. I wound up adding some additional code to <code>RbDynamicMethod</code> to support some scenarios that I didn&#8217;t envision (nothing like having a &#8216;customer&#8217; to reveal deficiencies in an <span class="caps">API</span>!). I also spent a <strong>lot</strong> of time learning about how objects are constructed in Ruby. Here&#8217;s a very simplified explanation of Ruby&#8217;s object model; for a complete description, see Chapter 24 of Dave Thomas&#8217; excellent <a href="http://www.amazon.com/exec/obidos/ASIN/0974514055/ref=nosim/iunknowncom-20">Programming Ruby</a>.</p>
+
+
+	<p><br>
+<a href="http://www.amazon.com/exec/obidos/ASIN/0974514055/ref=nosim/iunknowncom-20"><img src="http://images.amazon.com/images/P/0974514055.01._AA240_SCLZZZZZZZ_.jpg" alt="" /></a>
+<br></p>
+
+
+	<p>In Ruby, objects are instances of classes. However, classes are also objects in Ruby, which means that a class is an instance of a class called <code>Class</code>. Let&#8217;s consider the following code fragment:</p>
+
+
+<pre><code>
+a = ArrayList.new
+puts a.Count
+</code></pre>
+
+	<p>In the first line, we&#8217;ve created an instance of class <code>ArrayList</code> and assigned it to the variable <code>a</code>. Next, we invoke the <code>Count</code> instance method of the <code>ArrayList</code> object. So far so good, right?</p>
+
+
+	<p>Next let&#8217;s see how Ruby invokes instance methods. Every Ruby object contains a reference to its class object. This is stored in an internal field called <code>klass</code>. When we invoke the <code>Count</code> method on the <code>ArrayList</code> object, Ruby follows the <code>klass</code> reference to find the <code>ArrayList</code> class object. It searches its method table, finds the <code>Count</code> method and invokes it.</p>
+
+
+	<p>In my bridge, I delay binding to a method on a <span class="caps">CLR</span> object until it is called. When it is called, I build a small piece of <span class="caps">CIL</span> code using <code>RbDynamicMethod</code> to call the method and marshal data back to the caller. I can delay binding to the method using the <code>method_missing</code> instance method of the object. In the case of the call to the <code>Count</code> method, you could imagine a piece of code that looks like:</p>
+
+
+<pre><code>
+alias alias_method_missing method_missing
+
+def method_missing(name, *params)
+  alias_method_missing(name, *params) unless name == :Count
+
+  create_ruby_instance_method(self.class, 'Count') do
+    include  'System.Collections'
+    ldarg_2
+    call     'static Marshal::ToClrObject(VALUE)'
+    call     'ArrayList::get_Count()'
+    call     'static Marshal::ToRubyNumber(Int32)'
+    ret
+  end
+  self.Count
+end
+</code></pre>
+
+	<p>This is a hard-coded example that generates a shim for the <code>Count</code> method. The shim invokes the <code>get_Count</code> method to retrieve the value of the <code>Count</code> property of the <code>ArrayList</code> object. It marshals the return value (an <code>Int32</code>) back to the caller using the <code>Marshal::ToRubyNumber()</code> helper method in the <code>RbDynamicMethod</code> library.</p>
+
+
+	<p>Where things get interesting is the first two lines of <span class="caps">CIL</span> code in the shim. Here, I reach into the Ruby object and pull out the actual <code>ArrayList</code> object reference that is stored in a <em>secret</em> field of the Ruby object. This secret field is completely inaccessible to Ruby code. Once I have the object reference, I can freely invoke the <code>get_Count</code> instance method using the <span class="caps">CIL </span><code>call</code> instruction.</p>
+
+
+	<p>Notice that I&#8217;m defining an instance method called <code>Count</code> on the <code>ArrayList</code> class object. At the end of the <code>method_missing</code> method, I invoke the <code>Count</code> method that I just defined. However, all <em>subsequent</em> calls to the <code>Count</code> instance method will go directly to the <span class="caps">CIL</span> code that I just wrote (which of course will have been compiled into x86 code as well). This means that we will have excellent performance since we completely avoid having to use the <code>Reflection</code> APIs in the <span class="caps">CLR</span>.</p>
+
+
+	<p>You&#8217;re probably wondering how the <code>ArrayList</code> object reference got stored in the secret field? I&#8217;ll talk about that in tomorrow&#8217;s installment of the story when we look at how objects get created in Ruby (and it&#8217;s nowhere near as simple as it looks!).</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/14/hello-rubyclr#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/13/democamp">DemoCamp</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 13 Dec 2005 05:31:00 GMT">Tue, 13 Dec 2005 05:31:00 GMT</span></p>
+<p>I went to <a href="http://barcamp.org/index.cgi?SignUpHere">DemoCamp</a> tonight and I saw a bunch of cool demos put on by folks working on startups here in Toronto.</p>
+
+
+	<ul>
+	<li>The <a href="http://www.bubbleshare.com">BubbleShare</a> folks had a really cool demo of an upcoming feature of their photo sharing service. They&#8217;ve implemented the core interface of iPhoto using <span class="caps">AJAX </span>(you know the one: dragging a slider that dynamically resizes the thumbnails). You have to see it to believe it. Apparently this feature goes live on their site next week sometime.</li>
+		<li>If you&#8217;re into ego surfing, you should definitely check out <a href="http://ehlist.ca/">Eh List</a>. Chris Nolan&#8217;s done a really good job of aggregating a bunch of services to show you just where you rank (or don&#8217;t) in the blogosphere.</li>
+		<li>I&#8217;m continually amazed by how Randy Charles Morin is able to generate revenue from his various ventures. Tonight he demonstrated <a href="http://www.r-mail.org/">RMail</a> which is a service that emails you <span class="caps">RSS</span> feeds. Randy monetizes this by including links within the blog entries that point back to his custom search engine.</li>
+		<li>Sutha Kamal of <a href="http://www.ambientvector.com">Ambient Vector</a> demonstrated his social collaborative search engine that improves the quality of mobile search based on its analysis of your preferences and <em>your peer group&#8217;s preferences</em>. This is a really powerful idea that greatly improves the quality of recommendations, since you can think of search results as recommendations. This ties back into the idea that providing search context is a good thing.</li>
+	</ul>
+
+
+	<p>It was also cool to hang out with <a href="http://www.braithwaite-lee.com/weblog/">Reg Braithwaite</a> again. Tonight I got a great idea about building a Firefox extension based on his ideas about context-based recommendations. I <em>so</em> want to do something cool in this space.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/13/democamp#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/13/third-drop-of-rbdynamicmethod">Third drop of RbDynamicMethod</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 13 Dec 2005 05:23:00 GMT">Tue, 13 Dec 2005 05:23:00 GMT</span></p>
+<p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">another drop</a> of <code>RbDynamicMethod</code>. New to this release is a custom implementation of <code>Type.GetMethod</code> that correctly finds overloaded generic methods. The .NET implementation of this method does not support resolving generic methods, so I wound up rolling my own. If you&#8217;re interested in its implementation you should check out <code>FindGenericMethodTemplate</code> in the sources.</p>
+
+
+	<p>This is what using <code>RbDynamicMethod</code> to call a generic method looks like:</p>
+
+
+<pre><code>
+create_ruby_module_function(RbDynamicMethod, 'call_generic_min_method') do
+  include   'RbDynamicMethodTests'
+  ldc_i4_3
+  ldc_i4_2
+  call      'static GenericMethodTests::Min&lt;Int32&gt;(Int32, Int32)'
+  call      'static Marshal::ToRubyNumber(Int32)'
+  ret
+end
+assert_equal 2, call_generic_min_method
+</code></pre>
+
+	<p>This should be the last drop of this library for the next little while since I think it&#8217;s good enough to begin building my new Ruby to <span class="caps">CLR</span> bridge on top of it.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/13/third-drop-of-rbdynamicmethod#comments">2 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod">Second drop of RbDynamicMethod</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Sat, 10 Dec 2005 06:56:00 GMT">Sat, 10 Dec 2005 06:56:00 GMT</span></p>
+<p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">another drop</a> of my <code>RbDynamicMethod</code> library. Lots of things have changed since the <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">first drop</a>:</p>
+
+
+	<ul>
+	<li>It now handles generic type references correctly (although it does <strong>not</strong> handle generic method references yet). </li>
+		<li>There are a lot more tests in this drop, and major improvements in error reporting. </li>
+		<li>The syntax is a bit cleaner than before, with liberal uses of Ruby symbols where appropriate.</li>
+	</ul>
+
+
+	<p>Once again, comments and feedback are encouraged.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/10/second-drop-of-rbdynamicmethod#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/09/generics-and-rbdynamicmethod">Generics and RbDynamicMethod</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 09 Dec 2005 21:23:00 GMT">Fri, 09 Dec 2005 21:23:00 GMT</span></p>
+<p>I added some features today to <code>RbDynamicMethod</code> to support the use of generics on <span class="caps">CLR 2</span>.0. To get a handle on the problem that I solved, let&#8217;s look at a simple C# example:</p>
+
+
+<pre><code>
+List&lt;String&gt; list = new List&lt;String&gt;();
+list.Add("one");
+list.Add("two");
+return String.Format("{0}, {1}", list[0], list[1]);
+</code></pre>
+
+	<p>Here&#8217;s the same code created using the .NET <code>DynamicMethod</code> API:</p>
+
+
+<pre><code>
+DynamicMethod m = new DynamicMethod(String.Empty, 
+  typeof(void), null, 
+  Assembly.GetExecutingAssembly().GetModules()[0]);
+
+ILGenerator g = m.GetILGenerator();
+Type listType = Type.GetType("System.Collections.Generic.List`1[System.String]");
+
+ConstructorInfo ci = listType.GetConstructor(new Type[] { });
+MethodInfo add = listType.GetMethod("Add", new Type[] {typeof(string)});
+MethodInfo get_Item = listType.GetMethod("get_Item", new Type[] {typeof(Int32)});
+
+Type console = Type.GetType("System.Console");
+MethodInfo writeLine = console.GetMethod("WriteLine", 
+  new Type[] {typeof(string), typeof(object), typeof(object)});
+
+LocalBuilder list = g.DeclareLocal(listType);
+
+g.Emit(OpCodes.Newobj, ci);
+g.Emit(OpCodes.Stloc_S, list);
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldstr, "one");
+g.Emit(OpCodes.Callvirt, add);
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldstr, "two");
+g.Emit(OpCodes.Callvirt, add);
+
+g.Emit(OpCodes.Ldstr, "{0}, {1}");
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldc_I4_0);
+g.Emit(OpCodes.Callvirt, get_Item);
+
+g.Emit(OpCodes.Ldloc_S, list);
+g.Emit(OpCodes.Ldc_I4_1);
+g.Emit(OpCodes.Callvirt, get_Item);
+
+g.Emit(OpCodes.Call, writeLine);
+g.Emit(OpCodes.Ret);
+
+CallVoidMethod d = (CallVoidMethod)m.CreateDelegate(typeof(CallVoidMethod));
+</code></pre>
+
+	<p>You&#8217;ll notice the non-trivial amount of book-keeping code that uses the <code>Reflection</code> API to lookup constructors, types, and methods. By comparison, the <span class="caps">CIL</span> generation code looks pretty clean, except for the annoying, repetitive &#8220;g.Emit(Opcodes.&#8221; text before each instruction.</p>
+
+
+	<p>Now, look at the same example written using <code>RbDynamicMethod</code>:</p>
+
+
+<pre><code>
+create_ruby_module_function(RbDynamicMethod, 'create_list_string') do
+  include   'System.Collections.Generic'
+  declare   'List&lt;String&gt;', :list
+  newobj    'List&lt;String&gt;()'
+  stloc_s   :list
+  ldloc_s   :list
+  ldstr     'one'
+  callvirt  'List&lt;String&gt;::Add(String)'
+  ldloc_s   :list
+  ldstr     'two'
+  callvirt  'List&lt;String&gt;::Add(String)'
+  ldstr     '{0}, {1}'
+  ldloc_s   :list
+  ldc_i4_0
+  callvirt  'List&lt;String&gt;::get_Item(Int32)'
+  ldloc_s   :list
+  ldc_i4_1
+  callvirt  'List&lt;String&gt;::get_Item(Int32)'
+  call      'static String::Format(String,Object,Object)'
+  call      'static Marshal::ToRubyString(String)'
+  ret
+end
+</code></pre>
+
+	<p>A few things have changed since <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">the first drop of the code</a> First, notice that the delimiter between a type name and a method name has changed from a . to a ::. Second, I&#8217;ve extended the type syntax to support generic types. Third, I now use Ruby symbols to represent variable and label names. Symbols are <a href="http://encyclopedia.thefreedictionary.com/String+intern+pool">interned strings</a> and can be recognized by their &#8217;:&#8217; prefix.</p>
+
+
+	<p>If you call <code>Assembly.GetType(String)</code> to find a generic type, you&#8217;ll immediately be struck by the rather obtuse syntax:</p>
+
+
+	<p><code>System.Collections.Generic.List`1[System.String]</code></p>
+
+
+	<p>Imagine typing that every time you wanted to reference a method on that type. Ugh. So I extended my code to search through namespaces that are in scope for that type, which yields the much more humane syntax:</p>
+
+
+	<p><code>List&lt;String&gt;</code></p>
+
+
+	<p>I&#8217;m going to write a few more test cases for this code tonight, but I think that this code is fairly feature complete now. Hopefully I&#8217;ll get another drop out tonight for folks who are interested in following along.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/09/generics-and-rbdynamicmethod#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/09/humane-interfaces">Humane interfaces</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 09 Dec 2005 20:12:00 GMT">Fri, 09 Dec 2005 20:12:00 GMT</span></p>
+<p>After talking to some folks yesterday, I realized that there are a lot of people who likely drive by this blog, take a look at my <code>RbDynamicMethod</code> project and wonder if I&#8217;m out of my mind. Surely John can&#8217;t be advocating that we all go out and write <span class="caps">CIL</span> code using Ruby!</p>
+
+
+	<p>I&#8217;m really happy to see that at least <a href="http://www.dotnetjunkies.com/WebLog/anoras/archive/2005/12/07/134193.aspx">Anders Noras</a> gets the core idea behind why I&#8217;m creating <code>RbDynamicMethod</code> in the first place: I want to put a more <a href="http://martinfowler.com/bliki/HumaneInterface.html">humane interface</a> on top of the <code>DynamicMethod</code> API that was introduced in .NET 2.0. <code>RbDynamicMethod</code> will make it much easier for me to define the <span class="caps">CIL</span> shims that must be generated on the fly when some Ruby code wants to call some <span class="caps">CLR</span> code (and vice-versa).</p>
+
+
+	<p>I found after writing my first bridge entirely in managed C++ that it was just too difficult to see the <span class="caps">CIL</span> through all the code that was required to create it. And when the complexity of the shims went up (to deal with generic method overloading for example), I knew that it was time to hit the reset button.</p>
+
+
+	<p>I&#8217;m writing my first bits of <span class="caps">CIL</span> test code to interact with generic types in the <span class="caps">CLR</span> today. It&#8217;s forcing me to change things slightly in <code>RbDynamicMethod</code>, and I&#8217;ll post the results of those experiments shortly.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/09/humane-interfaces#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes">Adding CIL instance methods to Ruby classes</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 07 Dec 2005 20:26:00 GMT">Wed, 07 Dec 2005 20:26:00 GMT</span></p>
+<p>I did a pretty major refactoring against the code that I <a href="http://www.iunknown.com/articles/2005/12/06/first-drop-of-rbdynamicmethod">shipped last night</a> and streamlined the way data types were marshaled between Ruby and the <span class="caps">CLR</span>. Here&#8217;s a more concrete example of an <code>add</code> method implemented entirely in <span class="caps">CIL</span> that is attached to a Ruby <code>Calc</code> class:</p>
+
+
+<pre><code>
+class MarshalParametersToRubyTests &lt; Test::Unit::TestCase
+  include RbDynamicMethod
+
+  class Calc
+  end
+
+  def test_add
+    create_ruby_instance_method(Calc, 'add') do
+      declare  'Int32', 'x'
+      declare  'Int32', 'y'
+      ldarg_1
+      ldind_i4
+      call     'static Marshal.ToInt32(UInt32)'
+      stloc_s  'x'
+      ldarg_1
+      ldc_i4_4
+      add
+      ldind_i4
+      call     'static Marshal.ToInt32(UInt32)'
+      stloc_s  'y'
+      ldloc_s  'x'
+      ldloc_s  'y'
+      add
+      call     'static Marshal.ToRubyFixnum(Int32)'
+      ret
+    end
+    assert_equal 7, Calc.new.add(3, 4)
+  end
+end
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/07/adding-cil-instance-methods-to-ruby-classes#comments">2 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod">First Drop of RbDynamicMethod</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 07 Dec 2005 04:39:00 GMT">Wed, 07 Dec 2005 04:39:00 GMT</span></p>
+<p>Here&#8217;s <a href="/images/RbDynamicMethod.zip">a drop</a> of my <code>RbDynamicMethod</code> library. You&#8217;ll need to have some version of Visual C++ 2005 installed to compile it. I&#8217;ve supplied a <code>Rakefile</code>, so the build is pretty painless provided that you have <code>cl.exe</code> somewhere on your path.</p>
+
+
+	<p>All of the C++ code can be found in <code>RbDynamicMethod.h</code>. All of the Ruby code can be found in <code>Tests\ruby_dynamic_method.rb</code>. The documentation is in <code>Tests\tests.rb</code> :)</p>
+
+
+	<p>My most recent addition is a <code>create_safe_ruby_method</code> wrapper. It creates a method that is callable from Ruby, but wraps the entire user-defined block in an exception handler that traps nearly all<sup><a href="#fn1">1</a></sup> <span class="caps">CLR</span> exceptions and maps them to a Ruby <code>RuntimeError</code> exception.</p>
+
+
+	<p>Here&#8217;s a normal <code>create_ruby_method</code> from the unit tests. The weird <code>ldc_i4_4</code> instruction is required since this is a Ruby varargs method that has a <code>VALUE (int, VALUE*, VALUE)</code> signature, and I need to return a <code>Qnil</code> (integer value 4) from this method.</p>
+
+
+<pre><code>
+create_ruby_method('convert_clr_exception') do
+  try
+    ldstr    'error'
+    newobj   'Exception.ctor(String)'
+    throw_ex
+  catch_ex   'Exception'
+    call     'static ExceptionHelper.RaiseRubyException(Exception)'
+  end_try
+  ldc_i4_4
+  ret
+end
+</code></pre>
+
+	<p>Here&#8217;s the same method via <code>create_safe_ruby_method</code>, also from the unit tests:</p>
+
+
+<pre><code>
+create_safe_ruby_method('catch_clr_exception') do
+  ldstr    'error'
+  newobj   'Exception.ctor(String)'
+  throw_ex
+end
+</code></pre>
+
+	<p>Comments and suggestions would be greatly appreciated.</p>
+
+
+	<p>[1] My code catches exceptions that derive only from <code>Exception</code> whereas it&#8217;s possible to throw exceptions that derive from <code>Object</code>.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/06/first-drop-of-rbdynamicmethod#comments">4 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/06/local-variable-declarations">Local variable declarations</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 06 Dec 2005 05:06:00 GMT">Tue, 06 Dec 2005 05:06:00 GMT</span></p>
+<p>I added unit tests to my Ruby <span class="caps">CIL DSL</span>, and did a refactoring pass tonight. I now handle named local variable declarations. I&#8217;m probably going to auto-include both the <code>System</code> and <code>RbDynamicMethod</code> namespaces by default to get rid of the <code>include</code> noise in the method.</p>
+
+
+<pre><code>
+def test_declare_local_name_reference
+  create_ruby_method('declare_local_name_reference') do
+    include   'System, RbDynamicMethod'
+    declare   'Int32', 'count'
+    ldc_i4    42
+    stloc     'count'
+    ldloc     'count'
+    call      'static Marshal.Int32ToFixnum(Int32)'
+    ret
+  end
+
+  assert_equal 42, declare_local_name_reference
+end
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/06/local-variable-declarations#comments">no comments</a></p> 
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/4">4</a> <a href="/articles/page/5">5</a> 6 <a href="/articles/page/7">7</a> <a href="/articles/page/8">8</a>  ... <a href="/articles/page/10">10</a></p>
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/110674297/"><img alt="RubyCLR irb session" src="http://static.flickr.com/44/110674297_303908d4cd_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/105005076/"><img alt="Ben's Funny Look" src="http://static.flickr.com/38/105005076_f528bbd27f_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/113024723/"><img alt="RubyCLR generates equations in Avalon" src="http://static.flickr.com/56/113024723_7bb322ce42_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102310404/"><img alt="Ruby RSS Reader" src="http://static.flickr.com/36/102310404_c16b55d745_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03/page/6">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02/page/6">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01/page/6">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12/page/6">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11/page/6">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10/page/6">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: You can have your language cake and eat it too</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/894/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/09/06/you-can-have-your-language-cake-and-eat-it-too" rel="alternate" type="text/html"/>
+  <updated>2006-09-06T22:23:29-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:dbf7188f-7eed-486e-a9c6-cd3bced581ca</id>
+    <published>2006-09-06T22:17:46-07:00</published>
+    <updated>2006-09-06T22:23:29-07:00</updated>
+    <title type="html">You can have your language cake and eat it too</title>
+    <link href="http://www.iunknown.com/articles/2006/09/06/you-can-have-your-language-cake-and-eat-it-too" rel="alternate" type="text/html"/>
+    <category term="RubyCLR" scheme="http://www.iunknown.com/articles/tag/rubyclr"/>
+    <category term="IronPython" scheme="http://www.iunknown.com/articles/tag/ironpython"/>
+    <category term="DynamicLanguages" scheme="http://www.iunknown.com/articles/tag/dynamiclanguages"/>
+    <summary type="html">&lt;p&gt;&lt;a href="http://weblog.infoworld.com/udell/"&gt;&lt;img src="http://weblog.infoworld.com/udell/groove/files/jon.jpg" title="Jon Udell" style="float:left;margin-right:20px;margin-bottom:20px;" width="100"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Why are dynamic languages on the &lt;span class="caps"&gt;CLR&lt;/span&gt; (and the &lt;span class="caps"&gt;JVM&lt;/span&gt;) such a hot topic these days?  Jon Udell wrote a very insightful article on this very issue called &lt;a href="http://weblog.infoworld.com/udell/2006/09/06.html#a1519"&gt;Why argue about dynamic versus static languages when you can use both?&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;blockquote&gt;
+		&lt;p&gt;With yesterday&amp;#8217;s release of IronPython, the story of dynamically-typed programming languages comes more clearly into focus. A core virtue of such languages is that they enable individuals or small teams to work in a rapid and exploratory way. A core virtue of statically-typed languages is that they enable larger teams to work in a declarative way that&amp;#8217;s friendlier to large-scale collaboration. Much virtual ink has been spilled debating the pros and cons of these two approaches, but why argue if you can have the best of both worlds?&lt;/p&gt;
+	&lt;/blockquote&gt;
+
+
+	&lt;p&gt;If you have a VM that can run code written in dynamically typed and statically typed languages, you can focus on using the best tool for the job. Right now if you&amp;#8217;re writing a Ruby application, you can write parts of it using a strong, dynamically typed language (Ruby) or a weak, statically typed language (C). If you&amp;#8217;re using RubyCLR/IronRuby/Ruby.NET you now have the additional choice of a strong, statically typed language (C# / VB / F#).&lt;/p&gt;
+
+
+	&lt;p&gt;You can and should write different parts of your application using the most suitable technology. Things get even better if your entire application can run inside the same virtual machine, since you can leverage the platform benefits that come &amp;#8216;for free&amp;#8217; with the VM: tools, debuggers, performance, and security.&lt;/p&gt;
+
+
+	&lt;p&gt;I for one believe that this is the way we&amp;#8217;ll be writing our applications in the near future. And I&amp;#8217;m doing everything that I can to make this happen for Ruby and the &lt;span class="caps"&gt;CLR&lt;/span&gt; as quickly as possible.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;&lt;a href="http://weblog.infoworld.com/udell/"&gt;&lt;img src="http://weblog.infoworld.com/udell/groove/files/jon.jpg" title="Jon Udell" style="float:left;margin-right:20px;margin-bottom:20px;" width="100"&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Why are dynamic languages on the &lt;span class="caps"&gt;CLR&lt;/span&gt; (and the &lt;span class="caps"&gt;JVM&lt;/span&gt;) such a hot topic these days?  Jon Udell wrote a very insightful article on this very issue called &lt;a href="http://weblog.infoworld.com/udell/2006/09/06.html#a1519"&gt;Why argue about dynamic versus static languages when you can use both?&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;blockquote&gt;
+		&lt;p&gt;With yesterday&amp;#8217;s release of IronPython, the story of dynamically-typed programming languages comes more clearly into focus. A core virtue of such languages is that they enable individuals or small teams to work in a rapid and exploratory way. A core virtue of statically-typed languages is that they enable larger teams to work in a declarative way that&amp;#8217;s friendlier to large-scale collaboration. Much virtual ink has been spilled debating the pros and cons of these two approaches, but why argue if you can have the best of both worlds?&lt;/p&gt;
+	&lt;/blockquote&gt;
+
+
+	&lt;p&gt;If you have a VM that can run code written in dynamically typed and statically typed languages, you can focus on using the best tool for the job. Right now if you&amp;#8217;re writing a Ruby application, you can write parts of it using a strong, dynamically typed language (Ruby) or a weak, statically typed language (C). If you&amp;#8217;re using RubyCLR/IronRuby/Ruby.NET you now have the additional choice of a strong, statically typed language (C# / VB / F#).&lt;/p&gt;
+
+
+	&lt;p&gt;You can and should write different parts of your application using the most suitable technology. Things get even better if your entire application can run inside the same virtual machine, since you can leverage the platform benefits that come &amp;#8216;for free&amp;#8217; with the VM: tools, debuggers, performance, and security.&lt;/p&gt;
+
+
+	&lt;p&gt;I for one believe that this is the way we&amp;#8217;ll be writing our applications in the near future. And I&amp;#8217;m doing everything that I can to make this happen for Ruby and the &lt;span class="caps"&gt;CLR&lt;/span&gt; as quickly as possible.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>schuur</name>
+    </author>
+    <id>urn:uuid:e37cdc3d-687c-45d8-99d9-09e7bfc55a87</id>
+    <published>2006-09-08T18:03:47-07:00</published>
+    <updated>2006-09-09T06:35:31-07:00</updated>
+    <title type="html">Comment on You can have your language cake and eat it too by schuur</title>
+    <link href="http://www.iunknown.com/articles/2006/09/06/you-can-have-your-language-cake-and-eat-it-too#comment-913" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Oh yeah indeed! It's small things that make miracles. Just knowing you can rely on a C++ compiler in a standard location on your Windows box is one of them.  Can't begin to grasp the amount of time put into porting, building, packaging, configuring all those win32 versions of (open source) software.&lt;/p&gt;
+
+&lt;p&gt;I'm curious about the things going on in the non-professional area (the express editions of MSFT devtools, right?). If they do come up with some kind of packaging system for libraries and frameworks, why not promote it to the professional arena? I mean, "enterprise archictect visual studio templates" are quite laughable.&lt;/p&gt;
+
+&lt;p&gt;I walk around shops with 3-10 developers who invariably mess up their programming environments, and lose time figuring out what went wrong. I just recently 'converted' one group to check out ruby (internal project), and everyone (including me) was amazed at how smooth the whole thing went. After all, typing 'gem install' doesn't need lots of explaining.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:c6599336-fa09-430a-99b6-88840c075e88</id>
+    <published>2006-09-08T06:55:33-07:00</published>
+    <updated>2006-09-08T12:02:24-07:00</updated>
+    <title type="html">Comment on You can have your language cake and eat it too by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/09/06/you-can-have-your-language-cake-and-eat-it-too#comment-907" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;It would be great if MSFT would just ship a C++ compiler with Windows itself. Maybe things will get better since they now ship .NET with Vista. But time will tell ...&lt;/p&gt;
+
+&lt;p&gt;I think that getting some kind of packaging system into Windows would also be a great improvement - especially in the non-professional programmer space. There are definitely interesting things going on at MSFT there - John Montgomery's doing some cool things in his group.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Thibaut Barrère</name>
+    </author>
+    <id>urn:uuid:63b6eb56-753c-40d9-9785-dc7d8c073b48</id>
+    <published>2006-09-08T02:11:10-07:00</published>
+    <updated>2006-09-09T06:37:16-07:00</updated>
+    <title type="html">Comment on You can have your language cake and eat it too by Thibaut Barrère</title>
+    <link href="http://www.iunknown.com/articles/2006/09/06/you-can-have-your-language-cake-and-eat-it-too#comment-904" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I wholeheartly agree! It's just been a couple of months since I've been pointed out to RubyCLR while asking 'how could I build a dotnet UI on top of Ruby ?'. Since then I've also discovered JRuby and IronPython, and it became quite clear to me that the future will be a mixture of all these (things like: creating a ruby testing DSL for non technical persons writing functional specs, integration of RSpec with RubyCLR, use of dotnet or swt UI, use of a Rails front-end for a j2ee/.net back-end, etc etc).&lt;/p&gt;
+
+&lt;p&gt;BTW: thanks John for making me discover Parallels. It just rocks!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>schuur</name>
+    </author>
+    <id>urn:uuid:b0af2b3f-c80b-4db1-9e8e-a3550277a7ef</id>
+    <published>2006-09-07T17:49:23-07:00</published>
+    <updated>2006-09-08T12:04:43-07:00</updated>
+    <title type="html">Comment on You can have your language cake and eat it too by schuur</title>
+    <link href="http://www.iunknown.com/articles/2006/09/06/you-can-have-your-language-cake-and-eat-it-too#comment-900" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I think you're right; by mixing dynamic and static languages applications can evolve much easier. &lt;/p&gt;
+
+&lt;p&gt;Things would be even better when some good software distribution mechanism would be in place. Think ruby gems or apt-get. Using external libraries in .NET nowadays is a bit of a nuissance. &lt;/p&gt;
+
+&lt;p&gt;One of the strengths of Ruby is that you can easily mix it with C. This is not only because there's a nice and clear Ruby to C interface; but also because in *nix environments compilation of C code is much better standardized than on win32. I would love to see this happen on Windows, but I have hard time figuring out how.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:3f16ce08-aa0e-4bb8-ae9a-6b595565d19d</id>
+    <published>2006-09-07T06:50:36-07:00</published>
+    <updated>2006-09-09T06:37:21-07:00</updated>
+    <title type="html">Comment on You can have your language cake and eat it too by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/09/06/you-can-have-your-language-cake-and-eat-it-too#comment-896" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;I'm not up on my Smalltalk history - did folks use Smalltalk VMs to run statically typed languages as well?&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Dr Nic</name>
+    </author>
+    <id>urn:uuid:410da6e3-670b-48d0-927c-eef57f336b47</id>
+    <published>2006-09-06T23:03:20-07:00</published>
+    <updated>2006-09-09T06:37:17-07:00</updated>
+    <title type="html">Comment on You can have your language cake and eat it too by Dr Nic</title>
+    <link href="http://www.iunknown.com/articles/2006/09/06/you-can-have-your-language-cake-and-eat-it-too#comment-895" rel="alternate" type="text/html"/>
+    <content type="html">&lt;blockquote&gt;
+    &lt;p&gt;Things get even better if your entire application can run inside 
+    the same virtual machine, since you can leverage the platform 
+    benefits that come ‘for free’ with the VM: tools, debuggers, 
+    performance, and security.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Say, like Smalltalk in the 70s :)&lt;/p&gt;</content>
+  </entry>
+</feed>

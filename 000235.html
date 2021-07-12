@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Code generation observations</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000234.html" title="Code generation comments from Pieter Hintjens" />
+
+<link rel="next" href="http://www.iunknown.com/000236.html" title="Beating the code generation drum" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000234.html">&laquo; Code generation comments from Pieter Hintjens</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000236.html">Beating the code generation drum &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">April 18, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Code generation observations</h3>
+
+<p><P>I'd like to comment on a few of <A href="Weblog/Codegenerationcommentsfro.html">Pieter Hintjen's comments</A> in this entry:</P><br />
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px"><br />
+<P align=left>"This is not a freedom that many people can use. It's the white paper <BR>problem. You may be free to draw anything you like, but it only works <BR>if you're a capable artist. So much easier to color by numbers! <BR>Good abstractions take many years to develop and refine. Sure: interfaces, <BR>test cases, SQL... these are trivial. But how about an abstraction for a<BR>mobile phone interface that will generate the tens of thousands of lines of <BR>code that implement it? "</P></BLOCKQUOTE><br />
+<P dir=ltr align=left>This one paragraph is incredibly insightful; I love the paint-by-numbers analogy! It also captures the essence of embarking on a large development project with code-generation as the core technique.</P><br />
+<P dir=ltr align=left>In the beginning, you need to be able to walk before you can run. Code generation is such a foreign technique to most people that they really need to wrap their minds around a concrete example before they can proceed to the next level. This is where the low hanging fruit really comes in really handy.</P><br />
+<P dir=ltr align=left>In multi-tier applications, the most obvious place to apply code generation is by automating the creation of the object/relational mapping code (often called the data access layer). This is tedious and error-prone code to write, and has spawned <A href="http://www.google.com/search?hl=en&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=code+generation+data+access+layer">a large number of code generation articles and products</A> that purport to solve this specific problem.</P><br />
+<P dir=ltr align=left>Solving this problem typically involves:</P><br />
+<UL dir=ltr><br />
+<LI><br />
+<DIV align=left>Generating the database schema</DIV><br />
+<LI><br />
+<DIV align=left>Generating the stored procedures to access the database entities</DIV><br />
+<LI><br />
+<DIV align=left>Generating the proxy code that calls the stored procedures</DIV><br />
+<LI><br />
+<DIV align=left>Generating the code that persists entity objects to the database </DIV><br />
+<LI><br />
+<DIV align=left>Generating the code that manages logical and physical relationships between entities</DIV><br />
+<LI><br />
+<DIV align=left>Generating the entity classes</DIV></LI></UL><br />
+<P align=left>Of these, generating the schema and the entity classes are the most straighforward operations. Next in line are generating the stored procedures and the proxy code that calls them. You are really <EM>forced</EM> to think abstractly when generating the code that manages the logical relationships between entities as defined by your schema. These are the classic 1:1, 1:many and many:many relationships (among others). When you implement these, you will find patterns that naturally arise from your schema, and code generation lets you capture these patterns in your application.</P><br />
+<P align=left>One book that I have found that really captures the essence of many of the patterns behind the logical relationships in your database schema is <A href="http://www.martinfowler.com">Martin Fowler's</A> <A href="http://www.amazon.com/exec/obidos/ASIN/0321127420/iunknowncom-20/">Patterns of Enterprise Application Architecture</A>. It doesn't take much of a stretch to capture Fowler's patterns using code generation (in fact he obliquely refers to implementations via code generation in the text that describes several of the patterns in his book). Once these patterns have been captured in your schema + code generator, they become building blocks for more complex abstractions that are specific to your application.</P><br />
+<P align=left>Using a tool like GSLgen requires that you capture the semantics of your entities and their relationships within a "little language". GSLgen requires that this little language be described using XML, as this gets around the non-trivial problem of writing a parser for an arbitrary&nbsp;context-free grammar. Next, you write your code generator using GSLgen scripting language which provides native support for maniplating XML within the context of the scripting language. Finally you write a program using your mini-language, compile it using GSLgen and your code-generation script to create source code in your favorite programming language.</P><br />
+<P align=left>Effective use of GSLgen requires that you not view it as a "wizard". That is, the code that it generates is not intended to be a one-shot deal. You version control the program(s) written in your mini-language and the GSLgen script(s). You NEVER version-control the generated code, and you NEVER modify the generated code.</P><br />
+<P align=left>However, generating the data access layer is just the first step, as it is largely plumbing code. The interesting parts of your application appear when you have to implement the business logic that manipulates the data access layer. This is where code generation can help, but this is also the area where the going gets tough. I'm sure that this is what Pieter meant when he said that "Good abstractions take many years to develop and refine".</P><br />
+<P align=left>Using code generation to build your application abstractions requires a very thorough understanding of the problem domain. You need to analyze the patterns that recur in your application and build abstractions on top of those patterns. One approach that I've found to be very helpful is to think in terms of workflows or tasks. This lets you find the recurring patterns, and capture the variations within a pattern within your "little language" and your code generator. I suspect that there are interesting patterns that will recur in various application domains, and it is my goal to research and catalog these patterns over the next few years. With an approachable pattern and reasonable examples, I suspect it will make code generation much more approachable as a technique for solving application problems.</P><br />
+<P align=left>But wait you say, can't <A href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html">your abstractions leak</A>? Absolutely! And I would argue that&nbsp;they <EM>should leak</EM>. One important caveat to always remember is the risk of building an abstraction that is too complex; I can virtually guarantee that an all-encompassing abstraction that builds 100% of your code will also be so complex that it is unapproachable and unmaintainable. Instead strive to keep your abstraction as simple as possible, generating the majority of your code but then delegating to your implementation language those exceptional / arbitrary / boundary cases that are so difficult to capture using your abstraction.</P><br />
+<P align=left>The best way of seeing how code generation works is by example. To help folks get started, I'll be posting a series of entries starting next week that walk through code generating a simple, yet highly generalizable application using GSLgen.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at April 18, 2003 10:24 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="235" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000235.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I am wondering if you are aware of an application that I wrote called CodeSmith.  It is a template-based code generator similar to GSLgen.  If you have taken a look, what would it take to make CodeSmith your code generator of choice?  In other words, what does GSLgen have that CodeSmith doesn't?</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.ericjsmith.net/codesmith.htm">Eric J. Smith</a> at April 23, 2003 10:42 AM</span>
+</div>
+<div class="comments-body">
+<p>Forgot to mention the URL for CodeSmith:<br />
+http://www.ericjsmith.net/codesmith.htm</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.ericjsmith.net/codesmith.htm">Eric J. Smith</a> at April 23, 2003 10:43 AM</span>
+</div>
+<div class="comments-body">
+<p>I remember seeing this earlier, but didn't look into it because I was distracted by other things. I'll check it out and contact you separately by email. Thanks, Eric!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at April 24, 2003 12:16 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

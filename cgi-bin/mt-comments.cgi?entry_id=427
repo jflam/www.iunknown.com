@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on I'm souring on XML</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: I'm souring on XML</div>
+
+
+<div class="comments-body">
+<p>Have you tried YAML?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.codegeneration.net">Jack Herrington</a> at March  2, 2004 10:26 AM</span>
+</div>
+<div class="comments-body">
+<p>Hmm, a shorthand way to quickly create HTML pages...</p>
+
+<p>Can you say, "wiki" ? I knew you could. :) </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://staff.develop.com/candera">Craig Andera</a> at March  2, 2004 10:32 AM</span>
+</div>
+<div class="comments-body">
+<p>You're not alone - see http://www-106.ibm.com/developerworks/library/x-sbxml.html</p>
+<span class="comments-post">Posted by <a href="mailto&#58;studoot&#64;hotmail&#46;com">Stuart Dootson</a> at March  2, 2004 12:20 PM</span>
+</div>
+<div class="comments-body">
+<p>I've long pounded the desk saying that the purpose of XML is best for machine-to-machine vendor-neutral hierarchical non-binary data representation, and the further you stray from any one of those points, you lose.</p>
+
+<p>I will not ever use DocBook, at least not as an input method.  I do not want to edit configuration files in XML.  XML is just far too verbose for me to write, and barely not-quite-enough verbose for me to tolerate reading.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://ww.stonehenge.com/merlyn/">Randal L. Schwartz</a> at March  9, 2004 10:41 AM</span>
+</div>
+<div class="comments-body">
+<p>This comment may be a bit late, but I suggest you peek at pxsl. (http://community.moertel.com/pxsl)</p>
+
+<p>It rocks.</p>
+<span class="comments-post">Posted by nobody important at March 15, 2004 07:10 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

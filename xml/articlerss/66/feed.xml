@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on CLR Value Types in Ruby</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"CLR Value Types in Ruby" by jlam</title>
+      <description>&lt;p&gt;I thought I&amp;#8217;d expand a bit on a problem that I solved today. Consider this bit of C# code:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+Point p1 = new Point(2, 3);
+Point p2 = p1;
+p2.X += 1;
+Assert.Equals(p1.X + 1, p2.X);
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;This should run without throwing an assertion, right? That&amp;#8217;s because the semantics of value types in the &lt;span class="caps"&gt;CLR&lt;/span&gt; dictate that they must be &lt;em&gt;copied&lt;/em&gt; upon assignment.&lt;/p&gt;
+
+
+	&lt;p&gt;However, consider this Ruby code that uses my bridge:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+p1 = Point.new(2, 3)
+p2 = p1
+p2.X += 1
+assert_equal p1.X, p2.X
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;This code also runs without throwing an assertion. What you&amp;#8217;re seeing is Ruby treating all objects as reference types for assignment purposes. Ruby doesn&amp;#8217;t know anything about .NET value types, so its behavior is consistent with its type system.&lt;/p&gt;
+
+
+	&lt;p&gt;However, if you use the Ruby &lt;code&gt;clone&lt;/code&gt; method, you will see the same behavior as the C# code:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+p1 = Point.new(2, 3)
+p2 = p1.clone
+p2.X += 1
+assert_equal p1.X + 1, p2.X
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;I had to do a bit of hacking to implement &lt;code&gt;clone&lt;/code&gt; semantics correctly for &lt;code&gt;T_DATA&lt;/code&gt; Ruby C object types. There&amp;#8217;s still some work to be done to implement &lt;code&gt;clone&lt;/code&gt; correctly for &lt;span class="caps"&gt;CLR&lt;/span&gt; reference types once I turn my attention to object identity in the near future.&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 10 Feb 2006 22:56:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/10/clr-value-types-in-ruby"&gt;CLR Value Types in Ruby&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/10/clr-value-types-in-ruby"&gt;CLR Value Types in Ruby&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

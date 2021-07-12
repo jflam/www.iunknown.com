@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Build scripts and debug / release builds</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000107.html" title="Fun with NSIS" />
+
+<link rel="next" href="http://www.iunknown.com/000109.html" title="Free vs. checked builds" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000107.html">&laquo; Fun with NSIS</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000109.html">Free vs. checked builds &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 20, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Build scripts and debug / release builds</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I've been thinking a lot more about build scripts this morning now that I've successfully integrated NSIS with NAnt. Today is the CppUnit / NUnit integration day.</P><br />
+<P>As I started generalizing my *daily* build script to handle both debug and release builds, several issues immediately popped to the forefront (thankfully mostly due to directory naming issues!) Here they are, in no particular order:</P><br />
+<UL><br />
+<LI>In my daily build, do I generate both debug and release builds?</LI><br />
+<LI>Do I run unit tests on both my debug and release builds?</LI><br />
+<LI>Should I check in the .EXE's and .DLL's generated for each build?</LI><br />
+<LI>Do I bother generating distribution media (my NSIS .EXE) for both debug and release builds?</LI></UL><br />
+<P>Right now, these are the solutions that I'm leaning towards (and have coded the script to):</P><br />
+<UL><br />
+<LI>Generate both debug and release builds.</LI><br />
+<LI>Run unit tests against both builds - question to answer: same unit tests&nbsp;or subtly different ones - for example, release unit tests could have performance constraint criteria built into the tests (e.g. take less than n seconds to complete a test).</LI><br />
+<LI>Check in the .EXE's and .DLL's generated by each build - I was tempted to leave these out since I label each daily build anyways, but these capture some configuration informatoin such as the version of the compiler used to generate them.</LI><br />
+<LI>Don't generate distribution media - make this a separate target called build-deploy</LI></UL><br />
+<P><A href="mailto:jlam@iunknown.com">Comments</A> are always welcome. Yes, yes, I know, I need to add a comment server ... ;)</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 20, 2002 12:04 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="108" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000108.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Hi John,<br />
+     I was doing a search this morning on the words NSIS.EXE, because I have a problem --- and I<br />
+found your web-site IUNKNOWN.COM.<br />
+     I read it and looked into your<br />
+historic links about your life  --- and I found it fascinating.  What a<br />
+remarkable range of talents you have.<br />
+     I would be grateful to you if you would guide me in a direction where I could solve my problem.<br />
+     Here is what my problem is --- in a nutshell.   I have been a mainframe Cobol software consultant for 26 years.  12 years ago I began to specialize in Micro Focus Cobol.  For the past 8 years I have been developing a PC software package in my (in-between contracts) time.<br />
+     It is now completed and I am thrilled with its potential.  I needed a Visual Basic script which would enable my to e-mail my (double-zipped) self-extracting module to a customer.  The VB script would enable that customer to double-click on my<br />
+attachment  --- and activate my self-extracting module, which would install my software module into the customer's computer.<br />
+     I found a programmer in England when I used the software service,   2rent-a-codercoder.com.  He agreed to write the VB script for $70. <br />
+     This he did, using a free-ware package called NSIS.EXE.              <br />
+     It works perfectly when installing my software into WINDOWS 98, WINDOWS 2000, and WINDOWS NT operating systems.<br />
+     But when I tried to test it on<br />
+a WINDOWS XP system the installation<br />
+results in a "squinched", compressed half-screen instead of a full-screen display.    So this bug prevents me from selling my software to owners of WINDOWS XP operating systems.  Nice, Huh!!<br />
+     Since I already paid the guy, he doesn't respond when I ask him to repair this final bug.<br />
+     I am so close to victory --- and yet I can't market my software without the installation yielding a full-screen edit.<br />
+     Where should I go and what can I do without having to have the whole job done again by someone else.  I have been out of work for almost a year and need to market my sofware to make a living.<br />
+     Any suggestions, John?<br />
+        Sincerely,<br />
+         Mort Weizen     </p>
+<span class="comments-post">Posted by: <a target="_blank" href="mailto:%6d%6fr%74@%70%64q%6e%65%74.%63%6f%6d">Mort Weizen</a> at March  4, 2003 12:52 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi John -</p>
+
+<p>Regarding: "Check in the .EXE's and .DLL's generated by each build - I was tempted to leave these out since I label each daily build anyways, but these capture some configuration informatoin such as the version of the compiler used to generate them."</p>
+
+<p>I know this has been up here a while, but I just happened across. In my experience, the best practice would be to check in the entire toolchain used to create the build. Then when I run a build, I check out not only the source, but the entire toolchain. You have to be careful to set your search path to only pick up the checked-out toolchain. In a lot of situations this is overkill, but when you need absolute reproducility it's a must...</p>
+
+<p>Advantages:</p>
+
+<p>* Reproducibility<br />
+* Backup copy of toolchain (for the case where you've had a product out for an extended period of time and then have to fix some weird edge condition and can't locate the tools!)<br />
+* Build environment is much more portable (i.e. when adding new developers to a team)</p>
+
+<p>Drawbacks:</p>
+
+<p>* Space consumption on VC server<br />
+* Extra time to create a new build tree<br />
+* Build trees take up more space</p>
+
+<p>There's also the possibility of a compromise between the two extremes: keep a single version controlled copy of the toolchain on your workstation and point all the copies of your build tree at it. This saves space, at the risk of letting your toolchain tree get out of date (e.g. if another developer on your team checks in a patch to the compiler).</p>
+
+<p>-Brian</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://bstpierre.org/">Brian St. Pierre</a> at February 29, 2004 06:55 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

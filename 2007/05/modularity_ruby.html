@@ -1,0 +1,773 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+	<meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: Modularity, Ruby and Doing the Right Thing</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/05/rounding_up_dlr.html?no_prefetch=1" title="Rounding up DLR questions" />
+	<link rel="next" href="http://www.iunknown.com/2007/05/dlr_running_on_.html?no_prefetch=1" title="DLR Running on Mono" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/05/modularity_ruby.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/18480606"
+    dc:title="Modularity, Ruby and Doing the Right Thing"
+    dc:identifier="http://www.iunknown.com/2007/05/modularity_ruby.html"
+    dc:description="It seems like we stirred up some controversy with these lines of code in our demo: JS = require &#39;foo.js&#39; ... JS.initialize Let&#39;s be clear about what this code does: it creates a ScriptModule (a DLR type) that represents the..."
+    dc:creator="John Lam"
+    dc:date="2007-05-14T14:10:37-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/05/rounding_up_dlr.html">&laquo; Rounding up DLR questions</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/05/dlr_running_on_.html">DLR Running on Mono &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">May 14, 2007</h2>
+
+
+<div class="entry" id="entry-34045304">
+			<h3 class="entry-header">Modularity, Ruby and Doing the Right Thing</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a title="Photo Sharing" href="http://www.flickr.com/photos/john_lam/493308712/"><img height="375" alt="DSCF0469.jpg" src="http://farm1.static.flickr.com/210/493308712_9d3208c18e.jpg" width="500"></a>  <p>It seems like we stirred up some controversy with <a href="http://www.iunknown.com/2007/05/postdemo_hangov.html">these lines of code in our demo</a>:</p> <p>JS = require 'foo.js'<br>...<br>JS.initialize</p> <p>Let's&nbsp;be clear about what this code does: it creates a&nbsp;ScriptModule (a DLR type) that represents the execution context of the foo.js code, and assigns it to the JS constant. The JS.initialize line calls the initialize method in foo.js. This is a user-defined method, and not some kind of DLR initialization thing. </p> <p>We debated the idea of using require to import foreign modules in my office for a very short period of time before checking in the change. It seemed like a natural thing to do - monkey-patch the require method so that we can import foreign modules into IronRuby.</p> <p>Nobody has argued that importing foreign modules into IronRuby is a bad idea.[1] Rather, I think that folks have taken issue with using require as the mechanism for doing so.</p> <p>Point taken. We will have a different mechanism for doing so in the future. </p> <p>But this brings up an important meta-level issue: our commitment to doing the right thing. It seems that our intentions in this area have been called into question. We have a fairly straightforward task here: to make a CLR implementation of the Ruby language that is as compatible as we can make it. So when we have a design decision to make, it's driven by "how does the native Ruby implementation&nbsp;handle it"?&nbsp;</p> <p>We here on the IronRuby team are under no illusion that we will be 100% compatible with the existing Ruby 1.8.x branch. But we will get as close as we can and bend over backwards to ensure that it is so. And I expect that you guys will keep us honest in this regard when it seems like we made a bad design decision.[2] </p> <p>Pure Ruby code should just work, and code that depends on native platform libraries will have to be ported (either by us porting the native platform libraries or by folks modifying the code to work with our native platform libraries aka the Framework Class Libraries). </p> <p>Please do speak up when we post code frags, demos (and eventually source). We're really interested in what you have to say !</p> <p>[1]&nbsp;Keep in mind that we wanted to demo something interesting at MIX (cross-language interop) and that using Ruby (the least mature of our language implementations) as the glue to bind other code together seemed to be the right thing to do. However, at that time we couldn't solicit input from the community since we were in stealth mode.</p> <p>[2] While I don't think that overloading require was a bad design decision (nobody has given us a concrete example that shows where this breaks their app / library), it's controversial enough and the fix simple enough to do that I have no problem doing it.</p></p>
+
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fmodularity_ruby.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 02:10 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/modularity_ruby.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/18480606</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/05/modularity_ruby.html">Modularity, Ruby and Doing the Right Thing</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content">
+			<!-- comment list -->
+	<a id="c69474628"></a>
+	<div class="comment" id="comment-69474628">
+		<div class="comment-content">
+			<p>I think the ability to maintain the way the native Ruby implementation is done is very important.  Ideally, only when you need to introduce features that are platform dependent should you deviate.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.developernotes.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69474628">Nick Parker</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69474628">May 14, 2007 at 04:55 PM</a>
+		</p>
+	</div>
+	<a id="c69478526"></a>
+	<div class="comment" id="comment-69478526">
+		<div class="comment-content">
+			<p>:) That's one of the things that really change when you join Microsoft: all of a sudden, any decision made in good faith get called into question as being part of the Evil Empire's master plan.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://weblogs.asp.net/bleroy" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69478526">Bertrand Le Roy</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69478526">May 14, 2007 at 05:49 PM</a>
+		</p>
+	</div>
+	<a id="c69507536"></a>
+	<div class="comment" id="comment-69507536">
+		<div class="comment-content">
+			<p>I'm not a Rubyist so I don't know all of its design guidelines and code peculiarities, but I think overloading 'require' is Just The Right Thing To Do. Perhaps because I'm used to C# and Python's way of doing it which is similar to the way you've done it in IronRuby. I think it makes sense.</p>
+
+<p>What are the objections people have to overloading 'require'? Is it that it doesn't work in other Ruby implementations? If so, can't this be proposed to the Ruby guys to be specified and implemented in a future Ruby version (perhaps 1.9 or even 1.8)? Would that be so bad? I'd love to hear the different opinions on this.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://profile.typekey.com/asbjornu/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69507536">quark</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69507536">May 15, 2007 at 02:55 AM</a>
+		</p>
+	</div>
+	<a id="c69508574"></a>
+	<div class="comment" id="comment-69508574">
+		<div class="comment-content">
+			<p>Here's my 2c. Microsoft earned my trust by trying very hard to keep IronPython compatible with CPython. I hope this extends to IronRuby as well.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Seo Sanghyeon |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69508574">May 15, 2007 at 03:17 AM</a>
+		</p>
+	</div>
+	<a id="c69558370"></a>
+	<div class="comment" id="comment-69558370">
+		<div class="comment-content">
+			<p>require returns a boolean result. We played a bit fast and loose by returning a ScriptModule reference to indicate true (which won't break code that depends on type: (puts 'true' if require 'foo.js') will just work).</p>
+
+<p>Dependencies on the negative result are what worry me. One time initialization code would be a good example - we would still need to return the ScriptModule reference but then there would be no good way of detecting whether the foreign module had been included already. It's this latter case (which BTW nobody brought up in private mail) that worried me enought to change the behavior.</p>
+
+<p>I would imagine that we would be using the IronPython clr.Use() mechanism to require foreign modules - this lets us precisely define the semantics without worrying about breaking existing code.</p>
+
+<p>However, there is a trade-off of requiring folks to learn yet another concept. In RubyCLR, most of the questions on the mailing list were related to not understanding when to use reference vs. require (or even knowing that reference existed at all).</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69558370">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69558370">May 15, 2007 at 09:04 AM</a>
+		</p>
+	</div>
+	<a id="c69612932"></a>
+	<div class="comment" id="comment-69612932">
+		<div class="comment-content">
+			<p>John, I'm glad you explained the incompatibilities you introduced for SilverLight/DLR integration of IronRuby. But I would strongly caution you against making ANY such changes or enhancements to the language or libraries until you are well down the road to compatibility. There are two big reasons for this:</p>
+
+<p>- Without a spec and without being able to look at other implementations' code, you have a massive challenge in creating a compatible implementation of Ruby. Making selective changes, no matter how well-thought-out, will only make that task harder...and you may unknowingly break compatibility in unfixable ways.</p>
+
+<p>- Such changes, even accompanied by reasonable explanations, are going to be skewered by a mostly Microsoft-unfriendly crowd. Regardless of your good intentions, you need to be extra careful to color inside the lines, or you risk alienating the users you seek to eventually please.</p>
+
+<p>So then, specific reasons why these changes are already dangerous (and why it's a good thing if you're planning to remove them):</p>
+
+<p>- RubyGems and other libraries install their own require hooks. If you are enhancing the capabilities of require, you are very likely breaking those libraries. And with RubyGems such a key, core framework, that seems really dangerous to do.</p>
+
+<p>- initialize has a very well-understood meaning in the Ruby world, and having it be public and callable, much less having it set up a DLR component in a Ruby-incompatible way, goes against that meaning. Perhaps you have a DLR-level or SilverLight-level limitation here, but you're really asking for trouble making this kind of change.</p>
+
+<p>In general, if you want to be compatible with Ruby, you're going to have to consider Ruby's needs first, and DLR/SilverLight's needs second. And yes, that means considering the community you want to support over your employer, if their goals do not follow the same paths. I hope you will be able to do that, and I hope you'll let me know how I can help.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://headius.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69612932">Charles Oliver Nutter</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69612932">May 15, 2007 at 05:04 PM</a>
+		</p>
+	</div>
+	<a id="c69613548"></a>
+	<div class="comment" id="comment-69613548">
+		<div class="comment-content">
+			<p>John, you know my opinions on this, and I agree very much with Charles. The Ruby community wants you to succeed in building a totally compatible Ruby implementation and we other implementors would like to help you as much as possible.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://ola-bini.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69613548">Ola Bini</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69613548">May 15, 2007 at 05:15 PM</a>
+		</p>
+	</div>
+	<a id="c69631684"></a>
+	<div class="comment" id="comment-69631684">
+		<div class="comment-content">
+			<p>Thanks for the kind words of advice, Charlie. </p>
+
+<p>In the case of initialize, how would you suggest handling it? This is calling a JS function, not a Ruby function. Since it's perfectly legal to define a method called initialize in JS, how should this behave - especially since we're invoking it through an explicit ScriptModule qualifier.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69631684">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69631684">May 15, 2007 at 10:05 PM</a>
+		</p>
+	</div>
+	<a id="c69637024"></a>
+	<div class="comment" id="comment-69637024">
+		<div class="comment-content">
+			<p>Re: initialize.</p>
+
+<p>Here's a related case in Jython. "print" is a Python keyword, but Java's System.out has "print" method. Jython appends an underscore when Java method names conflict with Python keywords.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Seo Sanghyeon |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69637024">May 16, 2007 at 12:23 AM</a>
+		</p>
+	</div>
+	<a id="c69639324"></a>
+	<div class="comment" id="comment-69639324">
+		<div class="comment-content">
+			<p>Thanks for explaining it, John. I hope that your approach and outreach to the Ruby community can result in a uniform and compatible solution across all Ruby implementations.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Asbjørn Ulsberg |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69639324">May 16, 2007 at 01:23 AM</a>
+		</p>
+	</div>
+	<a id="c69640860"></a>
+	<div class="comment" id="comment-69640860">
+		<div class="comment-content">
+			<p>Hi John</p>
+
+<p>I think striving for (at least partial, or even with lower performance) compatibility with native libraries (including gems) is strategic.</p>
+
+<p>I for sure realize it's a challenging task , but it would change the possibilities by an order of magnitude - and the market share too.</p>
+
+<p>kind regards - Thibaut</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.dotnetguru2.org/tbarrere" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69640860">Thibaut Barrère</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69640860">May 16, 2007 at 01:59 AM</a>
+		</p>
+	</div>
+	<a id="c69760576"></a>
+	<div class="comment" id="comment-69760576">
+		<div class="comment-content">
+			<p>What does it mean for an open source project to be in stealth mode? </p>
+
+<p>Perhaps I am mistaken and ironruby is not open source.<br />
+</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Malcontent |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69760576">May 17, 2007 at 05:00 AM</a>
+		</p>
+	</div>
+	<a id="c69761508"></a>
+	<div class="comment" id="comment-69761508">
+		<div class="comment-content">
+			<p>Hi John,</p>
+
+<p>I think that it would be a better idea to put the "new features" in a separate module. Otherwise, it will be hard to port code written for IronRuby to another Ruby implementation.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://zimbatm.oree.ch" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69761508">zimbatm</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69761508">May 17, 2007 at 05:12 AM</a>
+		</p>
+	</div>
+	<a id="c69800606"></a>
+	<div class="comment" id="comment-69800606">
+		<div class="comment-content">
+			<p>@Malcontent,</p>
+
+<p>Wow, you just like to travel around the blogosphere and attempt to stir up trouble, don't ya.</p>
+
+<p>Are you of the belief that a project must be broadcast from the mountain tops well ahead of the time that its ready to be broadcast to qualify as open? Is a birthday party not really a birthday party if it's a surprise birthday party?</p>
+
+<p>Open or closed source, strategy matters.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://xmlhacker.com/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=69800606">M. David Peterson</a> |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-69800606">May 17, 2007 at 12:32 PM</a>
+		</p>
+	</div>
+	<a id="c71259368"></a>
+	<div class="comment" id="comment-71259368">
+		<div class="comment-content">
+			<p>Well, in Facets there's</p>
+
+<p>  JS = Script.new('foo.js')</p>
+
+<p>or</p>
+
+<p>  module JS<br />
+    module_require 'foo.js'<br />
+  end</p>
+
+<p>I've been looking for a better name for Script though. ScriptModule looks good.</p>
+
+<p>T.<br />
+</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			trans |
+			<a href="http://www.iunknown.com/2007/05/modularity_ruby.html#comment-71259368">May 31, 2007 at 10:29 PM</a>
+		</p>
+	</div>
+
+
+		</div>
+        
+	</div>
+	<!-- comment form -->
+	<script type="text/javascript" src="/.shared/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="34045304" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=34045304">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=34045304">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+                        <script type="text/javascript" src="http://www.iunknown.com/services/recent-comments.js"></script>
+            
+            
+		</ul>
+	</div>
+</div>
+	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/steve-yegge-on.html">Steve Yegge on Interviewing</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/henrys-adventur.html">Henry's Adventure in Las Vegas</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/looking-back-on.html">Looking back on MIX 08</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silve-3.html">Dynamic Silverlight bits now available!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silve-2.html">Dynamic Silverlight Part 3: Integrating Silverlight with ASP.NET MVC</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silve-1.html">Dynamic Silverlight Part 2: Managed JScript and flickr</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silverl.html">Dynamic Silverlight Part 1: Hello, World!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/ironruby-mix-08.html">IronRuby @ MIX 08</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/want-to-work-on.html">Want to work on languages at Microsoft?</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/01/index.html">January 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/12/index.html">December 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/index.html">November 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/index.html">October 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/index.html">September 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/08/index.html">August 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/index.html">July 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/index.html">June 2007</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-categories module">
+	<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Categories</a></h2>
+	<div class="module-content">
+		<ul class="module-list">
+						<li class="module-list-item"><a href="http://www.iunknown.com/current_affairs/index.html">Current Affairs</a></li>
+						<li class="module-list-item"><a href="http://www.iunknown.com/import/index.html">import</a></li>
+			
+		</ul>
+	</div>
+</div>
+<div class="module-calendar module">
+	<h2 class="module-header">March 2008</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				</tr>
+							<tr>
+					<td>2</td>
+				
+							
+					<td>3</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/03/ironruby-mix-08.html">4</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/03/dynamic-silverl.html">5</a></td>
+				
+							
+					<td>6</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/03/dynamic-silve-2.html">7</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/03/dynamic-silve-3.html">8</a></td>
+				</tr>
+							<tr>
+					<td>9</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/03/henrys-adventur.html">10</a></td>
+				
+							
+					<td>11</td>
+				
+							
+					<td>12</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/03/steve-yegge-on.html">13</a></td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				</tr>
+							<tr>
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				</tr>
+							<tr>
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				</tr>
+							<tr>
+					<td>30</td>
+				
+							
+					<td>31</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		Powered by <a href="http://www.typepad.com/t/app/track?poweredby-2419952" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+<!-- ph=1 -->

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Events and RubyCLR</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Events and RubyCLR" by jlam</title>
+      <description>&lt;p&gt;I got events up and running last night. It was a bit harder than I anticipated, and there&amp;#8217;s still a bit of work that needs to be done around marshaling, but this unit test now passes:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+public ref class CallbackTests {
+public:
+  event EventHandler^ Event;
+
+  void CallMeBack() {
+    Event(nullptr, EventArgs::Empty);
+  }
+};
+
+class EventTests &amp;lt; Test::Unit::TestCase
+  def test_simple_event
+    c = System::CallbackTests.new
+    c.Event do |sender, args|
+      assert_equal 1, 1
+    end
+    c.CallMeBack
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Thu, 12 Jan 2006 10:20:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/01/12/events-and-rubyclr"&gt;Events and RubyCLR&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/01/12/events-and-rubyclr"&gt;Events and RubyCLR&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

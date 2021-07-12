@@ -1,0 +1,1410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	<meta name="keywords" content="dlr, ironruby, ruby" />
+	<meta name="description" content="We've been working very hard over the past couple of months to get our first source code release ready. I'm happy to announce today the first drop of the IronRuby source code. IronRuby is licensed under very liberal terms as..." />
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css?v=2" type="text/css" media="screen" />
+	<link rel="stylesheet" href="http://static.typepad.com/.shared:v25.4:typepad:en_us/themes/common/print.css" type="text/css" media="print" />
+	<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	<script type="text/javascript">
+		var TPApp = {};
+		TPApp.app_uri = "http://www.typepad.com/";
+	</script>
+	<script type="text/javascript" src="http://static.typepad.com/.shared:v25.4:typepad:en_us/js/yui/yahoo-dom-event.js"></script>
+	<script type="text/javascript" src="http://static.typepad.com/.shared:v25.4:typepad:en_us/js/app/thumbnail-gallery-min.js"></script>
+
+	<title>John Lam on Software: A first look at IronRuby</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/07/ironruby-plans-.html?no_prefetch=1" title="IronRuby plans revealed on .NET Rocks" />
+	<link rel="next" href="http://www.iunknown.com/2007/07/oscon-wrap-up.html?no_prefetch=1" title="OSCON Wrap-up" />
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/07/a-first-look-at.html"
+    trackback:ping="http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e008ddb2698834"
+    dc:title="A first look at IronRuby"
+    dc:identifier="http://www.iunknown.com/2007/07/a-first-look-at.html"
+    dc:description="We&#39;ve been working very hard over the past couple of months to get our first source code release ready. I&#39;m happy to announce today the first drop of the IronRuby source code. IronRuby is licensed under very liberal terms as..."
+    dc:creator="John Lam"
+    dc:date="2007-07-23T02:03:58-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/07/ironruby-plans-.html">&laquo; IronRuby plans revealed on .NET Rocks</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/07/oscon-wrap-up.html">OSCON Wrap-up &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">July 23, 2007</h2>
+
+
+<div class="entry-author-john_lam entry-type-post entry" id="entry-36792226">
+			<h3 class="entry-header">A first look at IronRuby</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a href="http://www.flickr.com/photos/john_lam/860423574/" title="Photo Sharing"><img src="http://farm2.static.flickr.com/1432/860423574_c36ee770b1_o.png" width="500" height="206" alt="IronRuby code gen" /></a></p>
+
+<p>We've been working very hard over the past couple of months to get our first source code release ready. I'm happy to announce today the first drop of the <a href="http://iunknown.typepad.com/IronRuby-Pre-Alpha1.zip">IronRuby source code</a>. IronRuby is licensed under very liberal terms as set out by the <a href="http://www.microsoft.com/resources/sharedsource/licensingbasics/permissivelicense.mspx">Microsoft Permissive License</a>.</p>
+
+<p>We're also happy to announce that we will be <strong>accepting source code contributions</strong> into the IronRuby libraries. Right now we have a lot of logistical work that we still need to do, but we fully intend on getting IronRuby onto <a href="http://rubyforge.org/">Rubyforge</a> by the end of August. </p>
+
+<p>Some of you may be wondering why we are only accepting contributions into the libraries and not the entire compiler. It's because IronRuby is built on top of the Dynamic Language Runtime (DLR), and the public interfaces to the DLR are not complete at this time. Since the DLR will ship as part of the CLR in the future, we cannot accept contributions into the IronRuby compiler, at least initially. However, once the DLR matures and reaches 1.0 status with fully supported public interfaces, we will <strong>fully open up all parts of the IronRuby project for external contributions</strong>.</p>
+
+<p>To start playing with this release, you'll need to build IronRuby. This release of IronRuby requires the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5&amp;displaylang=en">.NET Framework 2.0 Redistributable</a>. Just unzip the source code file, and run the build.cmd batch file to create a release-mode build of IronRuby. </p>
+
+<p>You can kick the tires by typing some code interactively using our simple REPL console application. You'll find it at \bin\release\rbx.exe. You should add \bin\release to your path to make your life easier.</p>
+
+<p>Next you should look at the unit tests under \tests\ruby\builtins. This will give you an idea of what works and what doesn't work in IronRuby. We've put most of our effort into Array and String; any other support that's in the libraries was put in there to support building Array and String features.</p>
+
+<p>We have .NET interop working out of the box; you can import .NET libraries into your Ruby programs via require:</p>
+
+<pre><code>
+require 'mscorlib'
+require 'System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+</code></pre>
+
+<p>Notice how you need to use the fully-qualified assembly name in require.</p>
+
+<p>We don't have <code>include</code> working yet at top-level scope, so you'll need to either use fully-qualified type names or assign them to constants:</p>
+
+<pre><code>
+Window = System::Windows::Forms::Window
+</code></pre>
+
+<p>We also have pretty good performance in this release. We use a DLR feature called Dynamic Sites, which is our implementation of adaptive call-site method caching. Other than using Dynamic Sites, we have not done any other specific performance tuning for this release. </p>
+
+<p>In micro-benchmarks which measure method call performance, we are significantly faster than Ruby 1.8.6. In micro-benchmarks which measure library performance, we are on par with Ruby 1.8.6; we expect to see performance improvements in these benchmarks in the future. In micro-benchmarks that involve raising exceptions, we are slower than Ruby 1.8.6; but if control flow on your program's critical path involves raising exceptions you may want to rethink your design :)</p>
+
+<p>We're really interested in hearing what you have to say about this release. I'm at <a href="http://conferences.oreillynet.com/os2007/">OSCON</a> all week, so feel free to come up and say hello if you're attending. My IronRuby talk is this Thursday at 5:20pm, and I'll be busy cooking up a fun demo for that talk between now and then. If you're not at OSCON, feel free to send mail to jflam at the big software company in Redmond.</p>
+
+<p>Last but most important, I'd like to thank the members of the IronRuby team: <a href="http://tmd.havit.cz/">Tomas Matousek</a>, and <a href="http://blogs.msdn.com/haibo_luo/">Haibo Luo</a> for their hard work in getting this release out the door. Great job, guys!</p>
+
+<p><strong>Update</strong></p>
+
+<p>Some additional posts worth reading:</p>
+
+<p>Scott Guthrie, who has a <a href="http://weblogs.asp.net/scottgu/archive/2007/07/23/first-look-at-ironruby.aspx">nice sample on using IronRuby with WPF</a></p>
+
+<p>Jason Zander, on <a href="http://blogs.msdn.com/jasonz/archive/2007/07/23/ironruby-source-available-for-download.aspx">working with the open source community</a></p>
+
+<p>Miguel de Icaza, for an outside perspective of our <a href=" http://tirania.org/blog/archive/2007/Jul-23-1.html">changes as a company</a></p>
+
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F07%2Fa-first-look-at.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+			<p class="entry-footer-info">
+				<span class="post-footers">Posted at 02:03 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/07/a-first-look-at.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/07/a-first-look-at.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/ruby" rel="tag">ruby</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/services/trackback/6a00d834fc885d53ef00e008ddb2698834</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/07/a-first-look-at.html">A first look at IronRuby</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list --><a id="c76894644"></a>
+<div class="comment comment-odd" id="comment-76894644">
+	<div class="comment-content" id="comment-76894644-content">
+		<span id="comment-76894644-content"><p>Hello John,</p>
+
+<p>Congratulations!</p>
+
+<p>I have been waiting for this since ages. I am happy to my gift 3 days earlier than expected.</p>
+
+<p>Where can i see all those white papers related to IronRuby, Have you managed to release it or still under preparation...?</p>
+
+<p>Great to see IronRuby on the First day of Oscon 2007.</p>
+
+<p>I am sure IronRuby will be the  most hot topic discussion at Oscon.</p>
+
+<p>Cheers Again.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.softmind.biz" href="http://www.softmind.biz">SoftMind</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76894644#comment-6a00d834fc885d53ef00e00998542f8833">July 23, 2007 at 03:20 AM</a>
+	</p>
+</div><a id="c76897870"></a>
+<div class="comment comment-even" id="comment-76897870">
+	<div class="comment-content" id="comment-76897870-content">
+		<span id="comment-76897870-content"><p>Awesome. Nice work!</p>
+
+<p>And nice meeting you yesterday, too.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://adammonsen.com" href="http://adammonsen.com">Adam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76897870#comment-6a00d834fc885d53ef00e008ddbeb58834">July 23, 2007 at 04:19 AM</a>
+	</p>
+</div><a id="c76901954"></a>
+<div class="comment comment-odd" id="comment-76901954">
+	<div class="comment-content" id="comment-76901954-content">
+		<span id="comment-76901954-content"><p>This is awesome news, congrats!</p>
+
+<p>Btw, what about Visual Studio integration? I have some experience and I&#39;d sure contribute into IronRuby VS integration project.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.tkachenko.com/blog" href="http://www.tkachenko.com/blog">Oleg Tkachenko</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76901954#comment-6a00d834fc885d53ef00e008ddc4bd8834">July 23, 2007 at 05:23 AM</a>
+	</p>
+</div><a id="c76905528"></a>
+<div class="comment comment-even" id="comment-76905528">
+	<div class="comment-content" id="comment-76905528-content">
+		<span id="comment-76905528-content"><p>Hi John,</p>
+
+<p>Nice work but what&#39;s the deal with all the environment variables in the batch files - like %ROWAN_BIN% and %MERLIN_ROOT% ?</p>
+
+<p>My system doesn&#39;t have them setup...are these internal variables? I notice iron python uses the same ones.</p>
+
+<p>The docs is somewhat different :)</p>
+
+<p>Will play more this evening.</p>
+
+<p>Ben</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://blog.benhall.me.uk" href="http://blog.benhall.me.uk">Ben Hall</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76905528#comment-6a00d834fc885d53ef00e008ddcae98834">July 23, 2007 at 06:10 AM</a>
+	</p>
+</div><a id="c76905638"></a>
+<div class="comment comment-odd" id="comment-76905638">
+	<div class="comment-content" id="comment-76905638-content">
+		<span id="comment-76905638-content"><p>Just to comment on Oleg Tkachenko&#39;s post, having a similar F# interactive console in VS for IronRuby would be great!  Does IronPython have anything like this?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://blog.benhall.me.uk" href="http://blog.benhall.me.uk">Ben Hall</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76905638#comment-6a00d834fc885d53ef00e008ddcb158834">July 23, 2007 at 06:11 AM</a>
+	</p>
+</div><a id="c76906450"></a>
+<div class="comment comment-even" id="comment-76906450">
+	<div class="comment-content" id="comment-76906450-content">
+		<span id="comment-76906450-content"><p>Great stuff John, glad to see things are moving along smoothly.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.developernotes.com" href="http://www.developernotes.com">Nick Parker</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76906450#comment-6a00d834fc885d53ef00e0099864c28833">July 23, 2007 at 06:22 AM</a>
+	</p>
+</div><a id="c76906492"></a>
+<div class="comment comment-odd" id="comment-76906492">
+	<div class="comment-content" id="comment-76906492-content">
+		<span id="comment-76906492-content"><p>Congrats on the release, John! Very nice. I guess I&#39;ll have to play with it in my Windows Parallels.</p>
+
+<p>One detail, you might want to remember that Rubinius uses rbx as the command name, and that your simple IRB goes by the same name will cause clashes at some point.</p>
+
+<p>Hope to see you this week!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://ola-bini.blogspot.com" href="http://ola-bini.blogspot.com">Ola Bini</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76906492#comment-6a00d834fc885d53ef00e0099864cd8833">July 23, 2007 at 06:22 AM</a>
+	</p>
+</div><a id="c76907116"></a>
+<div class="comment comment-even" id="comment-76907116">
+	<div class="comment-content" id="comment-76907116-content">
+		<span id="comment-76907116-content"><p>Thanks, everyone!</p>
+
+<p>@{Oleg,Ben): I would love to see an F# interactive console in VS as well. We could definitely use the help to implement that feature (you can see that we don&#39;t exactly have a big team :)) IronPython does not currently have this feature. I just had lunch on Friday (accidentally as it turns out) with a dev on the F# team at MSR. I&#39;ll ping him to see if he&#39;d like to help out on that integration as well.</p>
+
+<p>@Ben: Sorry about the environment variables. We extracted this source code from the much larger project that we have that builds all four of the languages on the DLR (IronRuby, IronPython, VB, and JS). Our build packaging script doesn&#39;t grovel through batch files to do the right thing (yet). So for now the only batch file that is guaranteed to work is build.cmd in the root - please ignore any other ones that might be sprinkled throughout the sources until we get our build script working correctly.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76907116#comment-6a00d834fc885d53ef00e0099865638833">July 23, 2007 at 06:29 AM</a>
+	</p>
+</div><a id="c76907256"></a>
+<div class="comment comment-odd" id="comment-76907256">
+	<div class="comment-content" id="comment-76907256-content">
+		<span id="comment-76907256-content"><p>@Ola:</p>
+
+<p>I had no idea that Rubinius uses rbx - talk about a small world :)</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76907256#comment-6a00d834fc885d53ef00e008ddcdfa8834">July 23, 2007 at 06:30 AM</a>
+	</p>
+</div><a id="c76912226"></a>
+<div class="comment comment-even" id="comment-76912226">
+	<div class="comment-content" id="comment-76912226-content">
+		<span id="comment-76912226-content"><p>Hi John, just wondering why you don&#39;t release it on Codeplex (like IronPython) instead of RubyForge?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Isaac |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76912226#comment-6a00d834fc885d53ef00e008ddd45a8834">July 23, 2007 at 07:22 AM</a>
+	</p>
+</div><a id="c76913906"></a>
+<div class="comment comment-odd" id="comment-76913906">
+	<div class="comment-content" id="comment-76913906-content">
+		<span id="comment-76913906-content"><p>@Isaac:</p>
+
+<p>I (and I&#39;ll use I here since I fully take responsibility for this decision if it doesn&#39;t work) felt that more folks contributing to open source projects were comfortable with Subversion than with TFS. I wanted to make it as easy as possible for folks to contribute, so Rubyforge was the natural choice here.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76913906#comment-6a00d834fc885d53ef00e008ddd7268834">July 23, 2007 at 07:38 AM</a>
+	</p>
+</div><a id="c76916644"></a>
+<div class="comment comment-even" id="comment-76916644">
+	<div class="comment-content" id="comment-76916644-content">
+		<span id="comment-76916644-content"><p>Congrats Jon! Wow! Accepting source code contributions? What&#39;d you do? Tie up the Microsoft lawyers in the basement somewhere? ;)</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://haacked.com/" href="http://haacked.com/">Haacked</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76916644#comment-6a00d834fc885d53ef00e008dddb608834">July 23, 2007 at 08:04 AM</a>
+	</p>
+</div><a id="c76919208"></a>
+<div class="comment comment-odd" id="comment-76919208">
+	<div class="comment-content" id="comment-76919208-content">
+		<span id="comment-76919208-content"><p>Wow, I am super surprised and very, very happy!  Not only did you drop the bits three days early, but you gave us SVN (through RubyForge) and a timeline for accepting external contributions! Both moves are *huge* for the Ruby community. Well done!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://blowmage.com" href="http://blowmage.com">Mike Moore</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76919208#comment-6a00d834fc885d53ef00e0099876b48833">July 23, 2007 at 08:26 AM</a>
+	</p>
+</div><a id="c76920076"></a>
+<div class="comment comment-even" id="comment-76920076">
+	<div class="comment-content" id="comment-76920076-content">
+		<span id="comment-76920076-content"><p>Great things going john,</p>
+
+<p>I am wondering if at all, i can see few working examples just like IronPython in asp.net futures section.</p>
+
+<p>Posting few working examples would be great.</p>
+
+<p>Just my opinion.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.softmind.biz" href="http://www.softmind.biz">WebReservoir</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76920076#comment-6a00d834fc885d53ef00e008dde07b8834">July 23, 2007 at 08:34 AM</a>
+	</p>
+</div><a id="c76924030"></a>
+<div class="comment comment-odd" id="comment-76924030">
+	<div class="comment-content" id="comment-76924030-content">
+		<span id="comment-76924030-content"><p>Good news! I&#39;m looking forward to see how we can add Visual Studio support IronRuby into Ruby In Steel ;-)</p>
+
+<p>best wishes<br />
+Huw</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.sapphiresteel.com" href="http://www.sapphiresteel.com">Huw Collingbourne</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76924030#comment-6a00d834fc885d53ef00e008dde6b48834">July 23, 2007 at 09:07 AM</a>
+	</p>
+</div><a id="c76925488"></a>
+<div class="comment comment-even" id="comment-76925488">
+	<div class="comment-content" id="comment-76925488-content">
+		<span id="comment-76925488-content"><p>I had trouble building it until I tweaked Build.cmd a bit and added a Platform parameter:</p>
+
+<p>C:\Windows\Microsoft.NET\Framework\v2.0.50727\msbuild.exe /p:Configuration=Release /p:Platform=&quot;Any CPU&quot; /t:Rebuild IronRuby.sln</p>
+
+<p>After that, all was well.  John, congrats, and I&#39;m looking forward to having this on RubyForge, good times!<br />
+</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://profile.typepad.com/tomcopeland" href="http://profile.typepad.com/tomcopeland">tomcopeland</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76925488#comment-6a00d834fc885d53ef00e008dde8ec8834">July 23, 2007 at 09:20 AM</a>
+	</p>
+</div><a id="c76927466"></a>
+<div class="comment comment-odd" id="comment-76927466">
+	<div class="comment-content" id="comment-76927466-content">
+		<span id="comment-76927466-content"><p>I&#39;ve built IronRuby from the source on Mono, and uploaded Build Kit for the beneift of anyone who want to try.</p>
+
+<p><a href="http://sparcs.kaist.ac.kr/~tinuviel/download/IronRuby/" rel="nofollow">http://sparcs.kaist.ac.kr/~tinuviel/download/IronRuby/</a></p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Seo Sanghyeon |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76927466#comment-6a00d834fc885d53ef00e008ddebe98834">July 23, 2007 at 09:38 AM</a>
+	</p>
+</div><a id="c76932758"></a>
+<div class="comment comment-even" id="comment-76932758">
+	<div class="comment-content" id="comment-76932758-content">
+		<span id="comment-76932758-content"><p>&quot;felt that more folks contributing to open source projects were comfortable with Subversion than with TFS&quot;</p>
+
+<p>I can see why you went with RubyForge, but Codeplex now offers the SvnBridge so you can use SVN clients, but under the covers it is infact TFS.</p>
+
+<p><a href="http://www.codeplex.com/SvnBridge" rel="nofollow">http://www.codeplex.com/SvnBridge</a></p>
+
+<p>Might be something worth keeping in mind.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://blog.benhall.me.uk" href="http://blog.benhall.me.uk">Ben Hall</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76932758#comment-6a00d834fc885d53ef00e0099889c98833">July 23, 2007 at 10:30 AM</a>
+	</p>
+</div><a id="c76933736"></a>
+<div class="comment comment-odd" id="comment-76933736">
+	<div class="comment-content" id="comment-76933736-content">
+		<span id="comment-76933736-content"><p>@BenHall: yes the svn bridge is a nice and welcome addition to codeplex for SVN users...but my understanding is SvnBridge will be a windows-only implementation?  i could be wrong.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://timheuer.com/" href="http://timheuer.com/">timheuer</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76933736#comment-6a00d834fc885d53ef00e009988b3d8833">July 23, 2007 at 10:39 AM</a>
+	</p>
+</div><a id="c76935420"></a>
+<div class="comment comment-even" id="comment-76935420">
+	<div class="comment-content" id="comment-76935420-content">
+		<span id="comment-76935420-content"><p>Ahh sorry you are right, my understanding was it was server side.  Bit limiting it being windows only....</p>
+
+<p>Miguel de Icaza just posted on his blog</p>
+
+<p>&quot;This is a probably a good time to point to Joel Reed&#39;s work. He wrote an open source client for accessing TFS systems (CodePlex or your own company&#39;s server) from Unix systems running Mono. (<a href="http://code.google.com/p/tf4mono/)" rel="nofollow">http://code.google.com/p/tf4mono/)&quot;</a></p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://blog.benhall.me.uk" href="http://blog.benhall.me.uk">Ben Hall</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76935420#comment-6a00d834fc885d53ef00e009988d838833">July 23, 2007 at 10:54 AM</a>
+	</p>
+</div><a id="c76936038"></a>
+<div class="comment comment-odd" id="comment-76936038">
+	<div class="comment-content" id="comment-76936038-content">
+		<span id="comment-76936038-content"><p>C o n g r a t u l a t i o n s !</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://fun3d.larc.nasa.gov" href="http://fun3d.larc.nasa.gov">Bil Kleb</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76936038#comment-6a00d834fc885d53ef00e009988e728833">July 23, 2007 at 11:00 AM</a>
+	</p>
+</div><a id="c76940214"></a>
+<div class="comment comment-even" id="comment-76940214">
+	<div class="comment-content" id="comment-76940214-content">
+		<span id="comment-76940214-content"><p>Although we have tf4mono, my vote is still to go with with a Subversion deployment, it means that people can start working on this without requiring extra software to be installed (And Subversion is pretty much part of the Unix fabric at this point).</p>
+
+<p>Miguel.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Miguel de Icaza |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76940214#comment-6a00d834fc885d53ef00e008ddfb888834">July 23, 2007 at 11:14 AM</a>
+	</p>
+</div><a id="c76945146"></a>
+<div class="comment comment-odd" id="comment-76945146">
+	<div class="comment-content" id="comment-76945146-content">
+		<span id="comment-76945146-content"><p>@WebReservoir: </p>
+
+<p>We&#39;re still quite a ways from ASP.NET. There are a lot of implementation details to sort out, particularly around how we deal with isolating concurrently executing pages from each other.</p>
+
+<p>@Seo:</p>
+
+<p>Thanks for the quick turnaround! We&#39;ll get rid of the redundant assert in our code as well :)</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76945146#comment-6a00d834fc885d53ef00e0099899a98833">July 23, 2007 at 11:58 AM</a>
+	</p>
+</div><a id="c76945494"></a>
+<div class="comment comment-even" id="comment-76945494">
+	<div class="comment-content" id="comment-76945494-content">
+		<span id="comment-76945494-content"><p>Be sure to remove duplicate MemberAssignmentExpression.cs as well.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Seo Sanghyeon |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76945494#comment-6a00d834fc885d53ef00e008de039d8834">July 23, 2007 at 12:01 PM</a>
+	</p>
+</div><a id="c76947128"></a>
+<div class="comment comment-odd" id="comment-76947128">
+	<div class="comment-content" id="comment-76947128-content">
+		<span id="comment-76947128-content"><p>Congratulations, John (and team)!  The Ruby community is going to look back on this years from now as a very important and positive milestone.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://rubycentral.org" href="http://rubycentral.org">Chad Fowler</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76947128#comment-6a00d834fc885d53ef00e009989cba8833">July 23, 2007 at 12:18 PM</a>
+	</p>
+</div><a id="c76947266"></a>
+<div class="comment comment-even" id="comment-76947266">
+	<div class="comment-content" id="comment-76947266-content">
+		<span id="comment-76947266-content"><p>Congrats, John!  I&#39;m anxious to play with the source.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://blog.lozanotek.com" href="http://blog.lozanotek.com">Javier Lozano</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76947266#comment-6a00d834fc885d53ef00e008de06228834">July 23, 2007 at 12:20 PM</a>
+	</p>
+</div><a id="c76950358"></a>
+<div class="comment comment-odd" id="comment-76950358">
+	<div class="comment-content" id="comment-76950358-content">
+		<span id="comment-76950358-content"><p>I&#39;ve downloaded and compiled the drops without any issue, and gave the interpreter a try; everything went smoothly!</p>
+
+<p>Congratulations!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.dotnetguru2.org/tbarrere" href="http://www.dotnetguru2.org/tbarrere">Thibaut Barrère</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76950358#comment-6a00d834fc885d53ef00e00998a10d8833">July 23, 2007 at 12:48 PM</a>
+	</p>
+</div><a id="c76950508"></a>
+<div class="comment comment-even" id="comment-76950508">
+	<div class="comment-content" id="comment-76950508-content">
+		<span id="comment-76950508-content"><p>Great Stuff! Does it work with wpf? if so, any code sample you could point to? Thank You.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		krishna |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76950508#comment-6a00d834fc885d53ef00e00998a1488833">July 23, 2007 at 12:50 PM</a>
+	</p>
+</div><a id="c76952018"></a>
+<div class="comment comment-odd" id="comment-76952018">
+	<div class="comment-content" id="comment-76952018-content">
+		<span id="comment-76952018-content"><p>Great! Congratulations to John and all the team behind IronRuby and the DLR, now I&#39;m really impatient to try it :) BTW I think you deserve extra-kudos for the decision to host the source code on Rubyforge.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.clorophilla.net/blog/" href="http://www.clorophilla.net/blog/">NRK</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76952018#comment-6a00d834fc885d53ef00e00998a3e38833">July 23, 2007 at 01:06 PM</a>
+	</p>
+</div><a id="c76977284"></a>
+<div class="comment comment-even" id="comment-76977284">
+	<div class="comment-content" id="comment-76977284-content">
+		<span id="comment-76977284-content"><p>@krishna: See Scott Guthrie&#39;s sample (link in the updated blog entry) for a WPF sample. Scott Hanselman has also created one: <a href="http://www.hanselman.com/blog/WPFSampleInIronRubyTalkingViaCToWesabe.aspx" rel="nofollow">http://www.hanselman.com/blog/WPFSampleInIronRubyTalkingViaCToWesabe.aspx</a></p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76977284#comment-6a00d834fc885d53ef00e00998ccf38833">July 23, 2007 at 06:03 PM</a>
+	</p>
+</div><a id="c76983864"></a>
+<div class="comment comment-odd" id="comment-76983864">
+	<div class="comment-content" id="comment-76983864-content">
+		<span id="comment-76983864-content"><p>Hello John,</p>
+
+<p>Is it possible to call a IronRuby class in c#?  or it works for IronRuby to call c# object only?</p>
+
+<p>thank you~</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Jason |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76983864#comment-6a00d834fc885d53ef00e00998d8888833">July 23, 2007 at 07:29 PM</a>
+	</p>
+</div><a id="c76991504"></a>
+<div class="comment comment-even" id="comment-76991504">
+	<div class="comment-content" id="comment-76991504-content">
+		<span id="comment-76991504-content"><p>Cool !!!<br />
+Can&#39;t wait to try.<br />
+Thank you !</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Jirasak |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76991504#comment-6a00d834fc885d53ef00e008de34978834">July 23, 2007 at 09:21 PM</a>
+	</p>
+</div><a id="c76991522"></a>
+<div class="comment comment-odd" id="comment-76991522">
+	<div class="comment-content" id="comment-76991522-content">
+		<span id="comment-76991522-content"><p>Cool !!!<br />
+Can&#39;t wait to try.<br />
+Thank you !</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Jirasak |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76991522#comment-6a00d834fc885d53ef00e00998e6ee8833">July 23, 2007 at 09:21 PM</a>
+	</p>
+</div><a id="c76995832"></a>
+<div class="comment comment-even" id="comment-76995832">
+	<div class="comment-content" id="comment-76995832-content">
+		<span id="comment-76995832-content"><p>Great milestone u guys got to... the best of lucks on the stages to come!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://samiqbits.blogspot.com/2007/07/ironruby-is-in-wild-as-pre-alpha-with.html" href="http://samiqbits.blogspot.com/2007/07/ironruby-is-in-wild-as-pre-alpha-with.html">Samiq</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76995832#comment-6a00d834fc885d53ef00e00998ed4f8833">July 23, 2007 at 10:46 PM</a>
+	</p>
+</div><a id="c76995988"></a>
+<div class="comment comment-odd" id="comment-76995988">
+	<div class="comment-content" id="comment-76995988-content">
+		<span id="comment-76995988-content"><p>Nice and cool!</p>
+
+<p>One thing: does it work with .NET 3.0?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Sadeq |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=76995988#comment-6a00d834fc885d53ef00e00998ed858833">July 23, 2007 at 10:49 PM</a>
+	</p>
+</div><a id="c77086088"></a>
+<div class="comment comment-even" id="comment-77086088">
+	<div class="comment-content" id="comment-77086088-content">
+		<span id="comment-77086088-content"><p>it&#39;s cool!!<br />
+wow~~!! <br />
+i don&#39;t believe,<br />
+i think ii&#39;s great and creat news!!</p>
+
+<p>another thing : with .net 2.0? 3.0?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://plushe.net" href="http://plushe.net">cherryeyes</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77086088#comment-6a00d834fc885d53ef00e3932f23928834">July 24, 2007 at 10:59 PM</a>
+	</p>
+</div><a id="c77094608"></a>
+<div class="comment comment-odd" id="comment-77094608">
+	<div class="comment-content" id="comment-77094608-content">
+		<span id="comment-77094608-content"><p>@Jason: yes you can call a Ruby object from C# - either via an event that has a Ruby block bound to it, or via a call to a CLR interface that is implemented by a Ruby object.</p>
+
+<p>@{Sadeq|cherryeyes}: it requires .NET 2.0, but will work with .NET 3.0 as well.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77094608#comment-6a00d834fc885d53ef00e3932f31208834">July 25, 2007 at 02:18 AM</a>
+	</p>
+</div><a id="c77119550"></a>
+<div class="comment comment-even" id="comment-77119550">
+	<div class="comment-content" id="comment-77119550-content">
+		<span id="comment-77119550-content"><p>Great Job, congrats!</p>
+
+<p>@cherryeyes: Could You please give an example of how to call a Ruby object from C#?<br />
+Thx in advance!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://blog.bluenode.de" href="http://blog.bluenode.de">Chriss</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77119550#comment-6a00d834fc885d53ef00e3981b97e68833">July 25, 2007 at 07:39 AM</a>
+	</p>
+</div><a id="c77158700"></a>
+<div class="comment comment-odd" id="comment-77158700">
+	<div class="comment-content" id="comment-77158700-content">
+		<span id="comment-77158700-content"><p>Hey,<br />
+I wanna say great job on this I like the direction its heading but I have one question.  I ran into a snag trying to use the Time.now command from ruby.  I tried to require Time but had no luck with that.  Has anyone else gotten things other then hello world and interaction with WPF to work with this yet?  I would really like to explore it more and am really excited for this project.</p>
+
+<p>Keep up the good work!<br />
+-CH</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://blog.johnsonch.net" href="http://blog.johnsonch.net">johnsonch</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77158700#comment-6a00d834fc885d53ef00e3981bb4468833">July 25, 2007 at 12:55 PM</a>
+	</p>
+</div><a id="c77168888"></a>
+<div class="comment comment-even" id="comment-77168888">
+	<div class="comment-content" id="comment-77168888-content">
+		<span id="comment-77168888-content"><p>18 months ago, I was a ruby newbie, doing Rails at a major search engine.</p>
+
+<p>David Thomas (of pickaxe book fame) came and did an all day class on Ruby for the group.</p>
+
+<p>When it was time for Q&amp;A, I asked a number of questions that really ruffled his feathers.</p>
+
+<p>My favorite one was &quot;Dave, do you ever see Ruby running under .NET?&quot;</p>
+
+<p>He fumed, got all loud and screamed at me that this day would never come cause Ruby was &quot;too complex&quot; for .NET</p>
+
+<p><br />
+So congrats John and team for letting me have the last laugh on this one.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Rodney Reid |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77168888#comment-6a00d834fc885d53ef00e3932f9ae68834">July 25, 2007 at 02:29 PM</a>
+	</p>
+</div><a id="c77240072"></a>
+<div class="comment comment-odd" id="comment-77240072">
+	<div class="comment-content" id="comment-77240072-content">
+		<span id="comment-77240072-content"><p>congrats first!great job</p>
+
+<p>however,some issues here<br />
+although it&#39;s a pre-alpha version,i found that even some basic arithmetic operations are missed</p>
+
+<p>for example,1/2.0 gives 0;1.0/2.0 will result in an exception</p>
+
+<p>power,like 2**3,is also not implemented yet?</p>
+
+<p>The same happens when i try some code with Bignum class</p>
+
+<p>Hope to see promoted releases soon!</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		chengmeng |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77240072#comment-6a00d834fc885d53ef00e3932ffbce8834">July 26, 2007 at 07:44 AM</a>
+	</p>
+</div><a id="c77246440"></a>
+<div class="comment comment-even" id="comment-77246440">
+	<div class="comment-content" id="comment-77246440-content">
+		<span id="comment-77246440-content"><p>@chengmeng: Those basic arithmetic operations are trivial to implement. In the spirit of open source, I fixed those myself. See <a href="http://fepy.blogspot.com/2007/07/teaching-ironruby-math-tricks.htm" rel="nofollow">http://fepy.blogspot.com/2007/07/teaching-ironruby-math-tricks.htm</a> for details.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Seo Sanghyeon |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77246440#comment-6a00d834fc885d53ef00e3933005598834">July 26, 2007 at 08:40 AM</a>
+	</p>
+</div><a id="c77246606"></a>
+<div class="comment comment-odd" id="comment-77246606">
+	<div class="comment-content" id="comment-77246606-content">
+		<span id="comment-77246606-content"><p>Bah the above URL has the last letter missing. Here it is again: <a href="http://fepy.blogspot.com/2007/07/teaching-ironruby-math-tricks.html" rel="nofollow">http://fepy.blogspot.com/2007/07/teaching-ironruby-math-tricks.html</a> </p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Seo Sanghyeon |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77246606#comment-6a00d834fc885d53ef00e3981c4ece8833">July 26, 2007 at 08:41 AM</a>
+	</p>
+</div><a id="c77286054"></a>
+<div class="comment comment-even" id="comment-77286054">
+	<div class="comment-content" id="comment-77286054-content">
+		<span id="comment-77286054-content"><p>Why not release under the Ruby license?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.gnu.org/" href="http://www.gnu.org/">Matt Lee</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77286054#comment-6a00d834fc885d53ef00e3933043928834">July 26, 2007 at 02:06 PM</a>
+	</p>
+</div><a id="c77296480"></a>
+<div class="comment comment-odd" id="comment-77296480">
+	<div class="comment-content" id="comment-77296480-content">
+		<span id="comment-77296480-content"><p>Any win form examples for IronRuby.</p>
+
+<p>Last December we decided to support IronPython for our functional web testing tool InCisif.net.</p>
+
+<p>I like to give a shot at IronRuby ?</p>
+
+<p>Thanks.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.incisif.net" href="http://www.incisif.net">Ftorres</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77296480#comment-6a00d834fc885d53ef00e39330551e8834">July 26, 2007 at 03:59 PM</a>
+	</p>
+</div><a id="c77300502"></a>
+<div class="comment comment-even" id="comment-77300502">
+	<div class="comment-content" id="comment-77300502-content">
+		<span id="comment-77300502-content"><p>@Matt: The Ruby license is a special-case license with unusual provisions</p>
+
+<p>@Ftorres: These will be coming soon (my talk this afternoon does some Winforms).</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77300502#comment-6a00d834fc885d53ef00e393305bca8834">July 26, 2007 at 04:51 PM</a>
+	</p>
+</div><a id="c77322908"></a>
+<div class="comment comment-odd" id="comment-77322908">
+	<div class="comment-content" id="comment-77322908-content">
+		<span id="comment-77322908-content"><p>Congrats! John,</p>
+
+<p>I&#39;m hearing about IronRuby a lot. So finally it&#39;s started to come out. OK</p>
+
+<p>I&#39;ve some knowledge of Ruby. Could you please point some links? I want to start learn and work on it :)</p>
+
+<p>Kind Regards<br />
+</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Ashok Guduru |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77322908#comment-6a00d834fc885d53ef00e393307a718834">July 26, 2007 at 10:21 PM</a>
+	</p>
+</div><a id="c77324246"></a>
+<div class="comment comment-even" id="comment-77324246">
+	<div class="comment-content" id="comment-77324246-content">
+		<span id="comment-77324246-content"><p>John,</p>
+
+<p>What&#39;s the chance of us ever seeing IronScheme? It would be good to have something to take over from where Common Larceny leaves off. What do you think: in this life or the next? ;-)</p>
+
+<p>Don&#39;t get me wrong Python and Ruby are mucho cool but when I want to get my functional / language-compiler designer grove on then Scheme is what I really want. WPF apps written in Scheme... you know it makes sense :-)</p>
+
+<p>Kind regards,</p>
+
+<p>tom</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://edge-loop.spaces.live.com/" href="http://edge-loop.spaces.live.com/">Tom Kirby-Green</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77324246#comment-6a00d834fc885d53ef00e3981ca89a8833">July 26, 2007 at 10:48 PM</a>
+	</p>
+</div><a id="c77344886"></a>
+<div class="comment comment-odd" id="comment-77344886">
+	<div class="comment-content" id="comment-77344886-content">
+		<span id="comment-77344886-content"><p>I&#39;ve downloaded and compiled.  On my box %frameworkdir% and %frameworkversion% variables are not set. I just used SDK console <br />
+msbuild.exe /p:Configuration=Release /t:Rebuild IronRuby.sln</p>
+
+<p>Tested apps with winforms.<br />
+Its awesome.</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		Sriharsha Vardhan |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77344886#comment-6a00d834fc885d53ef00e393309d358834">July 27, 2007 at 05:48 AM</a>
+	</p>
+</div><a id="c77358090"></a>
+<div class="comment comment-even" id="comment-77358090">
+	<div class="comment-content" id="comment-77358090-content">
+		<span id="comment-77358090-content"><p>@Sriharsha:</p>
+
+<p>I&#39;ll fix the build script to do the right thing in the next release (my fault for not testing on XP and only the Vista dogfood build on my desktop).</p>
+
+<p>@Tom: </p>
+
+<p>I really hope *someone* builds this ... calling Joe Duffy?</p></span>
+	</div>
+	<p class="comment-footer">
+		Posted by:
+		<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+		<a href="http://www.iunknown.com/2007/07/a-first-look-at.html?cid=77358090#comment-6a00d834fc885d53ef00e3981cd1e88833">July 27, 2007 at 08:07 AM</a>
+	</p>
+</div>
+
+		</div>
+                <div class="pager-bottom pager-comments pager content-nav">
+            <div class="comments-pager" id="comments-pager"></div>
+            <div class="pager-inner">
+            
+            
+                            <span class="pager-right">
+                    <a href="http://www.iunknown.com/2007/07/a-first-look-at/comments/page/2/#comments"><span class="pager-label"></span>
+                        <span class="chevron">&#187;</span></a>
+                </span> 
+            
+            </div>
+        </div>
+        
+	</div>
+    	<!-- comment-form-atp -->
+
+	
+<div id="atp-comments">
+    
+        <div id="comment-preview" class="hiddenBox">
+	<h3 id="header-verify-comment" class="comments-header hiddenBox">Verify your Comment</h3>
+    <h3 id="header-preview-comment" class="comments-header hiddenBox">Previewing your Comment</h3>
+	<div class="comments-content">
+		<div class="comment">
+			<div id="comment-preview-content" class="comment-content">
+			</div>
+			<p class="comment-footer">
+				Posted by: 
+				<span id="comment-preview-author"></span>&nbsp;|&nbsp;<span id="comment-preview-datetime"></span>
+			</p>
+		</div>
+	</div>
+</div>
+<div id="comment-preview-confirmation" class="hiddenBox yellowBox">
+    <p>This is only a preview. Your comment has not yet been posted.</p>
+   	<form id="comment-preview-form"
+   		method="post"
+   		onsubmit="atpComments.interceptPost(commentFormNum); return false;">
+		<input type="submit" name="post" id="comment-confirm-post" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;"/>		    
+		<input type="submit" name="edit" id="comment-edit" value="&nbsp;&nbsp;Edit&nbsp;&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 2); return false;"/>
+        <span id="previewFormSpinner" class="hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+	</form>
+</div>
+<div id="comment-error" class="hiddenBox redBox">	    
+   Your comment could not be posted. Error type: <span id="comment-error-msg"></span> 
+</div>	
+<div id="comment-complete" class="hiddenBox redBox">
+    Your comment has been saved. Comments are moderated and will not appear until approved by the author. <a href="javascript:void 0;" onclick="window.location.hash='#comment-form';window.location.reload(false)">Post another comment</a>
+</div>	
+<div id="comment-captcha" class="hiddenBox yellowBox">	
+    <div id="captchaText">
+	    <p id="captchaFailMsg" class="captchaErrorText hiddenBox">The letters and numbers you entered did not match the image. Please try again.</p>	    	        
+	    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.</p>
+	    <p><span id="comment-captcha-viewalt">Having trouble reading this image? <a href="#comment-captcha" onClick="atpComments.generateCaptcha(commentFormNum);">View an alternate.</a></span></p>
+    </div>
+    <p class=""><img id="captchaImg" /></p>		
+    <form id="comment-captcha-form" 
+		  method="post"
+		  onsubmit="atpComments.submitWithCaptcha(commentFormNum); return false;">
+		<input type="hidden" name="captcha_chal" id="comment-captcha-chal" value="" />
+        <p>
+	        <input id="comment-captcha-text" name="captcha_text" size="10" />
+        </p>
+        <p>
+            <input type="submit" name="continue" id="captcha-continue" value="&nbsp;Continue&nbsp;" />
+            <span id="captchaFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+        </p>
+    </form>
+</div>
+
+    
+	<div id="primary-comment-form" class="comment-form">
+    	<form id="comment-form" action="http://www.iunknown.com/.services/comments"
+    		method="post">
+    		<input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e008ddb2698834" />
+                <input type="hidden" name="token" value="1265555079-7e5706708c4aa845d66446fa39990292726fc0ee:pfNYS7fT1JrkI0o7" />
+    		<div class="comments-open">
+    			<h2 class="comments-open-header" id="comment-title">Post a comment</h2>
+    			<div id="comments-open-content" class="comments-open-content">
+    									
+    				    <p class="comments-open-moderated">
+    						Comments are moderated, and will not appear until the author has approved them.
+    					</p>
+    				
+				
+    									
+    					<div id="comments-open-login" style="display: none;">
+                  <div class="login-list">
+                      
+                      <span class="first">Comment below or sign in with</span> <span class="typepad"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=ca76d3874ffd4a68d7fbefb7b90dcd1debd1ccae&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2007%2F07%2Fa-first-look-at.html&_portal=typepad">TypePad</a></span> <span class="facebook"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=ca76d3874ffd4a68d7fbefb7b90dcd1debd1ccae&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2007%2F07%2Fa-first-look-at.html&_portal=typepad&service=facebook">Facebook</a></span> <span class="twitter"><a href="https://www.typekey.com/t/typekey/login?v=1.0&t=ca76d3874ffd4a68d7fbefb7b90dcd1debd1ccae&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2007%2F07%2Fa-first-look-at.html&_portal=typepad&service=twitter">Twitter</a></span> <span>and <a href="https://www.typekey.com/t/typekey/login?v=1.0&t=ca76d3874ffd4a68d7fbefb7b90dcd1debd1ccae&lang=en_US&_return=http%3A%2F%2Fwww.iunknown.com%2F2007%2F07%2Fa-first-look-at.html&_portal=typepad&service=openid">more...</a></span>
+                      
+                  </div>
+                  <div class="clr"></div>
+    					</div>
+    					<div id="comments-open-logout" style="display: none;">
+    						You are currently signed in as
+    						<span id="commenter-name">(nobody)</span>.
+    						<a href="http://www.iunknown.com/.services/sitelogout?to=https%3A%2F%2Fwww.typekey.com%2Ft%2Ftypekey%2F%3F__mode%3Dlogout%26_return%3Dhttp%253A%252F%252Fwww.iunknown.com%252F2007%252F07%252Fa-first-look-at.html">Sign Out</a>
+    					</div>
+    				
+                    	<div id="comments-open-text" style="display:none;">
+        					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="atpComments.maxTextArea(this, 64000);"></textarea>
+            				
+            				<p class="comments-open-subtext">
+            				    (URLs automatically linked.)
+            				</p>			
+            				                    					
+        				</div>
+    				    <div id="comments-open-data" style="display:none;">
+                            <p>Your Information</p>
+                            <p>
+                                (Name and email address are required. Email address will not be displayed with the comment.)
+                            
+                            </p>
+    						<p>
+    							<input id="comment-author" at:default="Name" name="author" size="30" value="Name" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-author" id="comment-author-error" class="comment-error hiddenBox">Name is required to post a comment</label>
+    						</p>
+    						<p>
+    							<input id="comment-email" at:default="Email Address" name="email" size="30" value="Email Address" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-email" id="comment-email-error" class="comment-error hiddenBox">Please enter a valid email address</label>
+    						</p>
+    						<p>
+    							<input id="comment-url" at:default="Web Site URL" name="url" size="30" value="Web Site URL" onfocus="if(this.value==this.getAttribute('at:default')) this.value='';"  onBlur="if(this.value=='') this.value=this.getAttribute('at:default');" class="grayText"/>
+    							<label for="comment-url" id="comment-url-error" class="comment-error hiddenBox">Invalid URL</label>
+    						</p>
+    					</div>
+    			</div>
+                <div id="comments-open-footer" class="comments-open-footer" style="display:none;">
+    				<input type="submit" name="post" id="comment-post-button" value="&nbsp;Post&nbsp;" onclick="atpComments.interceptPost(commentFormNum); return false;" disabled="true" />
+    				<input type="submit" name="preview" id="comment-preview-button" value="&nbsp;Preview&nbsp;" onclick="atpComments.previewOnly(commentFormNum, 1); return false;" disabled="true" />
+    				<span id="commentEntryFormSpinner" class="commentSpinner hiddenBox"><img src="/.shared/images/spinner.gif" alt="Working..." /></span>
+    			</div>
+    		</div>
+    	</form>
+        <noscript>
+            
+			<div id="comments-open-noscript" class="comments-open-noscript">
+		        <form action="http://www.iunknown.com/.services/comments" method="post">
+		            <input type="hidden" name="entry_xid" id="comment-entry-xid" value="6a00d834fc885d53ef00e008ddb2698834" />
+                            <input type="hidden" name="token" value="1265555079-667b5447ac89a5272f31c11255978dcc1c34294f:BJz3UqtuImbFZrrL" />
+		            Name:<br /><input type="text" name="author" size="30" /><br />
+		            Email address:<br /><input type="text" name="email" size="30" /><br />
+		            URL:<br /><input type="text" name="url" size="30" /><br /><br />
+		            Comment:<br /><textarea name="text" cols="40" rows="4"></textarea><br />
+		            
+		            <input type="submit" name="submit" value="Submit" />
+		        </form>
+			</div>
+			
+		</noscript>
+	</div>
+</div>
+
+
+
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0120a85c2e83970b#comment-6a00d834fc885d53ef0120a85c2e83970b">John Lam</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0128775b4671970c#comment-6a00d834fc885d53ef0128775b4671970c">Stefan Dobrev</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0128772f4662970c#comment-6a00d834fc885d53ef0128772f4662970c">Bret Ferrier (runxc1)</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef0120a82bff6c970b#comment-6a00d834fc885d53ef0120a82bff6c970b">Bret Ferrier (runxc1)</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html?cid=6a00d834fc885d53ef01287708e5c1970c#comment-6a00d834fc885d53ef01287708e5c1970c">Tim</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html?cid=6a00d834fc885d53ef012876f06991970c#comment-6a00d834fc885d53ef012876f06991970c">FutureTurnip</a> on <a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef012876c77c12970c#comment-6a00d834fc885d53ef012876c77c12970c">Phil</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef012876c2d2d1970c#comment-6a00d834fc885d53ef012876c2d2d1970c">John Lam</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/12/motorola-droid-review.html?cid=6a00d834fc885d53ef0120a7c033c1970b#comment-6a00d834fc885d53ef0120a7c033c1970b">fred stewart</a> on <a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a>
+			</li>
+			<li class="module-list-item">
+				<a href="http://www.iunknown.com/2009/11/passing-the-torch.html?cid=6a00d834fc885d53ef0120a7b7b416970b#comment-6a00d834fc885d53ef0120a7b7b416970b">John Lam</a> on <a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a>
+			</li>
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">Motorola DROID Review</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/11/passing-the-torch.html">Passing the torch</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/05/dynamic-languages-at-teched-2009.html">Dynamic Languages at TechEd 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/12/index.html">December 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/11/index.html">November 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/05/index.html">May 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/index.html">January 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">December 2009</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				
+							
+					<td>4</td>
+				
+							
+					<td>5</td>
+				</tr>
+							<tr>
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/12/motorola-droid-review.html">10</a></td>
+				
+							
+					<td>11</td>
+				
+							
+					<td>12</td>
+				</tr>
+							<tr>
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				
+							
+					<td>19</td>
+				</tr>
+							<tr>
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				
+							
+					<td>26</td>
+				</tr>
+							<tr>
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+<div class="module-custom_html module">
+    <div class="module-content">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+    </div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+		</div>
+	</div>
+	
+
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+
+<script src="http://cdn.media6degrees.com/static/ty2093.js" type="text/javascript"></script></body>
+</html>
+
+<script type="text/javascript">
+var captchaImgAttempts = 0;
+var allowAnonComments = '0';
+var registrationRequired = 0;
+var registrationOptional = 1;
+var emailRequired = 1;
+var useAvatars = 0;
+
+var showSignInMessaging = 0;
+var jsonURL = "/.services/json-rpc";
+
+var captchaSrc = "/.services/captcha?code_encrypted=";
+var alertCommentCannotBeBlank = "You can not leave an empty comment. Please enter some text in the Comment field.";
+var alertEditingExpired = "Sorry, you're no longer allowed to edit this comment. You may have taken too much time before submitting your edit or someone may have already replied to it.";
+
+var alertAuthorCannotBeBlank = "Name must not be blank.";
+var alertEmailCannotBeBlank = "Email Address must not be blank.";
+var alertAuthorAndEmailCannotBeBlank = "Name and email address are both required!";
+var alertEmailIsInvalid = "The Email Address you entered is invalid. Please enter a valid email address.";
+var alertUnauthorizedAction = "The comments on this post are closed.";
+var msgPostReplyTo = "Reply to ";  
+var msgInReplyTo = "In reply to ";
+var msgPostAComment = "Post a comment ";
+var atpCommentsPath = "/.shared/js/atpcomments_yui.js?v=4";
+var hasChanged = 0;
+var hostName = ".iunknown.com";
+var tp_comment_token = "1265555079-72ea104d991141dcda023b4f43de9b209baed7d4:rEbowv8VfTIGyMB1";
+
+var isPage = 0;
+var blog_xid = "6a00d834fc885d53ef00d83531ed5d69e2";
+var xid = "";
+var injectCode = '<div id=\"comment-preview\" class=\"hiddenBox\">\n\t<h3 id=\"header-verify-comment\" class=\"comments-header hiddenBox\">Verify your Comment<\/h3>\n    <h3 id=\"header-preview-comment\" class=\"comments-header hiddenBox\">Previewing your Comment<\/h3>\n\t<div class=\"comments-content\">\n\t\t<div class=\"comment\">\n\t\t\t<div id=\"comment-preview-content\" class=\"comment-content\">\n\t\t\t<\/div>\n\t\t\t<p class=\"comment-footer\">\n\t\t\t\tPosted by: \n\t\t\t\t<span id=\"comment-preview-author\"><\/span>&nbsp;|&nbsp;<span id=\"comment-preview-datetime\"><\/span>\n\t\t\t<\/p>\n\t\t<\/div>\n\t<\/div>\n<\/div>\n<div id=\"comment-preview-confirmation\" class=\"hiddenBox yellowBox\">\n    <p>This is only a preview. Your comment has not yet been posted.<\/p>\n   \t<form id=\"comment-preview-form\"\n   \t\tmethod=\"post\"\n   \t\tonsubmit=\"atpComments.interceptPost(commentFormNum); return false;\">\n\t\t<input type=\"submit\" name=\"post\" id=\"comment-confirm-post\" value=\"&nbsp;Post&nbsp;\" onclick=\"atpComments.interceptPost(commentFormNum); return false;\"/>\t\t    \n\t\t<input type=\"submit\" name=\"edit\" id=\"comment-edit\" value=\"&nbsp;&nbsp;Edit&nbsp;&nbsp;\" onclick=\"atpComments.previewOnly(commentFormNum, 2); return false;\"/>\n        <span id=\"previewFormSpinner\" class=\"hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n\t<\/form>\n<\/div>\n<div id=\"comment-error\" class=\"hiddenBox redBox\">\t    \n   Your comment could not be posted. Error type: <span id=\"comment-error-msg\"><\/span> \n<\/div>\t\n<div id=\"comment-complete\" class=\"hiddenBox redBox\">\n    Your comment has been saved. Comments are moderated and will not appear until approved by the author. <a href=\"javascript:void 0;\" onclick=\"window.location.hash=\'#comment-form\';window.location.reload(false)\">Post another comment<\/a>\n<\/div>\t\n<div id=\"comment-captcha\" class=\"hiddenBox yellowBox\">\t\n    <div id=\"captchaText\">\n\t    <p id=\"captchaFailMsg\" class=\"captchaErrorText hiddenBox\">The letters and numbers you entered did not match the image. Please try again.<\/p>\t    \t        \n\t    <p>As a final step before posting your comment, enter the letters and numbers you see in the image below. This prevents automated programs from posting comments.<\/p>\n\t    <p><span id=\"comment-captcha-viewalt\">Having trouble reading this image? <a href=\"#comment-captcha\" onClick=\"atpComments.generateCaptcha(commentFormNum);\">View an alternate.<\/a><\/span><\/p>\n    <\/div>\n    <p class=\"\"><img id=\"captchaImg\" /><\/p>\t\t\n    <form id=\"comment-captcha-form\" \n\t\t  method=\"post\"\n\t\t  onsubmit=\"atpComments.submitWithCaptcha(commentFormNum); return false;\">\n\t\t<input type=\"hidden\" name=\"captcha_chal\" id=\"comment-captcha-chal\" value=\"\" />\n        <p>\n\t        <input id=\"comment-captcha-text\" name=\"captcha_text\" size=\"10\" />\n        <\/p>\n        <p>\n            <input type=\"submit\" name=\"continue\" id=\"captcha-continue\" value=\"&nbsp;Continue&nbsp;\" />\n            <span id=\"captchaFormSpinner\" class=\"commentSpinner hiddenBox\"><img src=\"/.shared/images/spinner.gif\" alt=\"Working...\" /><\/span>\n        <\/p>\n    <\/form>\n<\/div>\n'; 
+var commentFormNum;
+var entryPermalink = "http://www.iunknown.com/2007/07/a-first-look-at.html";
+var inlineReply = document.createElement("div");
+var commentFooterLinks;
+var commentHeader;
+var commentReplyXID;
+var commentReplyAuthor;
+var commentReplyComplete;
+var inlineReplyLoaded = 0;
+
+function xidToCommentPermalink (entryUrl, xid) {
+    return entryUrl + "?cid=" + xid + "#comment-" + xid;
+}
+
+</script>
+<script type="text/javascript" src="/.shared/js/yui/yuiloader-beta-min.js"></script>
+<script type="text/javascript" src="/.shared/js/atpcomments.js?v=3"></script>
+
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

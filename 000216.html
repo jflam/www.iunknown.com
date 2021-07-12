@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: What's up with CLAW?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000215.html" title="I really like the guys at WholeTomato" />
+
+<link rel="next" href="http://www.iunknown.com/000217.html" title="Why I still love CityDesk" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000215.html">&laquo; I really like the guys at WholeTomato</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000217.html">Why I still love CityDesk &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 11, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">What's up with CLAW?</h3>
+
+<p><P>I see that&nbsp;<A href="http://dotnetweblogs.com/sgentile/">Sam Gentile</A> and <A href="http://dotnetweblogs.com/dmarsh/">Drew Marsh</A> have been writing about <A href="Weblog/HellofromAOSD2002.html">CLAW</A>. So I felt that it's my duty to tell folks what the current status of that project is.</P><br />
+<P>Currently, CLAW&nbsp;is in limbo; I haven't really touched that codebase since about October or so. The versions that I have been showing at different conferences are an early prototype that I wrote back in about March of last year. I have a different codebase that included a formal definition of an aspect weaving language that I wrote using <A href="http://www.antlr.org">ANTLR</A>. Unfortunately, the new codebase is only partially operational and doesn't have the functionality of the original prototype.</P><br />
+<P>Why haven't I continued working on CLAW? Since working on the project, I've had rather mixed feelings about AOP as a technology; I believe that AOP, as it stands today, is too complicated to use as a general-purpose development methodology. </P><br />
+<P>The main issue that I have with AOP is that it is not possible to discern the functionality of code simply by looking at the source code. AOP allows the <EM>deliberate </EM>introduction of side-effects into a codebase. The canonical (and trivial) examples of AOP are always side-effect free: logging and tracing aspects being the ones most often seen. </P><br />
+<P>Unfortunately, you run into problems the minute you have aspects that contain side-effects. Perhaps the simplest aspect with side-effects&nbsp;is a security aspect. It grants / denies access to a piece of code based on some security policy. While this in and of itself is not necessarily bad (depending on your point of view), things become far more complicated when you have multiple aspects at a single join point. Think about cases where you have both security policy code and business rules enforcement code woven into a single join point. You now have a case where the order in which the aspects are applied become important (among other things). </P><br />
+<P>Now consider happens when someone needs to fix a bug. Where is that bug? Is it in the method? Is it in the security policy aspect? Is it in the business rules aspect(s)? What if the bug is a result of the <EM>interaction</EM> of those aspects? How do you even know the aspects are there?</P><br />
+<P>Some of these problems can be solved by a good IDE. The now-defunct&nbsp;<A href="http://www.aisto.com/roeder/Ip/">Intentional Programming project</A> at Microsoft Research produced a phenomenal IDE that can already provide aspect visualization in source code (check out the video at Lutz's site). The <A href="http://www.eclipse.org/aspectj/">AspectJ</A> folks did a great job of integrating aspect visualization into existing tools like Eclipse and Emacs. </P><br />
+<P>However, I don't have the resources to build an IDE. Anyone who is going to try and push AOP into mainstream development had better have a lot of resources to back up that project. It's really a job for a Microsoft or an IBM (or a really rich Charles Simonyi who can afford to fund his <A href="http://www.intentionalsoftware.com">own AOP company</A>). It doesn't seem like Microsoft is particularly interested in AOP, especially&nbsp;since they canned the IP project. </P><br />
+<P>Another related problem is adding new functionality. How do you add it? In an aspect? In your codebase? Some combination thereof?&nbsp;I feel that providing devs with more options in these cases are going to lead to some really nasty bugs in large codebases.</P><br />
+<P>I hope you don't get the impression that I believe that this technology is not without merit. It's extremely powerful and useful, but <EM>not as a general-purpose technique</EM>. I believe that there are two really interesting applications of AOP:</P><br />
+<OL><br />
+<LI><br />
+<DIV>Security policy enforcement / monitoring</DIV><br />
+<LI><br />
+<DIV>Diagnostic probes</DIV></LI></OL><br />
+<P>You could argue that 1) is a special case of 2), but I digress. There are already companies that I know of working in 1), and 2) cannot be far behind. </P><br />
+<P>Diagnostic probes are particularly interesting. I believe that there are a large class of bugs caused by inappropriate use of API's. Designers of API's could build diagnostic probes (which are cousins of unit tests) that could be used to validate that applications are calling API's correctly. Here's a few trivial examples that I showed using CLAW:</P><br />
+<OL><br />
+<LI><br />
+<DIV>Tracking whether ADO.NET connections were released, and identifying the point in your source where you opened the connection if it wasn't released</DIV><br />
+<LI><br />
+<DIV>Enforcing quotas on resources. One particularly interesting one was a scalability policy based on measuring how long it took for transactions to commit. </DIV></LI></OL><br />
+<P>I think that 2) is fertile ground for further development, but I have moved on to other areas. If anyone is interested in collaborating in these areas, I would consider doing some consulting work to help get you up to speed. I really like this technology, but I just don't have the time and resources to develop it ...</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 11, 2003 09:22 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="216" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000216.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Thank you John for your well thought out and clear response.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://dotnetweblogs.com/sgentile/">Sam Gentile</a> at February 11, 2003 09:44 AM</span>
+</div>
+<div class="comments-body">
+<p>Just a thought but how about making the project opensource John?</p>
+<span class="comments-post">Posted by: Andrew Stopford at February 12, 2003 08:06 AM</span>
+</div>
+<div class="comments-body">
+<p>I'm thinking about it. Unfortunately, I just don't have the cycles to clean up the code and write the docs so that someone can actually start building stuff on top of it. Sam can vouch for this - installing it and getting it running is really nasty. But it is on the list of things that I'd like to do.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 12, 2003 09:16 AM</span>
+</div>
+<div class="comments-body">
+<p>Thats what I was thinking, if you can't find the code a new home, release it to the wild.<br />
+If you do decide on opensourcing the code, and don't plan on being the maintainer, you could "audition" some hopefuls by getting them to help clean the code and write the docs.</p>
+<span class="comments-post">Posted by: Dave Lee at February 12, 2003 04:29 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the suggestion, Dave. I'll think about doing this once I get some cycles. March is shaping up to be a real busy month ...</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at February 13, 2003 09:12 AM</span>
+</div>
+<div class="comments-body">
+<p>With test driven design and usage of MockObjects (perhaps provided by the API designers)  you can flush out incorrect API usage at unit test time.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;zohar&#46;melamed&#64;bnpparibas&#46;com">Zohar Melamed</a> at March  5, 2003 08:16 AM</span>
+</div>
+<div class="comments-body">
+<p>I am interested in applying AOP to security. John, would you provide more information for me to find those companies in this area? I just want to find more references. By now,I just know of "New Aspects of Security":<br />
+http://www.newaspects.com/</p>
+
+<p>Thanks</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;hminwell&#64;yahoo&#46;com">Minwell Huang</a> at July 19, 2003 03:49 AM</span>
+</div>
+<div class="comments-body">
+<p>I've completed an pull-aspect engine using Proxy, but have not been able to use it due to the fact that I can only access MarshalByRef objects with it. I need to update my engine to handle any object type I require, and thus I think I need to hook into Profiler like you did. However, I've had a look and found it daunting. Have you got any docs/examples which I can use to get going?</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;sean&#46;hederman&#64;ast&#46;co&#46;za">Sean Hederman</a> at October 27, 2003 09:54 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

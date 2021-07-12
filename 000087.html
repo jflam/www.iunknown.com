@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Charles Petzold and Code</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000086.html" title="Resources for my SVC Class" />
+
+<link rel="next" href="http://www.iunknown.com/000088.html" title="#pragma unmanaged" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000086.html">&laquo; Resources for my SVC Class</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000088.html">#pragma unmanaged &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">March 29, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Charles Petzold and Code</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>I love going to the Microsoft company store. After the end of my class this week, I went (for the second time) to the company store to pick up a few additional items. One item that caught my eye is a book that I've been putting off reading for quite some time (it was originally published in 1999). That book is called Code.</P><br />
+<P>I'm writing this on a plane to Vancouver, BC. I just finished reading the first 40 pages of Charles' book. I am <EM>so </EM>impressed by this book. It explains the origin of computer code from first principles. The beginning of the book is motivated by the desire of two best friends to communicate with each other after their parents have told them to go to bed. Based on this simple premise, he goes on to explain the origin of binary communications beginning with Morse Code. </P><br />
+<P>The chapter on Morse Code brought back memories of something that I learned long ago in an Encyclopedia Brown book. That something was the frequency table of the English language, which is&nbsp;often used to crack simple substitution ciphers such as Ceasar's cipher.&nbsp;Morse Code more-or-less follows the frequency table. The most commonly used letters are encoded using the fewest number of bits (E and T). The next most commonly used letters are encoded using two bits, (I, A, N, and M). This process is repeated for the remainder of the letters of the alphabet. While this sequence is somewhat different from the frequency table that I remembered from childhood, it was close enough.</P><br />
+<P>The chapter on Braille was even more familiar to me. Braille is based on a 6-bit encoding scheme, which allows a maximum of 64 possible codes. Since only 26 of this codes are required for encoding the letters of the alphabet, the remainder of the codes are used to encode common words (and,&nbsp;but, the) and common two-letter combinations (ch, th, ed). This was so familiar because I had independently invented a similar scheme almost 20 years ago.</P><br />
+<P>During&nbsp;high school, my part-time job was writing software for various companies. In those days, I wrote all of my software using 6502 assembly language for the Commodore series of computers (I owned or had in my possession a PET 2001, 4032. 8032, Super PET, Vic-20, Commodore 64, and Commodore 128 at various points in time). One application that I wrote was a replacement for the spell checker of a popular word processor called WordPro 64. </P><br />
+<P>The original spell checker for WordPro 64 was written by Jim Butterfield, one of the original gurus of the Commodore world. While Jim was certainly an inspiration to all of us in those days, Jim's code in this case, uh, sucked. It was unbelievably slow (I can't remember exactly how long it took to spell check a document, but the times were somewhere in the neighborhood of ten minutes). Also, one of the ways that spell checkers competed with each other in those days was based on the number of words in the dictionary; Jim's dictionary was pitifully small.</P><br />
+<P>So what I needed to do was invent an encoding scheme that would allow me to pack more words onto a floppy disk. In those days the 1541 disk drive was the only disk drive available for the Commodore 64, and it stored a whopping 170K of data.[1] As it turns out, my encoding scheme was also 6 bits per character. I used the remaning 38 slots to encode a number of two letter abbreviations, and all of the common prefixes and suffixes for words. Using this scheme, I was able to average somewhere in the neighborhood of 2.5 bytes per word, which let us ship a 60,000+ word dictionary with the product. I am astonished by how similar my scheme was to the Grade 2 Braille scheme that Charles describes in his book.</P><br />
+<P>I can't wait to get back to reading Charles' book. I was fortunate enough to meet Charles at various speaker events throughout the <A href="http://www.winsummit.com">WinSummit conference</A> last year. I can't wait until we cross paths again so that I can tell Charles in person just how much I enjoyed his book. Great job!</P><br />
+<P>[1] I find it amusing that my HP Jornada 568 comes with 64MB of RAM, and that I just added a 256MB compact flash card to it.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at March 29, 2002 08:15 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="87" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000087.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p> You are invited to visit the sites in the field of- Tons of interesdting stuff!!! </p>
+<span class="comments-post">Posted by: <a href="mailto&#58;johndoe8274&#64;see&#46;to"></a> at December  2, 2004 12:29 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="87" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Spit n' polish in ASP.NET 2.0</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000400.html" title="Whidbey Web Project References" />
+
+<link rel="next" href="http://www.iunknown.com/000402.html" title="Whidbey implementation of System.CodeDom.CodeDomProvider.CreateParser()" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000401.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/145"
+    dc:title="Spit n&apos; polish in ASP.NET 2.0"
+    dc:identifier="http://www.iunknown.com/000401.html"
+    dc:subject="Blog"
+    dc:description="I&apos;ve spent the better part of the day looking closer at ASP.NET 2.0. I&apos;m really impressed by the amount of polish and attention to detail in the product. Here are a couple of features that represent some nice examples of..."
+    dc:creator="John"
+    dc:date="2004-01-29T14:23:47-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000400.html">&laquo; Whidbey Web Project References</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000402.html">Whidbey implementation of System.CodeDom.CodeDomProvider.CreateParser() &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 29, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Spit n' polish in ASP.NET 2.0</h3>
+
+<p>I've spent the better part of the day looking closer at <span class="caps">ASP.NET 2.0. I</span>'m really impressed by the amount of polish and attention to detail in the product. Here are a couple of features that represent some nice examples of "polish" - they aren't all that hard to write yourself, but it sure was nice that somebody else wrote them for you already:</p>
+
+<ul>
+<li> URL mapping: there's a new section in web.config called &lt;urlMappings&gt; which let you map old URLs to new URLs.
+<li> Image generation service: there's a new type: <code>System.Web.UI.Image.ImageGenerator</code> that lets you write to a <code>Graphics</code> object that it creates on the fly for you by overriding its <code>RenderImage</code> method.
+</ul>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January 29, 2004 02:23 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=401" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="401" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000401.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>I'd agree that he image generator handler is great, however the URL mapper is woefully inadequate. The URL mapper probably consists of a total of 20 lines of code. 10 more lines and we could have regular expression-based mapping. Let's hope we get this in Beta1.<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;rbirkby&#64;hotmail&#46;com">RichB</a> at January 29, 2004 06:19 PM</span>
+</div>
+<div class="comments-body">
+<p>The regular expression idea is interesting. It would be nice to declaratively define a transformation from one url to another: e.g. foo.com/00123.htm -> foo.com/archives/00123.aspx. Here's hoping it shows up in B1 too!<br />
+</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at January 30, 2004 11:28 AM</span>
+</div>
+<div class="comments-body">
+<p>You should check out Apache's mod_rewrite -- regular expressions and more for URLs.</p>
+
+<p>http://httpd.apache.org/docs/misc/rewriteguide.html<br />
+</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.xt1.org">Christian Mogensen</a> at February  2, 2004 12:01 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

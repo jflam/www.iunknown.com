@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Build scripts and debug / release builds</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Build scripts and debug / release builds</div>
+
+
+<div class="comments-body">
+<p>Hi John,<br />
+     I was doing a search this morning on the words NSIS.EXE, because I have a problem --- and I<br />
+found your web-site IUNKNOWN.COM.<br />
+     I read it and looked into your<br />
+historic links about your life  --- and I found it fascinating.  What a<br />
+remarkable range of talents you have.<br />
+     I would be grateful to you if you would guide me in a direction where I could solve my problem.<br />
+     Here is what my problem is --- in a nutshell.   I have been a mainframe Cobol software consultant for 26 years.  12 years ago I began to specialize in Micro Focus Cobol.  For the past 8 years I have been developing a PC software package in my (in-between contracts) time.<br />
+     It is now completed and I am thrilled with its potential.  I needed a Visual Basic script which would enable my to e-mail my (double-zipped) self-extracting module to a customer.  The VB script would enable that customer to double-click on my<br />
+attachment  --- and activate my self-extracting module, which would install my software module into the customer's computer.<br />
+     I found a programmer in England when I used the software service,   2rent-a-codercoder.com.  He agreed to write the VB script for $70. <br />
+     This he did, using a free-ware package called NSIS.EXE.              <br />
+     It works perfectly when installing my software into WINDOWS 98, WINDOWS 2000, and WINDOWS NT operating systems.<br />
+     But when I tried to test it on<br />
+a WINDOWS XP system the installation<br />
+results in a "squinched", compressed half-screen instead of a full-screen display.    So this bug prevents me from selling my software to owners of WINDOWS XP operating systems.  Nice, Huh!!<br />
+     Since I already paid the guy, he doesn't respond when I ask him to repair this final bug.<br />
+     I am so close to victory --- and yet I can't market my software without the installation yielding a full-screen edit.<br />
+     Where should I go and what can I do without having to have the whole job done again by someone else.  I have been out of work for almost a year and need to market my sofware to make a living.<br />
+     Any suggestions, John?<br />
+        Sincerely,<br />
+         Mort Weizen     </p>
+<span class="comments-post">Posted by <a target="_blank" href="mailto:%6d%6fr%74@%70%64q%6e%65%74.%63%6f%6d">Mort Weizen</a> at March  4, 2003 12:52 PM</span>
+</div>
+<div class="comments-body">
+<p>Hi John -</p>
+
+<p>Regarding: "Check in the .EXE's and .DLL's generated by each build - I was tempted to leave these out since I label each daily build anyways, but these capture some configuration informatoin such as the version of the compiler used to generate them."</p>
+
+<p>I know this has been up here a while, but I just happened across. In my experience, the best practice would be to check in the entire toolchain used to create the build. Then when I run a build, I check out not only the source, but the entire toolchain. You have to be careful to set your search path to only pick up the checked-out toolchain. In a lot of situations this is overkill, but when you need absolute reproducility it's a must...</p>
+
+<p>Advantages:</p>
+
+<p>* Reproducibility<br />
+* Backup copy of toolchain (for the case where you've had a product out for an extended period of time and then have to fix some weird edge condition and can't locate the tools!)<br />
+* Build environment is much more portable (i.e. when adding new developers to a team)</p>
+
+<p>Drawbacks:</p>
+
+<p>* Space consumption on VC server<br />
+* Extra time to create a new build tree<br />
+* Build trees take up more space</p>
+
+<p>There's also the possibility of a compromise between the two extremes: keep a single version controlled copy of the toolchain on your workstation and point all the copies of your build tree at it. This saves space, at the risk of letting your toolchain tree get out of date (e.g. if another developer on your team checks in a patch to the compiler).</p>
+
+<p>-Brian</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://bstpierre.org/">Brian St. Pierre</a> at February 29, 2004 06:55 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: What's a method?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000116.html" title="Software development process" />
+
+<link rel="next" href="http://www.iunknown.com/000118.html" title="Yet another update on Checked vs. Free builds" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000116.html">&laquo; Software development process</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000118.html">Yet another update on Checked vs. Free builds &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 28, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">What's a method?</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>This morning, I decided to investigate how the CLR treats methods. First, here's some background information; there are at least three different pieces of information that describe a method in the CLR:</P><br />
+<UL><br />
+<LI>MethodDef tokens describe the <EM>definition</EM> of a method within the scope of the module that it was defined. MethodDef tokens are always scoped by the module in which it was defined. In reality a MethodDef token is simply an the row number of the corresponding entry into the MethodDef table of a module. MethodDef tokens are static data; they are generated at compile time.<br />
+<LI>FunctionID's are provided by the CLR to profilers. The profiler API documentation describes it as&nbsp;"an opaque 32-bit handle". They are used to identify a function that is being called. For example, the ICorProfilerCallback::JITCompilationStarted() callback passes a FunctionID as an in-parameter. FunctionID's are global in scope - that is they are not tied to a specific module.[1] FunctionID's are dynamic data; they are generated at runtime by the CLR.<br />
+<LI>RuntimeMethodHandles are managed structures that are used by the System.Reflection API's to locate a method. Typically you pass a RuntimeMethodHandle to the static MethodInfo.GetMethodFromHandle() method to retrieve a MethodInfo object that corresponds to the runtime method. RuntimeMethodHandles are also dynamic data generated by the CLR.</LI></UL><br />
+<P>There are a number of different ways that you can convert between these values. Some are available if you're using the profiling API's, others are available to you if you're writing IL.</P><br />
+<P>The profiling API's provide some helper methods that let you map a FunctionID to a MethodDef token and a MethodDef token to a FunctionID. These helper methods are ICorProfilerInfo::GetFunctionInfo(), which returns a ModuleID and MethodDef token given a FunctionID, and ICorProfilerInfo::GetFunctionFromToken(), which returns you a FunctionID given a ModuleID and a MethodDef token.</P><br />
+<P>IL lets you retrieve a RuntimeMethodHandle object reference for a MethodDef token <EM>within the currently executing module</EM>, using the ldtoken instruction. This instruction takes a MethodDef token on the call stack and replaces it with a reference to a RuntimeMethodHandle value type.</P><br />
+<P>With that background out of the way, let's get to the point of this entry: Is there a difference between FunctionID's and RuntimeMethodHandles? In the old days, I would figure this out by sending some email to friends at Microsoft who knew how such things behaved. But nowadays there's a much better (and generally faster[2]) way to figure these things out: use the Rotor sources.</P><br />
+<P><A href="http://staff.develop.com/jasonw/">Jason Whittington's</A> <A href="http://msdn.microsoft.com/msdnmag/issues/02/07/SharedSourceCLI/default.asp">Introduction to Rotor article in MSDN</A> helped greatly in getting thins setup and making sense of the Rotor build environment. Once I had a debug build up and running, I started spelunking around inside the SSCLI using the VS.NET debugger. It didn't take much time to figure out that FunctionID's mapped to MethodDesc structs in the CLR. Next, there was a comment in RuntimeMethodHandle.cs that said: "This corresponds to EE MethodDesc.". Hmmm ... it doesn't take a rocket scientist to make the connection, huh?</P><br />
+<P>Just to make sure, though, I also compiled and built a couple of test rigs that would find out for sure. In one case, I used the Reflection API's to scrape out the RuntimeMethodHandle method for a the static Main() method in a console application:</P><CODE><br />
+<P>namespace rmh<BR>{<BR>&nbsp; class Class1<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; [STAThread]<BR>&nbsp;&nbsp;&nbsp; public static void Main(string[] args)<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Get a handle to this method</P><br />
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type class1 = Type.GetType( "rmh.Class1" );<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MethodInfo main = class1.GetMethod( "Main", BindingFlags.Static | BindingFlags.Public );<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RuntimeMethodHandle handle = main.MethodHandle;</P><br />
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine( "Handle == {0}", handle.Value );<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }<BR>}</P></CODE><br />
+<P>Then I made a special build of CLAW that dumped out the FunctionID's to the debug console window. The code in question is:</P><CODE><br />
+<P>STDMETHODIMP JITCompilationStarted( FunctionID functionId, BOOL fIsSafeToBlock ) <BR>{ <BR>&nbsp; ATLTRACE( "JIT started on function id = %p", functionId );<BR>&nbsp; return S_OK; <BR>}</P></CODE><br />
+<P>As it turns out, the method handles match up perfectly, thus demonstrating (at least in this case) that a RuntimeMethodHandle's m_ptr field == FunctionID == MethodDesc*.[3]</P><br />
+<P>[1] I'm not currently sure about what the scope of FunctionID's are. They&nbsp;are likely scoped on a per-managed process basis. But I need to do some more experiments to find out for sure.</P><br />
+<P>[2] The email culture at Microsoft is one of getting hundreds of emails a day. If I can help reduce this load, I will, so that I can save up some karma points for help with really difficult questions ;)</P><br />
+<P>[3] Yes, I know I really should have written more code to dump out the method name using the unmanaged metadata API's, but I'll leave that as an exercise for the reader.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 28, 2002 01:26 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="117" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000117.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>crap</p>
+<span class="comments-post">Posted by: Anonymous at March  4, 2003 09:58 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

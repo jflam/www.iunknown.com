@@ -1,0 +1,1300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: September 2003 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2003_08.html" title="August 2003" />
+
+<link rel="next" href="http://www.iunknown.com/2003_10.html" title="October 2003" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2003_08.html">&laquo; August 2003</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2003_10.html">October 2003 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000342"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/86"
+    dc:title="Happy together: NUnit 2.1 and NAnt 0.8.3"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000342"
+    dc:subject=""
+    dc:description="I figured I&apos;d tackle a simple project while Matthew sleeps this afternoon: making NAnt 0.8.3 and NUnit 2.1 live happily with one another. Out of the box, this certainly isn&apos;t the case since NAnt 0.8.3 was built against NUnit 2.0.6..."
+    dc:creator="John"
+    dc:date="2003-09-30T14:57:42-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 30, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000342"></a>
+<h3 class="title">Happy together: NUnit 2.1 and NAnt 0.8.3</h3>
+
+<p>I figured I'd tackle a simple project while Matthew sleeps this afternoon: making NAnt 0.8.3 and NUnit 2.1 live happily with one another. Out of the box, this certainly isn't the case since NAnt 0.8.3 was built against NUnit 2.0.6 and it contains hard references to version 2.0.6 of <code>nunit.framework.dll</code>.</p>
+
+<p>Here's a set of steps that should make things work:</p>
+
+
+<ol>
+<li>Copy <code>nunit.framework.dll</code> from your NUnit 2.1 install directory (typically <code>\Program Files\NUnit V2.1\bin</code>) to your NAnt install directory (mine lives in <code>\Tools\NAnt\bin</code>).</li>
+<li>The <code>RemoteTestRunner</code> class has changed between NUnit 2.0 and NUnit 2.1. This requires a change to the <code>NUnit2TestDomain.cs</code> file from the NAnt 0.8.3 distribution. There are references to an <code>Initialize()</code> method, which has been removed in NUnit 2.1. Below is a code frag that shows the new code and the old code. This code frag begins at line 67 of <code>NUnit2TestDomain.cs</code>:</li>
+</ol>
+
+<pre><code>
+                if (testcase != null) {
+                    runner.TestName = testcase;
+                    runner.TestFileName = assemblyFile;
+//                    runner.Initialize(testcase, assemblyFile);
+                } else {
+                    runner.TestFileName = assemblyFile;
+//                    runner.Initialize(assemblyFile);
+                }</code></pre>
+<ol>
+<li>Build NAnt by running "nant" on the command line from the <code>NAnt</code> directory.</li>
+</ol>
+
+<p>If you are using Win2K3, and you haven't installed <span class="caps">V1.0</span> of the frameworks, you're going to be in for a bit more pain:</p>
+
+
+<ol>
+<li>Reset NAnt to use the 1.1 Framework paths. To do this, edit the NAnt.exe.config file (located in <code>NAnt\bin</code>). Find the <code>frameworks</code> <span class="caps">XML</span> element and change the <code>default</code> attribute's value to "net-1.1".</li>
+<li>When you build NAnt, it will try and run a set of unit tests against the newly built version of NAnt. However, the <code>NAnt.exe.config</code> file is created during the build process, and the unit tests will default to using <span class="caps">V1.0</span> of the frameworks. To fix this problem, edit <code>NAnt.exe.config</code> in the build directory (<code>Nant\build\nant-0.8.3.50105-debug\bin</code> on my machine) and change the <code>frameworks</code> <span class="caps">XML</span> element's <code>default</code> attribute's value to "net-1.1".</li>
+<li>Re-build NAnt, and the unit tests should all pass.</li>
+</ol>
+
+<p>If you've completed the above steps, don't forget to replace the files in <code>Nant\bin</code> with the files you just compiled!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000342.html">02:57 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=342" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=342" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000341"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/85"
+    dc:title="Thanks for the best wishes!"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000341"
+    dc:subject="Personal"
+    dc:description="Wow! A big thank-you goes out to everyone who left comments or sent email to us about Matthew. Everything is going quite well around here. We&apos;re getting our sleep (or as much as we need right now) and Matthew&apos;s feeding..."
+    dc:creator="John"
+    dc:date="2003-09-30T12:00:41-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000341"></a>
+<h3 class="title">Thanks for the best wishes!</h3>
+
+<p>Wow! A big thank-you goes out to everyone who left comments or sent email to us about Matthew. </p>
+
+<p>Everything is going quite well around here. We're getting our sleep (or as much as we need right now) and Matthew's feeding schedule has become much more predictable. Kobe's adjusted so well to Matthew's presence in our house. Not a hint of jealousy, and I'm getting the feeling that he's taking his "guard the house" duties a lot more seriously these days. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000341.html">12:00 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=341" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=341" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000340"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/84"
+    dc:title="New daddy tips?"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000340"
+    dc:subject="Personal"
+    dc:description="<![CDATA[Here's where I turn to you to find out some new daddy tips.&Acirc;&nbsp;You know the ones - how you help make you and your wife's life easier during the upheaval that comes from all of the challenges posed by a...]]>"
+    dc:creator="John"
+    dc:date="2003-09-26T19:44:48-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 26, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000340"></a>
+<h3 class="title">New daddy tips?</h3>
+
+<p>Here's where I turn to you to find out some new daddy tips.&Acirc;&nbsp;You know the ones - how you help make you and your wife's life easier during the upheaval that comes from all of the challenges posed by a new baby. So please take this as an opportunity to offer some advice - after all I am soliciting it from y'all! If you don't want to post publicly as a comment, feel free to email me: jlam at iunknown.com. Thanks!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000340.html">07:44 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=340" onclick="OpenComments(this.href); return false">Comments (17)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=340" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000339"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/83"
+    dc:title="Matthew Alexander Lam"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000339"
+    dc:subject="Personal"
+    dc:description=" Hello, World! I arrived on Monday September 22 at 10:17am. My mommy, daddy and my new grandma went to the hospital in the wee hours of the morning to prepare for my birthday. A little over 8 hours later,..."
+    dc:creator="John"
+    dc:date="2003-09-26T10:14:50-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000339"></a>
+<h3 class="title">Matthew Alexander Lam</h3>
+
+<p><img src="Files/MAL1.jpg" alt="Hello, World" /></p>
+
+<p><img src="Files/MAL2.jpg" alt="Eyes Wide Open" /></p>
+
+<p>Hello, World! I arrived on Monday September 22 at 10:17am. My mommy, daddy and my new grandma went to the hospital in the wee hours of the morning to prepare for my birthday. A little over 8 hours later, I was able to see my exhausted but very happy mommy when the nice people put me on her tummy. </p>
+
+<p>My mommy and daddy tell me that I've been a good, but <em>very</em> hungry little boy. Today's going to be an exciting day. I get to meet my very own doctor! I also get to meet the <a href="http://www.iunknown.com/000242.html">other member of our little family</a> who's been patiently waiting for my arrival in the company of his other little doggy friends. </p>
+
+<p>Gotta go! I think I need to have my poopy diaper changed now. I hope to meet all of you soon!</p>
+
+<p>Love, Matthew.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000339.html">10:14 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=339" onclick="OpenComments(this.href); return false">Comments (19)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=339" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000338"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/82"
+    dc:title="Good-bye Acrobat"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000338"
+    dc:subject=""
+    dc:description="I just bid adieu to Acrobat 5.0. After spending the better part of the afternoon trying to get Acrobat Distiller to run as a COM server on a non-admin account, I finally gave up the ghost and switched to Ghostscript..."
+    dc:creator="John"
+    dc:date="2003-09-20T22:30:34-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 20, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000338"></a>
+<h3 class="title">Good-bye Acrobat</h3>
+
+<p>I just bid adieu to Acrobat 5.0. After spending the better part of the afternoon trying to get Acrobat Distiller to run as a <span class="caps">COM</span> server on a non-admin account, I finally gave up the ghost and switched to <a href="http://www.ghostscript.com">Ghostscript</a> instead. My thanks go out to Ghostgum software and <a href="http://www.cs.wisc.edu/~ghost/doc/gsapi.htm">their most excellent <span class="caps">VB.NET</span> interop sample</a> that shows how to call gsdll32.dll from <span class="caps">VB.NET.</span></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000338.html">10:30 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=338" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=338" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000337"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/81"
+    dc:title="Observations on Adobe Acrobat 5.0 and .NET COM Interop"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000337"
+    dc:subject=""
+    dc:description="I&apos;ve been building a small set of tools that I need for my upcoming writing project. These tools will integrate some third-party tools into a standard NAnt build script. Recently, I wanted to add support for automatically generating PDF documents..."
+    dc:creator="John"
+    dc:date="2003-09-20T13:21:23-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000337"></a>
+<h3 class="title">Observations on Adobe Acrobat 5.0 and .NET COM Interop</h3>
+
+<p>I've been building a small set of tools that I need for my upcoming writing project. These tools will integrate some third-party tools into a standard NAnt build script. Recently, I wanted to add support for automatically generating <span class="caps">PDF</span> documents from my Office documents (Word and Powerpoint). I learned quite a bit of stuff while building these tools, and this entry summarizes some of these observations.</p>
+
+<p>Observation 1: <span class="caps">COM </span>Interop. I have somehow been able to avoid <span class="caps">COM</span> interop until now. The first thing I learned was that <span class="caps">VS.NET</span> doesn't enumerate the <span class="caps">GAC</span> when generating the list of .NET assemblies in the Add References dialog. Office 2003 installs its primary interop assemblies into the <span class="caps">GAC,</span> but fails to copy them to <code>\program files\microsoft .net\primary interop assemblies\</code>, which is one of the directories that are enumerated by the <span class="caps">VS.NET</span> add reference dialog. If you want to add additional directories to the set of directories that <span class="caps">VS.NET</span> enumerates for the Add References dialog, you need to add additional keys under <code>HKLM\Software\Microsoft\VisualStudio\7.1\AssemblyFolders</code>. I fixed my <span class="caps">O2K3</span> interop problem by manually copying assemblies from the <span class="caps">GAC</span> to <code>\program files\microsoft .net\primary interop assemblies\</code>.</p>
+
+<p>Observation 2: Adobe Acrobat and the entire Windows printing system are a nightmare to automate. For those of you who don't own a copy of Acrobat, it is software that lets you generate <span class="caps">PDF</span> documents from any Windows program that is capable of printing. So, if I want Word 2003 to generate a <span class="caps">PDF</span> document, I have to make it print using a printer driver called "Acrobat Distiller". If you're a human being doing this, it's no big deal. You just tell Word to Print, and when Acrobat Distiller pops up a dialog box that asks you where you want to put the <span class="caps">PDF</span> file, you enter it and you're good to go.</p>
+
+<p>Now imagine that you're an app trying to automate this process. It's a freaking nightmare. You tell Word how to print the current document via the <code>Document.PrintOut()</code> method. There are a million options that are available in this method, but of course, none of them are "the place where I want Adobe Acrobat Distiller to put the generated <span class="caps">PDF</span>".</p>
+
+<p>As it turns out, I can tell Word to print to a temporary file. This is possible because I can pass parameters to <code>PrintOut()</code> for the path to the generated file. In a weird quirk of implementation, this doesn't tell Distiller where to put the <span class="caps">PDF</span> file. Rather it tells Distiller to generate a <span class="caps">PS </span>(PostScript) file!</p>
+
+<p>This adds an additional step to the process: converting the PS to a <span class="caps">PDF. </span>To do this, you have to create an instance of Acrobat Distiller as a <span class="caps">COM</span> server and call its <code>ConvertToPDF()</code> method. You pass it the path to the PS file and the path to the output <span class="caps">PDF</span> file.</p>
+
+<p>But wait, life isn't set quite yet. Remember that Acrobat Distiller is a printer driver. As such, it needs to be configured. And of course, all of the default configuration settings are wrong. If you try and tell Word to print using the default configuration settings, you will get a number of errors that are expressed as popup dialogs. That would, of course, be a nightmare in an automated NAnt build script.</p>
+
+<p>I still haven't figured out how to configure printer settings programmatically yet. There really needs to be an <span class="caps">XML</span> configuration file for every printer driver, so you can use an <span class="caps">XML API</span> to whack configuration settings instead of having to learn yet another arbitrary <span class="caps">API </span>(YAAA) for programmatically setting printer driver settings.</p>
+
+<p>In spite of all this, I've finally got everything working today. A suggestion to Adobe: write a simple wrapper <span class="caps">API</span> that solves this problem. I am more than happy to donate my code. This will eliminate one of the most common sources of frustration that are encountered by users of your product. </p>
+
+<p>One final observation. If you're running as a non-admin, you can interactively run Acrobat Distiller to your heart's content. But if you want to start up Acrobat as a <span class="caps">COM</span> server, it doesn't work. This smells like a <span class="caps">DCOM</span> permissions problem, but my first look around here doesn't fix the problem. Grrr.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000337.html">01:21 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=337" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=337" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000336"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/80"
+    dc:title="The right tool for the job"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000336"
+    dc:subject=""
+    dc:description="I recently had to spend some time writing some code that controls Office 2003 from a .NET app. As a curly-brace fan, I started writing the controller code using C#. However, my fingers slowly wore to the bone providing parameters..."
+    dc:creator="John"
+    dc:date="2003-09-19T18:16:10-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 19, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000336"></a>
+<h3 class="title">The right tool for the job</h3>
+
+<p>I recently had to spend some time writing some code that controls Office 2003 from a .NET app. As a curly-brace fan, I started writing the controller code using C#. However, my fingers slowly wore to the bone providing parameters to methods in Word such as PrintOut():</p>
+
+<pre><code>
+// C#
+Object background = Type.Missing;
+Object append = Type.Missing;
+Object range = Type.Missing;
+Object outputFileName = Type.Missing;
+Object from = Type.Missing;
+Object to = Type.Missing;
+Object item = Type.Missing;
+Object copies = Type.Missing;
+Object pages = Type.Missing;
+Object pageType = Type.Missing;
+Object printToFile = Type.Missing;
+Object collate = Type.Missing;
+Object fileName = Type.Missing;
+Object activePrinterMacGX = Type.Missing; 
+Object manualDuplexPrint = Type.Missing; 
+Object printZoomColumn = Type.Missing; 
+Object printZoomRow = Type.Missing; 
+Object printZoomPaperWidth = Type.Missing; 
+Object printZoomPaperHeight = Type.Missing;
+
+ThisDocument.PrintOut(ref background, ref append,
+    ref range, ref outputFileName, ref from, ref to, 
+    ref item, ref copies, ref pages, ref pageType, 
+    ref printToFile, ref collate, ref activePrinterMacGX, 
+    ref manualDuplexPrint, ref printZoomColumn, ref printZoomRow, 
+    ref printZoomPaperWidth, ref printZoomPaperHeight);
+</code></pre><p>Doesn't it make so much more sense to write the following <span class="caps">VB.NET</span> code?</p>
+
+<p><code>ThisDocument.PrintOut()</code>.</p>
+
+<p>In short, use the right tool for the job :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000336.html">06:16 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=336" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=336" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000335"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/79"
+    dc:title="Isabel!"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000335"
+    dc:subject=""
+    dc:description="For those of you with dual (or more) monitor displays, make sure you check out this 500m resolution image of Hurricane Isabel. Wow...."
+    dc:creator="John"
+    dc:date="2003-09-18T00:14:32-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 18, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000335"></a>
+<h3 class="title">Isabel!</h3>
+
+<p>For those of you with dual (or more) monitor displays, make sure you check out this <a href="http://rapidfire.sci.gsfc.nasa.gov/gallery/?2003260-0917/Isabel.A2003260.1509.500m.jpg">500m resolution image of Hurricane Isabel</a>. Wow.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000335.html">12:14 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=335" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=335" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000334"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/78"
+    dc:title="Lockdown"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000334"
+    dc:subject=""
+    dc:description="As part of my recent administrative scrubbing of my computers, I used the Microsoft Baseline Security Analyzer to minimize the attack surface area of all of my computers. This is an excellent tool that supplements Windows Update. It&apos;s an excellent..."
+    dc:creator="John"
+    dc:date="2003-09-16T01:31:18-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 16, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000334"></a>
+<h3 class="title">Lockdown</h3>
+
+<p>As part of my recent administrative scrubbing of my computers, I used the <a href="http://www.microsoft.com/technet/treeview/default.asp?url=/technet/security/tools/Tools/MBSAhome.asp">Microsoft Baseline Security Analyzer</a> to minimize the attack surface area of all of my computers. This is an excellent tool that supplements Windows Update. It's an excellent tool that will help lock down your computer's settings, especially for Windows XP computers. On Windows <span class="caps">XP,</span> you will most likely use it in combination with the <a href="http://www.microsoft.com/technet/treeview/default.asp?url=/technet/security/tools/tools/locktool.asp"><span class="caps">IIS </span>Lockdown</a> tool to define a role for <span class="caps">IIS.</span></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000334.html">01:31 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=334" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=334" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000333"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/77"
+    dc:title="Clean Sweep"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000333"
+    dc:subject=""
+    dc:description="Inspired by a recent episode of Clean Sweep, and my recent escapades with my T23 decided to repave my office. This involved removing everything from my office, shuffling furniture around to make a more efficient workspace, and THROWING AWAY tons..."
+    dc:creator="John"
+    dc:date="2003-09-15T02:20:16-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 15, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000333"></a>
+<h3 class="title">Clean Sweep</h3>
+
+<p>Inspired by a recent episode of <a href="http://tlc.discovery.com/fansites/cleansweep/cleansweep.html">Clean Sweep</a>, and my <a href="http://www.iunknown.com/000327.html,&amp;Acirc;&amp;nbsp;I">recent escapades with my <span class="caps">T23</span></a> decided to repave my office. This involved removing everything from my office, shuffling furniture around to make a more efficient workspace, and <span class="caps">THROWING AWAY</span> tons of stuff that I know that I wouldn't need. </p>
+
+<p>One of the more painful things that I had to discard was my collection of <span class="caps">MSJ </span>/ <span class="caps">MIND </span>/ <span class="caps">MSDN </span>Magazine issues dating back to 1996. I have all of that content on <span class="caps">DVD</span> now, so it doesn't make any sense to keep the paper copies around.</p>
+
+<p>I've also relegated my entire collection of the Addison/Wesley C++ canon to a cupboard. I can't quite bear to part with that collection, but since it doesn't form a part of my mental working set anymore, so I see no reason why it needs to be visible in my workspace. Sadly, all of my <span class="caps">COM</span> books are in that same cupboard as well ...</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000333.html">02:20 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=333" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=333" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000332"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/76"
+    dc:title="Recycling w3wp.exe and non-admin development on Win2K3"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000332"
+    dc:subject=""
+    dc:description="First observation: I still have to recycle the IIS worker process (now w3wp.exe instead of aspnet_wp.exe) in Win2K3 during development. This is due to the fact that my security code lives in strong-named assemblies. These assemblies are deployed into the..."
+    dc:creator="John"
+    dc:date="2003-09-12T12:30:29-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 12, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000332"></a>
+<h3 class="title">Recycling w3wp.exe and non-admin development on Win2K3</h3>
+
+<p>First observation: I still have to recycle the <span class="caps">IIS</span> worker process (now w3wp.exe instead of aspnet_wp.exe) in Win2K3 during development. This is due to the fact that my security code lives in strong-named assemblies. These assemblies are deployed into the <span class="caps">GAC</span> where, by default (I'm going to lock this down later), they have Full Trust. </p>
+
+<p>Unfortunately (or fortunately, depending on your point of view) <span class="caps">ASP.NET</span> loads all <span class="caps">GAC</span>-installed assemblies as domain-neutral assemblies. This forces me to recycle the w3wp.exe worker process <span class="caps">EVERY</span> time that I recompile my security code. Sometimes I forget ... which means I'm tracking down bugs that aren't really there because I fixed them already. It would so rock if <span class="caps">ASP.NET</span> would have a flag that doesn't load <span class="caps">GAC</span>-installed assemblies as domain-neutral assemblies. This flag would be dangerous in the general (say, <span class="caps">ISP</span>) case, but would rock for local development.</p>
+
+<p>Second observation: it's much easier to run as a non-admin under Win2K3. But to do <span class="caps">ASP.NET</span> debugging, there's a subtle trick. First, you want to either reconfigure the Default App Pool to run under your login, or create a new App Pool that runs under your login. Next, (and this was the part that I missed out on initially), you must add your account to the <span class="caps">IIS</span>_WPG (IIS Worker Process Group) group. Once you have done this, you can safely take your account out of the Local Administrator's group and you will be running with non-administrator goodness <span class="caps">AND</span> you'll be able to debug your <span class="caps">ASP.NET</span> apps. This is much better (and far more secure) than things were with WinXP/Win2K.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000332.html">12:30 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=332" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=332" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000331"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/75"
+    dc:title="Why external build engines?"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000331"
+    dc:subject=""
+    dc:description="Why should you use an external build tool like Draco.Net? One reason that I&apos;ve come across recently is security. For example, your build might require installing some assemblies into the GAC or registering a serviced component into the COM+ catalog..."
+    dc:creator="John"
+    dc:date="2003-09-11T14:48:12-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 11, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000331"></a>
+<h3 class="title">Why external build engines?</h3>
+
+<p>Why should you use an external build tool like <a href="http://draconet.sourceforge.net/">Draco.Net</a>? One reason that I've come across recently is security. For example, your build might require installing some assemblies into the <span class="caps">GAC</span> or registering a serviced component into the <span class="caps">COM</span>+ catalog (hmmm ... <a href="http://www.iunknown.com/000326.html">I wonder why I'm thinking about this problem</a>). Both of these operations require privileges that aren't held by a regular user account. If you're doing your development from a regular user account, you can't easily integrate calls to <code>gacutil</code> and <code>regsvcs</code> into your build (since you have to switch credentials first). This is where an automated service like Draco.Net really shines.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000331.html">02:48 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=331" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=331" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000330"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/74"
+    dc:title="Life with Win2K3"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000330"
+    dc:subject=""
+    dc:description="Life is good now that I have Win2K3 running on my laptop. Best feature? The ability to terminal server back to myself using different credentials. This makes it so much easier to run as a regular user without having to..."
+    dc:creator="John"
+    dc:date="2003-09-11T13:10:36-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000330"></a>
+<h3 class="title">Life with Win2K3</h3>
+
+<p>Life is good now that I have Win2K3 running on my laptop. Best feature? The ability to terminal server back to myself using different credentials. This makes it so much easier to run as a regular user without having to log out and log back in to do stuff like twiddle <span class="caps">ACL</span>'s on files.</p>
+
+<p>Some other cool things that I did:</p>
+
+
+<ol>
+<li>Create a custom <span class="caps">MMC</span> console that contains only the admin tools that I actually use. This is so much easier than searching through the Administrative Tools folder for a predefined <span class="caps">MMC</span> console.</li>
+<li>Configure Outlook 2003 to run in Cached Exchange mode.</li>
+</ol>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000330.html">01:10 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=330" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=330" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000329"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/73"
+    dc:title="Making Windows 2003 look like XP"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000329"
+    dc:subject=""
+    dc:description="I&apos;ve been configuring Windows Server 2003 to look like XP (I like consistency). Here&apos;s an article that describes all of the various things that you need to do to make Windows 2003 feel more like home. update It looks like..."
+    dc:creator="John"
+    dc:date="2003-09-10T20:47:21-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 10, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000329"></a>
+<h3 class="title">Making Windows 2003 look like XP</h3>
+
+<p>I've been configuring Windows Server 2003 to look like <span class="caps">XP </span>(I like consistency). Here's <a href="http://divxstation.com/article.asp?aId=76">an article</a> that describes all of the various things that you need to do to make Windows 2003 feel more like home.</p>
+
+<p><strong>update</strong> It looks like the earlier link that I posted is either a draft or a knock-off of the link that Mark and Peter sent in. Here's the <a href="http://www.msfn.org/win2k3/">link to the cleaner version</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000329.html">08:47 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=329" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=329" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000328"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/72"
+    dc:title="You can never have enough tools"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000328"
+    dc:subject=""
+    dc:description="While I&apos;m waiting around for files to be copied to/from my laptop, I&apos;ve been looking at Scott Hanselman&apos;s most excellent list o&apos; tools. This is a great chance to setup my desktop dev box and my laptop with identical images..."
+    dc:creator="John"
+    dc:date="2003-09-10T16:15:29-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000328"></a>
+<h3 class="title">You can never have enough tools</h3>
+
+<p>While I'm waiting around for files to be copied to/from my laptop, I've been looking at <a href="http://radio.weblogs.com/0106747/stories/2003/09/09/scottHanselmansUltimateDeveloperAndPowerUsersToolsList.html">Scott Hanselman's most excellent list o' tools</a>. This is a great chance to setup my desktop dev box and my laptop with identical images of tools. There's a ton of stuff here that I didn't know about. Check it out, you won't be sorry.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000328.html">04:15 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=328" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=328" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000327"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/71"
+    dc:title="Almost 2 years without a repave ..."
+    dc:identifier="http://www.iunknown.com/2003_09.html#000327"
+    dc:subject=""
+    dc:description="My trusty Thinkpad T23 has gone almost two years without a repave of Windows XP. That&apos;s quite a record. But today, a whole bunch of stuff just started freaking out on me. Office 2K3 stopped working with a bunch of..."
+    dc:creator="John"
+    dc:date="2003-09-10T15:13:13-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000327"></a>
+<h3 class="title">Almost 2 years without a repave ...</h3>
+
+<p>My trusty Thinkpad <span class="caps">T23</span> has gone almost two years without a repave of Windows <span class="caps">XP. </span>That's quite a record. But today, a whole bunch of stuff just started freaking out on me. Office 2K3 stopped working with a bunch of obscure "you don't have permission to synchronize with Exchange" errors (among others). Uninstall / reinstall didn't fix that problem either. Something got wedged in the <span class="caps">MSI</span> goo on my computer, and a whole bunch of apps wouldn't reinstall without getting wedged during the install.</p>
+
+<p>So as I write this entry, I'm copying all of my non source-controlled data off my laptop onto my server&Acirc;&nbsp;(just in case - it's the pack-rat in me) before doing a repave. I've wanted to run Win2K3 on a daily basis in any event, so this is an opportune moment to get those bits onto my laptop.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000327.html">03:13 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=327" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=327" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000326"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/70"
+    dc:title="It&apos;s always harder than it looks"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000326"
+    dc:subject=""
+    dc:description="I&apos;ve spent the past few days writing a sample application. It demonstrates a secure call chain from a COM+ serviced component back through to an ASP.NET web application. When I started thinking about authentication, a bunch of alarms went off..."
+    dc:creator="John"
+    dc:date="2003-09-10T12:00:32-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000326"></a>
+<h3 class="title">It's always harder than it looks</h3>
+
+<p>I've spent the past few days writing a sample application. It demonstrates a secure call chain from a <span class="caps">COM</span>+ serviced component back through to an <span class="caps">ASP.NET</span> web application. When I started thinking about authentication, a bunch of alarms went off in my head. Let me tell you why.</p>
+
+<p>I've always had a problem with the dynamic compilation model of <span class="caps">ASP.NET. </span>Part of it was the build problem, or put differently, how do you know whether your <span class="caps">ASP.NET</span> pages actually compile? In the current implementation, <span class="caps">ASP.NET</span> pages that contain &lt;script runat="server"&gt; blocks are unknowns in your build process.</p>
+
+<p>Now that I've been spending some time with Code Access Security (yes, I am late to the game) I've been increasingly worried about malicious <span class="caps">INTERNAL</span> users changing my <span class="caps">ASP.NET</span> pages to lure my secure infrastructure into doing bad things.</p>
+
+<p>Consider, for example, this innocent looking piece of code:</p>
+
+<code><pre>
+
+GenericIdentity evilIdentity = new GenericIdentity("EvilDoer"); 
+GenericPrinicpal evilPrincipal = new GenericPrincipal(identity, new string[] {"Admin"}); 
+Thread.CurrentPrincipal = evilPrincipal;
+
+App.DoHighlyPrivilegedStuff();
+
+</pre></code><p>In <span class="caps">ASP.NET V1.1,</span> both High and Medium trust applications enable the <code>SecurityPermission.ControlPrincipal</code> permission. This lets any piece of code twiddle with the current principal on the current thread. What's worse, anyone who can replace an .aspx page in my application could potentially write the above code fragment.</p>
+
+<p>But, you say, why can't I simply do a <code>StrongNamePermission</code> link demand against the caller? The problem is this: dynamically compiled .aspx pages cannot be strong-named. Period. This makes it impossible for me to sandbox my code that sets <code>Thread.CurrentPrincipal</code> in a more privileged place (like the <span class="caps">GAC</span>) and Assert <code>SecurityPermission.ControlPrincipal</code> without worrying about luring attacks like the one that I show above. I cannot limit the scope of who can call me, which makes it impossible to securely do the Assert().</p>
+
+<p>There is an answer, however. Instead of using the .aspx infrastructure, I wrote the authentication piece as an <code>HttpHandler</code>. This way, I could compile it into a strongly-named assembly, and perform link demands against the identity of that assembly from my code that sets <code>Thread.CurrentPrincipal</code>.</p>
+
+<p>I've decided to post my work-in-progress here to get some feedback. The work isn't complete yet; I still have to serialize my list of roles to / from the <span class="caps">ASP.NET</span> authentication ticket and write the <code>HttpModule</code> that reads these roles and sets <code>Thread.CurrentPrincipal</code>. </p>
+
+<p>If you want to download the source code, <a href="http://www.iunknown.com/Files/Security.zip">click here</a>. You will need to copy the <code>web_securetrust.config</code> file into <code>%.NET SYSTEMDIR%\CONFIG</code>. You will also need to create a new virtual directory called <code>\dev\demos\Security\Web</code> to run the sample. Finally, you'll need to add the <code>MACHINE\ASPNET</code> account to the <span class="caps">COM</span>+ application's <code>TrustedRoles</code> Role. </p>
+
+<p>As you can see, installing a beast like this is really nasty as well. I'm going to be working really hard over the next few months on trying to solve that problem as well.</p>
+
+<p>Comments / criticisms welcome.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000326.html">12:00 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=326" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=326" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000325"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/69"
+    dc:title="ASP.NET authentication"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000325"
+    dc:subject=""
+    dc:description="Security looks easy until you analyze the threats to your application. I&apos;ve been working on a small sample that demonstrates some best practices for secure authentication in ASP.NET V1.1. One of the key things in this sample is code access..."
+    dc:creator="John"
+    dc:date="2003-09-08T15:39:30-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 08, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000325"></a>
+<h3 class="title">ASP.NET authentication</h3>
+
+<p>Security looks easy until you analyze the threats to your application. I've been working on a small sample that demonstrates some best practices for secure authentication in <span class="caps">ASP.NET V1.1. </span>One of the key things in this sample is code access security (CAS) support. <span class="caps">CAS</span> is now enabled for <span class="caps">ASP.NET</span> applications, and this gives you many new opportunities to lock down your application's attack surface. </p>
+
+<p>My goal is to lock down the <span class="caps">ASP.NET</span> authentication process. I want to enable role-based security by writing user roles into the <span class="caps">ASP.NET</span> authentication ticket. I want to have a secure link between my application and <span class="caps">SQL</span> server as well. This turns into a fairly complex scenario that involves several different pieces of technology (ASP.NET, <span class="caps">CLR</span> security, <span class="caps">COM</span>+, Win32 security and <span class="caps">SQL </span>Server). Here's an overview of the process:</p>
+
+
+<ol>
+<li><span class="caps">SQL</span> server is used to authenticate salted, hashed passwords.</li>
+<li>There is a trusted connection to <span class="caps">SQL</span> server. There is a special account<br />
+that is setup for authentication purposes only. It calls a secured stored<br />
+procedure that takes the user name and hashed password, and returns a list<br />
+of roles that the user belongs to (if authentication is successful, of<br />
+course).</li>
+<li>The code that calls the stored procedure lives in a <span class="caps">COM</span>+ serviced<br />
+component. The <span class="caps">COM</span>+ application is configured to runas the account described<br />
+in part 2).</li>
+<li>The serviced component is called from a trusted assembly in the <span class="caps">ASP.NET</span><br />
+web application. It makes two link demands of the trusted assembly: a) that<br />
+the account that the trusted assembly is running as is a known <span class="caps">ASP.NET</span><br />
+service account (e.g. <span class="caps">MACHINE</span>\ASPNET) and b) that the strong name of the<br />
+trusted assembly is known.</li>
+<li>The trusted assembly in the <span class="caps">ASP.NET</span> web application is installed into the<br />
+<span class="caps">GAC. </span>It has a strong name, and asserts that it has<br />
+SecurityPermission.ControlPrincipal.</li>
+<li>The trusted assembly takes the set of roles returned from the call to the<br />
+Serviced Component and creates a new Principal that contains the role. It<br />
+attaches that Principal object to Thread.CurrentPrincipal.</li>
+<li>Assemblies or .aspx pages that call the trusted assembly must not have<br />
+SecurityPermission.ControlPermission. I created a separate security zone<br />
+(based on Medium) that removes this permission. This makes it impossible for<br />
+code outside my trusted assembly to change the CurrentPrincipal (and thereby<br />
+subject the rest of my application code to luring attacks).</li>
+<li>I configure the directory that contains .aspx pages to be writeable only<br />
+from local administrator accounts.</li>
+</ol>
+
+<p>A few coments about this scenario. First, I'm a bit disappointed that I can't strong-name my .aspx pages, nor can I strong-name my codebehind assemblies. This makes it hard to create a tamper-proof chain of transfer of a user's password to the database. Second, I'm not entirely sure whether denying non-administrator accounts write access to the .aspx directory will prevent luring attacks against my authentication chain.</p>
+
+<p>Any comments from folks reading this weblog would be greatly appreciated. If you have friends who would like to comment on this, please forward this along to them as well. Thanks.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000325.html">03:39 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=325" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=325" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000324"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/68"
+    dc:title="IISRESET is your friend"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000324"
+    dc:subject=""
+    dc:description="If you are writing strong-named assemblies that will be called from ASP.NET pages, it is highly likely that you will want to install them into the GAC. You will find out, however, that assemblies installed into the GAC are cached..."
+    dc:creator="John"
+    dc:date="2003-09-08T13:55:16-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000324"></a>
+<h3 class="title">IISRESET is your friend</h3>
+
+<p>If you are writing strong-named assemblies that will be called from <span class="caps">ASP.NET</span> pages, it is highly likely that you will want to install them into the <span class="caps">GAC. </span>You will find out, however, that assemblies installed into the <span class="caps">GAC</span> are cached by the <span class="caps">ASP.NET</span> worker process. This means that changes to your <span class="caps">GAC</span>-installed assemblies <span class="caps">REQUIRE</span> recycling the aspnet_wp.exe worker process. This, of course, means that you need to run iisreset every time you rebuild your application. Ugh.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000324.html">01:55 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=324" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=324" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000323"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/67"
+    dc:title="CAS gotcha in ASP.NET V1.1"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000323"
+    dc:subject=""
+    dc:description="<![CDATA[I was a bit puzzled by the following error message: Assembly &lt;name&gt; security permission grant set is incompatible between appdomains. This occasionally happens when I reset the current trust level for an ASP.NET v1.1 application (e.g. changing the trust level...]]>"
+    dc:creator="John"
+    dc:date="2003-09-08T00:40:34-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000323"></a>
+<h3 class="title">CAS gotcha in ASP.NET V1.1</h3>
+
+<p>I was a bit puzzled by the following error message: <code>Assembly &lt;name&gt; security permission grant set is incompatible between appdomains.</code> This occasionally happens when I reset the current trust level for an <span class="caps">ASP.NET</span> v1.1 application (e.g. changing the trust level from medium to low). The workaround for this problem is to reboot <span class="caps">IIS</span> via <span class="caps">IISRESET. </span>Hope this helps somebody else out there.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000323.html">12:40 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=323" onclick="OpenComments(this.href); return false">Comments (7)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=323" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000322"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/66"
+    dc:title="Improving Web Application Security: Threats and Countermeasures rocks!"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000322"
+    dc:subject=""
+    dc:description="<![CDATA[As part of my recent spelunking into writing secure ASP.NET subsystems,&Acirc;&nbsp;I have been on the lookout for more information on Code Access Security. Like many other people, I have tried to live a Win32-esque lifestyle where I only care about...]]>"
+    dc:creator="John"
+    dc:date="2003-09-05T11:49:49-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 05, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000322"></a>
+<h3 class="title">Improving Web Application Security: Threats and Countermeasures rocks!</h3>
+
+<p>As part of my recent spelunking into writing secure <span class="caps">ASP.NET</span> subsystems,&Acirc;&nbsp;I have been on the lookout for more information on Code Access Security. Like many other people, I have tried to live a Win32-esque lifestyle where I only care about security principals and not about the identity of my callers. Full-trust was my friend.</p>
+
+<p>However as I get older and more paranoid, I want to build systems where even if an attacker is able to compromise the service account that my code runs under, that my secure subsystems will <em>remain secure</em>. I need to use Code Access Security.</p>
+
+<p>Like many other people, I own a copy of <a href="http://www.amazon.com/exec/obidos/tg/detail/-/067232184X/qid=1062776348/sr=8-1/ref=sr_8_1/104-2927553-4668716?v=glance&amp;s=books&amp;n=507846">.NET Framework Security</a>, which is one of the very few authoritative books on the subject. Unfortunately, it falls short on the side of telling an interesting story (typical of a "Frankenstein book" written by 5 authors) and loses the reader rather quickly.</p>
+
+<p>A while ago, Scott Densmore shipped me a printed copy of <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnnetsec/html/ThreatCounter.asp">Improving Web Application Security: Threats and Countermeasures</a> (thanks, Scott!) A hectic travel schedule among other things left me little time to look over it closely until yesterday. </p>
+
+<p>Wow. This free downloadable book from Microsoft contains an absolute treasure-trove of information. In particular, read Chapters 9 (Using Code Access Security with <span class="caps">ASP.NET</span>) where they talk about creating sandboxed assemblies, and Chapter 11 (Building Secure Serviced Components) where they talk about securing your Enterprise Services components using the same set of techniques that I recently <a href="http://www.iunknown.com/000319.html">blogged about</a>.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000322.html">11:49 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=322" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=322" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000321"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/65"
+    dc:title="So you think your images are sharp, huh?"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000321"
+    dc:subject=""
+    dc:description="Check out Ron Reznick&apos;s galleries. The sharpness of his images must be seen to be believed. In particular, make sure you look at some of his bird photos and lion photos and squirrel photos. Absolutely stunning...."
+    dc:creator="John"
+    dc:date="2003-09-05T00:35:08-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000321"></a>
+<h3 class="title">So you think your images are sharp, huh?</h3>
+
+<p>Check out <a href="http://www.digital-images.net/Gallery/gallery.html">Ron Reznick's galleries</a>. The sharpness of his images must be seen to be believed. In particular, make sure you look at some of his <a href="http://www.digital-images.net/Images/2002/Birds_3/Small_Birds/HummerSage_2870.jpg">bird photos</a> and <a href="http://www.trapagon.com/dig-img/2000/Critters/Lion_6994.jpg">lion photos</a> and <a href="http://www.digital-images.net/Images/Yosemite/Squirrel_2433.jpg">squirrel photos</a>. Absolutely stunning.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000321.html">12:35 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=321" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=321" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000320"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/64"
+    dc:title="Comprehensive list of ASP.NET KB articles"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000320"
+    dc:subject=""
+    dc:description="I found this link to a complete set of ASP.NET KB articles while googling for something else tonight...."
+    dc:creator="John"
+    dc:date="2003-09-05T00:28:02-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000320"></a>
+<h3 class="title">Comprehensive list of ASP.NET KB articles</h3>
+
+<p>I found <a href="http://www.kbalertz.com/allKbs.aspx?tec=20">this link</a> to a complete set of <span class="caps">ASP.NET KB</span> articles while googling for something else tonight.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000320.html">12:28 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=320" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=320" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000319"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/63"
+    dc:title="Securing ASP.NET using Enterprise Services"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000319"
+    dc:subject=""
+    dc:description="In a recent entry, I outlined the steps to access a secure network resource using a specific Windows account. My technique relies on the COM+ infrastructure to run the code that accesses the secure network resource using a different security..."
+    dc:creator="John"
+    dc:date="2003-09-05T00:22:03-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000319"></a>
+<h3 class="title">Securing ASP.NET using Enterprise Services</h3>
+
+<p>In a <a href="http://www.iunknown.com/000318.html">recent entry</a>, I outlined the steps to access a secure network resource using a specific Windows account. My technique relies on the <span class="caps">COM</span>+ infrastructure to run the code that accesses the secure network resource using a different security context than <span class="caps">ASP.NET.</span><br />
+ <br />
+I'm using this rather complex workaround because I want to avoid calling the Win32 <code>LogonUser()</code> <span class="caps">API. </span>This <span class="caps">API</span> requires (at least under Windows 2000) the presence of the <code>SE_TCB_NAME</code> privilege on the account that is calling <code>LogonUser()</code>. This dramatically elevates the privileges of the <span class="caps">ASPNET</span> account, which is an unacceptable risk should your server application become compromised. Microsoft has a KB article on this issue: <a href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;Q306158"><span class="caps">Q306158</span></a>. Their workaround involves either running the <code>aspnet_wp.exe</code> worker process as <code>SYSTEM</code> or adding the <code>SE_TCB_NAME</code> privilege to the <span class="caps">ASPNET</span> account. Clearly, neither of these are acceptable alternatives.<br />
+ <br />
+Instead, if you use the <span class="caps">COM</span>+ infrastructure to run your data access code, you are effectively letting Microsoft call <code>LogonUser()</code> for you. You have the added benefit of never exposing user names and passwords to your code; instead these are all managed using by <span class="caps">COM</span>+ via the Data Protection <span class="caps">API </span>(DPAPI).<br />
+ <br />
+However, simply running your data access code as a <span class="caps">COM</span>+ application is not sufficient, since that code could be subjected to luring attacks. If your <span class="caps">ASP.NET</span> application can call your data access code, why can't a rogue application?<br />
+ <br />
+I use a two-pronged approach to prevent luring attacks. The first restricts the call based on the identity of the user who is running the code that makes the call. I use <span class="caps">COM</span>+ role-based security to assert that the user is a member of the <code>TrustedCallers</code> role. An administrator assigns the appropriate account (typically the <span class="caps">ASPNET</span> account) to this role at deployment-time.<br />
+ <br />
+The second restricts the call based on the identity of the assembly who makes the call. Here, I use Code Access Security to perform a Link demand that the immediate caller on the call stack is indeed a trusted assembly (typically this is the assembly that contains the application logic for the application).<br />
+ <br />
+By using these techniques, I avoid the need to use the <code>LogonUser()</code> <span class="caps">API</span> as well as preventing luring attacks. I'll post a simple sample application in the next few days that illustrates the technique. Comments on this technique are, as usual, always welcome.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000319.html">12:22 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=319" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=319" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000318"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/62"
+    dc:title="Multiple user roles and trusted SQL Server Connections"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000318"
+    dc:subject=""
+    dc:description="One of the most common questions that I get from advanced students in my ASP.NET class is: &quot;How do I map users to different roles and still use Windows authentication in SQL Server?&quot; This is actually a pretty difficult problem..."
+    dc:creator="John"
+    dc:date="2003-09-02T20:07:02-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 02, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000318"></a>
+<h3 class="title">Multiple user roles and trusted SQL Server Connections</h3>
+
+<p>One of the most common questions that I get from advanced students in my <span class="caps">ASP.NET</span> class is: "How do I map users to different roles and still use Windows authentication in <span class="caps">SQL </span>Server?"</p>
+
+<p>This is actually a pretty difficult problem to solve. In the simplest case, you have two different groups of users. Let's call them Users and Administrators. You want to restrict access to stored procedures in your <span class="caps">SQL </span>Server database by setting the appropriate access control lists (ACL's) in <span class="caps">SQL </span>Enterprise Manager.</p>
+
+<p>Here's a very rough outline of the process. First, your <span class="caps">ASP.NET</span> application needs to map users to the appropriate roles. This in its own right is a fairly complicated topic, so I'll cover this later. Let's assume for the time being that you have determined whether the caller is a User or an Administrator. </p>
+
+<p>Next, you need to partition your data access code into two different assemblies; one for Users and the other for Administrators. Your data access code must live in Serviced Components, which are registered as <span class="caps">COM</span>+ applications. Finally, you must set the Identity of your <span class="caps">COM</span>+ application is. Your User data access assembly will run under one account, and your Administrator data access assembly will run under a different account.</p>
+
+<p>Finally, you set the appropriate <span class="caps">ACL</span>'s in <span class="caps">SQL </span>Enterprise Manager to allow your User account and your Administrator account in.</p>
+
+<p>There are a whole raft of nasty deployment issues that arise to support this rather innocent looking scenario. I'll cover the blood and guts of this scenario over the next few days as I build a sample application that solves this problem.&Acirc;&nbsp;</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000318.html">08:07 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=318" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=318" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000317"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/61"
+    dc:title="Visual Studio .NET Tip of the Day"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000317"
+    dc:subject=""
+    dc:description="<![CDATA[Personally, I find it much easier to ALT-TAB to view on-line help than to CTRL-TAB to view on-line help.&Acirc;&nbsp;This is especially the case when you have a bunch of source windows open in Visual Studio .NET. Hopefully you're already using...]]>"
+    dc:creator="John"
+    dc:date="2003-09-02T10:23:34-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000317"></a>
+<h3 class="title">Visual Studio .NET Tip of the Day</h3>
+
+<p>Personally, I find it much easier to <span class="caps">ALT</span>-TAB to view on-line help than to <span class="caps">CTRL</span>-TAB to view on-line help.&Acirc;&nbsp;This is especially the case when you have a bunch of source windows open in Visual Studio .NET. </p>
+
+<p>Hopefully you're already using one of the following set of shortcut keys to display on-line help:</p>
+
+
+<ul>
+<li><span class="caps">CTRL</span>-ALT-F2 to open help to the Index page (followed by <span class="caps">ALT</span>-L before you actually type something)<sup class="footnote"><a href="http://www.iunknown.com/000317.html#fn1">1</a></sup></li>
+<li><span class="caps">CTRL</span>-ALT-F1 to open help to the Contents page</li>
+<li><span class="caps">CTRL</span>-ALT-F3 to open help to the Search page</li>
+<li><span class="caps">ALT</span>-H-Y to sync the current contents </li>
+</ul>
+
+<p>To force <span class="caps">VS.NET</span> to open the help page using the external <span class="caps">MSDN</span> shell instead of the <span class="caps">VS.NET</span> shell, go to Tools | Options. Select the Environment folder and click on the Help entry. Make sure that External help is selected and restart <span class="caps">VS.NET. </span>This will make your life so much easier in the long run!</p>
+
+<p>[1] The dialog remembers if you used the Filtered by drop-down the last time, and boy will you be sorry if you start typing stuff and the Filtered by drop-down has the focus!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000317.html">10:23 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=317" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=317" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2003_09.html#000316"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/60"
+    dc:title="Thunderbird sighting!"
+    dc:identifier="http://www.iunknown.com/2003_09.html#000316"
+    dc:subject=""
+    dc:description="The US Air Force Thunderbirds were practicing for their performance tomorrow at the Canadian International Airshow. They love buzzing the apartment building where I live since they use it as a reference point for setting up their stunts on the..."
+    dc:creator="John"
+    dc:date="2003-09-01T01:03:20-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">September 01, 2003</h2>
+
+
+<div class="blogbody">
+<a name="000316"></a>
+<h3 class="title">Thunderbird sighting!</h3>
+
+<p>The <span class="caps">US </span>Air Force Thunderbirds were practicing for their performance tomorrow at the <a href="http://www.cias.org/">Canadian International Airshow</a>. They love buzzing the apartment building where I live since they use it as a reference point for setting up their stunts on the main stage. This <span class="caps">F16</span> passed within a few hundred feet of our building, which explains how I got such a large shot at max telephoto. And the <em>noise</em> it makes at that range just sends shivers down my spine!</p>
+
+<p><img src="Files/Thunderbird.jpg" alt="F16 at close range"/></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000316.html">01:03 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=316" onclick="OpenComments(this.href); return false">Comments (6)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=316" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

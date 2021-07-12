@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on UI Programming and Unit Tests </title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: UI Programming and Unit Tests </div>
+
+
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>Are there any other uses for extending the graphics object that you see besides just logging of commands like this?  Would another way to "capture" what is drawn to the screen (in a metafile like way -- not as a bitmap) be good enough for what you are doing?</p>
+
+<p>I ask this because providing virtuals is a really dangerous thing.  Every time we provide a call out in to user code from the system we create a place where we have to be *super* careful moving forward to maintain backward compatibility.  For instance, if we have a control that we ship that calls DrawEllipse, and the developer hooks that to change something else in the system, we may not be able to call DrawPath (or something else) in the next version because the developer is expecting DrawEllipse.  While saying "that developer is confused and doing something wrong" and that we should just be able to break the app, we may not have the choice.  Does my Mom care that her app stoped working with windows 2010 because some app developer was breaking the rules?</p>
+
+<p>Beyond this, interfaces don't version that well.  Do we really want IGraphics, IGraphics2, IGraphics3, etc?</p>
+
+<p>BradA (who is something of an authority on these things) has this to say about it:<br />
+http://blogs.gotdotnet.com/BradA/permalink.aspx/bbda1815-f6b8-488a-83a2-22bd6c2f4bf5</p>
+
+<p>"Annotation  - The peril. If you ship types with virtual members you are promising to forever abide by subtle and complex observable behaviors and subclass interactions. </p>
+
+<p>I think API designers underestimate their peril.  For example, we found that ArrayList item enumeration calls several virtual methods per each MoveNext and Current. Fixing those performance problems could (but probably doesn't) break user-defined implementations of virtual members on the ArrayList class that are dependent upon virtual method call order/frequency."</p>
+
+<p>Joe</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.eightypercent.net">Joe Beda</a> at July 31, 2003 11:51 AM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for the comments, Joe!</p>
+
+<p>If you guys can provide a metafile-like experience in V.Next, that would let me do what I'm trying to do. It's also super-important to allow that metafile format to be serializable as XML (if it isn't already) so that it reduces the amount of friction required to integrate it with other tools.</p>
+
+<p>I totally agree with your concerns about unsealing Graphics and exposing virtual functions. But what about my interface proposal? While nobody wants to have to support multiple IGraphics interfaces, how are class "interfaces" any better off? With interfaces (and a pluggable abstract factory) I have the ability to substitute a different Graphics object at runtime. This lets me do all sorts of things that are otherwise impossible today.</p>
+
+<p>BTW, I really like the fact that the ASP.NET team chose to define interfaces for both HttpModules and HttpHandlers; this makes it much easier for me to create mock objects for testing UI rendering in ASP.NET.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at July 31, 2003 02:10 PM</span>
+</div>
+<div class="comments-body">
+<p>I make no promises about what we are or aren't going to ship in V.Next :)  ("I have no recollection of that Senator.  I can niether confirm nor deny those allegations")</p>
+
+<p>Generally, classes are preferred over interfaces for a variety of reasons.  I'm not the expert here, but versioning is definitely the big reason.  Since you can have "default" implementations to go along with a virtual on a base class, you can add new functions in v.Next and provide a default implementation.  With an interface, once you ship that interface you are stuck with it forever.  You can't add new methods to that interface.</p>
+
+<p>Also, any time that you pass that interface to the "system" there is an implied contract about how and when the system calls you back on that interface.</p>
+
+<p>I think that in some ways the ASP.Net server model is a lot simpler because the dialog of what gets called when is pretty simple and is set in stone for all time.  UI is much more chatty and providing those same types of assurances isn't nearly so easy.</p>
+
+<p>(As an aside, when I was working on IE, calling out into script or ActiveX objects was something we had to be careful of.  We had to protect against all sorts of reentrancy and any time we changed behavior we had app compat bugs.  For instance, we had an object (I won't name names)where on the final release call that object would pump the message loop.  This would cause us to be reentered while we were tearing down and could easily lead to crashes.  Providing protection in cases like this can be expensive -- you trust your code but you *can't* trust third party code not to do something like that. And this was a Microsoft ActiveX object...)</p>
+
+<p>Joe</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.eightypercent.net">Joe Beda</a> at July 31, 2003 07:33 PM</span>
+</div>
+<div class="comments-body">
+<p>Hey John...  it occurred to me that since Graphics is derived from MarshalByRef, it's possible to use a custom RealProxy for interception.  Unfortunately, this is a form of runtime interception so it doesn't actually meet your requirements.  Still... it's pretty fun to play around with:</p>
+
+<p>using System;<br />
+using System.Drawing;<br />
+using System.Diagnostics;<br />
+using System.Runtime.Remoting;<br />
+using System.Runtime.Remoting.Proxies;<br />
+using System.Runtime.Remoting.Messaging;<br />
+using System.Windows.Forms;</p>
+
+<p>namespace GraphicsInterception<br />
+{<br />
+    public class MainForm : System.Windows.Forms.Form<br />
+    {<br />
+        public MainForm()<br />
+        {<br />
+            Text = "Graphics Interception Test";<br />
+        }</p>
+
+<p>        protected override void OnPaint(PaintEventArgs e)<br />
+        {<br />
+            base.OnPaint (e);</p>
+
+<p>            GraphicsProxy graphicsProxy = new GraphicsProxy(e.Graphics);<br />
+            Graphics graphics = (Graphics) graphicsProxy.GetTransparentProxy();</p>
+
+<p>            graphics.DrawRectangle(Pens.Black, 20, 20, 120, 120);<br />
+            graphics.DrawEllipse(Pens.Black, 30, 30, 100, 100);<br />
+        }</p>
+
+<p>        /// <br />
+        /// The main entry point for the application.<br />
+        /// <br />
+        [STAThread]<br />
+        static void Main() <br />
+        {<br />
+            Application.Run(new MainForm());<br />
+        }<br />
+    }</p>
+
+<p>    public class GraphicsProxy : RealProxy<br />
+    {<br />
+        public GraphicsProxy(Graphics IN_Target) : base(typeof(Graphics))<br />
+        {<br />
+            M_Target = IN_Target;<br />
+        }</p>
+
+<p>        public override IMessage Invoke(IMessage IN_Message)<br />
+        {<br />
+            IMethodCallMessage methodCallMessage = (IMethodCallMessage) IN_Message;</p>
+
+<p>            bool firstArg = true;</p>
+
+<p>            Debug.Write("Graphics." + methodCallMessage.MethodName + "(");<br />
+            foreach (object argument in methodCallMessage.Args)<br />
+            {<br />
+                if (firstArg == false)<br />
+                {<br />
+                    Debug.Write(", ");<br />
+                }<br />
+                Debug.Write(argument);<br />
+                firstArg = false;<br />
+            }<br />
+            Debug.WriteLine(");");</p>
+
+<p>            return RemotingServices.ExecuteMessage(M_Target, (IMethodCallMessage) IN_Message);<br />
+        }</p>
+
+<p>        private Graphics M_Target;<br />
+    }<br />
+}<br />
+</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.workstate.com/en/weblogs/joe/">Joe Madia</a> at August  1, 2003 02:01 PM</span>
+</div>
+<div class="comments-body">
+<p>Thanks for posting that code frag, Joe! I'll have to check it out on my trip next week and see how well I can get it to work. But it looks really promising!</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at August  1, 2003 10:28 PM</span>
+</div>
+<div class="comments-body">
+<p>I research using automated tests to force code to<br />
+exist - even if it's complex GUI code. That means I<br />
+don't write code until I can make a test fail because<br />
+it does not exist.</p>
+
+<p>But this implies I must research ways to 'get()'<br />
+variables that all our libraries and tutorials expect<br />
+us only to 'set()'.</p>
+
+<p>To discuss why John's XML suggestion this is the right motivation but a high risk solution, first we must define some terms.</p>
+
+<p>A "hyperactive" assertion fails when an end-user would have thought the program succeeded.</p>
+
+<p>Because end-users consider late delivery a failure, we like over-active assertions that constrain refactors more aggressively than traditional test-last could. Suppose we replace a device context with a mock object that records all calls, and we use this test and code:</p>
+
+<p>  assert_equal "circle, square", aContext.getReport()<br />
+...<br />
+  aContext.DrawCircle(...);<br />
+  aContext.DrawSquare(...);</p>
+
+<p>Refactors strictly preserve behavior. But what if a re-featurization reverses the order of the calls:</p>
+
+<p>  aContext.DrawSquare(...);<br />
+  aContext.DrawCircle(...);</p>
+
+<p>Assuming opaque pens of the same color, users can't tell the difference. But the test would fail.</p>
+
+<p>In these situations, we must either force the<br />
+re-featurization to preserve irrelevant behavior, or tweak the test.</p>
+
+<p>If the test covered many miles of GDI calls, then<br />
+John's suggestion of using an XML diff tool would be a "bulk assertion". Bulk assertion hyperactivity only works when you also have much more narrow unit-level tests, and when you have an easy mechanism to transfer failing test results into the reference results.</p>
+
+<p>Now that we know how to avoid this technique becoming a bad thing, here's how to do it for GDI, via WTL.</p>
+
+<p>Under MS Windows, if you need your List Box control to present anything except a short list of simple strings, you must set its resource declaration to "ownerdraw" mode:</p>
+
+<p>    LISTBOX   IDC_LIST_CUSTOMERS, 5,7,79,108,<br />
+            LBS_SORT | LBS_NOINTEGRALHEIGHT |<br />
+            WS_VSCROLL | WS_TABSTOP |<br />
+            LBS_OWNERDRAWFIXED | LBS_HASSTRINGS</p>
+
+<p>Then handle OnDrawItem():</p>
+
+<p>        BEGIN_MSG_MAP(ProjectDlg)<br />
+      MESSAGE_HANDLER(WM_INITDIALOG, OnInitDialog)<br />
+      MESSAGE_HANDLER(WM_DRAWITEM,   OnDrawItem)<br />
+      COMMAND_ID_HANDLER(IDOK,     OnClose)<br />
+      COMMAND_ID_HANDLER(IDCANCEL, OnClose)<br />
+        END_MSG_MAP()</p>
+
+<p>        LRESULT<br />
+    ProjectDlg::OnDrawItem(UINT, WPARAM,<br />
+           LPARAM lParam, BOOL &)<br />
+    {<br />
+        DRAWITEMSTRUCT & aDrawItem =<br />
+     *reinterpret_cast(lParam);</p>
+
+<p>        CDCHandle aDC(aDrawItem.hDC);</p>
+
+<p>        BOOL worked = aDC.TextOut<br />
+                 (<br />
+                 aDrawItem.rcItem.left,<br />
+                 aDrawItem.rcItem.top,<br />
+                 "whatever"<br />
+                 );<br />
+        assert(worked);<br />
+        return 0;<br />
+    }</p>
+
+<p>Note the TextOut() there does not pull the listbox's<br />
+item string; it sends "whatever". Our goal is to write<br />
+a test that intercepts this lie.</p>
+
+<p>To test that OnDrawItem() drew something into a device context, we must pass a device context capable of intercepting GDI calls as a stream of commands and recording them. MS Windows calls these streams "MetaFiles". So the strategy is to calculate the correct size for the MetaFile, create a MetaFile-based Device Context, put it into a DRAWITEMSTRUCT, pass this into the WM_DRAWITEM handler, and Close() the MetaFile-based Device Context. That returns a HMETAFILE, which we must check contains the correct records:</p>
+
+<p>    TEST_(TestDialog, WM_DRAWITEM)<br />
+    {<br />
+        CListBox aList =<br />
+      m_aDlg.GetDlgItem(IDC_LIST_CUSTOMERS);</p>
+
+<p>        DWORD style = aList.GetStyle();<br />
+     CPPUNIT_ASSERT(style & LBS_OWNERDRAWFIXED);<br />
+        CPPUNIT_ASSERT(style & LBS_HASSTRINGS);</p>
+
+<p>        CDC aDC = aList.GetDC();</p>
+
+<p>   //  calculate the correct size for the MetaFile</p>
+
+<p>    int mmWidth      = aDC.GetDeviceCaps(HORZSIZE);<br />
+    int mmHeight     = aDC.GetDeviceCaps(VERTSIZE);<br />
+    int pixelsWidth  = aDC.GetDeviceCaps(HORZRES);<br />
+    int pixelsHeight = aDC.GetDeviceCaps(VERTRES);<br />
+  int xMmPerPixel  = (mmWidth  * 100) / pixelsWidth;<br />
+  int yMmPerPixel  = (mmHeight * 100) / pixelsHeight;</p>
+
+<p>        RECT rc;<br />
+        aList.GetItemRect(0, & rc);<br />
+        rc.left   *= xMmPerPixel;<br />
+        rc.top    *= yMmPerPixel;<br />
+        rc.right  *= xMmPerPixel;<br />
+        rc.bottom *= yMmPerPixel;</p>
+
+<p>     //  create a MetaFile-based Device Context</p>
+
+<p>    CEnhMetaFileDC aDCmeta;<br />
+    aDCmeta.Create(aDC, "sample.emf", &rc, "test");</p>
+
+<p>      //  fake a WM_DRAWITEM message</p>
+
+<p>    DRAWITEMSTRUCT aDrawItem = { ODT_LISTBOX };<br />
+    aDrawItem.CtlID      = IDC_LIST_CUSTOMERS;<br />
+    aDrawItem.itemID     = 0;<br />
+    aDrawItem.itemAction = ODA_FOCUS;<br />
+    aDrawItem.itemState  = ODS_SELECTED;<br />
+    aDrawItem.hwndItem   = aList;<br />
+    aDrawItem.hDC        = aDCmeta;<br />
+    aDrawItem.rcItem     = rc;<br />
+    LPARAM param = reinterpret_cast<br />
+                          (&aDrawItem);</p>
+
+<p>    m_aDlg.SendMessage(WM_DRAWITEM, 0, param);</p>
+
+<p>      //  Closing the DC returns a HMETAFILE</p>
+
+<p>    CEnhMetaFile metaFile(aDCmeta.Close());</p>
+
+<p>      //  inspect the MetaFile for the correct record</p>
+
+<p>    std::wstringstream payload;</p>
+
+<p>    BOOL worked = EnumEnhMetaFile<br />
+                    (<br />
+                    NULL,<br />
+                    metaFile,<br />
+                    metaFileRecordFunction,<br />
+                    &payload,<br />
+                    &aDrawItem.rcItem<br />
+                    );</p>
+
+<p>    CPPUNIT_ASSERT(worked);<br />
+    CPPUNIT_ASSERT(L"Ignatz\tMouse" == payload.str());<br />
+    }</p>
+
+<p>MS Windows depends on a C-style Execute Around<br />
+Pattern, which requires copious typecasts between void pointers and typed ones. So the best implementation of metaFileRecord() we can hope for is this: </p>
+
+<p>        int CALLBACK<br />
+    metaFileRecordFunction<br />
+            (<br />
+            HDC,<br />
+            HANDLETABLE FAR *,<br />
+            CONST ENHMETARECORD *rec,<br />
+            int,<br />
+            LPARAM param<br />
+            )<br />
+    {<br />
+        switch (rec->iType)<br />
+            {<br />
+            case EMR_HEADER:<br />
+            case EMR_EOF:<br />
+                break;</p>
+
+<p>            case EMR_EXTTEXTOUTW:<br />
+                {<br />
+                EMREXTTEXTOUTW const & aTextOut =<br />
+    *reinterpret_cast(rec);</p>
+
+<p>                std::wstringstream &payload =<br />
+    *reinterpret_cast(param);</p>
+
+<p>                char const * p =<br />
+     reinterpret_cast(rec);</p>
+
+<p>                p += aTextOut.emrtext.offString;</p>
+
+<p>                wchar_t const * text =<br />
+     reinterpret_cast (p);</p>
+
+<p>     payload.write(text, aTextOut.emrtext.nChars);<br />
+                }<br />
+                break;</p>
+
+<p>            default:<br />
+                assert(false);<br />
+            }<br />
+        return true;<br />
+    }</p>
+
+<p>That extracts the text from a EMREXTTEXTOUTW record. I will never see a EMREXTTEXTOUTA record as long as I use Windows XP here. When I called TextOut(), it was really TextOutA(), but Windows NT-based platforms internally convert all strings to their wide, UCS versions. So p points to that widened string inside the EMREXTTEXTOUTW record; text points to the same place but thru a wide pointer, and payload.write() pushes that wide string into a wide wstringstream. I had to use .write(), not operator&lt;&lt;, because text was<br />
+not L'\0' terminated.</p>
+
+<p>The result of all that infrastructure is this line:</p>
+
+<p>  CPPUNIT_ASSERT(L"Ignatz Mouse" == payload.str());</p>
+
+<p>We could not use CPPUNIT_ASSERT_EQUAL() because that expects 8-bit strings. Eventually we could provide a CPPUNIT_ASSERT_EQUAL_W() for these wchar_t situations.</p>
+
+<p>Oh, by the way, the line fails. We must now start<br />
+providing the correct OnDrawItem implementation,<br />
+including special cases for selected and focused<br />
+items. The tests will then constrain the refactors<br />
+that make clean code out of those special cases.</p>
+
+<p>More important, a few more tests that turn GDI streams into wstringstreams are all we need to promote the code around metaFileRecordFunction() into a fixture that makes assertions regarding GDI calls easy to code. Including tests that call lots of GDI routines, then test them all at once using over-active bulk assertions.</p>
+
+<p>--<br />
+  Phlip</p>
+<span class="comments-post">Posted by <a href="mailto&#58;phlipcpp&#64;yahoo&#46;com">Phlip</a> at December 21, 2003 03:26 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

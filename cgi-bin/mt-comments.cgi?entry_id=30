@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on VMWare Woes</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: VMWare Woes</div>
+
+
+<div class="comments-body">
+<p>I felt like I was reading something I did when I read your woes with VMWare. I have VMWare installed on a Windows XP host, but I think I worked because I imaged the entire drive onto a large hard drive on my thinkpad think I swapped them.  Installing Server wasn't easy though.  Even though it is a bootable CD, the system would not recognize it.  I did something weird.  I "viewed" the CD in explorer in the host, copied the setup files into a folder(that I created) in the VMWare directory and then tried it again and it worked! (At least that's what I remember doing...doh!)  Anyway, a friend of mine is not having the same exact problem.  I am going to print your woes and solution and have it handy for when she comes over with her think pad.<br />
+Please write some more and your solutions.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;victoria&#46;verdejo&#64;chase&#46;com">Victoria Verdejo</a> at January 16, 2003 09:20 AM</span>
+</div>
+<div class="comments-body">
+<p>It felt like deja-vu all over again, when I read your woes with VMWare. I have VMWare installed on a Windows XP host, but I think I worked because I imaged the entire drive onto a large hard drive on my thinkpad then I swapped the drives.  Installing Server wasn't easy though.  Even though it is a bootable CD, the system kept saying "no OS found".  I did something weird.  I "viewed" the CD in explorer in the host, copied the setup files into a folder(that I created) in the VMWare directory and then tried it again and it worked! (At least that's what I remember doing...doh!)  Anyway, a friend of mine is having the same exact problem with her ThinkPad.  I am going to print your woes and solution and have it handy for when she comes over with her ThinkPad.<br />
+Please write some more and your solutions.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;victoria&#46;verdejo&#64;chase&#46;com">Victoria Verdejo</a> at January 16, 2003 09:23 AM</span>
+</div>
+<div class="comments-body">
+<p>It felt like deja-vu all over again, when I read your woes with VMWare. I have VMWare installed on a Windows XP host, but I think I worked because I imaged the entire drive onto a large hard drive on my thinkpad then I swapped the drives.  Installing Server wasn't easy though.  Even though it is a bootable CD, the system kept saying "no OS found".  I did something weird.  I "viewed" the CD in explorer in the host, copied the setup files into a folder(that I created) in the VMWare directory and then tried it again and it worked! (At least that's what I remember doing...doh!)  Anyway, a friend of mine is having the same exact problem with her ThinkPad.  I am going to print your woes and solution and have it handy for when she comes over with her ThinkPad.<br />
+Please write some more and your solutions.</p>
+<span class="comments-post">Posted by <a href="mailto&#58;IUNKnown&#46;com">Victoria Verdejo</a> at January 16, 2003 09:25 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Where did the security tab go in XP?</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000407.html" title="Writing YABE (Yet Another Blog Engine) in ASP.NET 2.0" />
+
+<link rel="next" href="http://www.iunknown.com/000409.html" title="Zestyfind: another reason to not run as local admin" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000408.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/152"
+    dc:title="Where did the security tab go in XP?"
+    dc:identifier="http://www.iunknown.com/000408.html"
+    dc:subject="Blog"
+    dc:description="Until recently, I have NEVER run a copy of Windows XP that wasn&apos;t a member of a domain. As part of my switch to the Virtual PC lifestyle, I created a number of VPC&apos;s that are standalone computers. Today, I..."
+    dc:creator="John"
+    dc:date="2004-02-13T13:20:44-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000407.html">&laquo; Writing YABE (Yet Another Blog Engine) in ASP.NET 2.0</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000409.html">Zestyfind: another reason to not run as local admin &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 13, 2004</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Where did the security tab go in XP?</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>Until recently, I have <span class="caps">NEVER</span> run a copy of Windows XP that wasn't a member of a domain. As part of my switch to the Virtual PC lifestyle, I created a number of <span class="caps">VPC</span>'s that are standalone computers. Today, I went to change some file <span class="caps">DACL</span>'s and to my amazement, the Security Tab wasn't there! Whoa. After a bit of Googling, I found <a href="http://windows.about.com/library/tips/bltip542.htm">this</a>. </p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February 13, 2004 01:20 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=408" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="408" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000408.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>john:</p>
+
+<p>when i first bought my thinkpad (about 18 months ago).  i too was confused by the lack of security within xp - pro on the ntfs drive.</p>
+
+<p>i used this link to solve the problem - <br />
+http://support.microsoft.com/default.aspx?scid=kb;EN-US;Q290403</p>
+
+<p>jeff<br />
+sourcegear</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.sourcegear.com">jeff clausius</a> at February 13, 2004 02:49 PM</span>
+</div>
+<div class="comments-body">
+<p>No need for the registry.</p>
+
+<p>Open a folder, Tools->Folder Options. On the View tab, scrool down in the advanced settings for "Use Simple File Sharing" and uncheck it.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.surrealization.com">Adam</a> at February 13, 2004 02:57 PM</span>
+</div>
+<div class="comments-body">
+<p>No need for the registry.</p>
+
+<p>Open a folder, Tools->Folder Options. On the View tab, scrool down in the advanced settings for "Use Simple File Sharing" and uncheck it.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.surrealization.com">Adam</a> at February 13, 2004 02:57 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

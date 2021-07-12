@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on Living with code generation</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: Living with code generation</div>
+
+
+<div class="comments-body">
+<p>Is this work related to the rumors about Microsoft's new X# programming language?<br />
+http://www.microsoft-watch.com/article2/1,4248,766199,00.asp</p>
+<span class="comments-post">Posted by Cold at December 17, 2002 03:15 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm not to familiar w/ the concept of code generation especially when used in the context of testing. Could someone hook me up w/ a few GOOD references that I could check out to get more confortable with these concepts?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.siteobjects.com">James</a> at December 17, 2002 03:31 PM</span>
+</div>
+<div class="comments-body">
+<p>The only reference that I've come across that is tangentially related to this is here.<br />
+Look at the end of the article where they describe an internal MS testing system called Socrates. They code-gen their test cases from test specs written in Word.<br />
+I would suggest that you download gslgen and try it out for yourself. The language is a simple scripting language, and it has some nice built-in support for iterating over XML node collections (although it is nowhere near as powerful as XPath). <br />
+You write your code generator using the gsl scripting language, and you define your "little language" using XML. While defining a language in XML isn't the best solution, it avoids forcing you to have to write a parser for an arbitrary grammar. </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 17, 2002 04:35 PM</span>
+</div>
+<div class="comments-body">
+<p>Sorry ... it's not at all related to X# </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 17, 2002 04:35 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm guessing you must have looked at XSLT as a way of converting XML-&gt;Whatever, so what are the advantages of GSLGen?</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.virtualmethods.com">Mark smith</a> at December 19, 2002 08:47 AM</span>
+</div>
+<div class="comments-body">
+<p>That's a really good question, Mark. I know other folks who use XSLT for exactly the same thing. The problem really boils down to the XSLT syntax for me. It's just really nasty and really hard to read, especially when you're doing code-generation. Heck, gslgen is hard enough to read, and that's using syntax coloring in my editor. Believe me, there are times when I miss having XPath in gslgen, but I find that those are few and far between. I felt that the tradeoff between needing XPath and maintenance of my code generators just wasn't worth it. <br />
+Don't think that gslgen is not without its warts, however. The biggest issue for me is that functions in gslgen cannot have return values. This one annoyance makes it MUCH harder to "refactor" your code generation code. Again, this was mostly a matter of pragmatics: I have to write more lines of code-gen code to get around this problem, but it sure was easier than writing my own code gen tool (an impulse that I'm getting better at resisting as I get older </p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.iunknown.com">John Lam</a> at December 19, 2002 10:57 AM</span>
+</div>
+<div class="comments-body">
+<p>John - thanks for the info. I can  recommend "Just XSLT" by john E Simpson if you decide to investigate that option.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.virtualmethods.com">Mark smith</a> at December 20, 2002 03:09 PM</span>
+</div>
+<div class="comments-body">
+<p>The article describes GSL/2.0, which has many limitations.  It's really aimed at code generation only (and even that took us about a decade to get right).  Get GSL/3.0 from the iMatix website (part of RealiBase) and you'll find functions that return values, a toolkit for extending the language (written using GSL, of course) and so on.  We're working on GSL/4, which turns these extensions into objects.  We will, at some point, try to make better support for the product: usable documentation, etc. but for now, treat it as a surfboard.  Looks simple, is not.  Once you learn to use it, you will never look at code again.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://www.imatix.com">Pieter Hintjens</a> at April 10, 2003 01:16 PM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

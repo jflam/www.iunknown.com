@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: Visual Basic and Ruby: Happy Together?</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/758/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together" rel="alternate" type="text/html"/>
+  <updated>2006-08-29T23:31:45-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:216b600e-7f69-41d6-a4a3-95b99c5063f8</id>
+    <published>2006-08-22T09:58:00-07:00</published>
+    <updated>2006-08-29T23:31:45-07:00</updated>
+    <title type="html">Visual Basic and Ruby: Happy Together?</title>
+    <link href="http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together" rel="alternate" type="text/html"/>
+    <category term="Thoughts" scheme="http://www.iunknown.com/articles/tag/thoughts"/>
+    <category term="Ruby" scheme="http://www.iunknown.com/articles/tag/ruby"/>
+    <category term="RubyCLR" scheme="http://www.iunknown.com/articles/tag/rubyclr"/>
+    <category term="VB" scheme="http://www.iunknown.com/articles/tag/vb"/>
+    <summary type="html">&lt;p&gt;Tim Ng, who works on the Visual Basic compiler team, has spent some time digging into RubyCLR and has &lt;a href="http://blogs.msdn.com/timng/archive/2006/08/19/708049.aspx"&gt;some nice things to say about it&lt;/a&gt;. That post is really nice because he shows how to explicitly call Ruby methods from VB.&lt;/p&gt;
+
+
+	&lt;p&gt;Tim is interested in a scenario that frankly I haven&amp;#8217;t spent much time thinking about &amp;#8211; and that is hosting Ruby inside of a Visual Basic (or any other .NET language for that matter). Most of the effort that I&amp;#8217;ve put into making Ruby objects callable from &lt;span class="caps"&gt;CLR&lt;/span&gt; objects has been focused on data binding scenarios, but &lt;a href="http://blogs.msdn.com/timng/archive/2006/08/19/708760.aspx"&gt;Tim wants more :)&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Most of his requests on that list are very reasonable. The only real problem is making all methods of a Ruby object available to be called from VB. The challenge there is that &lt;em&gt;you can add methods to a Ruby object or class at any time&lt;/em&gt;. I create the moral equivalent of a &lt;a href="http://msdn2.microsoft.com/en-us/library/8bwh56xe.aspx"&gt;Runtime Callable Wrapper&lt;/a&gt; class, but like any other .NET class, it&amp;#8217;s static. Now I don&amp;#8217;t really know how RCWs are really implemented, so if someone can help me understand how to build a &lt;span class="caps"&gt;CLR&lt;/span&gt; object that does the equivalent of &lt;code&gt;method_missing&lt;/code&gt; in Ruby, that will help me get this feature out the door faster.&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Tim Ng, who works on the Visual Basic compiler team, has spent some time digging into RubyCLR and has &lt;a href="http://blogs.msdn.com/timng/archive/2006/08/19/708049.aspx"&gt;some nice things to say about it&lt;/a&gt;. That post is really nice because he shows how to explicitly call Ruby methods from VB.&lt;/p&gt;
+
+
+	&lt;p&gt;Tim is interested in a scenario that frankly I haven&amp;#8217;t spent much time thinking about &amp;#8211; and that is hosting Ruby inside of a Visual Basic (or any other .NET language for that matter). Most of the effort that I&amp;#8217;ve put into making Ruby objects callable from &lt;span class="caps"&gt;CLR&lt;/span&gt; objects has been focused on data binding scenarios, but &lt;a href="http://blogs.msdn.com/timng/archive/2006/08/19/708760.aspx"&gt;Tim wants more :)&lt;/a&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;Most of his requests on that list are very reasonable. The only real problem is making all methods of a Ruby object available to be called from VB. The challenge there is that &lt;em&gt;you can add methods to a Ruby object or class at any time&lt;/em&gt;. I create the moral equivalent of a &lt;a href="http://msdn2.microsoft.com/en-us/library/8bwh56xe.aspx"&gt;Runtime Callable Wrapper&lt;/a&gt; class, but like any other .NET class, it&amp;#8217;s static. Now I don&amp;#8217;t really know how RCWs are really implemented, so if someone can help me understand how to build a &lt;span class="caps"&gt;CLR&lt;/span&gt; object that does the equivalent of &lt;code&gt;method_missing&lt;/code&gt; in Ruby, that will help me get this feature out the door faster.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:c1f583c6-fcab-4a81-9824-c7e169e209c0</id>
+    <published>2006-08-23T08:37:48-07:00</published>
+    <updated>2006-08-23T12:56:03-07:00</updated>
+    <title type="html">Comment on Visual Basic and Ruby: Happy Together? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together#comment-769" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hi Jamie,&lt;/p&gt;
+
+&lt;p&gt;This does look promising ... I'll have to do some experiments with IExpando and VB to see how they work together. But this looks like it just &lt;em&gt;might&lt;/em&gt; do the trick, providing that VB uses it (and I see no reason why they wouldn't).&lt;/p&gt;
+
+&lt;p&gt;Added to my list of things to do post-rewrite of reflection goo :)&lt;/p&gt;
+
+&lt;p&gt;Thanks!
+-John&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:b7165769-faa3-4b1e-8442-09b80574c8b3</id>
+    <published>2006-08-23T08:34:05-07:00</published>
+    <updated>2006-08-23T12:55:49-07:00</updated>
+    <title type="html">Comment on Visual Basic and Ruby: Happy Together? by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together#comment-767" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hi El, &lt;/p&gt;
+
+&lt;p&gt;Thanks for putting together that post! The problem with statically compiling the interop code is the fact that the Ruby code can change at any time - it's not necessarily bound to a source file as in your example - someone at runtime can change the behavior of an object. The highly dynamic nature of Ruby makes it difficult to do this kind of stuff (not impossible - just difficult) so I used the interfaces hack to "lock down" the behavior of a Ruby object.&lt;/p&gt;
+
+&lt;p&gt;-John&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Jamie Cansdale</name>
+    </author>
+    <id>urn:uuid:67b222fa-8004-453b-9bf6-5de749578176</id>
+    <published>2006-08-22T16:11:20-07:00</published>
+    <updated>2006-08-22T16:16:44-07:00</updated>
+    <title type="html">Comment on Visual Basic and Ruby: Happy Together? by Jamie Cansdale</title>
+    <link href="http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together#comment-764" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hi John,&lt;/p&gt;
+
+&lt;p&gt;I've always been curious about the IExpando interface (but never found a use for it). Might this be useful here?&lt;/p&gt;
+
+&lt;p&gt;From the documentation at:
+&lt;a href="http://msdn2.microsoft.com/en-us/library/8023ct8s.aspx" rel="nofollow"&gt;http://msdn2.microsoft.com/en-us/library/8023ct8s.aspx&lt;/a&gt;&lt;/p&gt;
+
+
+
+&lt;p&gt;IDispatchEx&lt;/p&gt;
+
+If the class implements IDispatchEx, the RCW implements IExpando. The IDispatchEx interface is an extension of the IDispatch interface that, unlike IDispatch, enables enumeration, addition, deletion, and case-sensitive calling of members.
+
+&lt;p&gt;I've quite possibly got the wrong end of the stick. ;)&lt;/p&gt;
+
+&lt;p&gt;Thanks, Jamie.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>El Draper</name>
+    </author>
+    <id>urn:uuid:db7deb1f-3029-4a9d-84ff-f1da1ea15627</id>
+    <published>2006-08-22T14:44:29-07:00</published>
+    <updated>2006-08-22T16:11:24-07:00</updated>
+    <title type="html">Comment on Visual Basic and Ruby: Happy Together? by El Draper</title>
+    <link href="http://www.iunknown.com/articles/2006/08/22/visual-basic-and-ruby-happy-together#comment-762" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;Hey, interesting stuff, I've written up my own experiences with RubyCLR, specifically using Ruby and C# together, at &lt;a href="http://www.crazycool.co.uk/blog/2006/08/22/RubySharp" rel="nofollow"&gt;http://www.crazycool.co.uk/blog/2006/08/22/RubySharp&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I too would like to see some of the more complex bridging features appear in RubyCLR, and would be happy to contribute code or testing if you'd like the help :-)&lt;/p&gt;
+
+&lt;p&gt;Keep up the great work!&lt;/p&gt;
+
+&lt;p&gt;Cheers,
+-= El =-&lt;/p&gt;</content>
+  </entry>
+</feed>

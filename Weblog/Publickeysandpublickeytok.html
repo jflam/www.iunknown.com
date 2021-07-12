@@ -1,0 +1,132 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/199 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Public keys and public key tokens</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">Public keys and public key tokens</div>
+        <div class="entryDate">2002-08-05</div>
+        <p><P>I spent some time this morning doing some "dotting the i's work" on my metadata engine.&nbsp;One of the things that I've been holding out implementing for a while because it wasn't particularly important in my test cases was adding some code that would generate efficient assembly references to strongly-named assemblies. </P>
+<P>Strongly-named assemblies contain the signer's public key embedded in the assembly. You can see this by opening up the assembly using ILDASM and viewing its manifest. Inside the manifest, there must be a .publickey section if that assembly has a strong name. If you look at one of these sections, you'll see that it is rather large. For example, System.Web.dll's&nbsp;public key is 160 bytes in length.</P>
+<P>When one assembly references a strongly-named assembly, it must embed a reference to the strongly-named assembly's public key to ensure that an attacker cannot substitute another assembly for the one that it was expecting to find. The simplest solution would be to simply embed the strongly-named assembly's public key in the referencing assembly. As you can see, however, this is not a very efficient solution due to the large size of the public keys.</P>
+<P>Microsoft solves the "public key bloat" problem by using a hash of the strongly-named assembly's public key. These hashes are referred to as public key tokens, and are the low 8 bytes of the SHA1 hash of the strongly-named assembly's public key. SHA1 hashes are 160 bit (20 byte) hashes, and the top 12 bytes of the hash are simply discarded in this algorithm.</P>
+<P>Calculating the SHA1 hash of an assembly's public key turns out to be really straightforward using the CryptoAPI hashing functions. Here's a simple piece of code that will generate&nbsp;an SHA1&nbsp;hash:</P><CODE>
+<P>bool CalculatePublicKeyToken( const unsigned char *publicKey, ULONG publicKeyLen )<BR>{<BR>&nbsp; if( 0 == publicKeyLen )<BR>&nbsp;&nbsp;&nbsp; return true;</P>
+<P>&nbsp; bool&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result = false;<BR>&nbsp; HCRYPTPROV&nbsp;&nbsp;&nbsp; hProv = 0;<BR>&nbsp; HCRYPTHASH&nbsp;&nbsp;&nbsp; hHash = 0;<BR>&nbsp; unsigned char buffer[ 20 ];<BR>&nbsp; DWORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bufferLen = 20;</P>
+<P>&nbsp; if( CryptAcquireContext( &amp;hProv, 0, 0, PROV_RSA_FULL, 0 ) )<BR>&nbsp; {<BR>&nbsp;&nbsp;&nbsp; if( CryptCreateHash( hProv, CALG_SHA1, 0, 0, &amp;hHash ) )<BR>&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( CryptHashData( hHash, publicKey, publicKeyLen, 0 ) )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( CryptGetHashParam( hHash, HP_HASHVAL, buffer, &amp;bufferLen, 0 ) )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DumpPublicKeyToken( buffer, bufferLen );<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result = true;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }</P>
+<P>&nbsp; if( hHash ) CryptDestroyHash( hHash );<BR>&nbsp; if( hProv ) CryptReleaseContext( hProv, 0 );</P>
+<P>&nbsp; return result;<BR>}</P></CODE>
+<P>It is also possible to use the StrongNameTokenFromAssembly API defined in the StrongName.h header file in the Framework SDK. However, this API assumes that the assembly isn't loaded already, which certainly isn't the case in my code.</P>
+<P>&nbsp;</P></CODE><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/Publickeysandpublickeytok.html');"><script type="text/javascript">postCount('Weblog/Publickeysandpublickeytok.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

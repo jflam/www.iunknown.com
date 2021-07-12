@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Cool Mac and Windows utilities</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000197.html" title="A switch that I would love to see" />
+
+<link rel="next" href="http://www.iunknown.com/000199.html" title="Keynote" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000197.html">&laquo; A switch that I would love to see</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000199.html">Keynote &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">January 09, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Cool Mac and Windows utilities</h3>
+
+<p><P>There are a number of really cool utilities that I really can't live without, and I thought I'd gather them here to generate a bit of discussion. In the Windows corner:</P><br />
+<P><A href="http://www.dqsd.net/">Dave's Quick Search Deskbar</A>. This is by far the coolest utility that I have ever used. I haven't used anywhere near all of its features, but here's a list of the ones that I use often:</P><br />
+<UL><br />
+<LI>Typing in arbitrary text will search for that text using Google<br />
+<LI>amaz <EM>search terms </EM>/books will search for the search terms in the books section of Amazon<br />
+<LI>fedex <EM>tracking number</EM> will check the status of a fedex shipment<br />
+<LI>radix <EM>number</EM> will display that number in octal, hex, and binary<br />
+<LI>0x<EM>hex</EM>= will convert a hex number to decimal<br />
+<LI><EM>num1&nbsp;op num2= </EM>will act as an inline calculator</LI></UL><br />
+<P>There's tons of other features that I haven't used yet. Best of all, it's free!</P><br />
+<P><A href="http://www.panicware.com/">Popup Stopper</A>. I can't surf without this free utility that effectively blocks popup ads from appearing. However, there are times when it blocks legitimate applications, so you need to remember to turn it on and off as well. </P><br />
+<P>Windows command completion. This lets you complete directory paths / filenames by pressing the tab key in a command shell. For example you can type "c:\Pro" and then hit the tab key to get "c:\Program Files" in the command prompt. This feature is enabled by default in fresh installs of Windows XP. For those of you who don't have this feature turned on, use regedit to set HKLM\Software\Microsoft\Command Processor\CompletionChar=0x9.</P><br />
+<P>In the Mac corner:</P><br />
+<P><A href="http://www.obdev.at/products/launchbar/">LaunchBar</A>: This utility lets you use the keyboard to launch applications and open Finder windows. For example, you can type "CMD-Space itu ENTER" to launch iTunes or "CMD-Space /L ENTER" to navigate to open a Finder window for the /Library directory. This saves me a lot of time every day.</P><br />
+<P><A href="http://home.earthlink.net/~basilisksoftmirror/menumeters/">MenuMeters</A>: This utility places icons in your Menu bar that shows network activity, disk I/O, memory usage and cpu usage. It's great to be able to see what your computer is up to at all times in a nice and&nbsp;compact UI.</P><br />
+<P>Since I'm new to the Mac world, I'd love to hear about more utilities that you can't live without in the Mac world. </P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at January  9, 2003 07:41 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="198" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000198.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Just installed Dave's quick search bar. Fantastic. Thanks for the tip John.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;rh&#64;richardholliday&#46;com">Richard</a> at January 10, 2003 09:16 AM</span>
+</div>
+<div class="comments-body">
+<p>This is what I use for popup killing, it's freeware.<br />
+http://www.kolumbus.fi/eero.muhonen/FS/Support.htm</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;tsaoa&#64;acm&#46;org">Anson</a> at January 14, 2003 04:52 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

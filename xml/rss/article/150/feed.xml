@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Script# - Does it make sense?</title>
+    <link>http://www.iunknown.com/articles/2006/05/24/script-does-it-make-sense</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Script# - Does it make sense?</title>
+      <description>&lt;p&gt;I just saw that &lt;a href="http://www.nikhilk.net/Entry.aspx?id=121"&gt;Nikhil Kothari&lt;/a&gt; has posted his work on creating a C# to JavaScript compiler. This is quite similar to the &lt;a href="http://code.google.com/webtoolkit/"&gt;Google Web Toolkit&lt;/a&gt; that &lt;a href="http://www.iunknown.com/articles/2006/05/17/google-web-toolkit"&gt;I posted about earlier&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;While I like some of the ideas about &lt;span class="caps"&gt;GWT&lt;/span&gt; and Script# &amp;#8211; avoiding the context switch away from your primary programming language, it feels like the wrong thing to do. Rails &lt;a href="http://api.rubyonrails.org/classes/ActionView/Helpers/PrototypeHelper/JavaScriptGenerator/GeneratorMethods.html"&gt;&lt;span class="caps"&gt;RJS&lt;/span&gt; Templates&lt;/a&gt; is a superior solution because it avoids trying to map Ruby 1:1 to JavaScript. Instead it maps to Rails&amp;#8217; domain specific language for describing client-side / server interactions.&lt;/p&gt;
+
+
+	&lt;p&gt;I wonder if it will help novice JavaScript developers though, and whether that help will be worth it. It steers them away from JavaScript and back towards C#, but they&amp;#8217;re going to have to learn the semantics of the browser object model + add-on libraries in any event. Those semantics (not to mention most of the docs / samples they&amp;#8217;re likely to find via Google) are going to mesh far better with JavaScript than with C#).&lt;/p&gt;</description>
+      <pubDate>Wed, 24 May 2006 13:47:00 -0700</pubDate>
+      <guid isPermaLink="false">urn:uuid:ee2009411ac124057f830668d092cb52</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/05/24/script-does-it-make-sense</link>
+      <category>Thoughts</category>
+    </item>
+  </channel>
+</rss>

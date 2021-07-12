@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Aspect Oriented Programming and the CLR</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000056.html" title="Wish list for V2 System.Reflection" />
+
+<link rel="next" href="http://www.iunknown.com/000058.html" title="JitCost revisited" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000056.html">&laquo; Wish list for V2 System.Reflection</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000058.html">JitCost revisited &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">February 04, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Aspect Oriented Programming and the CLR</h3>
+
+<p><P>Today was a <EM>great</EM> day!! My demonstration proposal was accepted at the first Aspect Oriented Software Development conference in the Netherlands![1] I will be demonstrating for the first time my implementation of Aspect-Oriented Programming (AOP) using the CLR. This will also be my first talk at a computer science&nbsp;academic conference. This is quite unlike my last stint in academia during <A href="About/fog0000000009.html">my other life</A>.</P><br />
+<P>The AOP plumbing that I built for the CLR is quite novel. It relies on the metadata and profiling interfaces provided by the CLR's execution engine to rewrite CIL code on the fly at JIT compilation time. Since all of the aspect weaving is done at JIT compilation time, I can weave system library code as well as user-defined code.</P><br />
+<P>Aspect oriented programming is a way of dealing with software complexity.[2] The canonical examples of applications of AOP typically involve code that is scattered throughout an application. Some examples are:</P><br />
+<OL><br />
+<LI>Tracing / logging<br />
+<LI>Security access control checks<br />
+<LI>Pre / post condition assertions (which could ultimately lead to an implementation of Eiffel's <A href="http://www.eiffel.com/doc/manuals/technology/contract/">Design-By-Contract </A>semantics).</LI></OL><br />
+<P>What AOP promises is the ability to gather all of this code and put it in a single place (the aspect). You do so by instructing your AOP runtime / framework to weave your aspect throughout your application. Here are some examples:</P><br />
+<OL><br />
+<LI>"call the logMethodCall() method after any call to any method in the System.Xml namespace"<br />
+<LI>"call the accessCheck() method instead of any call to a constructor in the System.IO namespace"</LI></OL><br />
+<P>One of the great features of AOP is that the aspects can be introduced and removed <EM>very</EM> <EM>easily</EM>. You no longer have to modify your source code; you simply change the weave instructions to add or remove your aspects from your program. For example, you can easily turn on and off tracing at various points in the execution of your program simply by changing the weave instructions.&nbsp;What's even more powerful is the ability of the CLR to force the re-JIT of an existing compiled method; this lets you weave and un-weave code without shutting down or restarting an application!</P><br />
+<P>This is just one part of what I've been up to <A href="About/fog0000000010.html">in my plan</A>. My AOP engine for the CLR will serve as the technological foundation for a set of products that I will be producing later this year. Stay tuned to this weblog for more details on my AOP engine and AOP programming in general as I drive towards the first public unveiling[3] of this technology!</P><br />
+<P>[1] <A href="http://trese.cs.utwente.nl/aosd2002/index.php">http://trese.cs.utwente.nl/aosd2002/index.php</A></P><br />
+<P>[2] In the words of Dijkstra, "I have a small mind and can only comprehend one thing at a time". </P><br />
+<P>[3] Attendees of the <A href="http://www.vslive.com/2002/sf/default.asp">VS Live!</A> conference February 13-15 in San Francisco might get a sneak preview of this code in action if I can hit my milestone 3 release criteria by then.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at February  4, 2002 12:07 AM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="57" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000057.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

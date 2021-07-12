@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Data Binding and Ruby</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Data Binding and Ruby": comment by John Lam</title>
+      <description>&lt;p&gt;BindingSource is just an intermediary object. You still bind your data source to a BindingSource, and you bind you controls to the BindingSource.&lt;/p&gt;
+
+&lt;p&gt;I could make it so that you can data bind natively to Ruby objects. But that now requires that I generate a CLR shim class to talk to the Ruby object (which is a lot more work than delegates, which is how I make it two-way communications happen today). &lt;/p&gt;
+
+&lt;p&gt;This is definitely a goal sometime down the road, just not sure when.&lt;/p&gt;</description>
+      <pubDate>Fri, 17 Feb 2006 22:45:02 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/16/data-binding-and-ruby#comment-131</guid>
+      <link>http://www.iunknown.com/articles/2006/02/16/data-binding-and-ruby#comment-131</link>
+    </item>
+    <item>
+      <title>"Data Binding and Ruby": comment by Justin</title>
+      <description>&lt;p&gt;Is there a way you can have the array of ruby objects expose the IList or IBindingList interface? I haven't done much with .NET 2.0 yet, but I did read about the BindingSource object. Is there some way to talk to that easily?&lt;/p&gt;
+
+&lt;p&gt;Honestly, I had totally forgotten about data binding but there are some really cool possibilities there. What if I could set my DataSource to a block? How about a combo box with a DisplayMember and ValueMember bound a ruby string that has embedded expressions?&lt;/p&gt;
+
+&lt;p&gt;Seriously cool possibilities!&lt;/p&gt;</description>
+      <pubDate>Fri, 17 Feb 2006 12:35:35 Eastern Standard Time</pubDate>
+      <guid>http://www.iunknown.com/articles/2006/02/16/data-binding-and-ruby#comment-129</guid>
+      <link>http://www.iunknown.com/articles/2006/02/16/data-binding-and-ruby#comment-129</link>
+    </item>
+    <item>
+      <title>"Data Binding and Ruby" by jlam</title>
+      <description>&lt;p&gt;It&amp;#8217;s going to take a lot of work to let you data bind against a native Ruby array, or a native Ruby array of objects. So how about some helper methods that takes an array of Ruby objects and converts it into a &lt;code&gt;DataTable&lt;/code&gt;? Or a helper method that converts a Ruby array into an &lt;code&gt;ArrayList&lt;/code&gt;? (Once generics are working I can marshal it into an array or a &lt;code&gt;List&amp;lt;T&amp;gt;&lt;/code&gt;).&lt;/p&gt;
+
+
+	&lt;p&gt;While this is not the most efficient way to do things since it involves copying data in memory, would it be a useful workaround in the short term?&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I implemented this tonight after fixing some bugs in my overload resolution algorithm. Works like a charm.&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+def marshal_to_data_table(array)
+  dt = DataTable.new
+  raise 'array must have at least one element' if array.length &amp;lt; 1
+  schema = array[0].members
+  schema.each { |column_name| dt.Columns.Add(column_name) }
+  array.each do |element|
+    row = dt.NewRow
+    schema.each do |column_name| 
+      row[column_name] = element.send column_name
+    end
+    dt.Rows.Add(row)
+  end
+  dt
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Thu, 16 Feb 2006 22:18:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/02/16/data-binding-and-ruby"&gt;Data Binding and Ruby&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/02/16/data-binding-and-ruby"&gt;Data Binding and Ruby&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

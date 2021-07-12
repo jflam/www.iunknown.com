@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Life with Win2K3</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000329.html" title="Making Windows 2003 look like XP" />
+
+<link rel="next" href="http://www.iunknown.com/000331.html" title="Why external build engines?" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000330.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/74"
+    dc:title="Life with Win2K3"
+    dc:identifier="http://www.iunknown.com/000330.html"
+    dc:subject=""
+    dc:description="Life is good now that I have Win2K3 running on my laptop. Best feature? The ability to terminal server back to myself using different credentials. This makes it so much easier to run as a regular user without having to..."
+    dc:creator="John"
+    dc:date="2003-09-11T13:10:36-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000329.html">&laquo; Making Windows 2003 look like XP</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000331.html">Why external build engines? &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">September 11, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Life with Win2K3</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>Life is good now that I have Win2K3 running on my laptop. Best feature? The ability to terminal server back to myself using different credentials. This makes it so much easier to run as a regular user without having to log out and log back in to do stuff like twiddle <span class="caps">ACL</span>'s on files.</p>
+
+<p>Some other cool things that I did:</p>
+
+
+<ol>
+<li>Create a custom <span class="caps">MMC</span> console that contains only the admin tools that I actually use. This is so much easier than searching through the Administrative Tools folder for a predefined <span class="caps">MMC</span> console.</li>
+<li>Configure Outlook 2003 to run in Cached Exchange mode.</li>
+</ol>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at September 11, 2003 01:10 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=330" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="330" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000330.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>The ability to use a loopback terminal server is really nice, but a major problem with running a server OS is the licencing issues with so much third-party software that refuses to install.</p>
+<span class="comments-post">Posted by: Tor at September 11, 2003 04:28 PM</span>
+</div>
+<div class="comments-body">
+<p>An even bigger problem (for me) are the apps that don't function correctly under a regular user account. </p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at September 12, 2003 12:32 PM</span>
+</div>
+<div class="comments-body">
+<p>Well, I had to repave a week ago, and decided to give Win 2003 a chance and finally make the switch to running as a non-admin. Things have mostly been going smoothly, although I did have to hack the registry to make Terminal Services find my local Licensing Server and not the domain-wide 2000 Server. I also had to *telephone* the Microsoft Clearinghouse in order to get an activation code that would work with our Certified Partner volume license.</p>
+
+<p>Anyway, I am now temporarily back to running as an admin because I haven't found a reasonable solution to debugging ASP.NET web applications from Visual Studio.</p>
+
+<p>I could let ASP.NET run under my user account, but I don't want to do that as that would reintroduce a mismatch between the development environment and the testing and production environments. That's a big deal, as the whole point of running as a non-admin (for me, anyway) is to eliminate such mismatches.</p>
+
+<p>The other thing I am supposed to be able to do is to grant myself the SeDebugPrivilege, which supposedly is the same as turning on the "Debug programs" user right. This isn't ideal either, as I am slowly morphing into an administrator again, but it's not such a big deal, as the debugging privilege is not one that is likely to be a point of conflict when non-privileged users are running my applications. However, it doesn't work. I am logging out and back in, but I still get the "Access denied" message when trying to debug a web app.</p>
+
+<p>The third way of solving this problem is to simply fire up Visual Studio from my admin Terminal Services client whenever I need to debug, but come on. That is far more of a productivity restriction than I am willing to accept.</p>
+
+<p>So at the moment, I am back to running as an admin. I'd be very interested in hearing how others have tackled this problem. Are you all happy running ASP.NET under your personal accounts?</p>
+<span class="comments-post">Posted by: Tor at October  9, 2003 08:15 AM</span>
+</div>
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="330" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Comment on I have to give Virtual PC 2004 a go</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+
+<script type="text/javascript" language="javascript">
+<!--
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+</head>
+
+<body>
+
+<div id="banner-commentspop">
+iunknown.com
+</div>
+
+<div class="blog">
+
+<div class="comments-head">Comments: I have to give Virtual PC 2004 a go</div>
+
+
+<div class="comments-body">
+<p>I've been running VPC 5.2 on Win 2K3 Server and its worked fine.  </p>
+
+<p>-Kris</p>
+<span class="comments-post">Posted by Kris at January 19, 2004 05:50 PM</span>
+</div>
+<div class="comments-body">
+<p>I've been running VPC 2004 for months on 2K3... No problem.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://krystalware.com/blog/">Chris Hynes</a> at January 19, 2004 08:31 PM</span>
+</div>
+<div class="comments-body">
+<p>Yep, it works just fine. The only supported hosts are W2K Pro and XP Pro, so I expect that they might give you a bit of grief if you called in for support. However, any W2K, XP, or W2K3 works fine (and yes, I've tried it on XP Home with no problems).</p>
+
+<p>The Virtual Server product (in beta now, or soon) is what they've designed to run on servers. I expect that's why they limited the "supported" configs to W2K and XP Pro. Kinda lame, when you think about it, since devs are at least as likely to be running some server OS as a Pro OS, and this is really a heavily developer targetted product.</p>
+
+<p>Any time you're in town, I'll do all I can to get a dinner together. Just give me notice. :-D</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a> at January 20, 2004 12:10 AM</span>
+</div>
+<div class="comments-body">
+<p>Ignore the message John. It works fine on Win2K3 and the as Brad notes, the Virtual Server product is up and coming.</p>
+<span class="comments-post">Posted by <a target="_blank" href="http://samgentile.com/blog/">Sam Gentile</a> at January 20, 2004 10:42 AM</span>
+</div>
+<div class="comments-body">
+<p>I have been running a dev environment in VMWare for quite some time.. why the switch to Virtual PC?  Did you find that it is better?</p>
+<span class="comments-post">Posted by Mike at February  5, 2004 09:11 AM</span>
+</div>
+
+
+
+
+</div>
+
+</body>
+</html>

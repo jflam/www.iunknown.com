@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+    <meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+    <meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" />
+	<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.iunknown.com/rss.xml" />
+
+
+	<title>John Lam on Software: DLR Team at Tech Ed</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/05/microsoft_and_i.html" title="Microsoft and IronRuby" />
+	<link rel="next" href="http://www.iunknown.com/2007/06/ironruby_and_ru.html" title="IronRuby and Ruby.Net" />
+        
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/06/dlr_team_at_tec.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/19009094"
+    dc:title="DLR Team at Tech Ed"
+    dc:identifier="http://www.iunknown.com/2007/06/dlr_team_at_tec.html"
+    dc:description="If you&#39;re at Tech Ed this year, make sure that you check out my team&#39;s talks. We also have a booth(!) this year, so make sure you drop by to say hi to John Messerly, Qing Ye, Dmitry Robsman, and..."
+    dc:creator="John Lam"
+    dc:date="2007-06-03T11:45:03-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/05/microsoft_and_i.html">&laquo; Microsoft and IronRuby</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html">IronRuby and Ruby.Net &raquo;</a>
+</p>
+						
+<!-- entry -->
+	<h2 class="date-header">June 03, 2007</h2>
+
+
+<div class="entry" id="entry-34832620">
+			<h3 class="entry-header">DLR Team at Tech Ed</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a title="Photo Sharing" href="http://www.flickr.com/photos/john_lam/278737264/"><img height="500" alt="Snow in Denver!" src="http://farm1.static.flickr.com/99/278737264_b921e140f7.jpg" width="330" /></a> </p>
+
+<p>If you're at Tech Ed this year, make sure that you check out my team's talks. We also have a booth(!) this year, so make sure you drop by to say hi to John Messerly, Qing Ye, Dmitry Robsman, and Mahesh Prakriya.</p>
+
+<h3>DEV315 - IronPython and Dynamic Languages on .NET</h3>
+
+<p>IronPython is the codename for a new implementation of the Python programming language on the .NET Framework. IronPython is fast—in fact, up to 1.8 times faster than Python-2.4 on the standard pystone benchmark. It supports an interactive interpreter with fully dynamic compilation as well as static compilation to produce pre-compiled executables. It's well integrated with the rest of the framework and makes all .NET libraries easily available to Python programmers. This session shows how IronPython brings the power of .NET to Python and the power of Python to .NET. At OSCON 2004, the first public release of IronPython was announced. This session demonstrates the latest IronPython version in a range of situations from using GUI frameworks to driving Microsoft Office applications to working with a variety of external libraries. We also discuss other scripting languages on .NET. </p>
+
+<h3>WEB06-TLC - Developing Data Driven Applications Using the New Dynamic Data Controls in ASP.NET</h3>
+
+<p>ASP.NET dynamic data controls are part of a powerful, rich new framework that lets you create data driven ASP.NET applications very easily. ASP.NET dynamic data controls do this by automatically discovering the schema at runtime, deriving behavior from the database and finally creating an ASP.NET page. Anything that can be inferred from the schema works with almost no user effort. If needed, the page can then be further customized either by using static languages such as Microsoft Visual C# or Visual Basic .NET or dynamic languages such as IronPython, Visual Basic, Jscript, etc. In this talk, we show you how to build rich, database driven Web applications from scratch, such as TaskList along with other demos. </p>
+
+<h3>WEB324 - Dynamic Languages on the Web</h3>
+
+<p>After attending this talk you will know how to use dynamic languages (such as IronPython, Jscript, VBx and IronRuby) in Silverlight and ASP.NET. ASP.NET and Silverlight are two great example hosts of Dynamic Language Runtime (DLR) and the languages listed above are implemented on DLR. We first demo in Silverlight, then ASP.NET, and end with a combined demo of the two! </p>
+		</div>
+		
+		<!-- technorati tags -->
+            <p class="entry-technorati-tags">
+            <a href="http://www.technorati.com/search/http://www.iunknown.com/2007/06/dlr_team_at_tec.html" title="Find related items at Technorati.">Technorati Tags</a>:
+            <a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/microsoft" rel="tag">microsoft</a>, <a href="http://technorati.com/tag/teched07" rel="tag">teched07</a>
+        </p>
+    
+
+
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http://www.iunknown.com/2007/06/dlr_team_at_tec.html" type="text/javascript"></script>
+		
+	</div>
+	<p class="entry-footer">
+		<span class="post-footers">Posted at 11:45 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/06/dlr_team_at_tec.html">Permalink</a>
+	</p>
+</div>
+
+	<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/19009094</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/06/dlr_team_at_tec.html">DLR Team at Tech Ed</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		<div class="comments-content">
+			<!-- comment list -->
+
+
+		</div>
+	</div>
+
+	<!-- comment form -->
+	<script type="text/javascript" src="/.shared/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="34832620" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=34832620">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=34832620">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/p/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/why-i-switched.html#comment-91586228">John Lam</a> on <a href="http://www.iunknown.com/2007/11/why-i-switched.html">Why I switched to the Zune</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/why-i-switched.html#comment-91567720">Nair</a> on <a href="http://www.iunknown.com/2007/11/why-i-switched.html">Why I switched to the Zune</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/visual-studio-2.html#comment-91364194">Andrew Robinson</a> on <a href="http://www.iunknown.com/2007/11/visual-studio-2.html">Visual Studio 2008</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/visual-studio-2.html#comment-91283032">A.Tripathy</a> on <a href="http://www.iunknown.com/2007/11/visual-studio-2.html">Visual Studio 2008</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/visual-studio-2.html#comment-91170274">IronRuby</a> on <a href="http://www.iunknown.com/2007/11/visual-studio-2.html">Visual Studio 2008</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/visual-studio-2.html#comment-91128100">Maccari Claudio</a> on <a href="http://www.iunknown.com/2007/11/visual-studio-2.html">Visual Studio 2008</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/why-i-switched.html#comment-91103054">John Lam</a> on <a href="http://www.iunknown.com/2007/11/why-i-switched.html">Why I switched to the Zune</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/why-i-switched.html#comment-91091340">Josh Davey</a> on <a href="http://www.iunknown.com/2007/11/why-i-switched.html">Why I switched to the Zune</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/why-i-switched.html#comment-91065822">John Lam</a> on <a href="http://www.iunknown.com/2007/11/why-i-switched.html">Why I switched to the Zune</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/why-i-switched.html#comment-91048906">Shawn</a> on <a href="http://www.iunknown.com/2007/11/why-i-switched.html">Why I switched to the Zune</a></li>
+			
+		</ul>
+	</div>
+</div>
+	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/why-i-switched.html">Why I switched to the Zune</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/visual-studio-2.html">Visual Studio 2008</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-presen.html">IronRuby Presentations in PDF</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/dlr-hosting-spe.html">DLR Hosting Specs (on Silicon)</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-links-.html">IronRuby links from South America</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-in-vis.html">IronRuby in Visual Studio</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html">LOLCODE! on DLR</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/index.html">November 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/index.html">October 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/index.html">September 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/08/index.html">August 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/index.html">July 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/index.html">June 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/05/index.html">May 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/04/index.html">April 2007</a></li>
+									</ul>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-categories module">
+	<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Categories</a></h2>
+	<div class="module-content">
+		<ul class="module-list">
+						<li class="module-list-item"><a href="http://www.iunknown.com/current_affairs/index.html">Current Affairs</a></li>
+			
+		</ul>
+	</div>
+</div>
+<div class="module-calendar module">
+	<h2 class="module-header">November 2007</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				</tr>
+							<tr>
+					<td>4</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">5</a></td>
+				
+							
+					<td>6</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/ironruby-talks.html">7</a></td>
+				
+							
+					<td>8</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/lolcode-on-dlr.html">9</a></td>
+				
+							
+					<td>10</td>
+				</tr>
+							<tr>
+					<td>11</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/ironruby-links-.html">12</a></td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				</tr>
+							<tr>
+					<td>18</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/ironruby-presen.html">19</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/visual-studio-2.html">20</a></td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/why-i-switched.html">23</a></td>
+				
+							
+					<td>24</td>
+				</tr>
+							<tr>
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		Powered by <a href="http://www.typepad.com/t/app/track?poweredby-2419952" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript><a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a></noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>

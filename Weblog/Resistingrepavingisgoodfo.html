@@ -1,0 +1,133 @@
+<!-- Published by Fog Creek Software CityDesk CQSXKDXJHSYDVISL/5193B323/142 -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Resisting repaving is good for you</title>
+  <link rel="stylesheet" href="../iunknown.css"/>
+  <script type="text/javascript" src="http://www.haloscan.com/load.php?user=jlam"></script>
+  <script language="javascript">
+    function HaloScan2( id ) {
+      location.href='http://www.haloscan.com/comments.php?user=jlam&comment='+id;
+    }
+  </script>
+</head>
+<body>
+  <a href="http://www.iunknown.com"><img src="../Images/iunknown.png" width="350" height="60" border="0"></a> 
+  <table width="700px" border="0" cellspacing="10">
+    <tr>
+      <td width="76%" valign="top">
+        <div class="entryTitle">Resisting repaving is good for you</div>
+        <div class="entryDate">2002-05-20</div>
+        <p><P>If you're like me, you tend to love having a nice, pristine machine to work on. As we all know, over time, our computers gradually degrade as we install more software, use bizarre combinations of features of existing software, or write really nasty bits that hook into existing software ;) This is a story of me successfully resisting my urge to repave whenever I run into a nasty problem.</P>
+<P>This weekend, as part of <A href="GetOrganized.html">my larger effort to reorganize my life</A>, I decided to fix some of the IT problems in our home office. One of our other computers (a dual proc Win2K Advanced Server box) kept on faulting in spoolsv.exe. This, of course, meant that you couldn't print using that machine. Also, Active Directory was messed up something awful, and I couldn't add any new accounts to our Exchange Server. It would fail with a "The name could not be resolved. The name could not be matched to a name in the address list." error every time I attempted to check a name in Exchange.</P>
+<P>These two issues killed the better part of a day. The first one - spoolsv.exe, could be fixed by some judicious editing of the registry.[1] This one was actually quite easy to find - just type "spoolsv.exe" into Google, and it's the 4th entry. </P>
+<P>The second problem, however, turned out to be really evil. My first step was to streamline my Active Directory install. I killed a redundant domain controller on my network , and got myself down to a single Global Catalog Server. This wasn't as easy as it looked - I had to manually delete Active Directory on that machine by - you will never guess - editing the registry and deleting the \winnt\ntds directory from the machine.[2]</P>
+<P>Once I got to that stage, I blew many hours twiddling various Exchange settings and messing around with ADSIEdit. It got to the point where I almost was ready to repave. However, repaving my Exchange / Domain Controller box would result in several days worth of downtime. I was almost willing to live with not being able to add a new account to Exchange to avoid several days worth of reinstallation / backups / restores. </P>
+<P>My savior turned out to be Google, once again. However instead of trying to find the solution on the Web, the answer turned up in a search of Google Groups. At roughly 3am, I found a link to this Microsoft KB article[3] that had me make yet another very minor tweak to the Registry. Apparently, installing the Q311401 Windows 2000 Security Rollup Package on my Global Catalog Server was what prevented name resolution in the Exchange Global Catalog List. </P>
+<P>Needless to say, I was <EM>very </EM>happy to find this KB article. It also goes to show how difficult it is to be a part-time sys admin without having better diagnostic tools for determining what these problems are and linking the diagnostic tools to the solutions / KB articles. However, the bigger take-home message was that it is possible to fix a machine without repaving. In fact repaving in this case would have only cost me a few days worth of work with ZERO benefit since I would most likely install the Q311401 Security Rollup Package before trying to add the accounts. </P>
+<P>[1] <A href="http://www.jsifaq.com/SUBJ/tip4900/rh4900.htm">http://www.jsifaq.com/SUBJ/tip4900/rh4900.htm</A></P>
+<P>[2] <A href="http://www.jsifaq.com/SUBG/TIP3200/rh3222.htm">http://www.jsifaq.com/SUBG/TIP3200/rh3222.htm</A></P>
+<P>[3] <A href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q309622">http://support.microsoft.com/default.aspx?scid=kb;en-us;Q309622</A></P>
+<P>&nbsp;</P><img src="../Images/blue_button.jpg" alt="Permanent Link" width="18" height="18" align="top"></p>
+        <a href="javascript:HaloScan2('Weblog/Resistingrepavingisgoodfo.html');"><script type="text/javascript">postCount('Weblog/Resistingrepavingisgoodfo.html');</script></a>
+      </td>
+      <td width="24%" valign="top">
+        <a href="http://www.iunknown.com/rss.xml"><img src="../Images/xml.png" width="36" height="14" border="0"></a>
+  
+        <p><img src="../Images/about.png" width="100" height="25"></p>
+        <div class="aboutEntry"> 
+          
+            <A href="../About/Aboutme.html">About me</A><br>
+          
+            <A href="../About/fog0000000006.html">About this site</A><br>
+          
+            <A href="../About/fog0000000010.html">My plan</A><br>
+          
+            <A href="../About/fog0000000009.html">My other life</A><br>
+          
+            <A href="../About/fog0000000008.html">My products</A><br>
+          
+            <A href="../About/fog0000000013.html">My publications</A><br>
+          
+        </div>
+
+        <p><img src="../Images/archives.png" width="100" height="25"></p>
+        <div class="archiveEntry">
+         
+           <A href="../Archives/April2003.html">April 2003</A><br>
+         
+           <A href="../Archives/March2003.html">March 2003</A><br>
+         
+           <A href="../Archives/February2003.html">February 2003</A><br>
+         
+           <A href="../Archives/January2003.html">January 2003</A><br>
+         
+           <A href="../Archives/December2002.html">December 2002</A><br>
+         
+           <A href="../Archives/November2002.html">November 2002</A><br>
+         
+           <A href="../Archives/October2002.html">October 2002</A><br>
+         
+           <A href="../Archives/September2002.html">September 2002</A><br>
+         
+           <A href="../Archives/August2002.html">August 2002</A><br>
+         
+           <A href="../Archives/July2002.html">July 2002</A><br>
+         
+           <A href="../Archives/June2002.html">June 2002</A><br>
+         
+           <A href="../Archives/May2002.html">May 2002</A><br>
+         
+           <A href="../Archives/April2002.html">April 2002</A><br>
+         
+           <A href="../Archives/fog0000000116.html">March 2002</A><br>
+         
+           <A href="../Archives/fog0000000091.html">February 2002</A><br>
+         
+           <A href="../Archives/fog0000000046.html">January 2002</A><br>
+         
+           <A href="../Archives/fog0000000030.html">December 2001</A><br>
+         
+        </div>
+
+        <p><img src="../Images/articles.png" width="100" height="25"></p>
+        <div class="articleEntry">
+          
+            - <A href="../Articles/Booksuggestions.html">Book suggestions</A><br>
+          
+            - <A href="../Articles/fog0000000082.html">Interface dispatch vs. object reference dispatch</A><br>
+          
+            - <A href="../Articles/fog0000000065.html">x86 Resources</A><br>
+          
+            - <A href="../Articles/fog0000000041.html">Entertainment PC's Part 2</A><br>
+          
+            - <A href="../Articles/fog0000000034.html">Entertainment PC's</A><br>
+          
+            - <A href="../Articles/fog0000000025.html">Hello CppUnit</A><br>
+          
+        </div>
+
+        <p><img src="../Images/links.png" width="100" height="25"></p>
+        <div class="linkEntry">
+          <a href="http://www.gotdotnet.com/team/dbox/spoutlet.aspx">Don Box</a><br>
+          <a href="http://www.stronglytyped.com/">Richard Caetano</a><br>
+          <a href="http://www.razorsoft.net/weblog/">Peter Drayton</a><br>
+          <a href="http://radio.weblogs.com/0109845/">Jeroen Frijters</a><br>
+          <a href="http://radio.weblogs.com/0105852/">Sam Gentile</a><br>
+          <a href="http://radio.weblogs.com/0106747/">Scott Hanselman</a><br>
+          <a href="http://radio.weblogs.com/0104813/">Drew Marsh</a><br>
+          <a href="http://www.dotnetremoting.cc/dotnetcentric/">Ingo Rammer</a><br>
+          <a href="http://www.winterdom.com/weblog/">Tomas Restrepo</a><br>
+          <a href="http://www.sellsbrothers.com/">Chris Sells</a><br>
+          <a href="http://www.joelonsoftware.com/">Joel Spolsky</a><br>
+          <a href="http://radio.weblogs.com/0108971/">Clemens Vasters</a><br>
+          <a href="http://staff.develop.com/jasonw/weblog/">Jason Whittington</a><br>
+          <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a><br>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

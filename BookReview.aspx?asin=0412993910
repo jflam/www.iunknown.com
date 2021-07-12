@@ -1,0 +1,135 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Introduction to Computational Biology: Maps, Sequences and Genomes
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0412993910" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wNDEyOTkzOTEwLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEludHJvZHVjdGlvbiB0byBDb21wdXRhdGlvbmFsIEJpb2xvZ3k6IE1hcHMsIFNlcXVlbmNlcyBhbmQgR2Vub21lczs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8TWljaGFlbCBTLiBXYXRlcm1hbjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDY5Ljk1Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkNjkuOTU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDQuNTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Mjs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8wNDEyOTkzOTEwL3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8cDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs+O2w8aTwwPjtpPDE+Oz47bDx0PEA8XGU7Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47Pj47Pj47Pj47Pkhh3mGmnOGAOIBnLykx0rpL1vvL" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0412993910.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Introduction to Computational Biology: Maps, Sequences and Genomes</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Michael S. Waterman</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$69.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$69.95</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">2</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0412993910/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">A modern classic</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>5</span>
+                      /
+                      <span>5</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-10-14</span>
+                    </div>
+                    <span>The first name people learn in bioinformatics is the Smith-Waterman algorithm. Some people never learn anything else. This is by that Waterman. Although written in 1995, it still has some of the best discussion I've seen on the topics it addresses.<p>The first few chapters deal with the "digest problem," reconstructing a DNA or protein sequence from the fragment sizes of enzyme digests. The technique is not used as much now as it was then, but it's always good to know the background of modern techniques.<p>The digest problem doesn't stand alone, though. It introduces concepts - islands, anchors, etc. - that still matter. The problems in reconstructing molecules from digests yield the same kinds of intermediate results and the same ambiguities that arise in modern sequencing. As Waterman advances the discussion, shotgun sequencing appears as a logical extension, at least mathematically, of digest assembly. <p>Sequence assembly involve end matching, perhaps in the presence of sequencing errors. That introduces the topic for which Waterman's name is famous, approximate string matching. The next few chapter progress through dynamic programming and multiple alignments. The logical connections between the techniques shown are so tight that chapter boundaries are almost artificial. It was a real pleasure to see the computational and practical relationships laid out.<p>The final topics, RNA structure and phylogenetic trees, lack the continuity that characterized the first dozen chapters. The RNA structure may be the weakest chapter in the book, but still a very competent introduction.<p>Throughout, Waterman emphasizes mathematical rigor without insisting on uninformative theorems. Every topic is presented in rich detail, with special attention to scoring and background models. Perhaps there are newer discussions of some topics. I don't know of any clearer discussions, though. Best, I think, is how Waterman prepares the reader to ask all the right questions in any future discussion: what are the elements of the computation, how can elements be recombined, how good is a result, and how does the result stand out from the statistical background. <p>The final chapter is what a bibliography should be. It doesn't just list authors, titles, and dates of publication. It actually discusses the contribution that each source made to this book. Rather than leave the reader to wander aimlessly among obscure titles, Waterman shows which sources are most informative on which topics. I wish more authors took the time for such commentary.<p>This is a book worth having. It covers topics that I haven't seen elsewhere, and shows how many different topics relate to each other. It is rigorous without giving distracting detail. Most of all, it keeps the biology in sight of all calculations. Some authors seem to forget that anything exists but the arithmetic; Waterman puts the math clearly in the service of its subject. I enjoyed it immensely, and look forward to applying its content in my own research.</span>
+                  
+                    <div class="CustomerReviewSummary">Packed full of good information</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>26</span>
+                      /
+                      <span>27</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2000-08-12</span>
+                    </div>
+                    <span>This book gives a good survey of the different techniques employed by computational biologists. After a brief review of molecular biology in  Chapter 1, the author treats the mathematical modeling of restriction maps  in Chapter 2 using graph theory. His presentation is somewhat hurried, but  he does give references and gives the reader three exercises at the end of  the chapter. Multiple maps are treated in Chapter 3, wherein the author  first makes use of probability theory, via the Kingman subadditive ergodic  theorem. The proof is omitted but the author does a good job of explaining  its use in studying the double digest problem (DDP). The best part of this  chapter is the author's explanation of the difficulties of using Kingman's  results for solving the DDP, and goes on to discuss multiple solutions of  the DDP. Graph theory is again used in the discussion. This sets up the  discussion in Chapter 4, which outlines algorithms for the DDP. The author  gives a very compact introduction to P- and NP-complete problems in the  theory of computation, then proves that DDP is NP-complete. The author does  a good job of discussing subsequent approximate methods used for the DDP,  such as simulated annealing. Markov chains are introduced in the book here  for the first time, but due to the shortness of the presentation, the  reader should do outside reading as a back-up. The author does a great job  of explaining the difficulties if measurement error is introduced in the  DDP at the end of the chapter. Cloning is discussed in Chapter 5, with  tools from probability theory used to deal with partial digest libraries.  The chapter is really short though, and the working the problems at the end  of the chapter is essential for the understanding the results of this  chapter. The author switches gears in the next chapter, wherein physical  maps are discussed. The discussion is fairly detailed and interesting.  Sequencing is discussed in the next two chapters, and the treatment is very  good. Hashing is introduced here, and psedocode is given throughout. The  very important method of dynamic programming is outlined in Chapter 9,  which is beautifully written, and again pseudocode abounds throughout.  Genetic mapping is left out though, but the this, the longest chapter of  the book, is a detailed introduction to this area. The results in this  chapter are used to study multiple sequence alignment in Chapter 10,  wherein hidden Markov models are introduced for the first time. The  discussion of these models is very curt, but there are other books and  notes available if the reader needs further guidance. The best chapter of  the book follows, which discusses probability and statistics for sequence  alignment. The theory of large deviations is brought in, and the author  does an excellent job of discussing this important, and powerful theory.  The reader's level of mathematical sophistication is assumed to be a lot  greater than the rest of the book in this chapter. Knowledge of measure  theory and martingales are assumed here. The author uses the very powerful  tool of relative entropy, so indispensable in other applications of  probability. The problem set at the end of the chapter is challenging but  working them through is definitely worth the time involved. The next  chapter also uses some heavy guns from probability theory to study sequence  patterns. The author returns to matter of a more empirical nature in  Chapter 13, which deals with RNA secondary structures. The reader with a  background in simple combinatorial theory should find the reading  straightforward and informative. Continuous-time Markov chains are  introduced in the next chapter to study trees and sequences. The treatment  here is rather hurried, so again the reader should work the exercises at  the end of the chapter. The book ends with a discussion of the literature  and references.    All in all a very nice book, worth the price, and worth  spending time reading. The only minus might be the total omission of actual  source code, but that really was not the intent of the book. Readers with a  strong mathematical background will like the book, as well as anyone  interested in going into the area of computational biology.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0521629713'>
+                      Biological Sequence Analysis : Probabilistic Models of Proteins and Nucleic Acids
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 11 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0262161974'>
+                      Computational Molecular Biology: An Algorithmic Approach (Computational Molecular Biology)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.0 based on 6 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0521585198'>
+                      Algorithms on Strings, Trees, and Sequences: Computer Science and Computational Biology
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 9 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0262101068'>
+                      An Introduction to Bioinformatics Algorithms (Computational Molecular Biology)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 4 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0879696087'>
+                      Bioinformatics: Sequence and Genome Analysis
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.0 based on 16 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

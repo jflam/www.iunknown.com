@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Hardware Wonderland</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000017.html" title="Reverse-engineering fun" />
+
+<link rel="next" href="http://www.iunknown.com/000019.html" title="Space 1999" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000017.html">&laquo; Reverse-engineering fun</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000019.html">Space 1999 &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">December 20, 2001</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Hardware Wonderland</h3>
+
+<p><P>I've been busy and not attending to this weblog for the past few days because I've been doing my annual hardware experiment. This Christmas, I decided to build a couple of entertainment PC's (EPC's) for the <EM>really</EM> good people on my list. It was also my first foray into the world of PC-TV connectivity, and Personal Video Recorders (aka <A href="http://www.tivo.com/home_flash.asp">Tivo</A> devices). Not surprisingly, I was lead like the proverbial lam to the slaughter. Here's the <A href="Articles/fog0000000034.html">long account</A> of my experiences. The rest of this entry is a short summary of my findings, in hopes that it will be useful to anyone attempting to wade into this minefield-laden bleeding-edge area.</P><br />
+<P>EPC's need to be the most powerful computers in your household. Period. Do NOT compromise here. Real-time <A href="http://www.microsoft.com/hwdev/tech/stream/vidcap/vidportext.asp">video capture</A> is very computationally expensive. Based on my experiments, you will need <EM>at a minimum</EM>, a 1.2Ghz <A href="http://www.amd.com/us-en/Processors/ProductInformation/0,,30_118_756,00.html">Athlon</A> processor or better to do real-time MPEG-2 encoding at the near-DVD quality level supported by the <A href="http://www.microsoft.com/hwdev/tech/stream/DirectX_VA/default.asp">Microsoft DirectShow codec</A>.</P><br />
+<P>Do yourself a favor and buy a <A href="http://www.logitech.com/cf/products/productoverview.cfm/104">Logitech wireless keyboard and mouse</A>. Until we have <A href="http://www.microsoft.com/mobile/pocketpc/default.asp">Pocket PC's</A> with the right remote control software built-in to control your EPC, this is the best that you can get.</P><br />
+<P>DVD drives are <EM>noisy</EM>. Especially ones that run at high speed like my <A href="http://www.pioneerelectronics.com/Pioneer/CDA/Industrial/IndustrialProductDetails/0,1444,1742,00.html">Pioneer 16X DVD</A> drive. If you plan on running one of these beasts in your living room, you need to download <A href="http://www.cdspeed2000.com/go.php3?link=download.html">Nero DriveSpeed</A>, which lets you reduce the speed of your DVD drive during playback. I can successfully limit playback to 1X, which makes it a <EM>very </EM>quiet drive. On my computer (which is running Windows XP Pro), however, you will need to startup Nero DriveSpeed, change the speed setting, and then exit. Why? If DriveSpeed is running my DVD player (the one that shipped with my <A href="http://www.ati.com/na/pages/products/pc/aiw_radeon/">All-In-Wonder RADEON</A>), believes that the DVD drive was setup for a different region and refuses to play my North American region DVDs. Ugh. Based on my experiments, the speed setting will stick around for at least the next time that you run your DVD player software (I use the ATI DVD player that came with my All-In-Wonder RADEON card).</P><br />
+<P><A href="http://www.snapstream.com/products/sspvs/">SnapStream Personal Video Station</A> software rocks. However, using my setup (ATI All-In-Wonder RADEON + <A href="http://www.americas.creative.com/products/category.asp?Category=165&amp;MainCategory=1">Creative Audigy</A>) you will need to change your recording settings so that it doesn't mess with your audio mixer settings. By default, it winds up muting the line-in channel which means that you will not have any sound in your recording. The downside of this is that you will need to turn off the sound on your PC while it is recording if you don't want to be disturbed. Actually, this is quite annoying if you want to playback WMA files on your EPC while the PVS is running.</P><br />
+<P>When using the DVD playback features of the All-In-Wonder RADEON, make sure that you use the AC-3 passthrough to your Dolby Digital receiver (it's just a cable with RCA connectors on both ends). </P><br />
+<P>I'm quite happy with my setup now that it is (almost) up and running. I will be even happier once somebody comes up with a turn-key solution with a real remote control.</P><br />
+<P>I'm also <EM>very</EM> happy that I'm a user-mode software guy and not a device driver guy. Having to deal with the mishmash of "standards" that make for a PC and having to test for conflicts in all of the bizarro hardware configurations that users will inevitably have is enough to turn anyone away from software development. My hats off to those guys for even trying.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at December 20, 2001 03:18 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="18" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000018.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="18" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

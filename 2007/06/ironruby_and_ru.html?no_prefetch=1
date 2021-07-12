@@ -1,0 +1,742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+	<meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: IronRuby and Ruby.Net</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/06/dlr_team_at_tec.html?no_prefetch=1" title="DLR Team at Tech Ed" />
+	<link rel="next" href="http://www.iunknown.com/2007/06/getting_started.html?no_prefetch=1" title="Getting Started with the DLR: ToyScript" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/06/ironruby_and_ru.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/19045088"
+    dc:title="IronRuby and Ruby.Net"
+    dc:identifier="http://www.iunknown.com/2007/06/ironruby_and_ru.html"
+    dc:description="Today, there are two different Ruby implementations on the CLR: IronRuby and QUT&#39;s Ruby.Net. We licensed the Ruby.net codebase earlier this year, and we are using the scanner and parser from Ruby.net in IronRuby today. This helped us bootstrap our..."
+    dc:creator="John Lam"
+    dc:date="2007-06-04T14:31:46-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/06/dlr_team_at_tec.html">&laquo; DLR Team at Tech Ed</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/06/getting_started.html">Getting Started with the DLR: ToyScript &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">June 04, 2007</h2>
+
+
+<div class="entry" id="entry-34888060">
+			<h3 class="entry-header">IronRuby and Ruby.Net</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a title="Photo Sharing" href="http://www.flickr.com/photos/john_lam/420024998/"><img height="500" alt="Heron" src="http://farm1.static.flickr.com/150/420024998_f15273deb8.jpg" width="333" /></a> </p>
+
+<p>Today, there are two different Ruby implementations on the CLR: <a href="http://www.iunknown.com/2007/04/introducing_iro.html">IronRuby</a> and <a href="http://plas.fit.qut.edu.au/ruby.net/">QUT's Ruby.Net</a>. </p>
+
+<p>We licensed the Ruby.net codebase earlier this year, and we are using the scanner and parser from Ruby.net in IronRuby today. This helped us bootstrap our efforts, and we know that we have acquired a good scanner and parser that is already <a href="http://plas.fit.qut.edu.au/ruby.net/">highly compliant with MRI</a>:</p><blockquote dir="ltr"><p>&quot;In addition to passing all 871 tests in the samples/test.rb installation test suite of Ruby 1.8.2, we are now able to support the standard Ruby test unit library and pass most of the 1864 assertions in the test/ruby test directory.&quot;</p></blockquote><p dir="ltr">IronRuby is effectively a continuation of the excellent work that <a href="http://sky.fit.qut.edu.au/~kellyw/">Wayne Kelly</a>, his students, and <a href="http://sky.fit.qut.edu.au/~gough/">John Gough</a> have been doing with Ruby .Net. Of course, IronRuby also builds on top of the excellent type system, hosting interfaces, and runtime library work in the <a href="http://blogs.msdn.com/hugunin/archive/2007/04/30/a-dynamic-language-runtime-dlr.aspx">Dynamic Language Runtime</a>.</p>
+
+<p><b>Update:</b>In the comments, Charlie Nutter pointed out that the conformance numbers really only apply if we're using the Ruby.net runtime components. Strictly speaking, that's true. But the real issue here is that we do have a highly conformant codebase <i>that we can look at</i> to help guide us in our DLR-based implementation. I hope this helps to clarify things.
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F06%2Fironruby_and_ru.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 02:31 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/06/ironruby_and_ru.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/06/ironruby_and_ru.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/ruby.net" rel="tag">ruby.net</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/19045088</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html">IronRuby and Ruby.Net</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content">
+			<!-- comment list -->
+
+	<a id="c71750286"></a>
+	<div class="comment" id="comment-71750286">
+		<div class="comment-content">
+			<p>What about the rest of Ruby.NET? Parsing is hard, but it's not the hardest part of getting Ruby running. The quote you posted was about Ruby.NET actually running code. I think those numbers aren't really applicable if you're not using the Ruby.NET runtime and core classes too. Perhaps I'm wrong?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://headius.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=71750286">Charles Oliver Nutter</a> |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-71750286">June 04, 2007 at 07:03 PM</a>
+		</p>
+	</div>
+
+	<a id="c71765628"></a>
+	<div class="comment" id="comment-71765628">
+		<div class="comment-content">
+			<p>Hey John!</p>
+
+<p>Please, can you comment about <a href="http://ola-bini.blogspot.com/2007/06/there-can-be-only-one-tale-about-ruby.html" rel="nofollow">http://ola-bini.blogspot.com/2007/06/there-can-be-only-one-tale-about-ruby.html</a> ?</p>
+
+<p>Esoecially on following sentence:</p>
+
+<p>"I am going to make a bold statement here. Under the current circumstances, I don't believe it's possible for John Lam and his team to create a Ruby implementation that runs Rails within at least 18 months. And frankly, that's not soon enough."</p>
+
+<p>thank you,<br />
+Michael.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Michael |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-71765628">June 04, 2007 at 11:58 PM</a>
+		</p>
+	</div>
+
+	<a id="c71781344"></a>
+	<div class="comment" id="comment-71781344">
+		<div class="comment-content">
+			<p>Many thanks, John.<br />
+Your post is very helpful and clarified the relationship between Ruby.NET and IronRuby.<br />
+</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			arton |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-71781344">June 05, 2007 at 05:36 AM</a>
+		</p>
+	</div>
+
+	<a id="c71789472"></a>
+	<div class="comment" id="comment-71789472">
+		<div class="comment-content">
+			<p>@Charles: answered via an update on the post</p>
+
+<p>@Michael: I hope it won't take that long, but I'm pretty lousy at predicting the future :)</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=71789472">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-71789472">June 05, 2007 at 07:07 AM</a>
+		</p>
+	</div>
+
+	<a id="c71864114"></a>
+	<div class="comment" id="comment-71864114">
+		<div class="comment-content">
+			<p>Can you clarify what the relationship of IronRuby and Ruby.NET is moving forward? </p>
+
+<p>Looking at the two source bases, it's obvious the different approach taken at the runtime level. Are you guys actively integrating their ideas and approach? </p>
+
+<p>I guess the meta question: is the DLR being built in a vacuum, or with active community engagement? </p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			James |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-71864114">June 05, 2007 at 09:37 PM</a>
+		</p>
+	</div>
+
+	<a id="c71928722"></a>
+	<div class="comment" id="comment-71928722">
+		<div class="comment-content">
+			<p>@James:</p>
+
+<p>We're using the scanner / parser from IronRuby right now, but we're in the process of refactoring some of that code to take advantage of some investments that we've made in building high performance tokenizers.</p>
+
+<p>We are wildly divergent when you look at what's happening in the runtime layer. The deferred compilation model of the DLR is fundamentally different from their runtime model, so there's not much being done there.</p>
+
+<p>As for the community engagement question - we're actively working on figuring something out. We'll have more to say on that before we ship code at OSCON on July 23.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=71928722">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-71928722">June 06, 2007 at 12:29 PM</a>
+		</p>
+	</div>
+
+	<a id="c72818146"></a>
+	<div class="comment" id="comment-72818146">
+		<div class="comment-content">
+			<p>Hi,</p>
+
+<p>Do I need to learn only Ruby OR ( Ruby + C# ) to take the addvantage of IronRuby.</p>
+
+<p>Will Ruby developers work straight away with IronRuby, without any C# or VB.Net Knowledge.</p>
+
+<p>Can you kindly blog Few PreRequisites, so that ruby dvelopers can get prepared to work with IronRuby hen released.</p>
+
+<p>I am just confused, can any one guide me. Plus... where can i read regular progress on IronRuby.</p>
+
+<p>Once i start working with IronRuby, will i get more advantage than RubyonRails or Less Advantages..?</p>
+
+<p>Thanks<br />
+</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.softmind.biz" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=72818146">SoftMind</a> |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-72818146">June 15, 2007 at 07:30 AM</a>
+		</p>
+	</div>
+
+	<a id="c72823802"></a>
+	<div class="comment" id="comment-72823802">
+		<div class="comment-content">
+			<p>@SoftMind:</p>
+
+<p>Knowing Ruby is important, of course, but knowing C# doesn't hurt since one of the major advantages of IronRuby is interop with the .NET Framework.</p>
+
+<p>Regular progress reports on IronRuby will appear here. Once we go public with our source repository on July 23, you can track progress via check-ins.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=72823802">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-72823802">June 15, 2007 at 08:26 AM</a>
+		</p>
+	</div>
+
+	<a id="c72887810"></a>
+	<div class="comment" id="comment-72887810">
+		<div class="comment-content">
+			<p>Hello John,</p>
+
+<p>This few questions are most important for me for IronRuby.</p>
+
+<p>(1) PreRequiremts for IronRuby<br />
+(2) will i be able to work with LINQ.<br />
+(3) Can I use Visual Web Developer as an IDE for IronRuby.<br />
+(4) Can i also take rails advantage with IronRuby</p>
+
+<p>This questions really trouble me and perhaps others too.</p>
+
+<p>Can yoiu come with quick answers</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.softmind.biz" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=72887810">WebReservoir</a> |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-72887810">June 16, 2007 at 01:10 AM</a>
+		</p>
+	</div>
+
+	<a id="c73266238"></a>
+	<div class="comment" id="comment-73266238">
+		<div class="comment-content">
+			<p>@WebReservoir, I can take a stab at your questions.</p>
+
+<p>1) I believe all you'll need is CLR 2.0 or Silverlight 1.1.<br />
+2) LINQ will be in Silverlight, so we should be able to call the LINQ bits, but I don't think anyone has talked about how the code would look. Perhaps this is an opportunity for someone to write a great Ruby library to take advantage of LINQ.<br />
+3) John has said that there will be Visual Studio support for IronRuby in the future, so I would assume that would include the future Express SKUs.<br />
+4) John has stated (correctly) that if IronRuby does not run Rails then IronRuby loses much credibility in the Ruby community. That said, I'm not sure if Microsoft will be supporting Rails or not. But I suspect that we will be able to use Rails with IronRuby similar to how we can use Rails with JRuby today.</p>
+
+<p>You can hear my conversation with John about some of these subjects here:</p>
+
+<p><a href="http://rubiverse.com/podcasts/1-john-lam-on-ironruby" rel="nofollow">http://rubiverse.com/podcasts/1-john-lam-on-ironruby</a></p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://blowmage.com/" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=73266238">Mike Moore</a> |
+			<a href="http://www.iunknown.com/2007/06/ironruby_and_ru.html#comment-73266238">June 20, 2007 at 08:56 AM</a>
+		</p>
+	</div>
+
+
+		</div>
+        
+	</div>
+    
+    	<!-- comment form -->
+	<script type="text/javascript" src="/.shared/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="34888060" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=34888060">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=34888060">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+    
+	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div>
+<div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div>
+<div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html#comment-119372928">mirc</a> on <a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html#comment-119237198">Joe Chung</a> on <a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html#comment-118758132">Ernst Kuschke</a> on <a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html#comment-118559258">Scott</a> on <a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html#comment-118514086">Jeremy Wiebe</a> on <a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html#comment-118511432">SoftMind</a> on <a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html#comment-118440544">Josh</a> on <a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html#comment-118434656">Damien Guard</a> on <a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html#comment-118371254">David Mohundro</a> on <a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html#comment-117209412">Jayme Edwards</a> on <a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+			
+		</ul>
+	</div>
+</div>
+	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">MVP Summit Ruby Meetup</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/nominate-us-for.html">Nominate Us for Open Spaces Sessions at MS MVP Summit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/open-source-amb.html">Open Source Ambassador</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/steve-yegge-on.html">Steve Yegge on Interviewing</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/henrys-adventur.html">Henry's Adventure in Las Vegas</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/looking-back-on.html">Looking back on MIX 08</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/dynamic-silve-3.html">Dynamic Silverlight bits now available!</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/index.html">April 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/01/index.html">January 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/12/index.html">December 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/index.html">November 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/index.html">October 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/index.html">September 2007</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+
+<div class="module-calendar module">
+	<h2 class="module-header">June 2008</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				
+							
+					<td>4</td>
+				
+							
+					<td>5</td>
+				
+							
+					<td>6</td>
+				
+							
+					<td>7</td>
+				</tr>
+							<tr>
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">10</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">11</a></td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				</tr>
+							<tr>
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				</tr>
+							<tr>
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				</tr>
+							<tr>
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+<!-- ph=1 -->
+<!-- nhm:dynamic-ssi;AA -->

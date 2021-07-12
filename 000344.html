@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: pslist and pskill to the rescue!</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000343.html" title="The magic ratio 4:3 " />
+
+<link rel="next" href="http://www.iunknown.com/000345.html" title="Stefan Bodewig on understanding open source licenses" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000344.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/88"
+    dc:title="pslist and pskill to the rescue!"
+    dc:identifier="http://www.iunknown.com/000344.html"
+    dc:subject="Blog"
+    dc:description="Occasionally, explorer.exe locks up hard on my desktop that&apos;s running Win XP Pro. This makes it hard to do virtually anything that uses a GUI, including using task manager to shut down the offending process. However, I ALWAYS have a..."
+    dc:creator="John"
+    dc:date="2003-10-02T17:26:19-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000343.html">&laquo; The magic ratio 4:3 </a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000345.html">Stefan Bodewig on understanding open source licenses &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">October 02, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">pslist and pskill to the rescue!</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>Occasionally, explorer.exe locks up hard on my desktop that's running Win <span class="caps">XP </span>Pro. This makes it hard to do virtually anything that uses a <span class="caps">GUI,</span> including using task manager to shut down the offending process. However, <span class="caps">I ALWAYS</span> have a console window up, which uses a completely different <span class="caps">UI. </span>Therefore, it is immune to lockups caused by a badly behaving explorer.exe process. </p>
+
+<p>If this happens to you, there are two utilities from <a href="http://www.sysinternals.com">SysInternals</a> that come to the rescue: pslist and pskill. pslist lets you view a list of all running processes on your system, and pskill lets you kill a selected process. pskill even lets you kill named processes, so you can type "pskill explorer", and it will kill all named instances. These utilities also run just fine on a non-admin account :)</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at October  2, 2003 05:26 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=344" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="344" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000344.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>TaskList and TaskKill do very similar things, and come with every installation of XP!</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;rbirkby&#64;hotmail&#46;com">RichB</a> at October  2, 2003 06:20 PM</span>
+</div>
+<div class="comments-body">
+<p>Doh! I learn a new thing every day from my readers! Oh well, that's two fewer tools to have to download from sysinternals whenever I repave :)</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at October  2, 2003 07:46 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm not sure, that you can kill services with TaskKill. And also I'm not sure if they do have services in XP.<br />
+In W2k it was really nice to be able to kill my service with pskill, when no other things could help me.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;ivan-tarasov&#64;yandex&#46;ru">Ivan Tarasov</a> at October  4, 2003 05:42 AM</span>
+</div>
+<div class="comments-body">
+<p>Not forgetting the less brutal PsSuspend.  You can resume the offending process later when you go for a break.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://weblogs.asp.net/nunitaddin">Jamie Cansdale</a> at October  9, 2003 06:32 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

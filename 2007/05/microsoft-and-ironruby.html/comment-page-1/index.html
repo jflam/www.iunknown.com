@@ -1,0 +1,1475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+
+<title>
+  Microsoft and IronRuby&nbsp;|&nbsp;John Lam on Software</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="http://iunknown.com/wp-content/themes/headlines/style.css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/LessIsBetter" />
+<link rel="pingback" href="http://iunknown.com/xmlrpc.php" />
+   
+<!--[if IE 6]>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/pngfix.js"></script>
+<script type="text/javascript" src="http://iunknown.com/wp-content/themes/headlines/includes/js/menu.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie6.css" />
+<![endif]-->	
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://iunknown.com/wp-content/themes/headlines/css/ie7.css" />
+<![endif]-->
+   
+<link rel="alternate" type="application/rss+xml" title="John Lam on Software &raquo; Microsoft and IronRuby Comments Feed" href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/feed" />
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-includes/js/jquery/jquery.js?ver=1.3.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/superfish.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/woo_tabs.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/cufon-yui.js?ver=2.9.2'></script>
+<script type='text/javascript' src='http://iunknown.com/wp-content/themes/headlines/includes/js/Liberation.font.js?ver=2.9.2'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://iunknown.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://iunknown.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='John Lam on Software' href='http://iunknown.com' />
+<link rel='start' title='Motorola DROID Review' href='http://iunknown.com/2009/12/motorola-droid-review.html' />
+<link rel='prev' title='Skipping Tech Ed this year' href='http://iunknown.com/2007/05/skipping-tech-ed-this-year.html' />
+<link rel='next' title='DLR Team at Tech Ed' href='http://iunknown.com/2007/06/dlr-team-at-tech-ed.html' />
+<meta name="generator" content="WordPress 2.9.2" />
+<link rel='canonical' href='http://iunknown.com/2007/05/microsoft-and-ironruby.html' />
+<meta name="generator" content="Headlines 2.4.1" />
+<meta name="generator" content="Woo Framework Version 2.5.3" />
+<script type="text/javascript">Cufon.replace("h2, h3, h4, h5, h6, .title, .cufon");</script>
+<style type="text/css">.widget h3 { line-height:22px; }</style>
+<link href="http://iunknown.com/wp-content/themes/headlines/styles/color.css" rel="stylesheet" type="text/css" />
+<link href="http://iunknown.com/wp-content/themes/headlines/custom.css" rel="stylesheet" type="text/css" />
+<!-- Woo Styling -->
+<style type="text/css">
+#logo img { display:none; }
+#logo .site-title, #logo .site-description { display:block; } 
+</style>
+
+<!--[if lte IE 7]>
+<script type="text/javascript">
+jQuery(function() {
+	var zIndexNumber = 1000;
+	jQuery('div').each(function() {
+		jQuery(this).css('zIndex', zIndexNumber);
+		zIndexNumber -= 1;
+	});
+});
+</script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+
+<div id="container">
+       
+	<div id="top">
+    
+		
+        <div id="header" class="col-full">
+       
+            <div id="logo">
+               
+                                
+                                    <span class="site-title"><a href="http://iunknown.com">John Lam on Software</a></span>
+                                
+                    <span class="site-description">Working for The Man in Redmond</span>
+                
+            </div><!-- /#logo -->
+               
+			            <div id="twitter-top">
+            	<div class="logo">
+                    <a href="http://www.twitter.com/john_lam" title="Follow on Twitter"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-twitter.png" alt="Twitter" /></a>                
+                </div>
+                <div class="tweet">
+	                <ul id="twitter_update_list"><li></li></ul>
+                </div>
+            </div><!-- /#topad -->
+			                       
+        </div><!-- /#header -->
+        
+        <div id="navigation">
+        
+			<div id="page-nav">
+    <div class="col-full">
+        <ul id="nav" class="fl">
+        
+            <li><a href="http://iunknown.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-home.png" class="ico-home" alt="Home" /></a></li>
+			        
+            <li class="page_item page-item-2"><a href="http://iunknown.com/about" title="About">About</a></li>
+            
+			            
+            
+        </ul><!-- /#nav1 -->
+        
+        <ul class="rss fr">
+                        <li><a href="http://feeds.feedburner.com/LessIsBetter">Posts</a></li>
+        </ul><!-- /.rss -->
+    </div><!-- /.col-full -->
+</div><!-- /#page-nav -->
+                        
+            <div id="cat-nav">
+                <div class="col-full">
+                    <ul id="secnav" class="fl">
+                    
+					                    
+						      
+                        <li>
+                            <a href="http://iunknown.com/category/ironruby">IronRuby</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/microsoft">Microsoft</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/misc_geek">Misc Geek</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/personal">Personal</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/rubyclr">RubyCLR</a>
+                            
+                                                    </li>        
+                              
+                        <li>
+                            <a href="http://iunknown.com/category/uncategorized">Uncategorized</a>
+                            
+                                                    </li>        
+                                                
+					                        
+                    </ul><!-- /#nav2 -->
+                    
+                                        <div id="search" class="fr">
+                        <form method="get" id="searchform" action="http://iunknown.com">
+                            <input type="text" class="field" name="s" id="s"  value="Enter keywords..." onfocus="if (this.value == 'Enter keywords...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter keywords...';}" />
+                            <input class="submit btn" type="image" src="http://iunknown.com/wp-content/themes/headlines/images/ico-search.png" value="Go" />
+                        </form>
+                    </div><!-- /#search -->
+                                    </div><!-- /.col-full -->
+            </div><!-- /#cat-nav -->
+            
+        </div><!-- /#navigation -->
+    
+    </div><!--/#top-->       
+    <div id="content" class="col-full">
+		<div id="main" class="col-left">
+		           
+                                    
+                <div class="box">
+                    <div class="post">
+    
+						                           
+                        <h1 class="title">Microsoft and IronRuby</h1>
+                        
+                        <p class="post-meta">
+							<img src="http://iunknown.com/wp-content/themes/headlines/images/ico-time.png" alt="" />31. May, 2007                            <span class="comments"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-comment.png" alt="" /><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html#comments" title="Comment on Microsoft and IronRuby">23 Comments</a></span>
+                        </p>
+
+																	
+                        <div class="entry">
+							<p><a href="http://www.flickr.com/photos/john_lam/523426472/" title="Photo Sharing"><img<br />
+src="http://farm1.static.flickr.com/224/523426472_24d8f88583.jpg" width="500"<br />
+height="331" alt="Ben at Childrens Museum" /></a></p>
+<p>As many of you know, I recently moved my family to Redmond so that I can work on<br />
+IronRuby. I was very happy with my life in Toronto, and wouldn&#8217;t have made this move if<br />
+I wasn&#8217;t sure that I had excellent management support for our Ruby effort.</p>
+<p><a href="http://weblogs.asp.net/scottgu/">Scott Guthrie</a> was the last guy in my<br />
+interview loop. He also runs the .NET Developer Platform organization that my team (the<br />
+DLR team) sits in. Scott is responsible for virtually all things related to the .NET<br />
+platform, including the CLR, IIS, ASP.NET, WPF, Silverlight (and some others that escape<br />
+me at this moment). Scott convinced me that Microsoft was serious about making a first<br />
+class implementation of Ruby on the .NET platform when he sketched out the demo that we<br />
+ultimately presented at MIX &#8211; 7 months later.</p>
+<p>Our announcement of Silverlight at MIX is really quite significant. It makes it possible<br />
+for us to deliver IronRuby to an enormous number of computers, and on many platforms<br />
+(Windows, Mac OS, and Linux via <a<br />
+href="http://www.mono-project.com/Moonlight">Mono/Moonlight</a>). This makes it possible<br />
+for Ruby programmers to use their favorite language in many more scenarios than they can<br />
+today.</p>
+<p>However, since our announcements at MIX, there&#8217;s been much speculation both publicly and<br />
+privately about what our IronRuby plans are. Recently, Martin Fowler posted a<br />
+well-written post that, among other things, <a<br />
+href="http://www.martinfowler.com/bliki/RubyMicrosoft.html">questions our commitment to<br />
+compatibility</a>:</p>
+<blockquote><p>The big question for Microsoft&#8217;s &#8220;Iron Ruby&#8221; is how compatible will it be?<br />
+Will it be a full implementation on the CLR?</p></blockquote>
+<p>From where I sit, I know that I have excellent air cover from my management chain, that<br />
+includes <a href="http://blogs.msdn.com/jasonz/">Jason Zander</a> who runs the .NET<br />
+Frameworks group at Microsoft. These guys are serious about building a first-class<br />
+implementation of Ruby that runs on both CoreCLR in Silverlight, as well as the<br />
+desktop/server flavors of CLR 2.0 that are shipping today. They&#8217;re committed to making<br />
+sure that we have what we need to get the job done.</p>
+<p>We will ship IronRuby under the <a<br />
+href="http://www.microsoft.com/resources/sharedsource/licensingbasics/permissivelicense.mspx">Ms-PL<br />
+(our BSD-style license)</a>. If we fail to live up to your expectations, or if you don&#8217;t<br />
+like what we&#8217;re doing, you can <a<br />
+href="http://en.wikipedia.org/wiki/Fork_(software_development)">fork the code</a>. I<br />
+think that our track record with <a<br />
+href="http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython">IronPython</a> and<br />
+the Python community serves as an example of what you can expect from our IronRuby<br />
+effort.</p>
+<p>Martin finishes off his post with a challenge to us to do the right thing:</p>
+<blockquote><p>So what I see for Ruby and Microsoft is an opportunity. The Ruby community<br />
+seems eager to work with Microsoft. This provides an opportunity for Redmond to figure<br />
+out how to deal with the problems of working with open source and for this effort to<br />
+serve as an exemplar for future collaboration. A first class implementation of the full<br />
+Ruby platform on .NET would be a wonderful product of this collaboration. Perhaps an<br />
+even better result would be for this work to serve as an example of how Microsoft can<br />
+collaborate with a community that&#8217;s centered on openness and agility; an example that<br />
+can be a springboard for further spreading of attitudes that can further help<br />
+programmers and their customers throughout the Microsoft world.</p></blockquote>
+<p>I&#8217;m eager to work with the community to figure out how we can work together. An<br />
+excellent opportunity to do so is at our Lang.net symposium that we will hold on campus<br />
+sometime in September/October of this year. If you&#8217;re interested in helping to figure<br />
+out how we can collaborate better with the community I&#8217;d like to extend to you an<br />
+invitation to come out to meet with us then.</p>
+<p>In the end, I think that it&#8217;s important to judge our effort based on the code that we<br />
+ship. We&#8217;re going to ship our first <a href="http://www.codeplex.com">CodePlex release<br />
+of IronRuby at <a href="http://conferences.oreillynet.com/os2006/">OSCON</a> this year.<br />
+I&#8217;m looking forward to getting your feedback on that code (particularly on what we got<br />
+wrong) when we ship it so that we can work together to deliver the right solution for<br />
+everyone.</p>
+                        </div>
+                        <div class="fix"></div>
+
+                                                <div id="share">
+							<div class="banner">Share</div>
+                            <a href="http://twitter.com/home/?status=Microsoft and IronRuby : http://tinyurl.com/ya9vfgh"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-twitter.png" alt="Twitter" /></a>
+<a href="http://digg.com/submit?phase=2&amp;url=http://iunknown.com/2007/05/microsoft-and-ironruby.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-digg.png" alt="Digg" /></a>                            
+<a href="http://del.icio.us/post?url=http://iunknown.com/2007/05/microsoft-and-ironruby.html&amp;title=Microsoft and IronRuby"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-delicious.png" alt="Delicious" /></a>                            
+<a href="http://www.stumbleupon.com/submit?url=http://iunknown.com/2007/05/microsoft-and-ironruby.html&amp;title=Microsoft+and+IronRuby"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-stumbleupon.png" alt="Stumbleupon" /></a>                            
+<a href="http://technorati.com/cosmos/search.html?url=http://iunknown.com/2007/05/microsoft-and-ironruby.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-technorati.png" alt="Technorati" /></a>                            
+<a href="http://www.facebook.com/sharer.php?u=http://iunknown.com/2007/05/microsoft-and-ironruby.html&amp;t=Microsoft and IronRuby"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-facebook.png" alt="Facebook" /></a>
+<a href="mailto:EMAIL ADDRESS?body=http://iunknown.com/2007/05/microsoft-and-ironruby.html"><img src="http://iunknown.com/wp-content/themes/headlines/images/ico-social-mail.png" alt="Email" /></a>                           
+                        </div>
+                                                                        
+                    </div><!-- /.post -->
+                    
+                    <div class="post-bottom">
+                        <div class="fl"><span class="cat"><a href="http://iunknown.com/category/uncategorized" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></span></div>
+                        <div class="fr"></div> 
+                        <div class="fix"></div>                       
+                    </div>
+                    
+                </div><!-- /.box -->
+
+                <div class="more_entries">
+					<div class="fl"><a href="http://iunknown.com/2007/05/skipping-tech-ed-this-year.html" rel="prev">Skipping Tech Ed this year</a></div>
+					<div class="fr"><a href="http://iunknown.com/2007/06/dlr-team-at-tech-ed.html" rel="next">DLR Team at Tech Ed</a></div>
+                    <div class="fix"></div>                       
+				</div>               
+                
+				
+    
+
+<!-- You can start editing here. -->
+
+<div id="comments">
+
+
+	
+        <h3>23 Responses to &#8220;Microsoft and IronRuby&#8221;</h3>
+    
+        <ol class="commentlist">
+    
+                             
+	<li class="comment even thread-even depth-1" id="li-comment-866">
+    
+    	<a name="comment-866"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/b40f632d0f521ac8df2098f3143bdc77?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">AN</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-866" title="Direct link to this comment">31. May, 2007 at 1:01 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-866">
+                
+                    <p>Can anyone come to Lang.net? I&#8217;d be interested in this.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-867">
+    
+    	<a name="comment-867"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/9a7b376b39e08e464d13cb9bf9f939b0?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Oran</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-867" title="Direct link to this comment">31. May, 2007 at 5:44 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-867">
+                
+                    <p>On a related note, can you pass this up the chain to JasonZ and ScottGu?<br />
+<a href="http://weblogs.asp.net/nunitaddin/archive/2007/05/31/microsoft-vs-testdriven-net-31-may-2007.aspx" rel="nofollow">http://weblogs.asp.net/nunitaddin/archive/2007/05/31/microsoft-vs-testdriven-net-31-may-2007.aspx</a><br />
+Thanks.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-868">
+    
+    	<a name="comment-868"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/5c6727e573b7be20dea6a6880856a888?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://mikepence.wordpress.com' rel='external nofollow' class='url url'>Mike Pence</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-868" title="Direct link to this comment">31. May, 2007 at 6:56 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-868">
+                
+                    <p>Meanwhile Microsoft threatens the open source community with litigation over patents that they refuse to identify. As long as that continues, who cares what MS does with Ruby?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-888">
+    
+    	<a name="comment-888"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.isisaka.com/blog/archives/2007/06/ironruby_1.html' rel='external nofollow' class='url url'>OPC Diary</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-888" title="Direct link to this comment">31. May, 2007 at 7:20 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-888">
+                
+                    <p><strong>IronRubyとマイクロソフト</strong></p>
+<p>John Lam on Software: Microsoft and Iron&#8230;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-887">
+    
+    	<a name="comment-887"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.users.gr.jp/blogs/others/archive/2007/06/01/ironruby.aspx' rel='external nofollow' class='url url'>関連ブログ</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-887" title="Direct link to this comment">31. May, 2007 at 7:26 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-887">
+                
+                    <p><strong>IronRubyとマイクロソフト</strong></p>
+<p>John Lam on Software: Microsoft and IronRuby Lohn LamがIronRubyとマイクロソフトの関係についてまとめています。 まとめるとこんな感じです。 IronRubyはマイクロソフトのプロジェクトである</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-869">
+    
+    	<a name="comment-869"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/695b146376b21b8f7b1d51bdf636038b?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.iunknown.com' rel='external nofollow' class='url url'>John Lam</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-869" title="Direct link to this comment">31. May, 2007 at 9:18 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-869">
+                
+                    <p>@AN:<br />
+I will be posting a link to our registration site for Lang.net once we finish figuring out the logistics.<br />
+@Oran:<br />
+Will do.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-870">
+    
+    	<a name="comment-870"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/b7b34fda26b7ea99b8b4d42497193220?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Seo Sanghyeon</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-870" title="Direct link to this comment">31. May, 2007 at 10:12 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-870">
+                
+                    <p>Well, IronPython is already forked (although slightly), and I am very grateful for the license that allowed me to fork.<br />
+<a href="http://fepy.sourceforge.net/patches.html" rel="nofollow">http://fepy.sourceforge.net/patches.html</a></p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-871">
+    
+    	<a name="comment-871"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/33dcde19cd41282236d133d5fc3ceeed?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blog.benhall.me.uk' rel='external nofollow' class='url url'>Ben Hall</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-871" title="Direct link to this comment">01. Jun, 2007 at 3:25 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-871">
+                
+                    <p>Really looking forward to using IronRuby.  However, why have Microsoft got there own version of the BSD license, instead of just using the standard BSD license?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-872">
+    
+    	<a name="comment-872"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/9a7b376b39e08e464d13cb9bf9f939b0?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Oran</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-872" title="Direct link to this comment">01. Jun, 2007 at 1:57 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-872">
+                
+                    <p>Thanks a bunch John!<br />
+I forgot to mention that I think the work you&#8217;re doing and the role you&#8217;re playing are very valuable, and I can&#8217;t wait to use Ruby as a first-class citizen in the .NET world.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-873">
+    
+    	<a name="comment-873"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/50535bd3e4b7410d165e42feb6859115?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://drazen.dotlic.name/weblog' rel='external nofollow' class='url url'>Drazen Dotlic</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-873" title="Direct link to this comment">02. Jun, 2007 at 2:44 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-873">
+                
+                    <p>Hey,<br />
+I&#8217;m glad you finally mentioned IronRuby running on a &#8220;regular&#8221; CLR (2.0 or newer, I don&#8217;t care). All we&#8217;ve heard up to now was Silverlight based IronRuby etc.<br />
+Could you please elaborate a bit more on the availability of DLR/IronRuby *independently* of Silverlight? It&#8217;s quite obvious running Ruby on Rails on the server side on a &#8220;regular&#8221; CLR is a killer feature for the IronRuby.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-886">
+    
+    	<a name="comment-886"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://rails.to/articles/2007/06/02/microsoft-and-ironruby' rel='external nofollow' class='url url'>いたさんのブログ</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-886" title="Direct link to this comment">02. Jun, 2007 at 9:09 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-886">
+                
+                    <p><strong>John Lam on Software:Microsoft and IronRuby</strong></p>
+<p>RubyCLRの開発者で、今年１月にMicrosoftに加わり、MIXで正式発表されたIronRubyの開発を担当しているJohn Lam氏が、MicrosoftのRubyへのコミットメントについてブログに書いています。 Microsoft and IronRu</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-885">
+    
+    	<a name="comment-885"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://weblogs.asp.net/jmandia/archive/2007/06/03/points-of-interest-10-ajax-silverlight-wpf-p-amp-p-firefox-and-sharepoint.aspx' rel='external nofollow' class='url url'>John Mandia's Points of Interest</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-885" title="Direct link to this comment">03. Jun, 2007 at 4:07 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-885">
+                
+                    <p><strong>Points of interest #10 &#8211; Ajax, Silverlight, WPF, P&#038;P, Firefox and SharePoint</strong></p>
+<p>A slight change this week. POI titles will now include the main topics covered in each post (&#8220;Other&#8221;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-884">
+    
+    	<a name="comment-884"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://weblogs.asp.net/jmandia/archive/2007/06/03/points-of-interest-10-ajax-silverlight-wpf-p-amp-p-firefox-and-sharepoint.aspx' rel='external nofollow' class='url url'>John Mandia's Points of Interest</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-884" title="Direct link to this comment">03. Jun, 2007 at 4:11 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-884">
+                
+                    <p><strong>Points of interest #10 &#8211; Ajax, Silverlight, WPF, P&#038;P, Firefox and SharePoint</strong></p>
+<p>A slight change this week. POI titles will now include the main topics covered in each post (&#8220;Other&#8221;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-874">
+    
+    	<a name="comment-874"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/a5b01739148d8795e99582444361a1bc?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://ola-bini.blogspot.com' rel='external nofollow' class='url url'>Ola Bini</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-874" title="Direct link to this comment">03. Jun, 2007 at 5:01 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-874">
+                
+                    <p>Good news all in all, John.<br />
+There is one point which is the main problem in the whole IronRuby story, though: the fact that yes, you can fork, but you can&#8217;t contribute back to the code. If something doesn&#8217;t get fixed by your group, there is NO way for an independent person to fix it, except forking and maintaining and redistributing his own version from that point on. There is a very good reason that forking is considered exceedingly bad for the open source community: it splinters effort instead of pooling it. That said, the possibility to fork is better than nothing at all.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-883">
+    
+    	<a name="comment-883"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.microsoft.co.il/blogs/eyal/archive/2007/06/03/IronRuby-release-_2800_extending-DLR-support_2900_.aspx' rel='external nofollow' class='url url'>I hate Spaghetti (code)</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-883" title="Direct link to this comment">03. Jun, 2007 at 5:25 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-883">
+                
+                    <p><strong>IronRuby release (extending DLR support)</strong></p>
+<p>Ruby is a dynamic language from Japan (mid 90&#8217;s). The framework gain popularity (with help of rails)</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-875">
+    
+    	<a name="comment-875"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/9ac99f8bbca0defbdb421711f8f7db91?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://msdpe.cnblogs.com' rel='external nofollow' class='url url'>Ray Zhang</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-875" title="Direct link to this comment">03. Jun, 2007 at 4:45 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-875">
+                
+                    <p>Good job,dude:)!</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-876">
+    
+    	<a name="comment-876"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/463a381eaf9c0c08bc130a1bea1874ee?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.voidspace.org.uk/ironpython/index.shtml' rel='external nofollow' class='url url'>Fuzzyman</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-876" title="Direct link to this comment">04. Jun, 2007 at 2:17 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-876">
+                
+                    <p>Hey John &#8211; what do you say to the rumour which Martin Fowler started &#8211; that you are not allowed to look at the Ruby source code?<br />
+Lots of people are commenting on it, is it true?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-882">
+    
+    	<a name="comment-882"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://unintelligible.org/blog/2007/06/01/microsoft-and-ruby/' rel='external nofollow' class='url url'>Unintelligible</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-882" title="Direct link to this comment">04. Jun, 2007 at 3:32 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-882">
+                
+                    <p><strong>Microsoft and Ruby</strong></p>
+<p>Martin Fowlers post on Microsoft and Ruby reflects some of my recent thoughts on MS closely. As he points out, MS is a large company made up of individuals rather than single-minded giant; and as such, there are bound to be differences of opinio&#8230;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-881">
+    
+    	<a name="comment-881"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://eduardomiranda.net/blogs/dotnet/archive/2007/06/04/Ruby-no-.Net-Framework.aspx' rel='external nofollow' class='url url'>Console.Write(this.Opinion)</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-881" title="Direct link to this comment">04. Jun, 2007 at 6:22 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-881">
+                
+                    <p><strong>Ruby no .Net Framework</strong></p>
+<p>Ruby no .Net Framework</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-880">
+    
+    	<a name="comment-880"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://www.dotnetkicks.com/products/John_Lam_on_Software_Microsoft_and_IronRuby' rel='external nofollow' class='url url'>DotNetKicks.com</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-880" title="Direct link to this comment">04. Jun, 2007 at 9:55 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-880">
+                
+                    <p><strong>John Lam on Software: Microsoft and IronRuby</strong></p>
+<p>You&#8217;ve been kicked (a good thing) &#8211; Trackback from DotNetKicks.com</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-879">
+    
+    	<a name="comment-879"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=70' class='photo avatar avatar-70 photo avatar-default' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl"><a href='http://blogs.msdn.com/shozoa/archive/2007/06/15/dynamic-language-md3.aspx' rel='external nofollow' class='url url'>荒井省三のBlog</a></span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-879" title="Direct link to this comment">14. Jun, 2007 at 10:27 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-879">
+                
+                    <p><strong>Dynamic Languageについて(MD3)</strong></p>
+<p>MD3に向けて、Dynamic Languageに取り組んでいます。可能であれば、IronRubyなどもお見せできたら良いなぁと考えていますが、無理そうです( John Lamのブログ に7月の予定とありました)。このためASP.NET&#8230;</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-877">
+    
+    	<a name="comment-877"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/11e06646d58e4efc69ef59a8da40a25c?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">Nair</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-877" title="Direct link to this comment">02. Jul, 2007 at 2:20 pm</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-877">
+                
+                    <p>I am very much interested in getting my hands dirty with IronRuby, when and where can I get alpha/beta?</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+                 
+	<li class="comment even thread-even depth-1" id="li-comment-878">
+    
+    	<a name="comment-878"></a>
+      	
+      	<div class="comment-container">
+
+			            
+            <div class="avatar"><img alt='' src='http://www.gravatar.com/avatar/76fa576774c5b7efebbcb24b11e24fef?s=70&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D70&amp;r=G' class='photo avatar avatar-70 photo' height='70' width='70' /></div>
+        
+                  	    
+            <div class="comment-right">
+                    
+                <div class="comment-head">
+                                
+                    <span class="name fl">paul van brenk</span>
+                    
+                                        
+                        <span class="reply fr"></span><!-- /.reply -->
+                        <span class="date fr"><a href="http://iunknown.com/2007/05/microsoft-and-ironruby.html/comment-page-1#comment-878" title="Direct link to this comment">27. Aug, 2007 at 5:15 am</a></span>
+                                            <span class="edit fr"></span>
+                                        
+                </div><!-- /.comment-head -->
+              
+                <div class="comment-entry"  id="comment-878">
+                
+                    <p>Any more info about lang.net 2007, the site still only shows info for &#8216;06.</p>
+                    
+                                        
+        
+                </div><!-- /comment-entry -->
+            
+            </div><!-- /comment-right -->
+		
+		</div><!-- /.comment-container -->
+		
+</li>
+        
+        </ol>    
+    
+        <div class="navigation">
+            <div class="fl"></div>
+            <div class="fr"></div>
+            <div class="fix"></div>
+        </div><!-- /.navigation -->
+
+			
+		
+
+</div> <!-- /#comments_wrap -->
+
+
+<div id="respond">
+
+	<h3>Leave a Reply</h3>
+	
+	<div class="cancel-comment-reply">
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2007/05/microsoft-and-ironruby.html/comment-page-1#respond" style="display:none;">Click here to cancel reply.</a></small>
+	</div><!-- /.cancel-comment-reply -->
+
+		    
+		<form action="http://iunknown.com/wp-comments-post.php" method="post" id="commentform" onsubmit="if (url.value == 'Website (optional)') {url.value = '';}">
+
+	    <div class="left">
+
+		
+			<p>
+                <input type="text" name="author" class="txt" id="commentauthor" tabindex="1" value="Name (required)" onfocus="if (this.value == 'Name (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="email" class="txt" id="email" tabindex="2" value="Email (required)" onfocus="if (this.value == 'Email (required)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Email (required)';}" />
+			</p>
+
+			<p>
+                <input type="text" name="url" class="txt" id="url" tabindex="3" value="Website (optional)" onfocus="if (this.value == 'Website (optional)') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Website (optional)';}" />
+			</p>
+
+		        
+        </div>
+
+		<div class="right">
+        
+		<!--<p><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </p>-->
+
+		<p><textarea name="comment" id="comment" rows="10" cols="50" tabindex="4"></textarea></p>
+
+		<input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+		<input type="hidden" name="comment_post_ID" value="81" />
+		
+		<input type='hidden' name='comment_post_ID' value='81' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+				
+        </div>
+        
+		</form><!-- /#commentform -->
+
+	
+	<div class="fix"></div>
+
+</div><!-- /#respond -->
+
+                                                    
+			  
+        
+		</div><!-- /#main -->
+
+        <div id="sidebar" class="col-right">
+
+	<!-- Widgetized Sidebar -->	
+	<div id="text-3" class="widget widget_text"><h3>Subscribe!</h3>			<div class="textwidget"><p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+		</div>		
+    
+	<!-- TABS STARTS --> 
+		<div id="tabs">
+		
+		<ul class="wooTabs tabs">
+			<li><a href="#pop">Popular</a></li>
+			<li><a href="#feat">Latest</a></li>
+            <li><a href="#comm">Comments</a></li>
+			<li><a href="#tagcloud">Tags</a></li>
+		</ul>	
+		
+		<div class="fix"></div>
+		
+		<div class="inside">
+		 <div id="pop">
+			<ul>
+					<li>
+			                
+            <a href="http://iunknown.com/2007/07/a-first-look-at-ironruby.html" title="A first look at IronRuby">A first look at IronRuby</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/08/funtwo-unmasked.html" title="funtwo unmasked">funtwo unmasked</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2006/10/dynamic-languages-microsoft-and-me.html" title="Dynamic Languages, Microsoft, and me">Dynamic Languages, Microsoft, and me</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2008/03/dynamic-silverlight-part-1-hello-world.html" title="Dynamic Silverlight Part 1: Hello, World!">Dynamic Silverlight Part 1: Hello, World!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+		<li>
+			                
+            <a href="http://iunknown.com/2007/08/ironruby-on-rubyforge.html" title="IronRuby on Rubyforge!">IronRuby on Rubyforge!</a>
+            <span class="meta"></span>
+    		<div style="clear:both"></div>
+
+        </li>
+                    
+			</ul>
+           </div>
+           
+         <div id="feat"> 
+	        <ul>
+			<li>
+		<a title="Permalink to  Motorola DROID Review" href="http://iunknown.com/2009/12/motorola-droid-review.html" rel="bookmark">Motorola DROID Review</a>
+	<span class="meta">10. Dec, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Passing the torch" href="http://iunknown.com/2009/11/passing-the-torch.html" rel="bookmark">Passing the torch</a>
+	<span class="meta">17. Nov, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Dynamic Languages at TechEd 2009" href="http://iunknown.com/2009/05/dynamic-languages-at-teched-2009.html" rel="bookmark">Dynamic Languages at TechEd 2009</a>
+	<span class="meta">18. May, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Disable that annoying beep on Thinkpads when resuming from Sleep" href="http://iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html" rel="bookmark">Disable that annoying beep on Thinkpads when resuming from Sleep</a>
+	<span class="meta">02. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+<li>
+		<a title="Permalink to  Hello, 2009" href="http://iunknown.com/2009/01/hello-2009.html" rel="bookmark">Hello, 2009</a>
+	<span class="meta">01. Jan, 2009</span>
+	<div class="fix"></div>
+</li>
+		
+                    
+			</ul>
+          </div>
+          <div id="comm">  
+			<ul>
+			<li>
+    <img alt='' src='http://www.gravatar.com/avatar/d1e701feeafaf4228572298aea23d13f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2007/07/outlook-zen.html#comment-2224" title="on  Outlook Zen">
+		Frank S: I've been using Jello 5 for the last few years.  J...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/634e0589ae0ec312596b20e8c95474ae?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2119" title="on  Passing the torch">
+		Mattias: Now we are really curious... the announcement is d...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/52bf71ded85623e0f7f976192399621f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-2016" title="on  Passing the torch">
+		Dave Bettin: New dynamic language?...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/0ad20a1e4b560f1c2771903112cc4fa9?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2008/03/dynamic-silverlight-part-3-integrating-silverlight-with-asp-net-mvc.html#comment-174" title="on  Dynamic Silverlight Part 3: Integrating Silverlight with ASP.NET MVC">
+		sikat ang pinoy: Creating silverlight on asp.net mvc are now easy. ...
+    </a>
+    <div style="clear:both"></div>
+</li>
+<li>
+    <img alt='' src='http://www.gravatar.com/avatar/a120eb09d383829bfa210bf656fcde4e?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' />
+	<a href="http://iunknown.com/2009/11/passing-the-torch.html#comment-31" title="on  Passing the torch">
+		John Lam: Hang in there ... will happen later this month! So...
+    </a>
+    <div style="clear:both"></div>
+</li>
+                    
+			</ul>
+	      </div>
+			<div id="tagcloud">
+			    			</div>
+		
+	</div><!-- INSIDE END -->
+	
+	</div><!-- TABS END -->
+	
+	<div class="fix" style="height:25px !important;"></div>
+	
+	  
+	<!-- TABS END -->    
+    
+	<!-- Widgetized Sidebar -->	
+	<div id="archives-3" class="widget widget_archive"><h3>Archives</h3>		<select name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'> <option value="">Select Month</option> 	<option value='http://iunknown.com/2009/12'> December 2009 </option>
+	<option value='http://iunknown.com/2009/11'> November 2009 </option>
+	<option value='http://iunknown.com/2009/05'> May 2009 </option>
+	<option value='http://iunknown.com/2009/01'> January 2009 </option>
+	<option value='http://iunknown.com/2008/10'> October 2008 </option>
+	<option value='http://iunknown.com/2008/09'> September 2008 </option>
+	<option value='http://iunknown.com/2008/08'> August 2008 </option>
+	<option value='http://iunknown.com/2008/07'> July 2008 </option>
+	<option value='http://iunknown.com/2008/06'> June 2008 </option>
+	<option value='http://iunknown.com/2008/05'> May 2008 </option>
+	<option value='http://iunknown.com/2008/04'> April 2008 </option>
+	<option value='http://iunknown.com/2008/03'> March 2008 </option>
+	<option value='http://iunknown.com/2008/02'> February 2008 </option>
+	<option value='http://iunknown.com/2008/01'> January 2008 </option>
+	<option value='http://iunknown.com/2007/12'> December 2007 </option>
+	<option value='http://iunknown.com/2007/11'> November 2007 </option>
+	<option value='http://iunknown.com/2007/10'> October 2007 </option>
+	<option value='http://iunknown.com/2007/09'> September 2007 </option>
+	<option value='http://iunknown.com/2007/08'> August 2007 </option>
+	<option value='http://iunknown.com/2007/07'> July 2007 </option>
+	<option value='http://iunknown.com/2007/06'> June 2007 </option>
+	<option value='http://iunknown.com/2007/05'> May 2007 </option>
+	<option value='http://iunknown.com/2007/04'> April 2007 </option>
+	<option value='http://iunknown.com/2007/03'> March 2007 </option>
+	<option value='http://iunknown.com/2007/02'> February 2007 </option>
+	<option value='http://iunknown.com/2007/01'> January 2007 </option>
+	<option value='http://iunknown.com/2006/12'> December 2006 </option>
+	<option value='http://iunknown.com/2006/11'> November 2006 </option>
+	<option value='http://iunknown.com/2006/10'> October 2006 </option>
+	<option value='http://iunknown.com/2006/09'> September 2006 </option>
+	<option value='http://iunknown.com/2006/08'> August 2006 </option>
+	<option value='http://iunknown.com/2006/07'> July 2006 </option>
+	<option value='http://iunknown.com/2006/06'> June 2006 </option>
+	<option value='http://iunknown.com/2006/05'> May 2006 </option>
+	<option value='http://iunknown.com/2006/04'> April 2006 </option>
+	<option value='http://iunknown.com/2006/03'> March 2006 </option>
+	<option value='http://iunknown.com/2006/02'> February 2006 </option>
+	<option value='http://iunknown.com/2006/01'> January 2006 </option>
+	<option value='http://iunknown.com/2005/12'> December 2005 </option>
+	<option value='http://iunknown.com/2005/11'> November 2005 </option>
+	<option value='http://iunknown.com/2005/10'> October 2005 </option>
+ </select>
+</div><div id="twitter-1" class="widget widget_twitter"><h3><a href="http://twitter.com/john_lam" class="twitter_title_link">Tweets</a></h3><ul class="twitter"><li class="twitter-item"> <a href="http://twitter.com/shanselman" class="twitter-user">@shanselman</a> what does the csv editor do that excel doesn't? </li><li class="twitter-item"> Great idea: private philanthropy + federal government teaming up to fund education $1B now available in the I3 fund: <a href="http://bit.ly/9DPlMM" class="twitter-link">http://bit.ly/9DPlMM</a> </li><li class="twitter-item"> Great deck by Mary Meeker of Morgan Stanley on Internet Trends-data on disparity between old and new media: <a href="http://scr.bi/agHctt" class="twitter-link">http://scr.bi/agHctt</a> </li><li class="twitter-item"> RT <a href="http://twitter.com/chasejarvis" class="twitter-user">@chasejarvis</a>: insane footage at 100mph and 1000fps!  <a href="http://bit.ly/ddFjM5" class="twitter-link">http://bit.ly/ddFjM5</a> </li><li class="twitter-item"> 4 yo: mom, babies come out of your butt. 6 yo replies: no, babies come out of Virginia. </li><li class="twitter-item"> <a href="http://twitter.com/khurram" class="twitter-user">@khurram</a> word on the street (well, really a cafeteria conversation from yesterday) is 'soon'. </li><li class="twitter-item"> Matthew is really loving learning how to type using Typing Instructor: <a href="http://amzn.to/c5JXe9" class="twitter-link">http://amzn.to/c5JXe9</a> Recommended. </li><li class="twitter-item"> Ken Griffey Jr. calls it a career: <a href="http://bit.ly/cIkmjC" class="twitter-link">http://bit.ly/cIkmjC</a>  Probably my favorite player ever. </li><li class="twitter-item"> RT <a href="http://twitter.com/timoreilly" class="twitter-user">@timoreilly</a>: The internet is killing car culture <a href="http://bit.ly/aWCsoi" class="twitter-link">http://bit.ly/aWCsoi</a> Wow! % of 16-19 yr olds w driver's licenses in sharp decline! v ... </li><li class="twitter-item"> Hard ride. And of course the sun just came out now that I'm home! </li></ul></div>
+<div id="flickr" class="widget">
+	<h3 class="widget_title">Photos on <span>Flick<span>r</span></span></h3>
+	<div class="wrap">
+		<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=18&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=23649168@N00"></script>        
+		<div class="fix"></div>
+	</div>
+</div>
+
+		
+             
+	
+</div><!-- /#sidebar -->
+    </div><!-- /#content -->
+		
+    <!-- Footer Widget Area Starts -->
+	<div id="footer-widgets">
+		<div class="container col-full">
+            <div class="block">
+                		           
+            </div>
+            <div class="block">
+                		           
+            </div>
+            <div class="block last">
+                		           
+            </div>
+   			<div class="fix"></div>
+		</div>    
+    </div>
+    <!-- Footer Widget Area Ends -->
+
+	<div id="footer">
+		<div class="col-full">
+            <div id="copyright" class="col-left">
+                <p>&copy; 2010 John Lam on Software. All Rights Reserved.</p>
+            </div>
+            
+            <div id="credit" class="col-right">
+                <p>Powered by <a href="http://www.wordpress.org">Wordpress</a>. Designed by <a href="http://www.woothemes.com"><img src="http://iunknown.com/wp-content/themes/headlines/images/woothemes.png" width="87" height="21" alt="Woo Themes" /></a></p>
+            </div>
+		</div>
+	</div>
+	<!-- footer Ends -->
+	
+</div><!-- /#container -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12323255-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&amp;count=1"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: Events and RubyCLR</title>
+    <link>http://www.iunknown.com/articles/2006/01/12/events-and-rubyclr</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>Events and RubyCLR</title>
+      <description>&lt;p&gt;I got events up and running last night. It was a bit harder than I anticipated, and there&amp;#8217;s still a bit of work that needs to be done around marshaling, but this unit test now passes:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+public ref class CallbackTests {
+public:
+  event EventHandler^ Event;
+
+  void CallMeBack() {
+    Event(nullptr, EventArgs::Empty);
+  }
+};
+
+class EventTests &amp;lt; Test::Unit::TestCase
+  def test_simple_event
+    c = System::CallbackTests.new
+    c.Event do |sender, args|
+      assert_equal 1, 1
+    end
+    c.CallMeBack
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;</description>
+      <pubDate>Thu, 12 Jan 2006 10:20:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:d3b7ccb859e680ba580c0883c4531d7d</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/01/12/events-and-rubyclr</link>
+      <category>Thoughts</category>
+    </item>
+  </channel>
+</rss>

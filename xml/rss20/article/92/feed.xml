@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/stylesheets/rss.css"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Less is better: RubyCLR and Avalon</title>
+    <link>http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>John Lam on software</description>
+    <item>
+      <title>RubyCLR and Avalon</title>
+      <description>&lt;p&gt;Here&amp;#8217;s a teaser screenshot:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;img src="http://static.flickr.com/56/113024723_7bb322ce42_o.png" alt="" /&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;The integral was defined by this Ruby code:&lt;/p&gt;
+
+
+	&lt;p&gt;&lt;code&gt;integral('a', 'b', 'f(x) dx')&lt;/code&gt;&lt;/p&gt;
+
+
+	&lt;p&gt;The image that you see was rendered using the technology formerly known as Avalon. This is a part of the new sample application that will ship in the 3rd drop of RubyCLR (probably sometime tonight, or whenever I get enough time to type up a set of release notes). It will let you interactively create mathematical expressions in an Avalon application.&lt;/p&gt;
+
+
+	&lt;p&gt;I used &lt;a href="http://www.valil.com/winfx/math.html"&gt;Valentin Iliescu&amp;#8217;s&lt;/a&gt; most excellent &lt;code&gt;Math.Equations&lt;/code&gt; library to do the heavy lifting. Most of the equations that you see are really custom layout panels. Valentin graciously agreed over lunch to let me ship his assembly (only 45K) along with RubyCLR so that you can see this stuff in action.&lt;/p&gt;
+
+
+	&lt;p&gt;The domain specific language that I created for this sample is far from ideal; I gave myself a 1 day time window to create this sample, and I&amp;#8217;ve run out of time. If anyone out there is interested in improving the &lt;span class="caps"&gt;DSL&lt;/span&gt;, go for it (and please share!).&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s an excerpt of the &lt;span class="caps"&gt;DSL&lt;/span&gt; that defines the paragraph in the screenshot:&lt;/p&gt;
+
+
+&lt;pre&gt;&lt;code&gt;
+text 'The first fundamental theorem of calculus states that, if ', expr('f')
+text 'is continuous on the closed interval', expr('[a,b]'), 'and', expr('F')
+text 'is the is the antiderivative (indefinite integral) of ', expr('f')
+text 'on', expr('[a,b]'), ', then ', integral('a', 'b', 'f(x) dx = F(b) - F(a)'), '.'
+&lt;/code&gt;&lt;/pre&gt;
+
+	&lt;p&gt;You&amp;#8217;ll need to have the February 2006 WinFX &lt;span class="caps"&gt;CTP&lt;/span&gt; to run the &lt;span class="caps"&gt;WPF&lt;/span&gt; sample (but you won&amp;#8217;t need it to use any of the other code in the bridge).&lt;/p&gt;</description>
+      <pubDate>Wed, 15 Mar 2006 16:49:00 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:41762e8913eee53d26db9cd0675aeaad</guid>
+      <author>jlam@iunknown.com (John Lam)</author>
+      <link>http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon</link>
+      <category>Thoughts</category>
+    </item>
+    <item>
+      <title>"RubyCLR and Avalon" by John Lam</title>
+      <description>&lt;p&gt;I forget exactly where - it's along the coastline in central Oregon. I spent some time a few years ago doing some work at HP in Corvallis, and drove out to the coast after work one evening.&lt;/p&gt;</description>
+      <pubDate>Thu, 16 Mar 2006 21:31:03 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon#comment-401</link>
+    </item>
+    <item>
+      <title>"RubyCLR and Avalon" by Phil Tomson</title>
+      <description>&lt;p&gt;BTW: where is that lighthouse located (in the photo above)?&lt;/p&gt;</description>
+      <pubDate>Thu, 16 Mar 2006 21:24:25 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon#comment-400</link>
+    </item>
+    <item>
+      <title>"RubyCLR and Avalon" by John Lam</title>
+      <description>&lt;p&gt;I spent some time a couple of years ago being traumatized by LaTeX. I wasn't using it to format equations though, so I didn't look at that stuff at all. I'm going to leave working on the equations DSL to anyone who's interested. I've got my hands full trying to ship RubyCLR 1.0 :)&lt;/p&gt;</description>
+      <pubDate>Thu, 16 Mar 2006 20:46:19 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon#comment-399</link>
+    </item>
+    <item>
+      <title>"RubyCLR and Avalon" by Phil Tomson</title>
+      <description>&lt;p&gt;I like this equation DSL idea.  If you get it polished up some, it might be cool to have it emit LaTeX as an option - though, LaTeX formulas aren't all that bad once you get used to it, so maybe it wouldn't be used.&lt;/p&gt;
+
+&lt;p&gt;Have you taken a look at LaTeX for inspiration for your Equation DSL?&lt;/p&gt;</description>
+      <pubDate>Thu, 16 Mar 2006 19:22:07 -0800</pubDate>
+      <guid isPermaLink="false">urn:uuid:</guid>
+      <link>http://www.iunknown.com/articles/2006/03/15/rubyclr-and-avalon#comment-398</link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Foiled by csc.exe</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000294.html" title="VMWare 4.0 and Microsoft Windows versions" />
+
+<link rel="next" href="http://www.iunknown.com/000296.html" title="Improving OOBE for open source?" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000295.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/39"
+    dc:title="Foiled by csc.exe"
+    dc:identifier="http://www.iunknown.com/000295.html"
+    dc:subject=""
+    dc:description="I was writing a NAnt build script yesterday that compiles a number of separate projects. Some of these projects are really simple, and I felt that it was a waste to have to create a new Win32 process to host..."
+    dc:creator="John"
+    dc:date="2003-07-20T21:07:32-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000294.html">&laquo; VMWare 4.0 and Microsoft Windows versions</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000296.html">Improving OOBE for open source? &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">July 20, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Foiled by csc.exe</h3>
+
+<p>I was writing a NAnt build script yesterday that compiles a number of separate projects. Some of these projects are really simple, and I felt that it was a waste to have to create a new Win32 process to host csc.exe as it compiled the code. So today, I spent some time poking around with Reflector to see whether the <code>System.CodeDom</code> classes would let me host the C# compiler inside of the NAnt Win32 process. </p>
+
+<p>Unfortunately, this does not seem to be the case. If you decompile <code>System.CodeDom.Compiler.Compile()</code> using Reflector, you'll see that it simply shells out to csc.exe via the call to <code>Executor.ExecWaitWithCapture()</code>. This is somewhat disappointing since csc.exe is simply a wrapper around cscomp.dll, which exports a method called <code>CreateCompilerFactory()</code> which is called from csc.exe. </p>
+
+<p>I'm surprised that MS didn't choose to use <code>cscomp.dll</code> from <code>Microsoft.CSharp.CSharpCodeGenerator</code>. I would imagine that this would give <span class="caps">ASP.NET</span> a significant performance boost when compiling .aspx and related files since this avoids the overhead involved in calling <code>CreateProcess</code>. I'll have to hunt around a bit more in <code>System.Web.dll</code> to make sure that this isn't in fact the case.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at July 20, 2003 09:07 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=295" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="295" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000295.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>"I'll have to hunt around a bit more in System.Web.dll to make sure that this isn't in fact the case." -- I think you'll find it *is* the case, if you keep an eye on the processes you see csc.exe being spawned. Using SysInternals' process monitor it's more noticeable. Also if you look in Temporary ASP.NET Files you can see the *.cmdline files that are passed to csc.exe using the "@" command-line option.</p>
+<span class="comments-post">Posted by: Duncan Smart at July 22, 2003 03:45 PM</span>
+</div>
+<div class="comments-body">
+<p>Hey John,<br />
+I just saw this on the DOTNET-LANGUAGE-DEVS@DISCUSS.MICROSOFT.COM list today. The quote is from larsberg@MICROSOFT.COM. It kinda looks like Cscomp.dll isn't going to be supported going forward and that they don't consider the process creation cost significant. <br />
+Incidently with NAnt now supporting targetting multiple framework versions its easier to spawn different csc.exe's then it is to load and unload   the different versions of Cscomp.dll to ensure that the currect version is run. </p>
+
+<p>"This is from our C# compiler guru, Grant Richins:<br />
+Cscomp.dll is loaded in-process for the IDE scenario.  He is correct<br />
+that avoiding the call to CreateProcess would save some time, but by<br />
+running the compiler out-of-process, ASP.NET is able to isolate itself<br />
+even better by giving the compiler process very few privileges (at one<br />
+point the compiler couldn't even write to the temp directory!).  Also<br />
+any exception that happens in the compiler is completely isolated to the<br />
+compiler process and has no way to bring down all of ASP.NET.</p>
+
+<p>We had considered exposing a managed in-process C# compiler for ASP.NET<br />
+and the CodeDom.  In fact we even wrote the code (see<br />
+Microsoft.CSharp.Compiler), but when ASP.NET and the CodeDom decided not<br />
+to use it, we decided to deprecate it.  Its only real savings (besides<br />
+the unneeded CreateProcess) was that it could compile source code passed<br />
+in as strings and thus not cause file I/O, but I'm not sure if that<br />
+savings wasn't swallowed up by the cost of interop.  We wanted to remove<br />
+it entirely because we didn't have good test coverage for it, but too<br />
+late in our ship cycle we discovered some other teams had introduced<br />
+dependencies on this interface unbeknownst to us.  So we recommend<br />
+customers don't use it because we are planning on ripping it out in a<br />
+few versions.</p>
+
+<p>--Grant "<br />
+</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;ianm&#64;activestate&#46;com">Ian MacLean</a> at July 23, 2003 07:49 AM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

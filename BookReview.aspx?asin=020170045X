@@ -1,0 +1,174 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: Mastering Data Modeling: A User-Driven Approach
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=020170045X" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wMjAxNzAwNDVYLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPE1hc3RlcmluZyBEYXRhIE1vZGVsaW5nOiBBIFVzZXItRHJpdmVuIEFwcHJvYWNoOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxKb2huIENhcmxpcywgSm9zZXBoIE1hZ3VpcmU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQ0NC45NTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDQwLjQ2Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw0LjU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDU7Pj47Pjs7Pjt0PEA8aHR0cDovL3d3dy5hbWF6b24uY29tL2V4ZWMvb2JpZG9zL0FTSU4vMDIwMTcwMDQ1WC9yZWY9bm9zaW0vaXVua25vd25jb20tMjA7Pjs7Pjt0PHA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47PjtsPGk8MD47aTwxPjs+O2w8dDxAPFxlOz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz7aw8hhFq5tLKv2Htyb3XFB8Gc8kA==" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/020170045X.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">Mastering Data Modeling: A User-Driven Approach</span>
+        <div class="ItemDetail">By
+          <span id="Authors">John Carlis, Joseph Maguire</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$44.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$40.46</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">5</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/020170045X/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Very important book.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>7</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-09-11</span>
+                    </div>
+                    <span>The secret is out!<p>I've been using the techniques described in this book for years because one of the authors taught me.  I've used them to model data about research science, business, and topology.  Now others can learn it too.<p>Carlis cured me of normalization.  There's a difference between normalization and "normal forms".  A goal of modeling is to produce databases in high normal forms - Boyce-Codd Normal Form, fifth normal form, etc...  Most modelers think the only way to do this is through normalization, a specific process that step-by-step improves to a draft model.  This book shows how to avoid that process completely.  I used to do normalization.  Now I use the conversational techniques of this book to reach high normal forms sooner.  One thing I always hated about Normalization was that I usually did it after talking to users, which means I was making decisions that the users should have been making.  I have not performed normalization in at least ten years.  Yet I still produce databases in high normal form.  This book does include a chapter about normalization, with normal forms up to fifth, so you can see for yourself how the technique produces high-normal-form databases.  If you learned that normalization was essential part of data modeling, this chapter will help you learn this different way of working.  If you are new to data modeling, you should start with this book to avoid learning normalization altogether.  The principles of high normal forms are important, but the process of normalization is ludicrous.<p>This is a book about data modeling, not physical database design.  It concentrates on the modeling in users' language.  The naming conventions it recommends are based on guidelines of language and categories.  If you follow these naming guidelines, you will not need to learn a huge list of more specific, special-case naming rules.<p>I also like what Carlis and MaGuire say about constraints.  By following their constraint advice, I have become a much faster data modeler, and my team mates (programmers, DBAs) do not have to wait so long for me to finish my work.  It also helps me keep my data models flexible, good for a changing business environment.<p>This book has more examples than any book on modeling I have ever seen.  I stopped counting sample data models when I got to 300.<p>The hardest part of application design is understanding the user's data.  This book concentrates on solving that problem, leaving the technical details of database design to other books.</span>
+                  
+                    <div class="CustomerReviewSummary">Beware- there's alot more to Data Modeling than this!</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>3</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>19</span>
+                      /
+                      <span>24</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-11-20</span>
+                    </div>
+                    <span>I disagree that a person could become a "master" data modeler if the contents of this book are the complete set of skills in their arsenal. While the book outlines some good techniques for interviewing end users and basic data modeling skills, there is alot more involved in data modeling than what is covered here.<p>As an experienced data modeler who works with large, complex data models in a constantly changing business, I find I do not refer to this book at all. The book excludes common data modeling constructs that I have found very useful, including subtypes and supertypes. The book does not explain the difference between conceptual, logical, and physical data modeling. (It covers techniques used to capture conceptual/logical level data, but nowhere does it explain that or the difference between this type of model and a physical model, and why and when you'd need one or the other.) <p>The book does not cover normalization, which, once one leaves the interview with end users, one will need to understand. The book does not mention data integration with other systems or databases, how this topic is important and could (and often should) arise in interviews with end users.<p>Some of the topics covered I found shallow and incomplete, for example, how to name things in a data model. The authors take a parochial view by ignoring real world issues such as using consistent names across database and organizations, and avoiding naming things for what they are used for, not what they are.<p>As a practicing data modeler, I find my users aren't as naieve about data models as Carlis and Maguire assume them to be. I often am asked why I am modeling data in a given way. In my view, this book does not address the "why" - why do you model the data in the way suggested, and what happens if you don't. When I can answer these questions well for my customers, I earn approval, and this book doesn't equip one to do so.<p>In sum, my belief is that this book contains about 1/4 of the information a person needs to know to become a "master" data modeler. It's a good starter book if you are a novice data modeler or are having trouble gathering information from business subject matter experts, but if you really want to become an expert data modeler, I'd recommend continuing beyong this book. I prefer 'Data Modeling Essentials 2nd Edition' by Graeme  Simsion</span>
+                  
+                    <div class="CustomerReviewSummary">A practical and direct approach to data modeling</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>7</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-07-11</span>
+                    </div>
+                    <span>This book will be on my table always. It cuts through the computer science's obsession for esoteric notations and undue rigor (that scares the end users even before the analyst has had a chance to begin!) and puts the user needs at their right place: right in the center. I have used this methed several times now with exciting results. Users are more forthcoming, there are lesser I-thought-this-when-you-said-that instances. Two thumbs up for the excellent work!!!</span>
+                  
+                    <div class="CustomerReviewSummary">At last! A book about data modeling for users!</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>5</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-06-20</span>
+                    </div>
+                    <span>Messrs. Carlis and Maguire take the long overdue postition that data models should be tools for communicating an analyst's understanding of a business with the people in that business BEFORE communicating with technical designers.  This means that models should not be overly complex, should be described in plain language, and should be organized for presentation.  Their notation is a simplified version of information engineering that removes pieces that are confusing and actually of no consequence.  It is a refreshing change from the likes of the UML and IDEF1x.</span>
+                  
+                    <div class="CustomerReviewSummary">Excellent book, very efficient method</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>9</span>
+                      /
+                      <span>10</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2001-04-12</span>
+                    </div>
+                    <span>The book describes a method to structure any given sets of data according to generic rules. Eventhough my background does not allow me to judge the theoretical validity of the method, the book is easy to read and all the concepts are easy to understand and described in details.  I have applied the Carlis and Maguire method for modeling data in a small research group and it is brilliant. The method allows users to discuss their data in their own language and the modeler can build a logical representation which is understood and well accepted by the users. I will certainly use this book and the method for any future database design.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0471380237'>
+                      The Data Model Resource Book, Vol. 1: A Library of Universal Data Models for All Enterprises
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 23 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1558606726'>
+                      Information Modeling and Relational Databases: From Conceptual Analysis to Logical Design
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 9 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0126445516'>
+                      Data Modeling Essentials, Third Edition (Morgan Kaufmann Series in Data Management Systems)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 13 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0672318687'>
+                      Data Modeling with ERwin
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 3.5 based on 5 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0877090661'>
+                      Data Modeling
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 13 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

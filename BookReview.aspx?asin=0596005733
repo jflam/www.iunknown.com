@@ -1,0 +1,183 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: SQL Tuning
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=0596005733" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8wNTk2MDA1NzMzLjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFNRTCBUdW5pbmc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPERhbiBUb3c7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQzOS45NTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8JDI2LjM3Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw0LjU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDk7Pj47Pjs7Pjt0PEA8aHR0cDovL3d3dy5hbWF6b24uY29tL2V4ZWMvb2JpZG9zL0FTSU4vMDU5NjAwNTczMy9yZWY9bm9zaW0vaXVua25vd25jb20tMjA7Pjs7Pjt0PDtsPGk8MD47aTwxPjs+O2w8dDxAPEJvb2sgRGVzY3JpcHRpb247Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEEgcG9vcmx5IHBlcmZvcm1pbmcgZGF0YWJhc2UgYXBwbGljYXRpb24gbm90IG9ubHkgY29zdHMgdXNlcnMgdGltZSwgYnV0IGFsc28gaGFzIGFuIGltcGFjdCBvbiBvdGhlciBhcHBsaWNhdGlvbnMgcnVubmluZyBvbiB0aGUgc2FtZSBjb21wdXRlciBvciB0aGUgc2FtZSBuZXR3b3JrLiBTUUwgVHVuaW5nIHByb3ZpZGVzIGFuIGVzc2VudGlhbCBuZXh0IHN0ZXAgZm9yIFNRTCBkZXZlbG9wZXJzIGFuZCBkYXRhYmFzZSBhZG1pbmlzdHJhdG9ycyB3aG8gd2FudCB0byBleHRlbmQgdGhlaXIgU1FMIHR1bmluZyBleHBlcnRpc2UgYW5kIGdldCB0aGUgbW9zdCBmcm9tIHRoZWlyIGRhdGFiYXNlIGFwcGxpY2F0aW9ucy4gICBcPFBcPlRoZXJlIGFyZSB0d28gYmFzaWMgaXNzdWVzIHRvIGZvY3VzIG9uIHdoZW4gdHVuaW5nIFNRTDogaG93IHRvIGZpbmQgYW5kIGludGVycHJldCB0aGUgZXhlY3V0aW9uIHBsYW4gb2YgYW4gU1FMIHN0YXRlbWVudCBhbmQgaG93IHRvIGNoYW5nZSBTUUwgdG8gZ2V0IGEgc3BlY2lmaWMgYWx0ZXJuYXRlIGV4ZWN1dGlvbiBwbGFuLiBTUUwgVHVuaW5nIHByb3ZpZGVzIGFuc3dlcnMgdG8gdGhlc2UgcXVlc3Rpb25zIGFuZCBhZGRyZXNzZXMgYSB0aGlyZCBpc3N1ZSB0aGF0J3MgZXZlbiBtb3JlIGltcG9ydGFudDogaG93IHRvIGZpbmQgdGhlIG9wdGltYWwgZXhlY3V0aW9uIHBsYW4gZm9yIHRoZSBxdWVyeSB0byB1c2UuICAgXDxQXD5BdXRob3IgRGFuIFRvdyBvdXRsaW5lcyBhIHRpbWVzYXZpbmcgbWV0aG9kIGhlJ3MgZGV2ZWxvcGVkIGZvciBmaW5kaW5nIHRoZSBvcHRpbXVtIGV4ZWN1dGlvbiBwbGFuLS1yYXBpZGx5IGFuZCBzeXN0ZW1hdGljYWxseS0tcmVnYXJkbGVzcyBvZiB0aGUgY29tcGxleGl0eSBvZiB0aGUgU1FMIG9yIHRoZSBkYXRhYmFzZSBwbGF0Zm9ybSBiZWluZyB1c2VkLiBZb3UnbGwgbGVhcm4gaG93IHRvIHVuZGVyc3RhbmQgYW5kIGNvbnRyb2wgU1FMIGV4ZWN1dGlvbiBwbGFucyBhbmQgaG93IHRvIGRpYWdyYW0gU1FMIHF1ZXJpZXMgdG8gZGVkdWNlIHRoZSBiZXN0IGV4ZWN1dGlvbiBwbGFuIGZvciBhIHF1ZXJ5LiBLZXkgY2hhcHRlcnMgaW4gdGhlIGJvb2sgaW5jbHVkZSBleGVyY2lzZXMgdG8gcmVpbmZvcmNlIHRoZSBjb25jZXB0cyB5b3UndmUgbGVhcm5lZC4gU1FMIFR1bmluZyBjb25jbHVkZXMgYnkgYWRkcmVzc2luZyBzcGVjaWFsIGNvbmNlcm5zIGFuZCB1bmlxdWUgc29sdXRpb25zIHRvICJ1bnNvbHZhYmxlIHByb2JsZW1zLiIgICBcPFBcPldoZXRoZXIgeW91IGFyZSBhIHByb2dyYW1tZXIgd2hvIGRldmVsb3BzIFNRTC1iYXNlZCBhcHBsaWNhdGlvbnMgb3IgYSBkYXRhYmFzZSBhZG1pbmlzdHJhdG9yIG9yIG90aGVyIHdobyB0cm91Ymxlc2hvb3RzIHBvb3JseSB0dW5lZCBhcHBsaWNhdGlvbnMsIFNRTCBUdW5pbmcgd2lsbCBhcm0geW91IHdpdGggYSByZWxpYWJsZSBhbmQgZGV0ZXJtaW5pc3RpYyBtZXRob2QgZm9yIHR1bmluZyB5b3VyIFNRTCBxdWVyaWVzIHRvIGdhaW4gb3B0aW1hbCBwZXJmb3JtYW5jZS47Pj47Pjs7Pjs+Pjs+Pjs+Pjs+5djRBRbIDnqrvv6aXz2g3LwC/IM=" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/0596005733.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">SQL Tuning</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Dan Tow</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$39.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$26.37</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">4.5</span>
+          based on
+          <span id="TotalReviews">9</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/0596005733/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              <table id="EditorialReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Book Description:</DIV>
+                <span id="Label1">A poorly performing database application not only costs users time, but also has an impact on other applications running on the same computer or the same network. SQL Tuning provides an essential next step for SQL developers and database administrators who want to extend their SQL tuning expertise and get the most from their database applications.   <P>There are two basic issues to focus on when tuning SQL: how to find and interpret the execution plan of an SQL statement and how to change SQL to get a specific alternate execution plan. SQL Tuning provides answers to these questions and addresses a third issue that's even more important: how to find the optimal execution plan for the query to use.   <P>Author Dan Tow outlines a timesaving method he's developed for finding the optimum execution plan--rapidly and systematically--regardless of the complexity of the SQL or the database platform being used. You'll learn how to understand and control SQL execution plans and how to diagram SQL queries to deduce the best execution plan for a query. Key chapters in the book include exercises to reinforce the concepts you've learned. SQL Tuning concludes by addressing special concerns and unique solutions to "unsolvable problems."   <P>Whether you are a programmer who develops SQL-based applications or a database administrator or other who troubleshoots poorly tuned applications, SQL Tuning will arm you with a reliable and deterministic method for tuning your SQL queries to gain optimal performance.</span>
+              
+</td></tr></table>
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">The Best SQL Tuning book on the market</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-08-18</span>
+                    </div>
+                    <span>Having read most of the Oracle performance tuning books on the market, I have to say this is absolutely the best pure SQL tuning book you can buy. The author teaches a unique approach to SQL tuning. He uses 'graphs' to map out the best sql plans. Though the author is an Oracle specialist the technique works with all SQL databases. He does not provide tips for the best type of join or whether 'in is better than exists'. He teaches a repeatable methodology that works. So you can solve your SQL tuning issues without guessing. 
+<br />
+<br />I saw one negative review of this book and found the persons comments amateurish. His complaint was essentially that the author did not include information specifically about SQL Server that Microsoft gives away for free on their website and that many other books have repeatedly rehashed. 
+<br />
+<br /> </span>
+                  
+                    <div class="CustomerReviewSummary">Great coverage, an essential reference</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>3</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-06-11</span>
+                    </div>
+                    <span>If you are a DBA or developer, working daily with databases that support SQL, you need this book.  It covers in better detail than any other book I've seen, all the behind the scenes aspects of SQL.  What happens when you join, union or correlate queries?  How do you know you're hitting your indexes?  What new indexes do you need?  Unlike most IT reference books, this one should be read cover to cover but it holds up well as a quick reference on a topic as well.  Together with O'Reilly's SQL pocket guide by Jonathan Gennick, you have a formidable tool for creating and refining good SQL statements.</span>
+                  
+                    <div class="CustomerReviewSummary">Think through your query and  find a solid method.</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>2</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-03-31</span>
+                    </div>
+                    <span>I found this book helpful, and have started to use these techniques with success.  I specifically was pleased that the techniques are portable across different Database vendors.  <p>If I were the editor, I would have had the author expanded appendix A some with more application examples of the technique. But there was enough incomplete examples thru the book to get an understanding.</span>
+                  
+                    <div class="CustomerReviewSummary">Practical, exhaustive text</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-03-20</span>
+                    </div>
+                    <span>Disclaimer: I am the CTO of youDevise Ltd., a firm that distributes a product of the author's former employer, TenFold Corporation. I worked with him on performance tuning projects several years ago during his employment there.<p>I have been running high-volume performance tuning projects for the past four years, using both SQL Server and Oracle. Our products generate their SQL, so we cannot edit it; nevertheless, our job is to make that SQL run faster, normally with hints, indexes, and parameter changes. <p>I have observed Dan apply the method he describes in the book to help us resolve our performance problems, and it really does work as quickly and effectively as other reviewers describe. My teams and I have also tried tuning SQL ourselves, and _that_ is as difficult and ineffective as you might expect - on more than one occasion we've had to resort to hacks like denormalisation. The difference really is a few minutes versus several days.<p>After reading the book, I finally understand what Dan was doing that let him tune our SQL so effectively. The method is highly algorithmic - you follow a series of fairly simple steps to draw a graph and out pops a near-optimal query plan. Dan also describes how to influence your database to use the query plan you found with his method. <p>My team and I haven't had the chance to apply Dan's method yet, but it's very simple and I'm confident we will be able to do so. I plan to make the book required reading for the team before our next project.<p>My only complaint about the book - and it's quite a minor one - is that it doesn't cover open-source alternatives like mySQL or PostgreSQL. Applying the method to these alternative databases would be fairly simple, but coverage of the basics like identifying the query plan or influencing the optimiser would be nice to have under one cover.</span>
+                  
+                    <div class="CustomerReviewSummary">A "Must Have" book for DBA's and SQL Developers</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>5</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>6</span>
+                      /
+                      <span>6</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-02-27</span>
+                    </div>
+                    <span>For many years the process of SQL Tuning has been considered an "art". SQL tuning books written to date have presented guidelines and "things to try" but "SQL Tuning" by Dan Tow is different. This is the first book I have seen that presents a clear methodology to attack the problem in a scientific/mathematical way and includes a diagramming technique to visualize the components of a query that affect performance. Dan's book has gone a long way in helping to transform SQL tuning from an art to a science.<p>The first four chapters of the book cover some of the subjects that are found in other SQL tuning books, and focus on the important points without delving too deeply into database internals. The really "good stuff" is covered in chapters 5 through 10, which includes how to "draw" a query diagram, and the procedures to follow to derive an optimal join order. The problems/examples presented and resolved in these chapters help the reader get a start on understanding the methodology, which can then be applied to actual tuning problems as they are encountered.<p>So far I have applied this technique to about 20 tuning problems I have encountered on the job using the Oracle RDBMS. I still consider myself a relative novice in using the methodology, but for each of the 20 problems I have been able to significantly reduce elapsed time and resource consumption (gets/reads). Also, these results were achieved in a matter or hours, rather than days. The query diagram has even facilitated finding "missing joins" in some of the queries without having a knowledge of the particular application.<p>This book is a "must have" for DBA's and developers and I highly recommend it.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=059600527X'>
+                      Optimizing Oracle Performance
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 19 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596002688'>
+                      Oracle SQL Tuning Pocket Reference
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 2 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=007222729X'>
+                      Oracle Wait Interface: A Practical Guide to Performance Diagnostics & Tuning (Osborne ORACLE Press Series)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 22 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0201791692'>
+                      SQL Performance Tuning
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 7 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=1590593871'>
+                      Oracle Insights: Tales of the Oak Table
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 4 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

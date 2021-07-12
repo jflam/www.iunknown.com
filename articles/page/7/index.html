@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2005/12/05/refining-the-ruby-cil-dsl">Refining the Ruby CIL DSL</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 05 Dec 2005 22:41:00 GMT">Mon, 05 Dec 2005 22:41:00 GMT</span></p>
+<p>A bit more hacking today, and I&#8217;ve got a pretty complete implementation of my Ruby <span class="caps">CIL DSL</span>. Highlights include the new <code>include</code> directive for namespaces. Except for some corner cases, I handle all of <span class="caps">CIL</span> right now.</p>
+
+
+<pre><code>
+require 'RbDynamicMethod'
+
+RbDynamicMethod::create_ruby_method('say_hello') do
+  include  'System, System.Collections'
+  ldstr    'Hello, World, int = {0}, double = {1}'
+  ldc_i4   42
+  box      'Int32'
+  ldc_r8   3.141592654
+  box      'Double'
+  call     'static Console.WriteLine(String,Object,Object)'
+  br_s     'end_of_method'
+  ldstr    'Goodbye, World'
+  call     'static Console.WriteLine(String)'
+  label    'end_of_method'
+  ldc_i4_4
+  ret
+end
+
+RbDynamicMethod::say_hello
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/05/refining-the-ruby-cil-dsl#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/05/private-module-context-in-ruby">Private module context in Ruby</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 05 Dec 2005 16:07:00 GMT">Mon, 05 Dec 2005 16:07:00 GMT</span></p>
+<p>Here&#8217;s a <em>beautiful</em> little code frag that Robert Klemme posted to <code>ruby-talk</code> this morning. It solved an important problem that I had with my <a href="http://www.iunknown.com/articles/2005/12/04/why-ruby-rocks-for-dsls">CIL <span class="caps">DSL</span></a> that I posted last night. I didn&#8217;t really understand the alternative block syntax until I saw it used in this context:</p>
+
+
+<pre><code>
+module Bob
+  def method_missing(name, *params)
+    puts "missing: #{name}" 
+  end
+  def self.create(name, &#38;b)
+    obj = Object.new
+    obj.extend Bob
+    obj.instance_eval(&#38;b)
+    puts name
+  end
+end
+
+Bob::create('hi') do
+  ldstr
+  ldc_i4_0
+end
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/05/private-module-context-in-ruby#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/04/why-ruby-rocks-for-dsls">Why Ruby rocks for DSLs</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 05 Dec 2005 04:52:00 GMT">Mon, 05 Dec 2005 04:52:00 GMT</span></p>
+<p>I just did a quick hack tonight to test out some ideas for generating a <span class="caps">CLR </span><code>DynamicMethod</code> from Ruby. Here&#8217;s what I was able to accomplish:</p>
+
+
+<pre><code>
+include ILGenerator
+
+create_ruby_method('say_hello') do
+  ldstr    'Hello, World'
+  call     'static System.Console.WriteLine(System.String)'
+  ldc_i4_4
+  ret
+end
+
+say_hello
+</code></pre>
+
+	<p>Is that syntax lovely or what?</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/04/why-ruby-rocks-for-dsls#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/04/beyond-java">Beyond Java</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Sun, 04 Dec 2005 13:43:00 GMT">Sun, 04 Dec 2005 13:43:00 GMT</span></p>
+<p><a href="http://www.amazon.com/exec/obidos/ASIN/0596100949/ref=nosim/iunknowncom-20"><img src="http://images.amazon.com/images/P/0596100949.01._AA240_SCLZZZZZZZ_.jpg" alt="" /></a></p>
+
+
+	<p>I just finished reading Bruce Tate&#8217;s <a href="http://www.amazon.com/exec/obidos/ASIN/0596100949/ref=nosim/iunknowncom-20">Beyond Java</a> today. Yes, this book does read a lot like a <a href="http://pluralsight.com/blogs/dbox/archive/2005/11/10/16416.aspx">Ruby brochure</a>. However, if you&#8217;re coming from a statically typed background, you will definitely learn a lot about what makes dynamically typed languages powerful.</p>
+
+
+	<p>Bruce spends quite a lot of time trying to capture <em>why</em> dynamically typed languages are more productive than statically typed languages. It&#8217;s very difficult to explain this to other developers, and I feel this is the real value of his book. He gives reasonable explanations (everything is an object model simplfies APIs, and rapid feedback loops improve productivity), and includes lots of anecdotal evidence written by prominent members of the Java community.</p>
+
+
+	<p>It&#8217;s well worth your time and dollar investment to read this book. Yes, it is light on technical details, but that&#8217;s also a feature; you can give it to your manager to read :)</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/04/beyond-java#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/02/hello-world-using-dynamicmethods">Hello, World using DynamicMethods</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 02 Dec 2005 15:17:00 GMT">Fri, 02 Dec 2005 15:17:00 GMT</span></p>
+<p>My <a href="http://www.iunknown.com/articles/2005/10/26/building-bridges">Ruby bridge</a> makes extensive use of the new <code>DynamicMethod</code> API in .NET 2.0. Here&#8217;s a simple example that I showed in my talk at <a href="http://www.iunknown.com/articles/2005/12/02/ruby-and-winfx-in-kitchener">CTTDNUG</a>, that demonstrates how you can write &#8220;Hello, World&#8221; out to the console when someone clicks on a button on a Windows Forms app:</p>
+
+
+<pre><code>
+private void Form1_Load(object sender, EventArgs e) {
+  Type[] parameters = new Type[] { typeof(object), typeof(EventArgs) };
+  Module module = Assembly.GetExecutingAssembly().GetModules()[0];
+  DynamicMethod method = new DynamicMethod(String.Empty, typeof(void), 
+                             parameters, module);
+
+  ILGenerator g = method.GetILGenerator();
+  Type console = typeof(System.Console);
+  Type[] p = new Type[] { typeof(string) };
+  MethodInfo writeLine = console.GetMethod("WriteLine", p);
+
+  g.Emit(OpCodes.Ldstr, "Hello, World");
+  g.Emit(OpCodes.Call, writeLine);
+  g.Emit(OpCodes.Ret);
+
+  button1.Click += (EventHandler)method.CreateDelegate(typeof(EventHandler));
+}
+</code></pre>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/02/hello-world-using-dynamicmethods#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/12/02/ruby-and-winfx-in-kitchener">Ruby and WinFX in Kitchener</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 02 Dec 2005 15:01:00 GMT">Fri, 02 Dec 2005 15:01:00 GMT</span></p>
+<p><img src="http://static.flickr.com/12/69368747_ef2140186a.jpg?v=0" alt="" /></p>
+
+
+	<p>It was a fun time at the <a href="http://www.cttdnug.org/DesktopDefault.aspx?tabid=104">CTTDNUG</a> user group meeting in Kitchener on Wednesday. I&#8217;d like to thank <a href="http://geekswithblogs.net/dtotzke/">Dave Totzke</a> for inviting me out to speak, and everyone attending for taking some time out of their evening to learn a bit more about an obscure little language called Ruby (and a not-so-obscure set of frameworks called WinFX).</p>
+
+
+	<p>Hopefully I&#8217;ve inspired some of you to think a little differently about programming languages and how they can influence the way you think about solving problems.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/personal" rel="category tag">Life</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/12/02/ruby-and-winfx-in-kitchener#comments">2 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/30/tryruby">TryRuby</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 30 Nov 2005 17:57:41 GMT">Wed, 30 Nov 2005 17:57:41 GMT</span></p>
+<p>If you&#8217;ve got 15 minutes and have never tried Ruby before, head on over to <a href="http://tryruby.hobix.com">Try Ruby</a> where you&#8217;ll find a Ruby interactive command prompt waiting for you.</p>
+
+
+	<p>If you like the 15 minute experience enough to actually install some software (and you&#8217;re a Windows user), try the <a href="http://rubyforge.org/projects/rubyinstaller/">one-click Ruby installer</a></p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/30/tryruby#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/30/embed-movies-in-powerpoint">Embed movies in PowerPoint</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 30 Nov 2005 15:49:00 GMT">Wed, 30 Nov 2005 15:49:00 GMT</span></p>
+<p>There was something <em>really</em> special about <a href="http://blog.zenspider.com/">Ryan Davis&#8217;</a> excellent ZenHacks talk at RubyConf 2005. It took me a while to figure out what was going on, but it initially looked to me like he was typing code into a command shell embedded in the middle of his Keynote slide deck. As it turned out, he was playing QuickTime movies from within his slide deck, which let him give the <em>feel</em> of a live coding session, but with better commentary since he didn&#8217;t have to think, talk and type at the same time.</p>
+
+
+	<p>I decided to try the same approach for my talk tonight. However, I quickly ran into a large number of technical blocking issues. Here&#8217;s a set of notes to help anyone else that&#8217;s trying to use this technique.</p>
+
+
+	<p>1) <a href="http://www.techsmith.com/">Camtasia</a> rocks. I have a full license for <a href="http://www.macromedia.com/software/robodemo/">Captivate</a> but I think I&#8217;m going to pony up the cash for Camtasia as well. The main reason for the switch is the ability to create <span class="caps">WMV</span> files directly from Camtasia.</p>
+
+
+	<p>2) Your screen cast video will look really crappy if it is scaled. The main problem with PowerPoint is that it <strong>insists</strong> on scaling your video to whatever your output device resolutiion is. One way to get around this is to force the slide show resolution to a fixed resolution (I used 1024&#215;768):</p>
+
+
+	<p><img src="images/screen_resolution.png" alt="" /></p>
+
+
+	<p>Next, you must force the size of your video clip to be a fixed size (7.8125&#8221; works for an 800&#215;600 movie using the default PowerPoint slide sizes).</p>
+
+
+	<p>3). Setup your video to play automatically. This makes for a much more seamless experience when you land on a slide with a video. I had a really hard time making things work the way I wanted with <span class="caps">SWF</span> files generated by Captivate, which was a major reason why I&#8217;m considering ponying up the $$$ to buy Camtasia (it&#8217;s not cheap either, but a good deal cheaper than Captivate).</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/30/embed-movies-in-powerpoint#comments">1 comment</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/29/matthews-birthday-present">Matthew's Birthday Present</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Tue, 29 Nov 2005 05:52:00 GMT">Tue, 29 Nov 2005 05:52:00 GMT</span></p>
+<p>I just finished updating Matthew&#8217;s Birthday Present for the <span class="caps">RTM</span> release of .NET 2.0. I&#8217;ll be unveiling <a href="http://www.cttdnug.org/DesktopDefault.aspx?tabid=104">Matthew&#8217;s second birthday present</a> at the Canada Technology Triangle .NET User Group meeting Wednesday, November 30, 2005.</p>
+
+
+	<p>It should be a really fun talk. You&#8217;ll see the culmination of several months of late night hacking. Among the things you will see are:</p>
+
+
+	<ul>
+	<li>Indigo</li>
+		<li>Avalon</li>
+		<li>Managed C++</li>
+		<li><span class="caps">CIL</span></li>
+		<li>Ruby</li>
+	</ul>
+
+
+	<p>With the exception of <span class="caps">WWF</span>, it will be pretty much a lap around WinFX, but done using Ruby :)</p>
+
+
+	<p>It looks like I&#8217;ll have quite the crowd there: <del>104</del> 113 registered as of right now. Hope to see you there!</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/29/matthews-birthday-present#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/28/torcamp">TorCamp</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Mon, 28 Nov 2005 14:57:00 GMT">Mon, 28 Nov 2005 14:57:00 GMT</span></p>
+<p><a href="http://www.flickr.com/photos/23649168@N00/67605248/"><img src="http://static.flickr.com/24/67605248_fc147dbc3a.jpg" alt="" /></a></p>
+
+
+	<p>This was <a href="http://barcamp.org/index.cgi?TorCamp">TorCamp</a> weekend in Toronto. And what a weekend it was. For the longest time, it felt quite isolating to be a geek living in Toronto (at least relative to places like Seattle or San Francisco). Sure, there&#8217;s a vibrant .NET developer community in Toronto, but most of that community is focused on &#8220;corporate&#8221; apps, and far less on innovative uses of the technology (aka startups).</p>
+
+
+	<p><a href="http://www.objectsharp.com">ObjectSharp</a> was proud to be a sponsor of the initial run of the conference. I met a lot of really interesting folks at the event that I&#8217;m sure I&#8217;ll be having a lot more interesting follow-up conversations with in the near future. A <strong>big</strong> thanks goes out to <a href="http://davidcrow.ca/">David Crow</a> for making this event happen.</p>
+
+
+	<p>Check out the <a href="http://www.flickr.com/photos/tags/torcamp/">flickr group</a> for some images from the conference. I love the space that <a href="http://www.teehanlax.com/">teehan+lax</a> provided for hosting the conference.</p>
+
+
+	<p>The best thing about this conference was the cross-fertilization of ideas that can happen when you get a bunch of folks from different walks of life having informed conversations and debates. <a href="http://www.braithwaite-lee.com/weblog/2005/11/torcamp.html">Reg Braithwaite</a> gave a nice talk about the importance of context in applications ranging from search to advertising to project management(!). <a href="http://blog.davidjanes.com/">David Janes</a> gave a very cool demo about metadata, microcontent, blogging, and greasemonkey. I met Albert Lai, whose company, <a href="http://www.bubbleshare.com/about/">BubbleShare</a> is actually using Ruby and .NET to build their innovative photo sharing service. Lots of other interesting hallway conversations too numerous to recount here.</p>
+
+
+	<p>I spent some time talking to a small group of folks about bridging Ruby and the <span class="caps">CLR </span>(this wasn&#8217;t really the right crowd to be giving a talk like this to). It started out small, but eventually turned into a 1:1 conversation between myself and <a href="http://shaver.off.net/diary/">Mike Shaver</a> of Mozilla about the difficulties of avoiding memory leaks in a process that is running multiple GC-based allocators based on his experience with Mono + Firefox. It&#8217;s definitely something that I need to spend some more time thinking about.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/28/torcamp#comments">no comments</a></p> 
+  </div>
+
+
+  <p id="pagination">Older posts: <a href="/articles/page/1">1</a> ...  <a href="/articles/page/5">5</a> <a href="/articles/page/6">6</a> 7 <a href="/articles/page/8">8</a> <a href="/articles/page/9">9</a> <a href="/articles/page/10">10</a></p>
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/94578381/"><img alt="amazon" src="http://static.flickr.com/22/94578381_8b6056d9e7_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102769655/"><img alt="Google Calculator using RubyCLR" src="http://static.flickr.com/27/102769655_160658c51e_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102310404/"><img alt="Ruby RSS Reader" src="http://static.flickr.com/36/102310404_c16b55d745_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102353551/"><img alt="RSS Reader in Ruby" src="http://static.flickr.com/43/102353551_a14d82507d_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03/page/7">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02/page/7">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01/page/7">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12/page/7">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11/page/7">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10/page/7">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

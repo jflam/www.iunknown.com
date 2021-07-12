@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Win-Dev 2003 Wrap-up</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000275.html" title="From AOP to Code Generation" />
+
+<link rel="next" href="http://www.iunknown.com/000277.html" title="Microsoft Patterns and Practices" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000276.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/20"
+    dc:title="Win-Dev 2003 Wrap-up"
+    dc:identifier="http://www.iunknown.com/000276.html"
+    dc:subject=""
+    dc:description="It was my shortest appearance ever at a Win-Dev conference. I flew in Thursday morning and flew home Friday evening. In between, I gave 6 talks, and had an opportunity to catch up with some old friends at DevelopMentor that..."
+    dc:creator="John"
+    dc:date="2003-06-24T11:58:00-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000275.html">&laquo; From AOP to Code Generation</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000277.html">Microsoft Patterns and Practices &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">June 24, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Win-Dev 2003 Wrap-up</h3>
+
+<p>It was my shortest appearance ever at a <a href="http://butrain.com/windev/">Win-Dev</a> conference. I flew in Thursday morning and flew home Friday evening. In between, I gave 6 talks, and had an opportunity to catch up with some old friends at <a href="http://www.develop.com">DevelopMentor</a> that I haven't seen in quite some time. I also had fun hanging out with <a href="http://samgentile.com/blog/">Sam Gentile</a> and <a href="http://www.ingorammer.com/Weblog/">Ingo Rammer</a> again. On Friday, Ingo introduced me to another blogger who was attending the conference, <a href="http://urbanasylum.dynu.com/JustTheFacts/">Ethan Brown</a>. We had fun wandering around lost on the <span class="caps">MIT</span> campus on Friday afternoon.</p>
+
+<p>Due to a mistake at the printers' the slides for my Web Forms Internals talk didn't make it into the printed books. So, as a community service, I'm posting <a href="http://www.iunknown.com/Files/windev_2003.zip">a <span class="caps">ZIP</span> file that contains my slides and demos</a> for all of the talks that I gave this year at Win-Dev.</p>
+
+<p>What was interesting for me this year at Win-Dev was that my talks were evenly divided between <em>technology</em> talks (VS.NET Debugger, Flash <span class="caps">MX, </span>Web Forms Internals) and <em>technique</em> talks (AOP to Code Generation Parts 1 and 2, and NUnit / NAnt). You could argue that my Web Forms talk wasn't really a technology talk, but instead it was a talk about reverse-engineering techniques. </p>
+
+<p>Personally, I enjoyed giving the technique talks more than the technology talks. I guess part of it reflects the fact that I've been giving technology talks for far too long. Technique talks are far more interesting to me these days, and I feel that they have a longer-lasting impact on attendees than listening to a talk on how to use the <span class="caps">ADO.NET API,</span> for example. </p>
+
+<p>I think I successfully infected at least several people with the code generation bug at my talks. Some folks had been struggling with writing code generation tools using System.CodeDOM. But as most folks who have used that technology have found out, it's <em>really</em> hard to maintain a code generator that creates <span class="caps">AST</span>'s, as opposed to a code generator that creates source code files. </p>
+
+<p>Thanks again to all who attended my talks. Friday rocked in particular, since the room was packed, and those were the talks that I really wanted to give. My apologies to the folks who had to sit on the floor ... Next time, I'll have much more cool code generation stuff to talk about. I look forward to meeting y'all again!</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at June 24, 2003 11:58 AM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=276" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="276" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000276.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>The zip archive seems to be invalid.  Could you test it and repost?  Thanks!</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.blowery.org">ben</a> at June 25, 2003 12:09 PM</span>
+</div>
+<div class="comments-body">
+<p>I also got the "invalid archive" error when downloading using Mozilla Firebird. Then I tried with IE, and this time it worked. Perhaps it's a download manager problem?</p>
+<span class="comments-post">Posted by: Povl at June 26, 2003 11:20 AM</span>
+</div>
+<div class="comments-body">
+<p>I checked the archive, and it seemed to work fine over here. Perhaps your browser cache is corrupt? Try deleting the temporary files in your cache and download again.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at June 26, 2003 11:49 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi John,</p>
+
+<p>Really enjoyed your talks at Win-Dev.  I started using NUnit and NAnt as soon as I got back to the office.  I'm looking into how I can use GSLGen now.</p>
+
+<p>Thanks again,</p>
+
+<p>Jeff</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.compuware.com/products/devpartner/1560_ENG_HTML.htm">Jeff Simmons</a> at June 26, 2003 02:20 PM</span>
+</div>
+<div class="comments-body">
+<p>I'm glad you enjoyed the talks, Jeff! Let me know how things go with GSLgen. Cappy left all excited about the prospects for using GSLgen in place of CodeDOM when he left the conference.</p>
+<span class="comments-post">Posted by: <a target="_blank" href="http://www.iunknown.com">John Lam</a> at June 26, 2003 02:54 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

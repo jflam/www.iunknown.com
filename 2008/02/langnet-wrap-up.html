@@ -1,0 +1,668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	
+	<meta name="description" content="The last time Lang.net was held (around 18 months ago), I made up my mind to start the process of coming to Microsoft. OK, it was the bright lights and mind conditioning in the back room that made me come..." />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared-typepad/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: Lang.net wrap-up</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2008/01/latest-dlr-host.html?no_prefetch=1" title="Latest DLR Hosting Spec" />
+	<link rel="next" href="http://www.iunknown.com/2008/02/ironruby-sun-an.html?no_prefetch=1" title="IronRuby, Sun, and Lang.net" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2008/02/langnet-wrap-up.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/25704386"
+    dc:title="Lang.net wrap-up"
+    dc:identifier="http://www.iunknown.com/2008/02/langnet-wrap-up.html"
+    dc:description="The last time Lang.net was held (around 18 months ago), I made up my mind to start the process of coming to Microsoft. OK, it was the bright lights and mind conditioning in the back room that made me come..."
+    dc:creator="John Lam"
+    dc:date="2008-02-01T09:02:52-08:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2008/01/latest-dlr-host.html">&laquo; Latest DLR Hosting Spec</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2008/02/ironruby-sun-an.html">IronRuby, Sun, and Lang.net &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">February 01, 2008</h2>
+
+
+<div class="entry" id="entry-44994240">
+			<h3 class="entry-header">Lang.net wrap-up</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p><a title="Snow! by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2231515899/"><img height="500" alt="Snow!" src="http://farm3.static.flickr.com/2076/2231515899_6f9528bd3b.jpg" width="331" /></a></p>
+
+<p>The last time <a href="http://www.langnetsymposium.com/">Lang.net</a> was held (around 18 months ago), I made up my mind to start the process of coming to Microsoft. OK, it was the bright lights and mind conditioning in the back room that made me come but I digress ...</p>
+
+<p>This time around, it was fun seeing the show from the other side of the fence. That meant, of course, that I had to sit in the cheap seats so that the 'paying' customers could have the good seats up front. The show didn't disappoint.</p>
+
+<p>I'm not going to go into a blow-by-blow account of everything that happened at the show. Ted Neward does an excellent job of that in these posts: <a href="http://blogs.tedneward.com/2008/01/29/Highlights+Of+The+LangNET+Symposium+Day+One.aspx">Day 1</a>, <a href="http://blogs.tedneward.com/2008/01/30/Highlights+Of+The+LangNET+Symposium+Day+Two.aspx">Day 2</a>, <a href="http://blogs.tedneward.com/2008/01/31/Highlights+Of+The+LangNET+Symposium+Day+Three+From+Memory.aspx">Day 3</a>.</p>
+
+<p>As usual, the show had a great mix of folks from inside and outside of the company, as well as folks from the .NET and JAVA communities. Even PHP was represented. The following is a random summary of things that I thought were particularly interesting / noteworthy.</p>
+
+<p><a href="http://blogs.msdn.com/jasonz/">Jason Zander</a> and <a href="http://www.pluralsight.com/blogs/dbox/">Don Box</a> were the book-ends of the conference. Jason led off with a look back at the <a href="http://blogs.msdn.com/jasonz/archive/2007/11/23/couple-of-historical-facts.aspx">early history of the CLR</a>, and actually dug up some old emails from that era. Don capped off the talk with a look back at how the history of [meta]data from /SUBSYSTEM:CONSOLE to XAML and a look forward to the promise of declarative programming (no secrets were harmed in the making of his talk though).</p>
+
+<p><a href="http://www.microsoft.com/presspass/exec/techfellow/Hejlsberg/default.mspx">Anders Hejlsberg</a> reviewed where C# 3.0 is today, and foreshadows the eventual convergence of languages. We see some hints of that today in F#, which combines functional, imperative and OO paradigms. It was a great look at how the set of features in C# 3.0 when combined create a whole that is greater than the sum of its parts.</p>
+
+<p><a href="http://blogs.msdn.com/hugunin/">Jim Hugunin</a> did a reprise of his 'what does daddy do at work talk?'. Of course, if you've seen Jim do a talk in the last year or so you couldn't miss the robot that usually accompanies him:</p>
+
+<p><a title="Jim Hugunin and Friend by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2232308534/"><img height="500" alt="Jim Hugunin and Friend" src="http://farm3.static.flickr.com/2246/2232308534_8a2cd2f32e.jpg" width="331" /></a></p>
+
+<p>The take home message in his talk is that 'sharing is good', which explains a lot of the motivation behind the DLR.</p>
+
+<p><a href="http://blogs.msdn.com/mmaly/">Martin Maly</a> (the LOLCODE king) did an excellent talk on building a language on the DLR. He showed how to add nodes to the ToyScript AST, and how to use DLR features to make that code run faster. Martin is the DLR AST dev, and is blogging up a storm on how to use his baby to implement your language.</p>
+
+<p><a title="Martin &quot;LOLCODE&quot; Maly by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2231514613/"><img height="500" alt="Martin &quot;LOLCODE&quot; Maly" src="http://farm3.static.flickr.com/2239/2231514613_95234846b9.jpg" width="331" /></a></p>
+
+<p><a href="http://research.microsoft.com/~emeijer/">Erik Meijer</a> did his best mad scientist imitation with a look at <a href="http://labs.live.com/volta/">Volta</a>. Volta is his project that lets you build web apps using nothing more than your favorite CLR language. Volta's big feature is 'tier splitting', where it handles the details of partitioning your app into the parts that run on the client and those that run on the server. The client parts can run on a client-side CLR (if one is installed) or it can run on JavaScript (via a CIL -&gt; JavaScript transform). It's a cool idea, and worth taking time to look into.</p>
+
+<p><a title="Erik Meijer by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2232309686/"><img height="500" alt="Erik Meijer" src="http://farm3.static.flickr.com/2334/2232309686_facc5c742d.jpg" width="331" /></a></p>
+
+<p><a href="http://blog.dotnetwiki.org/">Peli de Halleux</a> talked about <a href="http://research.microsoft.com/pex/">Pex</a> - a very cool dynamic analysis framework that generates test cases for your app. You should carve out a chunk of time to watch their most excellent 5 minute <a href="http://research.microsoft.com/pex/screencast.aspx">screencast on Pex</a>.</p>
+
+<p><a href="http://blogs.extremeoptimization.com/Jeffrey/Default.aspx">Jeffrey Sax</a> gave a talk that could have been titled &quot;N reasons why the CLR sucks for numerical computing&quot;. But Jeffrey is too polite for that, but instead presented a very critical look at the parts of the CLR that warrant improvement. He got most of the analysis correct, and a bunch of folks including <a href="http://blogs.msdn.com/vancem/">Vance Morrison</a> (the CLR perf architect) had a chance to follow up with him directly after his talk. That's a great example of the value of gatherings like this to get folks together in a room to have an open and frank conversation.</p>
+
+<p><a title="Jeffrey Sax by John Lam, on Flickr" href="http://www.flickr.com/photos/john_lam/2231510069/"><img height="331" alt="Jeffrey Sax" src="http://farm3.static.flickr.com/2203/2231510069_445a363ce1.jpg" width="500" /></a></p>
+
+<p>Of course, <a href="http://tirania.org/blog/">Miguel de Icaza</a> didn't disappoint in his talk. Split into several 'themes', he talked about Moonlight, how it happened, where it is today, and where it can go. Miguel's talks are interesting because they are about people as well as technology. He tells the behind-the-scenes story which engages with a primitive part of our brains. The story about <a href="http://evain.net/blog/"><del>JB Evain's</del></a> <a href="http://blogs.codehaus.org/people/bamboo/">Rodrigo de Oliveira's</a> 20 hour hack to create a statically typed JavaScript-esque language from Boo, and how it is used to make video games in <a href="http://unity3d.com/unity/">Unity</a>, was awesome.</p>
+
+<p>*</p>
+
+<p>For those of you who are wondering about Ruby and Lang.net, <del>there will be</del> <a href="http://www.iunknown.com/2008/02/ironruby-sun-an.html">here's a separate post</a> about all that fun stuff :)</p>
+
+<p>*</p>
+
+<p>I'm a huge fan of <a href="http://www.gretchenrubin.com/">Gretchen Rubin's</a> <a href="http://www.happiness-project.com/">The Happiness Project</a>. If you're a parent, go visit her wonderful multimedia story: <a href="http://www.theyearsareshort.com/">The Years Are Short</a>. You won't be disappointed.</p>
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2008%2F02%2Flangnet-wrap-up.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 09:02 AM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2008/02/langnet-wrap-up.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/25704386</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html">Lang.net wrap-up</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+
+        
+        <a id="comments"></a>
+	<div class="comments" id="all-comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content" id="comments-content">
+                <!-- comment list -->	<a id="c99577674"></a>
+	<div class="comment comment-odd" id="comment-99577674">
+		<div class="comment-content" id="comment-99577674-content">
+			
+			<span id="comment-99577674-content"><p>Hey John.</p>
+
+<p>Ah, I wish I was there... Hopefully next time!</p>
+
+<p>Let's give back to Ceasar what is Cesar, it's Rodrigo who created the JavaScriptish language for Unity, not me. But we're still working on extracting that, would be nice to have that ready for the 2009 edition of lang.net.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://evain.net/blog/" href="http://evain.net/blog/">Jb Evain</a> |
+			<a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html#comment-99577674">February 01, 2008 at 09:23 AM</a>
+		</p>
+	</div>	<a id="c99612018"></a>
+	<div class="comment comment-even" id="comment-99612018">
+		<div class="comment-content" id="comment-99612018-content">
+			
+			<span id="comment-99612018-content"><p>Oh man, I can't believe I missed that. Last time was awesome. We're not doing a very good job of promoting that event internally...</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://weblogs.asp.net/bleroy" href="http://weblogs.asp.net/bleroy">Bertrand Le Roy</a> |
+			<a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html#comment-99612018">February 01, 2008 at 12:46 PM</a>
+		</p>
+	</div>	<a id="c99613754"></a>
+	<div class="comment comment-odd" id="comment-99613754">
+		<div class="comment-content" id="comment-99613754-content">
+			
+			<span id="comment-99613754-content"><p>@JB: Yikes- will fix that. But I blame Miguel - he even used your full name when he said that :)</p>
+
+<p>@Bertrand: Well, it is as much my fault as anyone else's. During my blogging 'pause' that happened last year I forgot to promote the conference here ...</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html#comment-99613754">February 01, 2008 at 12:58 PM</a>
+		</p>
+	</div>	<a id="c99745074"></a>
+	<div class="comment comment-even" id="comment-99745074">
+		<div class="comment-content" id="comment-99745074-content">
+			
+			<span id="comment-99745074-content"><p>Liked the talk on Managed JScript.</p>
+
+<p>I was surprised at the implementation detail being disclosed (given how closed Microsoft have been about Javascript on the DLR). Does this mean we can see Managed JScript on codeplex soon?</p>
+
+<p>Cheers.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Nigel Smith |
+			<a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html#comment-99745074">February 02, 2008 at 03:45 PM</a>
+		</p>
+	</div>	<a id="c99837968"></a>
+	<div class="comment comment-odd" id="comment-99837968">
+		<div class="comment-content" id="comment-99837968-content">
+			
+			<span id="comment-99837968-content"><p>@Nigel: I don't know what the plan is for Managed JScript. I have no idea whether we'll keep it closed source as it is today vs. open sourcing it down the road sometime.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.iunknown.com">John Lam</a> |
+			<a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html#comment-99837968">February 03, 2008 at 02:25 PM</a>
+		</p>
+	</div>	<a id="c100104820"></a>
+	<div class="comment comment-even" id="comment-100104820">
+		<div class="comment-content" id="comment-100104820-content">
+			
+			<span id="comment-100104820-content"><p>Well, lang.net wasn't really advertised as it didnt need it this time around (internally/externally). </p>
+
+<p>It "sold out" pretty fast and we were limited to 80 folks given our facilities here. </p>
+
+<p>My goal is to get this to be larger next time around (~100 or so) and will post a bit earlier.</p></span>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Mahesh Prakriya |
+			<a href="http://www.iunknown.com/2008/02/langnet-wrap-up.html#comment-100104820">February 05, 2008 at 12:53 PM</a>
+		</p>
+	</div>
+
+		</div>
+        
+	</div>
+    
+    	<!-- comment form -->
+	<script type="text/javascript" src="/.shared-typepad/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="44994240" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=44994240">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=44994240">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+    
+    	
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							
+<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div><div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div><div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div><div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html#comment-144059420">John Lam</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html#comment-144046532">Hassan</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html#comment-143999724">ben</a> on <a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html#comment-143959520">John Lam</a> on <a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html#comment-143951840">Ben Hollis</a> on <a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html#comment-143943310">Rob Fahrni</a> on <a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html#comment-143934428">Justin Chase</a> on <a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html#comment-143891932">fanweixiao</a> on <a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html#comment-143702194">Lars</a> on <a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/05/silverlight_do_.html#comment-141831038">Alt experienced user</a> on <a href="http://www.iunknown.com/2007/05/silverlight_do_.html">Silverlight: do you love it or hate it?</a></li>
+			
+		</ul>
+	</div>
+</div>	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">Disable that annoying beep on Thinkpads when resuming from Sleep</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/hello-2009.html">Hello, 2009</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/pdc-2008-wrap-up.html">PDC 2008 Wrap-up</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/the-fukuoka-ruby-delegation.html">The Fukuoka Ruby Delegation</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/my-dev-kit.html">My Dev Kit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/ironruby-at-oscon.html">IronRuby at OSCON</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-and-aspnet-mvc.html">IronRuby and ASP.NET MVC</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/ironruby-at-tech-ed-2008.html">IronRuby at Tech Ed 2008</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/ironruby-and-rails.html">IronRuby and Rails</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">MVP Summit Ruby Meetup</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2009/01/index.html">January 2009</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/10/index.html">October 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/09/index.html">September 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/08/index.html">August 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/07/index.html">July 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/06/index.html">June 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/05/index.html">May 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/index.html">April 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">January 2009</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/01/hello-2009.html">1</a></td>
+				
+							
+					<td><a href="http://www.iunknown.com/2009/01/disable-that-annoying-beep-on-thinkpads-when-resuming-from-sleep.html">2</a></td>
+				
+							
+					<td>3</td>
+				</tr>
+							<tr>
+					<td>4</td>
+				
+							
+					<td>5</td>
+				
+							
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				</tr>
+							<tr>
+					<td>11</td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				</tr>
+							<tr>
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				</tr>
+							<tr>
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>31</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

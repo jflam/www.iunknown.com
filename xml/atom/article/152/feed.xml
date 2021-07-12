@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+  <title>Less is better: New developments in Ruby to .NET integration</title>
+  <subtitle type="html">John Lam on software</subtitle>
+  <id>tag:www.iunknown.com,2005:Typo</id>
+  <generator uri="http://www.typosphere.org" version="4.0">Typo</generator>
+  <link href="http://www.iunknown.com/xml/atom/article/152/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="http://www.iunknown.com/articles/2006/05/24/new-developments-in-ruby-to-net-integration" rel="alternate" type="text/html"/>
+  <updated>2006-08-21T15:55:42-07:00</updated>
+  <entry>
+    <author>
+      <name>John Lam</name>
+      <email>jlam@iunknown.com</email>
+    </author>
+    <id>urn:uuid:a37a17082cf903fe04550afd56185f97</id>
+    <published>2006-05-24T22:04:00-07:00</published>
+    <updated>2006-08-21T15:55:42-07:00</updated>
+    <title type="html">New developments in Ruby to .NET integration</title>
+    <link href="http://www.iunknown.com/articles/2006/05/24/new-developments-in-ruby-to-net-integration" rel="alternate" type="text/html"/>
+    <category term="links" scheme="http://www.iunknown.com/articles/category/links" label="Props"/>
+    <summary type="html">&lt;p&gt;There are a couple of new projects in the Ruby / &lt;span class="caps"&gt;CLR&lt;/span&gt; space that I should point to:&lt;/p&gt;
+
+
+	&lt;p&gt;1) Wilco Bauwer who&amp;#8217;s working on &lt;a href="http://wilcoding.xs4all.nl/Wilco/News/IronRubyPreview.aspx"&gt;IronRuby&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;2) Pascal Hurni who&amp;#8217;s working on &lt;a href="http://mortimer.devcave.net/projects/brite"&gt;Brite&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;IronRuby looks pretty impressive. He has interface implementation and simple inheritance scenarios working. The interop cases seem to work pretty well.&lt;/p&gt;
+
+
+	&lt;p&gt;There are a lot of corner cases to getting this stuff to work correctly though, and it&amp;#8217;s very hard to match the semantics of the &lt;span class="caps"&gt;CLR&lt;/span&gt; implementation with the original language. It&amp;#8217;s one thing to play semantic games at an interop boundary &amp;#8211; it&amp;#8217;s another thing altogether to play those same games &lt;em&gt;in the language&lt;/em&gt;. To see just how nasty this can get, take a look at what the IronPython team had to do with respect to &lt;a href="http://channel9.msdn.com/wiki/default.aspx/IronPython.ValueTypes"&gt;value type semantics&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;I hope one of these guys succeeds in making this happen. Then I can move onto working on the project I really want to make happen &amp;#8211; RubyCLR is merely a means to an end :)&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;There are a couple of new projects in the Ruby / &lt;span class="caps"&gt;CLR&lt;/span&gt; space that I should point to:&lt;/p&gt;
+
+
+	&lt;p&gt;1) Wilco Bauwer who&amp;#8217;s working on &lt;a href="http://wilcoding.xs4all.nl/Wilco/News/IronRubyPreview.aspx"&gt;IronRuby&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;2) Pascal Hurni who&amp;#8217;s working on &lt;a href="http://mortimer.devcave.net/projects/brite"&gt;Brite&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;IronRuby looks pretty impressive. He has interface implementation and simple inheritance scenarios working. The interop cases seem to work pretty well.&lt;/p&gt;
+
+
+	&lt;p&gt;There are a lot of corner cases to getting this stuff to work correctly though, and it&amp;#8217;s very hard to match the semantics of the &lt;span class="caps"&gt;CLR&lt;/span&gt; implementation with the original language. It&amp;#8217;s one thing to play semantic games at an interop boundary &amp;#8211; it&amp;#8217;s another thing altogether to play those same games &lt;em&gt;in the language&lt;/em&gt;. To see just how nasty this can get, take a look at what the IronPython team had to do with respect to &lt;a href="http://channel9.msdn.com/wiki/default.aspx/IronPython.ValueTypes"&gt;value type semantics&lt;/a&gt;.&lt;/p&gt;
+
+
+	&lt;p&gt;I hope one of these guys succeeds in making this happen. Then I can move onto working on the project I really want to make happen &amp;#8211; RubyCLR is merely a means to an end :)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Jake</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-13T18:01:49-07:00</published>
+    <updated>2006-08-21T19:05:47-07:00</updated>
+    <title type="html">Comment on New developments in Ruby to .NET integration by Jake</title>
+    <link href="http://www.iunknown.com/articles/2006/05/24/new-developments-in-ruby-to-net-integration#comment-530" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;check out Ruby.Net as well
+&lt;a href="http://www.plas.fit.qut.edu.au/rubynet/"&gt;http://www.plas.fit.qut.edu.au/rubynet/&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>John Lam</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-07T22:53:23-07:00</published>
+    <updated>2006-08-21T19:05:42-07:00</updated>
+    <title type="html">Comment on New developments in Ruby to .NET integration by John Lam</title>
+    <link href="http://www.iunknown.com/articles/2006/05/24/new-developments-in-ruby-to-net-integration#comment-525" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;There will be fourth drop this weekend. I'm up to my eyeballs in my day job this week, but it's mostly ready to go - it just needs some attention to packaging right now.&lt;/p&gt;
+
+&lt;p&gt;Hang in there!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <author>
+      <name>Rene</name>
+    </author>
+    <id>urn:uuid:</id>
+    <published>2006-06-06T16:38:06-07:00</published>
+    <updated>2006-08-21T19:05:40-07:00</updated>
+    <title type="html">Comment on New developments in Ruby to .NET integration by Rene</title>
+    <link href="http://www.iunknown.com/articles/2006/05/24/new-developments-in-ruby-to-net-integration#comment-523" rel="alternate" type="text/html"/>
+    <content type="html">&lt;p&gt;IronRuby seems impressive, but one problem with that approach (if I understood it correctly) is that the Ruby interpreter needs to be adapted for the CLR, which seems to be quite hard work.&lt;/p&gt;
+
+&lt;p&gt;What I like about RubyCLR is the portability it enables. I can use the .Net bindings to create GUI specific code, which would be the only bit that needs to be rewritten on other platforms.&lt;/p&gt;
+
+&lt;p&gt;By the way, will there be a fourth drop? I was looking through your blog, and can't find any newer versions than the third.&lt;/p&gt;</content>
+  </entry>
+</feed>

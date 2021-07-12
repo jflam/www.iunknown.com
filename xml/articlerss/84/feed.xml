@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Less is better comments on Converging on a correct design</title>
+    <link>http://www.iunknown.com/</link>
+    <language>en-us</language>
+    <ttl>40</ttl>
+    <description>Less is better comments</description>
+    <item>
+      <title>"Converging on a correct design" by jlam</title>
+      <description>&lt;p&gt;Special cases in code that are workarounds for a seemingly innocuous problem are almost always a symptom of something wrong in your design.&lt;/p&gt;
+
+
+	&lt;p&gt;Here&amp;#8217;s an example from some work that I&amp;#8217;ve been doing for the past couple of days: identifying layering violations in &lt;a href="http://www.iunknown.com/articles/2006/02/20/second-drop-of-rubyclr"&gt;RubyCLR&lt;/a&gt;. This work led me to look at how I was caching &lt;code&gt;Type&lt;/code&gt; objects in the bridge.&lt;/p&gt;
+
+
+	&lt;p&gt;I currently hold onto a reference to a &lt;span class="caps"&gt;CLR &lt;/span&gt;&lt;code&gt;Type&lt;/code&gt; object in each Ruby shadow class object that I create. So you could think of the Ruby type system as a cache for all &lt;code&gt;Type&lt;/code&gt; objects that are currently in use by your program.&lt;/p&gt;
+
+
+	&lt;p&gt;The problem is this: I cache &lt;code&gt;Type&lt;/code&gt; objects elsewhere as well, particularly in the lower levels of the bridge that use my &lt;a href="http://www.iunknown.com/articles/2005/12/13/third-drop-of-rbdynamicmethod"&gt;RbDynamicMethod&lt;/a&gt; library. Now, it just doesn&amp;#8217;t &lt;em&gt;feel&lt;/em&gt; right to have duplicate caches, so I set about redesigning my Reflection engine to use a unified cache.&lt;/p&gt;
+
+
+	&lt;p&gt;While looking at the C++ code that I had to refactor, I decided to postpone this work to work on something more important: leveraging inheritance in my Ruby shadow class objects. Right now, if you had a &lt;code&gt;System.Windows.Forms.TextBox&lt;/code&gt; and a &lt;code&gt;System.Windows.Forms.Button&lt;/code&gt; you will have duplicate accessor &lt;code&gt;Name&lt;/code&gt; accessor methods; my shadow classes were completely ignorant of inheritance in the &lt;span class="caps"&gt;CLR&lt;/span&gt; class libraries. The correct solution is to attach the &lt;code&gt;Name&lt;/code&gt; accessor method shim to the class where it was defined: the common &lt;code&gt;System.Windows.Forms.Control&lt;/code&gt; class.&lt;/p&gt;
+
+
+	&lt;p&gt;Postponing the work seemed like the right thing &amp;#8211; after all, I was just being inefficient, right?&lt;/p&gt;
+
+
+	&lt;p&gt;So I started to implement ruby shadow class inheritance. But then I ran smack into a what was now a clear layering violation: the reference to the &lt;code&gt;Type&lt;/code&gt; object that I was holding in my shadow class objects. There was even (surprise!) some special case code to treat &lt;code&gt;Type&lt;/code&gt; objects differently.&lt;/p&gt;
+
+
+	&lt;p&gt;I need to move that reference out of the Ruby shadow class object and into the unified &lt;code&gt;Type&lt;/code&gt; cache that I wanted to implement earlier, but postponed!&lt;/p&gt;
+
+
+	&lt;p&gt;So the moral of the story is this: several seemingly unrelated problems were all symptoms of the same incorrect design. I&amp;#8217;m continually amazed at how refactoring code almost always leads me to a (more) correct design.&lt;/p&gt;
+
+
+	&lt;p&gt;As an aside, this is also why programming languages that let you write fewer lines of code are almost always superior: it&amp;#8217;s just easier to &lt;em&gt;see&lt;/em&gt; the incorrect design when you&amp;#8217;re staring at fewer lines of code to begin with. And they also have the side-effect of making it much easier to do complex refactoring because there&amp;#8217;s less language-related bookkeeping to do &amp;#8230;. hmmm I wonder what languages I&amp;#8217;m comparing here? :)&lt;/p&gt;
+
+</description>
+      <pubDate>Fri, 03 Mar 2006 11:06:00 Eastern Standard Time</pubDate>
+      <guid>&lt;a href="/articles/2006/03/03/converging-on-a-correct-design"&gt;Converging on a correct design&lt;/a&gt;</guid>
+      <link>&lt;a href="/articles/2006/03/03/converging-on-a-correct-design"&gt;Converging on a correct design&lt;/a&gt;</link>
+    </item>
+  </channel>
+</rss>

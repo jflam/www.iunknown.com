@@ -1,0 +1,784 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/LessIsBetter" />
+  <script src="/javascripts/cookies.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1156231406" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1156231406" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/application.css?1164503575" media="all" rel="Stylesheet" type="text/css" />
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Less is better</a></span></h1>
+    <h2>John Lam on software</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <div class="atomentry" id="article-58">
+  <h2 class="title">
+    <a href="/articles/2006/01/18/windows-forms-and-value-types">Windows Forms and Value Types</a> 
+    <span class="comment_count">1</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-18T11:03:00-08:00"><span class="typo_date" title="Wed, 18 Jan 2006 19:03:00 GMT">Wed, 18 Jan 2006 19:03:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Justin in <a href="http://www.iunknown.com/articles/2006/01/12/first-drop-of-rubyclr#comments">my comments</a> reported not being able to create a simple <code>MessageBox.Show('Hello, World')</code> app. There were two things missing in Justin&#8217;s app: explicitly loading the <code>System.Windows.Forms</code> assembly, along with a bit of confusion about Ruby namespaces and scoping.</p>
+
+
+	<p>Here&#8217;s a version of Justin&#8217;s code that <em>should</em> work:</p>
+
+
+<pre><code>
+require 'rubyclr'
+include RubyClr
+
+RubyClr::reference 'System.Windows.Forms'
+
+include System
+include System::Windows::Forms
+
+MessageBox.Show('Hello, World')
+</code></pre>
+
+	<p>It displays the message box and then promptly crashes. Why? Because <code>MessageBox.Show</code> returns a <code>DialogResult</code>, which is a user-defined value type. I&#8217;m not marshaling user-defined value types yet, but it&#8217;s a very high priority for the next release of the bridge.</p>
+
+
+	<p>In other news, I&#8217;ve done some pretty major refactoring of the C++ code in my current internal builds &#8211; I was very unhappy with some of the code that I had in my first drop (hint: grep for &#8216;enema&#8217; in the source). I&#8217;ve also got support for virtual call optimization in the current internal build.</p>
+
+
+	<p>I&#8217;m pretty busy writing <a href="http://www.objectsharp.com">ObjectSharp&#8217;s</a> ASP.NET 2.0 Best Practices course the next couple of weeks, so I&#8217;m anticipating a new release of the bridge towards the end of <em>next</em> week. At the very least expect to see user defined value type marshaling working by then.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/01/18/windows-forms-and-value-types#comments">1 comment</a>,
+      <a href="/articles/2006/01/18/windows-forms-and-value-types" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/58/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/58/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/18/windows-forms-and-value-types">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/18/windows-forms-and-value-types;title=Windows Forms and Value Types">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-57">
+  <h2 class="title">
+    <a href="/articles/2006/01/18/timesnapper-saves-my-butt">TimeSnapper and Personal Life Recorders</a> 
+    <span class="comment_count">11</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-18T10:10:00-08:00"><span class="typo_date" title="Wed, 18 Jan 2006 18:10:00 GMT">Wed, 18 Jan 2006 18:10:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>This year is the 3rd year that I&#8217;m a judge for the <a href="http://www.sdmagazine.com/jolts/">Jolt Software Awards</a>. A couple of nights ago, I thought that I had submitted my votes for the first round of voting to select the finalists. As it turns out, somewhere along the way my votes got lost (I blame my general sleep-deprived stupor these days).</p>
+
+
+	<p>Fortunately for me, I was running <a href="http://www.timesnapper.com/">TimeSnapper</a> at the time. This incredibly useful utility takes a snapshot of your desktop every 5 seconds and records the result as a <span class="caps">PNG</span> image. So it was a simple matter to replay my day around the time I was entering my votes to see exactly what I voted for.</p>
+
+
+	<p>This morning I was chatting with my mother in law during our morning baby / toddler shift and I told her the story of <a href="http://en.wikipedia.org/wiki/Vannevar_Bush">Vannevar Bush&#8217;s</a> description of a <a href="http://en.wikipedia.org/wiki/Memex">Memex</a> which was his vision of a life recorder. A modern implementation of Vannevar Bush&#8217;s ideas is <a href="http://en.wikipedia.org/wiki/Gordon_Bell">Gordon Bell&#8217;s</a> <a href="http://research.microsoft.com/barc/mediapresence/MyLifeBits.aspx">MyLifeBits</a> project.</p>
+
+
+	<p>A fairly full day&#8217;s worth of work for me is about 350MB worth of screenshots. That means that it would take about 100GB to store a year&#8217;s worth of screenshots, which translates into about $40 Canadian dollars today. Now until this data is searchable, I doubt that it will be tremendously useful, but I find it fascinating that it costs so little to digitize an entire year&#8217;s worth of my computer activity.</p>
+
+
+	<p>If you could synchronize those screenshots with a keystroke logger and a network activity monitor, you could quickly make a quick-and-dirty searchable archive. Hmmmm &#8230;.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/01/18/timesnapper-saves-my-butt#comments">11 comments</a>,
+      <a href="/articles/2006/01/18/timesnapper-saves-my-butt" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/57/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/57/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/18/timesnapper-saves-my-butt">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/18/timesnapper-saves-my-butt;title=TimeSnapper and Personal Life Recorders">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-56">
+  <h2 class="title">
+    <a href="/articles/2006/01/12/first-drop-of-rubyclr">First drop of RubyCLR</a> 
+    <span class="comment_count">14</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-12T17:46:00-08:00"><span class="typo_date" title="Fri, 13 Jan 2006 01:46:00 GMT">Fri, 13 Jan 2006 01:46:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>Here&#8217;s the <a href="http://www.iunknown.com/images/RbDynamicMethod.zip">first drop of RubyCLR</a>.</p>
+
+
+	<p>I think this version is usable for folks who are interested in playing around with the current state of the bits. It supports constructor and method overloading, static and instance methods, properties, indexers, static and instance fields, events, multi-dimensional arrays, primitive (ints, floats, bools) value-type marshaling, and reference-type marshaling. Look at the <code>tests2.rb</code> unit test file to see the evidence.</p>
+
+
+	<p>Notable are the things that this release does <strong>not</strong> support. There is no support for generics, nor is there support for marshaling user-defined value types like <code>Point</code>.</p>
+
+
+	<p>There&#8217;s a rakefile in this project too if you want to compile the bits. I&#8217;ve included a compiled <span class="caps">DLL</span> for folks who don&#8217;t have <span class="caps">MS C</span>++ 14.0 installed on their computer.</p>
+
+
+	<p>This release requires the <span class="caps">RTM</span> version of .NET 2.0.</p>
+
+
+	<p>I haven&#8217;t tried to build anything using these bits yet outside of the unit tests, but I wanted to provide a drop for the curious.</p>
+
+
+	<p>I&#8217;m <strong>really</strong> interested in getting feedback about the implementation of the bridge. If folks have the time and could do a code review of either the C++ or Ruby code (or both!) I would greatly appreciate it.</p>
+
+
+	<p>Bug reports in the form of a unit test that can repro the bug would also be greatly appreciated.</p>
+
+
+	<p>The state of error messages in this release is more-or-less non-existent. I plan on fixing this once I tackle the next two hard problems: marshaling user defined value types and handling generics.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/01/12/first-drop-of-rubyclr#comments">14 comments</a>,
+      <a href="/articles/2006/01/12/first-drop-of-rubyclr" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/56/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/56/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/12/first-drop-of-rubyclr">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/12/first-drop-of-rubyclr;title=First drop of RubyCLR">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-55">
+  <h2 class="title">
+    <a href="/articles/2006/01/12/events-and-rubyclr">Events and RubyCLR</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-12T10:20:00-08:00"><span class="typo_date" title="Thu, 12 Jan 2006 18:20:00 GMT">Thu, 12 Jan 2006 18:20:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I got events up and running last night. It was a bit harder than I anticipated, and there&#8217;s still a bit of work that needs to be done around marshaling, but this unit test now passes:</p>
+
+
+<pre><code>
+public ref class CallbackTests {
+public:
+  event EventHandler^ Event;
+
+  void CallMeBack() {
+    Event(nullptr, EventArgs::Empty);
+  }
+};
+
+class EventTests &lt; Test::Unit::TestCase
+  def test_simple_event
+    c = System::CallbackTests.new
+    c.Event do |sender, args|
+      assert_equal 1, 1
+    end
+    c.CallMeBack
+  end
+end
+</code></pre>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/01/12/events-and-rubyclr#comments">no comments</a>,
+      <a href="/articles/2006/01/12/events-and-rubyclr" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/55/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/55/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/12/events-and-rubyclr">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/12/events-and-rubyclr;title=Events and RubyCLR">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-54">
+  <h2 class="title">
+    <a href="/articles/2006/01/11/rubyclr-update">RubyCLR update</a> 
+    <span class="comment_count">2</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-11T13:30:00-08:00"><span class="typo_date" title="Wed, 11 Jan 2006 21:30:00 GMT">Wed, 11 Jan 2006 21:30:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I&#8217;ve been spending a surprising amount of time working on my Ruby <span class="caps">CLR</span> bridge. Ben sleeps on/around me for about 3 hours in the evening to give Carolyn 3 hours of uninterrupted sleep, and I&#8217;ve been using that time very productively to add features.</p>
+
+
+	<p>The older version of the bridge that I had working was a grotesque hack &#8211; it was essentially a bunch of experiments cobbled together in a Frankenstein-esque contraption. Anyone who has a copy of that code is respectfully asked to destroy it once I ship any of these newer bits.</p>
+
+
+	<p>One of the big things that I&#8217;ve been working on is getting a seamless array experience. I marshal data types between the <span class="caps">CLR</span> and Ruby by value where possible, and by reference in all other cases. So value types like floating point numbers and integers are marshaled by value (aka copied and converted) across the runtime boundaries. So code like this just works:</p>
+
+
+<pre><code>
+static array&lt;int&gt;^ StaticGetOneDimensionalArray() {
+  return gcnew array&lt;int&gt; { 0, 1, 2, 3 };
+}
+
+a = MarshalerTests.StaticGetOneDimensionalArray
+assert_equal 0, a[0]
+assert_equal 4, a.Length
+</code></pre>
+
+	<p>As you can see, I marshal by reference the array from the C++ function. But all of the elements of the array are marshaled by value, which lets me treat them as if they were native Ruby numbers.</p>
+
+
+	<p>I&#8217;ve also done a ton of performance work in this release. If you&#8217;re calling a method that has overloads, I take a slower path where I have to lookup at runtime the correct method based on the parameters that you&#8217;re passing. However, if the method doesn&#8217;t have any overloads, I generate a different shim that doesn&#8217;t do any runtime lookups &#8211; it just pushes parameters onto the call stack and invokes the method. The array code that you see above calls <code>Array.Get</code> which is <strong>not</strong> overloaded (unlike <code>Array.GetValue</code> which is) which results in extremely fast <span class="caps">CLR</span> array element access from Ruby.</p>
+
+
+	<p>I&#8217;m punting on some hard problems like generics for the time being. I have to add support for events before I ship this release; if Ben cooperates that should be by the end of this week.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/01/11/rubyclr-update#comments">2 comments</a>,
+      <a href="/articles/2006/01/11/rubyclr-update" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/54/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/54/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/11/rubyclr-update">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/11/rubyclr-update;title=RubyCLR update">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-53">
+  <h2 class="title">
+    <a href="/articles/2006/01/11/hanselminutes">Hanselminutes</a> 
+    <span class="comment_count">1</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-11T13:28:00-08:00"><span class="typo_date" title="Wed, 11 Jan 2006 21:28:00 GMT">Wed, 11 Jan 2006 21:28:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p><a href="http://www.computerzen.com">Scott Hanselman</a> is <a href="http://hanselminutes.com">podcasting</a>. I&#8217;m a <strong>huge</strong> fan of his recommendations on almost anything. I discovered <a href="http://www.timesnapper.com">Timesnapper</a> by listening to his podcast today during lunch.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/links" rel="tag">Props</a></li>
+    
+    <li>Meta 
+      
+      
+      <a href="/articles/2006/01/11/hanselminutes" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/53/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/53/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/11/hanselminutes">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/11/hanselminutes;title=Hanselminutes">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-52">
+  <h2 class="title">
+    <a href="/articles/2006/01/11/a-nice-ruby-moment-today">A nice Ruby moment today</a> 
+    
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-11T13:19:00-08:00"><span class="typo_date" title="Wed, 11 Jan 2006 21:19:00 GMT">Wed, 11 Jan 2006 21:19:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>I used to have a chunk of code that looked like:</p>
+
+
+<pre><code>
+def new_clrobj(ctor_info, sig = null)
+  sig = ctor_info.signature if sig == null
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+</code></pre>
+
+	<p>It now looks like:</p>
+
+
+<pre><code>
+def new_clrobj(ctor_info, sig = ctor_info.signature)
+  newobj   "#{ctor_info.clr_type}(" + sig.join(',') + ')'
+end
+</code></pre>
+
+	<p>It was one of those &#8220;it just works&#8221; moments that makes me love this language.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/01/11/a-nice-ruby-moment-today#comments">no comments</a>,
+      <a href="/articles/2006/01/11/a-nice-ruby-moment-today" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/52/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/52/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/11/a-nice-ruby-moment-today">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/11/a-nice-ruby-moment-today;title=A nice Ruby moment today">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-51">
+  <h2 class="title">
+    <a href="/articles/2006/01/09/our-other-boy">Our other boy</a> 
+    <span class="comment_count">5</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-09T18:57:00-08:00"><span class="typo_date" title="Tue, 10 Jan 2006 02:57:00 GMT">Tue, 10 Jan 2006 02:57:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>It&#8217;s been a long time since I&#8217;ve posted about Matthew:</p>
+
+
+	<p><a href="http://www.flickr.com/photos/23649168@N00/84578490/"><img src="http://static.flickr.com/39/84578490_119d64f19d.jpg?v=0" alt="" /></a></p>
+
+
+	<p>He&#8217;s almost 28 months old now, and he&#8217;s starting his new pre-school on Wednesday. He&#8217;s a pretty bright boy; he can read fairly elementary books completely on his own, and his vocabulary is growing by leaps and bounds. He was impressing his new pre-school teachers today by doing a &#8220;reverse&#8221; flash-card trick &#8211; that is predicting the letter on the other side (these were the simple alphabet flashcards that have a picture on one side and a single letter on the other side) based on the picture. I guess all of Daddy&#8217;s hard work creating his birthday present paid off! :)</p>
+
+
+	<p>We got Matthew his first computer for Christmas this year. Well, it was really just one of Daddy&#8217;s older computers brought back to life with a <span class="caps">PCI 802</span>.11g wireless card. I was amazed by how quickly he learned how to use the mouse &#8211; it took <em>maybe</em> 2 days before he had it figured out. The hard part of course, is the fixed length of the cord, so you have to pick up the mouse or move it faster to get to where you want to go. We&#8217;re not using a wireless mouse so that the mouse doesn&#8217;t wander away.</p>
+
+
+	<p>He figured out the Start button pretty quickly, so I had to lock down the options there (although he is running under a normal user account &#8211; no admin privileges quite yet :). He also figured out how to start Explorer without any options present under the Start menu, and today he demonstrated his virtuosity with drop-down combo boxes &#8211; I caught him browsing the <span class="caps">DVD</span> drive today.</p>
+
+
+	<p>We&#8217;re working on typing skills next &#8211; Textpad appears to be his editor of choice right now. I think it will take some time before his hands get big enough to start using emacs :)</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/personal" rel="tag">Life</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/01/09/our-other-boy#comments">5 comments</a>,
+      <a href="/articles/2006/01/09/our-other-boy" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/51/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/51/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/09/our-other-boy">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/09/our-other-boy;title=Our other boy">reddit</a>
+    </li>
+  </ul>
+</div>
+<div class="atomentry" id="article-49">
+  <h2 class="title">
+    <a href="/articles/2006/01/04/ruby-in-the-real-world">Ruby in the real world</a> 
+    <span class="comment_count">7</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="mailto:jlam@iunknown.com">John Lam</a></cite>
+    <abbr class="published" title="2006-01-04T15:01:00-08:00"><span class="typo_date" title="Wed, 04 Jan 2006 23:01:00 GMT">Wed, 04 Jan 2006 23:01:00 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p><a href="http://samgentile.com/blog/archive/2005/12/30/32204.aspx">Sam Gentile</a> was wondering about where Ruby is used in the &#8216;real world&#8217;, and where I&#8217;ve personally used Ruby.</p>
+
+
+	<p>Sam, you can easily Google around to see where Ruby is being used in the real world. Check out the <a href="http://www.rubyonrails.com/">Rails web site</a> for some pointers to some large web sites that are running on Rails.</p>
+
+
+	<p>As for where I&#8217;ve personally used Ruby and Rails, we wrote a lot of Ruby code for my last customer. The product hasn&#8217;t been announced yet, so I still can&#8217;t talk about it, but suffice to say that it&#8217;s a high performance e-commerce web service with two very large customers running on top of it (and many more to come).</p>
+
+
+	<p>We used Ruby to automate deploying the web service to our cluster. Ruby&#8217;s integration with <span class="caps">COM</span> made writing the <span class="caps">ADSI</span> + <span class="caps">WMI</span> goo much more pleasant. I even toyed with rewriting the core web service (which is a .NET web service) in Ruby and was able to exploit an optimization that simply was not possible using .NET and <span class="caps">SQL</span> Server. There was an intermediate result set that could easily be cached in-memory using Ruby that wuold net us at least a 10X performance increase over the existing .NET application.</p>
+
+
+	<p>To be fair, I could have done the same optimization using C#, but there would be no way that I could squeeze it down into 200 lines of very concise Ruby code. The other qualitative difference is that the caching optimization was just <strong>really obvious</strong> in the Ruby code; there was just so few lines of code to look at.</p>
+
+
+	<p>We also built out a Rails web site to support the <span class="caps">API</span>. Developers using the web service could run live queries against our catalog using the site. The web site would also generate the application code for them in their programming language of choice: C#, VB.NET, Java or raw <span class="caps">SOAP</span> calls. It&#8217;s very similar in spirit to the <a href="http://www.awszone.com/"><span class="caps">AWS</span> Zone</a> site (even though I&#8217;m convinced that we have a much simpler query <span class="caps">API</span> than Amazon does).</p>
+
+
+	<p>I&#8217;m convinced that Ruby and meta-programming is a great way to approach modeling business applications. That&#8217;s why I&#8217;m investing so much time building my <a href="http://www.iunknown.com/articles/2005/12/14/hello-rubyclr">Ruby to <span class="caps">CLR</span> bridge</a>.</p>
+
+      
+  </div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/thoughts" rel="tag">Thoughts</a></li>
+    
+    <li>Meta 
+      
+      <a href="/articles/2006/01/04/ruby-in-the-real-world#comments">7 comments</a>,
+      <a href="/articles/2006/01/04/ruby-in-the-real-world" rel="bookmark">permalink</a>,
+      <a href="http://www.iunknown.com/xml/rss/article/49/feed.xml">rss</a>,    
+      <a href="http://www.iunknown.com/xml/atom/article/49/feed.xml">atom</a>, 
+      <a title='digg this' href="http://digg.com/submit?phase=2&url=/articles/2006/01/04/ruby-in-the-real-world">digg this</a>, 
+      <a title='reddit' href="http://reddit.com/submit?url=/articles/2006/01/04/ruby-in-the-real-world;title=Ruby in the real world">reddit</a>
+    </li>
+  </ul>
+</div>
+
+
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- search -->
+      <div id="search" class="search">
+	<form action="/articles/search" id="sform" method="get">
+	  <p><input type="text" id="q" name="q" value="" /></p>
+	</form>
+	
+	<div id="loading" class="loading" style="display:none;">Searching...</div>
+	<div id="results" class="results"></div>
+  <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('loading')}, onLoading:function(request){Element.show('loading')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script>
+</div>
+
+
+      <!-- sidebar components -->
+      
+      
+<div class="sidebar-node">
+  <h3>John Lam</h3>
+<a href="/pages/about_me"><img src="http://static.flickr.com/90/222479189_d4e19a202c_t.jpg" width="67" height="100" alt="Self portrait" /></a>
+
+<p>I am a Program Manager on the Common Language Runtime team at Microsoft. I write .NET and Ruby code on a Mac. I'm the creator of <a href="http://www.rubyclr.com">RubyCLR</a>, a high performance bridge between Ruby and .NET. <a href="/pages/about_me">More ...</a>
+
+<table>
+<tr>
+  <td>email:</td>
+  <td>jlam@iunknown.com</td>
+</tr>
+<tr>
+  <td>phone:</td>
+  <td>425 698 9332</td>
+</tr>
+<tr>
+  <td>msn:</td>
+  <td>drjflam@hotmail.com</td>
+</tr>
+<tr>
+  <td>gtalk:</td>
+  <td>drjflam@gmail.com</td>
+</tr>
+</table>
+<br>
+<h3>Syndicate</h3>
+
+<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="/images/rss.png"/></a>&nbsp;
+<a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+<br>
+<form style="padding:3px;text-align:left;" action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Subscribe by email:</p><p><input type="text" style="width:140px" name="email"/></p><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=180551" name="url"/><input type="hidden" value="Less is better" name="title"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a></p></form>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+    <div id="delicious">
+    <h3><a href="http://del.icio.us/drjflam">del.icio.us/drjflam</a></h3>
+            <ul>
+      
+      <li>
+        <a href="http://www.people.iup.edu/pnwm/comparison.gif" title="Fun comparison of fictional starships from different SF shows.">Starship size comparison chart</a>
+              </li>
+      
+      <li>
+        <a href="http://www.teach12.com/" title="Bill Gates listens to the lectures from this company - available as downloads as well.">The Teaching Company</a>
+              </li>
+      
+      <li>
+        <a href="http://www.speedtest.net/" title="Found this via StumbleUpon">Speedtest.net - The Global Broadband Speed Test</a>
+              </li>
+      
+      <li>
+        <a href="http://wvs.topleftpixel.com/flash/cntower_timelapse.swf" title="Move your mouse around this picture and see it change.">Downtown Toronto Photo</a>
+              </li>
+      
+      <li>
+        <a href="ftp://gatekeeper.dec.com/pub/DEC/WRL/research-reports/WRL-TR-95.7.pdf" title="">Shared Memory Consistency Models</a>
+              </li>
+      
+      <li>
+        <a href="http://discuss.develop.com/archives/wa.exe?A2=ind0203B&amp;L=DOTNET&amp;P=R375" title="An excellent discussion on the motivation for and implementation of the CLR memory model.">Vance Morrison on CLR Memory Model</a>
+              </li>
+      
+      <li>
+        <a href="http://slideshare.net/" title="A YouTube like service for sharing slides from talks.">SlideShare</a>
+              </li>
+      
+      <li>
+        <a href="http://research.microsoft.com/manuvir/papers/instruction_level_tracing_VEE06.pdf" title="This is MSR's Nirvana framework for dynamically injecting tracing code into x86 binaries at runtime. It lets them travel forwards and backwards in execution flow ('time travel debugging').">Framework for Instruction-level Tracing and Analysis of Program Executions</a>
+              </li>
+      
+      <li>
+        <a href="http://www.macgeekery.com/hacks/software/video/how_to_view_tivo_recordings_on_your_mac_or_ipod" title="Looking forward to setting this up ...">How to View TiVo Recordings on Your Mac or iPod</a>
+              </li>
+      
+      <li>
+        <a href="http://uneasysilence.com/archive/2006/12/8602/" title="Wow - this is really nice seamless integration - Windows apps appearing to run as 'top-level' windows on Mac OS X desktop.">Parallels running IE7 &amp; Firefox on Mac OS X desktop!</a>
+              </li>
+      
+      <li>
+        <a href="http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC2006T13" title="Google recently released their collection of 1-grams (single word frequency) to 5-grams (5 word frequency) as a 24GB compressed gzip'd file.">Google's collection of 1-5 grams</a>
+              </li>
+          </ul>
+      </div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>My Photos</h3>
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge_new.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">what is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge_new.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2007/2">February 2007</a>
+      <em>(1)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2007/1">January 2007</a>
+      <em>(4)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/12">December 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/11">November 2006</a>
+      <em>(2)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/10">October 2006</a>
+      <em>(8)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/9">September 2006</a>
+      <em>(12)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/8">August 2006</a>
+      <em>(39)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/7">July 2006</a>
+      <em>(29)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/6">June 2006</a>
+      <em>(23)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/5">May 2006</a>
+      <em>(34)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/4">April 2006</a>
+      <em>(13)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/3">March 2006</a>
+      <em>(21)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/2">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/1">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11">November 2005</a>
+      <em>(17)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(6)</em>
+    </li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Tags</h3>
+<p style="overflow:hidden">
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/barcampearthtoronto">BarCampEarthToronto</a></span>
+<span style="font-size:129.87012987013%"><a href="/articles/tag/dynamiclanguages">DynamicLanguages</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/ironpython">IronPython</a></span>
+<span style="font-size:103.896103896104%"><a href="/articles/tag/life">Life</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/mac">Mac</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/marketing">Marketing</a></span>
+<span style="font-size:77.9220779220779%"><a href="/articles/tag/microsoft">Microsoft</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/parenting">Parenting</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/photography">Photography</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/platforms">Platforms</a></span>
+<span style="font-size:200%"><a href="/articles/tag/props">Props</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/python">Python</a></span>
+<span style="font-size:200%"><a href="/articles/tag/ruby">Ruby</a></span>
+<span style="font-size:200%"><a href="/articles/tag/rubyclr">RubyCLR</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/rubyconf">RubyConf</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/secondlife">SecondLife</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/simplicity">simplicity</a></span>
+<span style="font-size:200%"><a href="/articles/tag/thoughts">Thoughts</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/vim">Vim</a></span>
+<span style="font-size:66.6666666666667%"><a href="/articles/tag/workspaces">workspaces</a></span>
+</p>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(20)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(58)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(148)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+  
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">Less is better</a></p>
+    <ul>
+      <li>powered by <a href="http://typosphere.org">typo</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

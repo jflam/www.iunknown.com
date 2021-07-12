@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: Open source</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000124.html" title="Poor customer service at Expedia.com" />
+
+<link rel="next" href="http://www.iunknown.com/000126.html" title="Hello, ANTLR" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000124.html">&laquo; Poor customer service at Expedia.com</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000126.html">Hello, ANTLR &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">July 05, 2002</h2>
+
+<div class="blogbody">
+
+<h3 class="title">Open source</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p><P>After my recent entry titled <A href="Weblog/Thank-youMicrosoft.html">"Thank-you, Microsoft"</A>, I got some interesting email from the Open Source community. That entry was meant to <EM>encourage</EM> Microsoft to continue to release source code for its products. It was all part of the beginnings of my open source epiphany.[1]</P><br />
+<P><A href="http://primates.ximian.com/~miguel/">Miguel de Icaza</A> sent me a very nice email encouraging me to continue to think about Open Source. He related his personal experiences with GNU software and Linux. I think that Miguel represents the absolute best in the Open Source community. I have nothing but&nbsp;good things to say about my interactions with Miguel over the past year. He's a true gentleman.</P><br />
+<P>Earlier this evening, I got an email from <A href="http://members.verizon.net/~vze2552x/">Rich Salz</A>. The tone of his email was condescending and confrontational. In his email, Rich was wondering why I wasn't thanking <A href="http://www.stallman.org/">Richard Stallman</A> if I were thanking Microsoft.[2] Unfortunately, Rich represents the part of the Open Source community that I could do without. Emails like his do not make me want to learn more about Open Source and to contribute my efforts.</P><br />
+<P>For the record, I like Open Source. I've contributed a few patches here and there to various Open Source projects that I've been using recently in my work. However, I don't take a religious stand on Open Source vs. Closed Source. I like the freedom to choose what I want to work on, and would push back against anybody who tried to impose their belief system on me.</P><br />
+<P>[1] Here's an excerpt from a recent post that I made on the Win_Tech_Off_Topic mailing list:</P><br />
+<BLOCKQUOTE><br />
+<P>"I think an interesting angle to approach this argument is: "What is the benefit of source code?" To me this implies two things: </P><br />
+<OL><br />
+<LI>It makes it easier to understand the code<br />
+<LI>It makes it possible to modify the code </LI></OL><br />
+<P>I love goal #1. I think it would *totally rock* if MS distributed a build environment for Windows, like they're doing for the CLR via ROTOR. In my somewhat limited experience with ROTOR, I've found that being able to step through the runtime has helped enormously in my understanding of how my code must interact with the CLR.</P><br />
+<P>MS can protect their important IP by releasing a crappier thread scheduler etc. for Windows much like they did with [the GC in] Rotor and still help tremendously with goal #1. As for goal #2, this would be very interesting as it would encourage experimentation by the community. License agreements and lawyers would handle the "you're stealing my IP" issues for a large company like MS (e.g. Larry Ellison decides to bundle Windows with Oracle). </P><br />
+<P>I think that only really large companies would benefit from this, however. Small companies simply don't have the money to fight a protracted legal battle over stolen IP rights."</P></BLOCKQUOTE><br />
+<P>[2] I would be thanking Richard Stallman if my code directly interacted wth code that he had written, but CLAW doesn't need to talk to GNU grep or Emacs.</P></p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at July  5, 2002 10:14 PM
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="125" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000125.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+
+
+
+<div class="comments-head">Post a comment</div>
+
+<div class="comments-body">
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-comments.cgi" name="comments_form" onsubmit="if (this.bakecookie[0].checked) rememberMe(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="125" />
+
+<div style="width:180px; padding-right:15px; margin-right:15px; float:left; text-align:left; border-right:1px dotted #bbb;">
+	<label for="author">Name:</label><br />
+	<input tabindex="1" id="author" name="author" /><br /><br />
+
+	<label for="email">Email Address:</label><br />
+	<input tabindex="2" id="email" name="email" /><br /><br />
+
+	<label for="url">URL:</label><br />
+	<input tabindex="3" id="url" name="url" /><br /><br />
+</div>
+
+Remember personal info?<br />
+<input type="radio" id="bakecookie" name="bakecookie" /><label for="bakecookie">Yes</label><input type="radio" id="forget" name="bakecookie" onclick="forgetMe(this.form)" value="Forget Info" style="margin-left: 15px;" /><label for="forget">No</label><br style="clear: both;" />
+
+<label for="text">Comments:</label><br />
+<textarea tabindex="4" id="text" name="text" rows="10" cols="50"></textarea><br /><br />
+
+<input type="submit" name="preview" value="&nbsp;Preview&nbsp;" />
+<input style="font-weight: bold;" type="submit" name="post" value="&nbsp;Post&nbsp;" /><br /><br />
+
+</form>
+
+<script type="text/javascript" language="javascript">
+<!--
+document.comments_form.email.value = getCookie("mtcmtmail");
+document.comments_form.author.value = getCookie("mtcmtauth");
+document.comments_form.url.value = getCookie("mtcmthome");
+if (getCookie("mtcmtauth")) {
+    document.comments_form.bakecookie[0].checked = true;
+} else {
+    document.comments_form.bakecookie[1].checked = true;
+}
+//-->
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>

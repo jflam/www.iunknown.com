@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: VB.NET and NAnt gotcha</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/000345.html" title="Stefan Bodewig on understanding open source licenses" />
+
+<link rel="next" href="http://www.iunknown.com/000347.html" title="Two and a half weeks" />
+
+
+<script type="text/javascript" language="javascript">
+<!--
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+var HOST = 'www.iunknown.com';
+
+// Copyright (c) 1996-1997 Athenia Associates.
+// http://www.webreference.com/js/
+// License is granted if and only if this entire
+// copyright notice is included. By Tomer Shiran.
+
+function setCookie (name, value, expires, path, domain, secure) {
+    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
+    document.cookie = curCookie;
+}
+
+function getCookie (name) {
+    var prefix = name + '=';
+    var c = document.cookie;
+    var nullstring = '';
+    var cookieStartIndex = c.indexOf(prefix);
+    if (cookieStartIndex == -1)
+        return nullstring;
+    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
+    if (cookieEndIndex == -1)
+        cookieEndIndex = c.length;
+    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+function deleteCookie (name, path, domain) {
+    if (getCookie(name))
+        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+}
+
+function fixDate (date) {
+    var base = new Date(0);
+    var skew = base.getTime();
+    if (skew > 0)
+        date.setTime(date.getTime() - skew);
+}
+
+function rememberMe (f) {
+    var now = new Date();
+    fixDate(now);
+    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
+    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
+    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
+    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
+}
+
+function forgetMe (f) {
+    deleteCookie('mtcmtmail', '', HOST);
+    deleteCookie('mtcmthome', '', HOST);
+    deleteCookie('mtcmtauth', '', HOST);
+    f.email.value = '';
+    f.author.value = '';
+    f.url.value = '';
+}
+
+//-->
+</script>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/000346.html"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/90"
+    dc:title="VB.NET and NAnt gotcha"
+    dc:identifier="http://www.iunknown.com/000346.html"
+    dc:subject="Blog"
+    dc:description="Today, I wanted to add some VB.NET code to an existing solution where all of the other projects were written using C#. I had a working NAnt build script for this solution, so I thought it would be a piece..."
+    dc:creator="John"
+    dc:date="2003-10-09T22:32:59-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+</head>
+
+<body>
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">.NET Training and Consulting in Toronto with John Lam</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/000345.html">&laquo; Stefan Bodewig on understanding open source licenses</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/000347.html">Two and a half weeks &raquo;</a>
+
+</div>
+
+</div>
+
+
+<div class="blog">
+
+<h2 class="date">October 09, 2003</h2>
+
+<div class="blogbody">
+
+<h3 class="title">VB.NET and NAnt gotcha</h3>
+
+<div class="midAds">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8264790134546506";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="6417806153";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<p>Today, I wanted to add some <span class="caps">VB.NET</span> code to an existing solution where all of the other projects were written using C#. I had a working NAnt build script for this solution, so I thought it would be a piece of cake to add a target to my build script to build my <span class="caps">VB.NET</span> assembly. Boy was I wrong. An hour later, I figured out the answer.</p>
+
+<p><span class="caps">VB.NET</span> does a couple of things to make your life easier. First, it imports a number of commonly used namespaces on a project-wide basis. On my computer, <span class="caps">VB.NET</span> automatically imports the following namespaces: <code>Microsoft.VisualBasic</code>, <code>System</code>, <code>System.Collections</code>, <code>System.Data</code>, <code>System.Diagnostics</code>. Second, it assigns a "root namespace" to all types defined in the assembly. The "root namespace" defaults to the name of the project. You can see these settings under Project|Properties in Visual Studio .Net. The interesting tabs are Common Properties|General and Common Properties|Improts.</p>
+
+<p>While these are nice features which save you time, it can really make a mess of your NAnt build scripts which don't have the same set of default imports. Fortunately, the <code>vbc</code> task in NAnt defines attributes that you can use to define these settings. The first is the <code>imports</code> attribute where you can add the appropriate default namespace imports, as shown below:</p>
+
+<p>&lt;vbc ... imports="Microsoft.VisualBasic, System"/&gt;</p>
+
+<p>The second is the <code>rootnamespace</code> attribute where you can define the default namespace for the project, as shown below:</p>
+
+<p>&lt;vbc ... rootnamespace="MySolution.MyProject"/&gt;</p>
+
+<p>I hope this saves someone else out there some time.</p>
+
+<a name="more"></a>
+
+
+<span class="posted">Posted by John at October  9, 2003 10:32 PM
+| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=346" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+
+<br /></span>
+
+</div>
+
+<div class="comments-head"><a name="mailthisentry"></a>Mail this entry</div>
+
+<form method="post" action="http://www.iunknown.com/cgi-bin/mt-send-entry.cgi">
+<input type="hidden" name="entry_id" value="346" />
+<input type="hidden" name="_redirect" value="http://www.iunknown.com/000346.html" />
+Email this entry to:<br />
+<input name="to" size="20" /><br /><br />
+Your email address:<br />
+<input name="from" size="20" /><br /><br />
+Message (optional):<br />
+<textarea name="message" rows="5" cols="20" wrap="virtual"></textarea><br /><br />
+<input type="submit" value="Send" />
+</form>
+
+
+<div class="comments-head"><a name="comments"></a>Comments</div>
+
+<div class="comments-body">
+<p>Slightly releated is another vb.net issue with nant. In previous versions you had to specify the full path to framework asemblies ( eg. system.xml.dll ). Otherwise they wouldn't be found. Now if you specify a bare file name nant will look for it in the framework assemblies directory. This change is post 0.8.3 I think.<br />
+This was never really a problem with csc which uses a response file listing the core system assemblies.</p>
+<span class="comments-post">Posted by: <a href="mailto&#58;ianm&#64;activestate&#46;com">Ian MacLean</a> at October 10, 2003 01:52 AM</span>
+</div>
+<div class="comments-body">
+<p>Hi, this saved me time thanks!  One thing - it wouldn't build if there was a space between assemblies in the imports: i.e. needs to be "VisualBasic,System" not "VisualBasic, System"</p>
+<span class="comments-post">Posted by: Lance Fisher at May 13, 2004 06:15 PM</span>
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

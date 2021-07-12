@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+	<meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/.shared/themes/common/print.css" type="text/css" media="print" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: Post-Demo hangover</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/05/demo_day.html?no_prefetch=1" title="Demo Day" />
+	<link rel="next" href="http://www.iunknown.com/2007/05/how_many_progra.html?no_prefetch=1" title="How many programming languages run in your browser?" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/05/postdemo_hangov.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/18148596"
+    dc:title="PostDemo hangover"
+    dc:identifier="http://www.iunknown.com/2007/05/postdemo_hangov.html"
+    dc:description="Wow. That was a fun talk that Jim and I did at Mix. For the Ruby fans in the audience, here was the final version of the application that we wrote: # This downloads a compiled C# assembly that contains..."
+    dc:creator="John Lam"
+    dc:date="2007-05-01T18:51:51-07:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/05/demo_day.html">&laquo; Demo Day</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/05/how_many_progra.html">How many programming languages run in your browser? &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">May 01, 2007</h2>
+
+
+<div class="entry" id="entry-33552588">
+			<h3 class="entry-header">Post-Demo hangover</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			Wow. That was a fun talk that Jim and I did at Mix.
+
+For the Ruby fans in the audience, here was the final version of the application that we wrote:
+
+<code><pre>
+# This downloads a compiled C# assembly that contains a Button
+require 'Silverlight.Samples.Controls,Version=0.0.0.0'
+
+# This imports a JS and a VB module that each contain code that we will use
+JS = require '3DText.js'
+VB = require 'technorati.vbx'
+
+# We don't have include working yet ...
+Controls = Silverlight.Samples.Controls
+Document = System.Windows.Browser.HtmlPage.Document
+
+def initialize(sender, args)
+  # Create an instance of the downloaded C# button
+  b = Controls.Button.new
+  b.text = "Click Me"
+
+  JS.initialize
+
+  # Map Ruby block to .NET event from C#
+  b.click do |sender, args|
+    JS.clearList
+
+    # This uses a member injector to retrieve a reference to a HTML
+    # input element from the hosting HTML page
+    term  = Document.searchTerm.value
+
+    # This retrieves data from Technorati via Yahoo Pipes serialized 
+    # as JSON data, and then runs a LINQ over Objects query against it
+    items = VB.GetTitles(term)
+
+    # Blocks work, yay!
+    items.each { |item| JS.initializeName(item) }
+
+    # Play that funky designer animation
+    JS.playAnimation
+  end
+  
+  root.Children.Add(b)
+end
+</pre></code>
+
+Keep in mind that the Ruby code here was done in about 4 weeks worth of dev time by our stud developer Tomas Matousek (of <a href="http://www.codeplex.com/Phalanger">Phalanger</a> fame, and my office-mate) with some random input from yours truly.
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http%3A%2F%2Fwww.iunknown.com%2F2007%2F05%2Fpostdemo_hangov.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 06:51 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/05/postdemo_hangov.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/05/postdemo_hangov.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/dlr" rel="tag">dlr</a>, <a href="http://technorati.com/tag/ironruby" rel="tag">ironruby</a>, <a href="http://technorati.com/tag/microsoft" rel="tag">microsoft</a>, <a href="http://technorati.com/tag/ruby" rel="tag">ruby</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/18148596</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/05/postdemo_hangov.html">Post-Demo hangover</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content">
+			<!-- comment list -->
+	<a id="c68217410"></a>
+	<div class="comment" id="comment-68217410">
+		<div class="comment-content">
+			<p>Great stuff, Can i run that code on Silverlight 1.1 alpha?</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			krishna |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68217410">May 01, 2007 at 07:28 PM</a>
+		</p>
+	</div>
+	<a id="c68230254"></a>
+	<div class="comment" id="comment-68230254">
+		<div class="comment-content">
+			<p>Hey John</p>
+
+<p>great stuff, really. having a common platform for dynlangs is going to make a whole lot of difference, just like CLI/CLS did for static languages; it's going to finally rid us of text-based interfaces like powershell does compared to bash and its likes. so cool!</p>
+
+<p>now that the curtain has been lifted, can you revisit some of my last questions? </p>
+
+<p>- is it going to be as easy to call into dynlangs from c# as it is the other way round? can I finally implement libraries using dynlangs? interfaces?</p>
+
+<p>- is there any discussion about a groovy-like language for the DLR? what are your thoughts on this? VB is probably not going to please the lambda-the-ultimate-crowd, right? I assume you know the discussion from the java world, so i'll spare you any additional arguments.</p>
+
+<p>- and finally, considering all the great dynlang momentum, are there any plans to get stuff like AOP or metaprogramming into C# or other static CLR languages? given your past, i think you'd know, right?</p>
+
+<p>- jim wrote about a lang.net conference in july. will you be there? would we be able to discuss this stuff there? is this conference by invitation or first come/first serve?</p>
+
+<p>thanks a lot,<br />
+stefan</p>
+
+<p>soooo tired of tinkering with dynamic proxies and stuff ;-)</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Stefan Wenig |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68230254">May 02, 2007 at 12:09 AM</a>
+		</p>
+	</div>
+	<a id="c68289404"></a>
+	<div class="comment" id="comment-68289404">
+		<div class="comment-content">
+			<p>That code looks very, very familiar. Very RubyCLR like in fact :)</p>
+
+<p>My favorite feature request:</p>
+
+<p>b = Controls.Button.new do <br />
+  text "Click me"<br />
+  font "Verdana"<br />
+  fontSize "12pt"<br />
+end</p>
+
+<p>Hopefully the above will be possible just by standard meta programming tricks. THat is, overriding and updating methods on .NET objects from the ruby side. </p>
+
+<p>The above also points toward a very nice XML builder-like interface for constructing your GUI ...</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Justin |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68289404">May 02, 2007 at 12:55 PM</a>
+		</p>
+	</div>
+	<a id="c68298094"></a>
+	<div class="comment" id="comment-68298094">
+		<div class="comment-content">
+			<p>Krishna, no you cannot run that code in the current public bits because they lack support for Ruby and VB. Give us some more time and we'll get Ruby and VB bits out to all of you.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=68298094">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68298094">May 02, 2007 at 02:14 PM</a>
+		</p>
+	</div>
+	<a id="c68302440"></a>
+	<div class="comment" id="comment-68302440">
+		<div class="comment-content">
+			<p>Justin - you should be able to just do what you proposed using metaprogramming magic once we get enough features implemented in Ruby.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=68302440">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68302440">May 02, 2007 at 02:57 PM</a>
+		</p>
+	</div>
+	<a id="c68330222"></a>
+	<div class="comment" id="comment-68330222">
+		<div class="comment-content">
+			<p>Stefan, </p>
+
+<p>Send me some mail (jflam) and I'll get you onto the invite list for Lang.Net - we're working on putting it together now.</p>
+
+<p>As for your questions:</p>
+
+<p>- we are massively resource constrained now to deliver two languages (Python/Ruby) in our group, so we don't have any bandwidth for other languages. You're more than welcome to implement groovy on DLR if you want :)</p>
+
+<p>- interfaces are the easiest way to call back into DLR code</p>
+
+<p>- I have no idea about AOP-like plans ... but we can talk about whether that's a good idea at Lang.Net :)</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=68330222">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68330222">May 02, 2007 at 09:54 PM</a>
+		</p>
+	</div>
+	<a id="c68573086"></a>
+	<div class="comment" id="comment-68573086">
+		<div class="comment-content">
+			<p>Hi John,</p>
+
+<p>Congrats on getting this far!</p>
+
+<p>I'm a little bit concerned about Ruby compatibility when I see this code sample of yours... It looks, first of all, like your require-string take arbitrary stuff that actually identifies an assembly; how would this work with for example RubyGems? Assembly definitions wouldn't even be valid file paths in many cases...</p>
+
+<p>And the second point is also about require: from the example, it looks like it returns a module/class? If that's the case, once again, how will the applications that depend on the boolean result from require work?</p>
+
+<p>It looks like you have choosen to retain the exactly same assembly/class names as .NET uses in all. How have you implemented this? With method calls? Do you have problems with overlap between these method calls and regular constants? (I bet you will get those problems later, otherwise...)</p>
+
+<p>In what kind of context does this run, btw? It looks like the initialize method actually gets defined one the singleton class of toplevel. In that case I take it that this initialize have _nothing_ to do with regular Ruby allocations schemes, with the allocate and new methods.</p>
+
+<p>I like what you have done with the event handlers. Do I read it correctly that methods/delegates like onClick gets turned into a click-method that takes a block? That's very neat, if that's the case.</p>
+
+<p>Anyway, not to nitpick; I'm just very interested in how you plan to solve these problems, or if IronRuby will have the same problems with incompatibilities that other languages implemented by MS have been known to suffer from.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://ola-bini.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=68573086">Ola Bini</a> |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68573086">May 05, 2007 at 08:45 AM</a>
+		</p>
+	</div>
+	<a id="c68591398"></a>
+	<div class="comment" id="comment-68591398">
+		<div class="comment-content">
+			<p>Ola, thanks for sending in this detailed set of comments!</p>
+
+<p>We thought about every single issue that you brought up here and debated them at length. I kind of didn't want to call them out in the comments to see what folks thought without our bias.</p>
+
+<p>I'm on vacation right now (sneaking in a blog comment or email in here or there), but I'll answer each and every one of your concerns in a separate post. Your point about context is extremely important and probably the one that we need the most feedback on.</p>
+
+<p>About event handlers - exactly what you described.</p>
+
+<p>More later ...</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=68591398">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68591398">May 05, 2007 at 01:11 PM</a>
+		</p>
+	</div>
+	<a id="c68592074"></a>
+	<div class="comment" id="comment-68592074">
+		<div class="comment-content">
+			<p>Thanks John,</p>
+
+<p>I'm looking forward to that post. I'm sure you have rationalizations, and it will be very interesting to read them.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://ola-bini.blogspot.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=68592074">Ola Bini</a> |
+			<a href="http://www.iunknown.com/2007/05/postdemo_hangov.html#comment-68592074">May 05, 2007 at 01:23 PM</a>
+		</p>
+	</div>
+
+
+		</div>
+        
+	</div>
+	<!-- comment form -->
+	<script type="text/javascript" src="/.shared/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="33552588" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=33552588">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=33552588">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/people/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div>
+<div class="module-widget module" id="widget-Twitter_twitter_updates">
+	<div class="module-content">
+    	<h2 style="margin:0" class="module-header">Tweets</h2>
+<ul class="module-list" id="twitter_update_list"></ul>
+<a href="http://twitter.com/john_lam" id="twitter-link" style="display:block;text-align:right;">follow me on Twitter</a>
+<script type="text/javascript" src="http://twitter.com/javascripts/typepad.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/john_lam.json?callback=twitterCallback2&count=5"></script>
+
+	</div>
+</div>
+<div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+                        <script type="text/javascript" src="http://www.iunknown.com/services/recent-comments.js"></script>
+            
+            
+		</ul>
+	</div>
+</div>
+	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">MVP Summit Ruby Meetup</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/nominate-us-for.html">Nominate Us for Open Spaces Sessions at MS MVP Summit</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/open-source-amb.html">Open Source Ambassador</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/04/index.html">April 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/03/index.html">March 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/02/index.html">February 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2008/01/index.html">January 2008</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/12/index.html">December 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/index.html">November 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/index.html">October 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/index.html">September 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/08/index.html">August 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/index.html">July 2007</a></li>
+									</ul>
+									<p class="module-more"><a href="http://www.iunknown.com/archives.html">More...</a></p>
+				
+				
+			
+		</div>
+	</div>
+
+<div class="module-calendar module">
+	<h2 class="module-header">April 2008</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/04/nominate-us-for.html">2</a></td>
+				
+							
+					<td>3</td>
+				
+							
+					<td>4</td>
+				
+							
+					<td>5</td>
+				</tr>
+							<tr>
+					<td>6</td>
+				
+							
+					<td>7</td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				
+							
+					<td>11</td>
+				
+							
+					<td>12</td>
+				</tr>
+							<tr>
+					<td>13</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2008/04/mvp-summit-ruby.html">14</a></td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				
+							
+					<td>18</td>
+				
+							
+					<td>19</td>
+				</tr>
+							<tr>
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				
+							
+					<td>25</td>
+				
+							
+					<td>26</td>
+				</tr>
+							<tr>
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		<a href="http://www.typepad.com/" title="Blog">Blog</a> powered by <a href="http://www.typepad.com/" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body>
+</html>
+<!-- ph=1 -->

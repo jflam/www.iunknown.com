@@ -1,0 +1,179 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+  <HEAD>
+    <title>Recommended book: JavaScript Application Cookbook
+    </title>
+    <meta content="JavaScript" name="vs_defaultClientScript">
+    <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+    <LINK href="global.css" type="text/css" rel="stylesheet">
+  </HEAD>
+  <body MS_POSITIONING="GridLayout">
+    <a href="Default.aspx">
+      <img id="Image2" class="Logo" src="images/logo.png" alt="iunknown.com: building better software, faster" border="0" /></a>
+    <form name="Form1" method="post" action="BookReview.aspx?asin=1565925777" id="Form1">
+<input type="hidden" name="__VIEWSTATE" value="dDwxNzczMTIwMDYzO3Q8O2w8aTwxPjs+O2w8dDw7bDxpPDE+O2k8Mz47aTw1PjtpPDc+O2k8OT47aTwxMT47aTwxMz47aTwxND47aTwxNz47PjtsPHQ8cDxwPGw8SW1hZ2VVcmw7PjtsPGh0dHA6Ly9pbWFnZXMuYW1hem9uLmNvbS9pbWFnZXMvUC8xNTY1OTI1Nzc3LjAxLl9TQ01aWlpaWlpaXy5qcGc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEphdmFTY3JpcHQgQXBwbGljYXRpb24gQ29va2Jvb2s7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPEplcnJ5IEJyYWRlbmJhdWdoOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwkMzQuOTU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPCQyMy4wNzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8My4yOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwxODs+Pjs+Ozs+O3Q8QDxodHRwOi8vd3d3LmFtYXpvbi5jb20vZXhlYy9vYmlkb3MvQVNJTi8xNTY1OTI1Nzc3L3JlZj1ub3NpbS9pdW5rbm93bmNvbS0yMDs+Ozs+O3Q8O2w8aTwwPjtpPDE+Oz47bDx0PEA8QW1hem9uLmNvbTs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8U2Vhc29uZWQgSmF2YSBjb2RlcnMgd2lsbCBmaW5kIHRoZSBcPElcPkphdmFTY3JpcHQgQXBwbGljYXRpb24gQ29va2Jvb2tcPC9JXD4gY29tcGlsZWQganVzdCBmb3IgdGhlbS4gV3JpdHRlbiBpbiB0aGUgc2FtZSB2ZWluIGFzIHRoZSBvbGQtc3R5bGUgcHJvZ3JhbW1lciAidG9vbGJveCIgdGl0bGVzLCB0aGlzIGJvb2sgc2hlZHMgdGhlIHVzdWFsIHR1dG9yaWFsIHByZXNlbnRhdGlvbiBhbmQgc2ltcGx5IGludHJvZHVjZXMgYSBzZXJpZXMgb2YgSmF2YVNjcmlwdCBhcHBsaWNhdGlvbnMgeW91IGNhbiB1c2Ugb24geW91ciBvd24gc2l0ZXMuIFw8cFw+IFRoZSBjb29rYm9vayBiZWdpbnMgd2l0aCByZWNpcGVzIHN1Y2ggYXMgYSBjbGllbnQtc2lkZSBzZWFyY2ggZW5naW5lIGFwcGxpY2F0aW9uIHRoYXQgZmFjaWxpdGF0ZXMgY29tcGxleCBkYXRhYmFzZSBzZWFyY2hpbmcgdG8gbWF4aW1pemUgbG9jYWwgcHJvY2Vzc2luZy4gKEFuIGludGVyYWN0aXZlIG11bHRpcGxlLWNob2ljZSB0ZXN0aW5nIGFwcGxpY2F0aW9uIGZvbGxvd3MsIGFsb25nIHdpdGggY29kZSBmb3IgYW4gaW50ZXJmYWNlIHRvIG11bHRpcGxlIHNlYXJjaCBlbmdpbmVzIG9uIHRoZSBOZXQpLiBPdGhlciBhcHBsaWNhdGlvbnMgaW5jbHVkZSBhIEphdmFTY3JpcHQgc2hvcHBpbmcgY2FydCwgY29udGV4dC1zZW5zaXRpdmUgaGVscCwgY2lwaGVyIGltcGxlbWVudGF0aW9uLCBkcmFnLWFuZC1kcm9wLWNhcGFibGUgZS1tYWlsLCBhbmQgYSBjb29raWUtYmFzZWQgdXNlci1tYW5hZ2VtZW50IHN5c3RlbS5cPHBcPiBBdXRob3IgSmVycnkgQnJhZGVuYmF1Z2ggY2xlYXJseSBoYXMgYSBwYXNzaW9uIGZvciBKYXZhU2NyaXB0LCBhbmQgaGUgaWxsdXN0cmF0ZXMgdGhlIGNhcGFiaWxpdGllcyBvZiB0aGlzIG1vZGVzdCBzY3JpcHRpbmcgbGFuZ3VhZ2UuIFRoZSBjb2RlIGZvciB0aGUgYm9vaydzIGFwcGxpY2F0aW9ucyBpcyBhdmFpbGFibGUgZnJvbSB0aGUgcHVibGlzaGVyJ3MgV2ViIHNpdGUsIGFuZCBlYWNoIGNoYXB0ZXIgYmVnaW5zIHdpdGggYSBzdGVwLWJ5LXN0ZXAgd2Fsay10aHJvdWdoIG9mIHRoZSBmaW5pc2hlZCBhcHBsaWNhdGlvbi4gWW91J2xsIGxlYXJuIGhvdyBjb2RlIHdvcmtzIGFuZCBnZXQgaWRlYXMgZm9yIHBvc3NpYmxlIGV4dGVuc2lvbnMgeW91IG1pZ2h0IHdhbnQgdG8gY3JlYXRlLiBJZiB5b3UncmUgcHJvZ3JhbW1pbmcgaW4gSmF2YVNjcmlwdCBhbHJlYWR5IGFuZCB3YW50IHRvIGdyb3cgeW91ciBhcnNlbmFsIG9mIHRvb2xzIGFuZCB0ZWNobmlxdWVzLCB0aGUgXDxJXD5KYXZhU2NyaXB0IEFwcGxpY2F0aW9uIENvb2tib29rXDwvSVw+IGlzIGFuIGltbWVkaWF0ZSBjb2RlIGZpeC4gXDxJXD4tLVN0ZXBoZW4gVy4gUGxhaW5cPC9JXD47Pj47Pjs7Pjs+Pjs+Pjs+Pjs+Qwh7pUBiEQrpT6QefSlxBKHmIlg=" />
+
+      <div class="BookReview"><img id="BookImage" class="BookReviewImage" src="http://images.amazon.com/images/P/1565925777.01._SCMZZZZZZZ_.jpg" alt="" border="0" />
+        <span id="BookReviewTitle" class="BookReviewTitle">JavaScript Application Cookbook</span>
+        <div class="ItemDetail">By
+          <span id="Authors">Jerry Bradenbaugh</span></div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">List price:</span>
+          <span id="ListPrice" class="ListPrice">$34.95</span>
+          <span class="ItemCaption">Our price:</span>
+          <span id="OurPrice" class="OurPrice">$23.07</span>
+        </div>
+        <div class="ItemDetail">
+          <span class="ItemCaption">Average customer review:</span>
+          <span id="AverageReview">3.2</span>
+          based on
+          <span id="TotalReviews">18</span>
+          reviews.
+        </div>
+        <div class="BuyButton">
+          <a href='http://www.amazon.com/exec/obidos/ASIN/1565925777/ref=nosim/iunknowncom-20'>
+            <img id="Image1" src="Images/buy_from_amazon.gif" alt="" border="0" /></a>
+        </div>
+        <table class="ReviewBody">
+          <tr>
+            <td class="ReviewColumn">
+              <table id="EditorialReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Amazon.com:</DIV>
+                <span id="Label1">Seasoned Java coders will find the <I>JavaScript Application Cookbook</I> compiled just for them. Written in the same vein as the old-style programmer "toolbox" titles, this book sheds the usual tutorial presentation and simply introduces a series of JavaScript applications you can use on your own sites. <p> The cookbook begins with recipes such as a client-side search engine application that facilitates complex database searching to maximize local processing. (An interactive multiple-choice testing application follows, along with code for an interface to multiple search engines on the Net). Other applications include a JavaScript shopping cart, context-sensitive help, cipher implementation, drag-and-drop-capable e-mail, and a cookie-based user-management system.<p> Author Jerry Bradenbaugh clearly has a passion for JavaScript, and he illustrates the capabilities of this modest scripting language. The code for the book's applications is available from the publisher's Web site, and each chapter begins with a step-by-step walk-through of the finished application. You'll learn how code works and get ideas for possible extensions you might want to create. If you're programming in JavaScript already and want to grow your arsenal of tools and techniques, the <I>JavaScript Application Cookbook</I> is an immediate code fix. <I>--Stephen W. Plain</I></span>
+              
+</td></tr></table>
+              <table id="CustomerReviewsPanel" class="ReviewSection" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td>
+	
+                <DIV class="ReviewHeading">Customer reviews:</DIV>
+                
+                    <div class="CustomerReviewSummary">Good book if you're past the fundamentals</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2004-01-11</span>
+                    </div>
+                    <span>This book fills a very nice gap in the world of JavaScript books. Most of the books either are basic "how to" learning guides or exhaustive reference manuals. Both of those types of books are necessary for a good developer, but there comes a time when you want to cross over from the theoretical to the practical. As in, "how would I do a function like this in JavaScript?"<P>The "cookbook" approach is designed to take a common web site feature, like a search engine, and code a common JavaScript routine that would do that. You can then take the code in the book and use it with very little modification. In most cases, you would learn from the code as you are implementing it, and from there you can enhance the function to better suit your particular needs. You get the best of both worlds... You are quickly able to implement a function you are getting paid to build, and you are learning at the same time.<P>I liked the piece on context-sensitive help files. Nothing is really complex or visually impressive. But it's core functionality that you can implement quickly, it's useful for the end user, and you can build on that technique both in your current and future applications.<P>For Notes/Domino developers, you'll find a lot you can use here. Being that Domino functionality often translates to the web, you may find that a pure JavaScript implementation of a feature may not be the fastest or easiest way to build something for your application. You'll need to examine the functionality you need for your application and determine the best way to do it. But even if you choose to use Domino to accomplish some task, seeing the way to do it in JavaScript can help you expand your horizons and consider different approaches.<P>Conclusion<BR>I would recommend this book as a practical supplement to a good "how to" and a good reference book. If you're just starting to learn JavaScript, you may want to leave this one alone for awhile.</span>
+                  
+                    <div class="CustomerReviewSummary">Pretty Damn Good</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>0</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>1999-12-16</span>
+                    </div>
+                    <span>When I received my copy of the JavaScript Cookbook, I got exactly what I was looking for - a JAVASCRIPT resource. This is a solid piece of work that not only includes practical web ready applications & code, but also provides clear and concise explanations each step of the way. I found most of these explanations to hold considerable value beyond just the scope of the particular recipe; I had no problem using them to broaden my understanding in the bigger picture of JavaScript. <P>I found Bradenbaugh's book quite helpful and would highly recommend it to anyone interested in expanding their bag of JS tricks with immediate applicability. (I am currently using the client-side search engine application, and have dog-eared a handful of practical JS functions in Chapter 6). However, to all those reviewers below looking to learn Perl, you might want to first read this book's title before you pick it up.</span>
+                  
+                    <div class="CustomerReviewSummary">Virtually Useless Text</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>1</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>4</span>
+                      /
+                      <span>7</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2003-02-04</span>
+                    </div>
+                    <span>The text is focused on providing ready built constructs that can be applied to any website. In summary this book contains 11 application constructs. 3 are possibly applicable in todays world, albeit their relevancy is questioned, the other 9 topics such as text ciphers in JavaScript and Shopping Carts in JavaScript, etc. are completely unacceptable in today's world. Adding text cipher or Shopping cart logic in the browser completely exposes that logic to the hacking public leaving your site completely vulnerable to attack. Even in 1999, when this book was written, this would have been a ridiculous way of implementing these things. I must say I gathered no useful information from this text. And as for the author, anyone who had their site implemented by this person should hire a professional to correct the security holes he has most likely left behind.</span>
+                  
+                    <div class="CustomerReviewSummary">Finally, javascript without the cheap tricks......</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>2</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-09-18</span>
+                    </div>
+                    <span>After working through the first chapter (site search engine) I felt that this was a book work reading. It isn't a beginner's book, but anyone with intermediate javascript skills and an interest in using client-side processing will pick up a good amount of useful techniques and some needed perspective on how client-side scripting can be a powerful asset.<P>The code could be better (as could anyone's). There is a strong focus on using local variables instead of global and the naming conventions make following the logic from one function to the next a little difficult. This, however, does not diminish the value of the concepts presented.<P>To use the book, you "MUST" download the files. Not only are they a lot easier to read, you can comment them extensively as you go and pick up logic bits.<P>An inportant suggestion is to not blow through the example application too quickly. If you take the time to take them apart, modify them and reassemble, you will pick up much more than just running them reading the code and moving on.<P>I wish there were more books that presented the business functionality of javascript and how it can be used to handle many of the things that are being passed to server-side processing.<P>I bought it, used it and would buy it again...</span>
+                  
+                    <div class="CustomerReviewSummary">Good Book for moving past javascript cheap tricks....</div>
+                    <div>
+                      <span class="ItemCaption">Rating: </span>
+                      <span>4</span>
+                      <span class="ItemCaption">Helpful: </span>
+                      <span>0</span>
+                      /
+                      <span>3</span>
+                      votes <span class="ItemCaption">Reviewed: </span>
+                      <span>2002-09-17</span>
+                    </div>
+                    <span>I bought the book expecting to pick up techniques to accomplish some serious client-side actions. After working through the first chapter, I was pleased with the purchase. This is a no nonsense book that gets right to some usable applications.<P>Chapter one's search engine is not a lengthy script, but takes a while to digest because so many local variables are used. While this is economical, it makes picking up the logic flow from one function to the next a little more difficult. Having said that, the concepts presented in the code are well worth the effort to work through every line.<P>Downloading the zip file is the only way to go with this book. the code in the book is, due to format limitations, much more difficult to follow than the code viewed in a good editor. Besides you can comment the code line-by-line if that helps you.<P>If I was looking for an intermediate business oriented javascript book, this would be it!!<P>After fully mastering the approach of any one of the samples, you can begin immediately to see ways to either expand or apply the code. That's really what most of us are looking for.<P>Thanks for writing it.</span>
+                  
+              
+</td></tr></table>
+            </td>
+            <td class="ReviewSideBar">
+              <div class="ItemCaption">Customers also bought:</div>
+              
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596004672'>
+                      JavaScript & DHTML Cookbook
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 13 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596005253'>
+                      Cascading Style Sheets: The Definitive Guide, 2nd Edition
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.1 based on 58 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596003161'>
+                      Dynamic HTML: The Definitive Reference (2nd Edition)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.5 based on 138 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0672324318'>
+                      JavaScript Unleashed (4th Edition)
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 5.0 based on 1 reviews</div>
+                  </div>
+                
+                  <div class="SimilarItem">
+                    <a href='BookReview.aspx?asin=0596000480'>
+                      JavaScript: The Definitive Guide
+                    </a>
+                    <div class="SimilarItemRatings">Rating: 4.3 based on 191 reviews</div>
+                  </div>
+                
+              <div class="GoogleBookAd">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-8264790134546506";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                google_ad_format = "160x600_as";
+                google_ad_channel ="4375045039";
+                google_color_border = "CCCCCC";
+                google_color_bg = "FFFFFF";
+                google_color_link = "000000";
+                google_color_url = "666666";
+                google_color_text = "333333";
+                //--></script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</HTML>

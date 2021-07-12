@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less is better</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.iunknown.com/xml/rsd/feed.xml" />
+  <link href="http://feeds.feedburner.com/LessIsBetter" rel="alternate" title="RSS" type="application/rss+xml"/>
+  <link href="/stylesheets/theme/azure.css" media="screen" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/local.css" media="screen" rel="Stylesheet" type="text/css" />
+  <script src="/javascripts/cookies.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/effects.js" type="text/javascript"></script>
+  <script src="/javascripts/typo.js" type="text/javascript"></script>
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct="UA-133590-1";
+    urchinTracker();
+  </script>
+</head>
+<body>
+  <div id="container" class="clearfix">
+     <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Less is better</a></h1>
+          <h2 id="subtitle">John Lam on software</h2>
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          <img id="photo" src='http://static.flickr.com/26/55383834_e4b27af640.jpg?v=0' alt='Self Portrait'/>
+           <div class="post">
+  <h2><a href="/articles/2005/11/24/indigo-and-flickr-not-happy-together">Indigo and flickr: not happy together</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Fri, 25 Nov 2005 01:29:00 GMT">Fri, 25 Nov 2005 01:29:00 GMT</span></p>
+<p>Inspired by Mike Taulty&#8217;s <a href="http://mtaulty.com/blog/(z0uien45genrh0jdmtze0z45)/archive/2005/03/30/1721.aspx">A slightly different &#8216;hello, world&#8217; for Indigo</a> blog entry, I decided to create a low-level Indigo client that talks to <a href="http://www.flickr.com/services/api">flickr</a>.</p>
+
+
+	<p>I wanted to understand how the Indigo plumbing worked, so I decided to forego the high-level APIs and write my code using nothing more than <code>ChannelFactory</code>, <code>Message</code>, <code>IRequestChannel</code> and friends. This code compiles and runs on the <a href="http://blogs.msdn.com/brada/archive/2005/11/18/494283.aspx">November <span class="caps">CTP</span></a> bits, so my code looks a bit different than Mike&#8217;s code on his blog. If you want to follow along, you&#8217;ll need the November <span class="caps">CTP</span> bits and the <span class="caps">SDK</span>, but be warned: the documentation has not stayed in sync with changes to the <span class="caps">API</span>. <a href="http://www.aisto.com/roeder/dotnet/">Reflector</a> is your friend :)</p>
+
+
+	<p>It all started innocently enough. Here&#8217;s the original version of my code:</p>
+
+
+<pre><code>
+    ChannelFactory&lt;IRequestChannel&gt; factory;
+    using (factory = new ChannelFactory&lt;IRequestChannel&gt;(
+           CreateBinding(),
+           new EndpointAddress("http://www.flickr.com/services/soap/"))) {
+      using (IRequestChannel channel = factory.CreateChannel()) {
+        StringReader body =
+          new StringReader(@"&lt;x:FlickrRequest xmlns:x='urn:flickr'&gt;
+                             &lt;api_key&gt;83293ff34e3ab3d9935018480190319f&lt;/api_key&gt;
+                             &lt;format&gt;soap2&lt;/format&gt;
+                             &lt;method&gt;flickr.test.echo&lt;/method&gt;
+                             &lt;name&gt;value&lt;/name&gt;
+                           &lt;/x:FlickrRequest&gt;");
+        XmlTextReader reader = new XmlTextReader(body);
+        Message message      = Message.CreateMessage(MessageVersion.Soap12Addressing1, 
+                               "*", reader);
+        Message response     = channel.Request(message);
+        XmlDictionaryReader responseReader = response.GetReaderAtBodyContents();
+        Console.Write(responseReader.ReadOuterXml());
+      }
+    }
+</code></pre>
+
+	<p>This code uses a <code>ChannelFactory</code> to create a request/response style channel to flickr. Next, I construct a <code>Message</code> object and inject some <span class="caps">XML</span> into the message body. The flickr <span class="caps">API</span> is really just a single method that takes an <span class="caps">XML</span> document and returns an <span class="caps">XML</span> document. See the <a href="http://www.flickr.com/services/api">documentation</a> for more examples. Finally, I send my request <code>Message</code> via the channel, and it hands me back a response <code>Message</code> object that I serialize to the console. Simple enough, right?</p>
+
+
+	<p>That&#8217;s when the fun began. There&#8217;s a bug in flickr, and apparently, I&#8217;m <a href="http://www.flickr.com/forums/bugs/14099/">not the first one to report this</a>. The flickr <span class="caps">SOAP API</span> returns a content-type of <code>text/xml</code> for a <span class="caps">SOAP 1</span>.2 message body, whereas the <a href="http://www.w3.org/TR/2003/REC-soap12-part0-20030624/">spec</a> clearly states that the content-type should be <code>application/soap+xml</code>. Indigo is not happy at all with this, and throws a <code>ProtocolException</code> and aborts further processing of the <span class="caps">HTTP</span> response.</p>
+
+
+	<p>The crux of the problem lies in the type of channel that I created using the <code>ChannelFactory</code> class. To understand how the channel is constructed, I have to show you the missing implementation of the <code>CreateBinding</code> method:</p>
+
+
+<pre><code>
+CustomBinding binding = new CustomBinding();
+binding.Elements.Add(new TextMessageEncodingBindingElement(
+  MessageVersion.Soap12Addressing1, Encoding.UTF8));
+binding.Elements.Add(new HttpTransportBindingElement());
+return binding;
+</code></pre>
+
+	<p>Here, I tell the <code>ChannelFactory</code> to construct a channel that uses an <span class="caps">HTTP</span> transport, and a text-based <span class="caps">XML</span> serializer that will generate a <span class="caps">SOAP 1</span>.2 message that is text encoded as <span class="caps">UTF</span>-8. Indigo will also check to make sure that the response from the server is a <span class="caps">SOAP 1</span>.2 message <strong>and</strong> the content-type is <code>application/soap+xml</code>. To see this checking in action, try sending a <span class="caps">SOAP 1</span>.1 <code>Message</code> using this channel.</p>
+
+
+	<p>I spent some time spelunking around using Reflector, <code>TextMessageEncoder.IsContentTypeSupported</code> is where the <code>ProtocolException</code> gets thrown. Unfortunately, I couldn&#8217;t find a way to change the <code>ContentType</code> property of this object. This left only one other option that I could see: write a custom <code>MessageEncoder</code>.</p>
+
+
+	<p>More on how to do this tomorrow.</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/24/indigo-and-flickr-not-happy-together#comments">no comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/23/synergy">Synergy!</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Thu, 24 Nov 2005 03:52:00 GMT">Thu, 24 Nov 2005 03:52:00 GMT</span></p>
+<p>While looking for other people who have actually used <span class="caps">SOAP</span> to access the <a href="http://www.flickr.com/services/api/">Flickr <span class="caps">API</span></a>, I discovered <a href="http://synergy2.sourceforge.net/index.html">Synergy</a>.</p>
+
+
+	<p>My life&#8217;s dream is complete: I have actually discovered a useful utility before <a href="http://www.hanselman.com/blog/">Scott Hanselman</a>!  Marvel at how I can use the same keyboard and mouse on the <strong>same virtual desktop</strong> across three computers, one of which is my Powerbook!</p>
+
+
+	<p>All I have to do is roll the mouse to the desired screen, and the keyboard &#8220;focus&#8221; follows my mouse. Absolutely fantastic utility.</p>
+
+
+	<p><img src="http://static.flickr.com/25/66370105_847f42aa6d.jpg" alt="" /></p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/links" rel="category tag">Props</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/23/synergy#comments">4 comments</a></p> 
+  </div>
+ <div class="post">
+  <h2><a href="/articles/2005/11/23/avalon-november-ctp">Avalon November CTP</a></h2>
+<p class="auth">Posted by <a href="mailto:jlam@iunknown.com">John Lam</a>
+<span class="typo_date" title="Wed, 23 Nov 2005 20:37:00 GMT">Wed, 23 Nov 2005 20:37:00 GMT</span></p>
+<p>I spent some time this afternoon dealing with the breaking changes in my toy Avalon application between the September WinFX <span class="caps">CTP</span> and the November WinFX <span class="caps">CTP</span>.</p>
+
+
+	<p><a href="http://blogs.msdn.com/karstenj/archive/2005/11/18/494551.aspx">Karsten Januszewski</a> has kindly released <a href="http://winfx.members.winisp.net/files/introductionnovctp.mht">a draft of his upcoming article on the November <span class="caps">CTP</span></a> that is scheduled to appear on <span class="caps">MSDN</span> in December. Between that and the Avalon <span class="caps">XSD</span> schema, I was able to figure out how to port my application to the November <span class="caps">CTP</span>.</p>
+
+
+	<p>The biggest problem that I had was remembering that the syntax of a <code>PropertyPath</code> is based on a dot-delimited list of (<em>type name</em>.<em>property name</em>) tuples. You can also specify indexers for the list tuples.</p>
+
+
+	<p>In my app, I had a fairly complex property path that scrapes a property out of a 3D model:</p>
+
+
+	<p><code>(Viewport3D.Children)[0].(ModelVisual3D.Content).(Model3DGroup.Children)[2].(Model3D.Transform).(RotateTransform3D.Rotation)</code></p>
+
+
+	<p>There is a new <code>Children</code> element that hangs off of <code>Viewport3D</code> that tripped me up. The runtime exceptions that get thrown by the framework aren&#8217;t, um, helpful towards diagnosis of the problem. Spelunking via Intellisense was what helped me discover the new <code>Children</code> property (Karsten mentions it in his article as well).</p>
+
+    
+  <p class="meta">Posted in <a href="/articles/category/thoughts" rel="category tag">Thoughts</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/11/23/avalon-november-ctp#comments">no comments</a></p> 
+  </div>
+
+
+          <script type="text/javascript">show_dates_as_local_time()</script>
+        </div>
+        <div id="sidebar">
+          <form action="/articles/search" id="sform" method="get">
+ <h3><label for="q">Search: </label></h3><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif" style="display:none;" />
+</form>
+
+          <div id="search-results"></div>
+          <script type="text/javascript">new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:value})})</script>          
+            <h3>Syndicate</h3>
+<ul>
+    <li><a href="http://feeds.feedburner.com/LessIsBetter" title="RSS 2.0 feed">Articles</a></li>
+  
+    <li><a href="http://feeds.feedburner.com/LessIsBetterComments" title="Comments RSS 2.0 feed">Comments</a></li>
+  
+  
+</ul>
+
+    <div id="delicious">
+    <h3><a href='http://del.icio.us/drjflam'>My recent del.icio.us links</a></h3>
+    <ul>
+              <li><a href="http://www.iunknown.com/articles/2006/03/16/third-drop-of-rubyclr" title="For the archives">Third Drop of RubyCLR </a></li>
+              <li><a href="http://www.winxponmac.com/" title="Wahoo! Once Apple ships a 12" MacBook Pro with 1400 x 1050 and a Merom CPU I'm all over it.">Windows XP now boots on an Intel Duo Core Mac </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-199899523054020719&amp;q=linux" title="Wow. This video of vista-esque effects in Linux is seriously impressive.">Novell Linux 10 xgl Technology Demonstration </a></li>
+              <li><a href="http://www.pro-networks.org/forum/about71695-0-asc-10.html&amp;sid=f821da51db26b693a7066fc7fa8644eb" title="This is the thing that's been blocking me installing Vista 5308 on my Opteron desktop. Apparently you have to install XP first to a partition and then upgrade.">Installing Vista 5308 on NVIDIA SATA RAID </a></li>
+              <li><a href="http://video.google.com/videoplay?docid=-6909078385965257294" title="Wow. Wow. Wow. One of the most insightful talks that I've seen this year.">"All Marketers are Liars" - Seth Godin speaks at Google </a></li>
+              <li><a href="http://home.allegiance.tv/~joem298/" title="How to reinstall your Windows XP image on a Toshiba M200 using a PXE server">PXE Booting your M200 to DOS </a></li>
+              <li><a href="http://sports.espn.go.com/espn/page2/story?page=simmons/060302" title="A couple of great writers that I admire interview each other.">Bill Simmons interviews Malcolm Gladwell on ESPN </a></li>
+              <li><a href="http://www.pbenz.com/switch/archives/2005/03/changing_key_bi.html" title="One of the things that really frustrated me is the inconsistency of some keybindings between OS X and Windows. This is a cool script that maps them back to something I'm more used to.">Windows - friendly Key Bindings on Mac OS X </a></li>
+              <li><a href="http://weblog.rubyonrails.com/articles/2006/03/01/new-for-rails-1-1-integration-tests" title="Is this just me, or are these integration tests just a model of clarity?">Integration Tests in Rails 1.1 </a></li>
+              <li><a href="http://www.engadget.com/2006/02/27/wwjd-3-results/" title="Today's Mac mini announcements were pretty lame. Now these are some products that I want!">WWJD 3 - Results (What Would Jobs Do?) </a></li>
+              <li><a href="http://webcast.berkeley.edu/courses/feeds.php" title="I'm listening to lots of podcasts as I walk around carrying Ben in the evenings. Lots of good material here.">UC Berkeley courses as webcasts </a></li>
+          </ul>
+  </div>
+
+  <div id="flickr">
+<h3>John Lam's Photos (<a href="http://www.flickr.com/photos/23649168@N00/">flickr</a>)</h3>
+  <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/109809504/"><img alt="Windows Presentation Foundation and RubyCLR" src="http://static.flickr.com/49/109809504_3cb96cef07_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/102310404/"><img alt="Ruby RSS Reader" src="http://static.flickr.com/36/102310404_c16b55d745_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/84578490/"><img alt="Groovin'" src="http://static.flickr.com/39/84578490_119d64f19d_s.jpg" /></a>
+</div>
+    <div class="flickrsquare"><a href="http://www.flickr.com/photos/23649168@N00/113024723/"><img alt="RubyCLR generates equations in Avalon" src="http://static.flickr.com/56/113024723_7bb322ce42_s.jpg" /></a>
+</div>
+  </div>
+
+  
+<h3>Archives</h3>
+<ul id="archives">
+  
+    <li>
+      <a href="/articles/2006/03">March 2006</a>
+      <em>(10)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/02">February 2006</a>
+      <em>(25)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2006/01">January 2006</a>
+      <em>(9)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/12">December 2005</a>
+      <em>(22)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/11/23">November 2005</a>
+      <em>(18)</em>
+    </li>
+  
+    <li>
+      <a href="/articles/2005/10">October 2005</a>
+      <em>(7)</em>
+    </li>
+  
+</ul>
+
+
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/personal">Life</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/links">Props</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/thoughts">Thoughts</a> <em>(66)</em></li>
+  
+</ul>
+
+
+  <h3>Links</h3>
+<ul>
+  <li><a href="/pages/about_me">About me</a></li>
+  <li><a href="http://www.objectsharp.com">My company</a></li>
+  <li><a href="http://www.rubyonrails.com">Rails</a></li>
+</ul>
+
+Posts that contain <a href="http://technorati.com/search/RubyCLR">RubyCLR</a> per day for the last 30 days.<br /><a href="http://technorati.com/search/RubyCLR"><img src="http://technorati.com/chartimg/%28RubyCLR%29?totalHits=38&size=s&days=30" style="border:0" alt="Technorati Chart" /></a>
+
+
+
+          <a class="powered" href="http://typo.leetsoft.com/"><img alt="Powered" src="/images/powered.gif" /></a>
+        </div>
+        <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.iunknown.com/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+</body>
+</html>

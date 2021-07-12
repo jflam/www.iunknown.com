@@ -1,0 +1,683 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>iunknown.com: January 2004 Archives</title>
+
+<link rel="stylesheet" href="http://www.iunknown.com/styles-site.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.iunknown.com/index.rdf" />
+<link rel="start" href="http://www.iunknown.com/" title="Home" />
+<link rel="prev" href="http://www.iunknown.com/2003_12.html" title="December 2003" />
+
+<link rel="next" href="http://www.iunknown.com/2004_02.html" title="February 2004" />
+
+
+<script language="javascript" type="text/javascript">
+function OpenComments (c) {
+    window.open(c,
+                    'comments',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+
+function OpenTrackback (c) {
+    window.open(c,
+                    'trackback',
+                    'width=480,height=480,scrollbars=yes,status=yes');
+}
+</script>
+
+</head>
+
+<body>	
+
+<div id="banner">
+<h1><a href="http://www.iunknown.com/" accesskey="1"><img src="/mt-static/images/iunknown.png" width="350" height="60" border="0"></a></h1>
+<span class="description">Home of the Practical Eye for the .NET Guy</span>
+</div>
+
+<div id="container">
+
+<div class="blog">
+
+<div id="menu">
+<a href="http://www.iunknown.com/2003_12.html">&laquo; December 2003</a> |
+
+<a href="http://www.iunknown.com/">Main</a>
+| <a href="http://www.iunknown.com/2004_02.html">February 2004 &raquo;</a>
+
+</div>
+
+</div>
+
+<div class="blog">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000401"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/145"
+    dc:title="Spit n&apos; polish in ASP.NET 2.0"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000401"
+    dc:subject="Blog"
+    dc:description="I&apos;ve spent the better part of the day looking closer at ASP.NET 2.0. I&apos;m really impressed by the amount of polish and attention to detail in the product. Here are a couple of features that represent some nice examples of..."
+    dc:creator="John"
+    dc:date="2004-01-29T14:23:47-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 29, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000401"></a>
+<h3 class="title">Spit n' polish in ASP.NET 2.0</h3>
+
+<p>I've spent the better part of the day looking closer at <span class="caps">ASP.NET 2.0. I</span>'m really impressed by the amount of polish and attention to detail in the product. Here are a couple of features that represent some nice examples of "polish" - they aren't all that hard to write yourself, but it sure was nice that somebody else wrote them for you already:</p>
+
+<ul>
+<li> URL mapping: there's a new section in web.config called &lt;urlMappings&gt; which let you map old URLs to new URLs.
+<li> Image generation service: there's a new type: <code>System.Web.UI.Image.ImageGenerator</code> that lets you write to a <code>Graphics</code> object that it creates on the fly for you by overriding its <code>RenderImage</code> method.
+</ul>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000401.html">02:23 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=401" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=401" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000400"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/144"
+    dc:title="Whidbey Web Project References"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000400"
+    dc:subject="Blog"
+    dc:description="Today I ran across a bug in the VS.NET Whidbey IDE: you can&apos;t add a reference from an ASP.NET project to another project. I searched the Whidbey newsgroups and found that this is in fact a known issue and will..."
+    dc:creator="John"
+    dc:date="2004-01-28T14:32:28-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 28, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000400"></a>
+<h3 class="title">Whidbey Web Project References</h3>
+
+<p>Today I ran across a bug in the <span class="caps">VS.NET </span>Whidbey <span class="caps">IDE</span>: you can't add a reference from an <span class="caps">ASP.NET</span> project to another project. I searched the Whidbey newsgroups and found that this is in fact a known issue and will be fixed in the Beta. This is a heads-up to anyone else who stumbles across this (known) limitation. In the meantime, this means that I'll have to write all of my code in a single project since I still need to debug :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000400.html">02:32 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=400" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=400" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000399"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/143"
+    dc:title="Practical Eye for the .NET Guy"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000399"
+    dc:subject="Blog"
+    dc:description="The second issue of my newsletter, Practical Eye for the .NET Guy is now out. I&apos;d like to thank my illustrious panel of reviewers for making sure that the number of errors in my newsletter were kept to a minimum:..."
+    dc:creator="John"
+    dc:date="2004-01-27T15:40:39-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 27, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000399"></a>
+<h3 class="title">Practical Eye for the .NET Guy</h3>
+
+<p>The <a href="http://www.iunknown.com/Files/Practical_Eye_Issue2.pdf">second issue of my newsletter</a>, Practical Eye for the .NET Guy is now out. </p>
+
+<p>I'd like to thank my illustrious panel of reviewers for making sure that the number of errors in my newsletter were kept to a minimum: Alex Kipman and Dan Moseley of the MSBuild team for their patience with my numerous questions [and complaints :)], <a href="http://www.iseran.com/Steve/blog/">Steve Loughran</a> and <a href="http://stefanbodewig.blogger.de/">Stefan Bodewig</a> of the Ant team for continuing to share with me their experiences with complex builds in the Java and .NET worlds, Ian MacLean of the NAnt team for reviewing the newsletter with an eye on how it compares to NAnt, John Robbins from Wintellect for enlightening on the finer details of <span class="caps">PDB</span> file resolution, and Jean Rajotte of Frogware for his helpful critical comments about my style.</p>
+
+<p>Any errors, of course, are still my fault. Enjoy!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000399.html">03:40 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=399" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=399" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000398"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/142"
+    dc:title="First Look at Venus"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000398"
+    dc:subject="Blog"
+    dc:description="I spent some time this morning taking my first look at Venus (ASP.NET 2.0). The first thing that I wanted to pull apart was the new &quot;Code Separation&quot; compilation model that replaces &quot;Code Behind&quot; in ASP.NET 1.0/1.1. Observation 1: Development..."
+    dc:creator="John"
+    dc:date="2004-01-27T11:11:52-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000398"></a>
+<h3 class="title">First Look at Venus</h3>
+
+<p>I spent some time this morning taking my first look at Venus (ASP.NET 2.0). The first thing that I wanted to pull apart was the new "Code Separation" compilation model that replaces "Code Behind" in <span class="caps">ASP.NET 1.0</span>/1.1. </p>
+
+<p>Observation 1: Development uses the "Cassini" managed web server to host <span class="caps">ASP.NET,</span> not <span class="caps">IIS. </span>This is great for a number of reasons. Perhaps most important, I can now do <span class="caps">ASP.NET</span> development under a restricted account without having to <a href="http://www.iunknown.com/000332.html">jump through various hoops</a>. </p>
+
+<p>Observation 2: The code that <span class="caps">ASP.NET</span> generates is no longer in the usual place. Instead, you can find it under Local Settings\Temp\Temporary <span class="caps">ASP.NET </span>Files\... A big thanks goes out to Mark Russinovich's most excellent <a href="http://www.sysinternals.com/ntw2k/source/filemon.shtml">Filemon</a> tool.</p>
+
+<p>Observation 3: <span class="caps">ASP.NET</span> now uses the partial classes feature of C# for all user-defined code. When you write event handlers, the only code that you see is the code that handles the event. None of that nasty region-hidden code ever appears. </p>
+
+<p>Observation 4: Intellisense works right away in the partial class file. This is really cool. Consider the following code frag:</p>
+
+<pre><code>
+using System;
+
+namespace ASP
+{
+  public partial class Default_aspx
+  {
+    void Button1_Click(object sender, System.EventArgs e)
+    {
+      Label1.Text = &quot;Clicked, me!&quot;;
+    }
+  }
+} 
+</code></pre><p>When I type <code>Label1</code> I see the Intellisense right away for the <code>Label1</code> control. This requires a lot of background compilation goodness. Kudos to the <span class="caps">IDE</span> team for making this such a painless process.</p>
+
+<p>Observation 5: Intellisense works in the .aspx file. Now, most of the time I don't see a good reason to put code in the .aspx file, but in those cases where you need to do this (customization at a customer site comes to mind) it sure helps having Intellisense in your &lt;script runat="server"&gt; blocks.</p>
+
+<p>More observations later, but so far I'm really liking what I see.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000398.html">11:11 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=398" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=398" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000397"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/141"
+    dc:title="Wintellect folks blogging"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000397"
+    dc:subject="Blog"
+    dc:description="I&apos;d like to announce that two other Wintellect folks are now blogging. Prolific writer extraordinaire, Dino Esposito has been running a blog for a couple of months now. I&apos;ve always been in awe of how much writing Dino does. I..."
+    dc:creator="John"
+    dc:date="2004-01-26T00:37:03-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 26, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000397"></a>
+<h3 class="title">Wintellect folks blogging</h3>
+
+<p>I'd like to announce that two other Wintellect folks are now blogging. Prolific writer extraordinaire, <a href="http://weblogs.asp.net/despos/">Dino Esposito</a> has been running a blog for a couple of months now. I've always been in awe of how much writing Dino does. I suspect that there are actually several clones of Dino who do all that work. Also, Peter DeBetta has <a href="http://www.sqlblog.com">now started a blog</a>. Peter's focus is on <span class="caps">SQL </span>Server, and he's got an article in the latest <span class="caps">MSDN </span>Magazine on <a href="http://msdn.microsoft.com/msdnmag/issues/04/02/default.aspx">creating managed <span class="caps">UDT</span>'s in <span class="caps">SQL </span>Server Yukon</a>.</p>
+
+<p><span class="caps">PS I</span>'m posting this from <a href="http://www.mattberther.com/movableposter/">Movable Poster 2.0</a> on my freshly scrubbed laptop.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000397.html">12:37 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=397" onclick="OpenComments(this.href); return false">Comments (0)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=397" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000396"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/140"
+    dc:title="Living with Virtual PC 2004"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000396"
+    dc:subject="Blog"
+    dc:description="I&apos;ve been spending a lot of time repaving my laptop with Windows XP and switching to a Virtual PC lifestyle. So far, I&apos;ve got two Windows XP machines setup, one with VS.NET 2003 and one with Whidbey. As I write..."
+    dc:creator="John"
+    dc:date="2004-01-23T03:09:07-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 23, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000396"></a>
+<h3 class="title">Living with Virtual PC 2004</h3>
+
+<p><P>I've been spending a lot of time repaving my laptop with Windows XP and switching to a Virtual PC lifestyle. So far, I've got two Windows XP machines setup, one with <span class="caps">VS.NET 2003</span> and one with Whidbey. As I write this entry, I'm dropping Win2K3 EE onto another <span class="caps">VM. </span></P><P>So far I'm very happy with the perf of <span class="caps">VPC 2004. </span>When running in full screen mode, I really can't notice the difference between <span class="caps">VPC 2004</span> and native. </P><P>Peter Provost has an excellent <A href="http://www.peterprovost.org/weblog/PermaLink.aspx?guid=c642429f-24c3-44cc-ae04-df89251e5b83"><span class="caps">FAQ</span> on <span class="caps">VPC 2004</span></A>. Peter taught me the most excellent trick of installing <span class="caps">MSDN</span> onto your host OS and doing a network install of <span class="caps">MSDN</span> onto your guest <span class="caps">OS. </span>This saves a huge amount of space in your guest OS images. </P><P>I'm also writing this entry using <A href="http://www.blogjet.com">BlogJet</A>. It's a stop-gap tool until I get <A href="http://www.newsgator.com">NewsGator 2.0</A> and MovablePoster configured again on my laptop.</P></p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000396.html">03:09 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=396" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=396" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000395"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/139"
+    dc:title="A bad experience with MSI swallowing error messages"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000395"
+    dc:subject="Blog"
+    dc:description="While building my new VPC2004 image for VS2003 development, I discovered that I couldn&apos;t get the VS.NET 2003 prerequisites to install. I consistently got an error 1603 from runmsi.exe with no subsequent helpful error messages in the log. The error..."
+    dc:creator="John"
+    dc:date="2004-01-20T02:10:22-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 20, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000395"></a>
+<h3 class="title">A bad experience with MSI swallowing error messages</h3>
+
+<p>While building my new <span class="caps">VPC2004</span> image for <span class="caps">VS2003</span> development, I discovered that I couldn't get the <span class="caps">VS.NET 2003</span> prerequisites to install. I consistently got an error 1603 from runmsi.exe with no subsequent helpful error messages in the log.</p>
+
+<p>The error occurred when it was trying to run \WCU\bootstrap.msi. Once I ran bootstrap.msi from the command line, I discovered that I had a corrupted file on my <span class="caps">DVD. </span>But the freaking runmsi.exe app simply <span class="caps">SWALLOWS</span> the error. The dev who thought that reporting an error 1603 (fatal error) instead of reporting the actual error (running the <span class="caps">MSI</span> file manually reported the correct file i/o error) should be strung up and ...</p>
+
+<p><strong>Update:</strong> It's even worse than that. Now the <span class="caps">VS.NET</span> install fails because of another corrupted file on the <span class="caps">DVD </span>- no explanation given. Thankfully I have another set of CD's for <span class="caps">VS.NET 2003</span> handy. I just finished the install from that media and life is good again. Is it really <span class="caps">THAT</span> hard to report meaningful errors from the <span class="caps">VS.NET</span> installer?</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000395.html">02:10 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=395" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=395" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000394"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/138"
+    dc:title="I have to give Virtual PC 2004 a go"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000394"
+    dc:subject="Blog"
+    dc:description="I had a fun time last week teaching at HP in Fort Collins. While the class was smaller than normal, it gave us time to explore a lot of interesting ideas about how to build better software, faster. On Friday..."
+    dc:creator="John"
+    dc:date="2004-01-19T16:11:45-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 19, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000394"></a>
+<h3 class="title">I have to give Virtual PC 2004 a go</h3>
+
+<p>I had a fun time last week teaching at HP in Fort Collins. While the class was smaller than normal, it gave us time to explore a lot of interesting ideas about how to build better software, faster.</p>
+
+<p>On Friday night, I had dinner in Denver with a number of local blogger / celebrity types. <a href="http://dotnetguy.techieswithcats.com/">Brad Wilson</a>, <a href="http://www.rassoc.com/gregr/weblog/">Greg Reinacker</a>, <a href="http://www.eighty-twenty.net/blog">Gordon Weakliem</a>, <a href="http://www.develop.com/kbrown/">Keith Brown</a>, and <a href="http://www.peterprovost.org/weblog/&amp;Acirc;&amp;nbsp;were">Peter Provost</a> all in attendance. We had a lot of fun talking geek late into the night. A special thanks goes out to Brad Wilson for pulling this one together.</p>
+
+<p>One of the really interesting things that I learned was just how good Virtual <span class="caps">PC 2004</span> was. I'm currently a VMWare 4.0 Workstation user, but I'm going to spend a bit of time running <span class="caps">VPC 2004</span> to see just how well it stacks up against VMWare. </p>
+
+<p><strong>Update:</strong> Does anyone know if <span class="caps">VPC 2004</span> runs OK on Win2K3 Server? The installer claims that it's an unsupported <span class="caps">OS,</span> but the installer still lets you go ahead.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000394.html">04:11 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=394" onclick="OpenComments(this.href); return false">Comments (5)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=394" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000393"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/137"
+    dc:title="VPN and Wireless Routers?"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000393"
+    dc:subject="Blog"
+    dc:description="I thought that I&apos;d ask a question to my readers today. Has anyone successfully setup a home network using a Linksys wireless router that you can VPN into? I&apos;d love to retire my venerable Pentium Pro 150 box that is..."
+    dc:creator="John"
+    dc:date="2004-01-19T15:54:45-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000393"></a>
+<h3 class="title">VPN and Wireless Routers?</h3>
+
+<p>I thought that I'd ask a question to my readers today. Has anyone successfully setup a home network using a Linksys wireless router that you can <span class="caps">VPN</span> into? I'd love to retire my venerable Pentium Pro 150 box that is currently acting as my router / firewall / <span class="caps">VPN</span> gateway. I've figured out how to reverse-proxy my Exchange server, but I'm having a hard time figuring out how to reverse-proxy a Windows server that acts as an internal <span class="caps">VPN</span> gateway. Any suggestions? Thanks!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000393.html">03:54 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=393" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=393" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000392"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/136"
+    dc:title="Returning Quickbooks 2003"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000392"
+    dc:subject="Blog"
+    dc:description="Unlike Craig I&apos;m still on the non-admin bandwagon. Yesterday, I had the pleasure of returning Quickbooks 2003 to Intuit with a statement that read something along the lines of: &quot;This product does not run under a non-privileged Windows account. This..."
+    dc:creator="John"
+    dc:date="2004-01-05T11:11:32-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 05, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000392"></a>
+<h3 class="title">Returning Quickbooks 2003</h3>
+
+<p>Unlike <a href="http://staff.develop.com/candera/weblog2/PermaLink.aspx?guid=0dd82d51-d34d-44f6-8b15-cf52630a53a7">Craig</a> I'm still on the non-admin bandwagon. Yesterday, I had the pleasure of returning Quickbooks 2003 to Intuit with a statement that read something along the lines of: "This product does not run under a non-privileged Windows account. This is contrary to corporate policy on this matter". Hopefully my protest return will actually amount to something in the bigger picture :)</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000392.html">11:11 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=392" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=392" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000391"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/135"
+    dc:title="Ant pushback"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000391"
+    dc:subject="Blog"
+    dc:description="I recently came across two rants about Ant. These rants were written by folks that I respect, and I&apos;m quite disappointed that they didn&apos;t post more reasoned/detailed arguments. The first, written by Bruce Eckel a confusing rant at best. I..."
+    dc:creator="John"
+    dc:date="2004-01-04T21:52:43-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 04, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000391"></a>
+<h3 class="title">Ant pushback</h3>
+
+<p>I recently came across two rants about Ant. These rants were written by folks that I respect, and I'm quite disappointed that they didn't post more reasoned/detailed arguments. </p>
+
+<p>The first, written by <a href="http://mindview.net/WebLog/log-0046,&amp;Acirc;&amp;nbsp;is">Bruce Eckel</a> a confusing rant at best. I almost couldn't find his references to Ant amidst some reminiscing about C++ and the origins of Java. Bruce doesn't like Ant because: the file format is <span class="caps">XML,</span> and developers shouldn't be forced to have to write verbose build.xml files by hand. To me, this is largely an <span class="caps">IDE</span> problem as opposed to a problem with Ant as a build tool in and of itself. It isn't clear from looking at his rant what scenarios he had in mind when he wrote that "Ant sucks on a number of levels". It would be a much more informed discussion if he could point out specific deficiencies in Ant that caused him problems. I'm sure that the community would be more than happy to help him succeed with Ant.</p>
+
+<p>The second, written by <a href="http://martinfowler.com/bliki/BuildLanguage.html">Martin Fowler</a> is not particularly dismissive of Ant. Instead, he focuses on how conditionals and declarative languages don't mix. He proposes using an extension to a full-blown programming language, Ruby, as a replacement for Ant. I'd be interested in seeing some specific scenarios where he requires the power of a full-blown programming language to implement a build script. </p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000391.html">09:52 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=391" onclick="OpenComments(this.href); return false">Comments (1)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=391" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000390"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/134"
+    dc:title="Random Walk Guide to Investing"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000390"
+    dc:subject="Blog"
+    dc:description="Earlier I recommended a book called The Intelligent Asset Allocator. Today, I just finished a reading a far more approachable book that covers the same ground: The Random Walk Guide to Investing by Burton Malkiel: I highly recommend reading this..."
+    dc:creator="John"
+    dc:date="2004-01-04T00:45:02-05:00" />
+</rdf:RDF>
+-->
+
+
+
+
+<div class="blogbody">
+<a name="000390"></a>
+<h3 class="title">Random Walk Guide to Investing</h3>
+
+<p><a href="http://www.iunknown.com/000388.html">Earlier I recommended a book called The Intelligent Asset Allocator</a>. Today, I just finished a reading a far more approachable book that covers the same ground: The Random Walk Guide to Investing by Burton Malkiel:</p>
+
+<p><iframe marginwidth="0" marginheight="0" width="120" height="240" scrolling="no" frameborder="0" src="http://rcm.amazon.com/e/cm?o=1&amp;l=as1&amp;f=ifr&amp;t=iunknowncom-20&amp;p=8&amp;asins=0393058549&amp;IS2=1&amp;lt1=_blank"><MAP NAME="boxmap-p8"><AREA SHAPE="RECT" COORDS="14, 200, 103, 207" HREF="http://rcm.amazon.com/e/cm/privacy-policy.html?o=1" ><AREA COORDS="0,0,10000,10000" HREF="http://www.amazon.com/exec/obidos/redirect-home/iunknowncom-20" ></MAP><img src="http://rcm-images.amazon.com/images/G/01/rcm/120x240.gif" width="120" height="240" border="0" usemap="#boxmap-p8" alt="Shop at Amazon.com"></iframe>    </p>
+
+<p>I highly recommend reading this book before tackling Bernstein's book. It's a good mix of personal finance guidance with practical portfolio balancing advice. He also presents a much more simplified view of an investment portfolio than Bernstein's book. For example, in the equity portion of your portfolio, Malkiel advocates using extremely broad market index tracking funds like the Vanguard Total Stock Market Index fund that tracks the Wilshire 5,000 index. Contrast that with Bernstein's recommendation for a mix of large-cap, small-cap and foreign stocks (and that's his Level 1 (a.k.a. simplest) Asset Palette)!</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000390.html">12:45 AM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=390" onclick="OpenComments(this.href); return false">Comments (3)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=390" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000389"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/133"
+    dc:title="Is the browser finally being relegated to its rightful place?"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000389"
+    dc:subject="Blog"
+    dc:description="Yahoo News reports that Internet Applications are the primary way that people connect to the Internet. I think it&apos;s a good thing that the web is being relegated to being mostly an information browsing resource. Even that is being threatened..."
+    dc:creator="John"
+    dc:date="2004-01-03T15:29:36-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 03, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000389"></a>
+<h3 class="title">Is the browser finally being relegated to its rightful place?</h3>
+
+<p>Yahoo News reports that <a href="http://uk.news.yahoo.com/040102/36/ei7dj.html">Internet Applications</a> are the primary way that people connect to the Internet. I think it's a good thing that the web is being relegated to being mostly an information browsing resource. Even that is being threatened since most of my information comes to me in the form of <span class="caps">RSS</span> feeds these days. </p>
+
+<p>Applications like Quicken and Money, which I'm using a lot these days, sport a web interface mostly because it allows the authors of those programs to provide a rich <span class="caps">UI. </span>However, I've run into a number of usability issues that could easily go away if financial institutions lessen their dependency on providing information using a web browser. For example, downloading statements to Money is complicated by the fact that I have to first log into the bank's web site before I can do anything else. In the day and age where that information is only a Web Service call away, the need to interact with my bank through a browser will finally go away. </p>
+
+<p>It will be very interesting to see what a personal finance application circa 2006 will look like. On Windows, it will most likely sport a <span class="caps">XAML</span> front end that calls via Indigo against Web Services provided by the various financial institutions. I suspect that news feeds will be provided by some sort of <span class="caps">RSS</span>-like mechanism so that the application can render the news in such a way that it looks consistent with the rest of the application. It will be an "Internet Application", but one that will likely not use a browser at all. I can't wait.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000389.html">03:29 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=389" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=389" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2004_01.html#000388"
+    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/132"
+    dc:title="New Years Reflections"
+    dc:identifier="http://www.iunknown.com/2004_01.html#000388"
+    dc:subject="Blog"
+    dc:description="Happy New Year! What a change this year has been for us! Here&apos;s a brief recap of what&apos;s happened in our family this year: Kobe joined our family. In a way, Kobe was our &quot;training baby&quot; and he really helped..."
+    dc:creator="John"
+    dc:date="2004-01-01T21:17:35-05:00" />
+</rdf:RDF>
+-->
+
+
+<h2 class="date">January 01, 2004</h2>
+
+
+<div class="blogbody">
+<a name="000388"></a>
+<h3 class="title">New Years Reflections</h3>
+
+<p>Happy New Year! What a change this year has been for us! Here's a brief recap of what's happened in our family this year:</p>
+
+<p><a href="http://www.iunknown.com/000228.html">Kobe</a> joined our family. In a way, Kobe was our "training baby" and he really helped us prepare for the larger changes that awaited us.</p>
+
+<p><img src="http://www.iunknown.com/Files/matthew_new_year.jpg" alt="" /></p>
+
+<p>Matthew joined our family. It really is amazing to see the changes in him as the weeks go by. This week, we noticed that he's getting better at sitting up and looking around at the world. He's beginning to grasp and reach for objects that are close to him, and he's got a new favorite toy: froggy (or as Carolyn likes to say: Fwoggy).</p>
+
+<p>We bought a new house to accommodate our growing family, and are counting down the days that we remain in our apartment. I've lived in the same apartment now for nearly 6 years. We've been very happy here - the views are fantastic, and the staff in the building is awesome. We're going to miss life here, but at the same time, we're really looking forward to having some more space.</p>
+
+<p>All of these things forced me to grow up in ways that I hadn't really imagined. The first thing that I had to fix was my health: I decided that I was through with being a fat guy. So on June 6, I decided to change the way that I ate. Most of my inspiration was drawn from the book "Enter the Zone":</p>
+
+<p><iframe marginwidth="0" marginheight="0" width="120" height="240" scrolling="no" frameborder="0" src="http://rcm.amazon.com/e/cm?o=1&amp;l=as1&amp;f=ifr&amp;t=iunknowncom-20&amp;p=8&amp;asins=0060391502&amp;IS2=1&amp;lt1=_blank"><MAP NAME="boxmap-p8"><AREA SHAPE="RECT" COORDS="14, 200, 103, 207" HREF="http://rcm.amazon.com/e/cm/privacy-policy.html?o=1" ><AREA COORDS="0,0,10000,10000" HREF="http://www.amazon.com/exec/obidos/redirect-home/iunknowncom-20" ></MAP><img src="http://rcm-images.amazon.com/images/G/01/rcm/120x240.gif" width="120" height="240" border="0" usemap="#boxmap-p8" alt="Shop at Amazon.com"></iframe></p>
+
+<p>The key thing about this book was that it got you to count something other than calories. It also appealed to me intellectually since the book spends a lot of time explaining the biochemical responses that we have towards different food types. While his discussion on eicosanoids is somewhat suspect, the core message in the book: carbohydrates should be treated as a condiment, really resonated with me.</p>
+
+<p>I'm happy to report that I'm back to within 2 pounds of my college weight - a total loss of 42 pounds since June. Most of that weight came off within the first 3 months or so, and I've been on maintenance for the past two months or so. The disappearance of my tummy has also helped during those times when you're trying to do work in a coach airplane seat and the guy in front decides to put his seat back :)</p>
+
+<p>The second thing that starting a new family has made me think about is the state of our personal finances. We truly are very fortunate to have the income that we have, especially considering some of the dark clouds that hang over the software / IT industry at large. That said, however, I've really been ignorant of the state of our personal finances. </p>
+
+<p>So, this holiday I decided to educate myself. My first steps were to read some books on personal financial management. The first book, The Millionaire Next Door, was a real eye-opener:</p>
+
+<p><iframe marginwidth="0" marginheight="0" width="120" height="240" scrolling="no" frameborder="0" src="http://rcm.amazon.com/e/cm?o=1&amp;l=as1&amp;f=ifr&amp;t=iunknowncom-20&amp;p=8&amp;asins=0671015206&amp;IS2=1&amp;lt1=_blank"><MAP NAME="boxmap-p8"><AREA SHAPE="RECT" COORDS="14, 200, 103, 207" HREF="http://rcm.amazon.com/e/cm/privacy-policy.html?o=1" ><AREA COORDS="0,0,10000,10000" HREF="http://www.amazon.com/exec/obidos/redirect-home/iunknowncom-20" ></MAP><img src="http://rcm-images.amazon.com/images/G/01/rcm/120x240.gif" width="120" height="240" border="0" usemap="#boxmap-p8" alt="Shop at Amazon.com"></iframe>    <br />
+         <br />
+p. The take-home message in this book is to pay yourself first. Watch your expenses. And spend some time thinking about how you can / should invest the money that you paid yourself. Now, this formula is tried-and-true. Virtually every self-help personal finance book will tell you some variation on this theme. However, I really connected with the way that this book tells the story, particularly the way he groups individuals into the <span class="caps">UAW </span>(under accumulator of wealth) and the <span class="caps">PAW </span>(prodigious accumulator of wealth) categories. Hopefully, this year marks the beginning of my transition from the <span class="caps">UAW</span> to the <span class="caps">PAW</span> category. Note that this doesn't necessarily have anything to do with increasing income - just doing different things with the income that we already have.</p>
+
+<p>Along the way, I tried out a few pieces of personal financial software. First, I went out and purchased a copy of Quicken XG since it's the market leader. I quickly became annoyed by the fact that I had to grant write privileges to the program's directory under \Program Files. Next, product activation got in the way when I wanted to run Quicken on my laptop instead of on my wife's desktop. </p>
+
+<p>In frustration, I went out and bought a copy of Money 2004 Canadian Edition. So far I've been very happy. It does everything that I want, it runs fine under a non-privileged user account, it costs 1/3 of what Quicken XG does, and I can run it on whatever computer that I want. The only annoying thing is the fact that I have to save the .ofx file that my bank transmits to me to disk before importing it into Money. Under Quicken, this is a seamless operation (e.g. click on the Download button and the information shows up in Quicken - no manual import step). I look forward to the day when we can dispense with the download option entirely and simply use Web Services to retrieve the account information from the bank.</p>
+
+<p>With the record keeping stuff out of the way, I'm now turning my attention towards taking an active role in managing our investment portfolio. One of the most interesting books that I've come across is the Intelligent Asset Allocator by William Bernstein:</p>
+
+<p><iframe marginwidth="0" marginheight="0" width="120" height="150" scrolling="no" frameborder="0" src="http://rcm.amazon.com/e/cm?o=1&amp;l=as1&amp;f=ifr&amp;t=iunknowncom-20&amp;p=6&amp;asins=0071362363&amp;lt1=_blank"><MAP NAME="boxmap-p6"><AREA SHAPE="RECT" COORDS="1, 140, 83, 150" HREF="http://rcm.amazon.com/e/cm/privacy-policy.html?o=1" ><AREA COORDS="0,0,10000,10000" HREF="http://www.amazon.com/exec/obidos/redirect-home/iunknowncom-20" ></MAP><img src="http://rcm-images.amazon.com/images/G/01/rcm/120x150.gif" width="120" height="150" border="0" usemap="#boxmap-p6" alt="Shop at Amazon.com"></iframe>    </p>
+
+<p>The premise of his book is that the returns on an investment portfolio over the long term have more to do with the composition of the portfolio instead of the selection of the individual investments. This argues strongly for using index tracking funds to hold the investment categories, since they have much lower management fees than "managed" funds - particularly if you believe his assertion that stock picking is a random walk with no potential for long-term success. It's an interesting thesis, he makes a very good argument and backs it up with a large amount of data. Highly recommended if you want to take a hard look at the performance of your own investment portfolio.</p>
+
+
+
+<div class="posted">
+	Posted by John at <a href="http://www.iunknown.com/000388.html">09:17 PM</a>
+		| <a href="http://www.iunknown.com/cgi-bin/mt-comments.cgi?entry_id=388" onclick="OpenComments(this.href); return false">Comments (2)</a>
+	
+		| <a href="http://www.iunknown.com/cgi-bin/mt-tb.cgi?__mode=view&amp;entry_id=388" onclick="OpenTrackback(this.href); return false">TrackBack</a>
+	
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="http://www.typepad.com/" />
+	
+	
+	<meta name="keywords" content="ironruby,.net,clr,microsoft,ruby" />
+	<meta name="description" content="Ruby, Dynamic Language Runtime, Silverlight and Microsoft" />
+	
+	<link rel="stylesheet" href="http://www.iunknown.com/styles.css" type="text/css" />
+		<link rel="alternate" type="application/atom+xml" title="Posts on 'John Lam on Software' (Atom)" href="http://www.iunknown.com/atom.xml" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 1.0)" href="http://www.iunknown.com/index.rdf" />
+	<link rel="alternate" type="application/rss+xml" title="Posts on 'John Lam on Software' (RSS 2.0)" href="http://www.iunknown.com/rss.xml" />
+	
+
+	
+
+	<title>John Lam on Software: IronRuby on Silverlight at RubyConf</title>
+	<link rel="start" href="http://www.iunknown.com/" title="Home" />
+	<link rel="prev" href="http://www.iunknown.com/2007/10/welcome-mike-st.html?no_prefetch=1" title="Welcome Mike Stall to the DLR team!" />
+	<link rel="next" href="http://www.iunknown.com/2007/11/ironruby-talks.html?no_prefetch=1" title="IronRuby Talks" />
+	
+	<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.iunknown.com/2007/11/ironruby-on-sil.html"
+    trackback:ping="http://www.typepad.com/t/trackback/2419952/23073186"
+    dc:title="IronRuby on Silverlight at RubyConf"
+    dc:identifier="http://www.iunknown.com/2007/11/ironruby-on-sil.html"
+    dc:description="It&#39;s always a fun time at RubyConf. So, when you have a 9:00am talk, what do you do the night before? Well, hack in new features, of course! At 2:30am, Tomas, John and I removed the last grotesque hack from..."
+    dc:creator="John Lam"
+    dc:date="2007-11-05T14:35:26-08:00" />
+</rdf:RDF>
+-->
+
+</head>
+
+<body class="layout-two-column-right">
+	
+	<div id="container">
+		<div id="container-inner" class="pkg">
+			
+			<!-- banner -->
+<div id="banner">
+	<div id="banner-inner" class="pkg">
+		
+		<h1 id="banner-header"><a href="http://www.iunknown.com/" accesskey="1">John Lam on Software</a></h1>
+		<h2 id="banner-description">Ruby, Dynamic Language Runtime, Silverlight and Microsoft</h2>
+	</div>
+</div>
+
+			<div id="pagebody">
+				<div id="pagebody-inner" class="pkg">
+					<div id="alpha">
+						<div id="alpha-inner" class="pkg">
+							<!-- content nav -->
+<p class="content-nav">
+	<a href="http://www.iunknown.com/2007/10/welcome-mike-st.html">&laquo; Welcome Mike Stall to the DLR team!</a> |
+	<a href="http://www.iunknown.com/">Main</a>
+	| <a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks &raquo;</a>
+</p>
+
+<!-- entry -->
+	<h2 class="date-header">November 05, 2007</h2>
+
+
+<div class="entry" id="entry-41147216">
+			<h3 class="entry-header">IronRuby on Silverlight at RubyConf</h3>
+	
+	<div class="entry-content">
+		<div class="entry-body">
+			<p>It's always a fun time at <a href="http://www.rubyconf.org">RubyConf</a>. So, when you have a 9:00am talk, what do you do the night before? Well, hack in new features, of course! At 2:30am, Tomas, John and I removed the last grotesque hack from our Silverlight demo (grab the sources <a href="http://www.iunknown.com/files/photos.zip">from here</a>):</p> <p><a title="Photo Sharing" href="http://www.flickr.com/photos/john_lam/1859028362/"><img width="500" height="400" alt="IronRuby in Silverlight Screenshot" src="http://farm3.static.flickr.com/2211/1859028362_11a228cc89_o.png" /></a></p> <p>This is one of the first (to my knowledge) examples of a code-first Silverlight 1.1 application. Most Silverlight applications that generate UIs do so by creating a XAML string that they feed to the XAML parser. When you have a language as beautiful as Ruby, it's a shame to be creating trees via strings. </p> <p>Let's look at the code that generates the Storyboard for the 'bounce' effect for the pictures. So instead of this:</p>
+
+<pre class="csharpcode"><span class="kwrd">&lt;</span><span class="html">Storyboard</span> <span class="attr">x:Name</span><span class="kwrd">=&quot;Timeline1&quot;</span> <span class="attr">TargetName</span><span class="kwrd">=&quot;ScaleTransform1&quot;</span><span class="kwrd">&gt;</span>
+&nbsp; <span class="kwrd">&lt;</span><span class="html">DoubleAnimationUsingKeyFrames</span> <span class="attr">BeginTime</span><span class="kwrd">=&quot;00:00:00&quot;</span> <br />&nbsp; &nbsp;&nbsp; &nbsp;<span class="attr">Storyboard</span>.<span class="attr">TargetProperty</span><span class="kwrd">=&quot;ScaleX&quot;</span><span class="kwrd">&gt;</span>
+&nbsp; &nbsp; <span class="kwrd">&lt;</span><span class="html">SplineDoubleKeyFrame</span> <span class="attr">KeyTime</span><span class="kwrd">=&quot;00:00:00.0&quot;</span> <span class="attr">Value</span><span class="kwrd">=&quot;0.200&quot;</span><span class="kwrd">/&gt;</span>
+&nbsp; &nbsp; <span class="kwrd">&lt;</span><span class="html">SplineDoubleKeyFrame</span> <span class="attr">KeyTime</span><span class="kwrd">=&quot;00:00:00.2&quot;</span> <span class="attr">Value</span><span class="kwrd">=&quot;0.935&quot;</span><span class="kwrd">/&gt;</span>
+&nbsp; &nbsp; <span class="kwrd">&lt;</span><span class="html">SplineDoubleKeyFrame</span> <span class="attr">KeyTime</span><span class="kwrd">=&quot;00:00:00.3&quot;</span> <span class="attr">Value</span><span class="kwrd">=&quot;0.852&quot;</span><span class="kwrd">/&gt;</span>
+&nbsp; &nbsp; <span class="kwrd">&lt;</span><span class="html">SplineDoubleKeyFrame</span> <span class="attr">KeyTime</span><span class="kwrd">=&quot;00:00:00.4&quot;</span> <span class="attr">Value</span><span class="kwrd">=&quot;0.935&quot;</span><span class="kwrd">/&gt;</span>
+&nbsp; <span class="kwrd">&lt;/</span><span class="html">DoubleAnimationUsingKeyFrames</span><span class="kwrd">&gt;</span>
+&nbsp; <span class="kwrd">&lt;</span><span class="html">DoubleAnimationUsingKeyFrames</span> <span class="attr">BeginTime</span><span class="kwrd">=&quot;00:00:00&quot;</span> <br />&nbsp; &nbsp;&nbsp; &nbsp;<span class="attr">Storyboard</span>.<span class="attr">TargetProperty</span><span class="kwrd">=&quot;ScaleY&quot;</span><span class="kwrd">&gt;</span>
+&nbsp; &nbsp; <span class="kwrd">&lt;</span><span class="html">SplineDoubleKeyFrame</span> <span class="attr">KeyTime</span><span class="kwrd">=&quot;00:00:00.0&quot;</span> <span class="attr">Value</span><span class="kwrd">=&quot;0.200&quot;</span><span class="kwrd">/&gt;</span>
+&nbsp; &nbsp; <span class="kwrd">&lt;</span><span class="html">SplineDoubleKeyFrame</span> <span class="attr">KeyTime</span><span class="kwrd">=&quot;00:00:00.2&quot;</span> <span class="attr">Value</span><span class="kwrd">=&quot;0.935&quot;</span><span class="kwrd">/&gt;</span>
+&nbsp; &nbsp; <span class="kwrd">&lt;</span><span class="html">SplineDoubleKeyFrame</span> <span class="attr">KeyTime</span><span class="kwrd">=&quot;00:00:00.3&quot;</span> <span class="attr">Value</span><span class="kwrd">=&quot;0.852&quot;</span><span class="kwrd">/&gt;</span>
+&nbsp; &nbsp; <span class="kwrd">&lt;</span><span class="html">SplineDoubleKeyFrame</span> <span class="attr">KeyTime</span><span class="kwrd">=&quot;00:00:00.4&quot;</span> <span class="attr">Value</span><span class="kwrd">=&quot;0.935&quot;</span><span class="kwrd">/&gt;</span>
+&nbsp; <span class="kwrd">&lt;/</span><span class="html">DoubleAnimationUsingKeyFrames</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Storyboard</span><span class="kwrd">&gt;</span>
+</pre>
+<style type="text/css">.csharpcode, .csharpcode pre
+{
+&amp;nbsp; &amp;nbsp; font-size: small;
+&amp;nbsp; &amp;nbsp; color: black;
+&amp;nbsp; &amp;nbsp; font-family: consolas, &amp;quot;Courier New&amp;quot;, courier, monospace;
+&amp;nbsp; &amp;nbsp; background-color: #ffffff;
+&amp;nbsp; &amp;nbsp; /*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+&amp;nbsp; &amp;nbsp; background-color: #f4f4f4;
+&amp;nbsp; &amp;nbsp; width: 100%;
+&amp;nbsp; &amp;nbsp; margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }
+</style>
+
+<p>You can do:</p>
+
+<p>class BounceAnimation &lt; AnimationBase<br />&nbsp; def initialize(scale_transform_element)<br />&nbsp; &nbsp; @obj = Wpf.build(Storyboard, :name =&gt; random_name, <br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; :target_name =&gt; scale_transform_element) { <br /><br />&nbsp; &nbsp;&nbsp; &nbsp;add(DoubleAnimationUsingKeyFrames, :begin_time=&gt;'00:00:00',<br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; :target_property =&gt; &quot;ScaleX&quot;) { </p>
+
+<p>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; add(SplineDoubleKeyFrame, :key_time =&gt; '00:00:00.0', :value =&gt; 0.200)<br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; add(SplineDoubleKeyFrame, :key_time =&gt; '00:00:00.2', :value =&gt; 0.935)<br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; add(SplineDoubleKeyFrame, :key_time =&gt; '00:00:00.3', :value =&gt; 0.852)<br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; add(SplineDoubleKeyFrame, :key_time =&gt; '00:00:00.4', :value =&gt; 0.935)<br />&nbsp; &nbsp;&nbsp; &nbsp;}<br /><br />&nbsp; &nbsp;&nbsp; &nbsp;add(DoubleAnimationUsingKeyFrames, :begin_time=&gt;'00:00:00', <br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; :target_property =&gt; &quot;ScaleY&quot;) { </p>
+
+<p>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; add(SplineDoubleKeyFrame, :key_time =&gt; '00:00:00.0', :value =&gt; 0.200)<br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; add(SplineDoubleKeyFrame, :key_time =&gt; '00:00:00.2', :value =&gt; 0.935)<br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; add(SplineDoubleKeyFrame, :key_time =&gt; '00:00:00.3', :value =&gt; 0.852)<br />&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; add(SplineDoubleKeyFrame, :key_time =&gt; '00:00:00.4', :value =&gt; 0.935)<br />&nbsp; &nbsp;&nbsp; &nbsp;}<br />&nbsp; &nbsp; }<br />&nbsp; end<br />end 
+</p>
+
+<p>The advantage of the latter is that the animation is a named entity that can be parameterized or composed with other animations. It's also a great example of how far we have come in IronRuby. If you look at SplineDoubleKeyFrame, we need to convert the string '00:00:00.0' to a KeyTime object. We do so by monkey-patching DoubleKeyFrame, which is a base class of SplineDoubleKeyFrame:</p>
+
+<p>class DoubleKeyFrame<br />&nbsp; alias_method :old_key_time=, :key_time=<br />&nbsp; def key_time=(time_span)<br />&nbsp; &nbsp; self.old_key_time = KeyTime.from_time_span(TimeSpan.parse(time_span))<br />&nbsp; end<br />end 
+</p>
+
+<p>I'm overriding the implementation of the key_time property setter with a custom property setter that does the type conversion. The idea is to define type converters at the point in the inheritance hierarchy where the property is introduced; once you've done so, you've modified the behavior across the system. </p>
+
+<p>If you look at the code in Silverlight.rb, you'll see many more examples of these kinds of type converters. In the future, I suspect that the type converters in Silverlight.rb will be generated by reflecting over the WPF APIs in Silverlight. Look for more metaprogramming goodness for Silverlight as both our implementation and Silverlight matures.</p>
+
+<p>Unfortunately, you can't run these bits yet. We're using a private build of Silverlight to run this stuff today. But once we (DLR) sync up with the next CTP of Silverlight, you'll be able to run IronRuby in your browser. Fun times.</p>
+
+		</div>
+		
+					<script src="http://feeds.feedburner.com/~s/LessIsBetter?i=http://www.iunknown.com/2007/11/ironruby-on-sil.html" type="text/javascript"></script>
+		
+	</div>
+	<div class="entry-footer">
+					<p class="entry-footer-info">
+				<span class="post-footers">Posted at 02:35 PM </span> <span class="separator">|</span> <a class="permalink" href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">Permalink</a>
+			</p>
+		
+		<!-- technorati tags -->
+			<p class="entry-footer-tags">
+			<a href="http://www.technorati.com/search/http://www.iunknown.com/2007/11/ironruby-on-sil.html" title="Find related items at Technorati.">Technorati Tags</a>:
+			<a href="http://technorati.com/tag/ironruby+silverlight+rubyconf" rel="tag">ironruby silverlight rubyconf</a>
+		</p>
+	
+
+
+		<!-- post footer links -->
+
+
+	</div>
+</div>
+
+		<div class="trackbacks">
+		<a id="trackback"></a>
+		<h3 class="trackbacks-header">TrackBack</h3>
+		<div class="trackbacks-info">
+			<p>TrackBack URL for this entry:<br /><span class="trackbacks-link">http://www.typepad.com/t/trackback/2419952/23073186</span></p>
+			<p>Listed below are links to weblogs that reference <a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a>:</p>
+		</div>
+		<div class="trackbacks-content">
+			
+		</div>
+	</div>
+
+
+
+	<a id="comments"></a>
+	<div class="comments">
+		<h3 class="comments-header">Comments</h3>
+		
+		<div class="comments-content">
+			<!-- comment list -->
+	<a id="c88843622"></a>
+	<div class="comment" id="comment-88843622">
+		<div class="comment-content">
+			<p>I like the idea, but the XML version looks more concise in this instance.  I'd probably use xml builder to create the XAML markup - this would also give you composability.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Dan V. |
+			<a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88843622">November 05, 2007 at 03:36 PM</a>
+		</p>
+	</div>
+	<a id="c88847018"></a>
+	<div class="comment" id="comment-88847018">
+		<div class="comment-content">
+			<p>When you say "run Ruby in the browser," does this mean that we'll be able to do DOM manipulation via Ruby?  Because IMO that's when the fun begins.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://codebetter.com/blogs/jeremy.miller" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=88847018">Jeremy</a> |
+			<a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88847018">November 05, 2007 at 04:14 PM</a>
+		</p>
+	</div>
+	<a id="c88854734"></a>
+	<div class="comment" id="comment-88854734">
+		<div class="comment-content">
+			<p>@Dan:</p>
+
+<p>But you now need to round-trip through the XAML parser, and the thing that you are composing would not be Ruby either.</p>
+
+<p>@Jeremy:</p>
+
+<p>Yes- this is definitely a scenario that SL suports through the HTML bridge. There are some interesting ideas that some folks had at RubyConf about building a browser-agnostic DOM + WPF programming layer in Ruby.</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			<a rel="nofollow" target="_blank" title="http://www.iunknown.com" href="http://www.typepad.com/t/comments?__mode=red&amp;user_id=2419952&amp;id=88854734">John Lam</a> |
+			<a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88854734">November 05, 2007 at 05:45 PM</a>
+		</p>
+	</div>
+	<a id="c88902978"></a>
+	<div class="comment" id="comment-88902978">
+		<div class="comment-content">
+			<p>True.  I guess it depends on the application, and how you want to couple the definition of the WPF tree with its instantiation.<br />
+</p>
+		</div>
+		<p class="comment-footer">
+			Posted by:
+			Dan V. |
+			<a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88902978">November 06, 2007 at 06:16 AM</a>
+		</p>
+	</div>
+
+
+		</div>
+		
+	</div>
+	<!-- comment form -->
+	<script type="text/javascript" src="/.shared/js/comments.js"></script>
+	<script type="text/javascript">hostName = '.iunknown.com';</script>
+	
+	<form id="comment-form"
+		method="post" action="http://www.typepad.com/t/comments">
+		<input type="hidden" name="entry_id" value="41147216" />
+		<input type="hidden" name="user_id" value="2419952" />
+		
+		<div class="comments-open">
+			<h2 class="comments-open-header">Post a comment</h2>
+			<div class="comments-open-content">
+				
+				
+									<script type="text/javascript" src="http://www.typepad.com/t/comments?__mode=check_login"></script>
+					<script type="text/javascript">
+						checkLocal();
+					</script>
+					
+					<p id="comments-open-login" style="display: block;">
+													If you have a TypeKey or TypePad account, please
+							<a href="http://www.typepad.com/t/comments?__mode=signin_redir&amp;user_id=2419952&amp;entry_id=41147216">Sign In</a>
+						
+					</p>
+					
+					<p id="comments-open-logout" style="display: none;">
+						You are currently signed in as
+						<span id="commenter-name">(nobody)</span>.
+						<a href="http://www.typepad.com/t/comments?__mode=signout&amp;user_id=2419952&amp;entry_id=41147216">Sign Out</a>
+					</p>
+				
+				
+									<div id="comments-open-data">
+						<p>
+							<label for="comment-author">Name:</label>
+							<input id="comment-author" name="author" size="30" />
+						</p>
+						<p>
+							<label for="comment-email">Email Address: <span class="comment-form-note">(Not displayed with comment.)</span></label>
+							<input id="comment-email" name="email" size="30" />
+						</p>
+						<p>
+							<label for="comment-url">URL:</label>
+							<input id="comment-url" name="url" size="30" />
+						</p>
+						<p>
+							<label for="comment-bake-cookie"><input type="checkbox"
+								id="comment-bake-cookie" name="bakecookie" value="1" />
+								Remember personal info?</label>
+						</p>
+					</div>
+				
+
+	<p id="comments-open-text">
+
+
+					<label for="comment-text">Comments:</label>
+					<textarea id="comment-text" name="text" rows="10" cols="30" onkeyup="maxTextarea(this, 64000)"></textarea>
+				</p>
+			</div>
+
+	<div id="comments-open-footer" class="comments-open-footer">
+
+
+				<input type="submit" name="preview" id="comment-preview" value="&nbsp;Preview&nbsp;" />
+				<input type="submit" name="post" id="comment-post" value="&nbsp;Post&nbsp;" onclick="disableButton(this)" />
+			</div>
+		</div>
+	</form>
+	
+			<script type="text/javascript">
+			commentSignIn();
+		</script>
+	
+
+
+
+
+
+
+						</div>
+					</div>
+					<div id="beta">
+						<div id="beta-inner" class="pkg">
+							<!-- sidebar -->
+
+
+<div class="module-typelist module">
+	<h2 class="module-header">Facebook</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><script src="http://badge.facebook.com/badge/685772348.209.1554076252.js"></script><noscript><a href="http://www.facebook.com/p/John_Lam/685772348">John Lam's Facebook profile</a></noscript></div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-email module">
+	<div class="module-content">
+		<script type="text/javascript">
+<!--
+document.write('<a href="ma' + 'ilto:&#106;&#108;&#97;&#109;&#64;&#105;&#117;&#110;&#107;&#110;&#111;&#119;&#110;&#46;&#99;&#111;&#109;">Email Me</a>');
+// -->
+</script>
+
+	</div>
+</div>
+<!-- about page link -->
+<div class="module-about module">
+	<h2 class="module-header"><a
+		href="http://iunknown.typepad.com/about.html">About</a></h2>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_standard">
+	<div class="module-content">
+    	<a href="http://feeds.feedburner.com/LessIsBetter" 
+title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"><img src="http://
+www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" 
+style="border:0"/></a><a href="http://feeds.feedburner.com/
+LessIsBetter" title="Subscribe to my feed" rel="alternate" 
+type="application/rss+xml"></a>
+	</div>
+</div>
+<div class="module-widget module" id="widget-FeedBurner_fb_feedcount">
+	<div class="module-content">
+    	<p><a href="http://feeds.feedburner.com/LessIsBetter"><img src="http://feeds.feedburner.com/~fc/LessIsBetter?bg=FF9900&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+	</div>
+</div>
+<div class="module-typelist module">
+	<h2 class="module-header">Photos</h2>
+	<div class="typelist-plain module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><div class="typelist-note"><!-- Start of Flickr Badge -->
+<style type="text/css">
+.zg_div {margin:0px 5px 5px 0px; width:117px;}
+.zg_div_inner {border: solid 1px #000000; background-color:#ffffff;  color:#666666; text-align:center; font-family:arial, helvetica; font-size:11px;}
+.zg_div a, .zg_div a:hover, .zg_div a:visited {color:#3993ff; background:inherit !important; text-decoration:none !important;}
+</style>
+<script type="text/javascript">
+zg_insert_badge = function() {
+var zg_bg_color = 'ffffff';
+var zgi_url = 'http://www.flickr.com/apps/badge/badge_iframe.gne?zg_bg_color='+zg_bg_color+'&zg_person_id=23649168%40N00';
+document.write('<iframe style="background-color:#'+zg_bg_color+'; border-color:#'+zg_bg_color+'; border:none;" width="113" height="151" frameborder="0" scrolling="no" src="'+zgi_url+'" title="Flickr Badge"><\/iframe>');
+if (document.getElementById) document.write('<div id="zg_whatlink"><a href="http://www.flickr.com/badge.gne"	style="color:#3993ff;" onclick="zg_toggleWhat(); return false;">What is this?<\/a><\/div>');
+}
+zg_toggleWhat = function() {
+document.getElementById('zg_whatdiv').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+document.getElementById('zg_whatlink').style.display = (document.getElementById('zg_whatdiv').style.display != 'none') ? 'none' : 'block';
+return false;
+}
+</script>
+<div class="zg_div"><div class="zg_div_inner"><a href="http://www.flickr.com">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><br>
+<script type="text/javascript">zg_insert_badge();</script>
+<div id="zg_whatdiv">This is a Flickr badge showing public photos from <a href="http://www.flickr.com/photos/23649168@N00">John Lam</a>. Make your own badge <a href="http://www.flickr.com/badge.gne">here</a>.</div>
+<script type="text/javascript">if (document.getElementById) document.getElementById('zg_whatdiv').style.display = 'none';</script>
+</div>
+</div>
+<!-- End of Flickr Badge -->
+</div></li>
+			
+		</ul>
+	</div>
+</div>
+
+<div class="module-recent-comments module">
+	<h2 class="module-header">Recent Comments</h2>
+	<div class="module-content">
+		<ul class="module-list">
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html#comment-89272396">John Lam</a> on <a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html#comment-89178326">SoftMind</a> on <a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html#comment-89165608">ChrisNTR</a> on <a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/a-first-look-at.html#comment-88985366">Mark Holton</a> on <a href="http://www.iunknown.com/2007/07/a-first-look-at.html">A first look at IronRuby</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html#comment-88924522">Sandro M.</a> on <a href="http://www.iunknown.com/2007/06/vibrant_ink_vis.html">Vibrant Ink, Visual Studio and Vim settings</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88902978">Dan V.</a> on <a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88854734">John Lam</a> on <a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88847018">Jeremy</a> on <a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html#comment-88843622">Dan V.</a> on <a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a></li>
+							<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/welcome-mike-st.html#comment-87743756">Q</a> on <a href="http://www.iunknown.com/2007/10/welcome-mike-st.html">Welcome Mike Stall to the DLR team!</a></li>
+			
+		</ul>
+	</div>
+</div>
+	<div class="module-archives module">
+		<h2 class="module-header">Recent Posts</h2>
+		<div class="module-content">
+			<ul class="module-list">
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-talks.html">IronRuby Talks</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">IronRuby on Silverlight at RubyConf</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/welcome-mike-st.html">Welcome Mike Stall to the DLR team!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/outlook-2007-se.html">Outlook 2007 search busted? Here's the fix</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/popfly-goes-int.html">Popfly goes into public beta!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/ironruby-is-now.html">IronRuby is now an Open Source project!</a></li>
+					
+														<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/we-need-more-he.html">We need more help and we're willing to pay for it!</a></li>
+					
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="module-archives module">
+		<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Archives</a></h2>
+		<div class="module-content">
+												<ul class="module-list">
+				
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/11/index.html">November 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/10/index.html">October 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/09/index.html">September 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/08/index.html">August 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/07/index.html">July 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/06/index.html">June 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/05/index.html">May 2007</a></li>
+				
+							
+				<li class="module-list-item"><a href="http://www.iunknown.com/2007/04/index.html">April 2007</a></li>
+				
+			
+		</div>
+	</div>
+
+<div class="module-categories module">
+	<h2 class="module-header"><a href="http://www.iunknown.com/archives.html">Categories</a></h2>
+	<div class="module-content">
+		<ul class="module-list">
+						<li class="module-list-item"><a href="http://www.iunknown.com/current_affairs/index.html">Current Affairs</a></li>
+			
+		</ul>
+	</div>
+</div>
+<div class="module-calendar module">
+	<h2 class="module-header">November 2007</h2>
+	<div class="module-content">
+		<table summary="Monthly calendar with links to each day's posts">
+			<tr>
+									<th>Sun</th>
+									<th>Mon</th>
+									<th>Tue</th>
+									<th>Wed</th>
+									<th>Thu</th>
+									<th>Fri</th>
+									<th>Sat</th>
+				
+			</tr>
+							<tr>
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>&nbsp;</td>
+				
+							
+					<td>1</td>
+				
+							
+					<td>2</td>
+				
+							
+					<td>3</td>
+				</tr>
+							<tr>
+					<td>4</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/ironruby-on-sil.html">5</a></td>
+				
+							
+					<td>6</td>
+				
+							
+					<td><a href="http://www.iunknown.com/2007/11/ironruby-talks.html">7</a></td>
+				
+							
+					<td>8</td>
+				
+							
+					<td>9</td>
+				
+							
+					<td>10</td>
+				</tr>
+							<tr>
+					<td>11</td>
+				
+							
+					<td>12</td>
+				
+							
+					<td>13</td>
+				
+							
+					<td>14</td>
+				
+							
+					<td>15</td>
+				
+							
+					<td>16</td>
+				
+							
+					<td>17</td>
+				</tr>
+							<tr>
+					<td>18</td>
+				
+							
+					<td>19</td>
+				
+							
+					<td>20</td>
+				
+							
+					<td>21</td>
+				
+							
+					<td>22</td>
+				
+							
+					<td>23</td>
+				
+							
+					<td>24</td>
+				</tr>
+							<tr>
+					<td>25</td>
+				
+							
+					<td>26</td>
+				
+							
+					<td>27</td>
+				
+							
+					<td>28</td>
+				
+							
+					<td>29</td>
+				
+							
+					<td>30</td>
+				
+							
+					<td>&nbsp;</td>
+				</tr>
+			
+		</table>
+	</div>
+</div>
+<!-- powered by -->
+<div class="module-powered module">
+	<div class="module-content">
+		Powered by <a href="http://www.typepad.com/t/app/track?poweredby-2419952" title="TypePad">TypePad</a>
+	</div>
+</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+<!--
+var extra_happy = Math.floor(1000000000 * Math.random());
+document.write('<img src="http://www.typepad.com/t/stats?blog_id=1292386&amp;user_id=2419952&amp;page=' + escape(location.href) + '&amp;referrer=' + escape(document.referrer) + '&amp;i=' + extra_happy + '" width="1" height="1" alt="" style="position: absolute; top: 0; left: 0;" />');
+// -->
+</script>
+
+</body>
+</html>
