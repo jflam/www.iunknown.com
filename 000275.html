@@ -15,92 +15,6 @@
 <link rel="next" href="http://www.iunknown.com/000276.html" title="Win-Dev 2003 Wrap-up" />
 
 
-<script type="text/javascript" language="javascript">
-<!--
-
-function OpenTrackback (c) {
-    window.open(c,
-                    'trackback',
-                    'width=480,height=480,scrollbars=yes,status=yes');
-}
-
-var HOST = 'www.iunknown.com';
-
-// Copyright (c) 1996-1997 Athenia Associates.
-// http://www.webreference.com/js/
-// License is granted if and only if this entire
-// copyright notice is included. By Tomer Shiran.
-
-function setCookie (name, value, expires, path, domain, secure) {
-    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
-    document.cookie = curCookie;
-}
-
-function getCookie (name) {
-    var prefix = name + '=';
-    var c = document.cookie;
-    var nullstring = '';
-    var cookieStartIndex = c.indexOf(prefix);
-    if (cookieStartIndex == -1)
-        return nullstring;
-    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
-    if (cookieEndIndex == -1)
-        cookieEndIndex = c.length;
-    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
-}
-
-function deleteCookie (name, path, domain) {
-    if (getCookie(name))
-        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
-}
-
-function fixDate (date) {
-    var base = new Date(0);
-    var skew = base.getTime();
-    if (skew > 0)
-        date.setTime(date.getTime() - skew);
-}
-
-function rememberMe (f) {
-    var now = new Date();
-    fixDate(now);
-    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
-    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
-    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
-    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
-}
-
-function forgetMe (f) {
-    deleteCookie('mtcmtmail', '', HOST);
-    deleteCookie('mtcmthome', '', HOST);
-    deleteCookie('mtcmtauth', '', HOST);
-    f.email.value = '';
-    f.author.value = '';
-    f.url.value = '';
-}
-
-//-->
-</script>
-
-<!--
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
-         xmlns:dc="http://purl.org/dc/elements/1.1/">
-<rdf:Description
-    rdf:about="http://www.iunknown.com/000275.html"
-    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/19"
-    dc:title="From AOP to Code Generation"
-    dc:identifier="http://www.iunknown.com/000275.html"
-    dc:subject=""
-    dc:description="I&amp;#8217;ve been off of the AOP bandwagon for some time now. This is why I can&amp;#8217;t agree more with Craig Andera&amp;#8217;s recent blog entry on Side Effects and Code Generation. Craig and Tim are old colleagues of mine from my..."
-    dc:creator="John"
-    dc:date="2003-06-10T13:15:23-05:00" />
-</rdf:RDF>
--->
-
-
-
-
 </head>
 
 <body>
@@ -217,7 +131,7 @@ Thanks a lot.</p>
 <p>Ahh, an issue close to my heart:</p>
 
 <p>Craig: >><br />
-a whole app in zero lines of code being the ultimate experience. Obviously I’m exaggerating, but I think the phenomenon of seeking to do things with fewer and fewer lines of code is a real one&lt;&lt;</p>
+a whole app in zero lines of code being the ultimate experience. Obviously Iï¿½m exaggerating, but I think the phenomenon of seeking to do things with fewer and fewer lines of code is a real one&lt;&lt;</p>
 
 <p>Although I didn't get on the AOP bandwagon, I do have strong feelings about code generation.  I hate it!  Our motto at Couloir is: If you know enough to generate code, you know enough NOT to.  In fact, at Couloir, we have managed to create significant applications without ANY source code.</p>
 <span class="comments-post">Posted by: <a target="_blank" href="http://www.couloir-software.com">Gunnar Skogsholm</a> at June 14, 2003 04:24 PM</span>

@@ -14,93 +14,6 @@
 
 <link rel="next" href="http://www.iunknown.com/000424.html" title="Funny comment on Lisp and code generation" />
 
-
-<script type="text/javascript" language="javascript">
-<!--
-
-function OpenTrackback (c) {
-    window.open(c,
-                    'trackback',
-                    'width=480,height=480,scrollbars=yes,status=yes');
-}
-
-var HOST = 'www.iunknown.com';
-
-// Copyright (c) 1996-1997 Athenia Associates.
-// http://www.webreference.com/js/
-// License is granted if and only if this entire
-// copyright notice is included. By Tomer Shiran.
-
-function setCookie (name, value, expires, path, domain, secure) {
-    var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + ((secure) ? "; secure" : "");
-    document.cookie = curCookie;
-}
-
-function getCookie (name) {
-    var prefix = name + '=';
-    var c = document.cookie;
-    var nullstring = '';
-    var cookieStartIndex = c.indexOf(prefix);
-    if (cookieStartIndex == -1)
-        return nullstring;
-    var cookieEndIndex = c.indexOf(";", cookieStartIndex + prefix.length);
-    if (cookieEndIndex == -1)
-        cookieEndIndex = c.length;
-    return unescape(c.substring(cookieStartIndex + prefix.length, cookieEndIndex));
-}
-
-function deleteCookie (name, path, domain) {
-    if (getCookie(name))
-        document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
-}
-
-function fixDate (date) {
-    var base = new Date(0);
-    var skew = base.getTime();
-    if (skew > 0)
-        date.setTime(date.getTime() - skew);
-}
-
-function rememberMe (f) {
-    var now = new Date();
-    fixDate(now);
-    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000);
-    setCookie('mtcmtauth', f.author.value, now, '', HOST, '');
-    setCookie('mtcmtmail', f.email.value, now, '', HOST, '');
-    setCookie('mtcmthome', f.url.value, now, '', HOST, '');
-}
-
-function forgetMe (f) {
-    deleteCookie('mtcmtmail', '', HOST);
-    deleteCookie('mtcmthome', '', HOST);
-    deleteCookie('mtcmtauth', '', HOST);
-    f.email.value = '';
-    f.author.value = '';
-    f.url.value = '';
-}
-
-//-->
-</script>
-
-<!--
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
-         xmlns:dc="http://purl.org/dc/elements/1.1/">
-<rdf:Description
-    rdf:about="http://www.iunknown.com/000423.html"
-    trackback:ping="http://www.iunknown.com/cgi-bin/mt-tb.cgi/167"
-    dc:title="Gaining administrator privileges on a web server"
-    dc:identifier="http://www.iunknown.com/000423.html"
-    dc:subject="Blog"
-    dc:description="As a follow-up to my recent post on security, I thought that I&apos;d write up a few quick thoughts about compromised web servers. In this scenario, let&apos;s assume that I&apos;ve managed to gain administrator privileges on your web server. If..."
-    dc:creator="John"
-    dc:date="2004-02-26T20:12:24-05:00" />
-</rdf:RDF>
--->
-
-
-
-
 </head>
 
 <body>
@@ -191,7 +104,7 @@ Message (optional):<br />
 <div class="comments-head"><a name="comments"></a>Comments</div>
 
 <div class="comments-body">
-<p>One way to mitigate such a threat is via the combination of least privilege policies and monitoring.  The act of logging on as administrator could be out of the norm.  Runas techniques should be used whenever possible during administration.  A compromised machine can turn off logging of course.  Just the act of logging on as administrator can be logged.  This leaves some food for thought.  I wonder if I truly can capture an administrator logging on before a bad guy has a chance to delete the log.  That is if I have a way to log remotely.  Which off the top of my head I do not know if that is possible.  I know there are tools for collecting logs centrally but I don’t know if they are built to push logs and if the monitor would notice the absence of logs, maybe through a heart beat technique.  Still holes can be punched in this also but it is something to think about.  </p>
+<p>One way to mitigate such a threat is via the combination of least privilege policies and monitoring.  The act of logging on as administrator could be out of the norm.  Runas techniques should be used whenever possible during administration.  A compromised machine can turn off logging of course.  Just the act of logging on as administrator can be logged.  This leaves some food for thought.  I wonder if I truly can capture an administrator logging on before a bad guy has a chance to delete the log.  That is if I have a way to log remotely.  Which off the top of my head I do not know if that is possible.  I know there are tools for collecting logs centrally but I donï¿½t know if they are built to push logs and if the monitor would notice the absence of logs, maybe through a heart beat technique.  Still holes can be punched in this also but it is something to think about.  </p>
 <span class="comments-post">Posted by: <a target="_blank" href="http://www.deploymentcentric.com/blogs/joe">Joseph E Shook</a> at February 27, 2004 12:00 AM</span>
 </div>
 <div class="comments-body">
